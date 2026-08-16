@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
 const posts = await getCollection('posts', ({ data }) => !data.draft)
+const notes = await getCollection('notes')
+const written = notes.length
 
 // date は zod の z.coerce.date() で Date になっているので、そのまま新しい順に並べる。
 const sorted = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -11,6 +13,11 @@ const sorted = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.get
 
 <BaseLayout title="knowledge">
   <h1>knowledge</h1>
+
+  <p class="nav">
+    <a href="/notes">講義ノート</a>
+    <span class="count">{written} 本</span>
+  </p>
 
   <ul class="posts">
     {
@@ -60,6 +67,18 @@ const sorted = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.get
   .tag::before {
     content: '#';
     opacity: 0.55;
+  }
+
+  .nav {
+    margin: 1.5rem 0 0;
+    display: flex;
+    gap: 0.7rem;
+    align-items: baseline;
+  }
+
+  .count {
+    font-size: 0.85rem;
+    color: var(--muted);
   }
 
   .summary {

@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const notes = await getCollection('notes')
+
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }))
+}
+
+type Props = {
+  note: CollectionEntry<'notes'>
+}
+
+const { note } = Astro.props
+const { Content } = await render(note)
+
+const updated = note.data.date.toISOString().slice(0, 10)
+---
+
+<BaseLayout title={note.data.title}>
+  <header class="note-header">
+    <p class="back"><a href="/notes">← 講義ノート一覧</a></p>
+    <h1>{note.data.title}</h1>
+    <p class="meta">
+      {note.data.tags.map((tag) => <span class="group">{tag}</span>)}
+      <time datetime={updated}>{updated}</time>
+    </p>
+  </header>
+
+  <article>
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .note-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .back {
+    margin: 0 0 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .meta {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    align-items: baseline;
+  }
+
+  .meta code {
+    font-size: 0.85em;
+  }
+
+  .warn {
+    margin: 1rem 0 0;
+    padding: 0.6rem 0.9rem;
+    border-left: 2px solid var(--accent);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>

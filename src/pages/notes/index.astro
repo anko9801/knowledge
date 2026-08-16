@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const notes = await getCollection('notes')
+
+// タグの 1 つ目が「ノート」か「レポート」。to-typst.mjs が付ける。
+const written = notes
+
+const byGroup = new Map<string, typeof written>()
+for (const note of written) {
+  const group = note.data.tags[0] ?? 'ノート'
+  const list = byGroup.get(group) ?? []
+  byGroup.set(group, [...list, note])
+}
+
+// 同じタイトルのノートが複数ある（統計力学が 3 本など）。
+// 見分けが付かないと選べないので、重複するものだけ元ファイル名を添える。
+const titleCounts = new Map<string, number>()
+for (const note of notes) {
+  titleCounts.set(note.data.title, (titleCounts.get(note.data.title) ?? 0) + 1)
+}
+
+const label = (note: (typeof notes)[number]) =>
+  (titleCounts.get(note.data.title) ?? 0) > 1 ? note.id : null
+
+const groups = [...byGroup.entries()].map(([group, items]) => ({
+  group,
+  items: [...items].sort((a, b) => a.data.title.localeCompare(b.data.title, 'ja')),
+}))
+---
+
+<BaseLayout title="講義ノート">
+  <p class="back"><a href="/">← 一覧</a></p>
+  <h1>講義ノート</h1>
+  <p class="lead">
+    LaTeX で書いた物理・数学のノートを、数式を MathML に変換して載せています。
+    数式は画像ではないので、選択もコピーも検索もできます。
+  </p>
+
+  {
+    groups.map(({ group, items }) => (
+      <section>
+        <h2>{group}</h2>
+        <ul class="notes">
+          {items.map((note) => (
+            <li>
+              <a href={`/notes/${note.id}`}>{note.data.title}</a>
+              {label(note) && <span class="src">{label(note)}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+</BaseLayout>
+
+<style>
+  .back {
+    margin: 0 0 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .lead {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .notes {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    columns: 2;
+    column-gap: 2rem;
+  }
+
+  .notes li {
+    margin-bottom: 0.5rem;
+    break-inside: avoid;
+  }
+
+  .src {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 34rem) {
+    .notes {
+      columns: 1;
+    }
+  }
+</style>

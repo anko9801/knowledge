@@ -33,6 +33,8 @@
               typst
               pkgs.nodejs_22
               fontTooling
+              # lecture-notes の .tex を Typst に変換する（scripts/latex/to-typst.mjs）
+              pkgs.pandoc
             ];
 
             # HTML export は experimental なので明示的に有効化する。
@@ -48,6 +50,7 @@
               echo "node    $(node --version)"
               echo "subset  $(pyftsubset --help >/dev/null 2>&1 && echo ok || echo NG)"
               echo "math    $(basename "$MATH_FONT")"
+              echo "pandoc  $(pandoc --version | head -1 | cut -d' ' -f2)"
             '';
           };
         });

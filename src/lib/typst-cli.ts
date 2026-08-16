@@ -4,20 +4,41 @@ import { promisify } from 'node:util'
 const run = promisify(execFile)
 
 /**
- * HTML export が毎回 stderr に出す experimental 警告。
- * これをエラーと区別しないとビルドログが埋まる。
+ * typst の stderr から、本当に失敗した行だけを取り出す。
+ *
+ * HTML export は experimental 警告を毎回出すうえ、MathML に写せない要素
+ * （overline など）があると warning を出す。これらでビルドを止めると
+ * 1 箇所の表現の都合で文書全体が落ちるので、error: だけを失敗とみなす。
  */
-const EXPERIMENTAL_NOTICE = /html export is under active development|^\s*=\s*hint:|^\s*$/
+export const significantStderr = (stderr: string): string => {
+  const lines = stderr.split('\n')
+  const errors: string[] = []
+  let capturing = false
 
-const isNoise = (line: string): boolean => EXPERIMENTAL_NOTICE.test(line)
+  for (const line of lines) {
+    if (/^error:/.test(line)) {
+      capturing = true
+      errors.push(line)
+      continue
+    }
+    if (/^(warning|hint):/.test(line)) {
+      capturing = false
+      continue
+    }
+    // エラー本文に続く位置情報の行だけを拾う。
+    if (capturing && /^\s*[│┌─]/.test(line)) errors.push(line)
+  }
 
-/** stderr から experimental 警告だけを取り除いた残りを返す。 */
-export const significantStderr = (stderr: string): string =>
+  return errors.join('\n').trim()
+}
+
+/** MathML に写せなかった要素などの警告。ビルドは止めないが記録はしたい。 */
+export const collectWarnings = (stderr: string): readonly string[] =>
   stderr
     .split('\n')
-    .filter((line) => !isNoise(line))
-    .join('\n')
-    .trim()
+    .filter((line) => /^warning:/.test(line))
+    .filter((line) => !/html export is under active development/.test(line))
+    .map((line) => line.replace(/^warning:\s*/, ''))
 
 export type TypstOptions = {
   readonly bin: string
@@ -54,8 +75,11 @@ export const compileHtml = async (
 /**
  * `<fm>` ラベルを付けた #metadata を JSON として取り出す。
  *
- * HTML を正規表現で漁らずに済ませるための経路。paged target のまま評価するので
- * --features html は不要で、experimental 警告も出ない。
+ * HTML を正規表現で漁らずに済ませるための経路。
+ *
+ * --features html が要る点に注意。本文が html.frame() のように html 名前空間へ
+ * 触れていると、評価だけでも「unknown variable: html」で落ちる。
+ * 警告は stderr に出るが、ここが読むのは stdout の JSON だけなので害はない。
  */
 export const evalMetadata = async (
   file: string,
@@ -64,7 +88,18 @@ export const evalMetadata = async (
   try {
     const { stdout } = await run(
       bin,
-      ['eval', '--in', file, '--root', root, '--format', 'json', 'query(<fm>).first().value'],
+      [
+        'eval',
+        '--in',
+        file,
+        '--root',
+        root,
+        '--features',
+        'html',
+        '--format',
+        'json',
+        'query(<fm>).first().value',
+      ],
       { maxBuffer: 4 * 1024 * 1024 },
     )
 

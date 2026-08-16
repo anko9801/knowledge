@@ -2,6 +2,12 @@ node_modules/
 dist/
 .astro/
 
+# LaTeX の変換結果と作業用の複製。npm run notes で再生成できる。
+.cache/
+
+# lecture-notes からコピーした画像。同じく再生成できる。
+public/notes/
+
 # prebuild で typst から生成される。typst のバージョンに追随させるため追跡しない。
 src/styles/typst-math.css
 

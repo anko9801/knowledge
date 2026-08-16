@@ -185,6 +185,28 @@ svg {
   height: auto;
 }
 
+/* html.frame() の SVG 島。
+ *
+ * Typst は線と字を #000000 で焼き付ける（typst/typst#7696）。そのままだと
+ * ダークモードで消えるので、純黒だけを変数に読み替える。意図して付けた色は残る。
+ *
+ * --diagram-ink を上書きすれば図の線色を自由に変えられる。既定は本文色。
+ *   article { --diagram-ink: #7a4b2a }        記事全体
+ *   figure.accent { --diagram-ink: crimson }  図ごと */
+svg [stroke='#000000'] {
+  stroke: var(--diagram-ink, currentColor);
+}
+
+svg [fill='#000000'] {
+  fill: var(--diagram-ink, currentColor);
+}
+
+/* 図は本文と同じ流れに置くが、狭い画面でも切れないようにする。 */
+article svg {
+  display: block;
+  margin: 2rem auto;
+}
+
 hr {
   border: 0;
   border-top: 1px solid var(--rule);

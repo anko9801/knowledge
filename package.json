@@ -10,7 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "fonts": "sh scripts/subset-math-font.sh"
+    "fonts": "sh scripts/subset-math-font.sh",
+    "test": "node --test scripts/latex/*.test.mjs",
+    "notes": "node scripts/latex/to-typst.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"

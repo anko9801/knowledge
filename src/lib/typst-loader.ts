@@ -132,9 +132,11 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
 
       if (!watcher) return
 
-      watcher.add(absoluteDir)
-      watcher.on('change', async (changed) => {
-        if (extname(changed) !== '.typ' || !changed.startsWith(absoluteDir)) return
+      const watched = (path: string): boolean =>
+        extname(path) === '.typ' && path.startsWith(absoluteDir)
+
+      const reingest = async (changed: string): Promise<void> => {
+        if (!watched(changed)) return
 
         try {
           await ingest(changed, context, root)
@@ -142,6 +144,16 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
           // dev サーバを落とさない。show rule の穴を踏んだときはここに出る。
           logger.error(error instanceof Error ? error.message : String(error))
         }
+      }
+
+      watcher.add(absoluteDir)
+
+      // change だけ見ていると、執筆中に新しい記事を足しても 404 のままになる。
+      watcher.on('change', reingest)
+      watcher.on('add', reingest)
+      watcher.on('unlink', (removed) => {
+        if (!watched(removed)) return
+        store.delete(basename(removed, '.typ'))
       })
     },
   }

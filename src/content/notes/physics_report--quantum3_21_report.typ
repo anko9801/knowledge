@@ -242,15 +242,10 @@ $ \|Psi⟩ & = 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ plus.minus \|beta⟩ \|alpha�
 #strong[命題 4] (Q21-1(ii)). \
 
 粒子状態 $\|Psi_S⟩ \, \|Psi_A⟩$ を次のように定義する.
-\$\$\\begin{aligned}
-    \\begin{dcases}
-      \\left\\lvert \\Psi\_S\\right\\rangle  = \\frac{1}{\\sqrt{2}}(\\left\\lvert \\alpha\\right\\rangle \\left\\lvert \\beta\\right\\rangle  + \\left\\lvert \\beta\\right\\rangle \\left\\lvert \\alpha\\right\\rangle ) \\\\
-      \\left\\lvert \\Psi\_A\\right\\rangle  = \\frac{1}{\\sqrt{2}}(\\left\\lvert \\alpha\\right\\rangle \\left\\lvert \\beta\\right\\rangle  - \\left\\lvert \\beta\\right\\rangle \\left\\lvert \\alpha\\right\\rangle )
-    \\end{dcases}.
-  
-\\end{aligned}\$\$ このとき $D$ を満たす任意の粒子状態
-$\|Psi⟩ in cal(H)^(\( 2 \))$ は次のように表現される.
-$ \|Psi⟩ = c_S \|Psi_S⟩ + c_A \|Psi_A⟩ . $
+$ {\|Psi_S⟩ = 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ + \|beta⟩ \|alpha⟩ \)\
+\|Psi_A⟩ = 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ - \|beta⟩ \|alpha⟩ \) . $
+このとき $D$ を満たす任意の粒子状態 $\|Psi⟩ in cal(H)^(\( 2 \))$
+は次のように表現される. $ \|Psi⟩ = c_S \|Psi_S⟩ + c_A \|Psi_A⟩ . $
 
 ]
 $D$ を満たす任意の粒子状態 $\|Psi⟩ in cal(H)^(\( 2 \))$
@@ -263,8 +258,6 @@ $\|alpha⟩ \|beta⟩ \, \|beta⟩ \|alpha⟩$ と $\|Psi_S⟩ \, \|Psi_A⟩$
 のそれぞれの重ね合わせが同値な表現となることがわかる.
 $ c_S & = frac(c_1 + c_2, sqrt(2)) \, quad c_A = frac(c_1 - c_2, sqrt(2))\
 c_1 & = frac(c_S + c_A, sqrt(2)) \, quad c_2 = frac(c_S - c_A, sqrt(2)) . $
-
-0◻
 
 #block[
 #strong[命題 5] (Q21-1(iii)(iv)(v)). \
@@ -285,8 +278,6 @@ $ hat(E) \|Psi_S⟩ & = 1 / sqrt(2) hat(E) \( \|alpha⟩ \|beta⟩ + \|beta⟩ \
 hat(E) \|Psi_A⟩ & = 1 / sqrt(2) hat(E) \( \|alpha⟩ \|beta⟩ - \|beta⟩ \|alpha⟩ \) = - 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ - \|beta⟩ \|alpha⟩ \) = - \|Psi_A⟩ . $
 となるから任意の状態 $\|Psi⟩$ に適用すると次のようになる.
 $ hat(E) \|Psi⟩ & = hat(E) \( c_S \|Psi_S⟩ + c_A \|Psi_A⟩ \) = c_S \|Psi_S⟩ - c_A \|Psi_A⟩ . $
-
-0◻
 
 #block[
 #strong[命題 6] (Q21-1(vi)(vii)(viii)). \
@@ -317,8 +308,6 @@ $ hat(E) hat(O) & = hat(E) hat(E) hat(O) hat(E) = hat(O) hat(E) . $
 $hat(E)^dagger hat(O) hat(E) = hat(E)^dagger hat(E) hat(O) = hat(O)$
 より成り立つ. よって全て互いに同値であることは示された.
 
-0◻
-
 #block[
 #strong[命題 7] (Q21-1(ix)). \
 
@@ -332,13 +321,10 @@ $ chevron.l hat(O) chevron.r & = \| c_S \|^2 ⟨Psi_S\| hat(O) \|Psi_S⟩ + \| c
 $ chevron.l hat(O) chevron.r & = ⟨Psi\| hat(O) \|Psi⟩\
  & = \( c_S^(\*) ⟨Psi_S\| + c_A^(\*) ⟨Psi_A\| \) hat(O) \( c_S \|Psi_S⟩ + c_A \|Psi_A⟩ \)\
  & = \| c_S \|^2 ⟨Psi_S\| hat(O) \|Psi_S⟩ + \| c_A \|^2 ⟨Psi_A\| hat(O) \|Psi_A⟩ + c_S^(\*) c_A ⟨Psi_S\| hat(O) \|Psi_A⟩ + c_A^(\*) c_S ⟨Psi_A\| hat(O) \|Psi_S⟩\
- & = \| c_S \|^2 ⟨Psi_S\| hat(O) \|Psi_S⟩ + \| c_A \|^2 ⟨Psi_A\| hat(O) \|Psi_A⟩ . $#label("O expected")
-ただし式 #link(label("O expected"))[\[O expected\]]
-において次のような計算をした.
+ & = \| c_S \|^2 ⟨Psi_S\| hat(O) \|Psi_S⟩ + \| c_A \|^2 ⟨Psi_A\| hat(O) \|Psi_A⟩ . $<O-expected>
+ただし式 #link(<O-expected>)[O-expected] において次のような計算をした.
 $ ⟨Psi_S\| hat(O) \|Psi_A⟩ & = ⟨Psi_S\| hat(E) hat(O) hat(E) \|Psi_A⟩ = - ⟨Psi_S\| hat(O) \|Psi_A⟩ = 0\
 ⟨Psi_A\| hat(O) \|Psi_S⟩ & = ⟨Psi_A\| hat(E) hat(O) hat(E) \|Psi_S⟩ = - ⟨Psi_A\| hat(O) \|Psi_S⟩ = 0 . $
-
-0◻
 
 #block[
 #strong[問題 8] (Q21-1(x)). \
@@ -398,8 +384,6 @@ $ sigma = mat(delim: "(", 0, 1, 2, 3; 3, 2, 0, 1) quad \, quad tau = mat(delim: 
 ]
 $ sigma tau = mat(delim: "(", 0, 1, 2, 3; 3, 2, 0, 1) mat(delim: "(", 0, 1, 2, 3; 3, 2, 1, 0) = mat(delim: "(", 0, 1, 2, 3; 1, 0, 2, 3) . $
 
-0◻
-
 #block[
 #strong[定理 13] (Q21-3(i)(ii)(iii)(iv)). \
 
@@ -430,8 +414,6 @@ $sigma_1 \( sigma_2 sigma_3 \) = \( sigma_1 sigma_2 \) sigma_3$
 
 よって $n$ 次対称群 $frak(S)_n$ は群となる.
 
-0◻
-
 #block[
 #strong[命題 14] (Q21-4). \
 
@@ -439,8 +421,6 @@ $n$ 次対称群 $frak(S)_n$ の位数は $n !$ である.
 
 ]
 全単射写像は $X$ の順列で被覆できるから位数は $n !$ となる.
-
-0◻
 
 #block[
 #strong[命題 15] (Q21-5(i)(ii), Q21-6(i)(ii)). \
@@ -458,8 +438,6 @@ $frak(S)_n sigma_0 = frak(S)_n$ となる.
 となる. これより群 $R$ に対して関数 $f : frak(S)_n arrow.r R$
 があるとき次のようになる.
 $ sum_(sigma in frak(S)_n) f \( sigma \) = sum_(sigma in frak(S)_n) f \( sigma_0 sigma \) = sum_(sigma in frak(S)_n) f \( sigma sigma_0 \) = sum_(sigma in frak(S)_n) f \( sigma^(- 1) \) $
-
-0◻
 
 #block[
 #block[
@@ -492,8 +470,6 @@ $sigma'$ の $i_1 \, dots.h \, i_m$ ではない元に対してと,
 帰納的に同様の操作をすることで置換は巡回置換の積で表せられ,
 積の順番を除いて一意に定まることが分かる.
 
-0◻
-
 #block[
 #strong[定理 18] (Q21-7(i)). \
 
@@ -506,8 +482,6 @@ $ \( i_1 med i_2 med dots.h.c med i_m \) & = \( i_1 med i_3 med dots.h.c med i_m
  & = \( i_1 med i_4 med dots.h.c med i_m \) \( i_1 med i_3 \) \( i_1 med i_2 \)\
  & = \( i_1 med i_m \) \( i_1 med i_(m - 1) \) dots.h.c \( i_1 med i_3 \) \( i_1 med i_2 \) . $
 これは上のように変形することにより示される.
-
-0◻
 
 #block[
 #block[
@@ -539,8 +513,6 @@ $sigma = sigma_1 dots.h.c sigma_k = tau_1 dots.h.c tau_m$ で表されたとき
 $ Delta \( x_(sigma \( 1 \)) \, dots.h \, x_(sigma \( n \)) \) = \( - 1 \)^k Delta \( x_1 \, dots.h \, x_n \) = \( - 1 \)^m Delta \( x_1 \, dots.h \, x_n \) . $
 となる為, 互換の積の個数の偶奇は一致する.
 
-0◻
-
 #block[
 #strong[命題 21] (Q21-8(i)(ii)(iii)). \
 
@@ -555,8 +527,6 @@ $"sgn" \( sigma tau \) = "sgn" \( sigma \) "sgn" \( tau \)$ が成り立つ.
 準同型であるから次が成り立つ.
 $ "sgn" \( upright(i d)_X \) & = "sgn" \( upright(i d)_X \) "sgn" \( upright(i d)_X \) = 1\
 "sgn" \( sigma^(- 1) \) & = "sgn" \( sigma^(- 1) \) "sgn" \( sigma \) "sgn" \( sigma \)^(- 1) = "sgn" \( sigma \)^(- 1) = "sgn" \( sigma \) & \( because "sgn" \( sigma \) = plus.minus 1 \) $
-
-0◻
 
 = 完全対称な状態と完全反対称な状態の数学的取り扱い
 <完全対称な状態と完全反対称な状態の数学的取り扱い>
@@ -592,8 +562,6 @@ $ \|Psi⟩ & = sum_i c^(\( i \)) \|psi_1^(\( i \))⟩ dots.h.c \|psi_N^(\( i \))
 hat(P) \( sigma \) \|Psi⟩ & = sum_i c^(\( i \)) \|psi_(sigma^(- 1) \( 1 \))^(\( i \))⟩ dots.h.c \|psi_(sigma^(- 1) \( N \))^(\( i \))⟩\
 hat(P)^dagger \( sigma \) \|Psi⟩ & = sum_i c^(\( i \)) \|psi_(sigma \( 1 \))^(\( i \))⟩ dots.h.c \|psi_(sigma \( N \))^(\( i \))⟩ . $
 
-0◻
-
 #block[
 #strong[定理 24] (Q21-11(i)(ii)(iii)(iv)). \
 
@@ -610,8 +578,6 @@ $ hat(P) \( sigma tau \) \|Psi⟩ & = \|psi_(\( sigma tau \)^(- 1) \( 1 \))⟩ d
 $hat(P) \( sigma \)$ は unitary な準同型である. 準同型の性質より
 $ hat(P) \( upright(i d)_X \) & = hat(1)\
 hat(P) \( sigma^(- 1) \) & = hat(P) \( sigma \)^(- 1) . $ となる.
-
-0◻
 
 #block[
 #block[
@@ -646,8 +612,6 @@ $ hat(P) \( sigma \) \|Psi⟩ & = \|Psi⟩ = \( + 1 \)^m \|Psi⟩ & \( "完全�
 hat(P) \( sigma \) \|Psi⟩ & = "sgn" \( sigma \) \|Psi⟩ = \( - 1 \)^m \|Psi⟩ & \( "完全反対称" \) $
 これより同値であることがわかる.
 
-0◻
-
 #block[
 #strong[命題 27] (Q21-13(i)(ii)). \
 
@@ -672,8 +636,6 @@ $ \|psi_1⟩ \|psi_2⟩ \|psi_3⟩ + \|psi_2⟩ \|psi_3⟩ \|psi_1⟩ + \|psi_3�
 \|psi_1⟩ \|psi_2⟩ \|psi_3⟩ + \|psi_2⟩ \|psi_3⟩ \|psi_1⟩ + \|psi_3⟩ \|psi_1⟩ \|psi_2⟩ - \|psi_1⟩ \|psi_3⟩ \|psi_2⟩ - \|psi_2⟩ \|psi_1⟩ \|psi_3⟩ - \|psi_3⟩ \|psi_2⟩ \|psi_1⟩ in cal(H)_A^(\( N \)) . $
 これよりこれらの直和でも全空間は表現できない. $N > 3$ も同様である.
 
-0◻
-
 #block[
 #strong[定理 28] (Q21-14(i)(ii)(iii)). \
 
@@ -694,8 +656,6 @@ $ \( hat(cal(S))^(\( N \)) \)^2 & = frac(1, N !^2) sum_(sigma in frak(S)_N) sum_
 \( hat(cal(A))^(\( N \)) \)^2 & = frac(1, N !^2) sum_(sigma in frak(S)_N) sum_(tau in frak(S)_N) "sgn" \( sigma tau \) hat(P) \( sigma tau \) = frac(1, N !) sum_(sigma' in frak(S)_N) "sgn" \( sigma' \) hat(P) \( sigma' \) = hat(cal(A))^(\( N \)) . $
 これより $hat(cal(S))^(\( N \)) \, hat(cal(A))^(\( N \))$
 で何度射影しても同じ結果となる.
-
-0◻
 
 #block[
 #strong[命題 29] (Q21-14(iii)(iv)(v)). \
@@ -718,8 +678,6 @@ $ hat(cal(S))^(\( 2 \)) + hat(cal(A))^(\( 2 \)) & = frac(1, 2 !) sum_(sigma in f
 hat(cal(S))^(\( N \)) + hat(cal(A))^(\( N \)) & = frac(1, N !) sum_(sigma in frak(S)_N) (hat(P) \( sigma \) + "sgn" \( sigma \) hat(P) \( sigma \)) eq.not hat(1)_(cal(H)^(\( N \))) #h(2em) \( N gt.eq 3 \) . $
 とわかる.
 
-0◻
-
 #block[
 #strong[定理 30] (Q21-15(i)(ii)). \
 
@@ -735,8 +693,6 @@ $sigma$ に対して符号が反転し,
 $hat(P) \( sigma \) \|Psi⟩ = hat(P) \( tau \) \|Psi⟩$ となる. よって
 $hat(cal(A))^(\( N \)) \|psi_1⟩ dots.h.c \|psi_N⟩ = 0$ となる.
 
-0◻
-
 #block[
 #strong[補題 31] (). \
 
@@ -745,7 +701,7 @@ Hilbert 空間に演算子 $hat(cal(S))^(\( N \)) \, hat(cal(A))^(\( N \))$
 $ cal(H)_S^(\( N \)) & = hat(cal(S))^(\( N \)) cal(H)^(\( N \))\
 cal(H)_A^(\( N \)) & = hat(cal(A))^(\( N \)) cal(H)^(\( N \)) $
 
-] #label("hilbert corespondence")
+] <hilbert-corespondence>
 $hat(cal(S))^(\( N \)) \, hat(cal(A))^(\( N \))$ は
 $cal(H)_S^(\( N \)) \, cal(H)_A^(\( N \))$ への射影演算子であるから
 $cal(H)_S^(\( N \)) supset.eq hat(cal(S))^(\( N \)) cal(H)^(\( N \)) \, cal(H)_A^(\( N \)) supset.eq hat(cal(A))^(\( N \)) cal(H)^(\( N \))$
@@ -757,8 +713,6 @@ $ \|Psi_S⟩ & = hat(P) \( sigma \) \|Psi_S⟩ = frac(1, N !) sum_(sigma in frak
 これより
 $cal(H)_S^(\( N \)) subset.eq hat(cal(S))^(\( N \)) cal(H)^(\( N \)) \, cal(H)_A^(\( N \)) subset.eq hat(cal(A))^(\( N \)) cal(H)^(\( N \))$
 は成り立つ. よってそれぞれ等しいことが分かる.
-
-0◻
 
 #block[
 #strong[命題 32] (Q21-16(i)(ii), Q21-17(i)(ii), Q21-18(i)(ii)). \
@@ -786,10 +740,7 @@ $ hat(cal(A))^(\( N \)) cal(H)^(\( N \)) & = hat(cal(A))^(\( N \)) "span" {\|psi
  & = hat(cal(A))^(\( N \)) "span" {\|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩ divides i_1 \, dots.h \, i_N in I}\
  & = "span" {hat(cal(A))^(\( N \)) \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩ divides i_1 \, dots.h \, i_N in I}\
  & = "span" {hat(cal(A))^(\( N \)) \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩ divides \( i_1 \, dots.h \, i_N \) in I_A^(\( N \))} $
-これらに対して補題 #link(label("hilbert corespondence"))[hilbert corespondence]
-を適用して示される.
-
-0◻
+これらに対して補題 #link(<hilbert-corespondence>)[hilbert-corespondence] を適用して示される.
 
 #block[
 #block[
@@ -832,15 +783,13 @@ $ hat(cal(S))^(\( N \)) \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩ & = frac(
 よって次のようになる.
 $ \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S & = 1 / sqrt(N ! product_(i in I) n_i !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩, dots.h.c, \|phi.alt_(i_N)⟩) . $
 
-0◻
-
 #block[
 #strong[命題 35] (Q21-20(iv)(v)(vi)). \
 
 粒子状態 $\|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S$ は
 $cal(H)_S^(\( N \))$ の完全正規直交系となる.
 
-] #label("symmetric completely orthonormal system")
+] <symmetric-completely-orthonormal-system>
 まず正規直交関係については次のように計算できる.
 $ chevron.l phi.alt_(i_1) dots.h.c phi.alt_(i_N) \| phi.alt_(i_(1')) dots.h.c phi.alt_(i_(N')) chevron.r_S & = frac(N !^(- 1), sqrt(product_(i in I) n_i ! n_(i') !)) sum_(sigma in frak(S)_N) sum_(tau in frak(S)_N) ⟨phi.alt_(i_1)\| dots.h.c ⟨phi.alt_(i_N)\| hat(P) \( sigma^(- 1) tau \) \| phi.alt_(i_(1')) chevron.r dots.h.c \| phi.alt_(i_(N')) chevron.r\
  & = 1 / sqrt(product_(i in I) n_i ! n_(i') !) sum_(sigma in frak(S)_N) ⟨phi.alt_(i_1)\| dots.h.c ⟨phi.alt_(i_N)\| hat(P) \( sigma \) \| phi.alt_(i_(1')) chevron.r dots.h.c \| phi.alt_(i_(N')) chevron.r\
@@ -855,8 +804,6 @@ $  & sum_(\( i_1 \, dots.h \, i_N \) in I_S^(\( N \))) \|phi.alt_(i_1) dots.h.c 
  & = sum_(\( i_1 \, dots.h \, i_N \) in I_S^(\( N \))) \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩ ⟨phi.alt_(i_1)\| dots.h.c ⟨phi.alt_(i_N)\|\
  & = hat(1)_(cal(H)_S^(\( N \))) . $ よって
 $\|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S$ は完全正規直交系となる.
-
-0◻
 
 #block[
 #strong[定理 36] (Q21-19(ii), Q21-21(i)(ii)). \
@@ -882,15 +829,13 @@ $ hat(cal(A))^(\( N \)) \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩ & = frac(
 よって次のようになる.
 $ \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A & = 1 / sqrt(N !) det mat(delim: "[", \|phi.alt_(i_1)⟩, dots.h.c, \|phi.alt_(i_N)⟩) . $
 
-0◻
-
 #block[
 #strong[命題 37] (Q21-21(iii)(iv)(v)). \
 
 粒子状態 $\|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A$ は
 $cal(H)_A^(\( N \))$ の完全正規直交系となる.
 
-] #label("asymmetric completely orthonormal system")
+] <asymmetric-completely-orthonormal-system>
 まず正規直交関係については次のように計算できる.
 $ chevron.l phi.alt_(i_1) dots.h.c phi.alt_(i_N) \| phi.alt_(i_(1')) dots.h.c phi.alt_(i_(N')) chevron.r_A & = frac(1, N !) sum_(sigma in frak(S)_N) sum_(tau in frak(S)_N) "sgn" \( sigma^(- 1) tau \) ⟨phi.alt_(i_1)\| dots.h.c ⟨phi.alt_(i_N)\| hat(P) \( sigma^(- 1) tau \) \| phi.alt_(i_(1')) chevron.r dots.h.c \| phi.alt_(i_(N')) chevron.r\
  & = sum_(sigma in frak(S)_N) "sgn" \( sigma \) ⟨phi.alt_(i_1)\| dots.h.c ⟨phi.alt_(i_N)\| hat(P) \( sigma \) \| phi.alt_(i_(1')) chevron.r dots.h.c \| phi.alt_(i_(N')) chevron.r\
@@ -906,8 +851,6 @@ $  & sum_(\( i_1 \, dots.h \, i_N \) in I_A^(\( N \))) \|phi.alt_(i_1) dots.h.c 
  & = hat(1)_(cal(H)_A^(\( N \))) . $ よって
 $\|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A$ は $cal(H)_A^(\( N \))$
 の完全正規直交系となる.
-
-0◻
 
 #block[
 #strong[命題 38] (Q21-22(i)(ii)(iii)(iv), Q21-23(i)(ii)(iii)(iv)). \
@@ -947,8 +890,6 @@ $  & \|phi.alt_(i_1) dots.h.c a^(\( 0 \)) phi.alt_(i_mu)^(\( 0 \)) + a^(\( 1 \))
  & = 1 / sqrt(N !) (a^(\( 0 \)) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_mu)^(\( 0 \))⟩ dots.h.c \|phi.alt_(i_N)⟩) + a^(\( 1 \)) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_mu)^(\( 1 \))⟩ dots.h.c \|phi.alt_(i_N)⟩))\
  & = a^(\( 0 \)) \|phi.alt_(i_1) dots.h.c phi.alt_(i_mu)^(\( 0 \)) dots.h.c phi.alt_(i_N)⟩_A + a^(\( 1 \)) \|phi.alt_(i_1) dots.h.c phi.alt_(i_mu)^(\( 1 \)) dots.h.c phi.alt_(i_N)⟩_A . $
 よって成り立つ.
-
-0◻
 
 = 複数の同一粒子からなる量子系の状態に対する対称化の要請
 <複数の同一粒子からなる量子系の状態に対する対称化の要請>
@@ -1045,7 +986,7 @@ n_i^(\( a \)) & in { 0 \, 1 } \, quad sum_(i in I) n_i^(\( a \)) = N . $
 
 Bose, Fermi 粒子系の粒子数表示は well-defined である.
 
-] #label("particles well defined")
+] <particles-well-defined>
 Bose, Fermi 粒子系の完全正規直交系は次のようにラベル付けされていた.
 $  & \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S #h(2em) \( i_1 \, dots.h \, i_N in I \, i_1 lt.eq dots.h.c lt.eq i_N \)\
  & \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A #h(2em) \( i_1 \, dots.h \, i_N in I \, i_1 < dots.h.c < i_N \) . $
@@ -1054,8 +995,6 @@ $  & \|\( n_i \)_(i in I)⟩_S #h(2em) (n_i in bb(Z)_(gt.eq 0) \, sum_(i in I) n
  & \|\( n_i \)_(i in I)⟩_A #h(2em) (n_i in { 0 \, 1 } \, sum_(i in I) n_i = N) $
 逆に完全正規直交系に対して条件を満たすような粒子数表示は一意に存在する.
 よって同値な表現であることがわかる.
-
-0◻
 
 #block[
 #strong[定理 43] (). \
@@ -1067,10 +1006,9 @@ ${ \|\( n_i \)_(i in I)⟩_S divides n_i in bb(Z)_(lt.eq 0) } \, { \|\( n_i \)_(
 ]
 まず全粒子数 $N$ の Hilbert 空間
 $cal(H)_S^(\( N \)) \, cal(H)_A^(\( N \))$ の粒子数表示について命題
-#link(label("particles well defined"))[particles well defined]
-より粒子数表示と完全正規直交系が対応する. よって命題
-#link(label("symmetric completely orthonormal system"))[symmetric completely orthonormal system];, 命題
-#link(label("asymmetric completely orthonormal system"))[asymmetric completely orthonormal system]
+#link(<particles-well-defined>)[particles-well-defined] より粒子数表示と完全正規直交系が対応する.
+よって命題 #link(<symmetric-completely-orthonormal-system>)[symmetric-completely-orthonormal-system], 命題
+#link(<asymmetric-completely-orthonormal-system>)[asymmetric-completely-orthonormal-system]
 より粒子数表示は完全正規直交系となる. これより次の式が成り立つ.
 $  & ⟨\( n_i \)_(i in I) mid(bar.v) \( n_(i') \)_(i in I)⟩_S = product_(i in I) delta_(n_i n_(i'))\
  & ⟨\( n_i \)_(i in I) mid(bar.v) \( n_(i') \)_(i in I)⟩_A = product_(i in I) delta_(n_i n_(i'))\
@@ -1092,8 +1030,6 @@ $ "span" {\|\( n_i \)_(i in I)⟩_S divides n_i in bb(Z)_(gt.eq 0)} & = sum_(N =
 $ sum_(n_i in bb(Z)_(gt.eq 0)) \|\( n_i \)_(i in I)⟩_S ⟨\( n_i \)_(i in I)\|_S & = sum_(N = 0)^oo hat(1)_(cal(H)_S^(\( N \))) = hat(1)_(cal(H)_(B o s e))\
 sum_(n_i in { 0 \, 1 }) \|\( n_i \)_(i in I)⟩_A ⟨\( n_(i') \)_(i in I)\|_A & = sum_(N = 0)^oo hat(1)_(cal(H)_A^(\( N \))) = hat(1)_(cal(H)_(F e r m i)) $
 
-0◻
-
 = Bose 粒子系の消滅演算子 $hat(a)_i$ と生成演算子 $hat(a)_i^dagger$
 <bose-粒子系の消滅演算子-hata_i-と生成演算子-hata_idagger>
 #block[
@@ -1101,14 +1037,11 @@ sum_(n_i in { 0 \, 1 }) \|\( n_i \)_(i in I)⟩_A ⟨\( n_(i') \)_(i in I)\|_A &
 #strong[定義 44] (). \
 
 Bose 粒子系の消滅演算子 $hat(a)_i$ と生成演算子 $hat(a)_i^dagger$
-を次のように定義する. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{a}\_i\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{1}{\\sqrt{(N-1)!}}\\sum\_{\\substack{\\mu\\in X \\\\ i\_\\mu = i}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_{\\mu - 1}}\\right\\rangle  & \\left\\lvert \\phi\_{i\_{\\mu + 1}}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} \\\\
-      \\hat{a}\_i^\\dagger\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{1}{\\sqrt{(N+1)!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i}\\right\\rangle  & \\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix}
-    \\end{dcases}
-  
-\\end{aligned}\$\$ その上で個数演算子
-$hat(n)_i = hat(a)_i^dagger hat(a)$ と全粒子数演算子
+を次のように定義する.
+$ {hat(a)_i 1 / sqrt(N !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N - 1 \) !) sum_(mu in X\
+i_mu = i) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_(mu - 1))⟩, \|phi.alt_(i_(mu + 1))⟩ dots.h.c \|phi.alt_(i_N)⟩)\
+hat(a)_i^dagger 1 / sqrt(N !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N + 1 \) !) "per" mat(delim: "[", \|phi.alt_i⟩, \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) $
+その上で個数演算子 $hat(n)_i = hat(a)_i^dagger hat(a)$ と全粒子数演算子
 $hat(N) = sum_(i in I) hat(n)_i$ と定義する.
 
 ]
@@ -1117,58 +1050,33 @@ $hat(N) = sum_(i in I) hat(n)_i$ と定義する.
 #strong[定理 45] (Q21-35). \
 
 Bose 粒子系の消滅, 生成演算子の定義と次は同値である.
-\$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{a}\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_S = \\sqrt{n\_i}\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_{\\mu - 1}}\\phi\_{i\_{\\mu + 1}}\\cdots\\phi\_{i\_N}\\right\\rangle \_S \\\\
-      \\hat{a}\_i^\\dagger\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_S = \\sqrt{n\_i+1}\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i}\\cdots\\phi\_{i\_N}\\right\\rangle \_S
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+$ {hat(a)_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S = sqrt(n_i) \|phi.alt_(i_1) dots.h.c phi.alt_(i_(mu - 1)) phi.alt_(i_(mu + 1)) dots.h.c phi.alt_(i_N)⟩_S\
+hat(a)_i^dagger \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S = sqrt(n_i + 1) \|phi.alt_(i_1) dots.h.c phi.alt_i dots.h.c phi.alt_(i_N)⟩_S $
 
-] #label("Bose creation and annihilation 1")
+] <Bose-creation-and-annihilation-1>
 Bose 粒子系の粒子数表示は次のように展開できる.
 $ \|phi.alt_(i_1) \, dots.h \, phi.alt_(i_N)⟩_S = 1 / sqrt(N ! product_(j in I) n_j !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) $
 また permutation は置換に対して不変であるので定義と次は同値である.
-\$\$\\begin{aligned}
-     & \\begin{dcases}
-         \\hat{a}\_i\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{n\_i}{\\sqrt{(N-1)!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_{\\mu - 1}}\\right\\rangle  & \\left\\lvert \\phi\_{i\_{\\mu + 1}}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} \\\\
-         \\hat{a}\_i^\\dagger\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{1}{\\sqrt{(N+1)!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix}
-       \\end{dcases}                      \\\\
-    \\iff
-     & \\begin{dcases}
-         \\hat{a}\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_S = \\frac{n\_i}{\\sqrt{(N-1)!\\prod\_{j\\in I}n\_j!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_{\\mu - 1}}\\right\\rangle  & \\left\\lvert \\phi\_{i\_{\\mu + 1}}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} \\\\
-         \\hat{a}\_i^\\dagger\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_S = \\frac{1}{\\sqrt{(N+1)!\\prod\_{j\\in I}n\_j!}}\\mathop{\\mathrm{per}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_i\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix}
-       \\end{dcases}                                                     \\\\
-    \\iff
-     & \\begin{dcases}
-         \\hat{a}\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_S = \\sqrt{n\_i}\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_{\\mu - 1}}\\phi\_{i\_{\\mu + 1}}\\cdots\\phi\_{i\_N}\\right\\rangle \_S \\\\
-         \\hat{a}\_i^\\dagger\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_S = \\sqrt{n\_i+1}\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i}\\cdots\\phi\_{i\_N}\\right\\rangle \_S
-       \\end{dcases}
-  
-\\end{aligned}\$\$ よって $cal(H)_S^(\( N \))$
-の完全正規直交系で表現できる.
-
-0◻
+$  & {hat(a)_i 1 / sqrt(N !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = n_i / sqrt(\( N - 1 \) !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_(mu - 1))⟩, \|phi.alt_(i_(mu + 1))⟩ dots.h.c \|phi.alt_(i_N)⟩)\
+hat(a)_i^dagger 1 / sqrt(N !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N + 1 \) !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_i⟩ dots.h.c \|phi.alt_(i_N)⟩)\
+arrow.l.r.double & {hat(a)_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S = n_i / sqrt(\( N - 1 \) ! product_(j in I) n_j !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_(mu - 1))⟩, \|phi.alt_(i_(mu + 1))⟩ dots.h.c \|phi.alt_(i_N)⟩)\
+hat(a)_i^dagger \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S = 1 / sqrt(\( N + 1 \) ! product_(j in I) n_j !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_i⟩ dots.h.c \|phi.alt_(i_N)⟩)\
+arrow.l.r.double & {hat(a)_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S = sqrt(n_i) \|phi.alt_(i_1) dots.h.c phi.alt_(i_(mu - 1)) phi.alt_(i_(mu + 1)) dots.h.c phi.alt_(i_N)⟩_S\
+hat(a)_i^dagger \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S = sqrt(n_i + 1) \|phi.alt_(i_1) dots.h.c phi.alt_i dots.h.c phi.alt_(i_N)⟩_S $
+よって $cal(H)_S^(\( N \))$ の完全正規直交系で表現できる.
 
 #block[
 #strong[定理 46] (Q21-36). \
 
 Bose 粒子系の消滅, 生成演算子の定義と次は同値である.
-\$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{a}\_i\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle  = \\sqrt{n\_i}\\left\\lvert \\ldots,n\_i-1,\\ldots\\right\\rangle  \\\\
-      \\hat{a}\_i^\\dagger\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle  = \\sqrt{n\_i+1}\\left\\lvert \\ldots,n\_i+1,\\ldots\\right\\rangle 
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+$ {hat(a)_i \|dots.h \, n_i \, dots.h⟩ = sqrt(n_i) \|dots.h \, n_i - 1 \, dots.h⟩\
+hat(a)_i^dagger \|dots.h \, n_i \, dots.h⟩ = sqrt(n_i + 1) \|dots.h \, n_i + 1 \, dots.h⟩ $
 
-] #label("Bose creation and annihilation 2")
-定理 #link(label("Bose creation and annihilation 1"))[Bose creation and annihilation 1]
+] <Bose-creation-and-annihilation-2>
+定理 #link(<Bose-creation-and-annihilation-1>)[Bose-creation-and-annihilation-1]
 を吟味することで消滅演算子によって添字 $i$ の 1 粒子状態を消滅させ,
 生成演算子によって添字 $i$ の 1 粒子状態を生成していることがわかる.
 よって粒子数表示に直すことで定義と同値となる.
-
-0◻
 
 #block[
 #strong[命題 47] (Q21-37(i)(ii)(iii)(iv)(v)(vi)(vii)). \
@@ -1195,8 +1103,6 @@ hat(a)_i^dagger hat(a)_j^dagger \|dots.h \, n_i \, dots.h \, n_j \, dots.h⟩ & 
 $ \[ hat(a)_i \, hat(a)_j^dagger \] & = \[ hat(a)_i \, hat(a)_j \] = \[ hat(a)_i^dagger \, hat(a)_j^dagger \] = 0 $
 よって示された.
 
-0◻
-
 #block[
 #strong[命題 48] (Q21-38(i)(ii)). \
 
@@ -1210,8 +1116,6 @@ $ \( ⟨n_1 \, dots.h \, n_i \, dots.h\| hat(a)_i \) \|n_(1') \, dots.h \, n_(i'
  & = delta_(n_1 n_(1')) dots.h.c sqrt(n_(i')) delta_(n_i \, n_(i') - 1) dots.h.c\
  & = sqrt(n_(i')) ⟨n_1 \, dots.h \, n_i \, dots.h mid(bar.v) n_(1') \, dots.h \, n_(i') - 1 \, dots.h⟩\
  & = ⟨n_1 \, dots.h \, n_i \, dots.h\| \( hat(a)_i \|n_(1') \, dots.h \, n_(i') \, dots.h⟩ \) $
-
-0◻
 
 #block[
 #strong[命題 49] (Q21-39(i)(ii)(iii)(iv)). \
@@ -1228,19 +1132,12 @@ hat(N) & = sum_(i in I) hat(n)_i & hat(N)^dagger & = sum_(i in I) hat(n)_i^dagge
 $ hat(n)_i \|dots.h \, n_i \, dots.h⟩ & = hat(a)_i^dagger hat(a)_i \|dots.h \, n_i \, dots.h⟩ = sqrt(n_i) hat(a)_i^dagger \|dots.h \, n_i - 1 \, dots.h⟩ = n_i \|dots.h \, n_i \, dots.h⟩\
 hat(N) \|\( n_i \)_(i in I)⟩ & = sum_(j in I) hat(n)_j \|\( n_i \)_(i in I)⟩ = sum_(j in I) n_j \|\( n_i \)_(i in I)⟩ = N \|\( n_i \)_(i in I)⟩ $
 
-0◻
-
 #block[
 #block[
 #strong[定義 50] (). \
 
-真空状態 $\|upright(v a c)⟩$ を次のように定義する. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{a}\_i\\left\\lvert \\mathrm{vac}\\right\\rangle  = 0 & (\\forall i\\in I) \\\\
-      \\left\\langle \\mathrm{vac}\\middle\\vert \\mathrm{vac}\\right\\rangle  = 1
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+真空状態 $\|upright(v a c)⟩$ を次のように定義する.
+$ cases(delim: "{", hat(a)_i \|upright(v a c)⟩ = 0 & \( forall i in I \), ⟨upright(v a c) mid(bar.v) upright(v a c)⟩ = 1) $
 
 ]
 ]
@@ -1250,11 +1147,9 @@ hat(N) \|\( n_i \)_(i in I)⟩ & = sum_(j in I) hat(n)_j \|\( n_i \)_(i in I)⟩
 真空状態 $\|upright(v a c)⟩$ は粒子が 1 個も存在しない状態
 $\|0 \, dots.h \, 0 \, dots.h⟩$ と同じである.
 
-] #label("Bose vac 0")
+] <Bose-vac-0>
 任意の個数演算子で係数が $0$ となることから分かる.
 $ hat(n)_i \|upright(v a c)⟩ & = hat(a)_i^dagger hat(a)_i \|upright(v a c)⟩ = 0 $
-
-0◻
 
 #block[
 #strong[命題 52] (Q21-40(ii)). \
@@ -1263,12 +1158,10 @@ $ hat(n)_i \|upright(v a c)⟩ & = hat(a)_i^dagger hat(a)_i \|upright(v a c)⟩ 
 $ \|\( n_i \)_(i in I)⟩ & = product_(i in I) frac(\( hat(a)_i^dagger \)^(n_i), sqrt(n_i !)) \|upright(v a c)⟩ $
 
 ]
-命題 #link(label("Bose vac 0"))[Bose vac 0] より次のように変形できる.
+命題 #link(<Bose-vac-0>)[Bose-vac-0] より次のように変形できる.
 $ product_(i in I) frac(\( hat(a)_i^dagger \)^(n_i), sqrt(n_i !)) \|upright(v a c)⟩ & = product_(i in I) frac(\( hat(a)_i^dagger \)^(n_i), sqrt(n_i !)) \|0 \, dots.h \, 0 \, dots.h⟩\
  & = product_(i in I) 1 / sqrt(n_i !) sqrt(n_i !) \|0 \, dots.h \, n_i \, dots.h⟩\
  & = \|n_1 \, dots.h \, n_i \, dots.h⟩ $
-
-0◻
 
 #block[
 #strong[定理 53] (Q21-41(i)). \
@@ -1290,10 +1183,7 @@ $  & ⟨dots.h \, n_i - 1 \, dots.h\| hat(a)_i \|dots.h \, n_i \, dots.h⟩ = �
 であるから次のようになる.
 $ hat(a)_i \|dots.h \, n_i \, dots.h⟩ & = sqrt(n_i) \|dots.h \, n_i - 1 \, dots.h⟩\
 hat(a)_i^dagger \|dots.h \, n_i \, dots.h⟩ & = sqrt(n_i + 1) \|dots.h \, n_i + 1 \, dots.h⟩ $
-これらの式から定理 #link(label("Bose creation and annihilation 1"))[Bose creation and annihilation 1]
-より定義を導ける.
-
-0◻
+これらの式から定理 #link(<Bose-creation-and-annihilation-1>)[Bose-creation-and-annihilation-1] より定義を導ける.
 
 = Fermi 粒子系の消滅演算子 $hat(c)_i$ と生成演算子 $hat(c)_i^dagger$
 <fermi-粒子系の消滅演算子-hatc_i-と生成演算子-hatc_idagger>
@@ -1302,14 +1192,11 @@ hat(a)_i^dagger \|dots.h \, n_i \, dots.h⟩ & = sqrt(n_i + 1) \|dots.h \, n_i +
 #strong[定義 54] (). \
 
 Fermi 粒子系の消滅演算子 $hat(c)_i$ と生成演算子 $hat(c)_i^dagger$
-を次のように定義する. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{c}\_i\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{det}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{1}{\\sqrt{(N-1)!}}\\sum\_{\\substack{\\mu\\in\\mathbb{Z}\_N \\\\ i\_\\mu = i}}(-1)^\\mu\\mathop{\\mathrm{det}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_{\\mu-1}}\\right\\rangle  & \\left\\lvert \\phi\_{i\_{\\mu+1}}\\right\\rangle \\cdots\\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} \\\\
-      \\hat{c}\_i^\\dagger\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{det}}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{1}{\\sqrt{(N+1)!}}\\mathop{\\mathrm{det}}\\begin{bmatrix}\\left\\lvert \\phi\_i\\right\\rangle  & \\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix}
-    \\end{dcases}
-  
-\\end{aligned}\$\$ その上で個数演算子
-$hat(n)_i = hat(c)_i^dagger hat(c)$ と全粒子数演算子
+を次のように定義する.
+$ {hat(c)_i 1 / sqrt(N !) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N - 1 \) !) sum_(mu in bb(Z)_N\
+i_mu = i) \( - 1 \)^mu det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_(mu - 1))⟩, \|phi.alt_(i_(mu + 1))⟩ dots.h.c \|phi.alt_(i_N)⟩)\
+hat(c)_i^dagger 1 / sqrt(N !) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N + 1 \) !) det mat(delim: "[", \|phi.alt_i⟩, \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) $
+その上で個数演算子 $hat(n)_i = hat(c)_i^dagger hat(c)$ と全粒子数演算子
 $hat(N) = sum_(i in I) hat(n)_i$ と定義する.
 
 ]
@@ -1318,13 +1205,9 @@ $hat(N) = sum_(i in I) hat(n)_i$ と定義する.
 #strong[定理 55] (Q21-50). \
 
 Fermi 粒子系の消滅, 生成演算子 $hat(c)_i \, hat(c)_i^dagger$
-の定義は次の式と同値である. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{c}\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_A = (-1)^\\mu n\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_{\\mu-1}}\\phi\_{i\_{\\mu+1}}\\cdots\\phi\_{i\_N}\\right\\rangle \_A \\\\
-      \\hat{c}\_i^\\dagger\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_A = (-1)^\\mu\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_i\\cdots\\phi\_{i\_N}\\right\\rangle \_A
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+の定義は次の式と同値である.
+$ {hat(c)_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A = \( - 1 \)^mu n_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_(mu - 1)) phi.alt_(i_(mu + 1)) dots.h.c phi.alt_(i_N)⟩_A\
+hat(c)_i^dagger \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A = \( - 1 \)^mu \|phi.alt_(i_1) dots.h.c phi.alt_i dots.h.c phi.alt_(i_N)⟩_A $
 
 ]
 Fermi 粒子系の消滅, 生成演算子の定義は
@@ -1335,56 +1218,31 @@ hat(c)_i^dagger 1 / sqrt(N !) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|
  & = frac(\( - 1 \)^mu, sqrt(\( N + 1 \) !)) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_i⟩ dots.h.c \|phi.alt_(i_N)⟩) $
 Fermi 粒子系の状態は次のように展開できる.
 $ \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A & = 1 / sqrt(N !) det mat(delim: "[", \|phi.alt_(i_1)⟩, dots.h.c, \|phi.alt_(i_N)⟩) $
-これより定義と次の式は同値である. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{c}\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_A = (-1)^\\mu n\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_{\\mu-1}}\\phi\_{i\_{\\mu+1}}\\cdots\\phi\_{i\_N}\\right\\rangle \_A \\\\
-      \\hat{c}\_i^\\dagger\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_A = (-1)^\\mu\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_i\\cdots\\phi\_{i\_N}\\right\\rangle \_A
-    \\end{dcases}
-  
-\\end{aligned}\$\$
-
-0◻
+これより定義と次の式は同値である.
+$ {hat(c)_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A = \( - 1 \)^mu n_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_(mu - 1)) phi.alt_(i_(mu + 1)) dots.h.c phi.alt_(i_N)⟩_A\
+hat(c)_i^dagger \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A = \( - 1 \)^mu \|phi.alt_(i_1) dots.h.c phi.alt_i dots.h.c phi.alt_(i_N)⟩_A $
 
 #block[
 #strong[定理 56] (Q21-51). \
 
 Fermi 粒子系の消滅, 生成演算子 $hat(c)_i \, hat(c)_i^dagger$
-の定義は次と同値である. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{c}\_i\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j} n\_i\\left\\lvert \\ldots,1-n\_i,\\ldots\\right\\rangle \_A \\\\
-      \\hat{c}\_i^\\dagger\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j}(1-n\_i)\\left\\lvert \\ldots,1-n\_i,\\ldots\\right\\rangle \_A
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+の定義は次と同値である.
+$ {hat(c)_i \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) n_i \|dots.h \, 1 - n_i \, dots.h⟩_A\
+hat(c)_i^dagger \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) \( 1 - n_i \) \|dots.h \, 1 - n_i \, dots.h⟩_A $
 
 ]
 Fermi 粒子系の粒子数表示は次のように展開できる.
 $ \|n_1 \, dots.h \, n_i \, dots.h⟩_A & = \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A $
 これに加え, 粒子数が 2 以上だと零状態となることから次のように変形できる.
-\$\$\\begin{aligned}
-     & \\begin{dcases}
-         \\hat{c}\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_A = (-1)^\\mu n\_i\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_{\\mu-1}}\\phi\_{i\_{\\mu+1}}\\cdots\\phi\_{i\_N}\\right\\rangle \_A \\\\
-         \\hat{c}\_i^\\dagger\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_{i\_N}\\right\\rangle \_A = (-1)^\\mu\\left\\lvert \\phi\_{i\_1}\\cdots\\phi\_i\\cdots\\phi\_{i\_N}\\right\\rangle \_A
-       \\end{dcases} \\\\
-    \\iff
-     & \\begin{dcases}
-         \\hat{c}\_i\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j} n\_i\\left\\lvert \\ldots,n\_i - 1,\\ldots\\right\\rangle \_A \\\\
-         \\hat{c}\_i^\\dagger\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j}\\left\\lvert \\ldots,n\_i + 1,\\ldots\\right\\rangle \_A
-       \\end{dcases}                                                                  \\\\
-    \\iff
-     & \\begin{dcases}
-         \\hat{c}\_i\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j} n\_i\\left\\lvert \\ldots,1 - n\_i,\\ldots\\right\\rangle \_A \\\\
-         \\hat{c}\_i^\\dagger\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j}(1 - n\_i)\\left\\lvert \\ldots,1 - n\_i,\\ldots\\right\\rangle \_A
-       \\end{dcases}                                                         \\\\
-    \\iff
-     & \\begin{dcases}
-         \\hat{c}\_i\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j} n\_i\\left\\lvert \\ldots,0,\\ldots\\right\\rangle \_A \\\\
-         \\hat{c}\_i^\\dagger\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j}(1 - n\_i)\\left\\lvert \\ldots,1,\\ldots\\right\\rangle \_A
-       \\end{dcases}
-  
-\\end{aligned}\$\$ よって定義と同値である.
-
-0◻
+$  & {hat(c)_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A = \( - 1 \)^mu n_i \|phi.alt_(i_1) dots.h.c phi.alt_(i_(mu - 1)) phi.alt_(i_(mu + 1)) dots.h.c phi.alt_(i_N)⟩_A\
+hat(c)_i^dagger \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A = \( - 1 \)^mu \|phi.alt_(i_1) dots.h.c phi.alt_i dots.h.c phi.alt_(i_N)⟩_A\
+arrow.l.r.double & {hat(c)_i \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) n_i \|dots.h \, n_i - 1 \, dots.h⟩_A\
+hat(c)_i^dagger \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) \|dots.h \, n_i + 1 \, dots.h⟩_A\
+arrow.l.r.double & {hat(c)_i \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) n_i \|dots.h \, 1 - n_i \, dots.h⟩_A\
+hat(c)_i^dagger \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) \( 1 - n_i \) \|dots.h \, 1 - n_i \, dots.h⟩_A\
+arrow.l.r.double & {hat(c)_i \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) n_i \|dots.h \, 0 \, dots.h⟩_A\
+hat(c)_i^dagger \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) \( 1 - n_i \) \|dots.h \, 1 \, dots.h⟩_A $
+よって定義と同値である.
 
 #block[
 #strong[定理 57]
@@ -1397,14 +1255,11 @@ $ { hat(c)_i \, hat(c)_j^dagger } = delta_(i j) \, #h(2em) { hat(c)_i \, hat(c)_
 
 ]
 消滅演算子 $hat(c)_i$, 生成演算子 $hat(c)_i^dagger$
-は次のように表現できた. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{c}\_i\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j}n\_i\\left\\lvert \\ldots,0,\\ldots\\right\\rangle \_A \\\\
-      \\hat{c}\_i^\\dagger\\left\\lvert \\ldots,n\_i,\\ldots\\right\\rangle \_A = (-1)^{\\sum\_{j=1}^{i-1}n\_j}(1 - n\_i)\\left\\lvert \\ldots,1,\\ldots\\right\\rangle \_A
-    \\end{dcases}
-  
-\\end{aligned}\$\$ 消滅演算子 $hat(c)_i$, 生成演算子 $hat(c)_i^dagger$
-を状態 $\|dots.h \, n_i \, dots.h⟩_A in cal(H)_(F e r m i)$ に適用すると
+は次のように表現できた.
+$ {hat(c)_i \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) n_i \|dots.h \, 0 \, dots.h⟩_A\
+hat(c)_i^dagger \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) \( 1 - n_i \) \|dots.h \, 1 \, dots.h⟩_A $
+消滅演算子 $hat(c)_i$, 生成演算子 $hat(c)_i^dagger$ を状態
+$\|dots.h \, n_i \, dots.h⟩_A in cal(H)_(F e r m i)$ に適用すると
 $ hat(c)_i hat(c)_i^dagger \|dots.h \, n_i \, dots.h⟩_A & = \( 1 - n_i \) \|dots.h \, 0 \, dots.h⟩_A\
 hat(c)_i^dagger hat(c)_i \|dots.h \, n_i \, dots.h⟩_A & = n_i \|dots.h \, 1 \, dots.h⟩_A\
 hat(c)_i hat(c)_i \|dots.h \, n_i \, dots.h⟩_A & = 0\
@@ -1427,8 +1282,6 @@ hat(c)_j^dagger hat(c)_i^dagger \|dots.h \, n_i \, dots.h \, n_j \, dots.h⟩_A 
 $ { hat(c)_i \, hat(c)_j^dagger } = { hat(c)_i \, hat(c)_j } = { hat(c)_i^dagger \, hat(c)_j^dagger } & = 0 #h(2em) \( i eq.not j \) $
 よって示された.
 
-0◻
-
 #block[
 #strong[命題 58] (Q21-53(i)(ii)). \
 
@@ -1442,8 +1295,6 @@ $ ⟨n_1 \, dots.h \, n_i \, dots.h\|_A \( hat(c)_i \|n_(1') \, dots.h \, n_(i')
  & = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) \( 1 - n_i \) delta_(n_1 n_(1')) dots.h.c delta_(1 - n_i \, n_(i')) dots.h.c\
  & = \( - 1 \)^(sum_(j = 1)^(i - 1) n_j) \( 1 - n_i \) ⟨n_1 \, dots.h \, 1 - n_i \, dots.h mid(bar.v) n_(1') \, dots.h \, n_(i') \, dots.h⟩_A\
  & = \( ⟨n_1 \, dots.h \, n_i \, dots.h\|_A hat(c)_i \) \|n_(1') \, dots.h \, n_(i') \, dots.h⟩_A $
-
-0◻
 
 #block[
 #strong[命題 59] (Q21-54(i)(ii)(iii)(iv)). \
@@ -1461,19 +1312,12 @@ hat(N) & = sum_(i in I) hat(n)_i & hat(N)^dagger & = sum_(i in I) hat(n)_i^dagge
 $ hat(n)_i \|dots.h \, n_i \, dots.h⟩_A & = hat(c)_i^dagger hat(c)_i \|dots.h \, n_i \, dots.h⟩_A = \( - 1 \)^(2 sum_(j = 1)^(i - 1) n_j) n_i^2 \|dots.h \, n_i \, dots.h⟩_A = n_i \|dots.h \, n_i \, dots.h⟩_A\
 hat(N) \|\( n_i \)_(i in I)⟩_A & = sum_(i in I) hat(n)_i \|\( n_i \)_(i in I)⟩_A = sum_(i in I) n_i \|\( n_i \)_(i in I)⟩_A = N \|\( n_i \)_(i in I)⟩_A $
 
-0◻
-
 #block[
 #block[
 #strong[定義 60] (). \
 
-真空状態 $\|upright(v a c)⟩$ を次のように定義する. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{c}\_i\\left\\lvert \\mathrm{vac}\\right\\rangle  = 0 & (i\\in I) \\\\
-      \\left\\langle \\mathrm{vac}\\middle\\vert \\mathrm{vac}\\right\\rangle  = 1
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+真空状態 $\|upright(v a c)⟩$ を次のように定義する.
+$ cases(delim: "{", hat(c)_i \|upright(v a c)⟩ = 0 & \( i in I \), ⟨upright(v a c) mid(bar.v) upright(v a c)⟩ = 1) $
 
 ]
 ]
@@ -1488,8 +1332,6 @@ $\|0 \, dots.h \, 0 \, dots.h⟩$ と同じである.
 $\|0 \, dots.h \, 0 \, dots.h⟩$ であることがわかる.
 $ hat(n)_i \|upright(v a c)⟩ = hat(c)_i^dagger hat(c)_i \|upright(v a c)⟩ = 0 $
 
-0◻
-
 #block[
 #strong[定理 62] (Q21-55(ii)). \
 
@@ -1501,8 +1343,6 @@ $ \|\( n_i \)_(i in I)⟩ & = hat(c)_(i_1)^dagger dots.h.c hat(c)_(i_N)^dagger \
 これより次のように計算できる.
 $ hat(c)_(i_1)^dagger dots.h.c hat(c)_(i_N)^dagger \|upright(v a c)⟩ & = hat(c)_(i_1)^dagger dots.h.c hat(c)_(i_N)^dagger \|0 \, dots.h \, 0 \, dots.h⟩ = \|\( n_i \)_(i in I)⟩ $
 
-0◻
-
 = Bose, Fermi 粒子系の消滅演算子 $hat(b)_i$ と生成演算子 $hat(b)_i^dagger$
 <bose-fermi-粒子系の消滅演算子-hatb_i-と生成演算子-hatb_idagger>
 #block[
@@ -1510,48 +1350,25 @@ $ hat(c)_(i_1)^dagger dots.h.c hat(c)_(i_N)^dagger \|upright(v a c)⟩ & = hat(c
 #strong[定義 63] (Bose, Fermi 粒子系の統一). \
 
 まず Bose 粒子系と Fermi 粒子系を統一した系の Hilbert 空間を
-$cal(H)_(upright(M . P .))$ と定義する. \$\$\\begin{aligned}
-    \\mathcal{H}\_{\\mathrm{M.P.}} := \\begin{dcases}
-                             \\mathcal{H}\_{Bose}  & (Bose)  \\\\
-                             \\mathcal{H}\_{Fermi} & (Fermi)
-                           \\end{dcases}
-  
-\\end{aligned}\$\$ 更に消滅演算子や行列式,
-交換関係の統一的な表記を次のように定義する. \$\$\\begin{aligned}
-    \\hat{b}\_i & = \\begin{dcases}
-                    \\hat{a}\_i & (Bose)  \\\\
-                    \\hat{c}\_i & (Fermi)
-                  \\end{dcases},\\quad
-    \\mathop{\\mathrm{det}}^{(\\pm)} = \\begin{dcases}
-                     \\mathop{\\mathrm{per}}& (+) \\\\
-                     \\mathop{\\mathrm{det}}& (-)
-                   \\end{dcases},\\quad
-    \[\\hat{A}, \\hat{B}\]\_\\mp = \\begin{dcases}
-                               \[\\hat{A}, \\hat{B}\]   & (-) \\\\
-                               \\{\\hat{A}, \\hat{B}\\} & (+)
-                             \\end{dcases}
-  
-\\end{aligned}\$\$ その上で個数演算子
-$hat(n)_i = hat(b)_i^dagger hat(b)_i$ と全粒子数演算子
-$hat(N) = sum_(i in I) hat(n)_i$ を定義する.
+$cal(H)_(upright(M . P .))$ と定義する.
+$ cal(H)_(upright(M . P .)) := cases(delim: "{", cal(H)_(B o s e) & \( B o s e \), cal(H)_(F e r m i) & \( F e r m i \)) $
+更に消滅演算子や行列式, 交換関係の統一的な表記を次のように定義する.
+$ hat(b)_i & = cases(delim: "{", hat(a)_i & \( B o s e \), hat(c)_i & \( F e r m i \)) \, quad det^(\( plus.minus \)) = cases(delim: "{", "per" & \( + \), det & \( - \)) \, quad \[ hat(A) \, hat(B) \]_minus.plus = cases(delim: "{", \[ hat(A) \, hat(B) \] & \( - \), { hat(A) \, hat(B) } & \( + \)) $
+その上で個数演算子 $hat(n)_i = hat(b)_i^dagger hat(b)_i$
+と全粒子数演算子 $hat(N) = sum_(i in I) hat(n)_i$ を定義する.
 
 ]
 ]
 今までの Bose, Fermi 粒子系の定義, 定理を統一的に表記する.
 
-まず生成演算子, 消滅演算子の定義は次のように書ける. \$\$\\begin{aligned}
-  \\begin{dcases}
-    \\hat{b}\_i\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{det}}^{(\\pm)}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{1}{\\sqrt{(N-1)!}}\\sum\_{\\substack{\\mu\\in X \\\\ i\_\\mu = i}}(\\pm1)^\\mu\\mathop{\\mathrm{det}}^{(\\pm)}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_{\\mu-1}}\\right\\rangle  & \\left\\lvert \\phi\_{i\_{\\mu+1}}\\right\\rangle \\cdots\\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} \\\\
-    \\hat{b}\_i^\\dagger\\frac{1}{\\sqrt{N!}}\\mathop{\\mathrm{det}}^{(\\pm)}\\begin{bmatrix}\\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix} = \\frac{1}{\\sqrt{(N+1)!}}\\mathop{\\mathrm{det}}^{(\\pm)}\\begin{bmatrix}\\left\\lvert \\phi\_i\\right\\rangle  & \\left\\lvert \\phi\_{i\_1}\\right\\rangle  \\cdots \\left\\lvert \\phi\_{i\_N}\\right\\rangle \\end{bmatrix}
-  \\end{dcases}
-\\end{aligned}\$\$ そしてその交換関係・反交換関係は次のようになる.
+まず生成演算子, 消滅演算子の定義は次のように書ける.
+$ {hat(b)_i 1 / sqrt(N !) det^(\( plus.minus \)) mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N - 1 \) !) sum_(mu in X\
+i_mu = i) \( plus.minus 1 \)^mu det^(\( plus.minus \)) mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_(mu - 1))⟩, \|phi.alt_(i_(mu + 1))⟩ dots.h.c \|phi.alt_(i_N)⟩)\
+hat(b)_i^dagger 1 / sqrt(N !) det^(\( plus.minus \)) mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N + 1 \) !) det^(\( plus.minus \)) mat(delim: "[", \|phi.alt_i⟩, \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) $
+そしてその交換関係・反交換関係は次のようになる.
 $ \[ hat(b)_i \, hat(b)_j^dagger \]_minus.plus & = delta_(i j) \, quad \[ hat(b)_i \, hat(b)_j \]_minus.plus = \[ hat(b)_i^dagger \, hat(b)_j^dagger \]_minus.plus = 0 $
-真空状態 $\|upright(v a c)⟩$ をこのように定義する. \$\$\\begin{aligned}
-  \\begin{dcases}
-    \\hat{b}\_i\\left\\lvert \\mathrm{vac}\\right\\rangle  = 0 & (i\\in I) \\\\
-    \\left\\langle \\mathrm{vac}\\middle\\vert \\mathrm{vac}\\right\\rangle  = 1
-  \\end{dcases}
-\\end{aligned}\$\$
+真空状態 $\|upright(v a c)⟩$ をこのように定義する.
+$ cases(delim: "{", hat(b)_i \|upright(v a c)⟩ = 0 & \( i in I \), ⟨upright(v a c) mid(bar.v) upright(v a c)⟩ = 1) $
 $ \|\( n_i \)_(i in I)⟩ & = product_(i in I) frac(\( hat(b)_i^dagger \)^(n_i), sqrt(n_i !)) \|upright(v a c)⟩ $
 
 $ det^(\( plus.minus \)) mat(delim: "[", \|phi.alt_(i_(sigma \( 1 \)))⟩ dots.h.c \|phi.alt_(i_(sigma \( N \)))⟩) & = \( plus.minus 1 \)^sigma det^(\( plus.minus \)) mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩)\
@@ -1636,8 +1453,6 @@ $ hat(f)^(upright(t o t)) & = sum_(mu_1 \, dots.h \, mu_n in X\
 mu_1 < dots.h.c < mu_n) hat(f)_(mu_1 dots.h.c mu_n) = frac(1, n !) sum_(mu_1 \, dots.h \, mu_n in X\
 mu_n eq.not mu_(n')) hat(f)_(mu_1 dots.h.c mu_n) $
 
-0◻
-
 #block[
 #strong[例 67] (Q21-58, Q21-59, Q21-60). \
 
@@ -1717,8 +1532,6 @@ k_1 \, dots.h \, k_n in I) ⟨j_1 dots.h.c j_n\| f \|k_1 dots.h.c k_n⟩ hat(b)_
 $ hat(f)^(upright(t o t)) & = frac(1, n !) sum_(j_1 \, dots.h \, j_n in I\
 k_1 \, dots.h \, k_n in I) ⟨j_1 dots.h.c j_n\| f \|k_1 dots.h.c k_n⟩ hat(b)_(j_1)^dagger dots.h.c hat(b)_(j_n)^dagger hat(b)_(k_n) dots.h.c hat(b)_(k_1) $
 
-0◻
-
 = 1 粒子状態の完全正規直交系の取り替え
 <粒子状態の完全正規直交系の取り替え>
 #block[
@@ -1741,8 +1554,7 @@ Hermite 共役を取ると示される.
 $ hat(b)_i^(' dagger) & = sum_(j in I) ⟨phi.alt_j mid(bar.v) phi.alt_(i')⟩ hat(b)_j^dagger\
 hat(b)_i' & = sum_(j in I) ⟨phi.alt_(i') mid(bar.v) phi.alt_j⟩ hat(b)_j $
 
-0◻ さらに完全正規直交系を入れ替えると次のような式が成り立つ.
-(Q21-79(iv))
+さらに完全正規直交系を入れ替えると次のような式が成り立つ. (Q21-79(iv))
 $ hat(b)_i & = sum_(j in I) ⟨phi.alt_i mid(bar.v) phi.alt_(j')⟩ hat(b)_(j')\
 hat(b)_i^dagger & = sum_(j in I) ⟨phi.alt_(j') mid(bar.v) phi.alt_i⟩ hat(b)_j^(' dagger) $
 
@@ -1753,15 +1565,13 @@ hat(b)_i^dagger & = sum_(j in I) ⟨phi.alt_(j') mid(bar.v) phi.alt_i⟩ hat(b)_
 $  & \[ hat(b)_i \, hat(b)_j^dagger \]_minus.plus = delta_(i j) \, quad \[ hat(b)_i \, hat(b)_j \]_minus.plus = \[ hat(b)_i^dagger \, hat(b)_j^dagger \]_minus.plus = 0 #h(2em) \( i \, j in I \)\
 arrow.l.r.double & \[ hat(b)_(i') \, hat(b)_j^(' dagger) \]_minus.plus = delta_(i j) \, quad \[ hat(b)_(i') \, hat(b)_(j') \]_minus.plus = \[ hat(b)_i^(' dagger) \, hat(b)_j^(' dagger) \]_minus.plus = 0 #h(2em) \( i \, j in I' \) $
 
-] #label("exchange equivalent")
+] <exchange-equivalent>
 十分性さえ示せば対称性より完全正規直交系を入れ替えれば逆も示せる.
 $ \[ hat(b)_i \, hat(b)_j^dagger \]_minus.plus & = [sum_(k in I) ⟨phi.alt_i mid(bar.v) phi.alt_(k')⟩ hat(b)_(k') \, sum_(l in I) ⟨phi.alt_(l') mid(bar.v) phi.alt_j⟩ hat(b)_l^(' dagger)]_minus.plus = sum_(k in I) sum_(l in I) ⟨phi.alt_i mid(bar.v) phi.alt_(k')⟩ ⟨phi.alt_(l') mid(bar.v) phi.alt_j⟩ [hat(b)_(k') \, hat(b)_l^(' dagger)]_minus.plus\
  & = sum_(k in I) sum_(l in I) ⟨phi.alt_i mid(bar.v) phi.alt_(k')⟩ ⟨phi.alt_(l') mid(bar.v) phi.alt_j⟩ delta_(k l) = sum_(k in I) ⟨phi.alt_i mid(bar.v) phi.alt_(k')⟩ ⟨phi.alt_(k') mid(bar.v) phi.alt_j⟩ = ⟨phi.alt_i mid(bar.v) phi.alt_j⟩ = delta_(i j)\
 \[ hat(b)_i \, hat(b)_j \]_minus.plus & = [sum_(k in I) ⟨phi.alt_i mid(bar.v) phi.alt_(k')⟩ hat(b)_(k') \, sum_(l in I) ⟨phi.alt_j mid(bar.v) phi.alt_(l')⟩ hat(b)_(l')]_minus.plus = sum_(k in I) sum_(l in I) ⟨phi.alt_i mid(bar.v) phi.alt_(k')⟩ ⟨phi.alt_j mid(bar.v) phi.alt_(l')⟩ [hat(b)_(k') \, hat(b)_(l')]_minus.plus = 0\
 \[ hat(b)_i^dagger \, hat(b)_j^dagger \]_minus.plus & = [sum_(k in I) ⟨phi.alt_(k') mid(bar.v) phi.alt_i⟩ hat(b)_k^(' dagger) \, sum_(l in I) ⟨phi.alt_(l') mid(bar.v) phi.alt_j⟩ hat(b)_l^(' dagger)]_minus.plus = sum_(k in I) sum_(l in I) ⟨phi.alt_(k') mid(bar.v) phi.alt_i⟩ ⟨phi.alt_j mid(bar.v) phi.alt_(l')⟩ [hat(b)_k^(' dagger) \, hat(b)_l^(' dagger)]_minus.plus = 0 $
 よって同値である.
-
-0◻
 
 = 場の演算子の導入
 <場の演算子の導入>
@@ -1806,38 +1616,23 @@ hat(phi.alt)^dagger \( bold(r) \, s_z \) & = hat(b)_(bold(r) \, s_z)^(' dagger) 
 $ hat(b)_i & = sum_(s_z = - s)^s integral upright(d) bold(r) ⟨phi.alt_i mid(bar.v) bold(r) \, s_z⟩ hat(b)_(bold(r) \, s_z') = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
 hat(b)_i^dagger & = sum_(s_z = - s)^s integral upright(d) bold(r) ⟨bold(r) \, s_z mid(bar.v) phi.alt_i⟩ hat(b)_(bold(r) \, s_z)^(' dagger) = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt_i \( bold(r) \, s_z \) hat(phi.alt)^dagger \( bold(r) \, s_z \) $
 
-0◻
-
 #block[
 #strong[定理 73] (Q21-83). \
 
-場の演算子とその Hermite 共役の交換・反交換関係 \$\$\\begin{aligned}
-    \\begin{dcases}
-      \[\\hat{\\phi}(\\bm{r}, s\_z), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\')\]\_\\mp = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-      \[\\hat{\\phi}(\\bm{r}, s\_z), \\hat{\\phi}(\\bm{r}\', s\_z\')\]\_\\mp = \[\\hat{\\phi}^\\dagger(\\bm{r}, s\_z), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\')\]\_\\mp = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+場の演算子とその Hermite 共役の交換・反交換関係
+$ {\[ hat(phi.alt) \( bold(r) \, s_z \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \) \]_minus.plus = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+\[ hat(phi.alt) \( bold(r) \, s_z \) \, hat(phi.alt) \( bold(r)' \, s_(z') \) \]_minus.plus = \[ hat(phi.alt)^dagger \( bold(r) \, s_z \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \) \]_minus.plus = 0 $
 
 ]
-定理 #link(label("exchange equivalent"))[exchange equivalent] を適用することで示せる.
-\$\$\\begin{aligned}
-         & \\begin{dcases}
-             \[\\hat{b}\_i, \\hat{b}\_j^\\dagger\]\_\\mp = \\delta\_{ij} \\\\
-             \[\\hat{b}\_i, \\hat{b}\_j\]\_\\mp = \[\\hat{b}\_i^\\dagger, \\hat{b}\_j^\\dagger\]\_\\mp = 0
-           \\end{dcases}                                                \\\\
-    \\iff & \\begin{dcases}
-             \[\\hat{b}\_{\\bm{r}, s\_z}\', \\hat{b}^{\\prime\\dagger}\_{\\bm{r}\', s\_z\'}\]\_\\mp = \\delta\_{(\\bm{r}, s\_z),(\\bm{r}\', s\_z\')} = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-             \[\\hat{b}\_{\\bm{r}, s\_z}\', \\hat{b}\_{\\bm{r}\', s\_z\'}\]\_\\mp = \[\\hat{b}^\\dagger\_{\\bm{r}, s\_z}, \\hat{b}^\\dagger\_{\\bm{r}\', s\_z\'}\]\_\\mp = 0
-           \\end{dcases} \\\\
-    \\iff & \\begin{dcases}
-             \[\\hat{\\phi}(\\bm{r}, s\_z), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\')\]\_\\mp = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-             \[\\hat{\\phi}(\\bm{r}, s\_z), \\hat{\\phi}(\\bm{r}\', s\_z\')\]\_\\mp = \[\\hat{\\phi}^\\dagger(\\bm{r}, s\_z), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\')\]\_\\mp = 0
-           \\end{dcases}
-  
-\\end{aligned}\$\$
+定理 #link(<exchange-equivalent>)[exchange-equivalent] を適用することで示せる.
+$  & {\[ hat(b)_i \, hat(b)_j^dagger \]_minus.plus = delta_(i j)\
+\[ hat(b)_i \, hat(b)_j \]_minus.plus = \[ hat(b)_i^dagger \, hat(b)_j^dagger \]_minus.plus = 0\
+arrow.l.r.double & {\[ hat(b)_(bold(r) \, s_z') \, hat(b)_(bold(r)' \, s_(z'))^(' dagger) \]_minus.plus = delta_(\( bold(r) \, s_z \) \, \( bold(r)' \, s_(z') \)) = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+\[ hat(b)_(bold(r) \, s_z') \, hat(b)_(bold(r)' \, s_(z')) \]_minus.plus = \[ hat(b)_(bold(r) \, s_z)^dagger \, hat(b)_(bold(r)' \, s_(z'))^dagger \]_minus.plus = 0\
+arrow.l.r.double & {\[ hat(phi.alt) \( bold(r) \, s_z \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \) \]_minus.plus = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+\[ hat(phi.alt) \( bold(r) \, s_z \) \, hat(phi.alt) \( bold(r)' \, s_(z') \) \]_minus.plus = \[ hat(phi.alt)^dagger \( bold(r) \, s_z \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \) \]_minus.plus = 0 $
 
-0◻ Q21-84
+Q21-84
 
 #block[
 #strong[定理 74] (Q21-85(i)(ii)). \
@@ -1859,21 +1654,15 @@ $ hat(N) & = sum_(i in I) hat(b)_i^dagger hat(b)_i\
  & = sum_(s_z = - s)^s integral upright(d) bold(r) hat(phi.alt)^dagger \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
  & = sum_(s_z = - s)^s integral upright(d) bold(r) hat(rho) \( bold(r) \, s_z \) $
 
-0◻
-
 #block[
 #block[
 #strong[定義 75] (複数の同種粒子の場). \
 
 スピン $s$ を持つ複数の同種粒子がある系を考える. まず真空状態
-$\|upright(v a c)⟩$ を次のように定義する. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\hat{\\phi}(\\bm{r}, s\_z)\\left\\lvert \\mathrm{vac}\\right\\rangle  = 0 & (\\bm{r}\\in\\mathbb{R}^3, s\_z = -s,\\ldots,s) \\\\
-      \\left\\langle \\mathrm{vac}\\middle\\vert \\mathrm{vac}\\right\\rangle  = 1
-    \\end{dcases}
-  
-\\end{aligned}\$\$ このとき複数の粒子状態は真空状態に場の演算子の
-Hermite 共役を適用することで表現できる.
+$\|upright(v a c)⟩$ を次のように定義する.
+$ cases(delim: "{", hat(phi.alt) \( bold(r) \, s_z \) \|upright(v a c)⟩ = 0 & \( bold(r) in bb(R)^3 \, s_z = - s \, dots.h \, s \), ⟨upright(v a c) mid(bar.v) upright(v a c)⟩ = 1) $
+このとき複数の粒子状態は真空状態に場の演算子の Hermite
+共役を適用することで表現できる.
 $ \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \) & := 1 / sqrt(N !) hat(phi.alt)^dagger \( bold(r)_1 \, s_(z \, 1) \) dots.h.c hat(phi.alt)^dagger \( bold(r)_N \, s_(z \, N) \) \|upright(v a c)⟩ $
 
 ]
@@ -1910,8 +1699,6 @@ $ hat(N) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \) & = sum_(s_z = - s)^
  & = sum_(s_z = - s)^s integral upright(d) bold(r) (sum_(mu in bb(Z)_N) delta \( bold(r) - bold(r)_mu \) delta_(s_z s_(z mu))) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \)\
  & = N \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \) $
 
-0◻
-
 #block[
 #strong[定理 77] (Q21-86(ii)). \
 
@@ -1937,8 +1724,6 @@ $ \( \( bold(r)_mu \, s_(z mu) \)_(mu in X) \| \( bold(r)_(mu') \, s_(z mu') \)_
 粒子系どちらも粒子数が異なる状態の内積は 0 より固有状態の内積も 0
 となる.
 
-0◻
-
 #block[
 #strong[定理 78] (Q21-86(iii)). \
 
@@ -1954,8 +1739,6 @@ $  & quad sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dot
  & quad med delta_(N N') frac(1, N !) sum_(sigma in frak(S)_N) \( plus.minus 1 \)^sigma delta \( bold(r)_1 - bold(r)_(sigma \( 1 \)') \) delta_(s_(z 1) s_(z sigma \( 1 \)')) dots.h.c delta \( bold(r)_N - bold(r)_(sigma \( N \)') \) delta_(s_(z N) s_(z sigma \( N \)'))\
  & = frac(1, N' !) sum_(sigma in frak(S)_(N')) \( plus.minus 1 \)^sigma \| \( bold(r)_(sigma \( mu \)') \, s_(z sigma \( mu \)') \)_(mu in X') \)\
  & = \| \( bold(r)_(mu') \, s_(z mu') \)_(mu in X') \) $
-
-0◻
 
 #block[
 #strong[定理 79] (). \
@@ -1976,8 +1759,6 @@ j_1 \, dots.h \, j_n in I) phi.alt_(i_1)^(\*) \( bold(r)_1 \, s_(z 1) \) dots.h.
  & phi.alt_(i_1) \( bold(r)_1 \, s_(z 1) \) hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) dots.h.c phi.alt_(i_n) \( bold(r)_n \, s_(z n) \) hat(phi.alt)^dagger \( bold(r)_n \, s_(z n) \) phi.alt_(j_n)^(\*) \( bold(r)_(n') \, s_(z n') \) hat(phi.alt) \( bold(r)_(n') \, s_(z n') \) dots.h.c phi.alt_(j_1)^(\*) \( bold(r)_(1') \, s_(z 1') \) hat(phi.alt) \( bold(r)_(1') \, s_(z 1') \)\
  & = frac(1, n !) sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dots.h.c sum_(s_(z n) = - s)^s integral upright(d) bold(r)_n sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_(1') dots.h.c sum_(s_(z n') = - s)^s integral upright(d) bold(r)_(n')\
  & quad med hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) dots.h.c hat(phi.alt)^dagger \( bold(r)_n \, s_(z n) \) ⟨bold(r)_1 \, s_(z 1) \, dots.h \, bold(r)_n \, s_(z n)\| f \|bold(r)_(1') \, s_(z 1') \, dots.h \, bold(r)_(n') \, s_(z n')⟩ hat(phi.alt) \( bold(r)_(n') \, s_(z n') \) dots.h.c hat(phi.alt) \( bold(r)_(1') \, s_(z 1') \) $
-
-0◻
 
 #block[
 #strong[例 80] (Q21-87, Q21-88, Q21-89(i)(ii), Q21-90,
@@ -2023,14 +1804,11 @@ $bb(Z)$ への随伴関手は省略する.
 #strong[例 82] (省略記法の例). \
 
 まず場の演算子 $hat(phi.alt) \( 1 \)$
-について交換・反交換関係は次のように書ける. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \[\\hat{\\phi}(I), \\hat{\\phi}^\\dagger(J)\]\_\\mp = \\delta(I, J) \\\\
-      \[\\hat{\\phi}(I), \\hat{\\phi}(J)\]\_\\mp = \[\\hat{\\phi}^\\dagger(I), \\hat{\\phi}^\\dagger(J)\]\_\\mp = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$ 粒子数密度演算子 $hat(rho) \( 1 \)$ と全粒子数演算子
-$hat(N)$ は次のように書ける.
+について交換・反交換関係は次のように書ける.
+$ {\[ hat(phi.alt) \( I \) \, hat(phi.alt)^dagger \( J \) \]_minus.plus = delta \( I \, J \)\
+\[ hat(phi.alt) \( I \) \, hat(phi.alt) \( J \) \]_minus.plus = \[ hat(phi.alt)^dagger \( I \) \, hat(phi.alt)^dagger \( J \) \]_minus.plus = 0 $
+粒子数密度演算子 $hat(rho) \( 1 \)$ と全粒子数演算子 $hat(N)$
+は次のように書ける.
 $ hat(rho) \( I \) & = hat(phi.alt)^dagger \( I \) hat(phi.alt) \( I \)\
 hat(N) & = sum_I hat(rho) \( I \)\
 \[ hat(phi.alt) \( I \) \, hat(rho) \( J \) \] & = delta \( I \, J \) hat(phi.alt) \( I \) \, #h(2em) \[ hat(rho) \( I \) \, hat(rho) \( J \) \] = 0 $
@@ -2078,8 +1856,6 @@ $ \|Psi \( t \)⟩ & = sum_(N = 0)^oo sum_(1 \, dots.h \, N) Psi \( 1 \, dots.h 
 $ Psi \( 1 \, dots.h \, N \; t \) & = \( plus.minus 1 \)^sigma Psi \( sigma \( 1 \) \, dots.h \, sigma \( N \) \; t \) $
 よって示された.
 
-0◻
-
 #block[
 #strong[定理 85] (Q21-94(iii)(iv)). \
 
@@ -2101,15 +1877,13 @@ $ \( 1 \, dots.h \, N \| \[ hat(H) \, hat(N) \] \| 1' \, dots.h \, M' \) & = \( 
 これより $M eq.not N$ のとき
 $\( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, M' \) = 0$ となる.
 
-0◻
-
 #block[
 #strong[補題 86] (Q21-94(vii)(viii)(ix)(x)(xi)(xii)(xiv)(xv)(xvi)). \
 
 Hamiltonian 中の 1 粒子演算子は次の固有値を持つ.
 $ hat(H)_(upright(o n e)) \| 1 \, dots.h \, N \) & = sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] \| 1 \, dots.h \, N \) $
 
-] #label("Hamiltonian one eigen")
+] <Hamiltonian-one-eigen>
 1 粒子演算子 $hat(H)_(upright(o n e))$ を固有状態に適用すると
 $ hat(H)_(upright(o n e)) \| 1 \, dots.h \, N \) & = sum_I hat(phi.alt)^dagger \( I \) [- frac(planck^2, 2 m) Delta_I + V \( I \)] hat(phi.alt) \( I \) 1 / sqrt(N !) hat(phi.alt)^dagger \( 1 \) dots.h.c hat(phi.alt)^dagger \( N \) \|upright(v a c)⟩\
  & = sum_I hat(phi.alt)^dagger \( I \) [- frac(planck^2, 2 m) Delta_I + V \( I \)] 1 / sqrt(N !) sum_(J = 1)^N \( plus.minus 1 \)^J delta \( I \, J \) hat(phi.alt)^dagger \( 1 \) dots.h.c hat(phi.alt)^dagger \( J - 1 \) hat(phi.alt)^dagger \( J + 1 \) dots.h.c hat(phi.alt)^dagger \( N \) \|upright(v a c)⟩\
@@ -2123,8 +1897,6 @@ $  & quad med hat(H)_(upright(o n e)) \| 1 \, dots.h \, N \)\
  & = sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I hat(phi.alt)^dagger \( I \) + V \( I \) hat(phi.alt)^dagger \( I \)] \( plus.minus 1 \)^I 1 / sqrt(N !) hat(phi.alt)^dagger \( 1 \) dots.h.c hat(phi.alt)^dagger \( I - 1 \) hat(phi.alt)^dagger \( I + 1 \) dots.h.c hat(phi.alt)^dagger \( N \) \|upright(v a c)⟩\
  & = sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] 1 / sqrt(N !) hat(phi.alt)^dagger \( 1 \) dots.h.c hat(phi.alt)^dagger \( N \) \|upright(v a c)⟩\
  & = sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] \| 1 \, dots.h \, N \) $
-
-0◻
 
 #block[
 #strong[補題 87] (Q21-94(xviii)(xix)(xx)(xxii)(xxiii)(xxiv)). \
@@ -2152,8 +1924,6 @@ K eq.not L) delta \( I \, K \) delta \( J \, L \) hat(phi.alt)^dagger \( 1 \) do
 1 lt.eq L lt.eq N\
 K eq.not L) delta \( I \, K \) delta \( J \, L \) \| 1 \, dots.h \, N \) $
 
-0◻
-
 #block[
 #strong[定理 88]
 (Q21-94(i)(ii)(v)(vi)(xiii)(xvii)(xxi)(xxv)(xxvi)(xxvii)(xxviii)). \
@@ -2171,8 +1941,8 @@ $ i planck frac(upright(d), upright(d) t) \( 1 \, dots.h \, N \|Psi \( t \)⟩ &
  & = i planck frac(partial, partial t) Psi \( 1 \, dots.h \, N \; t \)\
 \( 1 \, dots.h \, N \| hat(H) \|Psi \( t \)⟩ & = sum_(M = 0)^oo sum_(1' \, dots.h \, M') \( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, M' \) Psi \( 1' \, dots.h \, M' \; t \)\
  & = sum_(1' \, dots.h \, N') \( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, N' \) Psi \( 1' \, dots.h \, N' \; t \) $
-ここで補題 #link(label("Hamiltonian one eigen"))[Hamiltonian one eigen];, 補"題を"用いることで
-Hamiltonian の行列要素を計算できる.
+ここで補題 #link(<Hamiltonian-one-eigen>)[Hamiltonian-one-eigen], 補題 を用いることで Hamiltonian
+の行列要素を計算できる.
 $ \( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, N' \) & = \( 1 \, dots.h \, N \| hat(H)_(upright(o n e)) \| 1' \, dots.h \, N' \) + \( 1 \, dots.h \, N \| hat(H)_(upright(t w o)) \| 1' \, dots.h \, N' \)\
  & = sum_(I' = 1')^(N') [- frac(planck^2, 2 m) Delta_(I') + V \( I' \)] \( 1 \, dots.h \, N \| 1' \, dots.h \, N' \)\
  & + 1 / 2 sum_(I \, J) V \( I \, J \) sum_(1' lt.eq K' lt.eq N'\
@@ -2192,8 +1962,6 @@ I eq.not J) V \( I \, J \) #scale(x: 300%, y: 300%)[\)] delta \( 1 \, 1' \) dots
  & = #scale(x: 300%, y: 300%)[\(] sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
 1 lt.eq J lt.eq N\
 I eq.not J) V \( I \, J \) #scale(x: 300%, y: 300%)[\)] Psi \( 1 \, dots.h \, N \; t \) $
-
-0◻
 
 = Heisenberg 表示での場の演算子の運動方程式
 <heisenberg-表示での場の演算子の運動方程式>
@@ -2227,8 +1995,6 @@ $ i planck frac(partial, partial t) hat(phi.alt) \( 0 \) & = [hat(phi.alt) \( 0 
 $ i planck frac(partial, partial t) hat(phi.alt) \( bold(r)_0 \, s_(z 0) \; t \) & = sum_(s_(z 0') = - s)^s #scale(x: 180%, y: 180%)[\(] - frac(planck^2, 2 m) delta_(s_(z 0) s_(z 0')) Delta_(bold(r)_0) + V_(s_(z 0) s_(z 0')) \( bold(r)_0 \)\
  & + sum_(s_(z 1) = - s)^s sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_1 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \; t \) V_(s_(z 0) s_(z 1) s_(z 0') s_(z 1')) \( bold(r)_0 \, bold(r)_1 \) hat(phi.alt) \( bold(r)_1 \, s_(z 1') \; t \) #scale(x: 180%, y: 180%)[\)] hat(phi.alt) \( bold(r)_0 \, s_(z 0') \; t \) $
 
-0◻
-
 = 第二量子化 - 場の正準量子化の手続き
 <第二量子化---場の正準量子化の手続き>
 #block[
@@ -2257,32 +2023,26 @@ $ bold(j) \( bold(r) \, t \) := frac(planck, 2 m i) sum_(s_z = - s)^s { phi.alt^
 Schrödinger 方程式とその複素共役は次のようであった.
 $ i planck frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \) & = - frac(planck^2, 2 m) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)\
 - i planck frac(partial, partial t) phi.alt^(\*) \( bold(r) \, s_z \; t \) & = - frac(planck^2, 2 m) Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) + sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_(z') \; t \) V_(s_(z') s_z) \( bold(r) \) $
-これより第一項を展開し, 代入すると \$\$\\begin{aligned}
-    \\frac{\\partial \\rho(\\bm{r}, t)}{\\partial t} & = \\frac{\\partial }{\\partial t}\\sum\_{s\_z = -s}^{s}\\phi^\*(\\bm{r}, s\_z; t)\\phi(\\bm{r}, s\_z; t)                                                                                                          \\\\
-                            & = \\sum\_{s\_z = -s}^{s}\\left(\\frac{\\partial }{\\partial t}\\phi^\*(\\bm{r}, s\_z; t)\\phi(\\bm{r}, s\_z; t) + \\phi^\*(\\bm{r}, s\_z; t)\\frac{\\partial }{\\partial t}\\phi(\\bm{r}, s\_z; t)\\right)                                                   \\\\
-                            & = \\sum\_{s\_z = -s}^{s}\\Biggg(\\left(\\frac{\\hbar}{2mi}\\Delta\_{\\bm{r}}\\phi^\*(\\bm{r}, s\_z; t) - \\frac{1}{i\\hbar}\\sum\_{s\_z\' = -s}^{s}\\phi^\*(\\bm{r}, s\_z\'; t)V\_{s\_z\'s\_z}(\\bm{r})\\right)\\phi(\\bm{r}, s\_z; t) \\\\
-                            & + \\phi^\*(\\bm{r}, s\_z; t)\\left(-\\frac{\\hbar}{2mi}\\Delta\_{\\bm{r}}\\phi(\\bm{r}, s\_z; t) + \\frac{1}{i\\hbar}\\sum\_{s\_z\' = -s}^{s}V\_{s\_zs\_z\'}(\\bm{r})\\phi(\\bm{r}, s\_z\'; t)\\right)\\Biggg)                     \\\\
-                            & = \\frac{\\hbar}{2mi}\\sum\_{s\_z = -s}^{s}\\left\\{(\\Delta\_{\\bm{r}}\\phi^\*(\\bm{r}, s\_z; t))\\phi(\\bm{r}, s\_z; t) - \\phi^\*(\\bm{r}, s\_z; t)(\\Delta\_{\\bm{r}}\\phi(\\bm{r}, s\_z; t))\\right\\}
-  
-\\end{aligned}\$\$ となり, 第二項については
+これより第一項を展開し, 代入すると
+$ frac(partial rho \( bold(r) \, t \), partial t) & = frac(partial, partial t) sum_(s_z = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \)\
+ & = sum_(s_z = - s)^s (frac(partial, partial t) phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \) + phi.alt^(\*) \( bold(r) \, s_z \; t \) frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \))\
+ & = sum_(s_z = - s)^s #scale(x: 300%, y: 300%)[\(] (frac(planck, 2 m i) Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) - frac(1, i planck) sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_(z') \; t \) V_(s_(z') s_z) \( bold(r) \)) phi.alt \( bold(r) \, s_z \; t \)\
+ & + phi.alt^(\*) \( bold(r) \, s_z \; t \) (- frac(planck, 2 m i) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + frac(1, i planck) sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)) #scale(x: 300%, y: 300%)[\)]\
+ & = frac(planck, 2 m i) sum_(s_z = - s)^s {\( Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) \) phi.alt \( bold(r) \, s_z \; t \) - phi.alt^(\*) \( bold(r) \, s_z \; t \) \( Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) \)} $
+となり, 第二項については
 $ nabla_(bold(r)) dot.op bold(j) \( bold(r) \, t \) & = nabla_(bold(r)) dot.op (frac(planck, 2 m i) sum_(s_z = - s)^s { phi.alt^(\*) \( bold(r) \, s_z \; t \) \( nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) \) - \( nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) \) phi.alt \( bold(r) \, s_z \; t \) })\
  & = frac(planck, 2 m i) sum_(s_z = - s)^s { phi.alt^(\*) \( bold(r) \, s_z \; t \) \( Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) \) - \( Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) \) phi.alt \( bold(r) \, s_z \; t \) } $
 となるから和は $0$ となる. ちなみに全粒子数 $N \( t \)$
 について時間微分することで粒子数は保存することがはっきりとわかる.
 $ frac(partial, partial t) N \( t \) & = integral upright(d) bold(r) frac(partial rho \( bold(r) \, t \), partial t) = - integral upright(d) bold(r) nabla_(bold(r)) dot.op bold(j) \( bold(r) \, t \) = - integral upright(d) S bold(j) \( bold(r) \, t \) = 0 $
 
-0◻
-
 #block[
 #block[
 #strong[定義 93] (エネルギー). \
 
 系の全エネルギー $H \( t \)$ はエネルギー密度を足し上げて表される.
-\$\$\\begin{aligned}
-    H(t) := \\int\\mathrm{d} \\rrw(\\bm{r}, t)
-  
-\\end{aligned}\$\$ エネルギー密度 $w \( bold(r) \, t \)$
-自体は次のように表現される.
+$ H \( t \) := integral upright(d) bold(r) w \( bold(r) \, t \) $
+エネルギー密度 $w \( bold(r) \, t \)$ 自体は次のように表現される.
 $ w \( bold(r) \, t \) := frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \) $
 
 ]
@@ -2331,8 +2091,6 @@ $ nabla_(bold(r)) bold(s) \( bold(r) \, t \) & = frac(planck^3, 4 m^2 i) sum_(s_
 となるから次のようになり, 全エネルギーは時間変化しない.
 $ frac(partial, partial t) H \( t \) & = integral upright(d) bold(r) frac(partial, partial t) w \( bold(r) \, t \) = - integral upright(d) bold(r) nabla_(bold(r)) bold(s) \( bold(r) \, t \) = - integral upright(d) S bold(s) \( bold(r) \, t \) = 0 $
 
-0◻
-
 #block[
 #block[
 #strong[定義 95] (古典的な Schrödinger の場). \
@@ -2341,72 +2099,44 @@ $ frac(partial, partial t) H \( t \) & = integral upright(d) bold(r) frac(partia
 について次の Schrödinger 方程式が成り立つとする.
 $ H := integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)} $
 更に力学変数 $Q \( bold(r) \, s_z \; t \) \, P \( bold(r) \, s_z \; t \)$
-を次のように定める. \$\$\\begin{aligned}
-    \\begin{dcases}
-      Q(\\bm{r}, s\_z; t) = \\phi(\\bm{r}, s\_z; t) \\\\
-      P(\\bm{r}, s\_z; t) = i\\hbar\\phi^\*(\\bm{r}, s\_z; t)
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+を次のように定める.
+$ {Q \( bold(r) \, s_z \; t \) = phi.alt \( bold(r) \, s_z \; t \)\
+P \( bold(r) \, s_z \; t \) = i planck phi.alt^(\*) \( bold(r) \, s_z \; t \) $
 
 ]
 ]
 #block[
 #strong[定理 96] (Q21-99(i)(ii)). \
 
-次の正準方程式が成り立つ. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\frac{\\partial Q(\\bm{r}, s\_z; t)}{\\partial t} = \\frac{\\partial H}{\\partial {P(\\bm{r}, s\_z; t)}} \\\\
-      \\frac{\\partial P(\\bm{r}, s\_z; t)}{\\partial t} = -\\frac{\\partial H}{\\partial {Q(\\bm{r}, s\_z; t)}}
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+次の正準方程式が成り立つ.
+$ {frac(partial Q \( bold(r) \, s_z \; t \), partial t) = frac(partial H, partial P \( bold(r) \, s_z \; t \))\
+frac(partial P \( bold(r) \, s_z \; t \), partial t) = - frac(partial H, partial Q \( bold(r) \, s_z \; t \)) $
 
 ]
 変数 $z$ に対してその複素共役 $z^(\*)$ は任意の点で微分不可能であるが,
 この値を $0$ であると考えることにする. このとき次のようになる.
 $ frac(partial, partial phi.alt^(\*) \( bold(r) \, s_z \; t \)) nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) & = Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) $
 よってそれぞれの式は Schrödinger 方程式とその複素共役であることがわかる.
-\$\$\\begin{aligned}
-     & \\begin{dcases}
-         \\frac{\\partial Q(\\bm{r}, s\_z; t)}{\\partial t} = \\frac{\\partial H}{\\partial {P(\\bm{r}, s\_z; t)}} \\\\
-         \\frac{\\partial P(\\bm{r}, s\_z; t)}{\\partial t} = -\\frac{\\partial H}{\\partial {Q(\\bm{r}, s\_z; t)}}
-       \\end{dcases}                                                                                                                            \\\\
-    \\iff
-     & \\begin{dcases}
-         i\\hbar\\frac{\\partial }{\\partial t}\\phi(\\bm{r}, s\_z; t) = \\frac{\\partial H}{\\partial {\\phi^\*(\\bm{r}, s\_z; t)}} = -\\frac{\\hbar^2}{2m}\\Delta\_{\\bm{r}}\\phi(\\bm{r}, s\_z; t) + \\sum\_{s\_z\' = -s}^{s}V\_{s\_zs\_z\'}(\\bm{r})\\phi(\\bm{r}, s\_z\'; t) \\\\
-         -i\\hbar\\frac{\\partial }{\\partial t}\\phi^\*(\\bm{r}, s\_z; t) = \\frac{\\partial H}{\\partial {\\phi(\\bm{r}, s\_z; t)}} = -\\frac{\\hbar^2}{2m}\\Delta\_{\\bm{r}}\\phi^\*(\\bm{r}, s\_z; t) + \\sum\_{s\_z\' = -s}^{s}\\phi^\*(\\bm{r}, s\_z\'; t)V\_{s\_z\'s\_z}(\\bm{r})
-       \\end{dcases}
-  
-\\end{aligned}\$\$
-
-0◻
+$  & {frac(partial Q \( bold(r) \, s_z \; t \), partial t) = frac(partial H, partial P \( bold(r) \, s_z \; t \))\
+frac(partial P \( bold(r) \, s_z \; t \), partial t) = - frac(partial H, partial Q \( bold(r) \, s_z \; t \))\
+arrow.l.r.double & {i planck frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \) = frac(partial H, partial phi.alt^(\*) \( bold(r) \, s_z \; t \)) = - frac(planck^2, 2 m) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)\
+- i planck frac(partial, partial t) phi.alt^(\*) \( bold(r) \, s_z \; t \) = frac(partial H, partial phi.alt \( bold(r) \, s_z \; t \)) = - frac(planck^2, 2 m) Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) + sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_(z') \; t \) V_(s_(z') s_z) \( bold(r) \) $
 
 #block[
 #strong[定理 97] (Q21-100). \
 
-次の Poisson 括弧式が成り立つ. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\{Q(\\bm{r}, s\_z; t), P(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-      \\{Q(\\bm{r}, s\_z; t), Q(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = \\{P(\\bm{r}, s\_z; t), P(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+次の Poisson 括弧式が成り立つ.
+$ {{ Q \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+{ Q \( bold(r) \, s_z \; t \) \, Q \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = { P \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = 0 $
 
 ]
 まず Poisson 括弧とは次のように定義される.
 $ { f \, g }_(P o i s s o n) := frac(partial f, partial Q) frac(partial g, partial P) - frac(partial f, partial P) frac(partial g, partial Q) $
 ここで次のような関係式が成り立つ.
 $ frac(partial phi.alt \( bold(r) \, s_z \; t \), partial phi.alt \( bold(r)' \, s_(z') \; t \)) = frac(partial phi.alt^(\*) \( bold(r) \, s_z \; t \), partial phi.alt^(\*) \( bold(r)' \, s_(z') \; t \)) = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z')) \, #h(2em) frac(partial phi.alt^(\*) \( bold(r) \, s_z \; t \), partial phi.alt \( bold(r) \, s_z \; t \)) = 0 $
-これより次のようになることは自明である. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\{Q(\\bm{r}, s\_z; t), P(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-      \\{Q(\\bm{r}, s\_z; t), Q(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = \\{P(\\bm{r}, s\_z; t), P(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$
-
-0◻
+これより次のようになることは自明である.
+$ {{ Q \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+{ Q \( bold(r) \, s_z \; t \) \, Q \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = { P \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = 0 $
 
 #block[
 #block[
@@ -2445,39 +2175,23 @@ $ hat(H)_(upright(o n e)) & = sum_1 hat(phi.alt)^dagger \( 1 \) [- frac(planck^2
  & = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) hat(phi.alt) \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)} $
 よって一致することがわかる.
 
-0◻
-
 #block[
 #strong[定理 100] (Q21-101(iii)(iv)). \
 
 Schrödinger の場における Poisson
-括弧を正準量子化によって交換・反交換関係となる. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \[\\hat{\\phi}(\\bm{r}, s\_z; t), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\'; t)\]\_\\mp = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-      \[\\hat{\\phi}(\\bm{r}, s\_z; t), \\hat{\\phi}(\\bm{r}\', s\_z\'; t)\]\_\\mp = \[\\hat{\\phi}^\\dagger(\\bm{r}, s\_z; t), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\'; t)\]\_\\mp = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$ これは場の理論で導出した交換・反交換関係と同等である.
+括弧を正準量子化によって交換・反交換関係となる.
+$ {\[ hat(phi.alt) \( bold(r) \, s_z \; t \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \; t \) \]_minus.plus = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+\[ hat(phi.alt) \( bold(r) \, s_z \; t \) \, hat(phi.alt) \( bold(r)' \, s_(z') \; t \) \]_minus.plus = \[ hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \; t \) \]_minus.plus = 0 $
+これは場の理論で導出した交換・反交換関係と同等である.
 
 ]
 Schrödinger の場における Poisson 括弧は次のようなものであった.
-\$\$\\begin{aligned}
-    \\begin{dcases}
-      \\{Q(\\bm{r}, s\_z; t), P(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-      \\{Q(\\bm{r}, s\_z; t), Q(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = \\{P(\\bm{r}, s\_z; t), P(\\bm{r}\', s\_z\'; t)\\}\_{Poisson} = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$ これを正準量子化すると次のようになる.
-\$\$\\begin{aligned}
-    \\begin{dcases}
-      \[\\hat{\\phi}(\\bm{r}, s\_z; t), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\'; t)\]\_\\mp = \\delta(\\bm{r}- \\bm{r}\')\\delta\_{s\_zs\_z\'} \\\\
-      \[\\hat{\\phi}(\\bm{r}, s\_z; t), \\hat{\\phi}(\\bm{r}\', s\_z\'; t)\]\_\\mp = \[\\hat{\\phi}^\\dagger(\\bm{r}, s\_z; t), \\hat{\\phi}^\\dagger(\\bm{r}\', s\_z\'; t)\]\_\\mp = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+$ {{ Q \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+{ Q \( bold(r) \, s_z \; t \) \, Q \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = { P \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s o n) = 0 $
+これを正準量子化すると次のようになる.
+$ {\[ hat(phi.alt) \( bold(r) \, s_z \; t \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \; t \) \]_minus.plus = delta \( bold(r) - bold(r)' \) delta_(s_z s_(z'))\
+\[ hat(phi.alt) \( bold(r) \, s_z \; t \) \, hat(phi.alt) \( bold(r)' \, s_(z') \; t \) \]_minus.plus = \[ hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) \, hat(phi.alt)^dagger \( bold(r)' \, s_(z') \; t \) \]_minus.plus = 0 $
 場の理論で導出した交換・反交換関係と同等であることは自明である.
-
-0◻
 
 = 第二量子化 - 波動描像から粒子描像へ
 <第二量子化---波動描像から粒子描像へ>
@@ -2511,8 +2225,6 @@ $ i planck frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \) & = - frac
 sum_(i in I) epsilon_i b_i \( t \) phi.alt_i \( bold(r) \, s_z \) & = sum_(i in I) b_i \( t \) [- frac(planck^2, 2 m) Delta_(bold(r)) phi.alt_i \( bold(r) \, s_z \) + sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt_i \( bold(r) \, s_(z') \)]\
 epsilon_i phi.alt_i \( bold(r) \, s_z \) & = - frac(planck^2, 2 m) Delta_(bold(r)) phi.alt_i \( bold(r) \, s_z \) + sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt_i \( bold(r) \, s_(z') \) $
 
-0◻
-
 #block[
 #strong[定理 103] (Q21-102(v)(vi)). \
 
@@ -2533,8 +2245,6 @@ $ H & = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla
  & = sum_(s_z = - s)^s integral upright(d) bold(r) sum_(i \, j in I) b_i^(\*) \( t \) phi.alt_i^(\*) \( bold(r) \, s_z \) epsilon_j b_j \( t \) phi.alt_j \( bold(r) \, s_z \)\
  & = sum_(i in I) epsilon_i b_i^(\*) \( t \) b_i \( t \) $
 
-0◻
-
 #block[
 #strong[定理 104] (Q21-102(vii)(viii)). \
 
@@ -2546,23 +2256,14 @@ $\( Q_i \( t \) \, P_i \( t \) \) = \( b_i \( t \) \, i planck b_i^(\*) \( t \) 
 Hamiltonian について $b_i^(\*) \( t \)$
 で微分したものは次のように変形できる.
 $ frac(partial H, partial b_i^(\*) \( t \)) & = epsilon_i b_i \( t \) = i planck frac(upright(d) b_i \( t \), upright(d) t) $
-これより複素共役を取ることで正準方程式が成り立つ. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\frac{\\mathrm{d} }{\\mathrm{d} t}b\_i(t) = \\frac{\\partial H}{\\partial (i\\hbar b\_i^\*(t))} \\\\
-      \\frac{\\mathrm{d} }{\\mathrm{d} t}(i\\hbar b\_i^\*(t)) = \\frac{\\partial H}{\\partial b\_i(t)}
-    \\end{dcases}
-  
-\\end{aligned}\$\$ また係数に関して次のような関係式が成り立つ.
+これより複素共役を取ることで正準方程式が成り立つ.
+$ {frac(upright(d), upright(d) t) b_i \( t \) = frac(partial H, partial \( i planck b_i^(\*) \( t \) \))\
+frac(upright(d), upright(d) t) \( i planck b_i^(\*) \( t \) \) = frac(partial H, partial b_i \( t \)) $
+また係数に関して次のような関係式が成り立つ.
 $ frac(partial b_i \( t \), partial b_j \( t \)) & = frac(partial b_i^(\*) \( t \), partial b_j^(\*) \( t \)) = delta_(i j) \, #h(2em) frac(partial b_i^(\*) \( t \), partial b_j \( t \)) = 0 $
-これより次の Poisson 括弧式が成り立つ. \$\$\\begin{aligned}
-    \\begin{dcases}
-      \\{b\_i(t), i\\hbar b\_j^\*(t)\\}\_{Poisson} = \\delta\_{ij} \\\\
-      \\{b\_i(t), b\_j(t)\\}\_{Poisson} = \\{i\\hbar b\_i^\*(t), i\\hbar b\_j^\*(t)\\}\_{Poisson} = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$
-
-0◻
+これより次の Poisson 括弧式が成り立つ.
+$ {{ b_i \( t \) \, i planck b_j^(\*) \( t \) }_(P o i s s o n) = delta_(i j)\
+{ b_i \( t \) \, b_j \( t \) }_(P o i s s o n) = { i planck b_i^(\*) \( t \) \, i planck b_j^(\*) \( t \) }_(P o i s s o n) = 0 $
 
 #block[
 #strong[定理 105] (Q21-102(ix)(x)(xi)(xii)). \
@@ -2571,16 +2272,9 @@ $ frac(partial b_i \( t \), partial b_j \( t \)) & = frac(partial b_i^(\*) \( t 
 $ hat(H) & = sum_(i in I) epsilon_i hat(b)_i^dagger \( t \) hat(b)_i \( t \)\
 hat(N) & = sum_(i in I) hat(b)_i^dagger \( t \) hat(b)_i \( t \)\
 hat(phi.alt) \( bold(r) \, s_z \; t \) & = sum_(i in I) phi.alt_i \( bold(r) \, s_z \) hat(b)_i \( t \) $
-\$\$\\begin{aligned}
-    \\begin{dcases}
-      \[\\hat{b}\_i(t), \\hat{b}\_j^\\dagger(t)\]\_\\mp = \\delta\_{ij} \\\\
-      \[\\hat{b}\_i(t), \\hat{b}\_j(t)\]\_\\mp = \[\\hat{b}\_i^\\dagger(t), \\hat{b}\_j^\\dagger(t)\]\_\\mp = 0
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+$ {\[ hat(b)_i \( t \) \, hat(b)_j^dagger \( t \) \]_minus.plus = delta_(i j)\
+\[ hat(b)_i \( t \) \, hat(b)_j \( t \) \]_minus.plus = \[ hat(b)_i^dagger \( t \) \, hat(b)_j^dagger \( t \) \]_minus.plus = 0 $
 
 ]
 自明. 場の演算子や消滅,
 生成演算子の交換・反交換関係は場の理論と完全に対応していることがわかる.
-
-0◻

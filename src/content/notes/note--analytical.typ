@@ -53,9 +53,7 @@ $ T + U \( bold(r) \) $
 $ U \( bold(r) \) = - integral_(bold(r)_0)^(bold(r)) bold(F) upright(d) bold(r) $
 保存力に関するニュートンの運動方程式
 $ m frac(upright(d)^2 bold(r), upright(d) t^2) = - nabla U $
-運動エネルギー \$\$\\begin{aligned}
-  T & = \\frac{1}{2}m\\dot\\bm{r}^2
-\\end{aligned}\$\$ ポテンシャルエネルギー
+運動エネルギー $ T & = 1 / 2 m dot(bold(r))^2 $ ポテンシャルエネルギー
 
 #block[
 #figure(
@@ -67,7 +65,7 @@ $ m frac(upright(d)^2 bold(r), upright(d) t^2) = - nabla U $
     [重力 (local)], [$m g h$], [],
     [重力 (global)], [$- G frac(M m, r)$], [],
     [バネの力], [$1 / 2 k x^2$], [],
-    [電磁気力], [\$- q\\phi(\\bm{r}, t) + q\\dot\\bm{r}\\cdot\\bm{A}(\\bm{r}, t)\$], [],
+    [電磁気力], [$- q phi.alt \( bold(r) \, t \) + q dot(bold(r)) dot.op bold(A) \( bold(r) \, t \)$], [],
   )]
   , caption: [ポテンシャルエネルギーの表式]
   , kind: table
@@ -82,9 +80,8 @@ $ m frac(upright(d)^2 bold(r), upright(d) t^2) = - nabla U $
 $ L & = 1 / 2 m dot(bold(r))^2 - U \( bold(r) \) $
 
 ]
-\$\$\\begin{aligned}
-  \\frac{\\partial L}{\\partial \\dot\\bm{r}} = m\\dot\\bm{r}, \\quad \\frac{\\partial L}{\\partial \\bm{r}} = -\\nabla U
-\\end{aligned}\$\$ 運動方程式は Euler-Lagrange 方程式とよばれる。
+$ frac(partial L, partial dot(bold(r))) = m dot(bold(r)) \, quad frac(partial L, partial bold(r)) = - nabla U $
+運動方程式は Euler-Lagrange 方程式とよばれる。
 $ frac(partial L, partial bold(r)) - frac(d, d t) (frac(partial L, partial dot(bold(r)))) = 0 $
 一般座標 (generalized coordinates) $q_i = q_i \( t \)$
 ($i = 1 \, 2 \, dots.h \, n$) を用いて系がラグランジアン
@@ -99,17 +96,15 @@ $ frac(partial L, partial q_i) - frac(d, d t) (frac(partial L, partial dot(q)_i)
 == ハミルトン形式
 <ハミルトン形式>
 #block[
-ハミルトニアン (Hamiltonian) \$\$\\begin{aligned}
-    H           & = \\frac{\\bm{p}^2}{2m} + U(\\bm{r}, \\dot\\bm{r}) \\\\
-    H(q\_i, p\_i) & = \\sum\_{i}p\_i\\dot{q}\_i - L
-  
-\\end{aligned}\$\$
+ハミルトニアン (Hamiltonian)
+$ H & = frac(bold(p)^2, 2 m) + U \( bold(r) \, dot(bold(r)) \)\
+H \( q_i \, p_i \) & = sum_i p_i dot(q)_i - L $
 
 ]
 $ frac(partial H, partial bold(p)) = bold(p) / m \, quad frac(partial H, partial bold(r)) = nabla U $
-ニュートンの運動方程式は \$\\bm{p}= m\\dot\\bm{r}\$ より
+ニュートンの運動方程式は $bold(p) = m dot(bold(r))$ より
 $ frac(upright(d) bold(r), upright(d) t) = frac(partial H, partial bold(p)) \, quad frac(upright(d) bold(p), upright(d) t) = - frac(partial H, partial bold(r)) $
-電磁場において \$\\bm{p}= m\\dot\\bm{r}\$ とはならない。
+電磁場において $bold(p) = m dot(bold(r))$ とはならない。
 
 == 変分原理
 <変分原理>
@@ -156,7 +151,6 @@ delta L + L (q_i \, dot(q)_i) accent(delta t, ̇) & = frac(upright(d), upright(d
  & = frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i) \( delta q_i - dot(q)_i delta t \) + L delta t) + (frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i)) dot(q)_i + frac(partial L, partial dot(q)_i) dot.double(q)_i) delta t - (frac(partial L, partial q_i) dot(q)_i + frac(partial L, partial dot(q)_i) dot.double(q)_i) delta t\
  & = frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i) \( delta q_i - dot(q)_i delta t \) + L delta t) - (frac(partial L, partial q_i) - frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i))) dot(q)_i delta t\
  & = frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i) \( delta q_i - dot(q)_i delta t \) + L delta t) = 0 $
-0◻
 
 #block[
 微少量 $epsilon$ を用いて表現する。
@@ -268,54 +262,42 @@ $j + j' = 2 \, dots.h \, 2 N$ である. これより $j - j' = 0$
 逆に主結合子の前件が恒偽ならばその論理式は真である.
 よって次の同値関係が成り立つ.
 $  & frac(pi, N + 1) \( j - j' \) = 0 med \( mod med 2 pi \) arrow.l.r.double j - j' = 0 med \( mod med 2 \( N + 1 \) \) arrow.l.r.double j = j' \,\
- & frac(pi, N + 1) \( j + j' \) = 0 med \( mod med 2 pi \) arrow.l.r.double j + j' = 0 med \( mod med 2 \( N + 1 \) \) arrow.l.r.double f a l s e . $#label("Q17-3. ii-1")
+ & frac(pi, N + 1) \( j + j' \) = 0 med \( mod med 2 pi \) arrow.l.r.double j + j' = 0 med \( mod med 2 \( N + 1 \) \) arrow.l.r.double f a l s e . $<Q17-3-ii-1>
 
 (iii) $j \, j' = 1 \, dots.h \, N$ に対して次のように内積を定義する.
 このときこの内積の正規直交関係を示す.
 $ \( q^(\( j \)) \, q^(\( j' \)) \) & := sum_(i = 1)^N q_i^(\( j \)) q_i^(\( j' \)) . $
 まず (i), (ii) を用いることで次のように式変形できる.
-\$\$\\begin{aligned}
-  (q^{(j)}, q^{(j\')}) & := \\sum\_{i = 1}^{N}q\_i^{(j)}q\_i^{(j\')}                                                                                                                                                                                                                                             \\\\
-                      & = \\frac{2}{N+1}\\sum\_{i = 1}^{N}\\sin\\left(\\frac{\\pi}{N+1}ji\\right)\\sin\\left(\\frac{\\pi}{N+1}j\'i\\right)                                                                                                                                                                                               \\\\
-                      & = \\frac{1}{N+1}\\sum\_{i = 1}^{N}\\left(\\cos\\left(\\frac{\\pi}{N+1}(j - j\')i\\right) - \\cos\\left(\\frac{\\pi}{N+1}(j + j\')i\\right)\\right)                                                                                                                                                                          \\\\
-                      & = \\begin{dcases}
-                            \\frac{1}{N+1}\\left(\\frac{\\cos\\left(\\frac{\\pi}{2}(j - j\')\\right)\\sin\\left(\\frac{N\\pi}{2(N+1)}(j - j\')\\right)}{\\sin\\left(\\frac{\\pi}{2(N+1)}(j - j\')\\right)} - \\frac{\\cos\\left(\\frac{\\pi}{2}(j + j\')\\right)\\sin\\left(\\frac{N\\pi}{2(N+1)}(j + j\')\\right)}{\\sin\\left(\\frac{\\pi}{2(N+1)}(j + j\')\\right)}\\right) & (j \\neq j\') \\\\
-                            \\frac{1}{N+1}\\left(N - \\frac{\\cos\\left(j\\pi\\right)\\sin\\left(\\frac{jN}{N+1}\\pi\\right)}{\\sin\\left(\\frac{j}{N+1}\\pi\\right)}\\right)                                                                                                                                                   & (j = j\')
-                          \\end{dcases}.
-\\end{aligned}\$\$ 先に $j eq.not j'$ の場合を考える.
+$ \( q^(\( j \)) \, q^(\( j' \)) \) & := sum_(i = 1)^N q_i^(\( j \)) q_i^(\( j' \))\
+ & = frac(2, N + 1) sum_(i = 1)^N sin (frac(pi, N + 1) j i) sin (frac(pi, N + 1) j' i)\
+ & = frac(1, N + 1) sum_(i = 1)^N (cos (frac(pi, N + 1) \( j - j' \) i) - cos (frac(pi, N + 1) \( j + j' \) i))\
+ & = cases(delim: "{", frac(1, N + 1) (frac(cos (pi / 2 \( j - j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j - j' \)), sin (frac(pi, 2 \( N + 1 \)) \( j - j' \))) - frac(cos (pi / 2 \( j + j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j + j' \)), sin (frac(pi, 2 \( N + 1 \)) \( j + j' \)))) & \( j eq.not j' \), frac(1, N + 1) (N - frac(cos (j pi) sin (frac(j N, N + 1) pi), sin (frac(j, N + 1) pi))) & \( j = j' \)) . $
+先に $j eq.not j'$ の場合を考える.
 括弧内を通分した分子の第一項と第二項についてそれぞれ計算する.
 第一項について
 $  & cos (pi / 2 \( j - j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j - j' \)) sin (frac(pi, 2 \( N + 1 \)) \( j + j' \))\
 = & cos (frac(j - j', 2) pi) (cos (frac(\( N - 1 \) j - \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(\( N + 1 \) j - \( N - 1 \) j', 2 \( N + 1 \)) pi))\
 = & cos (frac(j - j', 2) pi) cos (frac(\( N - 1 \) j - \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(j - j', 2) pi) cos (frac(\( N + 1 \) j - \( N - 1 \) j', 2 \( N + 1 \)) pi)\
-= & cos (frac(j, N + 1) pi) + cos (frac(N j - \( N + 1 \) j', N + 1) pi) - cos (frac(j', N + 1) pi) - cos (frac(\( N + 1 \) j - N j', N + 1) pi) . $#label("Q17-3. iii 1")
+= & cos (frac(j, N + 1) pi) + cos (frac(N j - \( N + 1 \) j', N + 1) pi) - cos (frac(j', N + 1) pi) - cos (frac(\( N + 1 \) j - N j', N + 1) pi) . $<Q17-3-iii-1>
 第二項について
 $  & cos (pi / 2 \( j + j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j + j' \)) sin (frac(pi, 2 \( N + 1 \)) \( j - j' \))\
 = & cos (frac(j + j', 2) pi) (cos (frac(\( N - 1 \) j + \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(\( N + 1 \) j + \( N - 1 \) j', 2 \( N + 1 \)) pi))\
 = & cos (frac(j + j', 2) pi) cos (frac(\( N - 1 \) j + \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(j + j', 2) pi) cos (frac(\( N + 1 \) j + \( N - 1 \) j', 2 \( N + 1 \)) pi)\
-= & cos (frac(N j + \( N + 1 \) j', N + 1) pi) + cos (frac(j, N + 1) pi) - cos (frac(\( N + 1 \) j + N j', N + 1) pi) - cos (frac(j', N + 1) pi) . $#label("Q17-3. iii 2")
-これより分子は次のようになる. \$\$\\begin{aligned}
-  \\eqref{Q17-3. iii 1} - \\eqref{Q17-3. iii 2} & = \\left(\\cos\\frac{j}{N+1}\\pi + \\cos\\left(\\frac{Nj}{N+1} - j\'\\right)\\pi - \\cos\\frac{j\'}{N+1}\\pi - \\cos\\left(j - \\frac{Nj\'}{N+1}\\right)\\pi\\right)                 \\\\
-                                              & - \\left(\\cos\\left(\\frac{Nj}{N+1} + j\'\\right)\\pi + \\cos\\frac{j}{N+1}\\pi - \\cos\\left(j + \\frac{Nj\'}{N+1}\\right)\\pi - \\cos\\frac{j\'}{N+1}\\pi\\right)                 \\\\
-                                              & = \\cos\\left(\\frac{Nj}{N+1} - j\'\\right)\\pi - \\cos\\left(\\frac{Nj}{N+1} + j\'\\right)\\pi + \\cos\\left(j + \\frac{Nj\'}{N+1}\\right)\\pi - \\cos\\left(j - \\frac{Nj\'}{N+1}\\right)\\pi \\\\
-                                              & = 2\\sin\\left(j\'\\pi\\right)\\sin\\left(\\frac{Nj}{N+1}\\pi\\right) - 2\\sin\\left(j\\pi\\right)\\sin\\left(\\frac{Nj\'}{N+1}\\pi\\right)                                                 \\\\
-                                              & = 0 \\qquad (\\because j, j\'\\in\\mathbb{Z}).
-\\end{aligned}\$\$ よって $j eq.not j'$ のときは
-$\( q^(\( j \)) \, q^(\( j' \)) \) = 0$ となる.
+= & cos (frac(N j + \( N + 1 \) j', N + 1) pi) + cos (frac(j, N + 1) pi) - cos (frac(\( N + 1 \) j + N j', N + 1) pi) - cos (frac(j', N + 1) pi) . $<Q17-3-iii-2>
+これより分子は次のようになる.
+$ upright(Q 17 - 3 . i i i 1) - upright(Q 17 - 3 . i i i 2) & = (cos frac(j, N + 1) pi + cos (frac(N j, N + 1) - j') pi - cos frac(j', N + 1) pi - cos (j - frac(N j', N + 1)) pi)\
+ & - (cos (frac(N j, N + 1) + j') pi + cos frac(j, N + 1) pi - cos (j + frac(N j', N + 1)) pi - cos frac(j', N + 1) pi)\
+ & = cos (frac(N j, N + 1) - j') pi - cos (frac(N j, N + 1) + j') pi + cos (j + frac(N j', N + 1)) pi - cos (j - frac(N j', N + 1)) pi\
+ & = 2 sin (j' pi) sin (frac(N j, N + 1) pi) - 2 sin (j pi) sin (frac(N j', N + 1) pi)\
+ & = 0 #h(2em) \( because j \, j' in bb(Z) \) . $ よって $j eq.not j'$
+のときは $\( q^(\( j \)) \, q^(\( j' \)) \) = 0$ となる.
 
 次に $j = j'$ の場合を考える. これは $j$
-が奇数か偶数かで場合分けして考える. \$\$\\begin{aligned}
-  \\frac{\\cos\\left(j\\pi\\right)\\sin\\left(\\frac{jN}{N+1}\\pi\\right)}{\\sin\\left(\\frac{j}{N+1}\\pi\\right)} & =
-  \\begin{dcases}
-    \\frac{\\cos\\left(2k\\pi\\right)\\sin\\left(\\frac{2kN}{N+1}\\pi\\right)}{\\sin\\left(\\frac{2k}{N+1}\\pi\\right)}           & (j = 2k, k\\in\\mathbb{Z})   \\\\
-    \\frac{\\cos\\left((2k-1)\\pi\\right)\\sin\\left(\\frac{(2k-1)N}{N+1}\\pi\\right)}{\\sin\\left(\\frac{2k-1}{N+1}\\pi\\right)} & (j = 2k-1, k\\in\\mathbb{Z})
-  \\end{dcases} \\\\ & =
-  \\begin{dcases}
-    \\frac{1\\cdot\\sin\\left(2k\\pi\\frac{N}{N+1} - 2k\\pi\\right)}{\\sin\\left(2k\\pi\\frac{1}{N+1}\\right)} \\\\
-    \\frac{-1 \\cdot -\\sin\\left((2k-1)\\pi\\frac{N}{N+1} - (2k-1)\\pi\\right)}{\\sin\\left((2k-1)\\pi\\frac{1}{N+1}\\right)}
-  \\end{dcases}           \\\\
-                                                                            & = -1.
-\\end{aligned}\$\$ よって $j = j'$ のときは
+が奇数か偶数かで場合分けして考える.
+$ frac(cos (j pi) sin (frac(j N, N + 1) pi), sin (frac(j, N + 1) pi)) & = cases(delim: "{", frac(cos (2 k pi) sin (frac(2 k N, N + 1) pi), sin (frac(2 k, N + 1) pi)) & \( j = 2 k \, k in bb(Z) \), frac(cos (\( 2 k - 1 \) pi) sin (frac(\( 2 k - 1 \) N, N + 1) pi), sin (frac(2 k - 1, N + 1) pi)) & \( j = 2 k - 1 \, k in bb(Z) \))\
+ & = {frac(1 dot.op sin (2 k pi frac(N, N + 1) - 2 k pi), sin (2 k pi frac(1, N + 1)))\
+frac(- 1 dot.op - sin (\( 2 k - 1 \) pi frac(N, N + 1) - \( 2 k - 1 \) pi), sin (\( 2 k - 1 \) pi frac(1, N + 1)))\
+ & = - 1 . $ よって $j = j'$ のときは
 $\( q^(\( j \)) \, q^(\( j' \)) \) = 1$ となる. これより,
 まとめると次の式が成り立つ.
 $ \( q^(\( j \)) \, q^(\( j' \)) \) = delta_(j \, j') . $
@@ -579,10 +561,9 @@ $ g \( omega \) & = sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha =
 $omega \( bold(k)_(j_x \, j_y \, j_z) \) gt.eq 0$ に限られるから
 $omega gt.eq 0$ となる.
 
-(ii) これより調和振動子の総数は次のようになる. \$\$\\begin{aligned}
-  \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega) & = 3\\int\_0^\\infty\\mathrm{d} \\omega\\sum\_{j\_x=1}^{N}\\sum\_{j\_y=1}^{N}\\sum\_{j\_z=1}^{N}\\delta(\\omega - \\omega(\\bm{k}\_{j\_x,j\_y,j\_z})) \\\\
-                                    & = 3N^3.
-\\end{aligned}\$\$
+(ii) これより調和振動子の総数は次のようになる.
+$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+ & = 3 N^3 . $
 
 ただこのような調和振動子の角振動数の個数分布関数 $g \( omega \)$
 をさらに簡単にすることは分散関係 $omega \( bold(k) \)$
@@ -665,14 +646,9 @@ $ omega_(j_x \, j_y \, j_z) & = 2 sqrt(kappa / m) sqrt(sin^2 (frac(pi, 2 \( N + 
 
 #block[
 Q 17-12. Debye 模型における調和振動子の角振動数の個数分布関数
-$g \( omega \)$ は次のように表される. \$\$\\begin{aligned}
-    g(\\omega) & = \\begin{dcases}
-                    \\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2 & (\\omega\\leq\\omega\_D) \\\\
-                    0                                                   & (\\omega \> \\omega\_D)
-                  \\end{dcases} \\\\
-    \\omega\_D  & = (6\\pi^2)^{1/3}\\sqrt{\\frac{\\kappa}{m}}.
-  
-\\end{aligned}\$\$
+$g \( omega \)$ は次のように表される.
+$ g \( omega \) & = cases(delim: "{", frac(9 N^3, omega_D) (omega / omega_D)^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \))\
+omega_D & = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) . $
 
 ]
 (i) Debye 模型における調和振動子の角振動数の個数分布関数 $g \( omega \)$
@@ -683,10 +659,8 @@ $ g \( omega \) & = sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha =
  & = 3 sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \) #h(2em) \( omega gt.eq 0 \) . $
 
 (ii) また調和振動子の総数は 3 次元結晶の模型と同様に $3 N^3$ となる.
-\$\$\\begin{aligned}
-  \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega) & = 3\\int\_0^\\infty\\mathrm{d} \\omega\\sum\_{j\_x=1}^{N}\\sum\_{j\_y=1}^{N}\\sum\_{j\_z=1}^{N}\\sum\_{\\alpha=x,y,z}\\delta(\\omega - \\omega(\\bm{k}\_{j\_x,j\_y,j\_z})) \\\\
-                                    & = 3N^3.
-\\end{aligned}\$\$
+$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha = x \, y \, z) delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+ & = 3 N^3 . $
 
 (iii) ここでDebye 模型における調和振動子の角振動数の個数分布関数
 $g \( omega \)$ を具体的に計算すると次のようになる.
@@ -716,41 +690,27 @@ $ g \( omega \) & approx 3 sqrt(m / kappa) frac(N + 1, pi) times ("半径" sqrt(
  & = 3 sqrt(m / kappa) frac(N + 1, pi) times frac(4 pi, 8) (sqrt(m / kappa) frac(N + 1, pi) omega)^2\
  & = frac(3 pi, 2) (sqrt(m / kappa) frac(N + 1, pi))^3 omega^2 . $
 
-(vii) $omega$ に関する条件
-#link(<omega_condition>)[\[omega\_condition\]]
+(vii) $omega$ に関する条件 #link(<omega_condition>)[omega_condition]
 が成り立たない場合は立方体の積分範囲と球面の表面の共通部分の面積となるので複雑な式となってしまう.
 ただ Debye 模型は低温における比熱の振る舞いからの要請により
 $omega \( bold(k) \)$ が大きいときは気にしなくて良い模型でした. これより
 $g \( omega \)$ の $\( j_x \, j_y \, j_z \)$
 に関する積分範囲を立方体から球へ修正することが許され, 次のように
-$g \( omega \)$ は表される. \$\$\\begin{aligned}
-  g(\\omega) & = \\begin{dcases}
-                  \\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 & (\\omega\\leq\\omega\_D) \\\\
-                  0                                                                 & (\\omega \> \\omega\_D)
-                \\end{dcases}.
-\\end{aligned}\$\$ ただし $N gt.double 1$ であることから $N + 1$ を $N$
-と近似し, また打ち切る角振動数 $omega_D$ を次のように定める.
-\$\$\\begin{aligned}
-  \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega) & = \\int\_0^{\\omega\_D}\\mathrm{d} \\omegag(\\omega) = 3N^3.
-\\end{aligned}\$\$ この $omega_D$ を Debye の角振動数という.
+$g \( omega \)$ は表される.
+$ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
+ただし $N gt.double 1$ であることから $N + 1$ を $N$ と近似し,
+また打ち切る角振動数 $omega_D$ を次のように定める.
+$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega g \( omega \) = 3 N^3 . $
+この $omega_D$ を Debye の角振動数という.
 
 (viii) これより Debye の角振動数 $omega_D$ は次のように計算される.
-\$\$\\begin{aligned}
-  \\int\_0^{\\omega\_D}\\mathrm{d} \\omegag(\\omega) & = \\int\_0^{\\omega\_D}\\mathrm{d} \\omega\\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 = \\frac{\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega\_D^3 = 3N^3, \\\\
-  \\omega\_D                              & = \\left(3N^3\\frac{2}{\\pi}\\right)^{1/3}\\sqrt{\\frac{\\kappa}{m}}\\frac{\\pi}{N} = (6\\pi^2)^{1/3}\\sqrt{\\frac{\\kappa}{m}}.
-\\end{aligned}\$\$
+$ integral_0^(omega_D) upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3 \,\
+omega_D & = (3 N^3 2 / pi)^(1 \/ 3) sqrt(kappa / m) pi / N = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) . $
 
 (ix) また Debye の角振動数 $omega_D$ を用いて $g \( omega \)$
-は次のように表される. \$\$\\begin{aligned}
-  g(\\omega) & = \\begin{dcases}
-                  \\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 & (\\omega\\leq\\omega\_D) \\\\
-                  0                                                                 & (\\omega \> \\omega\_D)
-                \\end{dcases} \\\\
-            & = \\begin{dcases}
-                  \\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2 & (\\omega\\leq\\omega\_D) \\\\
-                  0                                                   & (\\omega \> \\omega\_D)
-                \\end{dcases}.
-\\end{aligned}\$\$
+は次のように表される.
+$ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \))\
+ & = cases(delim: "{", frac(9 N^3, omega_D) (omega / omega_D)^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
 
 現実の物質に Debye 模型を当てはめるときには, それぞれの物質は固有の
 Debye 角振動数 $omega_D$ を持つことになる.

@@ -111,7 +111,15 @@ const CJK = '\\u3040-\\u30FF\\u4E00-\\u9FFF\\u3005\\u30FC'
  * しまうため。代わりに「和文が空白で区切られている」ことを手掛かりにする。
  * これは pandoc が数式内でだけ作る形で、通常の本文には現れない。
  */
-const SPACED_CJK_RUN = new RegExp(`[${CJK}](?:[ \\t]+[${CJK}])+`, 'g')
+/*
+ * 前後が和文でないことも条件に入れる。これが無いと「損失 陽子」のような
+ * 通常の分かち書きで「失 陽」を拾い、語の途中に引用符が入る。
+ * 数式内でバラされた和文は 1 文字ずつ独立しているので、この条件を満たす。
+ */
+const SPACED_CJK_RUN = new RegExp(
+  `(?<![${CJK}])[${CJK}](?:[ \\t]+[${CJK}])+(?![${CJK}])`,
+  'g',
+)
 
 const groupJapaneseInMath = (source) => {
   let grouped = 0
@@ -133,6 +141,18 @@ const groupJapaneseInMath = (source) => {
 const stripControlCharacters = (source) =>
   // eslint-disable-next-line no-control-regex
   source.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+
+/**
+ * 証明環境の QED 記号の残骸。単独行の「0◻」として残り、本文に紛れる。
+ * 証明の終わりは theorem.typ 側が描くので、ここでは落とす。
+ */
+const stripQedResidue = (source) =>
+  source
+    // 単独行のもの
+    .replace(/^[ \t]*0?◻[ \t]*$/gm, '')
+    // 数式ブロックに取り込まれたものは記号だけ落とす。
+    // $ ごと消すと数式の対応が崩れる。
+    .replace(/0?◻/g, '')
 
 /** 空セルに対して pandoc が置く #none。mat の中では構文エラーになる。 */
 const stripStrayNone = (source) => source.replace(/;\s*#none\s*\)/g, ')')
@@ -262,7 +282,7 @@ export const repairTypst = (source, { group, available }) => {
     (text, [pattern, to]) => text.replace(pattern, to),
     symbols,
   )
-  const cleaned = escapeArgumentSemicolons(stripStrayNone(delimiters))
+  const cleaned = stripQedResidue(escapeArgumentSemicolons(stripStrayNone(delimiters)))
   const japanese = groupJapaneseInMath(cleaned)
   const images = rewriteImages(japanese.text, group, available)
   const deduped = dedupeLabels(images.text)

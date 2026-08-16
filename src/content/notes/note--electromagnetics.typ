@@ -42,7 +42,7 @@ $ bold(F) & = rho bold(E) + bold(j) times bold(B) $
 $ frac(partial rho, partial t) + upright(bold(nabla)) dot.op bold(j) = 0 $
 
 ]
-式 #link(<Ampere>)[\[Ampere\]]
+式 #link(<Ampere>)[Ampere]
 の両辺の発散を計算することで連続の方程式を導出する。$upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(B) \) = 0$
 より
 $ upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(B) \) & = upright(bold(nabla)) dot.op (mu_0 bold(j) + 1 / c^2 frac(partial bold(E), partial t))\
@@ -50,7 +50,6 @@ $ upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(B) \) & = uprig
  & = upright(bold(nabla)) dot.op bold(j) + frac(partial rho, partial t) = 0 $
 連続の方程式の両辺を空間微分することで電荷が保存することが分かる。
 $  & frac(upright(d), upright(d) t) integral_V rho upright(d) V + integral_(partial V) bold(j) dot.op upright(d) bold(S) = 0 $
-0◻
 
 #block[
 #strong[定理 2] (磁荷の存在). \
@@ -59,7 +58,6 @@ $  & frac(upright(d), upright(d) t) integral_V rho upright(d) V + integral_(part
 
 ]
 磁場中のガウスの法則より湧き出し源がない、つまり単極の磁荷が存在しないことが分かる。
-0◻
 
 #block[
 #strong[定理 3] (エネルギー保存則). \
@@ -83,7 +81,6 @@ $ frac(partial u, partial t) & = frac(partial, partial t) (epsilon_0 / 2 bold(E)
  & = - 1 / mu_0 upright(bold(nabla)) dot.op \( bold(E) times bold(B) \) = - upright(bold(nabla)) dot.op bold(S) $
 連続の方程式の両辺を空間微分することでエネルギーが保存することが分かる。
 $ frac(upright(d), upright(d) t) integral u upright(d) V + integral_S bold(S) dot.op bold(n) upright(d) S & = 0 $
-0◻
 
 #block[
 エネルギーの流れの密度, 単位時間に単位面積を通過するエネルギー
@@ -115,7 +112,6 @@ $ frac(partial g_j, partial t) & = rho E_j + epsilon_(j i k) j_i B_k + frac(part
  & = partial_i T_(i j) $
 連続の方程式の両辺を空間微分することで運動量が保存することが分かる。
 $ frac(upright(d), upright(d) t) integral bold(g) upright(d) V & = integral_S T_(i j) dot.op bold(n) upright(d) S $
-0◻
 
 #block[
 #strong[定理 5] (角運動量保存則). \
@@ -128,7 +124,7 @@ bold(L)_m & = bold(r) times bold(g)_m\
 bold(M) & = bold(T) times bold(r) $
 $ frac(partial bold(L), partial t) & = bold(r) times frac(partial, partial t) (bold(g)_(E M) + bold(g)_m) = bold(r) times \( upright(bold(nabla)) dot.op bold(T) \)\
  & = upright(bold(nabla)) dot.op \( bold(T) times bold(r) \)\
- & = upright(bold(nabla)) dot.op bold(M) $ 0◻
+ & = upright(bold(nabla)) dot.op bold(M) $
 
 == 電磁ポテンシャルとゲージ変換
 <電磁ポテンシャルとゲージ変換>
@@ -142,7 +138,6 @@ bold(B) & = upright(bold(nabla)) times bold(A) $
 Maxwell 方程式に代入すると well-defined 性を満たすことが分かる。
 $ upright(bold(nabla)) dot.op bold(B) & = upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(A) \) = 0\
 upright(bold(nabla)) times bold(E) + frac(partial bold(B), partial t) & = upright(bold(nabla)) times (bold(E) + frac(partial bold(A), partial t)) = upright(bold(nabla)) times (- upright(bold(nabla)) phi.alt) = 0 $
-0◻
 
 #block[
 #strong[定理 6] (). \
@@ -153,22 +148,13 @@ $  & - nabla^2 phi.alt - frac(partial, partial t) \( upright(bold(nabla)) dot.op
 
 ]
 Maxwell の方程式に電磁ポテンシャルを代入すると次のようになる。
-\$\$\\begin{aligned}
-    \\begin{dcases}
-      \\mathbf{\\nabla}\\cdot\\bm{E}= \\frac{\\rho}{\\varepsilon\_0} \\\\
-      \\mathbf{\\nabla}\\cdot\\bm{B}= 0                          \\\\
-      \\mathbf{\\nabla}\\times\\bm{E}= -\\frac{\\partial \\bm{B}}{\\partial t}            \\\\
-      \\mathbf{\\nabla}\\times\\bm{B}= \\mu\_0\\bm{j} + \\frac{1}{c^2}\\frac{\\partial \\bm{E}}{\\partial t}
-    \\end{dcases}
-    \\iff
-    \\begin{dcases}
-      \\bm{E}= - \\mathbf{\\nabla}\\phi - \\frac{\\partial \\bm{A}}{\\partial t}                                        \\\\
-      \\bm{B}= \\mathbf{\\nabla}\\times\\bm{A}\\\\
-      -\\nabla^2\\phi - \\frac{\\partial }{\\partial t}(\\mathbf{\\nabla}\\cdot\\bm{A}) = \\frac{\\rho}{\\varepsilon\_0} \\\\
-      \\left(\\frac{1}{c^2}\\frac{\\partial^{2} }{\\partial t^{2}} - \\nabla^2\\right)\\bm{A}+ \\mathbf{\\nabla}\\left(\\frac{1}{c^2}\\frac{\\partial \\phi}{\\partial t} + \\mathbf{\\nabla}\\cdot\\bm{A}\\right) = \\mu\_0\\bm{j}
-    \\end{dcases}
-  
-\\end{aligned}\$\$ 0◻
+$ {upright(bold(nabla)) dot.op bold(E) = rho / epsilon_0\
+upright(bold(nabla)) dot.op bold(B) = 0\
+upright(bold(nabla)) times bold(E) = - frac(partial bold(B), partial t)\
+upright(bold(nabla)) times bold(B) = mu_0 bold(j) + 1 / c^2 frac(partial bold(E), partial t) arrow.l.r.double {bold(E) = - upright(bold(nabla)) phi.alt - frac(partial bold(A), partial t)\
+bold(B) = upright(bold(nabla)) times bold(A)\
+- nabla^2 phi.alt - frac(partial, partial t) \( upright(bold(nabla)) dot.op bold(A) \) = rho / epsilon_0\
+(1 / c^2 frac(partial^2, partial t^2) - nabla^2) bold(A) + upright(bold(nabla)) (1 / c^2 frac(partial phi.alt, partial t) + upright(bold(nabla)) dot.op bold(A)) = mu_0 bold(j) $
 
 #block[
 #strong[定理 7] (ゲージ変換). \
@@ -184,7 +170,7 @@ $ bold(E) & = - upright(bold(nabla)) (phi.alt - frac(partial chi, partial t)) - 
  & = - upright(bold(nabla)) phi.alt - frac(partial bold(A), partial t)\
 bold(B) & = upright(bold(nabla)) times \( bold(A) + upright(bold(nabla)) chi \)\
  & = upright(bold(nabla)) times bold(A) + upright(bold(nabla)) times upright(bold(nabla)) chi\
- & = upright(bold(nabla)) times bold(A) $ 0◻
+ & = upright(bold(nabla)) times bold(A) $
 
 #block[
 元々の電磁ポテンシャルに対して適切に $chi$
@@ -211,7 +197,7 @@ $ nabla^2 chi & = - upright(bold(nabla)) dot.op bold(A) arrow.l.r.double chi \( 
 Maxwell 方程式に代入すると
 $ - nabla^2 phi.alt = rho / epsilon_0 & arrow.l.r.double phi.alt \( bold(r) \) = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) upright(d) bold(r)'\
 - nabla^2 bold(A) = mu_0 bold(j) & arrow.l.r.double bold(A) \( bold(r) \) = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) upright(d) bold(r)' $
-より電磁ポテンシャルは電荷と電流により求められることが分かる。 0◻
+より電磁ポテンシャルは電荷と電流により求められることが分かる。
 
 #block[
 任意の状況においてローレンツゲージは存在し、電磁ポテンシャルについて次の微分方程式が成り立つ。
@@ -227,7 +213,6 @@ $ (1 / c^2 frac(partial^2, partial t^2) - nabla^2) chi = 1 / c^2 frac(partial ph
 の方程式に代入することで電磁ポテンシャルは次の微分方程式を満たす。
 $ (1 / c^2 frac(partial^2, partial t^2) - nabla^2) phi.alt & = rho / epsilon_0\
 (1 / c^2 frac(partial^2, partial t^2) - nabla^2) bold(A) & = mu_0 bold(j) $
-0◻
 
 #block[
 静電磁場まとめ
@@ -255,7 +240,6 @@ bold(F) \( bold(r) \) & = frac(Q q, 4 pi epsilon_0) frac(bold(r) - bold(r)', \| 
 $ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \), \| bold(r) - bold(r)' \|) upright(d) bold(r)' = frac(1, 4 pi epsilon_0) frac(Q, \| bold(r) - bold(r)' \|)\
 bold(E) \( bold(r) \) & = - upright(bold(nabla)) phi.alt = frac(Q, 4 pi epsilon_0) frac(bold(r) - bold(r)', \| bold(r) - bold(r)' \|^3)\
 bold(F) \( bold(r) \) & = q bold(E) = frac(Q q, 4 pi epsilon_0) frac(bold(r) - bold(r)', \| bold(r) - bold(r)' \|^3) $
-0◻
 
 #block[
 #strong[定理 9] (電気双極子). \
@@ -277,7 +261,7 @@ $ phi.alt \( r \, theta \) & = frac(p cos theta, 4 pi epsilon_0 r^2)\
 bold(E) \( r \, theta \, phi \) & = - nabla phi.alt \( r \, theta \)\
  & = (- frac(partial phi.alt, partial r) \, - 1 / r frac(partial phi.alt, partial theta) \, - frac(1, r sin theta) frac(partial phi.alt, partial phi))\
  & = (frac(p cos theta, 2 pi epsilon_0 r^3) \, frac(p sin theta, 4 pi epsilon_0 r^3) \, 0)\
- $ 0◻
+ $
 
 #block[
 #strong[定理 10] (電気双極子放射). \
@@ -320,7 +304,7 @@ $ nabla times \( nabla times bold(B) \) & = nabla \( nabla dot.op bold(B) \) - n
 nabla times \( nabla times bold(B) \) & = nabla times (mu_0 bold(j) + 1 / c^2 frac(partial bold(E), partial t))\
  & = mu_0 nabla times bold(j) + 1 / c^2 frac(partial, partial t) (- frac(partial bold(B), partial t))\
  & = mu_0 nabla times bold(j) - 1 / c^2 frac(partial^2, partial t^2) bold(B)\
-nabla^2 bold(B) & = 1 / c^2 frac(partial^2, partial t^2) bold(B) $ 0◻
+nabla^2 bold(B) & = 1 / c^2 frac(partial^2, partial t^2) bold(B) $
 
 #block[
 #strong[定理 13] (電磁波の複素数表現). \
@@ -342,7 +326,7 @@ $ nabla^2 bold(E) & = nabla^2 integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \(
  & = 1 / c^2 integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) \( - omega^2 \( bold(k) \) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
  & = 1 / c^2 frac(partial^2, partial t^2) integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
  & = 1 / c^2 frac(partial^2, partial t^2) bold(E) $
-磁束密度も同様にして示せる。 0◻
+磁束密度も同様にして示せる。
 
 電磁波の複素数表示について
 
@@ -363,7 +347,6 @@ u_(e m) & = epsilon_0 lr(|bold(E)_0|)^2 cos^2 \( bold(k) dot.op bold(r) - omega 
 時間平均を取ると
 $ 3 chevron.l u_e chevron.r & = 1 / 4 epsilon_0 \| bold(E)_0 \|^2 \, #h(2em) chevron.l u_m chevron.r = 1 / 4 epsilon_0 \| bold(E)_0 \|^2 \, #h(2em) chevron.l u_(e m) chevron.r = 1 / 2 epsilon_0 \| bold(E)_0 \|^2 $
 $ bold(S) & = 1 / mu_0 Re bold(E) times Re bold(B) = frac(1, 2 mu_0) lr(|1 / omega \( bold(k) times bold(E)_0 \) cos \( bold(k) dot.op bold(r) - omega t \)|)^2 $
-0◻
 
 #block[
 #strong[定理 15] (電磁波の運動量). \
@@ -371,8 +354,6 @@ $ bold(S) & = 1 / mu_0 Re bold(E) times Re bold(B) = frac(1, 2 mu_0) lr(|1 / ome
 $ chevron.l bold(g) chevron.r = 1 / c^2 chevron.l bold(S) chevron.r = frac(epsilon_0 \| bold(E)_0 \|^2, 2 c) hat(bold(k)) $
 
 ]
-0◻
-
 #block[
 電磁波まとめ $bold(k)$ について波長 $bb(R)$ と球面のさまざまな方向 $S^2$
 での電磁波の和を取ったものが電磁波全体となる。
@@ -436,7 +417,7 @@ $ \( nabla^2 + k^2 \) bold(E) & = 0\
 
 + 導体内部に電荷はなく、表面のみに電荷が分布する。
 
-等電位面、誘導電"荷導"体全体で電位は一定、
+等電位面、誘導電荷 導体全体で電位は一定、
 
 ]
 #block[
@@ -467,7 +448,7 @@ $ E = sigma / epsilon_0 $
 #strong[定理 27] (表面電荷による遮蔽). \
 
 ]
-$ - upright(bold(nabla))^2 phi.alt = rho / epsilon_0 $ $ n_i $ 0◻
+$ - upright(bold(nabla))^2 phi.alt = rho / epsilon_0 $ $ n_i $
 
 == 物質中の電磁気学の一般論
 <物質中の電磁気学の一般論>
@@ -504,7 +485,6 @@ integral_(partial V) \( epsilon_0 bold(E) + bold(P) \) dot.op bold(n) upright(d)
 $bold(D) \( bold(r) \) = epsilon_0 bold(E) \( bold(r) \) + bold(P) \( bold(r) \)$
 とおくことで誘電体におけるガウスの法則が求まる。
 $ integral_(partial V) bold(D) dot.op bold(n) upright(d) S & = integral_V rho_e upright(d) V arrow.l.r.double upright(bold(nabla)) dot.op bold(D) = rho_e $
-0◻
 
 #block[
 #strong[定理 29] (誘電体のエネルギー). \
@@ -521,7 +501,6 @@ Delta u_P & = bold(E) dot.op Delta bold(P)\
 Delta u_e & = Delta u_E + Delta u_P = bold(E) dot.op \( epsilon_0 Delta bold(E) + Delta bold(P) \) = bold(E) dot.op Delta bold(D) $
 となる。これより単位体積当たりのエネルギーは
 $ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op upright(d) bold(D) $
-0◻
 
 #block[
 #strong[定理 30] (境界条件). \
@@ -533,7 +512,6 @@ $ 2 D_(1 perp) & = D_(2 perp) \, #h(2em) E_(1 parallel) & = E_(2 parallel) $
 Maxwell の方程式より
 $ 2 0 & = integral_S bold(D) dot.op bold(n) upright(d) S = D_(1 perp) Delta S + D_(2 perp) \( - Delta S \) #h(2em) & D_(1 perp) = D_(2 perp)\
 0 & = integral_(partial S) bold(E) dot.op upright(d) bold(l) = E_(1 parallel) l - E_(2 parallel) l #h(2em) & E_(1 parallel) = E_(2 parallel) $
-0◻
 
 #block[
 磁性体は外から磁場を作用させるとスピンや原子核によって微視的な磁気双極子を作り、これを磁化
@@ -564,7 +542,6 @@ $ mu_0 integral_(partial V) bold(H)_M dot.op bold(n) upright(d) S & = integral_V
 integral_(partial V) \( mu_0 bold(H) + bold(M) \) dot.op bold(n) upright(d) S & = mu_0 integral_(partial V) bold(H)_e dot.op bold(n) upright(d) S = 0 $
 これより $bold(B) = mu_0 bold(H) + bold(M)$ とおくことで
 $ integral_(partial V) bold(B) dot.op bold(n) upright(d) S & = 0 arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0 $
-0◻
 
 #block[
 #strong[定理 32] (ファラデーの電磁誘導の法則). \
@@ -574,7 +551,6 @@ $ integral.cont_(partial S) bold(E) dot.op upright(d) bold(l) = - integral_S fra
 ]
 $ integral_(partial S) bold(E)_P dot.op upright(d) bold(l) = 0\
 integral_(partial S) frac(partial bold(B)_M, partial t) dot.op upright(d) bold(l) = 0 $
-0◻
 
 #block[
 #strong[定理 33] (物質中のマクスウェル・アンペールの法則). \
@@ -596,7 +572,6 @@ $ integral.cont_(partial S) bold(H) dot.op upright(d) bold(l) & = frac(upright(d
  & = integral_S (epsilon_0 frac(partial bold(E), partial t) + frac(partial bold(P), partial t) + bold(j)) dot.op upright(d) bold(S)\
  & = integral_S (frac(partial bold(D), partial t) + bold(j)) dot.op upright(d) bold(S)\
 upright(bold(nabla)) times bold(H) & = bold(j) + frac(partial bold(D), partial t) $
-0◻
 
 #block[
 #strong[定理 34] (電荷の保存則). \
@@ -605,7 +580,6 @@ $ frac(partial rho, partial t) + upright(bold(nabla)) dot.op bold(j) = 0 $
 
 ]
 $ upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(H) \) & = upright(bold(nabla)) dot.op bold(j) + frac(partial, partial t) (upright(bold(nabla)) dot.op bold(D)) = frac(partial rho, partial t) + upright(bold(nabla)) dot.op bold(j) = 0 $
-0◻
 
 #block[
 #strong[定理 35] (磁性体中のエネルギー). \
@@ -615,7 +589,7 @@ $ u_m = integral_0^B bold(H) dot.op upright(d) bold(B) $
 ]
 誘電体と同様にして
 $ Delta u_M & = bold(H) dot.op \( Delta bold(M) + mu_0 Delta bold(H) \) = bold(H) dot.op Delta bold(B)\
-u_M & = integral_0^B bold(H) dot.op upright(d) bold(B) $ 0◻
+u_M & = integral_0^B bold(H) dot.op upright(d) bold(B) $
 
 #block[
 #strong[定理 36] (エネルギー保存則). \
@@ -624,8 +598,6 @@ u_M & = integral_0^B bold(H) dot.op upright(d) bold(B) $ 0◻
 $ u_(e m) & = integral_0^(bold(D)) bold(E) dot.op upright(d) bold(D) + integral_0^(bold(B)) bold(H) dot.op upright(d) bold(B) $
 
 ]
-0◻
-
 #block[
 #strong[定理 37] (運動量保存則). \
 
@@ -653,7 +625,6 @@ $ frac(partial p_j, partial t) & = [rho bold(E) + bold(j) times bold(B) + frac(p
  & = partial_i T_(i j) $ よってこれを積分形に書き直すと Gauss
 の発散定理を用いて次のようになる。
 $ integral.cont_(partial V) bold(j) \( bold(r) \, t \) dot.op bold(n) \( bold(r) \) upright(d) S + partial_t integral_V \( bold(p)_m + bold(p)_(E M) \) upright(d) v = 0 $
-0◻
 
 #block[
 物質中の Maxwell 方程式 $bold(D) = epsilon_0 bold(E) + bold(P)$
@@ -688,7 +659,6 @@ $ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op upright(d) bold(D) = epsilon
 電位と電荷密度を用いると次のようになる。
 $ u_e \( bold(r) \) & = 1 / 2 bold(E) dot.op bold(D) = 1 / 2 \( - upright(bold(nabla)) phi.alt \) dot.op bold(D) = 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + phi.alt upright(bold(nabla)) dot.op bold(D)) = 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + phi.alt rho_e)\
 U_e & = integral 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + phi.alt rho_e) upright(d) V = 1 / 2 integral phi.alt rho_e upright(d) V $
-0◻
 
 #block[
 ]
@@ -696,31 +666,13 @@ U_e & = integral 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + ph
 $ integral.cont_S bold(D) \( bold(r) \) dot.op upright(d) bold(S) & = 4 pi r^2 D \( r \) = Q\
 D \( r \) & = frac(Q, 4 pi r^2) $ 電束密度 $D \( r \)$ から電場
 $E \( r \)$, 電位 $phi.alt \( r \)$, 電気分極 $P \( r \)$ を求められる。
-\$\$\\begin{aligned}
-    D(r)        & =
-    \\begin{dcases}
-      \\varepsilon E(r)   & (r \< a) \\\\
-      \\varepsilon\_0 E(r) & (r \> a)
-    \\end{dcases}                                                                                                                                                             \\\\
-    E(r)        & =
-    \\begin{dcases}
-      \\frac{Q}{4\\pi\\varepsilon r^2}   & (r \< a) \\\\
-      \\frac{Q}{4\\pi\\varepsilon\_0 r^2} & (r \> a)
-    \\end{dcases}                                                                                                                                                \\\\
-    P(r)        & = D(r) - \\varepsilon\_0E(r) =
-    \\begin{dcases}
-      \\frac{\\varepsilon - \\varepsilon\_0}{\\varepsilon}\\frac{Q}{4\\pi r^2} & (r \< a) \\\\
-      0                                                                 & (r \> a)
-    \\end{dcases}                                                                                                              \\\\
-    \\rho\_P(r)   & = -\\mathbf{\\nabla}\\cdot\\bm{P}= -\\frac{\\varepsilon - \\varepsilon\_0}{\\varepsilon}Q\\left(\\mathbf{\\nabla}\\cdot\\frac{\\bm{r}}{4\\pi r^2}\\right) = -\\frac{\\varepsilon - \\varepsilon\_0}{\\varepsilon}Q\\delta(\\bm{r}) \\\\
-    \\sigma\_P(r) & = \\bm{n}\\cdot\\bm{P}= \\frac{\\varepsilon - \\varepsilon\_0}{\\varepsilon}\\frac{Q}{4\\pi a^2}                                                                                       \\\\
-    \\phi(r)     & = \\int\_r^\\infty E(r)\\mathrm{d} r =
-    \\begin{dcases}
-      \\frac{Q}{4\\pi\\varepsilon}\\left(\\frac{1}{r} - \\frac{1}{a}\\right) + \\frac{Q}{4\\pi\\varepsilon\_0 a} & (r \< a) \\\\
-      \\frac{Q}{4\\pi\\varepsilon\_0 r}                                                           & (r \> a)
-    \\end{dcases}
-  
-\\end{aligned}\$\$ となる。 0◻
+$ D \( r \) & = cases(delim: "{", epsilon E \( r \) & \( r < a \), epsilon_0 E \( r \) & \( r > a \))\
+E \( r \) & = cases(delim: "{", frac(Q, 4 pi epsilon r^2) & \( r < a \), frac(Q, 4 pi epsilon_0 r^2) & \( r > a \))\
+P \( r \) & = D \( r \) - epsilon_0 E \( r \) = cases(delim: "{", frac(epsilon - epsilon_0, epsilon) frac(Q, 4 pi r^2) & \( r < a \), 0 & \( r > a \))\
+rho_P \( r \) & = - upright(bold(nabla)) dot.op bold(P) = - frac(epsilon - epsilon_0, epsilon) Q (upright(bold(nabla)) dot.op frac(bold(r), 4 pi r^2)) = - frac(epsilon - epsilon_0, epsilon) Q delta \( bold(r) \)\
+sigma_P \( r \) & = bold(n) dot.op bold(P) = frac(epsilon - epsilon_0, epsilon) frac(Q, 4 pi a^2)\
+phi.alt \( r \) & = integral_r^oo E \( r \) upright(d) r = cases(delim: "{", frac(Q, 4 pi epsilon) (1 / r - 1 / a) + frac(Q, 4 pi epsilon_0 a) & \( r < a \), frac(Q, 4 pi epsilon_0 r) & \( r > a \)) $
+となる。
 
 #block[
 導体表面での真電荷の面密度を $sigma$ とすると $D = sigma$
@@ -737,7 +689,6 @@ $E \( r \)$, 電位 $phi.alt \( r \)$, 電気分極 $P \( r \)$ を求められ�
 #block[
 ]
 $ F \( bold(P) \) & = - bold(E) dot.op bold(P) + A \( T - T_c \) P^2 + B P^4 + C P^6 + dots.h.c $
-0◻
 
 == 磁性体の電磁気学
 <磁性体の電磁気学>
@@ -755,7 +706,7 @@ $ chevron.l m_z chevron.r & = frac(sum_(S_z = - S)^S - G S_z e^(beta G S_z H), s
  & = frac(partial, partial beta) ln (frac(sinh (frac(2 S + 1, 2 S) x), sinh (frac(1, 2 S) x)))\
  & = G S (frac(2 S + 1, 2 S) coth (frac(2 S + 1, 2 S) x) - frac(1, 2 S) coth (frac(1, 2 S) x))\
  & = G S B_S \( x \) approx frac(G^2 S \( S + 1 \), 3 k_B T) H #h(2em) \( x arrow.r 0 \) $
-$ cal(H) = - 2 J bold(S) dot.op bold(S) $ 0◻
+$ cal(H) = - 2 J bold(S) dot.op bold(S) $
 
 #block[
 磁化現象において量子力学的効果である同じ向きのスピンを持つ 2
@@ -764,7 +715,7 @@ $J$ 異なる交換相互作用強磁性体
 
 ]
 $ F \( bold(M) \) & = - bold(M) dot.op bold(H)_e + A \( T - T_c \) M^2 + B M^4 $
-$T > T_c$ のとき $ M & = frac(H_e, 2 A \( T - T_c \)) $ 0◻
+$T > T_c$ のとき $ M & = frac(H_e, 2 A \( T - T_c \)) $
 
 == 超伝導体の電磁気学
 <超伝導体の電磁気学>
@@ -795,7 +746,7 @@ upright(bold(nabla)) times \( upright(bold(nabla)) times bold(B) \) & = upright(
  & = upright(bold(nabla)) times \( mu_0 bold(j)_S \) = - frac(mu_0 n_s q^2, m) bold(B)\
 nabla^2 bold(B) & = frac(mu_0 n_s q^2, m) bold(B)\
 bold(B) \( x \) & = bold(B) \( 0 \) exp (- x / lambda) #h(2em) (lambda = sqrt(frac(m, mu_0 n_s q^2)) approx 10^(- 8) tilde.op 10^(- 7) m) $
-より 0◻
+より
 
 = 特殊相対論
 <特殊相対論>

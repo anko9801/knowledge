@@ -160,54 +160,42 @@ $j + j' = 2 \, dots.h \, 2 N$ である. これより $j - j' = 0$
 逆に主結合子の前件が恒偽ならばその論理式は真である.
 よって次の同値関係が成り立つ.
 $  & frac(pi, N + 1) \( j - j' \) = 0 med \( mod med 2 pi \) arrow.l.r.double j - j' = 0 med \( mod med 2 \( N + 1 \) \) arrow.l.r.double j = j' \,\
- & frac(pi, N + 1) \( j + j' \) = 0 med \( mod med 2 pi \) arrow.l.r.double j + j' = 0 med \( mod med 2 \( N + 1 \) \) arrow.l.r.double f a l s e . $#label("Q17-3. ii-1")
+ & frac(pi, N + 1) \( j + j' \) = 0 med \( mod med 2 pi \) arrow.l.r.double j + j' = 0 med \( mod med 2 \( N + 1 \) \) arrow.l.r.double f a l s e . $<Q17-3-ii-1>
 
 (iii) $j \, j' = 1 \, dots.h \, N$ に対して次のように内積を定義する.
 このときこの内積の正規直交関係を示す.
 $ \( q^(\( j \)) \, q^(\( j' \)) \) & := sum_(i = 1)^N q_i^(\( j \)) q_i^(\( j' \)) . $
 まず (i), (ii) を用いることで次のように式変形できる.
-\$\$\\begin{aligned}
-  (q^{(j)}, q^{(j\')}) & := \\sum\_{i = 1}^{N}q\_i^{(j)}q\_i^{(j\')}                                                                                                                                                                                                                                                 \\\\
-                      & = \\frac{2}{N+1}\\sum\_{i = 1}^{N}\\sin\\left(\\frac{\\pi}{N+1}ji\\right)\\sin\\left(\\frac{\\pi}{N+1}j\'i\\right)                                                                                                                                                                                                 \\\\
-                      & = \\frac{1}{N+1}\\sum\_{i = 1}^{N}\\left(\\cos\\left(\\frac{\\pi}{N+1}(j - j\')i\\right) - \\cos\\left(\\frac{\\pi}{N+1}(j + j\')i\\right)\\right)                                                                                                                                                                           \\\\
-                      & = \\begin{dcases}
-                            \\frac{1}{N+1}\\left(\\frac{\\cos\\left(\\frac{\\pi}{2}(j - j\')\\right)\\sin\\left(\\frac{N\\pi}{2(N+1)}(j - j\')\\right)}{\\sin\\left(\\frac{\\pi}{2(N+1)}(j - j\')\\right)} - \\frac{\\cos\\left(\\frac{\\pi}{2}(j + j\')\\right)\\sin\\left(\\frac{N\\pi}{2(N+1)}(j + j\')\\right)}{\\sin\\left(\\frac{\\pi}{2(N+1)}(j + j\')\\right)}\\right) & (j \\neq j\') \\\\
-                            \\frac{1}{N+1}\\left(N - \\frac{\\cos\\left(j\\pi\\right)\\sin\\left(\\frac{jN}{N+1}\\pi\\right)}{\\sin\\left(\\frac{j}{N+1}\\pi\\right)}\\right)                                                                                                                                                      & (j = j\')
-                          \\end{dcases}.
-\\end{aligned}\$\$ 先に $j eq.not j'$ の場合を考える.
+$ \( q^(\( j \)) \, q^(\( j' \)) \) & := sum_(i = 1)^N q_i^(\( j \)) q_i^(\( j' \))\
+ & = frac(2, N + 1) sum_(i = 1)^N sin (frac(pi, N + 1) j i) sin (frac(pi, N + 1) j' i)\
+ & = frac(1, N + 1) sum_(i = 1)^N (cos (frac(pi, N + 1) \( j - j' \) i) - cos (frac(pi, N + 1) \( j + j' \) i))\
+ & = cases(delim: "{", frac(1, N + 1) (frac(cos (pi / 2 \( j - j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j - j' \)), sin (frac(pi, 2 \( N + 1 \)) \( j - j' \))) - frac(cos (pi / 2 \( j + j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j + j' \)), sin (frac(pi, 2 \( N + 1 \)) \( j + j' \)))) & \( j eq.not j' \), frac(1, N + 1) (N - frac(cos (j pi) sin (frac(j N, N + 1) pi), sin (frac(j, N + 1) pi))) & \( j = j' \)) . $
+先に $j eq.not j'$ の場合を考える.
 括弧内を通分した分子の第一項と第二項についてそれぞれ計算する.
 第一項について
 $  & cos (pi / 2 \( j - j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j - j' \)) sin (frac(pi, 2 \( N + 1 \)) \( j + j' \))\
 = & cos (frac(j - j', 2) pi) (cos (frac(\( N - 1 \) j - \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(\( N + 1 \) j - \( N - 1 \) j', 2 \( N + 1 \)) pi))\
 = & cos (frac(j - j', 2) pi) cos (frac(\( N - 1 \) j - \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(j - j', 2) pi) cos (frac(\( N + 1 \) j - \( N - 1 \) j', 2 \( N + 1 \)) pi)\
-= & cos (frac(j, N + 1) pi) + cos (frac(N j - \( N + 1 \) j', N + 1) pi) - cos (frac(j', N + 1) pi) - cos (frac(\( N + 1 \) j - N j', N + 1) pi) . $#label("Q17-3. iii 1")
+= & cos (frac(j, N + 1) pi) + cos (frac(N j - \( N + 1 \) j', N + 1) pi) - cos (frac(j', N + 1) pi) - cos (frac(\( N + 1 \) j - N j', N + 1) pi) . $<Q17-3-iii-1>
 第二項について
 $  & cos (pi / 2 \( j + j' \)) sin (frac(N pi, 2 \( N + 1 \)) \( j + j' \)) sin (frac(pi, 2 \( N + 1 \)) \( j - j' \))\
 = & cos (frac(j + j', 2) pi) (cos (frac(\( N - 1 \) j + \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(\( N + 1 \) j + \( N - 1 \) j', 2 \( N + 1 \)) pi))\
 = & cos (frac(j + j', 2) pi) cos (frac(\( N - 1 \) j + \( N + 1 \) j', 2 \( N + 1 \)) pi) - cos (frac(j + j', 2) pi) cos (frac(\( N + 1 \) j + \( N - 1 \) j', 2 \( N + 1 \)) pi)\
-= & cos (frac(N j + \( N + 1 \) j', N + 1) pi) + cos (frac(j, N + 1) pi) - cos (frac(\( N + 1 \) j + N j', N + 1) pi) - cos (frac(j', N + 1) pi) . $#label("Q17-3. iii 2")
-これより分子は次のようになる. \$\$\\begin{aligned}
-  \\eqref{Q17-3. iii 1} - \\eqref{Q17-3. iii 2} & = \\left(\\cos\\frac{j}{N+1}\\pi + \\cos\\left(\\frac{Nj}{N+1} - j\'\\right)\\pi - \\cos\\frac{j\'}{N+1}\\pi - \\cos\\left(j - \\frac{Nj\'}{N+1}\\right)\\pi\\right)                  \\\\
-                                              & - \\left(\\cos\\left(\\frac{Nj}{N+1} + j\'\\right)\\pi + \\cos\\frac{j}{N+1}\\pi - \\cos\\left(j + \\frac{Nj\'}{N+1}\\right)\\pi - \\cos\\frac{j\'}{N+1}\\pi\\right)                  \\\\
-                                              & = \\cos\\left(\\frac{Nj}{N+1} - j\'\\right)\\pi - \\cos\\left(\\frac{Nj}{N+1} + j\'\\right)\\pi + \\cos\\left(j + \\frac{Nj\'}{N+1}\\right)\\pi - \\cos\\left(j - \\frac{Nj\'}{N+1}\\right)\\pi \\\\
-                                              & = 2\\sin\\left(j\'\\pi\\right)\\sin\\left(\\frac{Nj}{N+1}\\pi\\right) - 2\\sin\\left(j\\pi\\right)\\sin\\left(\\frac{Nj\'}{N+1}\\pi\\right)                                                 \\\\
-                                              & = 0 \\qquad (\\because j, j\'\\in\\mathbb{Z}).
-\\end{aligned}\$\$ よって $j eq.not j'$ のときは
-$\( q^(\( j \)) \, q^(\( j' \)) \) = 0$ となる.
+= & cos (frac(N j + \( N + 1 \) j', N + 1) pi) + cos (frac(j, N + 1) pi) - cos (frac(\( N + 1 \) j + N j', N + 1) pi) - cos (frac(j', N + 1) pi) . $<Q17-3-iii-2>
+これより分子は次のようになる.
+$ upright(Q 17 - 3 . i i i 1) - upright(Q 17 - 3 . i i i 2) & = (cos frac(j, N + 1) pi + cos (frac(N j, N + 1) - j') pi - cos frac(j', N + 1) pi - cos (j - frac(N j', N + 1)) pi)\
+ & - (cos (frac(N j, N + 1) + j') pi + cos frac(j, N + 1) pi - cos (j + frac(N j', N + 1)) pi - cos frac(j', N + 1) pi)\
+ & = cos (frac(N j, N + 1) - j') pi - cos (frac(N j, N + 1) + j') pi + cos (j + frac(N j', N + 1)) pi - cos (j - frac(N j', N + 1)) pi\
+ & = 2 sin (j' pi) sin (frac(N j, N + 1) pi) - 2 sin (j pi) sin (frac(N j', N + 1) pi)\
+ & = 0 #h(2em) \( because j \, j' in bb(Z) \) . $ よって $j eq.not j'$
+のときは $\( q^(\( j \)) \, q^(\( j' \)) \) = 0$ となる.
 
 次に $j = j'$ の場合を考える. これは $j$
-が奇数か偶数かで場合分けして考える. \$\$\\begin{aligned}
-  \\frac{\\cos\\left(j\\pi\\right)\\sin\\left(\\frac{jN}{N+1}\\pi\\right)}{\\sin\\left(\\frac{j}{N+1}\\pi\\right)} & =
-  \\begin{dcases}
-    \\frac{\\cos\\left(2k\\pi\\right)\\sin\\left(\\frac{2kN}{N+1}\\pi\\right)}{\\sin\\left(\\frac{2k}{N+1}\\pi\\right)}           & (j = 2k, k\\in\\mathbb{Z})   \\\\
-    \\frac{\\cos\\left((2k-1)\\pi\\right)\\sin\\left(\\frac{(2k-1)N}{N+1}\\pi\\right)}{\\sin\\left(\\frac{2k-1}{N+1}\\pi\\right)} & (j = 2k-1, k\\in\\mathbb{Z})
-  \\end{dcases} \\\\ & =
-  \\begin{dcases}
-    \\frac{1\\cdot\\sin\\left(2k\\pi\\frac{N}{N+1} - 2k\\pi\\right)}{\\sin\\left(2k\\pi\\frac{1}{N+1}\\right)} \\\\
-    \\frac{-1 \\cdot -\\sin\\left((2k-1)\\pi\\frac{N}{N+1} - (2k-1)\\pi\\right)}{\\sin\\left((2k-1)\\pi\\frac{1}{N+1}\\right)}
-  \\end{dcases}         \\\\
-                                                                               & = -1.
-\\end{aligned}\$\$ よって $j = j'$ のときは
+が奇数か偶数かで場合分けして考える.
+$ frac(cos (j pi) sin (frac(j N, N + 1) pi), sin (frac(j, N + 1) pi)) & = cases(delim: "{", frac(cos (2 k pi) sin (frac(2 k N, N + 1) pi), sin (frac(2 k, N + 1) pi)) & \( j = 2 k \, k in bb(Z) \), frac(cos (\( 2 k - 1 \) pi) sin (frac(\( 2 k - 1 \) N, N + 1) pi), sin (frac(2 k - 1, N + 1) pi)) & \( j = 2 k - 1 \, k in bb(Z) \))\
+ & = {frac(1 dot.op sin (2 k pi frac(N, N + 1) - 2 k pi), sin (2 k pi frac(1, N + 1)))\
+frac(- 1 dot.op - sin (\( 2 k - 1 \) pi frac(N, N + 1) - \( 2 k - 1 \) pi), sin (\( 2 k - 1 \) pi frac(1, N + 1)))\
+ & = - 1 . $ よって $j = j'$ のときは
 $\( q^(\( j \)) \, q^(\( j' \)) \) = 1$ となる. これより,
 まとめると次の式が成り立つ.
 $ \( q^(\( j \)) \, q^(\( j' \)) \) = delta_(j \, j') . $
@@ -554,14 +542,9 @@ $ bold(k)_(j_x \, j_y \, j_z) & = frac(pi, a \( N + 1 \)) \( j_x \, j_y \, j_z \
 
 #block[
 Q 17-12. Debye 模型における調和振動子の角振動数の個数分布関数
-$g \( omega \)$ は次のように表される. \$\$\\begin{aligned}
-    g(\\omega) & = \\begin{dcases}
-                    \\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2 & (\\omega\\leq\\omega\_D) \\\\
-                    0                                                    & (\\omega \> \\omega\_D)
-                  \\end{dcases} \\\\
-    \\omega\_D  & = (6\\pi^2)^{1/3}\\sqrt{\\frac{\\kappa}{m}}.
-  
-\\end{aligned}\$\$
+$g \( omega \)$ は次のように表される.
+$ g \( omega \) & = cases(delim: "{", frac(9 N^3, omega_D) (omega / omega_D)^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \))\
+omega_D & = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) . $
 
 ]
 (i) Debye 模型における調和振動子の角振動数の個数分布関数 $g \( omega \)$
@@ -603,20 +586,16 @@ $ g \( omega \) & approx 3 sqrt(m / kappa) frac(N + 1, pi) times ("半径" sqrt(
  & = 3 sqrt(m / kappa) frac(N + 1, pi) times frac(4 pi, 8) (sqrt(m / kappa) frac(N + 1, pi) omega)^2\
  & = frac(3 pi, 2) (sqrt(m / kappa) frac(N + 1, pi))^3 omega^2 . $
 
-(vii) $omega$ に関する条件
-#link(<omega_condition>)[\[omega\_condition\]]
+(vii) $omega$ に関する条件 #link(<omega_condition>)[omega_condition]
 が成り立たない場合は立方体の積分範囲と球面の表面の共通部分の面積となるので複雑な式となってしまう.
 ただ Debye 模型は低温における比熱の振る舞いからの要請により
 $omega \( bold(k) \)$ が大きいときは気にしなくて良い模型でした. これより
 $g \( omega \)$ の $\( j_x \, j_y \, j_z \)$
 に関する積分範囲を立方体から球へ修正することが許され, 次のように
-$g \( omega \)$ は表される. \$\$\\begin{aligned}
-  g(\\omega) & = \\begin{dcases}
-                  \\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 & (\\omega\\leq\\omega\_D) \\\\
-                  0                                                                  & (\\omega \> \\omega\_D)
-                \\end{dcases}.
-\\end{aligned}\$\$ ただし $N gt.double 1$ であることから $N + 1$ を $N$
-と近似し, また打ち切る角振動数 $omega_D$ を次のように定める.
+$g \( omega \)$ は表される.
+$ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
+ただし $N gt.double 1$ であることから $N + 1$ を $N$ と近似し,
+また打ち切る角振動数 $omega_D$ を次のように定める.
 $ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega g \( omega \) = 3 N^3 . $
 この $omega_D$ を Debye の角振動数という.
 
@@ -625,16 +604,9 @@ $ integral_0^(omega_D) upright(d) omega g \( omega \) & = integral_0^(omega_D) u
 omega_D & = (3 N^3 2 / pi)^(1 \/ 3) sqrt(kappa / m) pi / N = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) . $
 
 (ix) また Debye の角振動数 $omega_D$ を用いて $g \( omega \)$
-は次のように表される. \$\$\\begin{aligned}
-  g(\\omega) & = \\begin{dcases}
-                  \\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 & (\\omega\\leq\\omega\_D) \\\\
-                  0                                                                  & (\\omega \> \\omega\_D)
-                \\end{dcases} \\\\
-            & = \\begin{dcases}
-                  \\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2 & (\\omega\\leq\\omega\_D) \\\\
-                  0                                                    & (\\omega \> \\omega\_D)
-                \\end{dcases}.
-\\end{aligned}\$\$
+は次のように表される.
+$ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \))\
+ & = cases(delim: "{", frac(9 N^3, omega_D) (omega / omega_D)^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
 
 現実の物質に Debye 模型を当てはめるときには, それぞれの物質は固有の
 Debye 角振動数 $omega_D$ を持つことになる.
@@ -775,18 +747,14 @@ $ C & = 3 n R (1 - 1 / 20 (frac(planck omega_D, k_B T))^2 + 1 / 560 (frac(planck
 
 ]
 (i) まず Q 17-17(i) の結果を比熱の表式に適用すると次のようになる.
-\$\$\\begin{aligned}
-  C & = 3nR\\cdot (-3)b^2\\frac{\\mathrm{d} I(b)}{\\mathrm{d} b} \\approx 3nR\\cdot (-3)b^2\\dv{b}(\\frac{1}{3b}) = 3nR.
-\\end{aligned}\$\$
+$ C & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) approx 3 n R dot.op \( - 3 \) b^2 frac(upright(d), upright(d) b) \( frac(1, 3 b) \) = 3 n R . $
 
 (ii) 次に Q 17-17(ii) の結果を比熱の表式に適用すると次のようになる.
-\$\$\\begin{aligned}
-  C & = 3nR\\cdot (-3)b^2\\frac{\\mathrm{d} I(b)}{\\mathrm{d} b}                                                                                                                                                \\\\
-    & \\approx 3nR\\cdot (-3)b^2\\dv{b}(\\frac{1}{3b} - \\frac{1}{8} + \\frac{1}{60}b - \\frac{1}{5040}b^3 + \\frac{1}{272160}b^5 - \\cdots)                                                 \\\\
-    & = 3nR\\cdot (-3)b^2\\left(-\\frac{1}{3b^2} + \\frac{1}{60} - \\frac{1}{1680}b^2 + \\frac{1}{54432}b^4 - \\cdots\\right)                                                                      \\\\
-    & = 3nR\\left(1 - \\frac{1}{20}b^2 + \\frac{1}{560}b^4 - \\frac{1}{18144}b^6 + \\cdots\\right)                                                                                               \\\\
-    & = 3nR\\left(1 - \\frac{1}{20}\\left(\\frac{\\hbar\\omega\_D}{k\_BT}\\right)^2 + \\frac{1}{560}\\left(\\frac{\\hbar\\omega\_D}{k\_BT}\\right)^4 - \\frac{1}{18144}\\left(\\frac{\\hbar\\omega\_D}{k\_BT}\\right)^6 + \\cdots\\right).
-\\end{aligned}\$\$
+$ C & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b)\
+ & approx 3 n R dot.op \( - 3 \) b^2 frac(upright(d), upright(d) b) \( frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 + 1 / 272160 b^5 - dots.h.c \)\
+ & = 3 n R dot.op \( - 3 \) b^2 (- frac(1, 3 b^2) + 1 / 60 - 1 / 1680 b^2 + 1 / 54432 b^4 - dots.h.c)\
+ & = 3 n R (1 - 1 / 20 b^2 + 1 / 560 b^4 - 1 / 18144 b^6 + dots.h.c)\
+ & = 3 n R (1 - 1 / 20 (frac(planck omega_D, k_B T))^2 + 1 / 560 (frac(planck omega_D, k_B T))^4 - 1 / 18144 (frac(planck omega_D, k_B T))^6 + dots.h.c) . $
 
 #block[
 Q 17-19. 低温の漸近領域 $b gt.double 1$ における積分 $I \( b \)$
@@ -876,13 +844,8 @@ $ C & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b)\
 よって Debye 模型の比熱は次のようにまとめられる.
 
 #block[
-Debye 模型の比熱 \$\$\\begin{aligned}
-    C & \\approx 3nR\\times\\begin{dcases}
-                           1                                                  & (k\_BT\\gg \\hbar\\omega\_D) \\\\
-                           \\frac{4\\pi^4}{5}\\left(\\frac{k\_BT}{\\hbar\\omega\_D}\\right)^3 & (k\_BT\\ll \\hbar\\omega\_D)
-                         \\end{dcases}.
-  
-\\end{aligned}\$\$
+Debye 模型の比熱
+$ C & approx 3 n R times cases(delim: "{", 1 & \( k_B T gt.double planck omega_D \), frac(4 pi^4, 5) (frac(k_B T, planck omega_D))^3 & \( k_B T lt.double planck omega_D \)) . $
 
 ]
 = その17-A: ゼータ関数 $zeta \( s \)$ 入門
@@ -930,18 +893,14 @@ $ x & = \( e^x - 1 \) sum_(n = 0)^oo frac(B_n, n !) x^n\
 $ sum_(m = 0)^(n - 1) frac(B_n, \( n - m \) ! m !) x^n = delta_(n \, 1) #h(2em) \( n = 1 \, 2 \, 3 \, dots.h \) . $
 
 (ii) これを小さな値の場合について具体的な式で表すと次のようになる.
-\$\$\\begin{aligned}
-  \\begin{dcases}
-    B\_0 = 1                                                                                                                                 \\\\
-    \\frac{1}{2}B\_0 + B\_1 = 0                                                                                                                \\\\
-    \\frac{1}{6}B\_0 + \\frac{1}{2}B\_1 + \\frac{1}{2}B\_2 = 0                                                                                    \\\\
-    \\frac{1}{24}B\_0 + \\frac{1}{6}B\_1 + \\frac{1}{4}B\_2 + \\frac{1}{6}B\_3 = 0                                                                  \\\\
-    \\frac{1}{120}B\_0 + \\frac{1}{24}B\_1 + \\frac{1}{12}B\_2 + \\frac{1}{12}B\_3 + \\frac{1}{24}B\_4 = 0                                            \\\\
-    \\frac{1}{720}B\_0 + \\frac{1}{120}B\_1 + \\frac{1}{48}B\_2 + \\frac{1}{36}B\_3 + \\frac{1}{48}B\_4 + \\frac{1}{120}B\_5 = 0                        \\\\
-    \\frac{1}{5040}B\_0 + \\frac{1}{720}B\_1 + \\frac{1}{240}B\_2 + \\frac{1}{144}B\_3 + \\frac{1}{144}B\_4 + \\frac{1}{240}B\_5 + \\frac{1}{720}B\_6 = 0 \\\\
-    \\cdots
-  \\end{dcases}.
-\\end{aligned}\$\$
+$ {B_0 = 1\
+1 / 2 B_0 + B_1 = 0\
+1 / 6 B_0 + 1 / 2 B_1 + 1 / 2 B_2 = 0\
+1 / 24 B_0 + 1 / 6 B_1 + 1 / 4 B_2 + 1 / 6 B_3 = 0\
+1 / 120 B_0 + 1 / 24 B_1 + 1 / 12 B_2 + 1 / 12 B_3 + 1 / 24 B_4 = 0\
+1 / 720 B_0 + 1 / 120 B_1 + 1 / 48 B_2 + 1 / 36 B_3 + 1 / 48 B_4 + 1 / 120 B_5 = 0\
+1 / 5040 B_0 + 1 / 720 B_1 + 1 / 240 B_2 + 1 / 144 B_3 + 1 / 144 B_4 + 1 / 240 B_5 + 1 / 720 B_6 = 0\
+dots.h.c . $
 
 #block[
 Q 17A-3.
@@ -949,18 +908,14 @@ $ B_0 = 1 \, B_1 = - 1 / 2 \, B_2 = 1 / 6 \, B_3 = 0 \, B_4 = - 1 / 30 \, B_5 = 
 
 ]
 Q 17A-2 (ii) より $B_0 = 1$ であることがわかる. そして既に求めた添字が 0
-と奇数のものを代入すると次のようになる. \$\$\\begin{aligned}
-  \\begin{dcases}
-    1 = 1                                                                                        \\\\
-    \\frac{1}{2} - \\frac{1}{2} = 0                                                                \\\\
-    \\frac{1}{6} - \\frac{1}{4} + \\frac{1}{2}B\_2 = 0                                               \\\\
-    \\frac{1}{24} - \\frac{1}{12} + \\frac{1}{4}B\_2 = 0                                             \\\\
-    \\frac{1}{120} - \\frac{1}{48} + \\frac{1}{12}B\_2 + \\frac{1}{24}B\_4 = 0                         \\\\
-    \\frac{1}{720} - \\frac{1}{240} + \\frac{1}{48}B\_2 + \\frac{1}{48}B\_4 = 0                        \\\\
-    \\frac{1}{5040} - \\frac{1}{1440} + \\frac{1}{240}B\_2 + \\frac{1}{144}B\_4 + \\frac{1}{720}B\_6 = 0 \\\\
-    \\cdots
-  \\end{dcases}.
-\\end{aligned}\$\$ これより $B_2 \, B_4 \, B_6$
+と奇数のものを代入すると次のようになる. $ {1 = 1\
+1 / 2 - 1 / 2 = 0\
+1 / 6 - 1 / 4 + 1 / 2 B_2 = 0\
+1 / 24 - 1 / 12 + 1 / 4 B_2 = 0\
+1 / 120 - 1 / 48 + 1 / 12 B_2 + 1 / 24 B_4 = 0\
+1 / 720 - 1 / 240 + 1 / 48 B_2 + 1 / 48 B_4 = 0\
+1 / 5040 - 1 / 1440 + 1 / 240 B_2 + 1 / 144 B_4 + 1 / 720 B_6 = 0\
+dots.h.c . $ これより $B_2 \, B_4 \, B_6$
 について上の数式から求められる.
 $ B_2 = 1 / 6 \, quad B_4 = - 1 / 30 \, quad B_6 = 1 / 42 . $
 よってこれまでの結果をまとめると次のようになる.
@@ -981,7 +936,7 @@ Gamma \( 2 s \) & = frac(2^(2 s), 2 sqrt(pi)) Gamma \( s \) Gamma (s + 1 / 2) . 
 == ゼータ関数 $zeta \( s \)$ の定義と基礎的性質
 <ゼータ関数-zetas-の定義と基礎的性質>
 #block[
-Definition. ゼータ関"数ゼ"ータ関数 $zeta \( s \)$ は次のように定義される.
+Definition. ゼータ関数 ゼータ関数 $zeta \( s \)$ は次のように定義される.
 $ zeta \( s \) & := sum_(n = 1)^oo 1 / n^s #h(2em) \( "Re" s > 1 \) . $
 
 ]

@@ -146,7 +146,7 @@ Gamma_(med beta mu)^nu & = 1 / 2 g^(alpha nu) (g_(alpha beta \, mu) + g_(mu alph
 $ Gamma_(med alpha beta)^mu & = 1 / 2 g^(mu nu) \( g_(alpha nu \, beta) + g_(beta nu \, alpha) - g_(alpha beta \, nu) \) $
 
 #block[
-テンソル方程"式テ"ンソルの共変微分は次のようになる。
+テンソル方程式 テンソルの共変微分は次のようになる。
 $ V_(med ; beta)^alpha & = V_(med \, beta)^alpha + Gamma_(med mu beta)^alpha V^mu\
 P_(alpha ; beta) & = P_(alpha \, beta) + Gamma_(med alpha beta)^mu P_mu\
 T_(quad ; gamma)^(alpha beta) & = T_(quad \, gamma)^(alpha beta) + Gamma_(med mu gamma)^alpha T^(mu beta) + Gamma_(med mu gamma)^beta T^(alpha mu) $
@@ -194,14 +194,13 @@ $ g_(mu nu) \|_(cal(P)) & = Lambda_(med mu)^alpha \|_(cal(P)) Lambda_(med nu)^be
 g_(mu nu \, gamma) \|_(cal(P)) & = 0\
 g_(mu nu \, gamma lambda) \|_(cal(P)) & eq.not 0 $ これらはそれぞれ $10$
 個、$10 times 4 = 40$ 個、$10 times 10 = 100$ 個の独立な成分を持つ。
-それぞれのテンソルをテイラー展開する。 \$\$\\begin{aligned}
-    \\Lambda^{\\alpha}\_{\\ \\mu} & = \\Lambda^{\\alpha}\_{\\ \\mu}|\_\\mathscr{P} + (x^\\gamma - x\_0^\\gamma)\\diffp.|.{\\Lambda^{\\alpha}\_{\\ \\mu}}{x^\\gamma}\[\\mathscr{P}\] + \\frac{1}{2}(x^\\gamma - x\_0^\\gamma)(x^\\lambda - x\_0^\\lambda)\\diffp.|.{\\Lambda^{\\alpha}\_{\\ \\mu}}{x^\\lambda,x^\\gamma}\[\\mathscr{P}\] + \\cdots                                                                            \\\\
-                             & = \\Lambda^{\\alpha}\_{\\ \\mu}|\_\\mathscr{P} + (x^\\gamma - x\_0^\\gamma)\\diffp.|.{x^\\alpha}{x^\\gamma,x^\\mu}\[\\mathscr{P}\] + \\frac{1}{2}(x^\\gamma - x\_0^\\gamma)(x^\\lambda - x\_0^\\lambda)\\diffp.|.{x^\\alpha}{x^\\lambda,x^\\gamma,x^\\mu}\[\\mathscr{P}\] + \\cdots                                                                                                \\\\
-    g\_{\\alpha\\beta}(x)       & = g\_{\\alpha\\beta}|\_\\mathscr{P} + (x^\\gamma - x\_0^\\gamma)\\diffp.|.{g\_{\\alpha\\beta}}{x^\\gamma}\[\\mathscr{P}\] + \\frac{1}{2}(x^\\gamma - x\_0^\\gamma)(x^\\lambda - x\_0^\\lambda)\\diffp.|.{g\_{\\alpha\\beta}}{x^\\lambda,x^\\gamma}\[\\mathscr{P}\] + \\cdots                                                                                                       \\\\
-    g\_{\\mu\\nu}(x)            & = \[\\Lambda^{\\alpha}\_{\\ \\mu}\\Lambda^{\\beta}\_{\\ \\nu}g\_{\\alpha\\beta}\]\_\\mathscr{P} + (x^\\gamma - x\_0^\\gamma)\\left\[\\Lambda^{\\alpha}\_{\\ \\mu}\\Lambda^{\\beta}\_{\\ \\nu}g\_{\\alpha\\beta,\\lambda} + \\Lambda^{\\alpha}\_{\\ \\mu}\\Lambda^{\\beta}\_{\\ \\nu,\\lambda}g\_{\\alpha\\beta} + \\Lambda^{\\alpha}\_{\\ \\mu,\\lambda}\\Lambda^{\\beta}\_{\\ \\nu}g\_{\\alpha\\beta}\\right\]\_\\mathscr{P} \\\\
-                             & + \\frac{1}{2}(x^\\gamma - x\_0^\\gamma)(x^\\lambda - x\_0^\\lambda)\[\\cdots\]\_\\mathscr{P} + \\cdots
-  
-\\end{aligned}\$\$ $Lambda_(med mu)^alpha \|_(cal(P))$,
+それぞれのテンソルをテイラー展開する。
+$ Lambda_(med mu)^alpha & = Lambda_(med mu)^alpha \|_(cal(P)) + \( x^gamma - x_0^gamma \) frac(partial Lambda_(med mu)^alpha, partial x^gamma) \[ cal(P) \] + 1 / 2 \( x^gamma - x_0^gamma \) \( x^lambda - x_0^lambda \) frac(partial Lambda_(med mu)^alpha, partial x^lambda \, x^gamma) \[ cal(P) \] + dots.h.c\
+ & = Lambda_(med mu)^alpha \|_(cal(P)) + \( x^gamma - x_0^gamma \) frac(partial x^alpha, partial x^gamma \, x^mu) \[ cal(P) \] + 1 / 2 \( x^gamma - x_0^gamma \) \( x^lambda - x_0^lambda \) frac(partial x^alpha, partial x^lambda \, x^gamma \, x^mu) \[ cal(P) \] + dots.h.c\
+g_(alpha beta) \( x \) & = g_(alpha beta) \|_(cal(P)) + \( x^gamma - x_0^gamma \) frac(partial g_(alpha beta), partial x^gamma) \[ cal(P) \] + 1 / 2 \( x^gamma - x_0^gamma \) \( x^lambda - x_0^lambda \) frac(partial g_(alpha beta), partial x^lambda \, x^gamma) \[ cal(P) \] + dots.h.c\
+g_(mu nu) \( x \) & = \[ Lambda_(med mu)^alpha Lambda_(med nu)^beta g_(alpha beta) \]_(cal(P)) + \( x^gamma - x_0^gamma \) [Lambda_(med mu)^alpha Lambda_(med nu)^beta g_(alpha beta \, lambda) + Lambda_(med mu)^alpha Lambda_(med nu \, lambda)^beta g_(alpha beta) + Lambda_(med mu \, lambda)^alpha Lambda_(med nu)^beta g_(alpha beta)]_(cal(P))\
+ & + 1 / 2 \( x^gamma - x_0^gamma \) \( x^lambda - x_0^lambda \) \[ dots.h.c \]_(cal(P)) + dots.h.c $
+$Lambda_(med mu)^alpha \|_(cal(P))$,
 $Lambda_(med mu \, gamma)^alpha \|_(cal(P))$,
 $Lambda_(med mu \, gamma lambda)^alpha \|_(cal(P))$
 は偏微分の対称性よりそれぞれ $4 times 4 = 16$ 個、$4 times 10 = 40$
@@ -214,7 +213,7 @@ $ g_(mu nu) \|_(cal(P)) & = Lambda_(med mu)^alpha \|_(cal(P)) Lambda_(med nu)^be
 $ g_(mu nu \, gamma) \|_(cal(P)) & = 0 $ については 40 個と 40
 個でなんとか満たすことができる。
 $ g_(mu nu \, gamma lambda) \|_(cal(P)) & = 0 $ を満たすことについては
-100 個に対して 80 個で不可能である。 0◻
+100 個に対して 80 個で不可能である。
 
 #block[
 長さ $upright(d) l$ と体積
@@ -237,10 +236,10 @@ $ \( g_(alpha beta) \) & = \( Lambda_(med beta)^alpha \) \( eta_(alpha beta) \) 
 g = det \( g_(alpha beta) \) & = det \( Lambda_(med beta)^alpha \) det \( eta_(alpha beta) \) det \( Lambda_(med beta)^alpha \) = - det \( Lambda_(med beta)^alpha \)^2\
 det \( Lambda_(med beta)^alpha \) & = sqrt(- g) $ となるから
 $ upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3 & = sqrt(- g) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3 $
-となる。 0◻
+となる。
 
 #block[
-局所慣性"系あ"る点 $cal(P)$ が局所慣性系となっているとき
+局所慣性系 ある点 $cal(P)$ が局所慣性系となっているとき
 $ g_(alpha beta) & = eta_(alpha beta)\
 g_(alpha beta \, mu) & = 0 arrow.r.double.long Gamma_(med alpha beta)^mu = 0 $
 
@@ -257,7 +256,7 @@ $ Gamma_(med mu alpha)^alpha & = 1 / 2 g^(alpha beta) \( g_(mu beta \, alpha) + 
  & = 1 / sqrt(- g) \( sqrt(- g) \)_(\, mu) #h(2em) \( g_(\, mu) = g g^(alpha beta) g_(alpha beta \, mu) \) $
 $ A_(med ; alpha)^alpha & = A_(med \, alpha)^alpha + A^mu Gamma_(med mu alpha)^alpha\
  & = A_(med \, alpha)^alpha + 1 / sqrt(- g) A^mu \( sqrt(- g) \)_(\, mu)\
- & = 1 / sqrt(- g) \( sqrt(- g) A^mu \)_(\, mu) $ 0◻ 測地線
+ & = 1 / sqrt(- g) \( sqrt(- g) A^mu \)_(\, mu) $ 測地線
 $ V^alpha \( B \) - V^alpha \( A \) & = integral_A^B frac(partial V^alpha, partial x^1) upright(d) x^1 = - integral_(x^2 = b) Gamma_(med mu 1)^alpha V^mu upright(d) x^1 $
 $ delta V^alpha & = "最初に" delta a bold(e)_sigma \, "次に" delta b bold(e)_lambda \, "そして" - delta a bold(e)_sigma \, "最後に" - delta b bold(e)_lambda "の移動による" V^alpha "の変化"\
  & = - integral_(x^lambda = b) Gamma_(med mu sigma)^alpha V^mu upright(d) x^sigma - integral_(x^sigma = a + delta a) Gamma_(med mu lambda)^alpha V^mu upright(d) x^lambda + integral_(x^lambda = b + delta b) Gamma_(med mu sigma)^alpha V^mu upright(d) x^sigma + integral_(x^sigma = a) Gamma_(med mu lambda)^alpha V^mu upright(d) x^lambda\

@@ -36,7 +36,7 @@ f_(i + 1) - f_(i - 1) & = 2 f_(i') Delta x + cal(O) \( Delta x^3 \) $
 $ f_(i') & approx frac(f_(i + 1) - f_i, Delta x) + cal(O) \( Delta x \)\
 f_(i') & approx frac(f_i - f_(i - 1), Delta x) + cal(O) \( Delta x \)\
 f_(i') & approx frac(f_(i + 1) - f_(i - 1), 2 Delta x) + cal(O) \( Delta x^2 \) $
-0◻
+
 
 #block[
 #strong[定理 2] (2次精度2階微分の差分公式). \
@@ -50,7 +50,7 @@ $ f \( x plus.minus Delta x \) & = f_(i plus.minus 1) = f_i plus.minus f_(i') De
 となりこの和について計算することで求まる。
 $ f_(i + 1) + f_(i - 1) & = 2 f_i + f_(i'') Delta x^2 + cal(O) \( Delta x^4 \)\
 f_(i'') & = frac(f_(i + 1) - 2 f_i + f_(i - 1), Delta x^2) + cal(O) \( Delta x^2 \) $
-0◻
+
 
 #block[
 #strong[定理 3] (2階微分の差分公式). \
@@ -92,7 +92,7 @@ f_i^(\( n + 1 \)) & = f_i^(\( n \)) + frac(kappa Delta t, Delta x^2) (f_(i + 1)^
 $ frac(A^(\( n + 1 \)) e^(i k x_i) - A^(\( n \)) e^(i k x_i), Delta t) & = kappa frac(A^(\( n \)) e^(i k x_(i + 1)) - 2 A^(\( n \)) e^(i k x_i) + A^(\( n \)) e^(i k x_(i - 1)), Delta x^2)\
 lr(|A_k^(\( n + 1 \)) / A_k^(\( n \))|) & = lr(|1 + frac(kappa Delta t, Delta x^2) \( e^(i k Delta x) - 2 + e^(- i k Delta x) \)|)\
  & = lr(|1 - frac(2 kappa Delta t, Delta x^2) \( 1 - cos \( k Delta x \) \)|) lt.eq 1 $
-0◻
+
 
 #block[
 $ frac(partial f \( x \, t \), partial t) & = - c frac(partial f \( x \, t \), partial x) $
@@ -120,7 +120,7 @@ $ frac(f_i^(\( n + 1 \)) - f_i^(\( n \)), Delta t) & = - c frac(f_i^(\( n \)) - 
 $ (A \( t_(n + 1) \) - A \( t_n \)) frac(e^(i k x_i), Delta t) & = - c (1 - e^(- i k Delta x)) frac(A \( t_n \) e^(i k x_i), Delta x)\
 lr(|frac(A \( t_(n + 1) \), A \( t_n \))|) & = sqrt(lr(|1 - nu \( 1 - e^(- i k Delta x) \)|)^2)\
  & = sqrt(1 - 2 nu \( 1 - nu \) \( 1 - cos \( k Delta x \) \)) lt.eq 1\
-arrow.l.r.double nu & lt.eq 1 $ 0◻
+arrow.l.r.double nu & lt.eq 1 $ 
 これは差分により拡散項が増えてしまったからである。
 
 #block[
@@ -138,15 +138,13 @@ $ frac(partial tilde(bold(v)), partial tilde(t)) & = - \( tilde(bold(v)) dot.op 
 Navier-Stokes 方程式
 
 ]
-$omega = nabla times bold(v)$ とすると \$\$\\begin{aligned}
-    \\frac{\\partial \\omega\_i}{\\partial t} & = \\diffp{t}(\\nabla\\times\\bm{v})\_i                                                                                                                       \\\\
-                        & = -\\nabla\\times((\\bm{v}\\cdot\\nabla)\\bm{v}) - \\nabla\\times\\nabla p + \\frac{1}{\\mathrm{Re}}\\nabla\\times\\nabla^2\\bm{v}                                     \\\\
-                        & = -\\varepsilon\_{ijk}\\partial\_j((v\_l\\partial\_l)v\_k) + \\frac{1}{\\mathrm{Re}}\\varepsilon\_{ijk}\\partial\_j\\partial\_l\\partial\_lv\_k                            \\\\
-                        & = -\\varepsilon\_{ijk}(\\partial\_jv\_l\\partial\_lv\_k + v\_l\\partial\_j\\partial\_lv\_k) + \\frac{1}{\\mathrm{Re}}\\partial\_l\\partial\_l\\varepsilon\_{ijk}\\partial\_jv\_k \\\\
-                        & = -\\varepsilon\_{ijk}\\partial\_jv\_l\\partial\_lv\_k - (\\bm{v}\\cdot\\nabla)(\\nabla\\times\\bm{v}) + \\frac{1}{\\mathrm{Re}}\\nabla^2(\\nabla\\times\\bm{v})            \\\\
-                        & = -\\varepsilon\_{ijk}\\partial\_jv\_l\\partial\_lv\_k - (\\bm{v}\\cdot\\nabla)\\omega + \\frac{1}{\\mathrm{Re}}\\nabla^2\\omega
-  
-\\end{aligned}\$\$
+$omega = nabla times bold(v)$ とすると
+$ frac(partial omega_i, partial t) & = frac(partial, partial t) \( nabla times bold(v) \)_i\
+ & = - nabla times \( \( bold(v) dot.op nabla \) bold(v) \) - nabla times nabla p + 1 / upright(R e) nabla times nabla^2 bold(v)\
+ & = - epsilon_(i j k) partial_j \( \( v_l partial_l \) v_k \) + 1 / upright(R e) epsilon_(i j k) partial_j partial_l partial_l v_k\
+ & = - epsilon_(i j k) \( partial_j v_l partial_l v_k + v_l partial_j partial_l v_k \) + 1 / upright(R e) partial_l partial_l epsilon_(i j k) partial_j v_k\
+ & = - epsilon_(i j k) partial_j v_l partial_l v_k - \( bold(v) dot.op nabla \) \( nabla times bold(v) \) + 1 / upright(R e) nabla^2 \( nabla times bold(v) \)\
+ & = - epsilon_(i j k) partial_j v_l partial_l v_k - \( bold(v) dot.op nabla \) omega + 1 / upright(R e) nabla^2 omega $
 $bold(v) \( x \, y \, t \) = \( u \( x \, y \, t \) \, v \( x \, y \, t \) \, 0 \)$
 とするとき、次の渦度方程式となる。
 $ frac(partial omega_3, partial t) & = - \( bold(v) dot.op nabla \) omega_3 + 1 / upright(R e) nabla^2 omega_3 $
@@ -158,7 +156,7 @@ omega & = nabla times \( nabla times Phi \)\
  & = nabla dot.op \( nabla Phi \) - nabla^2 Phi $
 流れ関数を用いると解くべき方程式は渦度方程式とポアソン方程式に分けることができる。
 $ frac(partial omega, partial t) & = frac(partial Phi, partial x) frac(partial omega, partial y) - frac(partial Phi, partial y) frac(partial omega, partial x) + 1 / upright(R e) nabla^2 omega\
-nabla^2 Phi & = - omega $ 0◻
+nabla^2 Phi & = - omega $ 
 
 #block[
 #strong[定理 7] (). \
@@ -215,13 +213,10 @@ bold(y) & = bold(g) \( bold(x) \, t \) $ 第 1 式を状態方程式、第 2
 
 ]
 まず平衡点 $bold(x)_0 \, bold(u)_0 \, bold(y)_0$ において展開する。
-\$\$\\begin{aligned}
-  \\dot\\bm{x}& \\approx \\frac{\\partial \\bm{f}}{\\partial \\bm{x}}\[(\\bm{x}\_0, \\bm{u}\_0)\]\\bm{x}+ \\frac{\\partial \\bm{f}}{\\partial \\bm{u}}\[(\\bm{x}\_0, \\bm{u}\_0)\]\\bm{u}\\\\
-  \\bm{y}& \\approx \\frac{\\partial \\bm{g}}{\\partial \\bm{x}}\[\\bm{x}\_0\]\\bm{x}
-\\end{aligned}\$\$ これより \$\$\\begin{aligned}
-  \\dot\\bm{x}& = A\\bm{x}+ B\\bm{u}\\\\
-  \\bm{y}& = C\\bm{x}
-\\end{aligned}\$\$ と定式化できる。 $bold(x) = T bold(z)$ とおくと
+$ dot(bold(x)) & approx frac(partial bold(f), partial bold(x)) \[ \( bold(x)_0 \, bold(u)_0 \) \] bold(x) + frac(partial bold(f), partial bold(u)) \[ \( bold(x)_0 \, bold(u)_0 \) \] bold(u)\
+bold(y) & approx frac(partial bold(g), partial bold(x)) \[ bold(x)_0 \] bold(x) $
+これより $ dot(bold(x)) & = A bold(x) + B bold(u)\
+bold(y) & = C bold(x) $ と定式化できる。 $bold(x) = T bold(z)$ とおくと
 $ dot(bold(z)) & = T^(- 1) A T bold(z) + T^(- 1) B bold(u)\
 bold(y) & = C T bold(z) $ により $A$ を対角化できる。
 
@@ -232,22 +227,17 @@ $ bold(y) & = C exp \( A \( t - t_0 \) \) bold(x)_0 + C integral_(t_0)^t exp \( 
 
 ]
 まず $bold(u) = 0$ のときの状態方程式は次のように解ける。
-\$\$\\begin{aligned}
-    \\dot\\bm{x}& = A\\bm{x}\\\\
-    \\bm{x}& = \\exp(A(t - t\_0))\\bm{x}\_0
-  
-\\end{aligned}\$\$ これより一般において
-$bold(x) = exp \( A t \) bold(k)$ とおくと \$\$\\begin{aligned}
-    \\dot\\bm{x}& = A\\bm{x}+ \\exp(At)\\dot\\bm{k}= A\\bm{x}+ B\\bm{u}\\\\
-    \\dot\\bm{k}& = \\exp(-At)B\\bm{u}
-  
-\\end{aligned}\$\$ この微分方程式を解くと
+$ dot(bold(x)) & = A bold(x)\
+bold(x) & = exp \( A \( t - t_0 \) \) bold(x)_0 $ これより一般において
+$bold(x) = exp \( A t \) bold(k)$ とおくと
+$ dot(bold(x)) & = A bold(x) + exp \( A t \) dot(bold(k)) = A bold(x) + B bold(u)\
+dot(bold(k)) & = exp \( - A t \) B bold(u) $ この微分方程式を解くと
 $ bold(k) \( t \) - bold(k)_0 & = integral_(t_0)^t exp \( - A tau \) B bold(u) \( tau \) upright(d) tau\
 bold(k) & = exp \( - A t_0 \) bold(x)_0 + integral_(t_0)^t exp \( - A tau \) B bold(u) upright(d) tau $
 となる。よって
 $ bold(x) & = exp \( A \( t - t_0 \) \) bold(x)_0 + integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) upright(d) tau\
 bold(y) & = C exp \( A \( t - t_0 \) \) bold(x)_0 + C integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) \( tau \) upright(d) tau $
-0◻
+
 
 #block[
 ]

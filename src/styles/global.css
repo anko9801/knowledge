@@ -147,6 +147,56 @@ blockquote {
   color: var(--muted);
 }
 
+/* --- 定義・定理・証明 -------------------------------------------------------
+ * 構造と番号は src/typst/theorem.typ が持つ。ここは見た目だけを足す。
+ * 通し番号なので、種類の違いは見出し行の色だけで示せば足りる。 */
+
+.statement {
+  margin: 1.9rem 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--rule);
+}
+
+.statement-head {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* 公理と定義は「約束事」なので、枠を本文寄りに寄せて主張と区別する。 */
+.statement-axiom,
+.statement-definition {
+  border-left-style: double;
+  border-left-width: 4px;
+}
+
+.statement-example .statement-head,
+.statement-remark .statement-head {
+  color: var(--muted);
+}
+
+.statement > :last-child,
+.proof > :last-child {
+  margin-bottom: 0;
+}
+
+.proof {
+  margin: 1.6rem 0;
+}
+
+.proof-head {
+  margin-right: 0.35em;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* 証明終わりの □ は行末に逃がす。最後が数式やリストでも右端に付く。 */
+.proof-end {
+  float: right;
+  color: var(--muted);
+}
+
 pre {
   overflow-x: auto;
   padding: 0.9rem 1.1rem;

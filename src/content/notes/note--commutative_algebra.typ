@@ -25,7 +25,7 @@ $0 = 1$ のとき $A$ は唯一の元 $0$ からなる。このとき $A$ は零
 ring) といい、$0$ で表される。
 
 ]
-任意の元 $x in A$ について次が成り立つ。 $ x = x 1 = x 0 = 0 $ 0◻
+任意の元 $x in A$ について次が成り立つ。 $ x = x 1 = x 0 = 0 $
 
 #block[
 環 $A \, B$ に関して写像 $f : A arrow.r B$
@@ -100,7 +100,7 @@ $x$ を環 $A$ のベキ零元とする。$1 + x$ は $A$
 $x$ がベキ零元であるから $x^n = 0$ となる $n > 0$ が存在する。
 $ \( 1 + x \) \( 1 + \( - x \) + dots.h.c + \( - x \)^(n - 1) \) = 1 + \( - x \)^n = 1 $
 単元 $a$ を用いると $a^(- 1) x$ もベキ零元となるから $a + x$
-も単元となる。 $ \( a + x \) a^(- 1) = 1 + a^(- 1) x $ 0◻
+も単元となる。 $ \( a + x \) a^(- 1) = 1 + a^(- 1) x $
 
 #block[
 $f = a_0 + a_1 x + dots.h.c + a_n x^n in A \[ x \]$ について
@@ -155,8 +155,6 @@ f "が零因子である" & arrow.l.r.double A "のある元" a eq.not 0 "が存
 
   ($arrow.l.double.long$) 自明。
 
-0◻
-
 #block[
 $A$, $B$ を環, $phi.alt : A arrow.r B$ を写像とする.
 
@@ -182,7 +180,7 @@ $ psi compose phi.alt \( x + y \) & = psi \( phi.alt \( x + y \) \) = psi \( phi
 psi compose phi.alt \( x y \) & = psi \( phi.alt \( x y \) \) = psi \( phi.alt \( x \) phi.alt \( y \) \) = psi \( phi.alt \( x \) \) psi \( phi.alt \( y \) \)\
  & = psi compose phi.alt \( x \) dot.op psi compose phi.alt \( y \)\
 psi compose phi.alt \( 1_A \) & = psi \( phi.alt \( 1_A \) \) = psi \( 1_B \) = 1_C $
-$psi compose phi.alt$ は準同型である。同型も同様。 0◻
+$psi compose phi.alt$ は準同型である。同型も同様。
 
 #block[
 $phi.alt : A arrow.r B$ が環の準同型ならば, 単射 $arrow.l.r.double$
@@ -197,7 +195,7 @@ $"Ker" phi.alt$ には $0$ 以外の元は存在しない. \
 ($arrow.l.double.long$) $phi.alt \( x \) = phi.alt \( y \)$ となる
 $x \, y$ について
 $ 1 & = phi.alt \( x \) phi.alt \( y \)^(- 1) = phi.alt \( x \) phi.alt \( y^(- 1) \) = phi.alt \( x y^(- 1) \)\
-1 & = x y^(- 1) $ より $x = y$ となるから $phi.alt$ は単射である. 0◻
+1 & = x y^(- 1) $ より $x = y$ となるから $phi.alt$ は単射である.
 
 #block[
 $A eq.not 0$ を環とする。このとき次は同値である。
@@ -223,7 +221,7 @@ $phi.alt$ は単射である。
 $\( x \) eq.not \( 1 \)$ であるから $B = A \/ \( x \)$
 は零環ではない。$phi.alt : A arrow.r B$ を自然な準同型とすると
 $"Ker" \( phi.alt \) = \( x \)$ である。仮定より $phi.alt$
-は単射であるから $\( x \) = 0$。したがって $x = 0$ となる。 0◻
+は単射であるから $\( x \) = 0$。したがって $x = 0$ となる。
 
 #block[
 $A$ のイデアル $frak(p)$ は $frak(p) eq.not \( 1 \)$ かつ
@@ -243,8 +241,6 @@ $ frak(p) "が素イデアルである" arrow.l.r.double A \/ frak(p) "は整域
 frak(m) "が極大イデアルである" arrow.l.r.double A \/ frak(m) "は体である" $
 
 ]
-0◻
-
 #block[
 $A$ 係数あるいは $A$ 上の $n$ 変数 $x = \( x_1 \, dots.h.c \, x_n \)$
 の多項式とは, $bb(N)^n$ から $A$ への写像で有限個の
@@ -317,13 +313,11 @@ $A \[ x_i \]_(i in I)$
 + $A$ が一意分解環なら, $A$ の既約元は素元である.
 
 ]
-0◻
-
 #block[
 体の多項式環はユークリッド環である.
 
 ]
-$d = deg$ とすると成り立つ. 0◻
+$d = deg$ とすると成り立つ.
 
 #block[
 $f \( x \) = a_n x^n + dots.h.c + a_0 in A \[ x \]$ で

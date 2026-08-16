@@ -162,13 +162,11 @@ $a_1 \, a_2 \, psi \, chi$ を用いて次のように表される.
 $ s_0 & = a_1^2 + a_2^2\
 s_1 & = s_0 cos 2 psi cos 2 chi\
 s_2 & = s_0 sin 2 psi cos 2 chi\
-s_3 & = s_0 sin 2 chi $#label("s1 def")
-このような状況を「完全偏光」と呼び,
+s_3 & = s_0 sin 2 chi $<s1-def> このような状況を「完全偏光」と呼び,
 より一般的な「部分偏光」をこれから考える. また完全偏光において関係式
 $s_0^2 = s_1^2 + s_2^2 + s_3^2$ を満たす. このように点
 $\( s_1 \, s_2 \, s_3 \)$ は原点を中心とする半径 $s_0$ の球面上にある.
 この球面を「Poincaré 球面」と呼ぶ. \
-0◻
 
 #block[
 このように用意された電場の強度と偏光を記述する 4 つの実パラメータの組
@@ -183,17 +181,12 @@ $ bold(S) = vec(s_0, s_1, s_2, s_3) $
 
 ]
 #block[
-電場の複素表示の複素共役 \$\\mathcal\\bm{E}(\\bm{r}, t)\$ を定義する。
-\$\$\\begin{aligned}
-    \\mathcal\\bm{E}(\\bm{r}, t) = \\bm{E}^\*(\\bm{r}, t)
-  
-\\end{aligned}\$\$ これを「光学の流儀の複素表示」と呼ぶこととする。
-\$\$\\begin{aligned}
-    \\mathcal\\bm{E}(\\bm{r}, t) = \\begin{pmatrix}\\mathcal{E}\_1(\\bm{r}, t) \\\\ \\mathcal{E}\_2(\\bm{r}, t)\\end{pmatrix} = \\begin{pmatrix}\\mathcal{E}\_1 \\\\ \\mathcal{E}\_2\\end{pmatrix}e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})}
-  
-\\end{aligned}\$\$ このとき次のベクトルを Jones
-ベクトルと呼び、それに作用する行列を Jones 行列という。
-$ bold(J) = vec(cal(E)_1, cal(E)_2) in bb(C)^2 $
+電場の複素表示の複素共役 $cal(bold(E)) \( bold(r) \, t \)$ を定義する。
+$ cal(bold(E)) \( bold(r) \, t \) = bold(E)^(\*) \( bold(r) \, t \) $
+これを「光学の流儀の複素表示」と呼ぶこととする。
+$ cal(bold(E)) \( bold(r) \, t \) = vec(cal(E)_1 \( bold(r) \, t \), cal(E)_2 \( bold(r) \, t \)) = vec(cal(E)_1, cal(E)_2) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) $
+このとき次のベクトルを Jones ベクトルと呼び、それに作用する行列を Jones
+行列という。 $ bold(J) = vec(cal(E)_1, cal(E)_2) in bb(C)^2 $
 
 ]
 アメリカの物理学者 R.C.Jones が Jones ベクトルと Jones
@@ -201,7 +194,7 @@ $ bold(J) = vec(cal(E)_1, cal(E)_2) in bb(C)^2 $
 
 このとき具体的な例として以下のようなものがある。
 
-#label("table:Stokes Jones")
+<table:Stokes-Jones>
 
 #block[
 #figure(
@@ -215,9 +208,9 @@ $ bold(J) = vec(cal(E)_1, cal(E)_2) in bb(C)^2 $
     LHP], [$mat(delim: "(", 1, 1, 0, 0)^top$], [$mat(delim: "(", 1, 0)^top$],
     [直線偏光(垂直)], [鉛直 $cal(P)$ 状態:
     LNP], [$mat(delim: "(", 1, - 1, 0, 0)^top$], [$mat(delim: "(", 0, 1)^top$],
-    [直線偏光($+ 45$°)], [+45°の $cal(P)$ 状態:
+    [直線偏光($+ 45$°)], [+45° の $cal(P)$ 状態:
     L+45P], [$mat(delim: "(", 1, 0, 1, 0)^top$], [$1 / sqrt(2) mat(delim: "(", 1, 1)^top$],
-    [直線偏光($- 45$°)], [$- 45$°の $cal(P)$ 状態:
+    [直線偏光($- 45$°)], [$- 45$° の $cal(P)$ 状態:
     L-45P], [$mat(delim: "(", 1, 0, - 1, 0)^top$], [$1 / sqrt(2) mat(delim: "(", 1, - 1)^top$],
     [円偏光(右回転)], [$cal(R)$ 状態:
     RCP], [$mat(delim: "(", 1, 0, 0, 1)^top$], [$1 / sqrt(2) mat(delim: "(", 1, i)^top$],
@@ -237,98 +230,83 @@ s_2 & = 2 Re \( cal(E)_1^(\*) cal(E)_2 \)\
 s_3 & = 2 Im \( cal(E)_1^(\*) cal(E)_2 \) $
 
 ]
-\$\$\\begin{aligned}
-    s\_0 & = a\_1^2 + a\_2^2                                                                              \\\\
-        & = \\left\\lvert \\bm{\\epsilon}\_1(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2 + \\left\\lvert \\bm{\\epsilon}\_2(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2                                      \\\\
-        & = |\\bm{\\epsilon}\_1(\\bm{k})\\cdot\\mathcal\\bm{E}|^2 + |\\bm{\\epsilon}\_2(\\bm{k})\\cdot\\mathcal\\bm{E}|^2                                            \\\\
-        & = |\\mathcal{E}\_1|^2 + |\\mathcal{E}\_2|^2                                                                      \\\\
-    s\_1 & = s\_0\\cos2\\psi\\cos2\\chi = a\_1^2 - a\_2^2                                                      \\\\
-        & = \\left\\lvert \\bm{\\epsilon}\_1(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2 - \\left\\lvert \\bm{\\epsilon}\_2(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2                                      \\\\
-        & = |\\bm{\\epsilon}\_1(\\bm{k})\\cdot\\mathcal\\bm{E}|^2 - |\\bm{\\epsilon}\_2(\\bm{k})\\cdot\\mathcal\\bm{E}|^2                                            \\\\
-        & = |\\mathcal{E}\_1|^2 - |\\mathcal{E}\_2|^2                                                                      \\\\
-    s\_2 & = s\_0\\sin2\\psi\\cos2\\chi = s\_0\\cos2\\psi\\cos2\\chi\\cdot\\tan2\\psi                                \\\\
-        & = 2a\_1a\_2\\cos\\delta = 2a\_1a\_2\\cos\\varepsilon = 2a\_1a\_2\\cos(\\varepsilon\_2 - \\varepsilon\_1)    \\\\
-        & = 2\\Re\\left\\{\\left(\\bm{\\epsilon}\_1(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right)^\*\\left(\\bm{\\epsilon}\_2(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right)\\right\\}                                \\\\
-        & = 2\\Re\\left\\{\\left(\\bm{\\epsilon}\_1(\\bm{k})\\cdot\\mathcal\\bm{E}\\right)^\*\\left(\\bm{\\epsilon}\_2(\\bm{k})\\cdot\\mathcal\\bm{E}\\right)\\right\\}                                \\\\
-        & = 2\\Re(\\mathcal{E}\_1^\*\\mathcal{E}\_2)                                                                         \\\\
-    s\_3 & = s\_0\\sin2\\chi                                                                               \\\\
-        & = 2a\_1a\_2\\sin\\delta = -2a\_1a\_2\\sin\\varepsilon = - 2a\_1a\_2\\sin(\\varepsilon\_2 - \\varepsilon\_1) \\\\
-        & = - 2\\Im\\left\\{\\left(\\bm{\\epsilon}\_1(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right)^\*\\left(\\bm{\\epsilon}\_2(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right)\\right\\}                              \\\\
-        & = 2\\Im\\left\\{\\left(\\bm{\\epsilon}\_1(\\bm{k})\\cdot\\mathcal\\bm{E}\\right)^\*\\left(\\bm{\\epsilon}\_2(\\bm{k})\\cdot\\mathcal\\bm{E}\\right)\\right\\}                                \\\\
-        & = 2\\Im(\\mathcal{E}\_1^\*\\mathcal{E}\_2)
-  
-\\end{aligned}\$\$ 0◻
+$ s_0 & = a_1^2 + a_2^2\
+ & = lr(|bold(epsilon.alt)_1 \( bold(k) \) dot.op tilde(bold(E))|)^2 + lr(|bold(epsilon.alt)_2 \( bold(k) \) dot.op tilde(bold(E))|)^2\
+ & = \| bold(epsilon.alt)_1 \( bold(k) \) dot.op cal(bold(E)) \|^2 + \| bold(epsilon.alt)_2 \( bold(k) \) dot.op cal(bold(E)) \|^2\
+ & = \| cal(E)_1 \|^2 + \| cal(E)_2 \|^2\
+s_1 & = s_0 cos 2 psi cos 2 chi = a_1^2 - a_2^2\
+ & = lr(|bold(epsilon.alt)_1 \( bold(k) \) dot.op tilde(bold(E))|)^2 - lr(|bold(epsilon.alt)_2 \( bold(k) \) dot.op tilde(bold(E))|)^2\
+ & = \| bold(epsilon.alt)_1 \( bold(k) \) dot.op cal(bold(E)) \|^2 - \| bold(epsilon.alt)_2 \( bold(k) \) dot.op cal(bold(E)) \|^2\
+ & = \| cal(E)_1 \|^2 - \| cal(E)_2 \|^2\
+s_2 & = s_0 sin 2 psi cos 2 chi = s_0 cos 2 psi cos 2 chi dot.op tan 2 psi\
+ & = 2 a_1 a_2 cos delta = 2 a_1 a_2 cos epsilon = 2 a_1 a_2 cos \( epsilon_2 - epsilon_1 \)\
+ & = 2 Re {(bold(epsilon.alt)_1 \( bold(k) \) dot.op tilde(bold(E)))^(\*) (bold(epsilon.alt)_2 \( bold(k) \) dot.op tilde(bold(E)))}\
+ & = 2 Re {(bold(epsilon.alt)_1 \( bold(k) \) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_2 \( bold(k) \) dot.op cal(bold(E)))}\
+ & = 2 Re \( cal(E)_1^(\*) cal(E)_2 \)\
+s_3 & = s_0 sin 2 chi\
+ & = 2 a_1 a_2 sin delta = - 2 a_1 a_2 sin epsilon = - 2 a_1 a_2 sin \( epsilon_2 - epsilon_1 \)\
+ & = - 2 Im {(bold(epsilon.alt)_1 \( bold(k) \) dot.op tilde(bold(E)))^(\*) (bold(epsilon.alt)_2 \( bold(k) \) dot.op tilde(bold(E)))}\
+ & = 2 Im {(bold(epsilon.alt)_1 \( bold(k) \) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_2 \( bold(k) \) dot.op cal(bold(E)))}\
+ & = 2 Im \( cal(E)_1^(\*) cal(E)_2 \) $
 
 #block[
-\$\$\\begin{aligned}
-    s\_0 & = \\left\\lvert \\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2 + \\left\\lvert \\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2       \\\\
-    s\_1 & = 2\\Re\\left\\{\\left(\\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)^\*\\left(\\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)\\right\\} \\\\
-    s\_2 & = 2\\Im\\left\\{\\left(\\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)^\*\\left(\\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)\\right\\} \\\\
-    s\_3 & = \\left\\lvert \\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2 - \\left\\lvert \\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2
-  
-\\end{aligned}\$\$
+$ s_0 & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 + lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2\
+s_1 & = 2 Re {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E)))}\
+s_2 & = 2 Im {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E)))}\
+s_3 & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 - lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 $
 
 ]
-\$\$\\begin{aligned}
-    s\_0 & = a\_1^2 + a\_2^2                                                                                                             \\\\
-        & = \\frac{1}{2}\\left(|a\_1e^{i\\varepsilon\_1} - i a\_2e^{i\\varepsilon\_2}|^2 + |a\_1e^{i\\varepsilon\_1} + i a\_2e^{i\\varepsilon\_2}|^2\\right) \\\\
-        & = |\\tilde{E}\_+|^2 + |\\tilde{E}\_+|^2                                                                                         \\\\
-        & = a\_+^2 + a\_-^2                                                                                                             \\\\
-        & = \\left\\lvert \\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2 + \\left\\lvert \\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2                                                                 \\\\
-        & = \\left\\lvert \\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2 + \\left\\lvert \\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2                                                                 \\\\
-    s\_1 & = a\_1^2 - a\_2^2                                                                                                             \\\\
-        & = \\Re((a\_1^2 - a\_2^2) + i(2a\_1a\_2\\cos(\\varepsilon\_2 - \\varepsilon\_1)))                                                      \\\\
-        & = \\Re(2\\tilde{E}\_-\\tilde{E}\_+^\*)                                                                                            \\\\
-        & = 2a\_+a\_-\\cos(\\varepsilon\_- - \\varepsilon\_+)                                                                                \\\\
-        & = 2\\Re\\left\\{\\left(\\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right)^\*\\left(\\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right)\\right\\}                                                           \\\\
-        & = 2\\Re\\left\\{\\left(\\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)^\*\\left(\\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)\\right\\}                                                           \\\\
-    s\_2 & = 2a\_1a\_2\\cos(\\varepsilon\_2 - \\varepsilon\_1)                                                                                \\\\
-        & = \\Im((a\_1^2 - a\_2^2) + i(2a\_1a\_2\\cos(\\varepsilon\_2 - \\varepsilon\_1)))                                                      \\\\
-        & = \\Im(2\\tilde{E}\_-\\tilde{E}\_+^\*)                                                                                            \\\\
-        & = 2a\_+a\_-\\sin(\\varepsilon\_- - \\varepsilon\_+)                                                                                \\\\
-        & = 2\\Im\\left\\{\\left(\\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right)^\*\\left(\\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right)\\right\\}                                                           \\\\
-        & = 2\\Im\\left\\{\\left(\\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)^\*\\left(\\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right)\\right\\}                                                           \\\\
-    s\_3 & = 2a\_1a\_2\\sin(\\varepsilon\_2 - \\varepsilon\_1)                                                                                \\\\
-        & = \\frac{1}{2}\\left(|a\_1e^{i\\varepsilon\_1} - i a\_2e^{i\\varepsilon\_2}|^2 - |a\_1e^{i\\varepsilon\_1} + i a\_2e^{i\\varepsilon\_2}|^2\\right) \\\\
-        & = |\\tilde{E}\_+|^2 - |\\tilde{E}\_+|^2                                                                                         \\\\
-        & = -\\left(a\_+^2 - a\_-^2\\right)                                                                                                       \\\\
-        & = -\\left\\{\\left\\lvert \\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2 - \\left\\lvert \\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right\\rvert ^2\\right\\}                                                         \\\\
-        & = \\left\\lvert \\bm{\\epsilon}\_+(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2 - \\left\\lvert \\bm{\\epsilon}\_-(\\bm{k})^\*\\cdot\\mathcal\\bm{E}\\right\\rvert ^2
-  
-\\end{aligned}\$\$ 0◻
+$ s_0 & = a_1^2 + a_2^2\
+ & = 1 / 2 (\| a_1 e^(i epsilon_1) - i a_2 e^(i epsilon_2) \|^2 + \| a_1 e^(i epsilon_1) + i a_2 e^(i epsilon_2) \|^2)\
+ & = \| tilde(E)_(+) \|^2 + \| tilde(E)_(+) \|^2\
+ & = a_(+)^2 + a_(-)^2\
+ & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2 + lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2\
+ & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 + lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2\
+s_1 & = a_1^2 - a_2^2\
+ & = Re \( \( a_1^2 - a_2^2 \) + i \( 2 a_1 a_2 cos \( epsilon_2 - epsilon_1 \) \) \)\
+ & = Re \( 2 tilde(E)_(-) tilde(E)_(+)^(\*) \)\
+ & = 2 a_(+) a_(-) cos \( epsilon_(-) - epsilon_(+) \)\
+ & = 2 Re {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E)))}\
+ & = 2 Re {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E)))}\
+s_2 & = 2 a_1 a_2 cos \( epsilon_2 - epsilon_1 \)\
+ & = Im \( \( a_1^2 - a_2^2 \) + i \( 2 a_1 a_2 cos \( epsilon_2 - epsilon_1 \) \) \)\
+ & = Im \( 2 tilde(E)_(-) tilde(E)_(+)^(\*) \)\
+ & = 2 a_(+) a_(-) sin \( epsilon_(-) - epsilon_(+) \)\
+ & = 2 Im {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E)))}\
+ & = 2 Im {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E)))}\
+s_3 & = 2 a_1 a_2 sin \( epsilon_2 - epsilon_1 \)\
+ & = 1 / 2 (\| a_1 e^(i epsilon_1) - i a_2 e^(i epsilon_2) \|^2 - \| a_1 e^(i epsilon_1) + i a_2 e^(i epsilon_2) \|^2)\
+ & = \| tilde(E)_(+) \|^2 - \| tilde(E)_(+) \|^2\
+ & = - (a_(+)^2 - a_(-)^2)\
+ & = - {lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2 - lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2}\
+ & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 - lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 $
 
-また上式の考察より次のように偏光の向きも逆転する. \$\$\\begin{aligned}
-  \\mathcal\\bm{E}(\\bm{r}, t) = \\mathcal{E}\_+\\bm{\\epsilon}\_+(\\bm{k})e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})}
-   & \\iff \\textrm{「円偏光は右偏光である。」}          \\\\
-   & \\iff \\textrm{「helicity が \$-1\$ である。」} \\\\
-  \\mathcal\\bm{E}(\\bm{r}, t) = \\mathcal{E}\_-\\bm{\\epsilon}\_-(\\bm{k})e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})}
-   & \\iff \\textrm{「円偏光は左偏光である。」}          \\\\
-   & \\iff \\textrm{「helicity が \$+1\$ である。」}
-\\end{aligned}\$\$ となる. 特に直線偏光の基底ベクトル
+また上式の考察より次のように偏光の向きも逆転する.
+$ cal(bold(E)) \( bold(r) \, t \) = cal(E)_(+) bold(epsilon.alt)_(+) \( bold(k) \) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) & arrow.l.r.double upright("「円偏光は右偏光である。」")\
+ & arrow.l.r.double upright("「helicity が ") - 1 upright(" である。」")\
+cal(bold(E)) \( bold(r) \, t \) = cal(E)_(-) bold(epsilon.alt)_(-) \( bold(k) \) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) & arrow.l.r.double upright("「円偏光は左偏光である。」")\
+ & arrow.l.r.double upright("「helicity が ") + 1 upright(" である。」") $
+となる. 特に直線偏光の基底ベクトル
 $bold(epsilon.alt)_1 \, bold(epsilon.alt)_2 in bb(R)^3$ より,
 $bold(epsilon.alt)_i = bold(epsilon.alt)_i^(\*) quad \( i = 1 \, 2 \)$
-となる. \$\$\\begin{aligned}
-  \\mathcal\\bm{E}(\\bm{r}, t) & = \\mathcal{E}\_1\\bm{\\epsilon}\_1(\\bm{k})e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})} + \\mathcal{E}\_2\\bm{\\epsilon}\_2(\\bm{k})e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})}        \\\\
-  \\mathcal{E}\_i       & = \\tilde{E}\_i^\* = a\_ie^{i\\delta\_i} \\qquad (i = 1, 2)                                                               \\\\
-  \\mathcal\\bm{E}(\\bm{r}, t) & = \\mathcal{E}\_+\\bm{\\epsilon}\_+(\\bm{k})e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})} + \\mathcal{E}\_-\\bm{\\epsilon}\_-(\\bm{k})e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})}        \\\\
-  \\mathcal{E}\_\\pm     & = \\tilde{E}\_\\mp^\* = \\mathcal{A}\_\\pm e^{i\\delta\_\\pm} \\quad (\\mathcal{A}\_\\pm = a\_\\mp, \\delta\_\\pm = -\\varepsilon\_\\mp)
-\\end{aligned}\$\$ 円偏光において新しい複素振幅 $cal(E)_plus.minus$
-と古い複素振幅 $tilde(E)_plus.minus$ は成分の添字の $+$ と $-$
+となる.
+$ cal(bold(E)) \( bold(r) \, t \) & = cal(E)_1 bold(epsilon.alt)_1 \( bold(k) \) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) + cal(E)_2 bold(epsilon.alt)_2 \( bold(k) \) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \))\
+cal(E)_i & = tilde(E)_i^(\*) = a_i e^(i delta_i) #h(2em) \( i = 1 \, 2 \)\
+cal(bold(E)) \( bold(r) \, t \) & = cal(E)_(+) bold(epsilon.alt)_(+) \( bold(k) \) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) + cal(E)_(-) bold(epsilon.alt)_(-) \( bold(k) \) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \))\
+cal(E)_plus.minus & = tilde(E)_minus.plus^(\*) = cal(A)_plus.minus e^(i delta_plus.minus) quad \( cal(A)_plus.minus = a_minus.plus \, delta_plus.minus = - epsilon_minus.plus \) $
+円偏光において新しい複素振幅 $cal(E)_plus.minus$ と古い複素振幅
+$tilde(E)_plus.minus$ は成分の添字の $+$ と $-$
 が反転して結びついていることに注意すべきである. また,
-これより次の式を導ける. \$\$\\begin{aligned}
-  \\bm{\\epsilon}\_i(\\bm{k})\\cdot\\mathcal\\bm{E}
-   & = \\mathcal{E}\_ie^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})} = \\left(\\tilde{E}\_i e^{i(\\bm{k}\\cdot\\bm{r}- \\omega(\\bm{k})t)}\\right)^\* = \\left(\\bm{\\epsilon}\_i(\\bm{k})\\cdot\\tilde{\\bm{E}}\\right)^\* \\label{EC ET converter 12}          \\\\
-  \\bm{\\epsilon}\_\\pm(\\bm{k})^\*\\cdot\\mathcal\\bm{E}
-   & = \\mathcal{E}\_\\pm e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})} = \\left(\\tilde{E}\_\\mp e^{i(\\bm{k}\\cdot\\bm{r}- \\omega(\\bm{k})t)}\\right)^\* = \\left(\\bm{\\epsilon}\_\\mp(\\bm{k})^\*\\cdot\\tilde{\\bm{E}}\\right)^\* \\label{EC ET converter +-}
-\\end{aligned}\$\$
+これより次の式を導ける.
+$ bold(epsilon.alt)_i \( bold(k) \) dot.op cal(bold(E)) & = cal(E)_i e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) = (tilde(E)_i e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)))^(\*) = (bold(epsilon.alt)_i \( bold(k) \) dot.op tilde(bold(E)))^(\*)\
+bold(epsilon.alt)_plus.minus \( bold(k) \)^(\*) dot.op cal(bold(E)) & = cal(E)_plus.minus e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) = (tilde(E)_minus.plus e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)))^(\*) = (bold(epsilon.alt)_minus.plus \( bold(k) \)^(\*) dot.op tilde(bold(E)))^(\*) $<EC-ET-converter-12>
 
 また光の強度 $I$ について Jones ベクトル $bold(J)$
-の絶対値の二乗に比例することが分かる. \$\$\\begin{aligned}
-  I & = \\left\\langle\\bm{E}(\\bm{r}, t)\\right\\rangle                  \\\\
-    & = \\left\\langle\\left\\{\\Re\\mathcal\\bm{E}(\\bm{r},t)\\right\\}^2\\right\\rangle       \\\\
-    & = \\frac{1}{2}\\left\\langle\\left\\lvert \\mathcal\\bm{E}(\\bm{r},t)\\right\\rvert ^2\\right\\rangle \\\\
-    & = \\frac{1}{2}|\\bm{J}|^2 \\label{Jones strength}
-\\end{aligned}\$\$
+の絶対値の二乗に比例することが分かる.
+$ I & = ⟨bold(E) \( bold(r) \, t \)⟩\
+ & = ⟨{Re cal(bold(E)) \( bold(r) \, t \)}^2⟩\
+ & = 1 / 2 ⟨lr(|cal(bold(E)) \( bold(r) \, t \)|)^2⟩\
+ & = 1 / 2 \| bold(J) \|^2 $<Jones-strength>
 
 == Stokes パラメータの測定
 <stokes-パラメータの測定>
@@ -387,7 +365,7 @@ $ T^(upright("直線偏光子")) \( theta \) & = R \( theta \) T^(upright("直�
  & = mat(delim: "(", cos theta, - sin theta; sin theta, cos theta) mat(delim: "(", 1, 0; 0, 0) mat(delim: "(", cos theta, sin theta; - sin theta, cos theta)\
  & = mat(delim: "(", cos^2 theta, cos theta sin theta; sin theta cos theta, sin^2 theta)\
 {T^(upright("直線偏光子")) \( theta \)}^2 & = mat(delim: "(", cos^2 theta, cos theta sin theta; sin theta cos theta, sin^2 theta)\
- & = T^(upright("直線偏光子")) \( theta \) $ 0◻
+ & = T^(upright("直線偏光子")) \( theta \) $
 
 #block[
 #strong[定理 2] (). \
@@ -410,7 +388,7 @@ $ I \( theta \) & = 1 / 2 lr(|T^(upright("直線偏光子")) \( theta \) bold(J)
  & = 1 / 4 (s_0 + sqrt(s_1^2 + s_2^2) cos \( 2 theta - phi \)) $
 ただし、
 $ cos phi = s_1 / sqrt(s_1^2 + s_2^2) \, sin phi = s_2 / sqrt(s_1^2 + s_2^2) $
-である。 0◻ これらは次の極めて重要な事実を教えてくれている。
+である。 これらは次の極めて重要な事実を教えてくれている。
 「与えられた単色光の Stokes パラメータのうちの 3 個 $s_0 \, s_1 \, s_2$
 は、その光をいろいろな角度 $theta$
 に傾けた直線偏光子に透過して強度を測定することによって決定できる。」
@@ -418,12 +396,9 @@ $ cos phi = s_1 / sqrt(s_1^2 + s_2^2) \, sin phi = s_2 / sqrt(s_1^2 + s_2^2) $
 #block[
 #strong[定理 3] (). \
 
-\$\$\\begin{aligned}
-    s\_0 & \\propto (\\textrm{全強度})                                                        \\\\
-    s\_1 & \\propto (\\textrm{水平偏光成分の強度}) - (\\textrm{鉛直偏光成分の強度})                           \\\\
-    s\_2 & \\propto (+45\\textrm{\\textdegree 偏光成分の強度}) - (-45\\textrm{\\textdegree 偏光成分の強度})
-  
-\\end{aligned}\$\$
+$ s_0 & prop \( upright("全強度") \)\
+s_1 & prop \( upright("水平偏光成分の強度") \) - \( upright("鉛直偏光成分の強度") \)\
+s_2 & prop \( + 45 upright("° 偏光成分の強度") \) - \( - 45 upright("° 偏光成分の強度") \) $
 
 ]
 $ I \( 0 \) & = s_0 + s_1 \, #h(2em) I (pi / 4) = s_0 + s_2 \, #h(2em) I (pi / 2) = s_0 - s_1 \, #h(2em) I (frac(3 pi, 4)) = s_0 - s_2 $
@@ -431,7 +406,7 @@ $ I \( 0 \) & = s_0 + s_1 \, #h(2em) I (pi / 4) = s_0 + s_2 \, #h(2em) I (pi / 2
 $ s_0 & = 2 {I \( 0 \) + I (pi / 2)}\
  & = 2 {I (pi / 4) + I (pi / 2)}\
 s_1 & = 2 {I \( 0 \) - I (pi / 2)}\
-s_2 & = 2 {I (pi / 4) - I (frac(3 pi, 4))} $ これらは次の意味を表す。 0◻
+s_2 & = 2 {I (pi / 4) - I (frac(3 pi, 4))} $ これらは次の意味を表す。
 
 $ s_3 prop \( upright("右円偏光成分の強度") \) - \( upright("左円偏光成分の強度") \) $
 これを測定するにはどうすればよいのか?
@@ -456,10 +431,10 @@ T^(1 \/ 4 upright("波長板")) & = T^(upright("遅相子")) (pi / 2) = mat(deli
     table.hline(),
     [直線偏光], [$vec(1, 0)$], [$i vec(1, 0)$], [$e^(i pi / 4) vec(1, 0)$],
     [直線偏光], [$vec(0, 1)$], [$- i vec(0, 1)$], [$e^(- i pi / 4) vec(0, 1)$],
-    [直線偏光
-    ($+ 45$°方向)], [$1 / sqrt(2) vec(1, 1)$], [$1 / sqrt(2) vec(1, - 1)$], [$frac(1 + i, 2) vec(1, - i)$],
-    [直線偏光
-    ($- 45$°方向)], [$1 / sqrt(2) vec(1, - 1)$], [$1 / sqrt(2) vec(1, 1)$], [$frac(1 + i, 2) vec(1, - 1)$],
+    [直線偏光 ($+ 45$°
+    方向)], [$1 / sqrt(2) vec(1, 1)$], [$1 / sqrt(2) vec(1, - 1)$], [$frac(1 + i, 2) vec(1, - i)$],
+    [直線偏光 ($- 45$°
+    方向)], [$1 / sqrt(2) vec(1, - 1)$], [$1 / sqrt(2) vec(1, 1)$], [$frac(1 + i, 2) vec(1, - 1)$],
     [円偏光
     (左回転)], [$1 / sqrt(2) vec(1, i)$], [$i / sqrt(2) vec(1, - i)$], [],
     [円偏光
@@ -475,11 +450,12 @@ $ T^(upright("遅相子")) \( phi.alt \) vec(1, 0) & = vec(e^(i phi.alt / 2), 0)
 T^(upright("遅相子")) \( phi.alt \) vec(0, 1) & = vec(0, e^(- i phi.alt / 2)) $
 これらは回転する操作を行えば何も変化しないことが分かる。
 
-これに $+ 45$°方向に直線偏光した光と $- 45$°方向に直線偏光した光を通すと
+これに $+ 45$° 方向に直線偏光した光と $- 45$°
+方向に直線偏光した光を通すと
 $ T^(1 \/ 2 upright("波長板")) 1 / sqrt(2) vec(1, 1) & = i / sqrt(2) vec(1, - 1)\
 T^(1 \/ 2 upright("波長板")) 1 / sqrt(2) vec(1, - 1) & = i / sqrt(2) vec(1, 1) $
 となり, これは $1 \/ 2$ 波長板によって L+45P と L-45P は相互変換する. \
-ま"た右"円偏光した光と左円偏光した光を通すと
+また 右円偏光した光と左円偏光した光を通すと
 $ T^(1 \/ 2 upright("波長板")) 1 / sqrt(2) vec(1, i) & = i / sqrt(2) vec(1, - i)\
 T^(1 \/ 2 upright("波長板")) 1 / sqrt(2) vec(1, - i) & = i / sqrt(2) vec(1, i) $
 となり, これは $1 \/ 2$ 波長板によって RCP と LCP は相互変換する. \
@@ -492,7 +468,7 @@ T^(1 \/ 4 upright("波長板")) 1 / sqrt(2) vec(1, - i) & = frac(1 + i, 2) vec(1
 光学領域での $1 \/ 4$
 波長板はサランラップを半ダースほど向きを揃えて重ねることにより自作できるらしい.
 \
-0◻ 円偏光した光は $1 \/ 4$ 波長板により直線偏光に変換し,
+円偏光した光は $1 \/ 4$ 波長板により直線偏光に変換し,
 その光強度を求めることで右偏光, 左偏光の光強度が求まる。$s_3$ が求まる。
 
 == 準単色光と部分偏光
@@ -503,17 +479,14 @@ T^(1 \/ 4 upright("波長板")) 1 / sqrt(2) vec(1, - i) & = frac(1 + i, 2) vec(1
 #strong[Q 21B-48.] 波数 $bold(k) in bb(R)^3$ を中心にして, 広がり
 $\| Delta bold(k) \| tilde.op Delta k = c^(- 1) Delta nu$
 を持つ準単色光を考える. このとき電場の複素表示
-\$\\mathcal\\bm{E}(\\bm{r}, t)\$ は次のように Fourier 変換される.
-\$\$\\begin{aligned}
-  \\mathcal\\bm{E}(\\bm{r}, t)
-   & = \\int\_{|\\bm{k}\' - \\bm{k}|\\leq\\Delta k}diff(\\bm{k}\')\\left\\{\\mathcal{E}\_1(\\bm{k}\')\\bm{\\epsilon}\_1(\\bm{k}\') + \\mathcal{E}\_2(\\bm{k}\')\\bm{\\epsilon}\_2(\\bm{k}\')\\right\\}e^{i(\\omega(\\bm{k}\')t - \\bm{k}\'\\cdot\\bm{r})}                                                                                                                                          \\\\
-   & = \\int\_{|\\delta\\bm{k}|\\leq\\Delta k}diff(\\delta\\bm{k})\\left\\{\\mathcal{E}\_1(\\bm{k}+ \\delta\\bm{k})\\bm{\\epsilon}\_1(\\bm{k}+ \\delta\\bm{k}) + \\mathcal{E}\_2(\\bm{k}+ \\delta\\bm{k})\\bm{\\epsilon}\_2(\\bm{k}+ \\delta\\bm{k})\\right\\}e^{i(\\omega(\\bm{k}+ \\delta\\bm{k})t - (\\bm{k}+ \\delta\\bm{k})\\cdot\\bm{r})}                                                                  \\\\
-   & = e^{i(\\omega(\\bm{k})t - \\bm{k}\\cdot\\bm{r})}\\int\_{|\\delta\\bm{k}|\\leq\\Delta k}diff(\\delta\\bm{k})\\left\\{\\mathcal{E}\_1(\\bm{k}+ \\delta\\bm{k})\\bm{\\epsilon}\_1(\\bm{k}+ \\delta\\bm{k}) + \\mathcal{E}\_2(\\bm{k}+ \\delta\\bm{k})\\bm{\\epsilon}\_2(\\bm{k}+ \\delta\\bm{k})\\right\\}e^{i\\left\\{(\\omega(\\bm{k}+ \\delta\\bm{k}) - \\omega(\\bm{k}))t - \\delta\\bm{k}\\cdot\\bm{r}\\right\\}} \\label{EC fourier} \\\\
-\\end{aligned}\$\$ ここでコヒーレンス時間 $t_c = Delta nu^(- 1)$
+$cal(bold(E)) \( bold(r) \, t \)$ は次のように Fourier 変換される.
+$ cal(bold(E)) \( bold(r) \, t \) & = integral_(\| bold(k)' - bold(k) \| lt.eq Delta k) d i f f \( bold(k)' \) {cal(E)_1 \( bold(k)' \) bold(epsilon.alt)_1 \( bold(k)' \) + cal(E)_2 \( bold(k)' \) bold(epsilon.alt)_2 \( bold(k)' \)} e^(i \( omega \( bold(k)' \) t - bold(k)' dot.op bold(r) \))\
+ & = integral_(\| delta bold(k) \| lt.eq Delta k) d i f f \( delta bold(k) \) {cal(E)_1 \( bold(k) + delta bold(k) \) bold(epsilon.alt)_1 \( bold(k) + delta bold(k) \) + cal(E)_2 \( bold(k) + delta bold(k) \) bold(epsilon.alt)_2 \( bold(k) + delta bold(k) \)} e^(i \( omega \( bold(k) + delta bold(k) \) t - \( bold(k) + delta bold(k) \) dot.op bold(r) \))\
+ & = e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) integral_(\| delta bold(k) \| lt.eq Delta k) d i f f \( delta bold(k) \) {cal(E)_1 \( bold(k) + delta bold(k) \) bold(epsilon.alt)_1 \( bold(k) + delta bold(k) \) + cal(E)_2 \( bold(k) + delta bold(k) \) bold(epsilon.alt)_2 \( bold(k) + delta bold(k) \)} e^(i {\( omega \( bold(k) + delta bold(k) \) - omega \( bold(k) \) \) t - delta bold(k) dot.op bold(r)})\
+ $<EC-fourier> ここでコヒーレンス時間 $t_c = Delta nu^(- 1)$
 より十分短い時間間隔 $Delta t lt.double t_c$ のとき
 $\( omega \( bold(k) + delta bold(k) \) - omega \( bold(k) \) \) Delta t tilde.op Delta nu t_c lt.double 1$
-となるので式 #link(label("EC fourier"))[\[EC fourier\]]
-は単色光と見なすことができる. \
+となるので式 #link(<EC-fourier>)[EC-fourier] は単色光と見なすことができる. \
 #strong[Q 21B-49.]
 コヒーレンス時間を超える時間スケールではコヒーレンス時間 $t_c$
 程度の時間間毎ごとに定まる Stokes
@@ -533,9 +506,8 @@ $ s_0^2 & = (chevron.l a_1^2 chevron.r + chevron.l a_2^2 chevron.r)^2\
  & = s_1^2 + 4 chevron.l a_1 a_2 chevron.r^2 chevron.l cos^2 delta + sin^2 delta chevron.r\
  & gt.eq s_1^2 + \( 2 chevron.l a_1 a_2 cos delta chevron.r \)^2 + \( 2 chevron.l a_1 a_2 sin delta chevron.r \)^2\
  & = s_1^2 + s_2^2 + s_3^2 $ このような不等式となるので新しいパラメータ
-$p in \[ 0 \, 1 \]$ を用いて式 #link(label("s1 def"))[\[s1 def\]]
-#link(label("s2 def"))[\[s2 def\]] #link(label("s3 def"))[\[s3 def\]]
-を修正する. $ s_0 & = chevron.l a_1^2 chevron.r + chevron.l a_2^2 chevron.r\
+$p in \[ 0 \, 1 \]$ を用いて式 #link(<s1-def>)[s1-def] #link(<s2-def>)[s2-def] #link(<s3-def>)[s3-def] を修正する.
+$ s_0 & = chevron.l a_1^2 chevron.r + chevron.l a_2^2 chevron.r\
 s_1 & = p s_0 cos 2 psi cos 2 chi\
 s_2 & = p s_0 sin 2 psi cos 2 chi\
 s_3 & = p s_0 sin 2 chi $ パラメータ $p$ は準単色光の「偏光度」(degree
@@ -575,7 +547,7 @@ $ bold(L) & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) time
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) times \( upright(bold(nabla)) \( bold(E) dot.op bold(A) \) - \( bold(E) dot.op upright(bold(nabla)) \) bold(A) \)\
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) (bold(E) times bold(A) + bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j)\
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E) times bold(A) + frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j\
- & = bold(L)_(s p i n) + bold(L)_(o r b i t) $ 0◻
+ & = bold(L)_(s p i n) + bold(L)_(o r b i t) $
 
 #block[
 #strong[定理 5] (). \
@@ -611,14 +583,13 @@ bold(a)_j \( bold(k) \) & = bold(epsilon.alt)_j \( bold(k) \) a_j \( bold(k) \) 
 波数 $bold(k)$
 について対称性が成り立つようにすることで矛盾なく次のように定義できる.
 $ bold(epsilon.alt)_1 \( - bold(k) \) = bold(epsilon.alt)_2 \( bold(k) \) \, bold(epsilon.alt)_2 \( - bold(k) \) = bold(epsilon.alt)_1 \( bold(k) \) $
-このとき次の式が導かれる. \$\$\\begin{aligned}
-     & \\bm{\\epsilon}\_\\pm(\\bm{k})\\times\\bm{\\epsilon}\_\\pm(\\bm{k}) = 0, \\qquad \\bm{\\epsilon}\_\\pm(\\bm{k})\\times\\bm{\\epsilon}\_\\mp(\\bm{k}) = \\mp i\\frac{\\bm{k}}{|\\bm{k}|} \\\\
-     & \\bm{\\epsilon}\_\\mp(\\bm{k}) = \\bm{\\epsilon}\_\\pm^\*(\\bm{k}), \\qquad \\bm{\\epsilon}\_\\pm(-\\bm{k}) = \\pm i\\bm{\\epsilon}\_\\mp(\\bm{k})                            \\\\
-     & \\frac{1}{(2\\pi)^3}\\int\_{\\mathbb{R}^3}\\mathrm{d} \\rre^{i(\\bm{k}- \\bm{k}\')\\cdot\\bm{r}} = \\delta(\\bm{k}- \\bm{k}\')               \\\\
-     & \\mathbf{\\nabla}\\cdot\\bm{A}= 0
-  
-\\end{aligned}\$\$ Dirac のデルタ関数の公式より角運動量のスピン成分
-$bold(L)_(s p i n)$ は次のようになる.
+このとき次の式が導かれる.
+$  & bold(epsilon.alt)_plus.minus \( bold(k) \) times bold(epsilon.alt)_plus.minus \( bold(k) \) = 0 \, #h(2em) bold(epsilon.alt)_plus.minus \( bold(k) \) times bold(epsilon.alt)_minus.plus \( bold(k) \) = minus.plus i frac(bold(k), \| bold(k) \|)\
+ & bold(epsilon.alt)_minus.plus \( bold(k) \) = bold(epsilon.alt)_plus.minus^(\*) \( bold(k) \) \, #h(2em) bold(epsilon.alt)_plus.minus \( - bold(k) \) = plus.minus i bold(epsilon.alt)_minus.plus \( bold(k) \)\
+ & frac(1, \( 2 pi \)^3) integral_(bb(R)^3) upright(d) bold(r) e^(i \( bold(k) - bold(k)' \) dot.op bold(r)) = delta \( bold(k) - bold(k)' \)\
+ & upright(bold(nabla)) dot.op bold(A) = 0 $ Dirac
+のデルタ関数の公式より角運動量のスピン成分 $bold(L)_(s p i n)$
+は次のようになる.
 $  & bold(L)_(s p i n) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E) times bold(A) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) (- 1 / c frac(partial bold(A), partial t)) times bold(A)\
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) (sum_(j = plus.minus) integral_(bb(R)^3) frac(i \| bold(k) \| upright(d) bold(k), \( 2 pi \)^3) (bold(a)_j \( bold(k) \) e^(i bold(k) dot.op bold(r)) - bold(a)_j^(\*) \( bold(k) \) e^(- i bold(k) dot.op bold(r)))) times (sum_(j' = plus.minus) integral_(bb(R)^3) frac(upright(d) bold(k)', \( 2 pi \)^3) (bold(a)_(j') \( bold(k)' \) e^(i bold(k)' dot.op bold(r)) + bold(a)_(j')^(\*) \( bold(k)' \) e^(- i bold(k)' dot.op bold(r))))\
  & = frac(1, 4 pi c) integral frac(upright(d) bold(r) upright(d) bold(k) upright(d) bold(k)', \( 2 pi \)^6) i \| bold(k) \| sum_(j = plus.minus) sum_(j' = plus.minus) #scale(x: 120%, y: 120%)[\(] bold(a)_j \( bold(k) \) times bold(a)_(j') \( bold(k)' \) e^(i \( bold(k) + bold(k)' \) dot.op bold(r))\
@@ -629,7 +600,7 @@ $  & bold(L)_(s p i n) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) b
  & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) i \| bold(k) \| sum_(j = plus.minus) (bold(a)_j \( bold(k) \) times bold(a)_j \( - bold(k) \) + bold(a)_j \( bold(k) \) times bold(a)_j^(\*) \( bold(k) \) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_j \( bold(k) \) + bold(a)_j^(\*) \( bold(k) \) times bold(a)_j^(\*) \( - bold(k) \))\
  & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) \| bold(k) \| frac(bold(k), \| bold(k) \|) sum_(j = plus.minus) (i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) + j \| a_j \( bold(k) \) \|^2 + j \| a_j \( bold(k) \) \|^2 - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t))\
  & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) bold(k) sum_(j = plus.minus) (2 j \| a_j \( bold(k) \) \|^2 + i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t)) $
-時間平均を取ると次のようになる。 0◻
+時間平均を取ると次のようになる。
 
 == 有限の広がりを持つ円偏光の近似的平面波の角運動量
 <有限の広がりを持つ円偏光の近似的平面波の角運動量>
@@ -641,7 +612,7 @@ $  & bold(L)_(s p i n) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) b
 ]
 #strong[Q21B-55.] このとき円偏光の近似的平面波の電場の複素表示
 $tilde(bold(E)) \( x \, y \, z \, t \)$ を次のように与える.
-$ tilde(bold(E)) \( x \, y \, z \, t \) & = {f \( x \, y \) \( bold(e)_x plus.minus i bold(e)_y \) + g \( x \, y \) bold(e)_z} e^(i \( bold(k) z - omega t \)) $#label("def ET D")
+$ tilde(bold(E)) \( x \, y \, z \, t \) & = {f \( x \, y \) \( bold(e)_x plus.minus i bold(e)_y \) + g \( x \, y \) bold(e)_z} e^(i \( bold(k) z - omega t \)) $<def-ET-D>
 また, 復号 $plus.minus$ により, 2つの円偏光を同時に考察する.
 $ plus.minus arrow.l.r.double upright(h e l i c i t y) = plus.minus 1 arrow.l.r.double {"左円偏光"\
 "右円偏光" $ このとき $f \( x \, y \) \, g \( x \, y \)$
@@ -666,13 +637,13 @@ $O \( \( frac(1, k L) \)^2 \)$ の項は無視する近似を用いた. \
 #strong[Q 21B-58.] 物理的な電場を $bold(E) = Re tilde(bold(E))$
 とおくと上で議論したことから
 $ bold(B) & = plus.minus k Im tilde(bold(E))\
-bold(A) & = c / omega Im tilde(bold(E)) $#label("B tilde E") となる. \
+bold(A) & = c / omega Im tilde(bold(E)) $<B-tilde-E> となる. \
 #strong[Q 21B-59.] 関数 $f \( x \, y \)$ が円筒対称性を持つときを考える.
 つまり $f \( x \, y \)$ は xy 平面の極座標 $\( rho \, phi \)$ として
 $rho = sqrt(x^2 + y^2)$ のみの関数となる. このとき関数 $g \( x \, y \)$
 は次のように表される.
 $ g & = i / k (frac(partial f, partial rho) frac(partial rho, partial x) plus.minus i frac(partial f, partial rho) frac(partial rho, partial y))\
- & = i / k e^(plus.minus i phi) frac(upright(d) f, upright(d) rho) $#label("def g")
+ & = i / k e^(plus.minus i phi) frac(upright(d) f, upright(d) rho) $<def-g>
 
 #strong[Q 21B-60.] 角運動量のスピン部分 $bold(L)_(s p i n)$ を求める.
 $ bold(E) times bold(A) & = c / omega Re tilde(bold(E)) times Im tilde(bold(E))\
@@ -728,7 +699,7 @@ $ bold(L)_(o r b i t) & = frac(1, 4 pi c) integral_V d i f f \( bold(r) \) E_j \
   に比べて無視できるようになって、電磁波の全角運動量
   $bold(L) = bold(L)_(s p i n) + bold(L)_(o r b i t)$ はスピン部分
   $bold(L)_(s p i n)$ だけからなるようになる: \$\$\\begin{aligned}
-            \\bm{L}\\to \\bm{L}\_{spin} = \\pm \\frac{1}{4\\pi\\omega}\\left(\\int\_V\\dl V(\\bm{r})|f|^2\\right)\\bm{e}\_z \\label{L limit}
+            \\bm{L}\\to \\bm{L}\_{spin} = \\pm \\frac{1}{4\\pi\\omega}\\left(\\int\_V\\dl V(\\bm{r})|f|^2\\right)\\bm{e}\_z \\label{L-limit}
           
   \\end{aligned}\$\$
 
@@ -736,9 +707,7 @@ $ bold(L)_(o r b i t) & = frac(1, 4 pi c) integral_V d i f f \( bold(r) \) E_j \
 
 #strong[Q 21B-63.] CGSガウス単位系でのエネルギー密度の総和を考えると
 $ U = frac(1, 8 pi) integral_V d i f f \( bold(r) \) (lr(|bold(E)|)^2 + lr(|bold(B)|)^2) $
-式 #link(label("def ET D"))[\[def ET D\]];,
-#link(label("B tilde E"))[\[B tilde E\]];,
-#link(label("def g"))[\[def g\]] より
+式 #link(<def-ET-D>)[def-ET-D], #link(<B-tilde-E>)[B-tilde-E], #link(<def-g>)[def-g] より
 $ lr(|tilde(bold(E))|)^2 & = \| bold(E) \|^2 + \| bold(B) \|^2\
  & = 2 \| f \|^2 + \| g \|^2\
  & = 2 \| f \|^2 + 1 / k^2 lr(|frac(upright(d) f, upright(d) rho)|)^2 $
@@ -749,10 +718,9 @@ $ lr(|tilde(bold(E))|)^2 & = \| bold(E) \|^2 + \| bold(B) \|^2\
 \\end{aligned}\$\$ 次の式より電磁場の広がりを十分大きくすると
 $U_(s p i n)$ が主要項となる.
 $ U_(o r b i t) / U_(s p i n) & tilde.op (frac(1, k L))^2\
-U & = U_(s p i n) #h(2em) (frac(1, k L) arrow.r 0) $#label("U limit")
+U & = U_(s p i n) #h(2em) (frac(1, k L) arrow.r 0) $<U-limit>
 
-#strong[Q 21B-64.] 式 #link(label("L limit"))[\[L limit\]];,
-#link(label("U limit"))[\[U limit\]] より次の式が導かれる.
+#strong[Q 21B-64.] 式 #link(<L-limit>)[L-limit], #link(<U-limit>)[U-limit] より次の式が導かれる.
 $ L_z = plus.minus 1 / omega U $
 
 #strong[Q 21B-65.] 電磁波を担う実体が光子 (photon) であることを認めると,
@@ -819,7 +787,6 @@ $ L_r \( x \, bold(omega)_r \) & = s L_i \( x \, bold(omega)_i \) $
 
 
 // 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)#label("EC fourier")
-#metadata(none)#label("s2 def")
-#metadata(none)#label("s3 def")
-#metadata(none)#label("L limit")
+#metadata(none)<s2-def>
+#metadata(none)<s3-def>
+#metadata(none)<L-limit>

@@ -12,12 +12,12 @@
 == フーリエ級数
 <フーリエ級数>
 #block[
-関数の正規直交関数系による展"開区"間 $\[ a \, b \]$ 上の
+関数の正規直交関数系による展開 区間 $\[ a \, b \]$ 上の
 
 ]
 #block[
-$bb(T) = bb(R) \/ \( 2 pi bb(Z) \)$ "上関"数 $f : bb(T) arrow.r bb(C)$
-に対"し区"間 $\[ - pi \, pi \]$ において定義された実数値関数 $f \( x \)$
+$bb(T) = bb(R) \/ \( 2 pi bb(Z) \)$ 上 関数 $f : bb(T) arrow.r bb(C)$
+に対し 区間 $\[ - pi \, pi \]$ において定義された実数値関数 $f \( x \)$
 が連続かつ区分的に $C^1$ 級かつ周期的である
 ($f \( - pi \) = f \( pi \)$) ならば $f \( x \)$ は
 $ f \( x \) & = sum_(n in bb(Z)) c_n e^(i n x)\
@@ -48,36 +48,19 @@ $  & integral_(- pi)^pi sin \( m x \) cos \( n x \) upright(d) x = 0\
  & integral_(- pi)^pi sin \( n x \) upright(d) x = 0 $
 
 ]
-\$\$\\begin{aligned}
-    \\int\_{-\\pi}^\\pi \\sin(mx)\\cos(nx)\\mathrm{d} x & = \\frac{1}{2}\\int\_{-\\pi}^\\pi \\left\[\\sin(m + n)x + \\sin(m - n)x\\right\]\\mathrm{d} x                           \\\\
-                                           & = \\frac{1}{2}\\left\[- \\frac{\\cos(m + n)x}{m + n} - \\frac{\\cos(m - n)x}{m - n}\\right\]\_{-\\pi}^\\pi        \\\\
-                                           & = 0                                                                                           \\\\
-    \\int\_{-\\pi}^\\pi \\cos(mx)\\cos(nx)\\mathrm{d} x & = \\frac{1}{2}\\int\_{-\\pi}^\\pi \\left\[\\cos(m - n)x + \\cos(m + n)x\\right\]\\mathrm{d} x                           \\\\
-                                           & = \\begin{dcases}
-                                                 \\frac{1}{2}\\left\[\\frac{\\sin(m - n)x}{m - n} + \\frac{\\sin(m + n)x}{m + n}\\right\]\_{-\\pi}^\\pi & (m \\neq n) \\\\
-                                                 \\frac{1}{2}\\left\[x + \\frac{\\sin(m + n)x}{m + n}\\right\]\_{-\\pi}^\\pi                          & (m = n)
-                                               \\end{dcases} \\\\
-                                           & = \\pi\\delta\_{m,n}                                                                             \\\\
-    \\int\_{-\\pi}^\\pi \\sin(mx)\\sin(nx)\\mathrm{d} x & = \\frac{1}{2}\\int\_{-\\pi}^\\pi \\left\[\\cos(m - n)x - \\cos(m + n)x\\right\]\\mathrm{d} x                           \\\\
-                                           & = \\begin{dcases}
-                                                 \\frac{1}{2}\\left\[\\frac{\\sin(m - n)x}{m - n} - \\frac{\\sin(m + n)x}{m + n}\\right\]\_{-\\pi}^\\pi & (m \\neq n) \\\\
-                                                 \\frac{1}{2}\\left\[x - \\frac{\\sin(m + n)x}{m + n}\\right\]\_{-\\pi}^\\pi                          & (m = n)
-                                               \\end{dcases} \\\\
-                                           & = \\pi\\delta\_{m,n}
-  
-\\end{aligned}\$\$ \$\$\\begin{aligned}
-    \\int\_{-\\pi}^\\pi \\cos(nx)\\mathrm{d} x & = \\begin{dcases}
-                                         \\left\[\\frac{\\sin(nx)}{n}\\right\]\_{-\\pi}^\\pi & (n \\neq 0) \\\\
-                                         \\left\[x\\right\]\_{-\\pi}^\\pi                  & (n = 0)
-                                       \\end{dcases}  \\\\
-                                   & = 2\\pi\\delta\_{n,0}                                     \\\\
-    \\int\_{-\\pi}^\\pi \\sin(nx)\\mathrm{d} x & = \\begin{dcases}
-                                         \\left\[-\\frac{\\cos(nx)}{n}\\right\]\_{-\\pi}^\\pi & (n \\neq 0) \\\\
-                                         \\left\[0\\right\]\_{-\\pi}^\\pi                   & (n = 0)
-                                       \\end{dcases} \\\\
-                                   & = 0
-  
-\\end{aligned}\$\$ 0◻
+$ integral_(- pi)^pi sin \( m x \) cos \( n x \) upright(d) x & = 1 / 2 integral_(- pi)^pi [sin \( m + n \) x + sin \( m - n \) x] upright(d) x\
+ & = 1 / 2 [- frac(cos \( m + n \) x, m + n) - frac(cos \( m - n \) x, m - n)]_(- pi)^pi\
+ & = 0\
+integral_(- pi)^pi cos \( m x \) cos \( n x \) upright(d) x & = 1 / 2 integral_(- pi)^pi [cos \( m - n \) x + cos \( m + n \) x] upright(d) x\
+ & = cases(delim: "{", 1 / 2 [frac(sin \( m - n \) x, m - n) + frac(sin \( m + n \) x, m + n)]_(- pi)^pi & \( m eq.not n \), 1 / 2 [x + frac(sin \( m + n \) x, m + n)]_(- pi)^pi & \( m = n \))\
+ & = pi delta_(m \, n)\
+integral_(- pi)^pi sin \( m x \) sin \( n x \) upright(d) x & = 1 / 2 integral_(- pi)^pi [cos \( m - n \) x - cos \( m + n \) x] upright(d) x\
+ & = cases(delim: "{", 1 / 2 [frac(sin \( m - n \) x, m - n) - frac(sin \( m + n \) x, m + n)]_(- pi)^pi & \( m eq.not n \), 1 / 2 [x - frac(sin \( m + n \) x, m + n)]_(- pi)^pi & \( m = n \))\
+ & = pi delta_(m \, n) $
+$ integral_(- pi)^pi cos \( n x \) upright(d) x & = cases(delim: "{", [frac(sin \( n x \), n)]_(- pi)^pi & \( n eq.not 0 \), [x]_(- pi)^pi & \( n = 0 \))\
+ & = 2 pi delta_(n \, 0)\
+integral_(- pi)^pi sin \( n x \) upright(d) x & = cases(delim: "{", [- frac(cos \( n x \), n)]_(- pi)^pi & \( n eq.not 0 \), [0]_(- pi)^pi & \( n = 0 \))\
+ & = 0 $ 
 
 #block[
 $ f \( x \) & tilde.op a_0 / 2 + sum_(n = 1)^oo \( a_n cos \( n x \) + b_n sin \( n x \) \)\
@@ -94,18 +77,11 @@ $ f \( x \) & tilde.op a_0 / 2 + sum_(n = 1)^oo \( a_n cos \( n x \) + b_n sin \
  & = a_0 / 2 + sum_(n = 1)^oo (a_n / 2 \( e^(i n x) + e^(- i n x) \) + frac(b_n, 2 i) \( e^(i n x) - e^(- i n x) \))\
  & = a_0 / 2 + sum_(n = 1)^oo (frac(a_n - i b_n, 2) e^(i n x) + frac(a_n + i b_n, 2) e^(- i n x))\
  & = sum_(n = - oo)^oo c_n e^(i n x) $ ただし $c_n$ は次のように定める。
-\$\$\\begin{aligned}
-    c\_n & := \\begin{dcases}
-               \\frac{a\_n - ib\_n}{2} & (n \> 0) \\\\
-               \\frac{a\_0}{2}        & (n = 0) \\\\
-               \\frac{a\_n - ib\_n}{2} & (n \< 0)
-             \\end{dcases}
-  
-\\end{aligned}\$\$
+$ c_n & := cases(delim: "{", frac(a_n - i b_n, 2) & \( n > 0 \), a_0 / 2 & \( n = 0 \), frac(a_n - i b_n, 2) & \( n < 0 \)) $
 $ frac(1, 2 pi) integral_(- pi)^pi f \( x \) e^(- i n x) upright(d) x & = frac(1, 2 pi) integral_(- pi)^pi sum_(m = - oo)^oo c_m e^(i m x) e^(- i n x) upright(d) x\
  & = frac(1, 2 pi) sum_(m = - oo)^oo c_m integral_(- pi)^pi e^(i \( m - n \) x) upright(d) x\
  & = frac(1, 2 pi) sum_(m = - oo)^oo c_m 2 pi delta_(m \, n)\
- & = c_n $ 0◻
+ & = c_n $ 
 
 #block[
 $ f \( x \) & tilde.op a_0 / 2 + sum_(n = 1)^oo (a_n cos frac(n pi x, L) + b_n sin frac(n pi x, L))\
@@ -130,7 +106,7 @@ $ (sum_(n = 1)^N p_n^2) (sum_(n = 1)^N q_n^2) gt.eq (sum_(n = 1)^N p_n q_n)^2 $
 
 ]
 $x$ について次の 2 次関数の判別式を考えることで求まる。
-$ sum_(n = 1)^N \( p_n x + q_n \)^2 gt.eq 0 $ 0◻
+$ sum_(n = 1)^N \( p_n x + q_n \)^2 gt.eq 0 $ 
 
 #block[
 #strong[定理 4] (ワイエルシュトラスの M テスト). \
@@ -141,7 +117,7 @@ $ sum_(n = 1)^N \( p_n x + q_n \)^2 gt.eq 0 $ 0◻
 $ s \( x \) = sum_(n = 1)^oo f_n \( x \) $
 
 ]
-0◻
+
 
 #block[
 #strong[定理 5] (). \
@@ -186,4 +162,4 @@ $ (1 / 2)^3 & = sum_(n = 1)^oo \( - 1 \)^n (- frac(2, n pi) + frac(12, \( n pi \
  & = 2 / pi epsilon \( 1 \) - 12 / pi^3 epsilon \( 3 \)\
  $ パーバセル $ zeta \( 6 \) $
 
-0◻
+

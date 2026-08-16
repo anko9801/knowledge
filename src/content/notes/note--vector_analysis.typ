@@ -40,7 +40,6 @@ bold(A) times bold(B) & = bold(e)_i epsilon_(i j k) A_j B_k $
 $ \( bold(A) times bold(B) \)_1 & = epsilon_(1 j k) A_j B_k = A_2 B_3 - A_3 B_2\
 \( bold(A) times bold(B) \)_2 & = epsilon_(2 j k) A_j B_k = A_3 B_1 - A_1 B_3\
 \( bold(A) times bold(B) \)_3 & = epsilon_(3 j k) A_j B_k = A_1 B_2 - A_2 B_1 $
-0◻
 
 = ベクトル解析
 <ベクトル解析>
@@ -51,23 +50,9 @@ $ delta_(i j) = cases(delim: "{", 1 & \( i = j \), 0 & \( i eq.not j \)) $
 #block[
 $epsilon_(mu_1 dots.h.c mu_k)$ は $mu_1 dots.h.c mu_k$ が順列のとき
 $1 dots.h.c k$ の偶置換なら $1$、奇置換なら $- 1$
-とする。順列ではないときは $0$ とする。 \$\$\\begin{aligned}
-    \\varepsilon\_{\\mu\_1\\cdots\\mu\_k} & :=
-    \\begin{dcases}
-      \\mathop{\\mathrm{sgn}}\\begin{pmatrix}
-            1     & \\cdots & k     \\\\
-            \\mu\_1 & \\cdots & \\mu\_k
-          \\end{pmatrix} & (\\mu\_1\\cdots\\mu\_k が順列のとき) \\\\
-      0                         & (else)
-    \\end{dcases} \\\\
-                                   & =
-    \\begin{dcases}
-      1  & (\\mu\_1\\cdots\\mu\_k が偶置換のとき) \\\\
-      -1 & (\\mu\_1\\cdots\\mu\_k が奇置換のとき) \\\\
-      0  & (else)
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+とする。順列ではないときは $0$ とする。
+$ epsilon_(mu_1 dots.h.c mu_k) & := cases(delim: "{", "sgn" mat(delim: "(", 1, dots.h.c, k; mu_1, dots.h.c, mu_k) & \( mu_1 dots.h.c mu_k "が順列のとき" \), 0 & \( e l s e \))\
+ & = cases(delim: "{", 1 & \( mu_1 dots.h.c mu_k "が偶置換のとき" \), - 1 & \( mu_1 dots.h.c mu_k "が奇置換のとき" \), 0 & \( e l s e \)) $
 
 ]
 #block[
@@ -79,7 +64,7 @@ $f_(i j) = f_(j i)$ と対称性があるとき $epsilon_(i j k) f_(i j) = 0$
 ]
 $i \, j$ を交換しても等しいことから
 $ epsilon_(i j k) f_(i j) = epsilon_(j i k) f_(j i) = - epsilon_(i j k) f_(i j) = 0 $
-となる。 0◻
+となる。
 
 #block[
 ベクトル $bold(A) = A_i bold(e)_i$ について勾配 $nabla bold(A)$ と発散
@@ -106,7 +91,7 @@ nabla dot.op \( bold(A) + bold(B) \) & = partial_i \( A_i + B_i \)\
  & = nabla dot.op bold(A) + nabla dot.op bold(B)\
 nabla times \( bold(A) + bold(B) \) & = bold(e)_i epsilon_(i j k) partial_j \( A_k + B_k \)\
  & = bold(e)_i epsilon_(i j k) partial_j A_k + bold(e)_i epsilon_(i j k) partial_j B_k\
- & = nabla times bold(A) + nabla times bold(B) $ 0◻
+ & = nabla times bold(A) + nabla times bold(B) $
 
 #block[
 #strong[定理 4] (スカラー倍の勾配・発散・回転). \
@@ -126,7 +111,7 @@ nabla dot.op \( f bold(A) \) & = partial_i \( f A_i \)\
 nabla times \( f bold(A) \) & = bold(e)_i epsilon_(i j k) partial_j \( f A_k \)\
  & = f bold(e)_i epsilon_(i j k) partial_j A_k + bold(e)_i epsilon_(i j k) A_k partial_j f\
  & = f bold(e)_i epsilon_(i j k) partial_j A_k - bold(e)_i epsilon_(i k j) A_k partial_j f\
- & = f \( nabla times bold(A) \) - bold(A) times \( nabla f \) $ 0◻
+ & = f \( nabla times bold(A) \) - bold(A) times \( nabla f \) $
 
 #block[
 #strong[定理 5] (ベクトルの内積・外積の勾配・発散・回転). \
@@ -152,7 +137,6 @@ nabla times \( bold(A) times bold(B) \) & = bold(e)_i epsilon_(i j k) partial_j 
  & = bold(e)_i \( B_j partial_j A_i + A_i partial_j B_j \) - bold(e)_i \( B_i partial_j A_j + A_j partial_j B_i \)\
  & = bold(e)_i A_i partial_j B_j - bold(e)_i B_i partial_j A_j + bold(e)_i B_j partial_j A_i - bold(e)_i A_j partial_j B_i\
  & = bold(A) \( nabla dot.op bold(B) \) + bold(B) \( nabla dot.op bold(A) \) + \( bold(B) dot.op nabla \) bold(A) - \( bold(A) dot.op nabla \) bold(B) $
-0◻
 
 #block[
 #strong[定理 6] (有名定理). \
@@ -169,7 +153,7 @@ nabla times \( nabla times bold(A) \) & = bold(e)_i epsilon_(i j k) partial_j \(
  & = bold(e)_i epsilon_(k i j) epsilon_(k l m) partial_j partial_l A_m\
  & = bold(e)_i \( delta_(i l) delta_(j m) - delta_(i m) delta_(j l) \) partial_j partial_l A_m\
  & = bold(e)_i partial_j partial_i A_j - bold(e)_i partial_j^2 A_i\
- & = nabla \( nabla dot.op bold(A) \) - nabla^2 bold(A) $ 0◻
+ & = nabla \( nabla dot.op bold(A) \) - nabla^2 bold(A) $
 
 #block[
 #strong[定理 7] (Gauss の定理). \

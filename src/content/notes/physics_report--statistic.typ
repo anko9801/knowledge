@@ -33,13 +33,12 @@ $ s & = - (frac(partial f, partial T))_(V \, N) = - (frac(partial f, partial bet
  & = k_B beta^2 (1 / beta^2 ln \( e^(- beta E_1) + e^(- beta E_2) \) - 1 / beta frac(- E_1 e^(- beta E_1) - E_2 e^(- beta E_2), e^(- beta E_1) + e^(- beta E_2)))\
  & = k_B (ln \( e^(- beta E_1) + e^(- beta E_2) \) + frac(beta E_1 e^(- beta E_1) + beta E_2 e^(- beta E_2), e^(- beta E_1) + e^(- beta E_2))) $
 $ u & = f + T s = frac(E_1 e^(- beta E_1) + E_2 e^(- beta E_2), e^(- beta E_1) + e^(- beta E_2)) . $
-\$\$\\begin{aligned}
-  c & = \\frac{\\partial u}{\\partial T} = \\frac{\\partial u}{\\partial \\beta}\\frac{\\partial \\beta}{\\partial T} = -k\_B\\beta^2\\frac{\\partial u}{\\partial \\beta}                                                                                                         \\\\
-    & = -k\_B\\beta^2\\pdv{\\beta}\\left(\\frac{E\_1 + E\_2e^{\\beta(E\_1 - E\_2)}}{1 + e^{\\beta(E\_1 - E\_2)}}\\right)                                                                                    \\\\
-    & = -k\_B\\beta^2\\frac{E\_2(E\_1 - E\_2)e^{\\beta(E\_1 - E\_2)}(1 + e^{\\beta(E\_1 - E\_2)}) - (E\_1 + E\_2e^{\\beta(E\_1 - E\_2)})(E\_1 - E\_2)e^{\\beta(E\_1 - E\_2)}}{(1 + e^{\\beta(E\_1 - E\_2)})^2} \\\\
-    & = k\_B\\beta^2\\frac{(E\_2 - E\_1)^2e^{\\beta(E\_1 - E\_2)}}{(1 + e^{\\beta(E\_1 - E\_2)})^2}                                                                                              \\\\
-    & = k\_B\\left(\\frac{\\frac{1}{2}\\beta(E\_2 - E\_1)}{\\cosh\\frac{1}{2}\\beta(E\_2 - E\_1)}\\right)^2.
-\\end{aligned}\$\$ $square.stroked$ a
+$ c & = frac(partial u, partial T) = frac(partial u, partial beta) frac(partial beta, partial T) = - k_B beta^2 frac(partial u, partial beta)\
+ & = - k_B beta^2 frac(partial, partial beta) (frac(E_1 + E_2 e^(beta \( E_1 - E_2 \)), 1 + e^(beta \( E_1 - E_2 \))))\
+ & = - k_B beta^2 frac(E_2 \( E_1 - E_2 \) e^(beta \( E_1 - E_2 \)) \( 1 + e^(beta \( E_1 - E_2 \)) \) - \( E_1 + E_2 e^(beta \( E_1 - E_2 \)) \) \( E_1 - E_2 \) e^(beta \( E_1 - E_2 \)), \( 1 + e^(beta \( E_1 - E_2 \)) \)^2)\
+ & = k_B beta^2 frac(\( E_2 - E_1 \)^2 e^(beta \( E_1 - E_2 \)), \( 1 + e^(beta \( E_1 - E_2 \)) \)^2)\
+ & = k_B (frac(1 / 2 beta \( E_2 - E_1 \), cosh 1 / 2 beta \( E_2 - E_1 \)))^2 . $
+$square.stroked$ a
 
 #block[
 Q 15-2. Q 15-1.では Helmholtz
@@ -83,13 +82,9 @@ Q 15-4. 高温極限 ($beta \( E_2 - E_1 \) lt.double 1$)
 高温極限では $F = E - T S$
 よりエントロピーを増大させるとエネルギーが得となる為に半々となる。実際式でも次のように計算できる。
 
-\$\$\\begin{aligned}
-   & \\quad p\_\\beta^{正準}(i) = \\frac{e^{-\\beta E\_i}}{z(\\beta)} = \\frac{e^{-\\beta (E\_i - E\_1)}}{1 + e^{-\\beta(E\_2 - E\_1)}} \\approx \\frac{e^{-\\beta (E\_i - E\_1)}}{2} \\\\
-   & \\begin{dcases}
-       p\_\\beta^{正準}(1) \\approx \\frac{1}{2} \\\\
-       p\_\\beta^{正準}(2) \\approx \\frac{e^{-\\beta (E\_2 - E\_1)}}{2} \\approx \\frac{1}{2}
-     \\end{dcases}
-\\end{aligned}\$\$
+$  & quad p_beta^("正準") \( i \) = frac(e^(- beta E_i), z \( beta \)) = frac(e^(- beta \( E_i - E_1 \)), 1 + e^(- beta \( E_2 - E_1 \))) approx e^(- beta \( E_i - E_1 \)) / 2\
+ & {p_beta^("正準") \( 1 \) approx 1 / 2\
+p_beta^("正準") \( 2 \) approx e^(- beta \( E_2 - E_1 \)) / 2 approx 1 / 2 $
 
 #block[
 Q 15-5. 低温の漸近領域 ($beta \( E_2 - E_1 \) gt.double 1$,
@@ -245,15 +240,11 @@ $ \[ hat(q) \, hat(p) \] = hat(q) hat(p) - hat(p) hat(q) = bold(i) planck $
 この 1 次元調和振動子の固有エネルギー $E_h$ と固有状態 $\|n⟩$
 は固有方程式 $ hat(H) \|n⟩ = E_n \|n⟩ $
 を解くことにより定まります。解いた結果は $n = 0 \, 1 \, 2 \, dots.h$
-に対して次のとおりです： \$\$\\begin{aligned}
-  \\begin{dcases}
-    E\_n        = \\left(n + \\frac{1}{2}\\right)\\hbar\\omega \\\\
-    \\Psi\_n(q) = \\left\\langle q\\right\\rangle {n} = \\left(\\frac{m\\omega}{2^{2n}(n!)^2\\pi\\hbar}\\right)^{\\frac{1}{4}}e^{-\\frac{m\\omega}{2\\hbar}q^2}H\_n\\left(\\sqrt{\\frac{m\\omega}{\\hbar}}q\\right)
-  \\end{dcases}.
-\\end{aligned}\$\$ ここで、Hermite 多項式 $H_n \( x \)$ は次の Rodrigues
-公式により定義されます： \$\$\\begin{aligned}
-  H\_n(x) = (-1)^ne^{x^2}\\dv\[n\]{x}e^{-x^2}.
-\\end{aligned}\$\$
+に対して次のとおりです： $ {E_n = (n + 1 / 2) planck omega\
+Psi_n \( q \) = ⟨q⟩ n = (frac(m omega, 2^(2 n) \( n ! \)^2 pi planck))^(1 / 4) e^(- frac(m omega, 2 planck) q^2) H_n (sqrt(frac(m omega, planck)) q) . $
+ここで、Hermite 多項式 $H_n \( x \)$ は次の Rodrigues
+公式により定義されます：
+$ H_n \( x \) = \( - 1 \)^n e^(x^2) frac(upright(d)^n, upright(d) x^n) e^(- x^2) . $
 
 = 1 個の調和振動子の統計力学
 <個の調和振動子の統計力学>

@@ -66,7 +66,7 @@ $ cal(F)_P = upright(accent(lim, ⃯))_(P in U) cal(F) \( U \) $ 点 $P$
 
 これを代数閉体から一般の可換環に適用したい。Grothendieck
 は素イデアルに注目し、スキームを導入することで解決させた。
-素イデアルの集"合素"スペクトル
+素イデアルの集合 素スペクトル
 
 - 素スペクトル同士の写像
 
@@ -152,8 +152,6 @@ I \( V \( J \) \) & = sqrt(J) $
   ($arrow.l.double.long$) $V \( I \) = bb(A)_k^n$ のとき Hilbert
   の零点定理より $I = sqrt(\( 0 \)) = \( 0 \)$ となる。
 
-0◻
-
 #block[
 1 次元アフィン空間 $bb(A)^1$ 内の代数的集合は $bb(A)^1$
 以外有限個の点である。
@@ -163,7 +161,7 @@ I \( V \( J \) \) & = sqrt(J) $
 変数多項式環は単項イデアル整域であるから自明でないイデアルは $f \( x \)$
 を用いて $I = \( f \( x \) \) eq.not \( 0 \)$ と表される。これより
 $ V \( I \) & = { a in k divides f \( a \) = 0 } $
-となるから有限個の解しかない。 0◻
+となるから有限個の解しかない。
 
 #block[
 実数体 $bb(R)$ 上の 1 変数多項式環の極大イデアルは
@@ -172,10 +170,10 @@ $  & \( x - a \) \, a in bb(R)\
 の形となる。
 
 ]
-単項イデアル整域より既約元のイデアルと極大イデアルは同値である。 0◻
+単項イデアル整域より既約元のイデアルと極大イデアルは同値である。
 
 #block[
-交"点平"面曲線 $C_f : f \( x \, y \) = 0$ と $C_g : g \( x \, y \) = 0$
+交点 平面曲線 $C_f : f \( x \, y \) = 0$ と $C_g : g \( x \, y \) = 0$
 の交点について
 
 ]
@@ -208,12 +206,12 @@ tilde(phi)^(\#) : med & k \[ bb(A)^2 \] = k \[ x \, y \] quad & arrow.r quad & k
 iota^(\#) : med & k \[ bb(A)^2 \] = k \[ x \, y \] quad & arrow.r quad & k \[ C \] = k \[ x \, y \] \/ \( y^2 - x^3 \)\
  & f \( x \, y \) quad & mapsto quad & overline(f \( x \, y \)) $
 \$\$\\begin{tikzcd}
-      \\mathbb{A}^1 \\arrow\[r,\"\\tilde\\varphi\"\]\\arrow\[dr,\"\\varphi\"\] & C \\arrow\[d,\"\\iota\"\] \\\\
+      \\mathbb{A}^1 \\arrow\[r,\"\\tilde{\\varphi}\"\]\\arrow\[dr,\"\\varphi\"\] & C \\arrow\[d,\"\\iota\"\] \\\\
       & \\mathbb{A}^2
     \\end{tikzcd}
     \\qquad
     \\begin{tikzcd}
-      k\[\\mathbb{A}^1\] & k\[C\] \\arrow\[l,\"\\tilde\\varphi^\\\#\"\] \\\\
+      k\[\\mathbb{A}^1\] & k\[C\] \\arrow\[l,\"\\tilde{\\varphi}^\\\#\"\] \\\\
       & k\[\\mathbb{A}^2\] \\arrow\[u,\"\\iota^\\\#\"\]\\arrow\[ul,\"\\varphi^\\\#\"\]
     \\end{tikzcd}\$\$ ここで $phi$ は全単射であるが $phi^(\#)$ は $t$
 の一次式は得られないことから全射ではない。
@@ -239,7 +237,7 @@ $\( a_1 \, dots.h \, a_m \) in V$ から定まる
 
 ]
 #block[
-重複度・局所交点"数平"面曲線 $C_f : f \( x \, y \) = 0$ と
+重複度・局所交点数 平面曲線 $C_f : f \( x \, y \) = 0$ と
 $C_g : g \( x \, y \) = 0$ の交点が重根によって表現されることがある。
 $ arrow.b.double $ $n$ 変数多項式環 $R = k \[ x_1 \, dots.h \, x_n \]$
 の点 $P$ での局所化 $R_P$ について連立方程式のイデアル
@@ -250,7 +248,7 @@ $I = \( f_1 \, dots.h \, f_l \)$ で割った環の $k$
 ]
 $R = k \[ x_1 \, dots.h \, x_n \]$ の $I = \( f_1 \, dots.h \, f_l \)$
 に関する局所化 $R_P$
-$ f \( x \) & = a_0 product_(j = 1)^m \( x - alpha_j \)^(n_j) $ 0◻
+$ f \( x \) & = a_0 product_(j = 1)^m \( x - alpha_j \)^(n_j) $
 
 #block[
 ]

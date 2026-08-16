@@ -34,12 +34,8 @@ $ D = r_1 + r_2 $ $ sigma \( chi \) = D^2 / 4 $
 $ sigma \( chi \) = lr(|frac(b, sin b) frac(upright(d) b, upright(d) chi)|) $
 $ Q = integral W \( chi \) sigma \( chi \) upright(d) Omega = integral_0^pi W \( chi \) sigma \( chi \) 2 pi sin chi upright(d) chi $
 
-\$\$\\begin{aligned}
-  \\begin{dcases}
-    F\_r = m(\\ddot{r} - r\\dot{\\theta}^2) = \\frac{q\_0q}{r^2} \\\\
-    F\_\\theta = \\frac{1}{r}\\frac{\\mathrm{d} }{\\mathrm{d} t}(mr^2\\dot{\\theta}) = 0
-  \\end{dcases}
-\\end{aligned}\$\$
+$ {F_r = m \( dot.double(r) - r dot(theta)^2 \) = frac(q_0 q, r^2)\
+F_theta = 1 / r frac(upright(d), upright(d) t) \( m r^2 dot(theta) \) = 0 $
 これらをエネルギー積分することで保存量を見出すことができる。
 $  & frac(upright(d), upright(d) t) \( m r^2 dot(theta) \) = frac(upright(d), upright(d) t) L = 0\
  & m dot(r) \( dot.double(r) - r dot(theta)^2 \) - frac(q_0 q, r^2) dot(r) = m dot(r) dot.double(r) - frac(L^2, m r^3) dot(r) - frac(q_0 q, r^2) dot(r) = frac(upright(d), upright(d) t) (1 / 2 m dot(r)^2 + frac(L^2, 2 m r^2) + frac(q_0 q, r)) = 0 $

@@ -127,8 +127,7 @@ $ 1 / d^2 & = (h / a)^2 + (k / b)^2 + (l / c)^2 $
 $ sin theta & = 1 / 2 sqrt((lambda / a)^2 h^2 + (lambda / b)^2 k^2 + (lambda / c)^2 l^2) $
 入射と回折 X 線のなす角 $2 theta$ が X 線回折装置によって出力される。
 具体的な値として X 線の波長は $lambda = 1.541$ Å,
-あり得る物質の結晶格子の格子定数は表
-#link(label("table:crystal structure"))[table:crystal structure] にとなる。
+あり得る物質の結晶格子の格子定数は表 #link(<table:crystal-structure>)[table:crystal-structure] にとなる。
 
 #block[
 #figure(
@@ -146,7 +145,7 @@ $ sin theta & = 1 / 2 sqrt((lambda / a)^2 h^2 + (lambda / b)^2 k^2 + (lambda / c
   , kind: table
   )
 
-] #label("table:crystal structure")
+] <table:crystal-structure>
 == 電気抵抗の測定
 <電気抵抗の測定>
 四端子法を用いて電流と電圧を測り、電気抵抗を測定する。
@@ -356,4 +355,4 @@ $- 0.012$ となった。
 
 = 参考文献
 <参考文献>
-研究プロジェクト - 東京工業大"学物"理学系
+研究プロジェクト - 東京工業大学 物理学系

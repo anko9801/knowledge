@@ -24,7 +24,7 @@
 
 1904 年: Plum pudding model (ブドウパンモデル) J.J. Thomson が提唱
 
-1904 年: 土星型原子モデ"ル長"岡半太郎が提唱
+1904 年: 土星型原子モデル 長岡半太郎が提唱
 
 1909 年: ラザフォード (Rutherford) の散乱実験により原子核の大きさ
 アーネスト・ラザフォードの弟子のハンス・ガイガーとアーネスト・マースデンによる実験
@@ -151,20 +151,12 @@ planck omega & approx 5 / 4 (3 / 2)^(1 \/ 3) frac(planck^2, m r_0^2) A^(- 1 \/ 3
 Mayer, Jensen はスピン軌道結合力 (L-S 力)
 を取り入れることで魔法数を説明した。
 $ V \( r \) = - V_0 + underbrace(1 / 2 m omega^2 r^2, "調和振動" ⼦) + underbrace(V_(l s) bold(l) dot.op bold(s), "スピン軌道結合力") $
-\$\$\\begin{aligned}
-  \\left\\langle \\bm{l}\\cdot\\bm{s}\\right\\rangle  & = \\frac{1}{2}\[\\bm{j}^2 - \\bm{l}^2 - \\bm{s}^2\] = \\frac{1}{2}\\left(j(j + 1) - l(l + 1) - s(s + 1)\\right) \\\\
-                         & = \\frac{1}{2}\\left(j(j + 1) - l(l + 1) - \\frac{3}{4}\\right)                                            \\\\
-                         & = \\begin{dcases}
-                               \\frac{1}{2}l         & (j = l + 1/2) \\\\
-                               \\frac{1}{2}(- l - 1) & (j = l - 1/2) \\\\
-                             \\end{dcases}
-\\end{aligned}\$\$ 多数の実験結果から $V_(l s) = - 20 A^(- 2 \/ 3)$ MeV
-となることが分かっている。 \$\$\\begin{aligned}
-  \\Delta\\varepsilon\_{ls} & = V\_{ls}\\left\\langle \\bm{l}\\cdot\\bm{s}\\right\\rangle  = \\begin{dcases}
-                                                              -10A^{-2/3}l       & (j = l + 1/2) \\\\
-                                                              +10A^{-2/3}(l + 1) & (j = l - 1/2) \\\\
-                                                            \\end{dcases}
-\\end{aligned}\$\$
+$ ⟨bold(l) dot.op bold(s)⟩ & = 1 / 2 \[ bold(j)^2 - bold(l)^2 - bold(s)^2 \] = 1 / 2 (j \( j + 1 \) - l \( l + 1 \) - s \( s + 1 \))\
+ & = 1 / 2 (j \( j + 1 \) - l \( l + 1 \) - 3 / 4)\
+ & = cases(delim: "{", 1 / 2 l & \( j = l + 1 \/ 2 \), 1 / 2 \( - l - 1 \) & \( j = l - 1 \/ 2 \), ) $
+多数の実験結果から $V_(l s) = - 20 A^(- 2 \/ 3)$ MeV
+となることが分かっている。
+$ Delta epsilon_(l s) & = V_(l s) ⟨bold(l) dot.op bold(s)⟩ = cases(delim: "{", - 10 A^(- 2 \/ 3) l & \( j = l + 1 \/ 2 \), + 10 A^(- 2 \/ 3) \( l + 1 \) & \( j = l - 1 \/ 2 \), ) $
 スピン軌道結合⼒よりスピンと軌道角運動量が同じ向きの方が安定する。
 これが強い理由に軸性ベクトル (擬ベクトル) の話がある。
 原子核の内部では力が働かず、表面において強い相互作用が働く P-inv, T-inv
@@ -199,7 +191,7 @@ $ V \( r \) = - V_0 + underbrace(1 / 2 m omega^2 r^2, "調和振動" ⼦) + unde
   , kind: table
   )
 
-] #label("table:magic number")
+] <table:magic-number>
 #block[
 Woods-Saxon ポテンシャルと軌道スピン相互作用により核子の軌道が数 MeV
 以上離れたグループ化した軌道を殻と呼ぶ。
@@ -260,7 +252,7 @@ $l = 0$ (s軌道)
 $bold(r) top bold(q)$
 $ bold(l) & = 1 / planck bold(r) times bold(p) $
 
-エネルギースケールが違"う超"微細構造
+エネルギースケールが違う 超微細構造
 
 歪曲波ボルン近似Distorted-Wave Born Approximation DWBA 平⾯波ボルン近似
 Plain-Wave Born Approximation PWBA
@@ -279,7 +271,7 @@ $ Delta x = c Delta t = frac(planck c, mu c^2) approx frac(197 M e V dot.op f m,
 中間子は $pi$ 中間子, $rho$ 中間子, $omega$ 中間子の 3
 つがあり、質量が異なるので、到達距離や結合定数 (⼒の強さ) が変わる。
 $pi$ 中間子は $pi^(+) \, pi^(-) \, pi^0$ の 3 種類がある。
-$pi^plus.minus$ は弱い相互作⽤ ニュートリ"ノレ"プトン数保存 $pi^0$
+$pi^plus.minus$ は弱い相互作⽤ ニュートリノ レプトン数保存 $pi^0$
 は弱い相互作⽤で崩壊しないから電磁気力的に崩壊する。これはとても速く崩壊する。
 
 #block[
@@ -306,21 +298,18 @@ $pi^plus.minus$ は弱い相互作⽤ ニュートリ"ノレ"プトン数保存 
 
 $ E^2 & = \( p c \)^2 + \( m c^2 \)^2\
 (i frac(partial, partial t))^2 & = \( - i planck nabla c \)^2 + \( m c^2 \)^2 $
-定常状態を考えるとコンプトン波長
-\$\\lambda \\kern -0.5em\\raise 0.5ex \\hbox{--}\$ を用いて
-\$\$\\begin{aligned}
-   & \\left\[\\frac{1}{c^2}\\frac{\\partial^{2} }{\\partial t^{2}} - \\nabla^2 + \\left(\\frac{mc}{\\hbar}\\right)^2\\right\]\\psi(\\bm{r}) = 0                                       \\\\
-   & \\left\[\\nabla^2 - \\frac{1}{\\lambda \\kern -0.5em\\raise 0.5ex \\hbox{--}^2}\\right\]\\psi(\\bm{r}) = -4\\pi\\rho(\\bm{r}) = 4\\pi g\\delta(\\bm{r})    & \\left(\\lambda \\kern -0.5em\\raise 0.5ex \\hbox{--}:= \\frac{\\hbar}{m\_\\pi c}\\right) \\\\
-   & \\psi(\\bm{r}) = -g\\frac{e^{-\\frac{r}{\\gamma}}}{r}                                                                            \\\\
-   & V(\\bm{r}) = -g^2\\frac{e^{-r/\\gamma}}{r}
-\\end{aligned}\$\$ 中間子場の波動関数は $g$ は核子の持つ荷
-核⼦がもつ”荷“が源となって中間⼦場ができると考える。
+定常状態を考えるとコンプトン波長 $lambda - -$ を用いて
+$  & [1 / c^2 frac(partial^2, partial t^2) - nabla^2 + (frac(m c, planck))^2] psi \( bold(r) \) = 0\
+ & [nabla^2 - frac(1, lambda - -^2)] psi \( bold(r) \) = - 4 pi rho \( bold(r) \) = 4 pi g delta \( bold(r) \) & (lambda - - := frac(planck, m_pi c))\
+ & psi \( bold(r) \) = - g e^(- r / gamma) / r\
+ & V \( bold(r) \) = - g^2 e^(- r \/ gamma) / r $ 中間子場の波動関数は
+$g$ は核子の持つ荷 核⼦がもつ”荷“が源となって中間⼦場ができると考える。
 の質量が0の時は遠距離⼒、⾮ゼロの時は近距離⼒
 $ alpha = frac(Z_0 e^2, 2 h) = 1 / 137\
 frac(g^2, h c) = 0.3 $
 
-核⼒ポテンシャ"ル質"量が大きくなると到達距離は短くなる。 $1 pi$
-交換ポテンシャル, $rho \, omega$ 交換, $2 pi$ 交"換斥"力芯
+核⼒ポテンシャル 質量が大きくなると到達距離は短くなる。 $1 pi$
+交換ポテンシャル, $rho \, omega$ 交換, $2 pi$ 交換 斥力芯
 (クォークパウリ効果等) -0.5fm
 
 #block[
@@ -418,7 +407,7 @@ $ ""^(upright(A X)) \,_(upright(Z X))^(upright(A)) \,_(upright(Z X))^(upright(A)
 - $Z$ $N$ が逆の核種を鏡映核 (mirror nuclei)
 
 発見された核種 3338 種類 (2022 年末時点) 6000-8000
-種類の原子核の存在が予"想自"然界で"はが"陽子数最大
+種類の原子核の存在が予想 自然界では が陽子数最大
 超ウラン元素は核融合によって人工的に生成
 https:\/\/people.nscl.msu.edu/~thoennes/isotopes/
 
@@ -473,7 +462,7 @@ https:\/\/people.physics.anu.edu.au/~ecs103/chart3d/
 
 逆転の島 ２個の中性子が励起した殻構造àより安定に
 
-Dirac 方程式で元"素電"子のエネルギーが虚"数原"子核が質点のとき 137
+Dirac 方程式で元素 電子のエネルギーが虚数 原子核が質点のとき 137
 体積があるとき 173 真空崩壊
 
 == 原子核の質量
@@ -487,13 +476,8 @@ Dirac 方程式で元"素電"子のエネルギーが虚"数原"子核が質点�
 液滴模型のもとで原子の質量を現象論的に表す公式であるヴァイツゼッカーの質量公式
 (Bethe-Weizsäcker) は次のように表される。
 $ M \( A \, Z \) & = Z M \(^1 upright(H) \) + N M_n - underbrace(a_V A, "体積項") + underbrace(a_S A^(2 \/ 3), "表面項") + underbrace(a_C Z^2 / A^(1 \/ 3), "クーロン項") + underbrace(a_a frac(\( N - Z \)^2, 4 A), "非対称項") + underbrace(delta / A^(1 \/ 2), "対エネルギー項") $
-\$\$\\begin{aligned}
-  \\delta & = \\begin{dcases}
-               -\\Delta & (A = \\mathrm{even}, Z = \\mathrm{even}) \\\\
-               0       & (A = \\mathrm{odd})                     \\\\
-               +\\Delta & (A = \\mathrm{even}, Z = \\mathrm{odd})  \\\\
-             \\end{dcases}
-\\end{aligned}\$\$ $ a_V & = 15.67 med M e V \/ c^2\
+$ delta & = cases(delim: "{", - Delta & \( A = upright(e v e n) \, Z = upright(e v e n) \), 0 & \( A = upright(o d d) \), + Delta & \( A = upright(e v e n) \, Z = upright(o d d) \), ) $
+$ a_V & = 15.67 med M e V \/ c^2\
 a_S & = 17.23 med M e V \/ c^2\
 a_C & = 0.714 med M e V \/ c^2\
 a_a & = 93.15 med M e V \/ c^2\
@@ -506,10 +490,10 @@ $d = chevron.l rho chevron.r^(- 1 \/ 3)$ $A$ は比例
 クーロン項は陽子間のクーロン斥力
 これがないと中性子だけで出来た原子核が最も軽く安定になってしまう。
 
-非対称"項陽"子と中性子の数が揃っている方が安"定ア"イソスピン1 (pp, pn, nn)
-よりもアイソスピン0 (pn) のほうが引力が強"いフ"ェルミ気体模型で分かる
+非対称項 陽子と中性子の数が揃っている方が安定 アイソスピン1 (pp, pn, nn)
+よりもアイソスピン0 (pn) のほうが引力が強い フェルミ気体模型で分かる
 
-対エネルギー"項陽"子数・中性子数がそれぞれ偶数のほうが安定
+対エネルギー項 陽子数・中性子数がそれぞれ偶数のほうが安定
 ともに奇数で安定な核種は ^2\_1\_1, ^6\_3\_3, ^10\_5\_5, ^14\_7\_7 のみ
 
 == 核反応
@@ -521,7 +505,7 @@ $d = chevron.l rho chevron.r^(- 1 \/ 3)$ $A$ は比例
 $ M \( A \, Z \) & = alpha Z^2 - beta Z + gamma + delta / A^(1 \/ 2) $
 弱い相互作用や電磁相互作用 $ Z = frac(beta, 2 alpha) $
 
-$alpha$ 崩"壊鉛"より原子番号の大きな放射性同位体でのみ起こりやすい。
+$alpha$ 崩壊 鉛より原子番号の大きな放射性同位体でのみ起こりやすい。
 崩壊前後で質量数を4で割った余りは変化しない。
 
 #block[
@@ -625,14 +609,14 @@ $ ""^8 upright(B e) arrow.r 2^4 upright(H e)\
   , kind: table
   )
 
-] #label("table:big bang nucleosynthesis")
+] <table:big-bang-nucleosynthesis>
 ^7 は 3 倍違う: ^7 問題
 
 $ 4^1 upright(H) arrow.r^4 upright(H e) + 2 upright(e)^(+) + 2 nu $
 赤色巨星の一種 AGB 星 (Asymptotic Giant Branch) sプロセス
 
 r-プロセス (Rapid プロセス) 中性子捕獲の遷移確率 \>\>
-ベータ崩壊の遷移確"率中"性子星合体または超新星爆発(高密度,高温)
+ベータ崩壊の遷移確率 中性子星合体または超新星爆発(高密度,高温)
 中性子捕獲と光吸収崩壊が平衡化する。
 
 ベータ崩壊の寿命と
@@ -676,4 +660,4 @@ $ ""^68 upright(N i) + n & arrow.r^69 upright(N i) + gamma\
 ] <table:star>
 = ハドロン物理学
 <ハドロン物理学>
-中性子数が多いからアイソスピン"正電"荷との関係によるから陽子が正 $ Q $
+中性子数が多いからアイソスピン正 電荷との関係によるから陽子が正 $ Q $

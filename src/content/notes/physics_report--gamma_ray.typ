@@ -110,7 +110,7 @@ mu^plus.minus & arrow.r e^plus.minus + nu_e + nu_mu $
   , kind: table
   )
 
-] #label("table:PMT MPPC")
+] <table:PMT-MPPC>
 より詳細の仕組みについて説明する。 pn
 接合に電圧を掛けると空乏層が広がり、感受領域が増える。
 電圧を増やすと電子が更に新たな電子・ホール対を生成し、増幅される。
@@ -127,16 +127,16 @@ h^(+) & arrow.r h^(+) + \( e^(-) \, h^(+) \) $ また MPPC
 信号の波形を歪めることなく回路間を伝搬する為に使われるのが伝送線であり、最もポピュラーなものが同軸線あるいは同軸ケーブル
 (coaxial cable) と呼ばれるケーブルである。
 
-まず同軸ケーブルは図 #link(label("fig:coaxial cable"))[fig:coaxial cable]
-のような仕組みとなっている。それぞれの部品は表
-#link(label("table:coaxial cable"))[table:coaxial cable] にまとめた。
+まず同軸ケーブルは図 #link(<fig:coaxial-cable>)[fig:coaxial-cable]
+のような仕組みとなっている。それぞれの部品は表 #link(<table:coaxial-cable>)[table:coaxial-cable]
+にまとめた。
 
 #figure(image("/public/notes/physics_report/assets/coaxial_cable.jpg", width: 14cm),
   caption: [
     終端抵抗
   ]
 )
-#label("fig:coaxial cable")
+<fig:coaxial-cable>
 
 #block[
 #figure(
@@ -154,7 +154,7 @@ h^(+) & arrow.r h^(+) + \( e^(-) \, h^(+) \) $ また MPPC
   , kind: table
   )
 
-] #label("table:coaxial cable")
+] <table:coaxial-cable>
 同軸ケーブルの回路的側面の性質として芯線の半径を $a$、シールドの半径を
 $b$ とし、同軸ケーブルの静電容量 $C$ とインダクタンス
 $L$、並びに特性インピーダンス $Z_0$ と位相速度 $v$ は次のようになる。
@@ -279,7 +279,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
     ケーブル
   ]
 )
-#label("fig:cable diff time")
+<fig:cable-diff-time>
 
 終端抵抗を変えたときのパルス波の強度は表 #link(<table:resistance>)[table:resistance]
 のようになり、パルス波の様子は図 #link(<fig:reflection>)[fig:reflection] のようになった。
@@ -311,75 +311,73 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 == MPPC のダークレート測定
 <mppc-のダークレート測定-1>
 ディスクリミネータの閾値を少しずつ変えて計数を比較する実験については図
-#link(label("fig:darkrate discriminator"))[fig:darkrate discriminator] のようになった。
+#link(<fig:darkrate-discriminator>)[fig:darkrate-discriminator] のようになった。
 
 #figure(image("/public/notes/physics_report/assets/discriminator.png", width: 12cm),
   caption: [
     ダークレートにおいて閾値に対する計数
   ]
 )
-#label("fig:darkrate discriminator")
+<fig:darkrate-discriminator>
 
-またオシロスコープでは図 #link(label("fig:trigger 1"))[fig:trigger 1]
-のような波形が見られた。
+またオシロスコープでは図 #link(<fig:trigger-1>)[fig:trigger-1] のような波形が見られた。
 
 #figure(image("/public/notes/physics_report/assets/trigger1.jpg", width: 12cm),
   caption: [
     ダークレート測定におけるオシロスコープの観察
   ]
 )
-#label("fig:trigger 1")
+<fig:trigger-1>
 
 == $gamma$ 線の計測
 <gamma-線の計測-1>
 線源 ^60, ^22, ^137, ^133 のガンマ線の計測結果をそれぞれ図
-#link(label("fig:Co60 gamma"))[fig:Co60 gamma];, #link(label("fig:Na22 gamma"))[fig:Na22 gamma];,
-#link(label("fig:Cs137 gamma"))[fig:Cs137 gamma];, #link(label("fig:Ba133 gamma"))[fig:Ba133 gamma] に示す。
+#link(<fig:Co60-gamma>)[fig:Co60-gamma], #link(<fig:Na22-gamma>)[fig:Na22-gamma], #link(<fig:Cs137-gamma>)[fig:Cs137-gamma], #link(<fig:Ba133-gamma>)[fig:Ba133-gamma]
+に示す。
 
 #figure(image("/public/notes/physics_report/assets/Co60_gamma.jpg", width: 14cm),
   caption: [
     線源 ^60 のガンマ線の計測結果
   ]
 )
-#label("fig:Co60 gamma")
+<fig:Co60-gamma>
 
 #figure(image("/public/notes/physics_report/assets/Na22_gamma.png", width: 12cm),
   caption: [
     線源 ^22 のガンマ線の計測結果
   ]
 )
-#label("fig:Na22 gamma")
+<fig:Na22-gamma>
 
 #figure(image("/public/notes/physics_report/assets/Cs137_gamma.png", width: 12cm),
   caption: [
     線源 ^137 のガンマ線の計測結果
   ]
 )
-#label("fig:Cs137 gamma")
+<fig:Cs137-gamma>
 
 #figure(image("/public/notes/physics_report/assets/Ba133_gamma.png", width: 12cm),
   caption: [
     線源 ^133 のガンマ線の計測結果
   ]
 )
-#label("fig:Ba133 gamma")
+<fig:Ba133-gamma>
 
 #figure(image("/public/notes/physics_report/assets/plastic.png", width: 12cm),
   caption: [
     線源 ^133 のガンマ線のプラスチックシンチレータによる計測結果
   ]
 )
-#label("fig:Ba133 plastic")
+<fig:Ba133-plastic>
 
-またオシロスコープでは図 #link(label("fig:trigger 2"))[fig:trigger 2]
-のような波形が見られた。
+またオシロスコープでは図 #link(<fig:trigger-2>)[fig:trigger-2] のような波形が見られた。
 
 #figure(image("/public/notes/physics_report/assets/trigger2.jpg", width: 12cm),
   caption: [
     $gamma$ 線の計測におけるオシロスコープの観察
   ]
 )
-#label("fig:trigger 2")
+<fig:trigger-2>
 
 == 宇宙線の計測
 <宇宙線の計測-1>
@@ -392,17 +390,16 @@ $40 m m times 40 m m$ のシンチレータに対して平均毎分 14.7
     宇宙線の計測におけるオシロスコープの観察
   ]
 )
-#label("fig:trigger 3")
+<fig:trigger-3>
 
-仰角に対する宇宙線は図 #link(label("fig:cosmic ray angle"))[fig:cosmic ray angle]
-のように観測された。
+仰角に対する宇宙線は図 #link(<fig:cosmic-ray-angle>)[fig:cosmic-ray-angle] のように観測された。
 
 #figure(image("/public/notes/physics_report/assets/cosmic_ray_elevation_angle.png", width: 14cm),
   caption: [
     宇宙線の天頂角分布
   ]
 )
-#label("fig:cosmic ray angle")
+<fig:cosmic-ray-angle>
 
 = 考察
 <考察>
@@ -425,7 +422,7 @@ $ r & = V_r / V_0 = frac(Z_L - Z_0, Z_L + Z_0) = cases(delim: "{", - 0.96 & \( 1
 
 == MPPC のダークレート測定
 <mppc-のダークレート測定-2>
-図 #link(label("fig:darkrate discriminator"))[fig:darkrate discriminator]
+図 #link(<fig:darkrate-discriminator>)[fig:darkrate-discriminator]
 の対数グラフを見ると大方直線となっているのに対して 25 mV
 毎に上下していることが分かる。
 これにはクロストークが原因であると考えられる。 すべてが 1
@@ -437,14 +434,14 @@ $ r & = V_r / V_0 = frac(Z_L - Z_0, Z_L + Z_0) = cases(delim: "{", - 0.96 & \( 1
 == $gamma$ 線の計測
 <gamma-線の計測-2>
 観測した光電ピークとチャンネルとエネルギーの対応が分かっているので図
-#link(label("fig:energy ch"))[fig:energy ch] のように線形近似して関係式を導ける。
+#link(<fig:energy-ch>)[fig:energy-ch] のように線形近似して関係式を導ける。
 
 #figure(image("/public/notes/physics_report/assets/gamma_energy_ch.png", width: 14cm),
   caption: [
     エネルギーとチャンネルの対応
   ]
 )
-#label("fig:energy ch")
+<fig:energy-ch>
 
 これより表 #link(<table:peak>)[table:peak] のようなピークが観測された。
 
@@ -492,7 +489,7 @@ $ planck c & approx \( 6.582 times 10^(- 16) e V dot.op s \) times \( 2.998 time
  & approx 1.973 times 10^(- 7) e V dot.op m\
  & approx 197.3 med M e V dot.op f m $ $ E & = frac(h c, lambda)\
 lambda & = frac(2 pi planck c, E) = frac(6.28 times 197 M e V dot.op f m, 1 G e V) = 1.24 f m $
-よって波長は $1.24 f m$ となる。 0◻
+よって波長は $1.24 f m$ となる。
 
 #block[
 特殊相対論の次の式を用いて $beta \, gamma \, gamma beta$ を計算せよ。
@@ -501,7 +498,7 @@ $ E^2 - \( p c \)^2 & = \( m c^2 \)^2 \, #h(2em) p = frac(E v, c^2) $
 ]
 $ beta & := v / c = frac(p c, E)\
 gamma & := 1 / sqrt(1 - beta^2) = 1 / sqrt(1 - (frac(p c, E))^2) = frac(E, m c^2)\
-gamma beta & = frac(p, m c) $ 0◻
+gamma beta & = frac(p, m c) $
 
 #block[
 2.2~s で崩壊する $mu$ 粒子がなぜ地表 20 km に到達するのか？
@@ -510,7 +507,7 @@ gamma beta & = frac(p, m c) $ 0◻
 ]
 $ E & = sqrt(\( m c^2 \)^2 + \( p c \)^2) = sqrt(\( 105.6 M e V \)^2 + \( 3 G e V \)^2) = 3.001858 G e V\
 gamma & = frac(E, m c^2) = 28.43 $ よって $2.2 mu s$ で
-$660 m times gamma = 18.8 k m$ まで進めることが分かる. 0◻
+$660 m times gamma = 18.8 k m$ まで進めることが分かる.
 
 #block[
 2
@@ -528,7 +525,6 @@ $  & frac(e^2, 4 pi epsilon_0 r) = m_e c^2\
 は古典電子半径 $r_e$ に一致する. そして次のように計算できる。
 $ r_e & = frac(e^2, 4 pi epsilon_0 m_e c^2) approx frac(\( 1.602 times 10^(- 19) C \)^2, 12.56 times \( 8.85 times 10^(- 12) F \/ m \) times \( 8.19 times 10^(- 14) J \)) = 2.818 times 10^(- 15) m\
 4 pi r_e^2 & approx 0.998 times 10^(- 28) m^2 = 10^(- 24) c m^2 = 1 b a r n $
-0◻
 
 == MPPC の原理
 <mppc-の原理>
@@ -544,30 +540,24 @@ $n$ 型半導体と $p$ 型半導体の空乏層の位置 $x_n \, x_p$
     半導体中の電気密度
   ]
 )
-#label("fig:kubosou rho")
+<fig:kubosou-rho>
 
 これよりポアソン方程式を解くことで電位は次のようになる。
-\$\$\\begin{aligned}
-  \\phi(x) = \\begin{dcases}
-              V\_0                                          & (x \< x\_n)     \\\\
-              -\\frac{\\rho\_n}{2\\varepsilon}x^2 + A\_nx + B\_n & (x\_n \< x \< 0) \\\\
-              \\frac{\\rho\_p}{2\\varepsilon}x^2 + A\_px + B\_p  & (0 \< x \< x\_p) \\\\
-              0                                            & (x\_p \< x)
-            \\end{dcases}
-\\end{aligned}\$\$ 電位の連続性から次のようになる。
+$ phi.alt \( x \) = cases(delim: "{", V_0 & \( x < x_n \), - frac(rho_n, 2 epsilon) x^2 + A_n x + B_n & \( x_n < x < 0 \), frac(rho_p, 2 epsilon) x^2 + A_p x + B_p & \( 0 < x < x_p \), 0 & \( x_p < x \)) $
+電位の連続性から次のようになる。
 $ A_n & = A_p = frac(rho_n x_n, epsilon) = - frac(rho_p x_p, epsilon) = - frac(rho_n rho_p, epsilon \( rho_n + rho_p \)) D \, #h(2em) B_n = B_p\
 phi.alt \( x_n \) - phi.alt \( x_p \) & = (- 1 / 2 A_n x_n + B_n) - (- 1 / 2 A_p x_p + B_p) = frac(rho_n rho_p, 2 epsilon \( rho_n + rho_p \)) D^2 = V_0 $
 これより空乏層の厚さが求まる。
 $ D & = sqrt(frac(2 epsilon \( rho_n + rho_p \), rho_n rho_p) V_0) $
 空乏層内の電場は $E \( x \) = - nabla phi.alt$ と表せるから計算すると図
-#link(label("fig:kubosou E"))[fig:kubosou E] のようなグラフとなる。
+#link(<fig:kubosou-E>)[fig:kubosou-E] のようなグラフとなる。
 
 #figure([],
   caption: [
     空乏層内の電場
   ]
 )
-#label("fig:kubosou E")
+<fig:kubosou-E>
 
 $ E \( 0 \) & = frac(rho_n x_n, epsilon) = - frac(rho_n rho_p, epsilon \( rho_n + rho_p \)) D = - sqrt(frac(2 rho_n rho_p, epsilon \( rho_n + rho_p \)) V_0) $
 これより $rho_n \, rho_p$

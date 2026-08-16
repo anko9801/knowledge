@@ -46,7 +46,7 @@ c & approx 3 times 10^8 m \/ s $
 
 - 力を構成する粒子: ボース粒子
 
-- 粒子に質量を与える場にできる粒"子ヒ"ッグス粒子
+- 粒子に質量を与える場にできる粒子 ヒッグス粒子
 
 対称性から保存する量が作られる。
 
@@ -56,11 +56,11 @@ c & approx 3 times 10^8 m \/ s $
 
 - ゲージ不変性 $arrow.r$ 電荷保存則
 
-レプトン数保"存バ"リオン数保存
+レプトン数保存 バリオン数保存
 
 == レプトン
 <レプトン>
-レプトン"数電"子やニュートリノの粒子 $+ 1$, 反粒子 $- 1$
+レプトン数 電子やニュートリノの粒子 $+ 1$, 反粒子 $- 1$
 
 #block[
 #figure(
@@ -91,11 +91,11 @@ c & approx 3 times 10^8 m \/ s $
 
 - フレーバー (世代) 弱荷電アイソスピン
 
-- カラ"ーク"ォーク，グルーオン
+- カラー クォーク，グルーオン
 
-アイソスピン $I_3$ ストレンジネス $S$ ゲルマン・西島の"式ハ"イパー電荷
+アイソスピン $I_3$ ストレンジネス $S$ ゲルマン・西島の式 ハイパー電荷
 $Y$ を定義して $ Y = B + S\
-Q = I_3 + Y / 2 $ 反粒子はすべてマイナ"スク"ォーク $+ 1 \/ 3$ 反クォーク
+Q = I_3 + Y / 2 $ 反粒子はすべてマイナス クォーク $+ 1 \/ 3$ 反クォーク
 $- 1 \/ 3$ バリオン $+ 1$
 
 #block[
@@ -189,7 +189,7 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
 ] <table:guage>
 == ファインマン・ダイアグラム
 <ファインマンダイアグラム>
-エネルギー損"失陽"子全"体パ"ウリの排他"律弱"い相互作用 \$\$\\begin{aligned}
+エネルギー損失 陽子全体 パウリの排他律 弱い相互作用 \$\$\\begin{aligned}
      & K^0(d\\bar{s}) \\to \\pi^+(u\\bar{d}) + \\pi^-(d\\bar{u})   &
      & \\quad K^+(u\\bar{s}) \\to \\mu^+ + \\nu\_\\mu               &
      & \\quad \\pi^+(u\\bar d) \\to \\mu^+ + \\nu\_\\mu
@@ -217,13 +217,13 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
      & \\feynmandiagram \[layered layout, horizontal=a to b\] {
   a \[particle=\\(\\mu^{-}\\)\] -- \[fermion\] b -- \[fermion\] f1 \[particle=\\(\\nu\_{\\mu}\\)\],
   b -- \[boson, edge label\'=\\(W^{-}\\)\] c,
-  c -- \[anti fermion\] f2 \[particle=\\(\\overline \\nu\_{e}\\)\],
+  c -- \[anti fermion\] f2 \[particle=\\(\\overline{\\nu}\_{e}\\)\],
   c -- \[fermion\] f3 \[particle=\\(e^{-}\\)\],
   }; &
      & \\feynmandiagram \[layered layout, horizontal=a to b\] {
   a \[particle=\\(d\\)\] -- \[fermion\] b -- \[fermion\] f1 \[particle=\\(u\\)\],
   b -- \[boson, edge label\'=\\(W^{-}\\)\] c,
-  c -- \[anti fermion\] f2 \[particle=\\(\\overline \\nu\_{e}\\)\],
+  c -- \[anti fermion\] f2 \[particle=\\(\\overline{\\nu}\_{e}\\)\],
   c -- \[fermion\] f3 \[particle=\\(e^{-}\\)\],
   };
 \\end{aligned}\$\$ $ e^(-) e^(+) arrow.r mu^(-) mu^(+) $
@@ -268,13 +268,12 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
   cm#super[−2];~sec#super[−1];\]
 
 - エネルギー $E$ \
-  衝突のエネルギーによって発生する頻度， 即"ち断"面"積が"変わる，
+  衝突のエネルギーによって発生する頻度， 即ち 断面積 が変わる，
   両方を上げるのは技術的チャレンジ
 
-\$\$\\begin{aligned}
-  m\\ddot\\bm{r}& = q\\dot\\bm{r}\\times\\bm{B}\\\\
-  \\bm{r}(s)    & = \\bm{r}\_0(s) + x(s)\\bm{e}\_x(s) + y(s)\\bm{e}\_y(s)
-\\end{aligned}\$\$ 加速器が多段必要
+$ m dot.double(bold(r)) & = q dot(bold(r)) times bold(B)\
+bold(r) \( s \) & = bold(r)_0 \( s \) + x \( s \) bold(e)_x \( s \) + y \( s \) bold(e)_y \( s \) $
+加速器が多段必要
 
 - 静電型加速器 (\~100 keV)
 
@@ -298,7 +297,7 @@ $ Delta E = frac(4 pi, 3) frac(alpha beta^3, R) (E / m)^4 planck c $
 
 == 粒子の検出
 <粒子の検出>
-電磁シャワ"ーカ"スケード・シャワー
+電磁シャワー カスケード・シャワー
 
 #block[
 #figure(
@@ -345,11 +344,11 @@ $ sigma \( e e arrow.r mu mu \) = 4 / 3 frac(pi alpha^2, s) Q_e^2 Q_mu^2 $
 
 - 粒子種の同定 ($M$)
 
-気体の圧"力に"反比例 ( :移動度) • の電場内"で程""度電"子に較べて非常に遅い
-• 電子のドリフト速度も上式に従"う高"電場で"は一"定"値に"なる（例：数 ）
+気体の圧力 に反比例 ( :移動度) • の電場内で 程度 電子に較べて非常に遅い
+• 電子のドリフト速度も上式に従う 高電場では 一定値 になる（例：数 ）
 
 閉殻である希ガスの気体を円筒形容器に詰めて高電圧を印加する。 $1 \/ r$
-に比例する電"場電"子なだ"れ電"子イオン対生成 - 30 eV/pair
+に比例する電場 電子なだれ 電子イオン対生成 - 30 eV/pair
 印加電圧によって動作モードが変わる。
 
 - 比例計数領域: 比例
@@ -358,7 +357,7 @@ $ sigma \( e e arrow.r mu mu \) = 4 / 3 frac(pi alpha^2, s) Q_e^2 Q_mu^2 $
 
 - ガイガーミュラー領域: 同じ大きさの信号、高頻度は苦手
 
-拡散：ガス中で"は熱"エネルギ"ーに"よる運動により時間とともに広がる
+拡散：ガス中では 熱エネルギー による運動により時間とともに広がる
 
 = 素粒子の理論
 <素粒子の理論>
@@ -452,4 +451,4 @@ $ q^2 = \( p_1 - p_3 \)^2 = 2 \( m^2 - p_1 dot.op p_3 \) = 2 \( m^2 - E^2 + \| b
 <強い相互作用>
 hadrons
 
-Mandelstam 近似"は高"エネルギー
+Mandelstam 近似は 高エネルギー

@@ -1,6 +1,8 @@
 // 同じ .typ から HTML と PDF の両方を出すための共有テンプレート。
 // target() で分岐するのがこの経路の一番の旨みなので、記事側は本文だけ書く。
 
+#import "theorem.typ": statement-rules
+
 /// front matter。`typst eval 'query(<fm>).first().value'` がこれを拾う。
 /// HTML 出力には現れない（metadata は不可視要素）。
 #let frontmatter(title: "", date: "", tags: (), summary: none, draft: false) = [
@@ -47,6 +49,10 @@
       content
     }
   }
+
+  // 定義・定理・証明の枠。使っていない記事には何も起きない
+  // （kind: "statement" の figure だけを拾う show rule なので）。
+  show: statement-rules
 
   body
 }

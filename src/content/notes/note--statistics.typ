@@ -59,7 +59,7 @@
 二項分布の極限が正規分布である。
 
 ]
-0◻
+
 
 #block[
 あるエネルギー $E$ のときに実現可能な量子状態数を $W \( E \)$
@@ -93,7 +93,7 @@ Stirling の公式 $log n ! approx n \( log n - 1 \)$ を用いて
 $ S \( E \) & = k_B log W \( E \)\
  & = k_B log frac(\( M + N - 1 \) !, \( N - 1 \) ! M !)\
  & approx k_B (\( N + M \) \( log \( N + M \) - 1 \) - N \( log N - 1 \) - M \( log M - 1 \))\
- & = k_B N ((1 + M / N) log (1 + M / N) - M / N log M / N) $ 0◻
+ & = k_B N ((1 + M / N) log (1 + M / N) - M / N log M / N) $ 
 
 #block[
 #strong[定理 2] (). \
@@ -111,7 +111,7 @@ $ S \( E_A \, E_B \) & = k_B log W \( E_A \, E_B \)\
 $ frac(upright(d) S \( E_A \, E_B \), upright(d) E_A) & = frac(upright(d) S_A \( E_A \), upright(d) E_A) + frac(upright(d) S_A \( E_B \), upright(d) E_A) = frac(upright(d) S_A \( E_A \), upright(d) E_A) - frac(upright(d) S_A \( E_B \), upright(d) E_B) = 0\
 arrow.l.r.double frac(upright(d) S_A \( E_A \), upright(d) E_A) & = frac(upright(d) S_A \( E_B \), upright(d) E_B) $
 よりエントロピーのエネルギー微分を温度の逆数 $1 \/ T$
-と定義すると温度が一致するときに熱平衡状態となる。 0◻
+と定義すると温度が一致するときに熱平衡状態となる。 
 
 #block[
 絶対温度 (absolute temperature) $T$ を次のように定義する。
@@ -150,7 +150,7 @@ $ S \( E \) & = k_B ln Omega^("区別できない") \( E \)\
  & = N k_B (3 / 2 ln E / V + 5 / 2 ln V / N + 3 / 2 ln \( frac(m e, 3 pi planck^2) \) - 1 / N ln \( sqrt(6) pi N \) + 1) $
 よって温度を計算すると式が示せる。
 $ 1 / T = frac(upright(d) S, upright(d) E) & = 3 / 2 N k_B 1 / E\
-E & = 3 / 2 N k_B T $ 0◻
+E & = 3 / 2 N k_B T $ 
 
 = ミクロカノニカル分布
 <ミクロカノニカル分布>
@@ -288,74 +288,41 @@ e^x & approx 1 + x $
 二準位系における熱力学的量は次のようなグラフとなる。
 
 ]
-\$\$\\begin{aligned}
-    Z     & = e^{-\\beta E\_1} + e^{-\\beta E\_2} = \\begin{dcases}
-                                                  e^{-\\beta E\_1}(1 + e^{-\\beta (E\_2 - E\_1)}) \\approx e^{-\\beta E\_1} \\to 0                                       & (低温) \\\\
-                                                  e^{-\\frac{1}{2}\\beta (E\_1 + E\_2)}(e^{\\frac{1}{2}\\beta (E\_2 - E\_1)} + e^{-\\frac{1}{2}\\beta (E\_2 - E\_1)}) \\to 2 & (高温)
-                                                \\end{dcases} \\\\
-    \\ln Z & = \\ln (e^{-\\beta E\_1} + e^{-\\beta E\_2}) \\approx \\begin{dcases}
-                                                              -\\beta E\_1 + e^{-\\beta(E\_2 - E\_1)}   & (低温) \\\\
-                                                              \\ln 2 - \\frac{1}{2}\\beta (E\_1 + E\_2) & (高温)
-                                                            \\end{dcases}                                                                                                             \\\\
-    F     & = -k\_BT\\ln Z \\approx \\begin{dcases}
-                                   E\_1 - \\frac{1}{\\beta}e^{-\\beta (E\_2 - E\_1)} \\to E\_1 \\\\
-                                   \\frac{1}{2}(E\_1 + E\_2) - k\_BT\\ln 2 \\to -\\infty      \\\\
-                                 \\end{dcases}                                                                                                                                       \\\\
-    S     & = k\_B\\ln(e^{-\\beta E\_1} + e^{-\\beta E\_2}) + k\_B\\beta\\frac{E\_1e^{-\\beta E\_1} + E\_2e^{-\\beta E\_2}}{e^{-\\beta E\_1} + e^{-\\beta E\_2}}                                                                              \\\\
-    U     & = F + TS = \\frac{E\_1e^{-\\beta E\_1} + E\_2e^{-\\beta E\_2}}{e^{-\\beta E\_1} + e^{-\\beta E\_2}}
-  
-\\end{aligned}\$\$ \$\$\\begin{aligned}
-    U & = \\frac{E\_1e^{-\\beta E\_1} + E\_2e^{-\\beta E\_2}}{e^{-\\beta E\_1} + e^{-\\beta E\_2}}                                                                                                              \\\\
-      & = \\begin{dcases}
-            \\frac{E\_1 + E\_2e^{-\\beta (E\_2 - E\_1)}}{1 + e^{-\\beta (E\_2 - E\_1)}} \\\\
-            \\frac{E\_1e^{\\frac{1}{2}\\beta (E\_2 - E\_1)} + E\_2e^{-\\frac{1}{2}\\beta (E\_2 - E\_1)}}{e^{\\frac{1}{2}\\beta (E\_2 - E\_1)} + e^{-\\frac{1}{2}\\beta (E\_2 - E\_1)}}
-          \\end{dcases} \\\\
-      & = \\begin{dcases}
-            \\left(E\_1 + E\_2e^{-\\beta (E\_2 - E\_1)}\\right)\\left(1 - e^{-\\beta (E\_2 - E\_1)}\\right) \\\\
-            \\frac{1}{2}\\left(E\_1\\left(1 + \\frac{1}{2}\\beta (E\_2 - E\_1)\\right) + E\_2\\left(1 - \\frac{1}{2}\\beta (E\_2 - E\_1)\\right)\\right)
-          \\end{dcases}                                                                                                            \\\\
-      & \\approx \\begin{dcases}
-                  E\_1 + (E\_2 - E\_1)e^{- \\frac{E\_2 - E\_1}{k\_BT}} \\to E\_1                                     \\\\
-                  \\frac{1}{2}(E\_1 + E\_2) - \\frac{1}{4}\\frac{(E\_2 - E\_1)^2}{k\_BT} \\to \\frac{1}{2}(E\_1 + E\_2) \\\\
-                \\end{dcases}
-  
-\\end{aligned}\$\$ \$\$\\begin{aligned}
-    S & \\approx \\begin{dcases}
-                  k\_B\\left(-\\beta E\_1 + e^{-\\beta(E\_2 - E\_1)}\\right) + k\_B\\beta\\left(E\_1 + (E\_2 - E\_1)e^{- \\frac{E\_2 - E\_1}{k\_BT}}\\right)              \\\\
-                  k\_B\\left(\\ln 2 - \\frac{1}{2}(E\_1 + E\_2)\\right) + k\_B\\beta\\left(\\frac{1}{2}(E\_1 + E\_2) - \\frac{1}{4}\\frac{(E\_2 - E\_1)^2}{k\_BT}\\right) \\\\
-                \\end{dcases} \\\\
-      & = \\begin{dcases}
-            k\_B \\frac{E\_2 - E\_1}{k\_BT}e^{- \\frac{E\_2 - E\_1}{k\_BT}} \\to 0          & (低温) \\\\
-            k\_B\\left(\\ln 2 - \\frac{1}{4}\\left(\\frac{E\_2 - E\_1}{k\_BT}\\right)^2\\right) \\to k\_B\\ln 2 & (高温)
-          \\end{dcases}
-  
-\\end{aligned}\$\$ \$\$\\begin{aligned}
-    C & = -k\_B\\beta^2\\frac{\\partial U}{\\partial \\beta} = -k\_B\\beta^2\\frac{\\partial }{\\partial \\beta}\\left(\\frac{E\_1 + E\_2e^{\\beta(E\_1 - E\_2)}}{1 + e^{\\beta(E\_1 - E\_2)}}\\right) \\\\
-      & = k\_B\\frac{\\beta^2(E\_2 - E\_1)^2e^{\\beta(E\_1 - E\_2)}}{(1 + e^{\\beta(E\_1 - E\_2)})^2}                                            \\\\
-      & = k\_B\\left(\\frac{\\frac{1}{2}\\beta(E\_2 - E\_1)}{\\cosh\\frac{1}{2}\\beta(E\_2 - E\_1)}\\right)^2                                              \\\\
-      & = \\begin{dcases}
-            k\_B\\left(\\frac{\\beta(E\_2 - E\_1)}{1 + e^{-\\beta(E\_2 - E\_1)}}\\right)^2e^{-\\beta(E\_2 - E\_1)} \\\\
-            k\_B\\left(\\frac{\\beta(E\_2 - E\_1)}{e^{\\frac{1}{2}\\beta(E\_2 - E\_1)} + e^{-\\frac{1}{2}\\beta(E\_2 - E\_1)}}\\right)^2
-          \\end{dcases}        \\\\
-      & \\approx \\begin{dcases}
-                  k\_B\\left(\\frac{E\_2 - E\_1}{k\_BT}\\right)^2e^{-\\frac{E\_2 - E\_1}{k\_BT}} \\to 0 \\\\
-                  \\frac{k\_B}{4}\\left(\\frac{E\_2 - E\_1}{k\_BT}\\right)^2 \\to 0
-                \\end{dcases}
-  
-\\end{aligned}\$\$ 各固有状態の実現確率について高温極限
+$ Z & = e^(- beta E_1) + e^(- beta E_2) = cases(delim: "{", e^(- beta E_1) \( 1 + e^(- beta \( E_2 - E_1 \)) \) approx e^(- beta E_1) arrow.r 0 & \( "低温" \), e^(- 1 / 2 beta \( E_1 + E_2 \)) \( e^(1 / 2 beta \( E_2 - E_1 \)) + e^(- 1 / 2 beta \( E_2 - E_1 \)) \) arrow.r 2 & \( "高温" \))\
+ln Z & = ln \( e^(- beta E_1) + e^(- beta E_2) \) approx cases(delim: "{", - beta E_1 + e^(- beta \( E_2 - E_1 \)) & \( "低温" \), ln 2 - 1 / 2 beta \( E_1 + E_2 \) & \( "高温" \))\
+F & = - k_B T ln Z approx {E_1 - 1 / beta e^(- beta \( E_2 - E_1 \)) arrow.r E_1\
+1 / 2 \( E_1 + E_2 \) - k_B T ln 2 arrow.r - oo\
+\
+S & = k_B ln \( e^(- beta E_1) + e^(- beta E_2) \) + k_B beta frac(E_1 e^(- beta E_1) + E_2 e^(- beta E_2), e^(- beta E_1) + e^(- beta E_2))\
+U & = F + T S = frac(E_1 e^(- beta E_1) + E_2 e^(- beta E_2), e^(- beta E_1) + e^(- beta E_2)) $
+$ U & = frac(E_1 e^(- beta E_1) + E_2 e^(- beta E_2), e^(- beta E_1) + e^(- beta E_2))\
+ & = {frac(E_1 + E_2 e^(- beta \( E_2 - E_1 \)), 1 + e^(- beta \( E_2 - E_1 \)))\
+frac(E_1 e^(1 / 2 beta \( E_2 - E_1 \)) + E_2 e^(- 1 / 2 beta \( E_2 - E_1 \)), e^(1 / 2 beta \( E_2 - E_1 \)) + e^(- 1 / 2 beta \( E_2 - E_1 \)))\
+ & = {(E_1 + E_2 e^(- beta \( E_2 - E_1 \))) (1 - e^(- beta \( E_2 - E_1 \)))\
+1 / 2 (E_1 (1 + 1 / 2 beta \( E_2 - E_1 \)) + E_2 (1 - 1 / 2 beta \( E_2 - E_1 \)))\
+ & approx {E_1 + \( E_2 - E_1 \) e^(- frac(E_2 - E_1, k_B T)) arrow.r E_1\
+1 / 2 \( E_1 + E_2 \) - 1 / 4 frac(\( E_2 - E_1 \)^2, k_B T) arrow.r 1 / 2 \( E_1 + E_2 \)\
+ $
+$ S & approx {k_B (- beta E_1 + e^(- beta \( E_2 - E_1 \))) + k_B beta (E_1 + \( E_2 - E_1 \) e^(- frac(E_2 - E_1, k_B T)))\
+k_B (ln 2 - 1 / 2 \( E_1 + E_2 \)) + k_B beta (1 / 2 \( E_1 + E_2 \) - 1 / 4 frac(\( E_2 - E_1 \)^2, k_B T))\
+\
+ & = cases(delim: "{", k_B frac(E_2 - E_1, k_B T) e^(- frac(E_2 - E_1, k_B T)) arrow.r 0 & \( "低温" \), k_B (ln 2 - 1 / 4 (frac(E_2 - E_1, k_B T))^2) arrow.r k_B ln 2 & \( "高温" \)) $
+$ C & = - k_B beta^2 frac(partial U, partial beta) = - k_B beta^2 frac(partial, partial beta) (frac(E_1 + E_2 e^(beta \( E_1 - E_2 \)), 1 + e^(beta \( E_1 - E_2 \))))\
+ & = k_B frac(beta^2 \( E_2 - E_1 \)^2 e^(beta \( E_1 - E_2 \)), \( 1 + e^(beta \( E_1 - E_2 \)) \)^2)\
+ & = k_B (frac(1 / 2 beta \( E_2 - E_1 \), cosh 1 / 2 beta \( E_2 - E_1 \)))^2\
+ & = {k_B (frac(beta \( E_2 - E_1 \), 1 + e^(- beta \( E_2 - E_1 \))))^2 e^(- beta \( E_2 - E_1 \))\
+k_B (frac(beta \( E_2 - E_1 \), e^(1 / 2 beta \( E_2 - E_1 \)) + e^(- 1 / 2 beta \( E_2 - E_1 \))))^2\
+ & approx {k_B (frac(E_2 - E_1, k_B T))^2 e^(- frac(E_2 - E_1, k_B T)) arrow.r 0\
+k_B / 4 (frac(E_2 - E_1, k_B T))^2 arrow.r 0 $
+各固有状態の実現確率について高温極限
 ($beta \( E_2 - E_1 \) lt.double 1$)
 のときそれぞれの固有状態は同じ確率で実現し、低温極限
 ($beta \( E_2 - E_1 \) gt.double 1$)
 のとき固有エネルギーの低い固有状態にほぼ確実に実現する。
-\$\$\\begin{aligned}
-    \\quad p\_\\beta(i) & = \\frac{e^{-\\beta (E\_i - E\_1)}}{1 + e^{-\\beta(E\_2 - E\_1)}} \\approx \\begin{dcases}
-                                                                                            e^{-\\beta (E\_i - E\_1)} & (\\beta(E\_2 - E\_1) \\gg 1) \\\\
-                                                                                            \\frac{1}{2}            & (\\beta(E\_2 - E\_1) \\ll 1)
-                                                                                          \\end{dcases}
-  
-\\end{aligned}\$\$ $F = E - T S$
+$ quad p_beta \( i \) & = frac(e^(- beta \( E_i - E_1 \)), 1 + e^(- beta \( E_2 - E_1 \))) approx cases(delim: "{", e^(- beta \( E_i - E_1 \)) & \( beta \( E_2 - E_1 \) gt.double 1 \), 1 / 2 & \( beta \( E_2 - E_1 \) lt.double 1 \)) $
+$F = E - T S$
 の最小化を考える。低温極限でエントロピーを上げるよりエネルギーが低いものを選んだ方がエネルギーが得となる為に固有エネルギーの低い状態に集まる。高温極限でエントロピーを増大させるとエネルギーが得となる為に半々となる。
-0◻
+
 
 今回は正準集団の理論における固有状態の実現確率を与える確率関数
 $p_beta \( i \) med \( i = 1 \, 2 \)$ を計算して、内部エネルギー $u$
@@ -421,33 +388,24 @@ c & = frac(partial u, partial T) = - k_B beta^2 frac(partial u, partial beta) = 
 $ sinh x & = x + frac(x^3, 3 !) + frac(x^5, 5 !) + dots.h.c\
 coth x & = 1 / x + x / 3 - x^3 / 45 + dots.h.c\
 frac(1, sinh x) & = 1 / x - x / 6 + frac(7 x^3, 360) - dots.h.c $
-\$\$\\begin{aligned}
-    s & \\approx \\begin{dcases}
-                  k\_B\\left(e^{-\\beta\\hbar\\omega} + \\beta\\hbar\\omega e^{-\\beta\\hbar\\omega}(1 + e^{-\\beta\\hbar\\omega})\\right) \\\\
-                  k\_B\\left(-\\ln\\beta\\hbar\\omega + 1\\right)                                                                  \\\\
-                \\end{dcases}                                                  \\\\
-      & \\approx \\begin{dcases}
-                  k\_B\\frac{\\hbar\\omega}{k\_BT}e^{- \\frac{\\hbar\\omega}{k\_BT}} \\to 0 \\\\
-                  k\_B\\ln\\frac{k\_BT}{\\hbar\\omega} \\to +\\infty                      \\\\
-                \\end{dcases}                                                                                    \\\\
-    u & \\approx \\begin{dcases}
-                  \\left(\\frac{1}{2} + e^{-\\beta\\hbar\\omega}(1 + e^{-\\beta\\hbar\\omega})\\right)\\hbar\\omega                                        \\\\
-                  \\frac{1}{2}\\hbar\\omega\\left(\\left(\\frac{\\beta\\hbar\\omega}{2}\\right)^{-1} + \\frac{1}{3}\\left(\\frac{\\beta\\hbar\\omega}{2}\\right) + \\cdots\\right) \\\\
-                \\end{dcases}                              \\\\
-      & \\approx \\begin{dcases}
-                  \\frac{1}{2}\\hbar\\omega + e^{-\\beta\\hbar\\omega}\\hbar\\omega \\to \\frac{1}{2}\\hbar\\omega \\\\
-                  k\_BT\\left(1 + \\frac{1}{12}\\left(\\frac{\\hbar\\omega}{k\_BT}\\right)^{2} + \\cdots\\right) \\to +\\infty      \\\\
-                \\end{dcases}                                                              \\\\
-    c & \\approx \\begin{dcases}
-                  k\_B\\left(\\beta\\hbar\\omega(e^{-\\frac{1}{2}\\beta\\hbar\\omega})(1 + e^{-\\beta\\hbar\\omega})\\right)^2                                             \\\\
-                  k\_B\\left(\\frac{\\beta\\hbar\\omega}{2}\\left(\\left(\\frac{\\beta\\hbar\\omega}{2}\\right)^{-1} - \\frac{1}{6}\\left(\\frac{\\beta\\hbar\\omega}{2}\\right) + \\cdots\\right)\\right)^2 \\\\
-                \\end{dcases}                                                            \\\\
-      & \\approx \\begin{dcases}
-                  k\_B\\left(\\frac{\\hbar\\omega}{k\_BT}\\right)^2e^{-\\frac{\\hbar\\omega}{k\_BT}} \\to 0 \\\\
-                  k\_B\\left(1 - \\frac{1}{24}\\left(\\frac{\\hbar\\omega}{k\_BT}\\right) + \\cdots\\right)^2 = k\_B\\left(1 - \\frac{1}{12}\\left(\\frac{\\hbar\\omega}{k\_BT}\\right) + \\cdots\\right) \\to k\_B
-                \\end{dcases}
-  
-\\end{aligned}\$\$ 0◻
+$ s & approx {k_B (e^(- beta planck omega) + beta planck omega e^(- beta planck omega) \( 1 + e^(- beta planck omega) \))\
+k_B (- ln beta planck omega + 1)\
+\
+ & approx {k_B frac(planck omega, k_B T) e^(- frac(planck omega, k_B T)) arrow.r 0\
+k_B ln frac(k_B T, planck omega) arrow.r + oo\
+\
+u & approx {(1 / 2 + e^(- beta planck omega) \( 1 + e^(- beta planck omega) \)) planck omega\
+1 / 2 planck omega ((frac(beta planck omega, 2))^(- 1) + 1 / 3 (frac(beta planck omega, 2)) + dots.h.c)\
+\
+ & approx {1 / 2 planck omega + e^(- beta planck omega) planck omega arrow.r 1 / 2 planck omega\
+k_B T (1 + 1 / 12 (frac(planck omega, k_B T))^2 + dots.h.c) arrow.r + oo\
+\
+c & approx {k_B (beta planck omega \( e^(- 1 / 2 beta planck omega) \) \( 1 + e^(- beta planck omega) \))^2\
+k_B (frac(beta planck omega, 2) ((frac(beta planck omega, 2))^(- 1) - 1 / 6 (frac(beta planck omega, 2)) + dots.h.c))^2\
+\
+ & approx {k_B (frac(planck omega, k_B T))^2 e^(- frac(planck omega, k_B T)) arrow.r 0\
+k_B (1 - 1 / 24 (frac(planck omega, k_B T)) + dots.h.c)^2 = k_B (1 - 1 / 12 (frac(planck omega, k_B T)) + dots.h.c) arrow.r k_B $
+
 
 == 固体の比熱の Einstein 模型
 <固体の比熱の-einstein-模型>
@@ -470,12 +428,11 @@ $ g \( omega \) = 3 N delta \( omega - omega_E \) $ このとき角運動量が
 $omega$ である調和振動子 1 個の Helmholtz 自由エネルギー, エントロピー,
 内部エネルギー, 比熱をそれぞれ
 $f \( omega \) \, s \( omega \) \, u \( omega \) \, c \( omega \)$
-と書くこととすると Einstein 模型は次のように書ける \$\$\\begin{aligned}
-  F & = \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega)f(\\omega) = 3N\\frac{1}{\\beta}\\ln\\left(2\\sinh \\frac{1}{2}\\beta\\hbar\\omega\_E\\right)                                                            \\\\
-  S & = \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega)s(\\omega) = 3Nk\_B\\left(-\\ln\\left(2\\sinh\\frac{1}{2}\\beta\\hbar\\omega\_E\\right) + \\frac{1}{2}\\beta\\hbar\\omega\_E\\coth\\frac{1}{2}\\beta\\hbar\\omega\_E\\right) \\\\
-  U & = \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega)u(\\omega) = 3N\\frac{1}{2}\\hbar\\omega\_E\\coth\\frac{1}{2}\\beta\\hbar\\omega\_E                                                             \\\\
-  C & = \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega)c(\\omega) = 3Nk\_B\\left(\\frac{\\frac{1}{2}\\beta\\hbar\\omega\_E}{\\sinh\\frac{1}{2}\\beta\\hbar\\omega\_E}\\right)^2
-\\end{aligned}\$\$
+と書くこととすると Einstein 模型は次のように書ける
+$ F & = integral_0^oo upright(d) omega g \( omega \) f \( omega \) = 3 N 1 / beta ln (2 sinh 1 / 2 beta planck omega_E)\
+S & = integral_0^oo upright(d) omega g \( omega \) s \( omega \) = 3 N k_B (- ln (2 sinh 1 / 2 beta planck omega_E) + 1 / 2 beta planck omega_E coth 1 / 2 beta planck omega_E)\
+U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \) = 3 N 1 / 2 planck omega_E coth 1 / 2 beta planck omega_E\
+C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \) = 3 N k_B (frac(1 / 2 beta planck omega_E, sinh 1 / 2 beta planck omega_E))^2 $
 
 #block[
 実験事実
@@ -540,43 +497,29 @@ Einstein 模型と同じ結果を導くという要請をした。これを Deby
 
 $ omega_(bold(k)) & approx sqrt(kappa / m) a \| bold(k) \| + cal(O) \( \| bold(k) \|^3 \) #h(2em) \( a \| bold(k) \| lt.double 1 \)\
 omega_(bold(k)) & = sqrt(kappa / m) a \| bold(k) \| = sqrt(kappa / m) frac(pi, N + 1) sqrt(j_x^2 + j_y^2 + j_z^2) $
-また打ち切る角振動数 $omega_D$ を次のように定める. \$\$\\begin{aligned}
-  \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega) & = \\int\_0^{\\omega\_D}\\mathrm{d} \\omegag(\\omega) = 3N^3.
-\\end{aligned}\$\$ この $omega_D$ を Debye の角振動数という.
+また打ち切る角振動数 $omega_D$ を次のように定める.
+$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega g \( omega \) = 3 N^3 . $
+この $omega_D$ を Debye の角振動数という.
 
 #block[
 #strong[定理 11] (). \
 
 独立な調和振動子の角振動数に関する個数分布関数 $g \( omega \)$
-について幾何学的解釈で近似できる. \$\$\\begin{aligned}
-    g(\\omega) & = \\begin{dcases}
-                    \\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2 & (\\omega\\leq\\omega\_D) \\\\
-                    0                                                   & (\\omega \> \\omega\_D)
-                  \\end{dcases}.
-  
-\\end{aligned}\$\$
+について幾何学的解釈で近似できる.
+$ g \( omega \) & = cases(delim: "{", frac(9 N^3, omega_D) (omega / omega_D)^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
 
 ]
 $ g \( omega \) & approx 3 sqrt(m / kappa) frac(N + 1, pi) times ("半径" sqrt(m / kappa) frac(N + 1, pi) omega の 2 "次元球面" S_2 "を第" 1 "象限で切り取った曲面の表面積")\
  & = 3 sqrt(m / kappa) frac(N + 1, pi) times frac(4 pi, 8) (sqrt(m / kappa) frac(N + 1, pi) omega)^2\
  & = frac(3 pi, 2) (sqrt(m / kappa) frac(N + 1, pi))^3 omega^2 . $
-正方形から球へ近"似た"だし $N gt.double 1$ であることから $N + 1$ を $N$
-と近似し, \$\$\\begin{aligned}
-    \\int\_0^{\\infty}\\mathrm{d} \\omegag(\\omega) & = \\int\_0^{\\omega\_D}\\mathrm{d} \\omega\\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 = \\frac{\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega\_D^3 = 3N^3 \\\\
-    \\omega\_D                            & = (6\\pi^2)^{1/3}\\sqrt{\\frac{\\kappa}{m}}
-  
-\\end{aligned}\$\$ \$\$\\begin{aligned}
-    g(\\omega) & = \\begin{dcases}
-                    \\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 & (\\omega\\leq\\omega\_D) \\\\
-                    0                                                                 & (\\omega \> \\omega\_D)
-                  \\end{dcases} \\\\
-              & = \\begin{dcases}
-                    \\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2 & (\\omega\\leq\\omega\_D) \\\\
-                    0                                                   & (\\omega \> \\omega\_D)
-                  \\end{dcases}.
-  
-\\end{aligned}\$\$ 0◻ 現実の物質に Debye 模型を当てはめるときには,
-それぞれの物質は固有の Debye 角振動数 $omega_D$ を持つことになる.
+正方形から球へ近似 ただし $N gt.double 1$ であることから $N + 1$ を $N$
+と近似し,
+$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3\
+omega_D & = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) $
+$ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \))\
+ & = cases(delim: "{", frac(9 N^3, omega_D) (omega / omega_D)^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
+ 現実の物質に Debye 模型を当てはめるときには, それぞれの物質は固有の
+Debye 角振動数 $omega_D$ を持つことになる.
 
 #block[
 #strong[定理 12] (). \
@@ -590,35 +533,25 @@ $ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) . $
 ]
 以下からは
 $b = beta planck omega_D = planck omega_D \/ \( k_B T \)$
-という関係を用いる。 \$\$\\begin{aligned}
-    U & = \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega)u(\\omega)                                                                                                      \\\\
-      & = \\int\_0^{\\omega\_D}\\mathrm{d} \\omega\\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2\\left(\\frac{1}{2} + \\frac{1}{e^{\\beta\\hbar\\omega} - 1}\\right)\\hbar\\omega \\\\
-      & = 9N^3\\hbar\\int\_0^{\\omega\_D}\\mathrm{d} \\omega\\left(\\frac{\\omega}{\\omega\_D}\\right)^3\\left(\\frac{1}{2} + \\frac{1}{e^{\\beta\\hbar\\omega} - 1}\\right)                        \\\\
-      & = 9N^3\\hbar\\omega\_D\\int\_0^1\\mathrm{d} x\\left(\\frac{1}{2} + \\frac{1}{e^{\\beta\\hbar\\omega\_Dx} - 1}\\right)x^3                                                      \\\\
-      & = \\frac{3}{8}(3N^3)\\hbar\\omega\_D + 9N^3\\hbar\\omega\_DI(\\beta\\hbar\\omega\_D)
-  
-\\end{aligned}\$\$ 比熱の定義式に代入することで次のようになる。
-\$\$\\begin{aligned}
-    C & = \\int\_0^\\infty\\mathrm{d} \\omegag(\\omega)c(\\omega)                                                                                                                         \\\\
-      & = \\int\_0^{\\omega\_D}\\mathrm{d} \\omega\\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2k\_B\\left(\\frac{\\beta\\hbar\\omega e^{\\beta\\hbar\\omega/2}}{e^{\\beta\\hbar\\omega} - 1}\\right)^2  \\\\
-      & = 9k\_BN^3(\\beta\\hbar\\omega\_D)^2\\int\_0^{\\omega\_D}\\frac{\\mathrm{d} \\omega}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^4\\frac{ e^{\\beta\\hbar\\omega}}{(e^{\\beta\\hbar\\omega} - 1)^2} \\\\
-      & = 3nR\\cdot 3b^2\\int\_0^1\\mathrm{d} x\\frac{x^4e^{bx}}{(e^{bx} - 1)^2}                                                                                                        \\\\
-      & = 3nR\\cdot (-3)b^2\\frac{\\mathrm{d} I(b)}{\\mathrm{d} b}.
-  
-\\end{aligned}\$\$ 0◻
+という関係を用いる。
+$ U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \)\
+ & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 (1 / 2 + frac(1, e^(beta planck omega) - 1)) planck omega\
+ & = 9 N^3 planck integral_0^(omega_D) upright(d) omega (omega / omega_D)^3 (1 / 2 + frac(1, e^(beta planck omega) - 1))\
+ & = 9 N^3 planck omega_D integral_0^1 upright(d) x (1 / 2 + frac(1, e^(beta planck omega_D x) - 1)) x^3\
+ & = 3 / 8 \( 3 N^3 \) planck omega_D + 9 N^3 planck omega_D I \( beta planck omega_D \) $
+比熱の定義式に代入することで次のようになる。
+$ C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \)\
+ & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2\
+ & = 9 k_B N^3 \( beta planck omega_D \)^2 integral_0^(omega_D) frac(upright(d) omega, omega_D) (omega / omega_D)^4 frac(e^(beta planck omega), \( e^(beta planck omega) - 1 \)^2)\
+ & = 3 n R dot.op 3 b^2 integral_0^1 upright(d) x frac(x^4 e^(b x), \( e^(b x) - 1 \)^2)\
+ & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) . $
+
 
 #block[
 #strong[定理 13] (). \
 
 高温と低温の漸近領域における積分 $I \( b \)$ は次のように評価できる.
-\$\$\\begin{aligned}
-    I(b) =
-    \\begin{dcases}
-      \\frac{1}{3b} - \\frac{1}{8} + \\frac{1}{60}b - \\frac{1}{5040}b^3 + \\frac{1}{272160}b^5 - \\cdots & (b\\ll 1) \\\\
-      \\frac{\\pi^4}{15}\\frac{1}{b^4} + \\mathcal{O}(b^{-1}e^{-b})                                     & (b\\gg 1)
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+$ I \( b \) = cases(delim: "{", frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 + 1 / 272160 b^5 - dots.h.c & \( b lt.double 1 \), pi^4 / 15 1 / b^4 + cal(O) \( b^(- 1) e^(- b) \) & \( b gt.double 1 \)) $
 
 ]
 Bernoulli 数 $B_n$ の定義を用いて次のように計算できる。
@@ -661,19 +594,13 @@ $ I \( b \) & = 1 / b^4 (pi^4 / 15 - sum_(n = 1)^oo 1 / n^4 e^(- n b) (\( n b \)
  & = 1 / b^4 (pi^4 / 15 - (b^3 + 3 b^2 + 6 b + 6) frac(e^(- b), 1 - e^(- b)))\
  & tilde.op 1 / b^4 (pi^4 / 15 - b^3 e^(- b)) $
 これより上界が指数関数的に小さくなることから $b gt.double 1$ のとき
-$I \( b \)$ の最低次の漸近評価は十分正確である. 0◻
+$I \( b \)$ の最低次の漸近評価は十分正確である. 
 
 #block[
 #strong[定理 14] (). \
 
-比熱 $C$ は次のように評価できる. \$\$\\begin{aligned}
-    C =
-    \\begin{dcases}
-      3nR\\left(1 - \\frac{1}{20}\\left(\\frac{\\hbar\\omega\_D}{k\_BT}\\right)^2 + \\frac{1}{560}\\left(\\frac{\\hbar\\omega\_D}{k\_BT}\\right)^4 - \\frac{1}{18144}\\left(\\frac{\\hbar\\omega\_D}{k\_BT}\\right)^6 + \\cdots\\right) & (b\\ll 1) \\\\
-      3nR\\left(\\frac{4\\pi^4}{5}\\left(\\frac{k\_BT}{\\hbar\\omega\_D}\\right)^3 + \\mathcal{O}(e^{-k\_BT/\\hbar\\omega\_D})\\right)                                                                       & (b\\gg 1)
-    \\end{dcases}
-  
-\\end{aligned}\$\$
+比熱 $C$ は次のように評価できる.
+$ C = cases(delim: "{", 3 n R (1 - 1 / 20 (frac(planck omega_D, k_B T))^2 + 1 / 560 (frac(planck omega_D, k_B T))^4 - 1 / 18144 (frac(planck omega_D, k_B T))^6 + dots.h.c) & \( b lt.double 1 \), 3 n R (frac(4 pi^4, 5) (frac(k_B T, planck omega_D))^3 + cal(O) \( e^(- k_B T \/ planck omega_D) \)) & \( b gt.double 1 \)) $
 
 ]
 $ C & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) $
@@ -685,18 +612,13 @@ $ C & approx 3 n R dot.op \( - 3 \) b^2 frac(upright(d), upright(d) b) (frac(1, 
 $ C & approx 3 n R dot.op \( - 3 \) b^2 (- pi^4 / 15 4 / b^5)\
  & = 3 n R times frac(4 pi^4, 5) (1 / b)^3\
  & = 3 n R times frac(4 pi^4, 5) (frac(k_B T, planck omega_D))^3 . $
-0◻
+
 
 よって Debye 模型の比熱は次のようにまとめられる.
 
 #block[
-Debye 模型の比熱 \$\$\\begin{aligned}
-    C & \\approx 3nR\\times\\begin{dcases}
-                           1                                                 & (k\_BT\\gg \\hbar\\omega\_D) \\\\
-                           \\frac{4\\pi^4}{5}\\left(\\frac{k\_BT}{\\hbar\\omega\_D}\\right)^3 & (k\_BT\\ll \\hbar\\omega\_D)
-                         \\end{dcases}.
-  
-\\end{aligned}\$\$
+Debye 模型の比熱
+$ C & approx 3 n R times cases(delim: "{", 1 & \( k_B T gt.double planck omega_D \), frac(4 pi^4, 5) (frac(k_B T, planck omega_D))^3 & \( k_B T lt.double planck omega_D \)) . $
 
 ]
 == 黒体輻射
@@ -763,7 +685,7 @@ $ J \( T \, lambda V \, mu \) & = lambda J \( T \, V \, mu \) $
 $ frac(upright(d), upright(d) lambda) J \( T \, lambda V \, mu \)\|_(lambda = 1) & = (frac(partial \( lambda V \), partial lambda) frac(partial, partial \( lambda V \)) J \( T \, lambda V \, mu \))_(T \, mu)\|_(lambda = 1) = V (frac(partial J, partial V))_(T \, mu) = - p V $
 よって $J = - p V$ となる。また定義式より Gibbs-Duhem の関係が求まる。
 $ upright(d) J = upright(d) \( - p V \) = - p upright(d) V - V upright(d) p & = - S upright(d) T - p upright(d) V - N upright(d) mu\
-V upright(d) p - S upright(d) T - N upright(d) mu & = 0 $ 0◻
+V upright(d) p - S upright(d) T - N upright(d) mu & = 0 $ 
 
 #block[
 グランドカノニカル分布において分配関数 $Xi \( T \, V \, mu \)$
@@ -787,7 +709,7 @@ upright(d) (frac(J, k_B T)) & = (frac(upright(d) J, k_B T)) - (frac(J, k_B T^2))
  & = (frac(- S upright(d) T - p upright(d) V - N upright(d) mu, k_B T)) - (frac(U - T S - N mu, k_B T^2)) upright(d) T\
  & = frac(1, k_B T) \( - p upright(d) V - N upright(d) mu \) - frac(upright(d) T, k_B T^2) \( U - N mu \) $
 
-0◻
+
 
 #block[
 #strong[定理 19] (粒子数の揺らぎ). \
@@ -807,7 +729,7 @@ $ phi \( bold(r)_1 \, bold(r)_2 \) = plus.minus phi \( bold(r)_2 \, bold(r)_1 \)
 ]
 添字を交換しても物理的な状態としては同一なので定数 $alpha$ を用いて
 $phi \( bold(r)_1 \, bold(r)_2 \) = alpha phi \( bold(r)_2 \, bold(r)_1 \)$
-と書ける。 $ alpha^2 = 1 arrow.l.r.double alpha = plus.minus 1 $ 0◻
+と書ける。 $ alpha^2 = 1 arrow.l.r.double alpha = plus.minus 1 $ 
 
 #block[
 上の定理において $alpha = 1$ となる粒子をボース粒子またはボゾン (boson)
@@ -850,53 +772,41 @@ N & = sum_(j = 1)^oo frac(1, e^(beta \( epsilon_j - mu \)) - 1) $ Fermi
 $ Xi_F^(\( j \)) \( beta \, mu \) & = sum_(n = 0)^1 e^(- beta \( epsilon_j - mu \) n) = 1 + e^(- beta \( epsilon_j - mu \))\
 Xi_F \( beta \, mu \) & = product_(j = 1)^oo Xi_F^(\( j \)) \( beta \, mu \) = product_(j = 1)^oo (1 - e^(- beta \( epsilon_j - mu \)))\
 f_F \( epsilon_j \) := chevron.l n_j chevron.r & = 1 / beta (frac(partial, partial mu) ln Xi_F^(\( j \)) \( beta \, mu \)) = frac(e^(- beta \( epsilon_j - mu \)), 1 + e^(- beta \( epsilon_j - mu \))) = frac(1, e^(beta \( epsilon_j - mu \)) + 1)\
-N & = sum_(j = 1)^oo frac(1, e^(beta \( epsilon_j - mu \)) + 1) $ 0◻
+N & = sum_(j = 1)^oo frac(1, e^(beta \( epsilon_j - mu \)) + 1) $ 
 
 == Fermi-Dirac 統計力学
 <fermi-dirac-統計力学>
 Fermi 粒子において分布関数は次のようだった。
 $ f_F \( epsilon \) & = frac(1, e^(beta \( epsilon - mu \)) + 1) $
 これはエネルギーに対して次のような関数となる。
-低温と高温の極限において考えることで \$\$\\begin{aligned}
-  \\lim\_{T\\to 0}f\_F(\\varepsilon)      & = \\begin{dcases}
-                                           1   & (\\varepsilon \< \\mu) \\\\
-                                           1/2 & (\\varepsilon = \\mu) \\\\
-                                           0   & (\\varepsilon \> \\mu)
-                                         \\end{dcases}           \\\\
-  \\lim\_{T\\to \\infty}f\_F(\\varepsilon) & \\approx e^{-\\beta(\\varepsilon - \\mu)}
-\\end{aligned}\$\$
+低温と高温の極限において考えることで
+$ lim_(T arrow.r 0) f_F \( epsilon \) & = cases(delim: "{", 1 & \( epsilon < mu \), 1 \/ 2 & \( epsilon = mu \), 0 & \( epsilon > mu \))\
+lim_(T arrow.r oo) f_F \( epsilon \) & approx e^(- beta \( epsilon - mu \)) $
 
 #block[
 #strong[定理 22] (ゾンマーフェルト展開). \
 
-次の積分を次のように展開できる。 \$\$\\begin{aligned}
-    I(\\beta, \\mu) & := \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilong(\\varepsilon)f\_F(\\varepsilon) = \\int\_{-\\infty}^\\mu g(\\varepsilon)\\mathrm{d} \\varepsilon + \\frac{\\pi^2}{6}g\'(\\mu)(k\_BT)^2 + O((k\_BT)^{4})
-  
-\\end{aligned}\$\$
+次の積分を次のように展開できる。
+$ I \( beta \, mu \) & := integral_(- oo)^oo upright(d) epsilon g \( epsilon \) f_F \( epsilon \) = integral_(- oo)^mu g \( epsilon \) upright(d) epsilon + pi^2 / 6 g' \( mu \) \( k_B T \)^2 + O \( \( k_B T \)^4 \) $
 
 ]
 $ G \( epsilon \) & = integral_(- oo)^epsilon g \( epsilon \) upright(d) epsilon $
 
-\$\$\\begin{aligned}
-    I(\\beta, \\mu) & = \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilong(\\varepsilon)f\_F(\\varepsilon)                                                                                  \\\\
-                  & = \[G(\\varepsilon)f\_F(\\varepsilon)\]\_{-\\infty}^{\\infty} - \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilonG(\\varepsilon)f\_F\'(\\varepsilon)                           \\\\
-                  & = - \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilonG(\\varepsilon)f\_F\'(\\varepsilon)                                                                               \\\\
-                  & = - \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilon\\left\[G(\\mu) + G\'(\\mu)(\\varepsilon - \\mu) + \\frac{1}{2}G\'\'(\\mu)(\\varepsilon - \\mu)^2 + \\cdots\\right\]f\_F\'(\\varepsilon)
-  
-\\end{aligned}\$\$ $x = beta \( epsilon - mu \)$
-と変数変換すると奇関数性より \$\$\\begin{aligned}
-    \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilonf\_F\'(\\varepsilon)                      & = \[f\_F(\\varepsilon)\]\_{-\\infty}^{\\infty} = -1                                                                                                                        \\\\
-    \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilonf\_F\'(\\varepsilon)(\\varepsilon - \\mu)   & = \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilon\\frac{x}{\\beta}\\frac{e^x}{(e^x + 1)^2} = \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilon\\frac{x}{\\beta}\\frac{x}{4\\cosh^2(x/2)} = 0 \\\\
-    \\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilonf\_F\'(\\varepsilon)(\\varepsilon - \\mu)^2 & = \\frac{1}{\\beta^2}\\int\_{-\\infty}^{\\infty}\\mathrm{d} \\varepsilonx^2\\frac{\\mathrm{d} }{\\mathrm{d} x}\\left(\\frac{1}{e^x + 1}\\right)                                                                       \\\\
-                                                                                  & = \\frac{2}{\\beta^2}\\left\[\\frac{x^2}{e^x + 1}\\right\]\_{0}^{\\infty} - \\frac{4}{\\beta^2}\\int\_{0}^{\\infty}\\mathrm{d} \\varepsilon\\frac{x}{e^x + 1}                                      \\\\
-                                                                                  & = - \\frac{4}{\\beta^2}\\int\_{0}^{\\infty}\\mathrm{d} \\varepsilonx\\sum\_{n=1}^{\\infty}(-1)^{n-1}e^{-nx}                                                                         \\\\
-                                                                                  & = - \\frac{4}{\\beta^2}\\sum\_{n=1}^{\\infty}\\frac{(-1)^{n-1}}{2n^2}                                                                                                     \\\\
-                                                                                  & = - \\frac{4}{\\beta^2}\\frac{\\pi^2}{12} = -\\frac{\\pi^2}{3\\beta^2}
-  
-\\end{aligned}\$\$
+$ I \( beta \, mu \) & = integral_(- oo)^oo upright(d) epsilon g \( epsilon \) f_F \( epsilon \)\
+ & = \[ G \( epsilon \) f_F \( epsilon \) \]_(- oo)^oo - integral_(- oo)^oo upright(d) epsilon G \( epsilon \) f_(F') \( epsilon \)\
+ & = - integral_(- oo)^oo upright(d) epsilon G \( epsilon \) f_(F') \( epsilon \)\
+ & = - integral_(- oo)^oo upright(d) epsilon [G \( mu \) + G' \( mu \) \( epsilon - mu \) + 1 / 2 G'' \( mu \) \( epsilon - mu \)^2 + dots.h.c] f_(F') \( epsilon \) $
+$x = beta \( epsilon - mu \)$ と変数変換すると奇関数性より
+$ integral_(- oo)^oo upright(d) epsilon f_(F') \( epsilon \) & = \[ f_F \( epsilon \) \]_(- oo)^oo = - 1\
+integral_(- oo)^oo upright(d) epsilon f_(F') \( epsilon \) \( epsilon - mu \) & = integral_(- oo)^oo upright(d) epsilon x / beta frac(e^x, \( e^x + 1 \)^2) = integral_(- oo)^oo upright(d) epsilon x / beta frac(x, 4 cosh^2 \( x \/ 2 \)) = 0\
+integral_(- oo)^oo upright(d) epsilon f_(F') \( epsilon \) \( epsilon - mu \)^2 & = 1 / beta^2 integral_(- oo)^oo upright(d) epsilon x^2 frac(upright(d), upright(d) x) (frac(1, e^x + 1))\
+ & = 2 / beta^2 [frac(x^2, e^x + 1)]_0^oo - 4 / beta^2 integral_0^oo upright(d) epsilon frac(x, e^x + 1)\
+ & = - 4 / beta^2 integral_0^oo upright(d) epsilon x sum_(n = 1)^oo \( - 1 \)^(n - 1) e^(- n x)\
+ & = - 4 / beta^2 sum_(n = 1)^oo frac(\( - 1 \)^(n - 1), 2 n^2)\
+ & = - 4 / beta^2 pi^2 / 12 = - frac(pi^2, 3 beta^2) $
 $ I \( beta \, mu \) & = G \( mu \) + frac(pi^2, 6 beta^2) G'' \( mu \) + O \( beta^(- 4) \)\
  & = integral_(- oo)^mu g \( epsilon \) upright(d) epsilon + pi^2 / 6 g' \( mu \) \( k_B T \)^2 + O \( \( k_B T \)^4 \) $
-0◻
+
 
 #block[
 #strong[定理 23] (). \
@@ -918,7 +828,7 @@ $ U & = integral_(- oo)^oo upright(d) epsilon epsilon nu \( epsilon \) f_F \( ep
  & approx integral_(- oo)^(epsilon_F) upright(d) epsilon epsilon nu \( epsilon \) + pi^2 / 6 nu \( epsilon_F \) \( k_B T \)^2 $
 
 $ c \( T \, rho \) & = frac(partial U, partial T) = pi^2 / 3 nu \( epsilon_F \) k_B^2 T $
-0◻
+
 
 == Bose-Einstein 統計力学
 <bose-einstein-統計力学>
@@ -959,14 +869,10 @@ $ N' \( beta \, 0 \) & = c beta^(- 3 \/ 2) integral_0^oo upright(d) u frac(u^(1 
  & = c beta^(- 3 \/ 2) zeta (3 / 2) Gamma (3 / 2)\
  & = V / 8 (frac(2 m k_B T, pi planck^2))^(3 \/ 2) zeta (3 / 2) $
 このとき系の粒子数 $N$ と $N'_max$ の大小関係に着目する。このとき温度
-$T$ と転移温度 $T_c$ の大小関係と対応できる。 \$\$\\begin{aligned}
-    \\begin{dcases}
-      N   \< N\'\_{\\max} \\propto T\_c^{3/2} \< T^{3/2} \\iff T \> T\_c \\\\
-      N   \> N\'\_{\\max} \\propto T\_c^{3/2} \> T^{3/2} \\iff T \< T\_c
-    \\end{dcases} \\qquad
-    \\left(T\_c = \\frac{2\\pi\\hbar^2}{mk\_B}\\left(\\frac{1}{\\zeta\\left(\\frac{3}{2}\\right)}\\frac{N}{V}\\right)^{2/3}\\right)
-  
-\\end{aligned}\$\$ このように
+$T$ と転移温度 $T_c$ の大小関係と対応できる。
+$ {N < N'_max prop T_c^(3 \/ 2) < T^(3 \/ 2) arrow.l.r.double T > T_c\
+N > N'_max prop T_c^(3 \/ 2) > T^(3 \/ 2) arrow.l.r.double T < T_c #h(2em) (T_c = frac(2 pi planck^2, m k_B) (frac(1, zeta (3 / 2)) N / V)^(2 \/ 3)) $
+このように
 
 + $N < N'_max$ つまり転移温度より高温のとき $mu$
   は非ゼロの負の値となり、$N_0 approx 0$ となる。
@@ -984,7 +890,7 @@ U_0 & = frac(V, 4 pi^2) (frac(2 m, planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) inte
  & = frac(3 V, 2) (frac(m, 2 pi planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) zeta (5 / 2) $
 
 $ C_0 & = frac(upright(d) U_0, upright(d) T) = frac(15 V, 4) (frac(m T, 2 pi planck^2))^(3 \/ 2) k_B^(5 \/ 2) zeta (5 / 2) $
-0◻
+
 
 = 相転移と臨界現象
 <相転移と臨界現象>

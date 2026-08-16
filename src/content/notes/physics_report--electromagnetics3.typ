@@ -21,7 +21,6 @@ $bold(A) = phi.alt nabla psi$ とすると $bold(n)$ は $partial V$
 $ integral_V nabla dot.op \( phi.alt nabla psi \) upright(d) v & = integral_(partial V) \( phi.alt nabla psi \) dot.op bold(n) upright(d) S\
 integral_V (phi.alt nabla dot.op \( nabla psi \) + nabla psi dot.op nabla phi.alt) upright(d) v & = integral_(partial V) phi.alt \( nabla psi dot.op bold(n) \) upright(d) S\
 integral_V (phi.alt nabla^2 psi + nabla psi dot.op nabla phi.alt) upright(d) v & = integral.cont_(partial V) phi.alt frac(partial psi, partial n) upright(d) S $
-0◻
 
 #block[
 $ integral_V \( phi.alt nabla^2 psi - psi nabla^2 phi.alt \) upright(d) v = integral_(partial V) (phi.alt frac(partial psi, partial n) - psi frac(partial phi.alt, partial n)) upright(d) S $
@@ -32,7 +31,6 @@ $ integral_V \( phi.alt nabla^2 psi - psi nabla^2 phi.alt \) upright(d) v = inte
 $ integral_V (phi.alt nabla^2 psi + nabla psi dot.op nabla phi.alt) upright(d) v & = integral.cont_(partial V) phi.alt frac(partial psi, partial n) upright(d) S\
 integral_V (psi nabla^2 phi.alt + nabla phi.alt dot.op nabla psi) upright(d) v & = integral.cont_(partial V) psi frac(partial phi.alt, partial n) upright(d) S\
 integral_V (phi.alt nabla^2 psi - psi nabla^2 phi.alt) upright(d) v & = integral_(partial V) (phi.alt frac(partial psi, partial n) - psi frac(partial phi.alt, partial n)) upright(d) S $
-0◻
 
 #block[
 Poisson
@@ -49,7 +47,7 @@ U \|_(partial V) & = 0 "または" med frac(partial U, partial n)\|_(partial V) 
 $ integral_V \( U nabla^2 U + \( upright(bold(nabla)) U \)^2 \) upright(d) V & = integral.cont_(partial V) U frac(partial U, partial n) upright(d) S\
 integral_V \( upright(bold(nabla)) U \)^2 upright(d) V & = 0 $ よって
 $upright(bold(nabla)) U = bold(0)$ つまり $U$ は定数であるから Poisson
-方程式の解はどちらかの境界条件を満たせば定数を除いて一意に定まる。 0◻
+方程式の解はどちらかの境界条件を満たせば定数を除いて一意に定まる。
 
 == 電位係数と静電容量
 <電位係数と静電容量>
@@ -59,21 +57,16 @@ $upright(bold(nabla)) U = bold(0)$ つまり $U$ は定数であるから Poisso
 真空中に電荷 $q_j eq.not 0$ を持つ導体に関して、他の導体の電荷を $0$
 としたときの $i$ 番目の導体の電位を $V_i$ とし、電位係数 $p_(i j)$ を
 $V_i = p_(i j) q_j$ とおく。このとき次の式が成り立つ。
-\$\$\\begin{aligned}
-  \\begin{pmatrix}V\_1                                                       \\\\ V\_2 \\\\ \\vdots \\\\ V\_n\\end{pmatrix} & = \\pxmat\[showleft=2,showtop=2\]{p}{n}{n}\\begin{pmatrix}q\_1 \\\\ q\_2 \\\\ \\vdots \\\\ q\_n\\end{pmatrix} \\\\
-  p\_{lk} & = p\_{kl} \> 0 \\implies p\_{kk} \> p\_{kl} \\qquad (k\\neq l)
-\\end{aligned}\$\$
+$ vec(V_1, V_2, dots.v, V_n) & = vec(p) n n vec(q_1, q_2, dots.v, q_n)\
+p_(l k) & = p_(k l) > 0 arrow.r.double.long p_(k k) > p_(k l) #h(2em) \( k eq.not l \) $
 
 ]
 電位の重ね合わせの原理より導体の電位 $V_i$ は次のようになる。
-\$\$\\begin{aligned}
-    V\_i & = \\sum\_{j=1}^{n}p\_{ij}q\_j \\\\
-    \\begin{pmatrix}V\_1                       \\\\ V\_2 \\\\ \\vdots \\\\ V\_n\\end{pmatrix} & = \\pxmat\[showleft=2,showtop=2\]{p}{n}{n}\\begin{pmatrix}q\_1 \\\\ q\_2 \\\\ \\vdots \\\\ q\_n\\end{pmatrix}
-  
-\\end{aligned}\$\$
+$ V_i & = sum_(j = 1)^n p_(i j) q_j\
+vec(V_1, V_2, dots.v, V_n) & = vec(p) n n vec(q_1, q_2, dots.v, q_n) $
 また電荷に対して距離の逆二乗で正方向に電位が生じる為、$p_(l k) = p_(k l) > 0 \, p_(k k) > p_(k l) med \( k eq.not l \)$
 となる。 $ V_k & = p_(k k) q_k + p_(k l) q_l\
-V_l & = p_(l k) q_k + p_(l l) q_l $ 0◻
+V_l & = p_(l k) q_k + p_(l l) q_l $
 
 #block[
 導体に関して、$q_k eq.not 0 \, V_l = 0 med \( l eq.not k \)$ のときの
@@ -82,22 +75,13 @@ $k \, l$ 間の静電容量 $C_(k l)$ は $q_k = Q \, q_l = - Q \, q_m = 0$
 のときの $V_k \, V_l$ を用いて $Q = C_(k l) \( V_k - V_l \)$
 で与えられる。このとき $C_k \, C_(k l)$ を求めよ。静電容量行列
 $\( c_(k l) \)$ を電位係数行列 $\( p_(k l) \)$ の逆行列とおく。
-\$\$\\begin{aligned}
-  \\begin{pmatrix}q\_1 \\\\ q\_2 \\\\ \\vdots \\\\ q\_n\\end{pmatrix} & = \\pxmat\[showleft=2,showtop=2\]{c}{n}{n}\\begin{pmatrix}V\_1 \\\\ V\_2 \\\\ \\vdots \\\\ V\_n\\end{pmatrix}
-\\end{aligned}\$\$
+$ vec(q_1, q_2, dots.v, q_n) & = vec(c) n n vec(V_1, V_2, dots.v, V_n) $
 
 ]
-\$\$\\begin{aligned}
-    q\_k & = C\_kV\_k = C\_k(p\_{kk}q\_k)                                                                                                                           \\\\
-    Q   & = C\_{kl}(V\_k - V\_l) = C\_{kl}((p\_{kk} - p\_{kl})Q - (p\_{lk} - p\_{ll})Q)                                                                               \\\\
-        & \\begin{dcases}
-            C\_k = \\frac{1}{p\_{kk}} \\\\
-            C\_{kl} = \\frac{1}{p\_{kk} - p\_{kl} - p\_{lk} + p\_{ll}}
-          \\end{dcases}
-  
-\\end{aligned}\$\$
-
-0◻
+$ q_k & = C_k V_k = C_k \( p_(k k) q_k \)\
+Q & = C_(k l) \( V_k - V_l \) = C_(k l) \( \( p_(k k) - p_(k l) \) Q - \( p_(l k) - p_(l l) \) Q \)\
+ & {C_k = 1 / p_(k k)\
+C_(k l) = frac(1, p_(k k) - p_(k l) - p_(l k) + p_(l l)) $
 
 #block[
 電荷の合計が $Q$ ですべて同一の電圧 $V$ となっているとき次のように
@@ -106,7 +90,7 @@ $C = Q \/ V$ を $\( c_(j k) \)$ で表す。
 ]
 仮定より次のように計算できる。
 $ Q & = sum_(i = 1)^n q_i = sum_(i = 1)^n sum_(j = 1)^n c_(i j) V_j = (sum_(i = 1)^n sum_(j = 1)^n c_(i j)) V\
-C & = sum_(i = 1)^n sum_(j = 1)^n c_(i j) $ 0◻
+C & = sum_(i = 1)^n sum_(j = 1)^n c_(i j) $
 
 #block[
 半径 $a \, b$ の導体球が距離 $d$ 離れて置かれている。このときの容量係数
@@ -122,7 +106,6 @@ $ c_a & = q_a / V_a = a / k_0\
 c_b & = q_b / V_b = b / k_0\
 c_(a b) & = frac(Q, V_a - V_b) $
 $ phi.alt \( r \) & = k_0 frac(q_a, \| x \|) + k_0 frac(q_b, \| x - d \|) $
-0◻
 
 #block[
 半径 $a$ の導体球 1 を、同じ中心を持つ半径 $b$ の薄い導体球殻 2
@@ -130,8 +113,6 @@ $ phi.alt \( r \) & = k_0 frac(q_a, \| x \|) + k_0 frac(q_b, \| x - d \|) $
 $c_1 \, c_2$、誘導係数 $c_12$ を求めよ。
 
 ]
-0◻
-
 = 静電遮蔽と電気伝導
 <静電遮蔽と電気伝導>
 == 双極子モーメントと電場
@@ -144,7 +125,7 @@ $c_1 \, c_2$、誘導係数 $c_12$ を求めよ。
 $ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) (frac(q, \| bold(r) - bold(d) \/ 2 \|) - frac(q, \| bold(r) + bold(d) \/ 2 \|))\
  & = frac(q, 4 pi epsilon_0) (upright(bold(nabla))' frac(1, \| bold(r) \|)) dot.op bold(d)\
  & = frac(1, 4 pi epsilon_0) frac(q bold(d) dot.op bold(r), \| bold(r) \|^3) $
-これより電気双極子モーメントは $bold(p) = q bold(d)$ と書ける。 0◻
+これより電気双極子モーメントは $bold(p) = q bold(d)$ と書ける。
 
 #block[
 一様な電場 $bold(E)$ において電気双極子 $bold(p)$
@@ -153,7 +134,6 @@ $ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) (frac(q, \| bold(r) - bold(d
 ]
 分極していない状態から引き離す仕事がポテンシャルエネルギーとなる。
 $ U & = q bold(E) dot.op bold(d) / 2 + \( - q bold(E) \) dot.op (- bold(d) / 2) = bold(E) dot.op bold(p) $
-0◻
 
 #block[
 この電気双極子 $bold(p)$ が一様な電場から受ける力は全体として $bold(0)$
@@ -164,7 +144,7 @@ $ U & = q bold(E) dot.op bold(d) / 2 + \( - q bold(E) \) dot.op (- bold(d) / 2) 
 は次のようになる。
 $ bold(F) & = q bold(E) + \( - q bold(E) \) = bold(0)\
 bold(N) & = bold(d) / 2 times q bold(E) + (- bold(d) / 2) times \( - q bold(E) \)\
- & = bold(p) times bold(E) $ 0◻
+ & = bold(p) times bold(E) $
 
 == Maxwell の方程式と応力テンソル
 <maxwell-の方程式と応力テンソル>
@@ -178,7 +158,6 @@ $ bold(E) dot.op \( upright(bold(nabla)) times bold(H) \) & = bold(E) dot.op (bo
 - upright(bold(nabla)) dot.op \( bold(E) times bold(H) \) + \( - partial_t bold(B) \) dot.op bold(H) & = bold(E) dot.op bold(j) + partial_t \( bold(E) dot.op bold(D) \)\
 - partial_t (1 / 2 bold(E) dot.op bold(D) + 1 / 2 bold(H) dot.op bold(B)) - upright(bold(nabla)) dot.op \( bold(E) times bold(H) \) & = bold(E) dot.op bold(j) $
 これは電磁場と物質のエネルギー密度の時間変化が電磁場のエネルギーの流れとなっており、エネルギー保存則を表す。
-0◻
 
 #block[
 物質の運動量密度を $bold(p)_m \( bold(r) \, t \)$
@@ -189,7 +168,6 @@ $ partial_t bold(p)_m & = rho bold(E) + bold(j) times bold(B) $
 ]
 $ partial_t bold(p)_m & = rho bold(E) + bold(j) times bold(B)\
  & = \( upright(bold(nabla)) dot.op bold(D) \) bold(E) + \( upright(bold(nabla)) times bold(H) - partial_t bold(D) \) times bold(B) $
-0◻
 
 #block[
 電磁場の応力テンソル $T_(i j)$ を
@@ -211,7 +189,7 @@ $ partial_t [bold(p)_m + bold(Y) / c^2]_j & = [partial_t bold(p)_m + partial_t f
  & = partial_i \( E_i D_j \) + partial_i \( H_i B_j \) - \( partial_j H_i \) B_i - D_i \( partial_j E_i \)\
  & = partial_i \( E_i D_j \) + partial_i \( H_i B_j \) - 1 / 2 partial_j \( E_i D_i + H_i B_i \)\
  & = partial_i \( E_i D_j + H_i B_j - delta_(i j) cal(E)_(E M) \)\
- & = partial_i T_(i j) $ 0◻
+ & = partial_i T_(i j) $
 
 #block[
 電磁場の運動量密度 $bold(p)_(E M)$
@@ -224,7 +202,6 @@ $bold(j) = - T_(i j)$ と定義することで次のように書ける。
 $ upright(bold(nabla)) dot.op bold(j) + partial_t (bold(p)_m + bold(p)_(E M)) = bold(0) $
 よってこれを積分形に書き直すと Gauss の発散定理を用いて次のようになる。
 $ integral.cont_(partial V) bold(j) \( bold(r) \, t \) dot.op bold(n) \( bold(r) \) upright(d) S + partial_t integral_V \( bold(p)_m + bold(p)_(E M) \) upright(d) v = 0 $
-0◻
 
 = 誘電体の電場
 <誘電体の電場>
@@ -253,22 +230,10 @@ $ phi.alt \( r \, theta \) & = \( A r + B r^(- 2) \) cos theta $
 $ epsilon frac(partial phi.alt, partial r) \[ r = b \] & = epsilon_0 frac(partial phi.alt, partial r) \[ r = b \]\
 frac(partial phi.alt, partial theta) \[ r = b \] & = frac(partial phi.alt, partial theta) \[ r = b \] $
 であり、無限遠点や原点で有限となるから電位は次のようになる。
-\$\$\\begin{aligned}
-    \\phi(r, \\theta) & = \\begin{dcases}
-                          -\\frac{3\\varepsilon\_0}{\\varepsilon + 2\\varepsilon\_0}Er\\cos\\theta                                     & (r \< b) \\\\
-                          -E\\left(r - \\frac{\\varepsilon - \\varepsilon\_0}{\\varepsilon + 2\\varepsilon\_0}\\frac{b^3}{r^2}\\right)\\cos\\theta & (r \> b) \\\\
-                        \\end{dcases}
-  
-\\end{aligned}\$\$ さらに半径 $a$
+$ phi.alt \( r \, theta \) & = cases(delim: "{", - frac(3 epsilon_0, epsilon + 2 epsilon_0) E r cos theta & \( r < b \), - E (r - frac(epsilon - epsilon_0, epsilon + 2 epsilon_0) b^3 / r^2) cos theta & \( r > b \), ) $
+さらに半径 $a$
 の導体を埋め込むと導体と誘電体の境界条件から電位は次のように求まる。
-\$\$\\begin{aligned}
-    \\phi(r, \\theta) & = \\begin{dcases}
-                          0                                                                                                                                                                                                            & (r \< a)     \\\\
-                          -\\frac{3\\varepsilon\_0^2}{\\varepsilon(\\varepsilon + 2\\varepsilon\_0)}\\left(r - \\frac{a^3}{r^2}\\right)E\_0\\cos\\theta                                                                                                     & (a \< r \< b) \\\\
-                          -\\frac{\\varepsilon\_0}{\\varepsilon}\\left(r - \\frac{\\varepsilon - \\varepsilon\_0}{\\varepsilon + 2\\varepsilon\_0}\\frac{b^3}{r^2} - \\frac{3\\varepsilon\_0}{\\varepsilon + 2\\varepsilon\_0}\\frac{a^3}{r^2}\\right)E\_0\\cos\\theta & (r \> b)     \\\\
-                        \\end{dcases}
-  
-\\end{aligned}\$\$ 0◻
+$ phi.alt \( r \, theta \) & = cases(delim: "{", 0 & \( r < a \), - frac(3 epsilon_0^2, epsilon \( epsilon + 2 epsilon_0 \)) (r - a^3 / r^2) E_0 cos theta & \( a < r < b \), - epsilon_0 / epsilon (r - frac(epsilon - epsilon_0, epsilon + 2 epsilon_0) b^3 / r^2 - frac(3 epsilon_0, epsilon + 2 epsilon_0) a^3 / r^2) E_0 cos theta & \( r > b \), ) $
 
 == 誘電体中の静電場のエネルギー
 <誘電体中の静電場のエネルギー>
@@ -293,7 +258,6 @@ $ Delta U & = frac(a x, 2) (frac(d - t, epsilon_0) + t / epsilon) (frac(epsilon 
  & = frac(\( epsilon - epsilon_0 \) t, epsilon d - \( epsilon - epsilon_0 \) t) frac(a x, 2 d) epsilon_0 V^2 $
 これより誘電体が引き込まれる力 $F$ は次のように求まる。
 $ F & = frac(partial U, partial x) = frac(\( epsilon - epsilon_0 \) t, epsilon d - \( epsilon - epsilon_0 \) t) frac(a, 2 d) epsilon_0 V^2 $
-0◻
 
 #block[
 電荷 $Q$
@@ -313,7 +277,6 @@ Delta U_e & = E / 2 \( D' x + D_0 \( a - x \) \) a t - frac(epsilon_0 E_0^2, 2) 
 これより誘電体が引き込まれる力は次のように求まる。
 $ F & = - frac(upright(d) Delta U_e, upright(d) x) = frac(Q^2 t, 2 epsilon_0 a^2) frac(epsilon_0 \( epsilon - epsilon_0 \) d a t, \( \( epsilon - epsilon_0 \) t x + epsilon_0 d a \)^2)\
  & = frac(Q^2 \( epsilon - epsilon_0 \) d t^2, 2 a \( \( epsilon - epsilon_0 \) t x + epsilon_0 d a \)^2) $
-0◻
 
 == 誘電体球の受ける力
 <誘電体球の受ける力>
@@ -328,7 +291,6 @@ $ bold(F) \( bold(r) \) & = - upright(bold(nabla)) V \( bold(r) \)\
  & = upright(bold(nabla)) \( bold(p) dot.op bold(E)_0 \( bold(r) \) \)\
  & = \( bold(p) dot.op upright(bold(nabla)) \) bold(E)_0 + \( bold(E)_0 dot.op upright(bold(nabla)) \) bold(p) + bold(p) times \( upright(bold(nabla)) times bold(E)_0 \) + bold(E)_0 times \( upright(bold(nabla)) times bold(p) \)\
  & = \( bold(p) dot.op upright(bold(nabla)) \) bold(E)_0 \( bold(r) \) $
-0◻
 
 #block[
 誘電体球内の点 $bold(x)$ での分極を
@@ -340,7 +302,6 @@ $ bold(P) \( bold(r) \) & = 3 epsilon_0 bold(E)_0\
 bold(F) \( bold(r) \) & = \( bold(p) dot.op upright(bold(nabla)) \) bold(E)_0 \( bold(r) \)\
  & = \( 3 epsilon_0 bold(E)_0 dot.op upright(bold(nabla)) \) bold(E)_0 \( bold(r) \)\
  & = 3 / 2 epsilon_0 upright(bold(nabla)) \| bold(E)_0 \( bold(r) \) \|^2 $
-0◻
 
 == 液体の電気感受率
 <液体の電気感受率>
@@ -354,7 +315,6 @@ Delta U & = D^2 / 2 (frac(d - h, epsilon_0) + frac(h, epsilon_0 \( 1 + chi \))) 
  & = 1 / 2 frac(epsilon_0 S, d) V^2 frac(\( 2 + chi \) h, \( 1 + chi \) d - chi h)\
 rho S h g = frac(upright(d) Delta U, upright(d) h) & = 1 / 2 frac(epsilon_0 S, d) V^2 frac(\( 2 + chi \) \( 1 + chi \) d, \( \( 1 + chi \) d - chi h \)^2)\
 rho h g \( \( 1 + chi \) d - chi h \)^2 & = 1 / 2 epsilon_0 V^2 \( 2 + chi \) \( 1 + chi \) $
-0◻
 
 = 磁性体と静磁場
 <磁性体と静磁場>
@@ -370,7 +330,6 @@ rho h g \( \( 1 + chi \) d - chi h \)^2 & = 1 / 2 epsilon_0 V^2 \( 2 + chi \) \(
 $ 4 pi R^2 H \( R \) = m arrow.l.r.double H \( r \) & = frac(1, 4 pi) m / r^2 $
 これより磁位は次のようになる。
 $ phi.alt_m \( r \) & = - integral_oo^r mu_0 H \( r' \) upright(d) r' = [frac(mu_0 m, 4 pi r')]_oo^r = frac(mu_0, 4 pi) m / r $
-0◻
 
 #block[
 磁気モーメント $bold(m)$ が作る磁位を求めよ。
@@ -381,7 +340,7 @@ $bold(m) = m bold(d)$ となり、このときの磁位は次のようになる�
 $ phi.alt_m \( bold(r) \) & = frac(mu_0, 4 pi) (frac(m, \| bold(r) - bold(d) \|) - frac(m, \| bold(r) \|))\
  & = frac(mu_0, 4 pi) (upright(bold(nabla)) frac(1, \| bold(r) \|)) dot.op bold(m)\
  & = frac(mu_0, 4 pi) frac(bold(m) dot.op bold(r), \| bold(r) \|^3)\
- & = frac(mu_0, 4 pi) frac(\| bold(m) \| r cos theta, r^3) $ 0◻
+ & = frac(mu_0, 4 pi) frac(\| bold(m) \| r cos theta, r^3) $
 
 #block[
 磁気モーメント $bold(m)$ が作る磁場を求めよ。
@@ -396,7 +355,7 @@ $ cos phi & = frac(bold(H) \( bold(r) \) dot.op bold(r), \| bold(H) \| \| bold(r
  & = frac(2 cos theta, \| 3 cos theta hat(bold(r)) - hat(bold(m)) \|)\
 phi & = cos^(- 1) (frac(2 cos theta, \| 3 cos theta hat(bold(r)) - hat(bold(m)) \|)) $
 ただし $hat(bold(r)) \, hat(bold(m))$ をそれぞれ $bold(r) \, bold(m)$
-方向の単位ベクトルとする。 0◻
+方向の単位ベクトルとする。
 
 = 常磁性体、強磁性体、超伝導
 <常磁性体強磁性体超伝導>
@@ -408,7 +367,7 @@ phi & = cos^(- 1) (frac(2 cos theta, \| 3 cos theta hat(bold(r)) - hat(bold(m)) 
 
 ]
 電流によって生じる磁場は次のようになるから、導線の鏡像は境界面に対して対称に導線を配置して逆方向に電流
-$I mu_1 \/ mu_2$ を流す。 $ bold(H) & = frac(I, 2 pi r) $ 0◻
+$I mu_1 \/ mu_2$ を流す。 $ bold(H) & = frac(I, 2 pi r) $
 
 #block[
 真空中に無限に広い平面で隔てられた透磁率 $mu$
@@ -422,11 +381,11 @@ $ bold(H) \( r \) & = frac(1, 2 pi r) (- mu_0 / mu I) hat(theta) $
 これより単位長当たりに導線に働く力は次のようになる。
 $ F & = mu_0 I H \( 2 a \) = frac(mu_0 I, 4 pi a) (- mu_0 / mu I) = - frac(mu_0^2 I^2, 4 pi mu a) $
 よって磁性体に対して反発する方向に単位長当たり
-$frac(mu_0^2 I^2, 4 pi mu a)$ だけ力が働く。 0◻
+$frac(mu_0^2 I^2, 4 pi mu a)$ だけ力が働く。
 
 #block[
 前問について透磁率が $mu_1 \, mu_2$ としたときに働く力を求めよ。
 
 ]
 磁性体に対して反発する方向に単位長当たり $frac(mu_1^2 I^2, 4 pi mu_2 a)$
-だけ力が働く。 0◻
+だけ力が働く。

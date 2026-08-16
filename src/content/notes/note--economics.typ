@@ -90,4 +90,3 @@ $ X_(1 i) = gamma_0 + gamma_2 X_(2 i) + dots.h.c + gamma_k X_(k i) + v_i $
 $ Y = vec(Y_1, Y_2, dots.v, Y_N) \, quad X_i = vec(X_(i 1), X_(i 2), dots.v, X_(i N)) $
 
 $ vec(1, X_(1 i), X_(2 i), dots.v, X_(k i)) = vec(0) vec(1, X_(1 i), X_(2 i), dots.v, X_(k i)) $
-0◻

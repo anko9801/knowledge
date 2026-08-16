@@ -16,7 +16,7 @@
   \\alpha^i: \\sum v^ie\_i \\mapsto v^i \\\\
   \\begin{array}{rccc}
     f\\colon & A                     & \\longrightarrow & B                     \\\\
-            & \\rotatebox{90}{\$\\in\$} &                 & \\rotatebox{90}{\$\\in\$} \\\\
+            & \$\\in\$ &                 & \$\\in\$ \\\\
             & x                     & \\longmapsto     & f(x)
   \\end{array}
 \\end{aligned}\$\$

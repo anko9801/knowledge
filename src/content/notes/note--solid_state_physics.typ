@@ -49,7 +49,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
 
 - 反転 $overline(1)$: $\( x \, y \, z \) mapsto \( - x \, - y \, - z \)$
 
-- 回反 $overline(4)$: 90°回転し上下反転して一致する。
+- 回反 $overline(4)$: 90° 回転し上下反転して一致する。
 
 #block[
 #figure(
@@ -67,7 +67,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
   , kind: table
   )
 
-] #label("table:2D Bravie")
+] <table:2D-Bravie>
 #block[
 #figure(
   align(center)[#table(
@@ -94,7 +94,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
   , kind: table
   )
 
-] #label("table:3D Bravie")
+] <table:3D-Bravie>
 周期条件 $f \( bold(r) + bold(R)_n \) = f \( bold(r) \)$ を満たす関数
 $f \( bold(r) \)$ を Fourier 変換すると次のようになる。
 $ f \( bold(r) \) & = sum_m A_m exp \( i bold(G)_m dot.op bold(r) \) #h(2em) (exp \( i bold(G)_m dot.op bold(R)_n \) = 1) $
@@ -201,7 +201,7 @@ $ omega^2 & = c ((1 / M_A + 1 / M_B) plus.minus sqrt((1 / M_A + 1 / M_B)^2 - 4 f
 omega & approx sqrt(2 c (1 / M_A + 1 / M_B)) \, quad a sqrt(frac(c, 2 \( M_A + M_B \))) k $
 これより $k approx 0$
 において線形的な音響モードと定数的な光学モードに分けられる。
-音響モードは同じ向"き光"学モードは逆向"き音"速が速いと硬い
+音響モードは同じ向き 光学モードは逆向き 音速が速いと硬い
 
 1次元の格子振動を量子化する。 より一般の 3 次元の格子振動はモードの種類
 ($s = 1 \, 2 \, 3$) による。

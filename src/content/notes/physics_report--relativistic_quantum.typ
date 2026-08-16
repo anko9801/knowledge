@@ -26,7 +26,7 @@ $ \( gamma^5 \)^dagger = gamma^5 & arrow.l.r.double alpha_0 in bb(R) \, alpha_1 
 { gamma^mu \, gamma^5 } = 0 & arrow.r.double.long alpha_0 = alpha_1 = alpha_2 = 0\
 \( gamma^5 \)^2 = 1 & arrow.r.double.long alpha_4 = plus.minus 1 $
 となる。よって $gamma^5 = plus.minus gamma^0 gamma^1$
-となる。ここでは特に $gamma^5 = gamma^0 gamma^1$ とする。 0◻
+となる。ここでは特に $gamma^5 = gamma^0 gamma^1$ とする。
 
 #block[
 $gamma_plus.minus = frac(1 plus.minus gamma^5, 2)$ とするとき
@@ -40,7 +40,6 @@ $ \( gamma_plus.minus \)^2 & = frac(1 plus.minus 2 gamma^5 + \( gamma^5 \)^2, 2^
 gamma_(+) gamma_(-) & = gamma_(-) gamma_(+) = frac(1 + gamma^5 - gamma^5 - \( gamma^5 \)^2, 2^2) = 0 $
 より帰納法から次が示せる。
 $ \( gamma_(+) \)^a = gamma_(+) \, #h(2em) \( gamma_(-) \)^b = gamma_(-) \, #h(2em) \( gamma_(+) \)^a \( gamma_(-) \)^b = 0 \, #h(2em) \( gamma_(-) \)^b \( gamma_(+) \)^a = 0 $
-0◻
 
 #block[
 $psi_plus.minus \( x \) = gamma_plus.minus psi \( x \)$ は $gamma^5$
@@ -50,7 +49,6 @@ $psi_plus.minus \( x \) = gamma_plus.minus psi \( x \)$ は $gamma^5$
 カイラリティを作用させることで固有関数 $psi_plus.minus \( x \)$
 の固有値は $plus.minus 1$ となる。
 $ gamma^5 psi_plus.minus \( x \) & = gamma^5 gamma_plus.minus psi \( x \) = frac(gamma^5 plus.minus 1, 2) psi \( x \) = plus.minus gamma^5 psi \( x \) $
-0◻
 
 #block[
 $psi_plus.minus \( x \)$
@@ -59,17 +57,12 @@ $psi_plus.minus \( x \)$
 ]
 ${ gamma^mu \, gamma^5 } = 0$ より
 $gamma^mu gamma_plus.minus = gamma_minus.plus gamma^mu$ となる。よって
-\$\$\\begin{aligned}
-         & \\begin{dcases}
-             \\gamma\_+(i\\hbar\\gamma^\\mu\\partial\_\\mu - mc)\\psi(x) = 0 \\\\
-             \\gamma\_-(i\\hbar\\gamma^\\mu\\partial\_\\mu - mc)\\psi(x) = 0 \\\\
-           \\end{dcases} \\\\
-    \\iff & \\begin{dcases}
-             i\\hbar\\gamma^\\mu\\partial\_\\mu\\psi\_-(x) = mc\\psi\_+(x) \\\\
-             i\\hbar\\gamma^\\mu\\partial\_\\mu\\psi\_+(x) = mc\\psi\_-(x) \\\\
-           \\end{dcases}
-  
-\\end{aligned}\$\$ となる。 0◻
+$  & {gamma_(+) \( i planck gamma^mu partial_mu - m c \) psi \( x \) = 0\
+gamma_(-) \( i planck gamma^mu partial_mu - m c \) psi \( x \) = 0\
+\
+arrow.l.r.double & {i planck gamma^mu partial_mu psi_(-) \( x \) = m c psi_(+) \( x \)\
+i planck gamma^mu partial_mu psi_(+) \( x \) = m c psi_(-) \( x \)\
+ $ となる。
 
 #block[
 $m = 0$ の場合に
@@ -83,7 +76,7 @@ $ i planck gamma^mu partial_mu psi_(+) \( x \) & = i planck \( gamma^0 c partial
  & = \( gamma^0 E c - gamma^1 p \) psi_(+) \( x \)\
  & = gamma^0 \( E c - \( gamma_(+) - gamma_(-) \) p \) psi_(+) \( x \)\
  & = gamma^0 \( E c - p \) psi_(+) \( x \) = 0 $ となる。よって
-$E c = p$ を満たす。 0◻
+$E c = p$ を満たす。
 
 #block[
 $m = 0$ の場合に
@@ -97,7 +90,7 @@ $ i planck gamma^mu partial_mu psi_(-) \( x \) & = i planck \( gamma^0 c partial
  & = \( gamma^0 E c - gamma^1 p \) psi_(-) \( x \)\
  & = gamma^0 \( E c - \( gamma_(+) - gamma_(-) \) p \) psi_(-) \( x \)\
  & = gamma^0 \( E c + p \) psi_(-) \( x \) = 0 $ となる。よって
-$E c = - p$ を満たす。 0◻
+$E c = - p$ を満たす。
 
 #block[
 $gamma^0 \, gamma^1 \, gamma^5$ を 2 行 2
@@ -108,7 +101,6 @@ $gamma^0 \, gamma^1 \, gamma^5$ を 2 行 2
 $ sigma_1 = mat(delim: "(", 0, 1; 1, 0) \, #h(2em) sigma_2 = mat(delim: "(", 0, - i; i, 0) \, #h(2em) sigma_3 = mat(delim: "(", 1, 0; 0, - 1) $
 これより次のようにおくとそれぞれの性質を満たす。
 $ gamma^0 = sigma_1 \, #h(2em) gamma^1 = i sigma_2 \, #h(2em) gamma^5 = - sigma_3 $
-0◻
 
 = 指数関数
 <指数関数>
@@ -125,7 +117,6 @@ $ e^(i lambda hat(B)) hat(A) e^(- i lambda hat(B)) & = sum_(n = 0)^oo frac(lambd
  & = sum_(n = 0)^oo frac(\( i lambda \)^n, n !) underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, hat(A) \] \] dots.h \] $
 よって $lambda = 1$ を代入することで示せる。
 $ e^(i hat(B)) hat(A) e^(- i hat(B)) & = sum_(n = 0)^oo frac(i^n, n !) underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, hat(A) \] \] dots.h \] $
-0◻
 
 #block[
 $partial$
@@ -136,7 +127,6 @@ $partial$
 $1 = e^(i hat(B)) e^(- i hat(B))$ に微分演算子を作用させることで示せる。
 $ 0 = partial 1 = partial \( e^(i hat(B)) e^(- i hat(B)) \) & = \( partial e^(i hat(B)) \) e^(- i hat(B)) + e^(i hat(B)) \( partial e^(- i hat(B)) \)\
 \( partial e^(i hat(B)) \) e^(- i hat(B)) & = - e^(i hat(B)) \( partial e^(- i hat(B)) \) $
-0◻
 
 #block[
 次の式を示せ。
@@ -147,7 +137,7 @@ $ e^(i hat(B)) \( partial e^(- i hat(B)) \) = - sum_(n = 1)^oo frac(i^n, n !) un
 $ e^(i hat(B)) \( partial e^(- i hat(B)) \) & = sum_(n = 0)^oo frac(i^n, n !) underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, partial \] \] dots.h \]\
  & = partial + sum_(n = 1)^oo frac(i^n, n !) underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, partial \] \] dots.h \]\
  & = - sum_(n = 1)^oo frac(i^n, n !) underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n - 1) \, partial hat(B) \] \] dots.h \]\
- $ 0◻
+ $
 
 = スピノル球関数
 <スピノル球関数>
@@ -165,7 +155,6 @@ $cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$
 となるからスピノル球関数のパリティは $\( - 1 \)^l$ となる。
 $ Y_l^m \( pi - theta \, pi + phi.alt \) & = \( - 1 \)^l Y_l^m \( theta \, phi.alt \)\
 cal(Y)_(j \, m)^plus.minus \( pi - theta \, pi + phi.alt \) & = \( - 1 \)^l cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) $
-0◻
 
 #block[
 $cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$ が持つ $hat(J)_z$
@@ -176,7 +165,6 @@ $cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$ が持つ $hat(J)_z$
 $m planck$ となる。
 $ hat(J)_z Y_l^m \( theta \, phi.alt \) & = m planck Y_l^m \( theta \, phi.alt \)\
 hat(J)_z cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = m planck cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) $
-0◻
 
 #block[
 $cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$ が持つ
@@ -187,7 +175,6 @@ $hat(bold(L))^2$ の固有値を求めよ。
 の固有値は $planck^2 l \( l + 1 \)$ となる。
 $ hat(bold(L))^2 Y_l^m \( theta \, phi.alt \) & = planck^2 l \( l + 1 \) Y_l^m \( theta \, phi.alt \)\
 hat(bold(L))^2 cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = planck^2 l \( l + 1 \) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) $
-0◻
 
 #block[
 $cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$ が持つ
@@ -202,7 +189,7 @@ $ hat(bold(L)) dot.op hat(bold(S)) cal(Y)_(j \, m)^plus.minus \( theta \, phi.al
  & = planck^2 / 2 (plus.minus (l + 1 / 2) - 1 / 2) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  $ より固有値は
 $frac(planck^2 l, 2) \, - frac(planck^2 \( l + 1 \), 2)$
-となる。 0◻
+となる。
 
 #block[
 $cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$ が持つ
@@ -214,7 +201,7 @@ $cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$ に $hat(bold(J))^2$
 $ hat(bold(J))^2 cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = planck^2 j \( j + 1 \) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 (l plus.minus 1 / 2) ((l plus.minus 1 / 2) + 1) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 ((l plus.minus 1 / 2 + 1 / 2)^2 - 1 / 4) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) $
-より固有値は $l^2 - 1 / 4 \, \( l + 1 \)^2 - 1 / 4$ となる。 0◻
+より固有値は $l^2 - 1 / 4 \, \( l + 1 \)^2 - 1 / 4$ となる。
 
 #block[
 パウリ行列 $bold(sigma)$ と位置ベクトル
@@ -248,7 +235,6 @@ $ 3 bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.al
  &  &  & \, minus.plus sqrt(j + 1 / 2 plus.minus (m + 1 / 2)) Y_(j plus.minus 1 \/ 2)^(m + 1 \/ 2) \( theta \, phi.alt \) #scale(x: 300%, y: 300%)[\)] = cal(Y)_(j \, m)^minus.plus \( theta \, phi.alt \) $
 よって次の式となる。
 $ bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = cal(Y)_(j \, m)^minus.plus \( theta \, phi.alt \) $
-0◻
 
 = 水素原子における電子のエネルギー準位
 <水素原子における電子のエネルギー準位>
@@ -260,7 +246,7 @@ $ bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt 
 
 ]
 $n$ と $j$ に関して $n = j + n' + 1 \/ 2$ という関係があるから
-$j = 1 \/ 2 \, dots.h \, \( 2 n - 1 \) \/ 2$ を取る。 0◻
+$j = 1 \/ 2 \, dots.h \, \( 2 n - 1 \) \/ 2$ を取る。
 
 #block[
 主量子数 $n$, 全角運動量 $j$
@@ -271,7 +257,7 @@ $j = 1 \/ 2 \, dots.h \, \( 2 n - 1 \) \/ 2$ を取る。 0◻
 を持つ状態のエネルギー固有値の表式は次のようになる。
 $ E & = frac(m c^2, sqrt(1 + frac(\( Z alpha \)^2, (n - (j + 1 / 2) + sqrt(\( j + 1 / 2 \)^2 - \( Z alpha \)^2))^2))) $
 また縮重度は $j = l plus.minus 1 \/ 2$ より $n' = 0$ において
-$2 j + 1$、$n' > 0$ において $2 \( 2 j + 1 \)$ となる。 0◻
+$2 j + 1$、$n' > 0$ において $2 \( 2 j + 1 \)$ となる。
 
 #block[
 主量子数 $n$ を持つ状態の総数を求めよ。
@@ -279,7 +265,7 @@ $2 j + 1$、$n' > 0$ において $2 \( 2 j + 1 \)$ となる。 0◻
 ]
 $n = j + n' + 1 \/ 2$ と $j = l plus.minus 1 \/ 2$ より状態の総数は
 $2 n^2$ となる。
-$ 2 n + 2 times sum_(n' = 1)^(n - 1) 2 \( n - n' \) & = 2 n^2 $ 0◻
+$ 2 n + 2 times sum_(n' = 1)^(n - 1) 2 \( n - n' \) & = 2 n^2 $
 
 #block[
 電子の静止エネルギーから測った束縛エネルギーの大きさが縮退を除いて 7
@@ -293,11 +279,11 @@ $n = 4 \, j = 7 \/ 2$ である。 またそれぞれの束縛エネルギーは
 $ cal(E) & approx - frac(alpha^2 m c^2, 2 n^2) - (frac(1, j + 1 \/ 2) - frac(3, 4 n)) frac(alpha^4 m c^2, 2 n^3)\
  & approx - 13.60569 / n^2 - (frac(1, j + 1 \/ 2) - frac(3, 4 n)) frac(7.249022 times 10^(- 4), n^3)\
 cal(E)_(4 \, 1 \/ 2) & approx 0.850365\
-cal(E)_(4 \, 7 \/ 2) & approx 0.850356 $ となる。 0◻
+cal(E)_(4 \, 7 \/ 2) & approx 0.850356 $ となる。
 
 #block[
 同じ主量子数 $n$ を持つ状態でも全角運動量 $j$
 に依存してエネルギー準位が分裂する. この現象を表す名称を答えよ.
 
 ]
-微細構造 0◻
+微細構造

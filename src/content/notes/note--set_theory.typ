@@ -96,7 +96,7 @@ $ forall x in A exists ! z { z = ⟨x \, y⟩ } upright(p r o d) \( A \, y \) co
 また, 次のように定義できる。
 $ forall y in B exists ! z { z = upright(p r o d) { A \, y } } upright(p r o d)' \( A \, B \) colon.eq { upright(p r o d) { A \, y } : y in B } $
 $A times B colon.eq union.big upright(p r o d)' \( A \, B \)$
-と置くことで定義の正当性が分かる。 0◻
+と置くことで定義の正当性が分かる。
 
 #block[
 関係
@@ -118,7 +118,7 @@ upright(r a n) \( R \) & = { y : exists x med ⟨x \, y⟩ in R } $ 関係 $R$
 
 ]
 $R$ は関係であるから任意の $R$ の元は順序対であり,
-それぞれに対し反転を2回行えば元に戻る。 0◻
+それぞれに対し反転を2回行えば元に戻る。
 
 #block[
 関係 $f$ が
@@ -147,10 +147,10 @@ $⟨A \, R⟩$ が狭義全順序ならば, 任意の $B subset A$ について 
 $R subset upright(d o m) \( R \) times upright(r a n) \( R \)$
 より集合に対して関係の集合は依存していない。また推移律, 三分律,
 非反射律は存在を示している訳ではないので $B$ に対しても成立する。よって
-$⟨B \, R⟩$ は狭義全順序となる。 0◻
+$⟨B \, R⟩$ は狭義全順序となる。
 
 #block[
-同型写"像集"合と関係の対 $⟨A \, R⟩ \, ⟨B \, S⟩$ につい"て全"単射
+同型写像 集合と関係の対 $⟨A \, R⟩ \, ⟨B \, S⟩$ について 全単射
 $f : A arrow.r B$ が存在し
 $ ⟨A \, R⟩ tilde.equiv ⟨B \, S⟩ : arrow.l.r.double forall x \, y in A \( x R y arrow.l.r.double f \( x \) S f \( y \) \) $
 $f$ を同型写像と呼ぶ。
@@ -173,7 +173,7 @@ $⟨A \, R⟩ tilde.equiv.not ⟨upright(p r e d) \( A \, x \, R \) \, R⟩$
 ]
 $f : A arrow.r upright(p r e d) \( A \, x \, R \)$
 が同型写像であると仮定すると, 集合 ${ y in A : f \( y \) eq.not y }$ の
-$R$-最小要素 $y$ が。 0◻
+$R$-最小要素 $y$ が。
 
 #block[
 #strong[定理 5] (). \
@@ -183,7 +183,7 @@ $⟨A \, R⟩ \, ⟨B \, S⟩$ を互いに同型な整列順序とするとき,
 
 ]
 仮に2つの同型写像 $f \, g$ が存在したとき $f \( y \) eq.not g \( y \)$
-であるような $y in A$ のうち $R$-最小の $y$ を考えると矛盾。 0◻
+であるような $y in A$ のうち $R$-最小の $y$ を考えると矛盾。
 
 #block[
 #strong[定理 6] (). \
@@ -198,7 +198,7 @@ upright("(c)") quad & exists x in A { ⟨upright(p r e d) \( A \, x \, R \) \, R
 次のように $f$ を定める。
 $ f & = { ⟨v \, w⟩ : v in A and w in B and ⟨upright(p r e d) \( A \, v \, R \) \, R⟩ tilde.equiv ⟨upright(p r e d) \( B \, w \, S \) \, S⟩ } $
 このとき, $f$ は $A$ のある切片から $B$ のある切片への同型写像となるが,
-これら二つの切片の両方が真の切片となることはありえない。 0◻
+これら二つの切片の両方が真の切片となることはありえない。
 
 #block[
 $forall A exists R \( upright("RはAを整列順序づけする") \)$
@@ -253,7 +253,7 @@ g compose f & = { \( x \, z \) in a times c divides f \( x \) inter g^(- 1) \( z
 + $C$ の $in$-最小 $x$ について $x inter C = 0$ となる。よって $0$
   に含まれる元は存在しないことと(3)より $x$ は条件を満たす。
 
-よって全て示された。 0◻
+よって全て示された。
 
 #block[
 #strong[定理 8] (). \
@@ -264,7 +264,7 @@ g compose f & = { \( x \, z \) in a times c divides f \( x \) inter g^(- 1) \( z
 仮に任意の順序数を含む集合 $z$ があるとすると, 集合
 $ O N & = { x : x upright("は順序数") } $ が存在し,
 これは順序数となるが, $O N in O N$ となり, 整列順序付けできない為,
-順序数ではない。よって矛盾し, そのような集合 $z$ は存在しない。 0◻
+順序数ではない。よって矛盾し, そのような集合 $z$ は存在しない。
 
 #block[
 順序数の集合 $A$ が $forall x in A forall y in x \( y in A \)$ ならば
@@ -283,7 +283,7 @@ $⟨A \, R⟩ tilde.equiv C$ となる。
 $ forall a in B exists ! x \( x tilde.equiv ⟨upright(p r e d) \( A \, a \, R \)⟩ \)\
 C colon.eq { x : exists a in B { x tilde.equiv ⟨upright(p r e d) \( A \, a \, R \)⟩ } } $
 となる $C$ が存在し, 関数 $f$ を $f : a mapsto x$ とおくと
-$f subset B times C$ となる。 0◻
+$f subset B times C$ となる。
 
 = 基礎
 <基礎>
@@ -291,4 +291,4 @@ $f subset B times C$ となる。 0◻
 $ f \( x \) = f \( y \) arrow.r.double.long x = y $ 全単射 (bijection)
 全射かつ単射
 
-対"等全"単射が存在する $a approx b$
+対等 全単射が存在する $a approx b$

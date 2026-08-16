@@ -82,15 +82,14 @@ $ Gamma > frac(gamma_01 gamma_2 gamma_3, gamma_32 gamma_10 - gamma_21 gamma_32 -
 本実験で使う分光器は Spectral Products 社製小型分光器 (SM240) である。
 
 SM240 には入力フィルターとして 530 nm のローパスフィルターが入っている。
-まずこれに裸電球の光を当てると図 #link(label("fig:bare light"))[fig:bare light]
-のようになった。
+まずこれに裸電球の光を当てると図 #link(<fig:bare-light>)[fig:bare-light] のようになった。
 
 #figure(image("/public/notes/physics_report/assets/bare_light_bulb.png", width: 14cm),
   caption: [
     裸電球のスペクトル
   ]
 )
-#label("fig:bare light")
+<fig:bare-light>
 
 裸電球はフィラメントを約 2500 K
 にまで熱して黒体輻射により発光する。黒体輻射の光強度は次のプランクの法則に従うので裸電球は波長
@@ -99,10 +98,10 @@ $ E & = frac(8 pi h nu^3, c^3) frac(1, exp (frac(h nu, k_B T)) - 1) $
 そして 530 nm
 以下の波長の光はローパスフィルターにより削られるので正しいグラフが得られていることがわかる。
 (課題 1.1.1) \
-次に Ne ランプを分光器に当てると図 #link(label("fig:Ne lump"))[fig:Ne lump]
-のようになった。 Ne の輝線スペクトルは図 #link(label("fig:Ne spectre"))[fig:Ne spectre]
-のようになり, 633 nm 近くのスペクトル線は表 #link(<table:spectre>)[table:spectre]
-のように対応していることがわかる。 (課題 1.1.2) \
+次に Ne ランプを分光器に当てると図 #link(<fig:Ne-lump>)[fig:Ne-lump] のようになった。 Ne
+の輝線スペクトルは図 #link(<fig:Ne-spectre>)[fig:Ne-spectre] のようになり, 633 nm
+近くのスペクトル線は表 #link(<table:spectre>)[table:spectre] のように対応していることがわかる。
+(課題 1.1.2) \
 
 #figure([#block[
   #box(image("/public/notes/physics_report/assets/ne_lump.png", width: 8cm))
@@ -114,7 +113,7 @@ $ E & = frac(8 pi h nu^3, c^3) frac(1, exp (frac(h nu, k_B T)) - 1) $
     Ne の輝線スペクトル
   ]
 )
-#label("fig:Ne spectre")
+<fig:Ne-spectre>
 
 #block[
 #figure(
@@ -159,10 +158,10 @@ n_p & = frac(1 W, E) = 3.18 times 10^18\
 n_e & = frac(1 W times 400 m A \/ W, e) = 2.5 times 10^17\
 alpha & = n_e / n_p approx 0.785 $ これより HeNe
 レーザーの波長での量子効率は 79 % となる。 (課題 1.2.2) \
-Ne ランプの電極の向きを受光に対して縦向きか横向きかで図
-#link(label("ne lamp 1"))[ne lamp 1];, 図 #link(label("ne lamp 2"))[ne lamp 2] ように変わった。
-Ne ランプの構造として 50 Hz の交流の電気が流れて $+$, $-$
-に対して片方の電極が光る。 そして光の強度は距離に対して逆 2
+Ne ランプの電極の向きを受光に対して縦向きか横向きかで図 #link(<ne-lamp-1>)[ne-lamp-1], 図
+#link(<ne-lamp-2>)[ne-lamp-2] ように変わった。 Ne ランプの構造として 50 Hz
+の交流の電気が流れて $+$, $-$ に対して片方の電極が光る。
+そして光の強度は距離に対して逆 2
 乗で減っていくから横向きだと交互に光強度の強弱 (課題 1.2.3) \
 
 #figure([#block[
@@ -175,7 +174,7 @@ Ne ランプの構造として 50 Hz の交流の電気が流れて $+$, $-$
     縦向き Ne ランプ
   ]
 )
-#label("ne lamp 2")
+<ne-lamp-2>
 
 これよりオシロスコープに 50Ω の終端抵抗をおくと図 #link(<noise>)[noise]
 のように電圧がノイズのオーダーに近くなってしまい、観測しづらい。 (課題
@@ -251,10 +250,8 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 蛍光スペクトルは連続的なスペクトルとなっている。 \
 発振成功率が 50 % となる放電電圧の閾値は 3.35V となった。 (課題 2.2.1) \
 フラッシュランプ、蛍光、色素レーザー光のスペクトルはそれぞれ図
-#link(label("flush lamp"))[flush lamp];, 図 #link(<fluorescene>)[fluorescene], 図
-#link(label("dye laser"))[dye laser];, 時間波形はそれぞれ図
-#link(label("flush lamp oscillo"))[flush lamp oscillo];, 図
-#link(label("fluorescene oscillo"))[fluorescene oscillo];, 図 #link(label("dye laser oscillo"))[dye laser oscillo]
+#link(<flush-lamp>)[flush-lamp], 図 #link(<fluorescene>)[fluorescene], 図 #link(<dye-laser>)[dye-laser], 時間波形はそれぞれ図
+#link(<flush-lamp-oscillo>)[flush-lamp-oscillo], 図 #link(<fluorescene-oscillo>)[fluorescene-oscillo], 図 #link(<dye-laser-oscillo>)[dye-laser-oscillo]
 のようになった。 これらを観察すると表 #link(<table:light>)[table:light]
 のようにまとめられる。
 オシロスコープで得られた電圧に関しては距離や立体角などに依存して定量的で話せないことに注意する。
@@ -285,7 +282,7 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
     フラッシュランプのスペクトル
   ]
 )
-#label("flush lamp")
+<flush-lamp>
 
 #figure([#block[
   #box(image("/public/notes/physics_report/assets/fluorescence.png", width: 8cm))
@@ -297,14 +294,14 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
     色素レーザーのスペクトル
   ]
 )
-#label("dye laser")
+<dye-laser>
 
 #text(fill: gray)[（画像なし）],
   caption: [
     フラッシュランプの時間波形
   ]
 )
-#label("flush lamp oscillo")
+<flush-lamp-oscillo>
 
 #figure([#block[
   #box(image("/public/notes/physics_report/assets/fluorescence_oscillo.jpg", width: 8cm))
@@ -316,7 +313,7 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
     色素レーザーの時間波形
   ]
 )
-#label("dye laser oscillo")
+<dye-laser-oscillo>
 
 偏光特性についてはフラッシュランプ、蛍光、色素レーザー光のどれも見つけられなかった。
 (課題 2.2.4) \
@@ -333,8 +330,8 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 600 nm の鋭いピークに対して 10nm ほど長短に拡がっている。
 これは波長を選択することによって誘導放出がしやすくなったことによると考えられる。
 (課題 3.1.2) \
-最も強い発振スペクトルは図 #link(label("prism strongest"))[prism strongest]
-のようになった。プリズムを挟まなかった図 #link(label("dye laser"))[dye laser]
+最も強い発振スペクトルは図 #link(<prism-strongest>)[prism-strongest]
+のようになった。プリズムを挟まなかった図 #link(<dye-laser>)[dye-laser]
 と比べると線幅は変わらず、ピーク自体が振動しているように見える。 (課題
 3.1.3) \
 
@@ -343,7 +340,7 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
     最も強い発振スペクトル
   ]
 )
-#label("prism strongest")
+<prism-strongest>
 
 ここで共振器長 $l$ と共振器中で振動した周期数 $n$ を用いて波長
 $lambda_n$ とそれらの波長の間隔 $Delta lambda$ は次のように書ける。
@@ -356,9 +353,8 @@ Delta lambda & = 2 times 300 m m times frac(1, \( 1.0 times 10^6 \)^2) = 6.0 tim
 これより $6.0 times 10^(- 4) n m$ ごとに共振する。
 $ m & = frac(lambda_max - lambda_min, Delta lambda) = frac(23 n m, 6.0 times 10^(- 4) n m) = 3.83 times 10^4 $
 更に $3.8 times 10^4$ 個程度のモード数がある。 (課題 3.1.4, 0.1.3) \
-最も強く発振する波長での時間波形は図
-#link(label("dye laser prism oscillo"))[dye laser prism oscillo] のようになった。 これは図
-#link(label("dye laser oscillo"))[dye laser oscillo]
+最も強く発振する波長での時間波形は図 #link(<dye-laser-prism-oscillo>)[dye-laser-prism-oscillo]
+のようになった。 これは図 #link(<dye-laser-oscillo>)[dye-laser-oscillo]
 に比べて色素レーザー光の強度が弱くなっている。 (課題 3.1.5) \
 
 #figure(image("/public/notes/physics_report/assets/dye_laser_prism.jpg", width: 12cm),
@@ -366,12 +362,12 @@ $ m & = frac(lambda_max - lambda_min, Delta lambda) = frac(23 n m, 6.0 times 10^
     プリズムを通した色素レーザーの時間波形
   ]
 )
-#label("dye laser prism oscillo")
+<dye-laser-prism-oscillo>
 
 偏光フィルターがある特定の角度で光強度がゼロとなるような偏光特性があった。
 s 偏光はどんな角度でも光強度があり、偏光特性はあまり見られない。
-それに対し p 偏光は約
-60°で光強度がゼロとなるため、偏光板がその傾きのときそれから出てくる光強度はゼロとなる。
+それに対し p 偏光は約 60°
+で光強度がゼロとなるため、偏光板がその傾きのときそれから出てくる光強度はゼロとなる。
 これより課題 2.2.4 は s 偏光、課題 3.1.6 は p
 偏光と対応することがわかる。 (課題 3.1.6) \
 色素レーザー光は距離 1.7m に対して半径は $6 m m$
@@ -410,9 +406,9 @@ Neon https:\/\/www.oceaninsight.jp/Products/2series.html
 
 
 // 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)#label("fig:Ne lump")
-#metadata(none)#label("ne lamp 1")
-#metadata(none)#label("fluorescene oscillo")
+#metadata(none)<fig:Ne-lump>
+#metadata(none)<ne-lamp-1>
 #metadata(none)<rhodamine>
 #metadata(none)<green>
 #metadata(none)<fluorescene>
+#metadata(none)<fluorescene-oscillo>

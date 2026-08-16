@@ -125,6 +125,20 @@ export const expandAutoBrackets = (source, macro = 'ab') => {
     let probe = hit + token.length
     while (probe < source.length && /\s/.test(source[probe])) probe += 1
 
+    // 波括弧形式（\qty{x}）は中括弧そのものを表す。グループとして読む。
+    if (source[probe] === '{') {
+      const group = readGroup(source, probe)
+      if (group) {
+        const inner = expandAutoBrackets(group.text, macro)
+        out += source.slice(cursor, hit)
+        out += `\\left\\{${inner.text}\\right\\}`
+        cursor = group.end
+        expanded += 1 + inner.expanded
+        unmatched += inner.unmatched
+        continue
+      }
+    }
+
     const delimiter = matchOpen(source, probe)
     if (!delimiter) {
       out += source.slice(cursor, hit + token.length)
@@ -172,6 +186,85 @@ const PREAMBLE_NOISE = [
   // LaTeXML の内部束縛がエラーを出すので、使っていない以上落とす。
   /\\usepackage\{xy\}/g,
 ]
+
+/**
+ * pandoc が知らない環境・命令を、意味の同じ標準的なものに置き換える。
+ *
+ * dcases は mathtools の display 版 cases。1 箇所でも残ると
+ * その数式ブロックごと生の TeX になるため、160 箇所の影響は大きい。
+ */
+/** \label / \ref の中の空白とドットは pandoc が受け付けない。 */
+/**
+ * 数式環境の中の \ref を素の記号にする。
+ *
+ * pandoc の数式パーサは \ref を受け付けない。1 箇所あるとブロックごと
+ * 生の TeX になるので、参照としては諦めて見た目だけ残す。
+ */
+const MATH_ENVIRONMENTS = /\\begin\{(align\*?|aligned|alignat\*?|equation\*?|gather\*?|cases|dcases|multline\*?)\}([\s\S]*?)\\end\{\1\}/g
+
+export const stripReferencesInMath = (source) => {
+  let stripped = 0
+  const text = source.replace(MATH_ENVIRONMENTS, (whole, env, body) => {
+    const cleaned = body.replace(/\\(?:eq)?ref\{([^{}]*)\}/g, (_, name) => {
+      stripped += 1
+      return `\\mathrm{${name}}`
+    })
+    return `\\begin{${env}}${cleaned}\\end{${env}}`
+  })
+
+  return { text, stripped }
+}
+
+export const normalizeLabels = (source) =>
+  source.replace(
+    /\\(label|ref|eqref|autoref)\{([^{}]*)\}/g,
+    (_, command, name) => `\\${command}{${name.replace(/[\s.]+/g, '-')}}`,
+  )
+
+const EQUIVALENTS = [
+  [/\\begin\{dcases\}/g, '\\begin{cases}'],
+  [/\\end\{dcases\}/g, '\\end{cases}'],
+  [/\\begin\{drcases\}/g, '\\begin{cases}'],
+  [/\\end\{drcases\}/g, '\\end{cases}'],
+  [/\\begin\{rcases\}/g, '\\begin{cases}'],
+  [/\\end\{rcases\}/g, '\\end{cases}'],
+  // 標準にない大きさ。1 段階小さいものへ。
+  [/\\Biggg(?![a-zA-Z@])/g, '\\Bigg'],
+  [/\\biggg(?![a-zA-Z@])/g, '\\bigg'],
+  [/\\eqref(?![a-zA-Z@])/g, '\\ref'],
+  // 度記号は文字そのものにする。^\\circ にすると \\textrm{} の中で壊れる。
+  [/\\textdegree(?![a-zA-Z@])/g, '°'],
+  [/\\begin\{cases\*\}/g, '\\begin{cases}'],
+  [/\\end\{cases\*\}/g, '\\end{cases}'],
+  // 数式内の回転は写せない。中身だけ残す。
+  [/\\rotatebox\{[^{}]*\}\{((?:[^{}]|\{[^{}]*\})*)\}/g, '$1'],
+  [/\\kern\s*-?[\d.]+\s*(?:pt|em|ex|mm|cm|in)/g, ''],
+  // 証明終わりの位置指定。証明環境ごと作り直すので不要。
+  [/\\qedhere(?![a-zA-Z@])/g, ''],
+  [/\\qed(?![a-zA-Z@])/g, ''],
+  // TeX の原始命令。数式の意味には関わらないので落とす。
+  [/\\raise\s*-?[\d.]+\s*(?:pt|em|ex|mm|cm|in)\s*\\hbox/g, ''],
+  [/\\raise\s*-?[\d.]+\s*(?:pt|em|ex|mm|cm|in)/g, ''],
+  // diffcoeff の「〜で評価」記法。棒は落として本体だけ残す。
+  [/\\diffp\s*\.\|\.\s*/g, '\\diffp'],
+  [/\\diff\s*\.\|\.\s*/g, '\\diff'],
+  [/\\pxmat(\[[^\]]*\])?/g, '\\mqty'],
+]
+
+export const normalizeEquivalents = (source) => {
+  let replaced = 0
+
+  // 後方参照つきの置換もあるので、関数置換の中で自前で展開する。
+  // 単に文字列を返すと $1 がそのまま残る。
+  const text = EQUIVALENTS.reduce((acc, [pattern, to]) => {
+    return acc.replace(pattern, (...args) => {
+      replaced += 1
+      return to.replace(/\$(\d)/g, (_, index) => args[Number(index)] ?? '')
+    })
+  }, source)
+
+  return { text, replaced }
+}
 
 export const stripPreambleNoise = (source) =>
   PREAMBLE_NOISE.reduce((text, pattern) => text.replace(pattern, ''), source)
@@ -361,19 +454,25 @@ export const expandDerivatives = (source, skip = new Set()) => {
       }
 
       const optional = readOptional(text, hit + token.length)
-      const numerator = readGroup(text, optional ? optional.end : hit + token.length)
-      const denominator = numerator ? readGroup(text, numerator.end) : null
+      const first = readGroup(text, optional ? optional.end : hit + token.length)
+      const second = first ? readGroup(text, first.end) : null
 
-      if (!numerator || !denominator) {
+      if (!first) {
         out += text.slice(cursor, hit + token.length)
         cursor = hit + token.length
         continue
       }
 
+      // \dv{f}{x} は df/dx、\dv{x} は演算子としての d/dx。
+      // 引数が 1 つのときは分子を空にする。
+      const numerator = second ? first.text : ''
+      const variable = second ? second.text : first.text
+      const end = second ? second.end : first.end
+
       const order = optional && optional.text ? `^{${optional.text}}` : ''
       out += text.slice(cursor, hit)
-      out += `\\frac{${d}${order} ${numerator.text}}{${d} ${denominator.text}${order}}`
-      cursor = denominator.end
+      out += `\\frac{${d}${order} ${numerator}}{${d} ${variable}${order}}`
+      cursor = end
       expanded += 1
     }
 
@@ -404,7 +503,9 @@ export const expandDerivatives = (source, skip = new Set()) => {
 
     const order = optional && optional.text ? `^{${optional.text}}` : ''
     out += text.slice(cursor, hit)
-    out += `\\mathrm{d}${order} ${argument.text}`
+    // 引数を波括弧で残す。\dl{\omega}g(...) が \mathrm{d}\omegag(...) と
+    // 繋がって存在しないマクロ名になるため。
+    out += `\\mathrm{d}${order}{${argument.text}}`
     cursor = argument.end
     expanded += 1
   }
@@ -513,6 +614,77 @@ export const expandVectorOperators = (source, skip = new Set()) => {
   }, source)
 
   return { text, expanded }
+}
+
+/**
+ * アクセントや装飾マクロの引数を波括弧で囲む。
+ *
+ *   \dot\bm{r}  ->  \dot{\bm{r}}
+ *   \bar\alpha  ->  \bar{\alpha}
+ *
+ * TeX は制御綴 1 つを引数として受け取れるが、pandoc は波括弧を要求する。
+ * 1 箇所でも残ると aligned ブロックごと変換を諦めて生の TeX が残るため、
+ * 影響が箇所数より大きい。
+ */
+const ACCENT_MACROS = [
+  'dot', 'ddot', 'dddot', 'hat', 'widehat', 'tilde', 'widetilde',
+  'bar', 'overline', 'underline', 'vec', 'check', 'breve', 'acute',
+  'grave', 'mathring', 'bm', 'boldsymbol', 'mathbf', 'mathrm',
+  'mathcal', 'mathfrak', 'mathbb', 'mathit', 'mathsf', 'text',
+]
+
+export const braceControlArguments = (source) => {
+  let text = source
+  let braced = 0
+
+  for (const macro of ACCENT_MACROS) {
+    const token = `\\${macro}`
+    let out = ''
+    let cursor = 0
+
+    while (cursor < text.length) {
+      const hit = text.indexOf(token, cursor)
+      if (hit === -1) break
+
+      let probe = hit + token.length
+      // \dotted のような別マクロを巻き込まない。
+      if (probe < text.length && /[a-zA-Z@]/.test(text[probe])) {
+        out += text.slice(cursor, probe)
+        cursor = probe
+        continue
+      }
+
+      while (probe < text.length && /[ \t]/.test(text[probe])) probe += 1
+
+      // 引数が制御綴のときだけ手を入れる。波括弧付きはそのままでよい。
+      if (text[probe] !== '\\') {
+        out += text.slice(cursor, hit + token.length)
+        cursor = hit + token.length
+        continue
+      }
+
+      const inner = /^\\([a-zA-Z@]+|.)/.exec(text.slice(probe))
+      if (!inner) {
+        out += text.slice(cursor, hit + token.length)
+        cursor = hit + token.length
+        continue
+      }
+
+      let end = probe + inner[0].length
+      // 内側のマクロが引数を取るなら、それも含めて包む（\bm{r} など）。
+      const group = readGroup(text, end)
+      if (group) end = group.end
+
+      out += text.slice(cursor, hit)
+      out += `${token}{${text.slice(probe, end)}}`
+      cursor = end
+      braced += 1
+    }
+
+    text = out + text.slice(cursor)
+  }
+
+  return { text, braced }
 }
 
 /**
@@ -747,7 +919,10 @@ export const preprocess = (source, { extraDefinitions = '' } = {}) => {
   // 書き換えてしまい、文書全体が読めなくなる。
   const { text: guarded, parked } = parkDefinitions(withFallbacks)
 
-  const matrices = expandMatrices(guarded, defined)
+  const references = stripReferencesInMath(guarded)
+  const equivalents = normalizeEquivalents(normalizeLabels(references.text))
+  const bracedArgs = braceControlArguments(equivalents.text)
+  const matrices = expandMatrices(bracedArgs.text, defined)
   const single = expandSingleArgMacros(matrices.text, defined)
   const derivs = expandDerivatives(single.text, defined)
   const vectors = expandVectorOperators(derivs.text, defined)
@@ -777,5 +952,7 @@ export const preprocess = (source, { extraDefinitions = '' } = {}) => {
     vectors: vectors.expanded,
     matrices: matrices.expanded,
     singleArg: single.expanded,
+    braced: bracedArgs.braced,
+    equivalents: equivalents.replaced,
   }
 }

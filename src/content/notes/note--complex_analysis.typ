@@ -39,7 +39,7 @@ $x + i y = 0$ ならば $x = 0$ かつ $y = 0$ である。
 これより次のようになる。
 $ z_1 = z_2 & arrow.l.r.double z_1 - z_2 = 0 arrow.l.r.double \( x_1 - x_2 \) + i \( y_1 - y_2 \) = 0\
  & arrow.l.r.double x_1 - x_2 = 0 and y_1 - y_2 = 0 arrow.l.r.double x_1 = x_2 and y_1 = y_2 $
-他の等式は計算すれば満たすことが分かる。 0◻
+他の等式は計算すれば満たすことが分かる。
 
 また交換法則、結合法則、分配法則を満たすことが分かるので $bb(C)$
 は可換体です。
@@ -64,11 +64,11 @@ $ (\| z_1 \| - \| z_2 \|)^2 & = (sqrt(x_1^2 + y_1^2) - sqrt(x_2^2 + y_2^2))^2 = 
 \( \| z_1 \| + \| z_2 \| \)^2 & = \| z_1 \|^2 + \| z_2 \|^2 + 2 \| z_1 \| \| z_2 \| = x_1^2 + y_1^2 + x_2^2 + y_2^2 + 2 sqrt(\( x_1^2 + y_1^2 \) \( x_2^2 + y_2^2 \)) $
 ここで $x_1^2 y_2^2 + x_2^2 y_1^2 gt.eq 2 x_1 x_2 y_1 y_2$ であるから
 $x^2 lt.eq y^2 arrow.r.double.long \| x \| lt.eq \| y \|$
-より第二式が成り立つ。 0◻
+より第二式が成り立つ。
 
 無限遠点
 
-リーマン"面リ"ーマン球面
+リーマン面 リーマン球面
 
 == 複素変数の関数
 <複素変数の関数>
@@ -94,7 +94,6 @@ $ f' \( z_0 \) & = lim_(Delta z arrow.r 0) frac(f \( z_0 + Delta z \) - f \( z_0
  & = frac(partial v \( x_0 \, y_0 \), partial y) - i frac(partial u \( x_0 \, y_0 \), partial y) $
 これより領域において次が成り立つ
 $ frac(partial u, partial x) = frac(partial v, partial y) \, frac(partial u, partial y) = - frac(partial v, partial x) $
-0◻
 
 == 正則関数
 <正則関数>
@@ -134,7 +133,6 @@ $f \( z \) = g \( z \)$ が成り立つ。
 ]
 $ f \( z \) & = sum_(n = 0)^oo frac(f^(\( n \)) \( z_0 \), n !) \( z - z_0 \)^n\
 g \( z \) & = sum_(n = 0)^oo frac(g^(\( n \)) \( z_0 \), n !) \( z - z_0 \)^n $
-0◻
 
 #block[
 #strong[定理 4] (解析接続). \

@@ -15,7 +15,7 @@ $bb(Z) \/ upright(K e r) \( phi.alt \) tilde.equiv Im \( phi.alt \)$ と
 $Im \( phi.alt \)$ は整域であることから素イデアルである. $bb(Z)$
 の素イデアルは $\( 0 \)$ または素数 $p$ があり $\( p \)$ であるから
 $upright(K e r) \( phi.alt \)$ も $\( 0 \)$ または $\( p \)$ である.
-このとき標数 $upright(c h) med K$ "はそ"れぞれ $0$, $p$ であるという.
+このとき標数 $upright(c h) med K$ は それぞれ $0$, $p$ であるという.
 
 ]
 #block[
@@ -43,7 +43,7 @@ $upright(F r o b)_q : K in.rev x mapsto x^q in K$
 $ upright(F r o b)_q \( x + y \) & = \( x + y \)^q = x^q + y^q = upright(F r o b)_q \( x \) + upright(F r o b)_q \( y \)\
 upright(F r o b)_q \( x y \) & = \( x y \)^q = x^q y^q = upright(F r o b)_q \( x \) upright(F r o b)_q \( y \)\
 upright(F r o b)_q \( 0 \) & = 0\
-upright(F r o b)_q \( 1 \) & = 1 $ 0◻
+upright(F r o b)_q \( 1 \) & = 1 $
 
 #block[
 体の拡大の定義
@@ -87,7 +87,7 @@ $L$ の $M$ 上の基底, ${ y_1 \, dots.h.c \, y_m }$ を $M$ の $K$
 また $b_(i j) in K$ があり $z = sum_(i \, j) b_(i j) x_i y_j$ となる.
 よって,
 $B = { x_i y_j divides i = 1 \, dots.h.c \, l \, j = 1 \, dots.h.c \, m }$
-は $K$ 加群として $L$ を生成する. 0◻
+は $K$ 加群として $L$ を生成する.
 
 #block[
 既約な最小多項式
@@ -96,8 +96,6 @@ $B = { x_i y_j divides i = 1 \, dots.h.c \, l \, j = 1 \, dots.h.c \, m }$
   $\[ L : K \] = deg f \( x \)$ である.
 
 ]
-0◻
-
 #block[
 #strong[定理 3] (). \
 
@@ -122,7 +120,6 @@ $n = \[ L : K \]$ として $x in L$ なら $1 \, x \, dots.h.c \, x^n$
 $a_0 \, dots.h.c \, a_n$ が存在する. つまり, $x$ は代数的な元である.
 これより $L \/ K$ は代数拡大である. \
 また, 無限生成ならば無限次拡大であるから有限生成である. \
-0◻
 
 #block[
 $L \/ K$ が代数拡大, $alpha in L$ で, $L supset M supset K$
@@ -132,7 +129,7 @@ $L \/ K$ が代数拡大, $alpha in L$ で, $L supset M supset K$
 $alpha in overline(K)$ の $K$ 上の最小多項式 $f \( x \)$
 が分離多項式であり, $overline(K) = overline(M)$ かつ $M$
 上の最小多項式は $f \( x \)$ を割り切るから分離多項式となり, $M$
-上でも分離的である. 0◻
+上でも分離的である.
 
 #block[
 $f \( x \) in K \[ x \]$ を $K$ 上既約な多項式とする.
@@ -148,7 +145,7 @@ $f \( x \) in K \[ x \]$ を $K$ 上既約な多項式とする.
 ]
 ($1 arrow.l.r.double 2$) \
 $f' \( x \) = 0$ ならば \
-($2 arrow.l.r.double 3$) 0◻
+($2 arrow.l.r.double 3$)
 
 #block[
 #strong[定理 4] (). \
@@ -160,4 +157,3 @@ Steinitzの定理
 + $L_1 supset.eq M_1 supset.eq K$, $L_2 supset.eq M_2 supset.eq K$
 
 ]
-0◻

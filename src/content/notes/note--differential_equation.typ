@@ -23,7 +23,7 @@ cal(L) [integral_0^t f \( u \) upright(d) u] & = $
 ]
 テスト
 $ cal(L) \[ f' \( t \) \] & = integral_0^oo f' \( t \) e^(- s t) upright(d) t = [f \( t \) e^(- s t)]_0^oo + s integral_0^oo f \( t \) e^(- s t) upright(d) t = s cal(L) \[ f \( t \) \] - f \( 0 \)\
-cal(L) [integral_0^t f \( u \) upright(d) u] & = $ 0◻ 例えば
+cal(L) [integral_0^t f \( u \) upright(d) u] & = $  例えば
 $ cal(L) \[ 1 \] & = integral_0^oo e^(- s t) upright(d) t = [frac(e^(- s t), - s)]_0^oo = 1 / s\
 cal(L) \[ t \] & = integral_0^oo t e^(- s t) upright(d) t = [t frac(e^(- s t), - s) - frac(e^(- s t), \( - s \)^2)]_0^oo = 1 / s^2\
 cal(L) \[ t^2 \] & = integral_0^oo t^2 e^(- s t) upright(d) t = [t^2 frac(e^(- s t), - s) - 2 t frac(e^(- s t), \( - s \)^2) + 2 frac(e^(- s t), \( - s \)^3)]_0^oo = 2 / s^3\
@@ -60,7 +60,7 @@ $ I^2 & = integral_(- oo)^oo e^(- alpha x^2) upright(d) x integral_(- oo)^oo e^(
  & = 2 pi [frac(e^(- alpha r^2), - 2 alpha)]_0^oo\
  & = pi / alpha $ よって示される。
 $ integral_(- oo)^oo e^(- alpha x^2) upright(d) x = sqrt(pi / alpha) $
-0◻
+
 
 #block[
 #strong[定理 3] (Gauss 積分). \
@@ -70,17 +70,14 @@ $  & integral_0^oo x^(2 n) e^(- x^2 \/ a^2) upright(d) x = sqrt(pi) \( 2 n - 1 \
  & integral_(- oo)^oo e^(- k^2 \/ 4) e^(i k x) upright(d) k = 2 sqrt(pi) e^(- x^2) $
 
 ]
-\$\$\\begin{aligned}
-    \\int\_0^{\\infty} x^{2n}e^{-\\alpha x^2}\\mathrm{d} x & = (-1)^n\\int\_0^{\\infty} \\diffp\[n\]{\\alpha}e^{-\\alpha x^2}\\mathrm{d} x     \\\\
-                                                & = (-1)^n\\diffp\[n\]{\\alpha}\\int\_0^{\\infty} e^{-\\alpha x^2}\\mathrm{d} x     \\\\
-                                                & = (-1)^n\\diffp\[n\]{\\alpha}\\left(\\frac{1}{2}\\sqrt{\\frac{\\pi}{\\alpha}}\\right) \\\\
-                                                & = \\sqrt{\\pi}\\frac{(2n - 1)!!}{2^{n+1}}\\alpha^{-(2n + 1)/2}
-  
-\\end{aligned}\$\$
+$ integral_0^oo x^(2 n) e^(- alpha x^2) upright(d) x & = \( - 1 \)^n integral_0^oo frac(partial^n, partial alpha^n) e^(- alpha x^2) upright(d) x\
+ & = \( - 1 \)^n frac(partial^n, partial alpha^n) integral_0^oo e^(- alpha x^2) upright(d) x\
+ & = \( - 1 \)^n frac(partial^n, partial alpha^n) (1 / 2 sqrt(pi / alpha))\
+ & = sqrt(pi) frac(\( 2 n - 1 \) ! !, 2^(n + 1)) alpha^(- \( 2 n + 1 \) \/ 2) $
 $ integral_0^oo x^(2 n + 1) e^(- alpha x^2) upright(d) x & = \( - 1 \)^n integral_0^oo frac(partial^n, partial alpha^n) x e^(- alpha x^2) upright(d) x\
  & = \( - 1 \)^n frac(partial^n, partial alpha^n) integral_0^oo x e^(- alpha x^2) upright(d) x\
  & = \( - 1 \)^n frac(partial^n, partial alpha^n) frac(1, 2 alpha)\
- & = frac(n !, 2) alpha^(- \( n + 1 \)) $ 0◻
+ & = frac(n !, 2) alpha^(- \( n + 1 \)) $ 
 
 == ガンマ関数
 <ガンマ関数>
@@ -103,7 +100,7 @@ Gamma \( 1 \) & = integral_0^oo e^(- t) upright(d) t\
 Gamma (1 / 2) & = integral_0^oo t^(- 1 \/ 2) e^(- t) upright(d) t\
  & = integral_0^oo s^(- 1) e^(- s^2) 2 s upright(d) s\
  & = 2 integral_0^oo e^(- s^2) upright(d) s\
- & = sqrt(pi) $ 0◻
+ & = sqrt(pi) $ 
 
 #block[
 $ Gamma \( x + 1 \) & = sqrt(2 pi x) e^(- x) x^x #h(2em) \( x gt.double 1 \) $
@@ -116,7 +113,7 @@ $ Gamma \( x \) & = integral_0^oo t^(x - 1) e^(- t) upright(d) t\
  & = x^x e^(- x) integral_0^oo e^(- x / 2 \( s - ln x \)^2) upright(d) s\
  & = x^x e^(- x) integral_0^oo e^(- x / 2 s^2) upright(d) s\
  & = sqrt(frac(2 pi, x)) x^x e^(- x) $ これより
-$ Gamma \( x + 1 \) & = x Gamma \( x \) = sqrt(2 pi x) x^x e^(- x) $ 0◻
+$ Gamma \( x + 1 \) & = x Gamma \( x \) = sqrt(2 pi x) x^x e^(- x) $ 
 
 #block[
 $ Gamma \( z \) & = oo arrow.l.r.double z = 0 \, - 1 \, - 2 \, dots.h\
@@ -151,7 +148,7 @@ B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
  & = integral_0^(pi \/ 2) sin^(2 \( m - 1 \)) theta cos^(2 \( n - 1 \)) theta 2 sin theta cos theta upright(d) theta #h(2em) \( t = sin^2 theta \)\
  & = 2 integral_0^(pi \/ 2) sin^(2 m - 1) theta cos^(2 n - 1) theta upright(d) theta\
 B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
- $ 0◻
+ $ 
 
 #block[
 #strong[定理 4] (). \
@@ -165,7 +162,7 @@ $ B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
  & = frac(n - 1, m) B \( m + 1 \, n - 1 \)\
 B \( m \, n + 1 \) & = frac(n dot.op \( n - 1 \) dots.h.c 1, a dot.op \( m + 1 \) dots.h.c \( m + n - 1 \)) B \( m + n \, 1 \)\
  & = frac(n !, product_(k = 0)^(n - 1) \( m + k \)) frac(1, m + n)\
- & = frac(n !, product_(k = 0)^n \( m + k \)) $ 0◻
+ & = frac(n !, product_(k = 0)^n \( m + k \)) $ 
 
 #block[
 $ B \( m \, n \) & = frac(Gamma \( m \) Gamma \( n \), Gamma \( m + n \))\
@@ -183,14 +180,14 @@ $ Gamma \( m \) Gamma \( n \) & = integral_0^oo s^(m - 1) e^(- s) upright(d) s i
 $ B \( m \, n \) & = frac(Gamma \( m \) Gamma \( n \), Gamma \( m + n \)) $
 $ Gamma \( z \) Gamma \( 1 - z \) & = Gamma \( 1 \) B \( z \, 1 - z \)\
  & = integral_0^1 t^(z - 1) \( 1 - t \)^(- z) upright(d) t\
- & = frac(pi, sin pi z) $ 0◻
+ & = frac(pi, sin pi z) $ 
 
 #block[
 $ Gamma \( z \) & = lim_(n arrow.r oo) frac(n ! n^z, z \( z + 1 \) dots.h.c \( z + n \))\
  $
 
 ]
-0◻
+
 
 #block[
 $ Gamma \( 2 z \) & = frac(2^(2 z), 2 sqrt(pi)) Gamma \( z \) Gamma (z + 1 / 2) $
@@ -223,7 +220,7 @@ $ V_n \( 1 \) & = V_1 \( 1 \) pi^(frac(n - 1, 2)) frac(Gamma \( 3 / 2 \), Gamma 
  & = frac(pi^(n / 2), Gamma \( n / 2 + 1 \)) = frac(pi^(n / 2), \( n / 2 \) !) $
 となり、超球の体積は
 $ V_n \( R \) & = R^n frac(pi^(n / 2), Gamma \( n / 2 + 1 \)) = R^n frac(pi^(n / 2), \( n / 2 \) !) $
-0◻
+
 
 #block[
 #strong[定理 6] (). \
@@ -232,7 +229,7 @@ $ V_n \( R \) & = R^n frac(pi^(n / 2), Gamma \( n / 2 + 1 \)) = R^n frac(pi^(n /
 $ S_n \( R \) = R^(n - 1) frac(2 pi^(pi / 2), Gamma \( n / 2 \)) $
 
 ]
-0◻
+
 
 #block[
 ]
@@ -267,7 +264,7 @@ frac(- x, 2) coth \( frac(- x, 2) \) & = frac(- x, 2) frac(e^(- x \/ 2) + e^(x \
 これより次の右辺も偶関数であることがわかり、一致の定理から右辺について奇数次の項は現れない。よって
 3 以上の奇数を添え字に持つ Bernoulli 数はゼロとなる。
 $ B_1 & = - 1 / 2 \, #h(2em) B_(2 n + 1) = 0 #h(2em) \( n = 1 \, 2 \, 3 \, dots.h \) $
-0◻
+
 
 #block[
 #strong[定理 7] (). \
@@ -282,7 +279,7 @@ $ x & = \( e^x - 1 \) sum_(n = 0)^oo frac(B_n, n !) x^n\
  & = sum_(n = 1)^oo sum_(m = 0)^(n - 1) frac(B_n, \( n - m \) ! m !) x^n . $
 となり両辺の係数を比較することで次のようになる。
 $ sum_(m = 0)^(n - 1) frac(B_n, \( n - m \) ! m !) x^n = delta_(n \, 1) #h(2em) \( n = 1 \, 2 \, 3 \, dots.h \) . $
-0◻
+
 
 #block[
 $ B_0 = 1 \, B_1 = - 1 / 2 \, B_2 = 1 / 6 \, B_3 = 0 \, B_4 = - 1 / 30 \, B_5 = 0 \, B_6 = 1 / 42 \, dots.h.c $
@@ -297,7 +294,7 @@ $ B_0 = 1 \, B_1 = - 1 / 2 \, B_2 = 1 / 6 \, B_3 = 0 \, B_4 = - 1 / 30 \, B_5 = 
  & 1 / 5040 B_0 + 1 / 720 B_1 + 1 / 240 B_2 + 1 / 144 B_3 + 1 / 144 B_4 + 1 / 240 B_5 + 1 / 720 B_6 = 0\
  & dots.h.c $ より添字が奇数のときを代入することで求まる。
 $ B_0 = 1 \, B_1 = - 1 / 2 \, B_2 = 1 / 6 \, B_3 = 0 \, B_4 = - 1 / 30 \, B_5 = 0 \, B_6 = 1 / 42 \, dots.h.c . $
-0◻
+
 
 == ゼータ関数 $zeta \( s \)$
 <ゼータ関数-zetas>
@@ -312,7 +309,7 @@ $zeta \( s \)$ が $"Re" s > 1$ において一様絶対収束することを示
 ]
 $s = a + b i med \( a > 1 \)$ とおく. すると次のようになる.
 $ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n^a approx integral_1^oo upright(d) x x^(- a) = [frac(1, 1 - a) x^(1 - a)]_1^oo < oo . $
-よってゼータ関数 $zeta \( s \)$ は一様絶対収束する. 0◻
+よってゼータ関数 $zeta \( s \)$ は一様絶対収束する. 
 
 #block[
 $ zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - p^(- s)) #h(2em) \( "Re" s > 1 \) . $
@@ -323,7 +320,7 @@ $ zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - p^(- s)) #h(2em) \( "Re" 
  & = 1 / 1^s + 1 / 2^s + 1 / 3^s + 1 / 2^(2 s) + 1 / 5^s + frac(1, \( 2 dot.op 3 \)^s) + dots.h.c\
  & = (1 + 2^(- s) + 2^(- 2 s) + dots.h.c) (1 + 3^(- s) + 3^(- 2 s) + dots.h.c) (1 + 5^(- s) + 5^(- 2 s) + dots.h.c) dots.h.c\
  & = product_(p : p r i m e) \( 1 + p^(- s) + p^(- 2 s) + dots.h.c \)\
- & = product_(p : p r i m e) frac(1, 1 - p^(- s)) . $ 0◻
+ & = product_(p : p r i m e) frac(1, 1 - p^(- s)) . $ 
 
 #block[
 $ zeta \( s \) & = 0 arrow.r.double.long "Re" s lt.eq 1 . $
@@ -336,7 +333,7 @@ $ \| p^(- s) \| = \| p^(- a - b sqrt(- 1)) \| = \| p^(- a) \| dot.op \| e^(- sqr
 $ \| zeta \( s \) \| & = lr(|product_(p : p r i m e) frac(1, 1 - p^(- s))|) gt.eq product_(p : p r i m e) frac(1, 1 - \| p^(- s) \|) = product_(p : p r i m e) frac(1, 1 - p^(- a)) > 0 . $
 よって $"Re" s > 1$ において $zeta \( s \)$ はゼロとならない.
 つまり次のようになる.
-$ zeta \( s \) & = 0 arrow.r.double.long "Re" s lt.eq 1 . $ 0◻
+$ zeta \( s \) & = 0 arrow.r.double.long "Re" s lt.eq 1 . $ 
 
 #block[
 素数が無限に存在することを示す.
@@ -348,7 +345,7 @@ $ lim_(s arrow.r 1) zeta \( s \) & = lim_(s arrow.r 1) sum_(n = 1)^oo 1 / n^s = 
 また Euler 積表示についても極限を取る.
 $ lim_(s arrow.r 1) zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - 1 \/ p) . $
 ここで素数が有限個しかないならば発散しない.
-ただゼータ関数は極限を取ると発散するので素数は無限個存在する. 0◻
+ただゼータ関数は極限を取ると発散するので素数は無限個存在する. 
 
 #block[
 $ Gamma \( s \) zeta \( s \) = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) #h(2em) \( "Re" s > 1 \) . $
@@ -360,7 +357,7 @@ $ Gamma \( s \) & = integral_0^oo upright(d) x x^(s - 1) e^(- x)\
  & = integral_0^oo n upright(d) x (n x)^(s - 1) e^(- n x) \,\
 Gamma \( s \) zeta \( s \) & = sum_(n = 1)^oo frac(Gamma \( s \), n^s)\
  & = sum_(n = 1)^oo integral_0^oo upright(d) x x^(s - 1) e^(- n x)\
- & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $ 0◻
+ & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $ 
 
 #block[
 この積分値を求める為に複素解析を用いる. 積分路 $C$ を
@@ -385,7 +382,7 @@ $ \| I \( s \; C_0 \( delta \) \) \| & = lr(|integral_(C_0 \( delta \)) upright(
  & = lr(|integral_0^(2 pi) delta i e^(i theta) upright(d) theta frac(\( delta e^(i theta) \)^(s - 1), e^(delta \( cos theta + i sin theta \)) - 1)|)\
  & lt.eq integral_0^(2 pi) upright(d) theta frac(\| delta^s \|, e^(delta cos theta) - 1)\
  & < \| delta^(s - 1) \| pi . $ これより $delta arrow.r 0$ のとき積分値
-$I \( s \; C_0 \( delta \) \)$ は $0$ となる. 0◻
+$I \( s \; C_0 \( delta \) \)$ は $0$ となる. 
 
 #block[
 $ I \( s \; C \) & = \( e^(2 pi i s) - 1 \) integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
@@ -398,7 +395,7 @@ $ I \( s \; C \) & = integral_(C \( delta \)) upright(d) z frac(z^(s - 1), e^z -
  & = integral_(C_(-)) upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_0) upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
  & = e^(2 pi i s) integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1) + 0 + integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
  & = \( e^(2 pi i s) - 1 \) integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
-0◻
+
 
 #block[
 Q 17A-12.
@@ -442,20 +439,14 @@ $ e^(- t^2 + 2 t x) & = sum_(n = 0)^oo frac(1, n !) H_n \( x \) t^n $
 #block[
 #strong[定理 8] (ロドリグの公式 (Rodrigues's formula)). \
 
-\$\$\\begin{aligned}
-    H\_n(x) & = (-1)^ne^{x^2}\\diff\[n\]{x}e^{-x^2}
-  
-\\end{aligned}\$\$
+$ H_n \( x \) & = \( - 1 \)^n e^(x^2) frac(upright(d)^n, upright(d) x^n) e^(- x^2) $
 
 ]
-両辺を $t$ で $n$ 階微分する。 \$\$\\begin{aligned}
-    \\diffp\[n\]{t}(左辺) & = e^{x^2}\\diffp\[n\]{t}e^{-(t - x)^2} = -e^{x^2}\\diffp\[n\]{x}e^{-(t - x)^2} \\\\
-    \\diffp\[n\]{t}(右辺) & = \\sum\_{m=n}^{\\infty}\\frac{1}{(m-n)!}H\_{m}(x)t^{m-n}
-  
-\\end{aligned}\$\$ $t = 0$ とすると示せる。 \$\$\\begin{aligned}
-    H\_{n}(x) = -e^{x^2}\\diffp\[n\]{x}e^{-x^2}
-  
-\\end{aligned}\$\$ 0◻
+両辺を $t$ で $n$ 階微分する。
+$ frac(partial^n, partial t^n) \( "左辺" \) & = e^(x^2) frac(partial^n, partial t^n) e^(- \( t - x \)^2) = - e^(x^2) frac(partial^n, partial x^n) e^(- \( t - x \)^2)\
+frac(partial^n, partial t^n) \( "右辺" \) & = sum_(m = n)^oo frac(1, \( m - n \) !) H_m \( x \) t^(m - n) $
+$t = 0$ とすると示せる。
+$ H_n \( x \) = - e^(x^2) frac(partial^n, partial x^n) e^(- x^2) $ 
 
 #block[
 $ H_n \( x \) & = frac(n !, 2 pi i) integral_C e^(- z^2 + 2 z x) / z^(n + 1) upright(d) z\
@@ -469,18 +460,15 @@ H_(n + 1) \( x \) & = 2 x H_n \( x \) - 2 n H_(n - 1) \( x \)\
 H_(n') \( x \) & = 2 n H_(n - 1) \( x \) $
 
 ]
-0◻
+
 
 #block[
 #strong[定理 9] (). \
 
-\$\$\\begin{aligned}
-    \\diff\[2\]{x}f(x) - 2x\\diff{x}f(x) + 2nf(x) = 0
-  
-\\end{aligned}\$\$
+$ frac(upright(d)^2, upright(d) x^2) f \( x \) - 2 x frac(upright(d), upright(d) x) f \( x \) + 2 n f \( x \) = 0 $
 
 ]
-0◻
+
 
 #block[
 #strong[定理 10] (). \
@@ -488,7 +476,7 @@ H_(n') \( x \) & = 2 n H_(n - 1) \( x \) $
 $ integral_(- oo)^oo H_m \( x \) H_n \( x \) e^(- x^2) upright(d) x & = 2^n n ! sqrt(pi) delta_(m n) $
 
 ]
-0◻
+
 
 == ルジャンドル微分方程式
 <ルジャンドル微分方程式>
@@ -525,14 +513,11 @@ $ frac(e^(- x z \/ \( 1 - z \)), 1 - z) & = sum_(n = 0)^oo L_n \( x \) frac(z^n,
 
 ]
 #block[
-\$\$\\begin{aligned}
-    L\_n(x)     & = e^x\\diff\[n\]{x}(x^ne^{-x})                          \\\\
-    L\_n(x)     & = \\sum\_{l=0}^{n}\\frac{(-1)^l(n!)^2}{(l!)^2(n-l)!}x^l \\\\
-    L\_{n+1}(x) & = (2n + 1 - x)L\_n(x) - n^2L\_{n-1}(x)                 \\\\
-    xL\_n\'(x)   & = nL\_n(x) - n^2L\_{n-1}(x)                            \\\\
-    L\_n(0)     & = n!
-  
-\\end{aligned}\$\$
+$ L_n \( x \) & = e^x frac(upright(d)^n, upright(d) x^n) \( x^n e^(- x) \)\
+L_n \( x \) & = sum_(l = 0)^n frac(\( - 1 \)^l \( n ! \)^2, \( l ! \)^2 \( n - l \) !) x^l\
+L_(n + 1) \( x \) & = \( 2 n + 1 - x \) L_n \( x \) - n^2 L_(n - 1) \( x \)\
+x L_(n') \( x \) & = n L_n \( x \) - n^2 L_(n - 1) \( x \)\
+L_n \( 0 \) & = n ! $
 
 ]
 == ポアソン方程式
@@ -569,4 +554,4 @@ Y'' \( y \) & = lambda^2 Y \( y \)\
 X \( x \) & = sin \( frac(n pi x, a) \)\
 lambda & = frac(n pi, a)\
 f \( x \) & = sum_(n = 1)^oo A_n sin \( frac(n pi x, a) \) sinh \( frac(n pi b, a) \) $
-0◻
+

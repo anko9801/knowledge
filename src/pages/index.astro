@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const posts = await getCollection('posts', ({ data }) => !data.draft)
+
+// date は zod の z.coerce.date() で Date になっているので、そのまま新しい順に並べる。
+const sorted = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+---
+
+<BaseLayout title="knowledge">
+  <h1>knowledge</h1>
+
+  <ul class="posts">
+    {
+      sorted.map((post) => (
+        <li>
+          <a href={`/posts/${post.id}`}>{post.data.title}</a>
+          <p class="meta">
+            <time datetime={post.data.date.toISOString().slice(0, 10)}>
+              {post.data.date.toISOString().slice(0, 10)}
+            </time>
+            {post.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </p>
+          {post.data.summary && <p class="summary">{post.data.summary}</p>}
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .posts {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 0;
+  }
+
+  .posts li {
+    margin-bottom: 2.2rem;
+  }
+
+  .posts a {
+    font-size: 1.15rem;
+  }
+
+  .meta {
+    margin: 0.2rem 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+
+  .tag::before {
+    content: '#';
+    opacity: 0.55;
+  }
+
+  .summary {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+</style>

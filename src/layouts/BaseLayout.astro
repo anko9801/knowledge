@@ -1,0 +1,32 @@
+---
+// Typst が <head> に注入する MathML 用 CSS を、全ページ重複ではなく
+// 1 本の共有 stylesheet として配る。prebuild で生成される。
+import '../styles/typst-math.css'
+import '../styles/global.css'
+
+type Props = {
+  title: string
+  description?: string
+}
+
+const { title, description } = Astro.props
+const siteName = 'knowledge'
+---
+
+<!doctype html>
+{/* lang は .typ 側の #set text(lang: "ja") と揃える。
+    これが en だと text-spacing-trim / word-break: auto-phrase が効かない。 */}
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === siteName ? title : `${title} - ${siteName}`}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="preload" href="/fonts/math.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <div class="wrapper">
+      <slot />
+    </div>
+  </body>
+</html>

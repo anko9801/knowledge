@@ -1,0 +1,23 @@
+{
+  "name": "knowledge",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/emit-math-css.mjs",
+    "predev": "node scripts/emit-math-css.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "fonts": "sh scripts/subset-math-font.sh"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^26.2.0",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,56 @@
+---
+import BaseLayout from './BaseLayout.astro'
+
+type Props = {
+  title: string
+  date: Date
+  tags: readonly string[]
+  summary?: string
+}
+
+const { title, date, tags, summary } = Astro.props
+
+const formatted = date.toISOString().slice(0, 10)
+---
+
+<BaseLayout title={title} description={summary}>
+  <header class="post-header">
+    <p class="back"><a href="/">← 一覧</a></p>
+    {/* .typ の = は h2 から始まるので、ページの h1 はここが供給する。 */}
+    <h1>{title}</h1>
+    <p class="meta">
+      <time datetime={formatted}>{formatted}</time>
+      {tags.map((tag) => <span class="tag">{tag}</span>)}
+    </p>
+  </header>
+
+  <article>
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  .post-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .back {
+    margin: 0 0 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .meta {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+
+  .tag::before {
+    content: '#';
+    opacity: 0.55;
+  }
+</style>

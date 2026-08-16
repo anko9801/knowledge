@@ -1,0 +1,192 @@
+/*
+ * 見た目はすべてここ。構造と意味は .typ 側が持つ。
+ * Typst が <head> に注入する MathML 用 CSS は typst-math.css として別に配る。
+ */
+
+@font-face {
+  /* scripts/subset-math-font.sh が生成する。U+1D400 台を含むサブセット。
+     元フォントは flake.nix の MATH_FONT で決まるので、ここは役割名にしておく。 */
+  font-family: 'Math Subset';
+  src: url('/fonts/math.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+0370-03FF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+27E6-27FF,
+    U+1D400-1D7FF;
+}
+
+:root {
+  --measure: 34rem;
+  --ink: #1a1a1a;
+  --paper: #fdfdfc;
+  --muted: #6b6b66;
+  --rule: #e2e2dd;
+  --accent: #7a4b2a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e6e4df;
+    --paper: #17171a;
+    --muted: #96948d;
+    --rule: #33333a;
+    --accent: #d8a06a;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 3rem 1.5rem 6rem;
+}
+
+/*
+ * 和文の組版品質は progressive enhancement で足す。
+ * どちらも <html lang="ja"> が前提で、lang が en のままだと黙って無効になる。
+ */
+@supports (text-spacing-trim: trim-start) {
+  html {
+    text-spacing-trim: trim-start;
+  }
+}
+
+@supports (word-break: auto-phrase) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    word-break: auto-phrase;
+  }
+}
+
+.wrapper {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* --- 見出し ---------------------------------------------------------------
+ * Typst の = は <h2> から始まる（h1 は文書タイトルぶん空いている）。
+ * ページの h1 はレイアウト側が front matter の title から出す。
+ */
+
+h1 {
+  font-size: 1.7rem;
+  line-height: 1.5;
+  margin: 0 0 0.4rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin: 3rem 0 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 2.2rem 0 0.6rem;
+}
+
+h4 {
+  font-size: 1rem;
+  margin: 1.8rem 0 0.5rem;
+  color: var(--muted);
+}
+
+p {
+  margin: 0 0 1.4rem;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+/* --- 数式 -----------------------------------------------------------------
+ * Typst は U+1D400 台の実コードポイントを吐くので、そのブロックを持つ
+ * 数学フォントを当てないと豆腐になる。math キーワードはブラウザ既定への保険。
+ */
+
+math {
+  font-family: 'Math Subset', math;
+}
+
+/* 長い別行立て数式が狭い画面で溢れるのを、切らずに横スクロールで逃がす。
+ *
+ * display は必ず `block math`。`block` だけにすると MathML のレイアウト
+ * アルゴリズムが CSS の通常ブロックで上書きされ、分数や積分が縦に潰れる。 */
+math[display='block'] {
+  display: block math;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1.8rem 0;
+  padding-block: 0.2rem;
+}
+
+/* --- その他の本文要素 --- */
+
+blockquote {
+  margin: 1.6rem 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+}
+
+pre {
+  overflow-x: auto;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  line-height: 1.6;
+}
+
+code,
+pre {
+  font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6rem 0;
+  font-size: 0.95em;
+}
+
+th,
+td {
+  padding: 0.4rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+
+figure {
+  margin: 2rem 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 3rem 0;
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+
+# prebuild で typst から生成される。typst のバージョンに追随させるため追跡しない。
+src/styles/typst-math.css
+
+# npm run fonts で生成される。元フォントはリポジトリに入れない。
+public/fonts/math.woff2
+
+.DS_Store
+*.log

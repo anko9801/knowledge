@@ -17,6 +17,14 @@ const DELIMITERS = [
   { open: '<', close: '>', left: '\\left\\langle ', right: '\\right\\rangle ' },
   { open: '|', close: '|', left: '\\left\\lvert ', right: '\\right\\rvert ' },
   { open: '\\|', close: '\\|', left: '\\left\\lVert ', right: '\\right\\rVert ' },
+  // 名前付きの区切り記号。\ab\lbrace ... \rbrace の形が使われている。
+  { open: '\\lbrace', close: '\\rbrace', left: '\\left\\{', right: '\\right\\}' },
+  { open: '\\langle', close: '\\rangle', left: '\\left\\langle ', right: '\\right\\rangle ' },
+  { open: '\\lvert', close: '\\rvert', left: '\\left\\lvert ', right: '\\right\\rvert ' },
+  { open: '\\lVert', close: '\\rVert', left: '\\left\\lVert ', right: '\\right\\rVert ' },
+  { open: '\\lceil', close: '\\rceil', left: '\\left\\lceil ', right: '\\right\\rceil ' },
+  { open: '\\lfloor', close: '\\rfloor', left: '\\left\\lfloor ', right: '\\right\\rfloor ' },
+  { open: '\\lbrack', close: '\\rbrack', left: '\\left[', right: '\\right]' },
 ]
 
 const isEscaped = (source, index) => {
@@ -600,7 +608,16 @@ const SINGLE_ARG_MACROS = [
   { name: 'vb', wrap: (arg) => `\\bm{${arg}}` },
   { name: 'va', wrap: (arg) => `\\vec{${arg}}` },
   { name: 'vu', wrap: (arg) => `\\hat{${arg}}` },
-  { name: 'dd', wrap: (arg) => `\\mathrm{d}${arg}` },
+  // 引数を波括弧で残す。\dd{\omega}g(...) が \mathrm{d}\omegag(...) と
+  // 繋がって別のマクロ名になってしまうため。
+  { name: 'dd', wrap: (arg) => `\\mathrm{d}{${arg}}` },
+  // physics(v1) の波括弧形式。区切り記号形式と混在している。
+  { name: 'ket', wrap: (arg) => `\\left\\lvert ${arg}\\right\\rangle ` },
+  { name: 'bra', wrap: (arg) => `\\left\\langle ${arg}\\right\\rvert ` },
+  { name: 'braket', wrap: (arg) => `\\left\\langle ${arg}\\right\\rangle ` },
+  { name: 'ev', wrap: (arg) => `\\left\\langle ${arg}\\right\\rangle ` },
+  { name: 'abs', wrap: (arg) => `\\left\\lvert ${arg}\\right\\rvert ` },
+  { name: 'norm', wrap: (arg) => `\\left\\lVert ${arg}\\right\\rVert ` },
 ]
 
 export const expandSingleArgMacros = (source, skip = new Set()) => {
@@ -692,13 +709,17 @@ const FALLBACKS = String.raw`
 \providecommand{\ii}{\mathrm{i}}
 \providecommand{\ee}{\mathrm{e}}
 \providecommand{\Res}{\operatorname{Res}}
+\providecommand{\real}{\operatorname{Re}}
+\providecommand{\imag}{\operatorname{Im}}
+\providecommand{\varinjlim}{\operatorname*{\underrightarrow{\lim}}}
+\providecommand{\varprojlim}{\operatorname*{\underleftarrow{\lim}}}
 `
 
-export const injectFallbacks = (source) => {
+export const injectFallbacks = (source, extra = '') => {
   const marker = source.indexOf('\\begin{document}')
   if (marker === -1) return source
 
-  return `${source.slice(0, marker)}${FALLBACKS}\n${source.slice(marker)}`
+  return `${source.slice(0, marker)}${FALLBACKS}${extra}\n${source.slice(marker)}`
 }
 
 /**
@@ -714,9 +735,9 @@ const closeDocument = (source) =>
     ? `${source}\n\\end{document}\n`
     : source
 
-export const preprocess = (source) => {
+export const preprocess = (source, { extraDefinitions = '' } = {}) => {
   const stripped = stripPreambleNoise(closeDocument(source))
-  const withFallbacks = injectFallbacks(stripped)
+  const withFallbacks = injectFallbacks(stripped, extraDefinitions)
 
   // ソース自身が定義しているマクロは触らない。pandoc / LaTeXML が
   // その定義をそのまま展開するので、こちらが上書きすると意味が変わる。

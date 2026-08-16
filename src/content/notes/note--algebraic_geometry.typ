@@ -40,9 +40,9 @@ $ cal(F) \( U \) arrow.r product_j cal(F) \( U_i \) arrows.rr product_(i \, j) c
 ]
 位相空間 $X$ 上の点 $P$ における茎 (stalk) $cal(F)_P$ を $P$
 を含むすべての開集合 $U$ に対する $cal(F) \( U \)$
-と制限写像がなす順系に関する順極限と定義する。 \$\$\\begin{aligned}
-  \\mathcal{F}\_P = \\varinjlim\_{P\\in U}\\mathcal{F}(U)
-\\end{aligned}\$\$ 点 $P$ における $cal(F)$ の切断の芽 (germ) ともいう。
+と制限写像がなす順系に関する順極限と定義する。
+$ cal(F)_P = upright(accent(lim, ⃯))_(P in U) cal(F) \( U \) $ 点 $P$
+における $cal(F)$ の切断の芽 (germ) ともいう。
 
 = 代数多様体
 <代数多様体>
@@ -278,12 +278,10 @@ X_f = \( "Spec" R \)_f & = { frak(p) in "Spec" R divides f in.not frak(p) }\
 V \( I \) & = { frak(p) in "Spec" R divides I subset.eq frak(p) }\
 U_(frak(p)) & = { X_f divides frak(p) in X_f } $
 
-\$\$\\begin{aligned}
-  \\Gamma(U, \\mathcal{O}\_X)                  & = \\mathcal{O}\_X(U) = \\bigcap\_{\\mathfrak{p}\\in U} R\_\\mathfrak{p}= \\ab\\lbrace \\lbrace s\_\\mathfrak{p}\\rbrace\\in\\prod\_{\\mathfrak{p}\\in U}R\_\\mathfrak{p}\\mid U の開被覆 \\lbrace X\_{f\_\\beta}\\rbrace\_{\\beta\\in B}\\rbrace \\\\
-  \\Gamma(X, \\mathcal{O}\_X)                  & = \\mathcal{O}\_X(X) = R                                                                                                                                            \\\\
-  \\Gamma(X\_f, \\mathcal{O}\_X)                & = \\mathcal{O}\_X(X\_f) = R\_f                                                                                                                                        \\\\
-  \\lim\_{\\mathfrak{p}\\in U}\\Gamma(X\_f, \\mathcal{O}\_X) & = \\mathcal{O}\_{X,\\mathfrak{p}} = R\_\\mathfrak{p}
-\\end{aligned}\$\$
+$ Gamma \( U \, cal(O)_X \) & = cal(O)_X \( U \) = inter.big_(frak(p) in U) R_(frak(p)) = {{ s_(frak(p)) } in product_(frak(p) in U) R_(frak(p)) divides U "の開被覆" { X_(f_beta) }_(beta in B)}\
+Gamma \( X \, cal(O)_X \) & = cal(O)_X \( X \) = R\
+Gamma \( X_f \, cal(O)_X \) & = cal(O)_X \( X_f \) = R_f\
+lim_(frak(p) in U) Gamma \( X_f \, cal(O)_X \) & = cal(O)_(X \, frak(p)) = R_(frak(p)) $
 
 == 代入
 <代入>

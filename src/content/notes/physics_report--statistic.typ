@@ -10,12 +10,11 @@
 = 構成要素である 1 個の二準位系の統計力学
 <構成要素である-1-個の二準位系の統計力学>
 絶対温度 $T$ の熱浴に系 $X$ が浸けられている状態として、系 $X$ の
-Hamilton 演算子 $hat(h)_X$ の固有状態は \$\\ket{\\varphi\_1}\$ と
-\$\\ket{\\varphi\_2}\$ の 2 つだけであり、\$\\ket{\\varphi\_1}\$
-の固有エネルギーは $E_1$ であり、\$\\ket{\\varphi\_2}\$
-の固有エネルギーは $E_2$ であるとする： \$\$\\begin{aligned}
-  \\hat{h}\_X\\ket{\\varphi\_i} & = E\_i\\ket{\\varphi\_i} \\qquad (i = 1, 2)。
-\\end{aligned}\$\$ ただし $0 < E_1 < E_2$ $beta = 1 \/ k_B T$ とする。
+Hamilton 演算子 $hat(h)_X$ の固有状態は $\|phi_1⟩$ と $\|phi_2⟩$ の 2
+つだけであり、$\|phi_1⟩$ の固有エネルギーは $E_1$ であり、$\|phi_2⟩$
+の固有エネルギーは $E_2$ であるとする：
+$ hat(h)_X \|phi_i⟩ & = E_i \|phi_i⟩ #h(2em) \( i = 1 \, 2 \) 。 $
+ただし $0 < E_1 < E_2$ $beta = 1 \/ k_B T$ とする。
 
 #block[
 Q 15-1.
@@ -243,15 +242,13 @@ $ hat(H) & = frac(1, 2 m) hat(p)^2 + 1 / 2 m omega^2 hat(q)^2 . $
 $ \[ hat(q) \, hat(p) \] = hat(q) hat(p) - hat(p) hat(q) = bold(i) planck $
 ここで、$planck$ は Planck 定数です。
 
-この 1 次元調和振動子の固有エネルギー $E_h$ と固有状態 \$\\ket{n}\$
-は固有方程式 \$\$\\begin{aligned}
-  \\hat{H}\\ket{n} = E\_n\\ket{n}
-\\end{aligned}\$\$ を解くことにより定まります。解いた結果は
-$n = 0 \, 1 \, 2 \, dots.h$ に対して次のとおりです：
-\$\$\\begin{aligned}
+この 1 次元調和振動子の固有エネルギー $E_h$ と固有状態 $\|n⟩$
+は固有方程式 $ hat(H) \|n⟩ = E_n \|n⟩ $
+を解くことにより定まります。解いた結果は $n = 0 \, 1 \, 2 \, dots.h$
+に対して次のとおりです： \$\$\\begin{aligned}
   \\begin{dcases}
     E\_n        = \\left(n + \\frac{1}{2}\\right)\\hbar\\omega \\\\
-    \\Psi\_n(q) = \\braket{q}{n} = \\left(\\frac{m\\omega}{2^{2n}(n!)^2\\pi\\hbar}\\right)^{\\frac{1}{4}}e^{-\\frac{m\\omega}{2\\hbar}q^2}H\_n\\left(\\sqrt{\\frac{m\\omega}{\\hbar}}q\\right)
+    \\Psi\_n(q) = \\left\\langle q\\right\\rangle {n} = \\left(\\frac{m\\omega}{2^{2n}(n!)^2\\pi\\hbar}\\right)^{\\frac{1}{4}}e^{-\\frac{m\\omega}{2\\hbar}q^2}H\_n\\left(\\sqrt{\\frac{m\\omega}{\\hbar}}q\\right)
   \\end{dcases}.
 \\end{aligned}\$\$ ここで、Hermite 多項式 $H_n \( x \)$ は次の Rodrigues
 公式により定義されます： \$\$\\begin{aligned}
@@ -388,12 +385,10 @@ $g \( omega \) upright(d) omega$ と定義する。つまり $g \( omega \)$
 $f \( omega \) \, s \( omega \) \, u \( omega \) \, c \( omega \)$
 と書くこととすると、$upright(d) omega$
 が十分小さいことから近い角運動量の変数を個数倍して積分することで元の変数と一致する。これより次のような式が成り立つ。
-\$\$\\begin{aligned}
-  F & = \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega)f(\\omega) \\\\
-  S & = \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega)s(\\omega) \\\\
-  U & = \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega)u(\\omega) \\\\
-  C & = \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega)c(\\omega)
-\\end{aligned}\$\$
+$ F & = integral_0^oo upright(d) omega g \( omega \) f \( omega \)\
+S & = integral_0^oo upright(d) omega g \( omega \) s \( omega \)\
+U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \)\
+C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \) $
 
 #block[
 Q 16-6. ある元素の原子 $n$ \[mol\] からなる個体を考える。Einstein
@@ -419,12 +414,12 @@ Einstein 模型における調和振動子の角振動数の個数分布関数 $
 は次のように表される。
 $ g \( omega \) = 3 N delta \( omega - omega_E \) . $
 
-これより比熱は次のように表される。 \$\$\\begin{aligned}
-  C & = \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega)c(\\omega)                                            \\\\
-    & = \\int\_0^\\infty\\mathrm{d}\\omega3N\\delta(\\omega - \\omega\_E)c(\\omega)                          \\\\
-    & = 3Nc(\\omega\_E)                                                                         \\\\
-    & = 3Nk\_B\\left(\\frac{\\frac{1}{2}\\beta\\hbar\\omega\_E}{\\sinh\\frac{1}{2}\\beta\\hbar\\omega\_E}\\right)^2
-\\end{aligned}\$\$ 高温の漸近領域において比熱 $C$ は次のようになる。
+これより比熱は次のように表される。
+$ C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \)\
+ & = integral_0^oo upright(d) omega 3 N delta \( omega - omega_E \) c \( omega \)\
+ & = 3 N c \( omega_E \)\
+ & = 3 N k_B (frac(1 / 2 beta planck omega_E, sinh 1 / 2 beta planck omega_E))^2 $
+高温の漸近領域において比熱 $C$ は次のようになる。
 $ C & = 3 N k_B (frac(1 / 2 beta planck omega_E, sinh 1 / 2 beta planck omega_E))^2\
  & approx 3 N k_B (1 - 1 / 12 (frac(planck omega, k_B T))^2 + dots.h.c)\
  & approx 3 n R $ 低温の漸近領域において比熱 $C$ は次のようになる。

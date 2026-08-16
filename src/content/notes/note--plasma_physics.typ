@@ -67,14 +67,14 @@ $ integral f \( bold(v) \; t \) upright(d) bold(v) & = frac(n, \( 2 v_t^2 pi \)^
 より任意の物理量 $Q \( bold(v) \)$
 の全速度空間の平均値は次のようになる。
 $ chevron.l Q \( bold(v) \) chevron.r = integral Q \( bold(v) \) f \( bold(v) \; t \) upright(d) bold(v) #scale(x: 240%, y: 240%)[\/] integral f \( bold(v) \; t \) upright(d) bold(v) = 1 / n integral Q \( bold(v) \) f \( bold(v) \; t \) upright(d) bold(v) $
-$upright(d) bold(v) = 4 pi v^2 upright(d) v$ \$\$\\begin{aligned}
-  \\langle 1\\rangle                        & = \\frac{1}{(2v\_t^2\\pi)^{3/2}}\\int\\exp\\left(-\\frac{v^2}{2v\_t^2}\\right)\\mathrm{d} \\bm{v} = 1                                                  \\\\
-  \\langle q\\bm{v}\\rangle                  & = \\frac{1}{(2v\_t^2\\pi)^{3/2}}\\int q\\bm{v}\\exp\\left(-\\frac{v^2}{2v\_t^2}\\right)\\mathrm{d} \\bm{v} = \\bm{0}                                     \\\\
-  \\ab\\langle \\frac{1}{2}mv^2\\rangle       & = \\frac{1}{(2v\_t^2\\pi)^{3/2}}\\int\\frac{1}{2}mv^2\\exp\\left(-\\frac{v^2}{2v\_t^2}\\right)\\mathrm{d} \\bm{v} = \\frac{3}{2}mv\_t^2 = \\frac{3}{2}k\_BT \\\\
-  \\ab\\langle \\frac{1}{2}mv^2\\bm{v}\\rangle & = \\frac{1}{(2v\_t^2\\pi)^{3/2}}\\int\\frac{1}{2}mv^2\\bm{v}\\exp\\left(-\\frac{v^2}{2v\_t^2}\\right)\\mathrm{d} \\bm{v} = \\bm{0}                        \\\\
-  \\langle v^3\\rangle                      & = \\frac{1}{(2v\_t^2\\pi)^{3/2}}\\int\_0^\\infty 4\\pi v^5\\exp\\left(-\\frac{v^2}{2v\_t^2}\\right)\\mathrm{d} v = 4\\pi\\left(\\frac{2v\_t^2}{\\pi}\\right)^{3/2}     \\\\
-  \\langle v^4\\rangle                      & = \\frac{1}{(2v\_t^2\\pi)^{3/2}}\\int\_0^\\infty 4\\pi v^6\\exp\\left(-\\frac{v^2}{2v\_t^2}\\right)\\mathrm{d} v = 15v\_t^4 = 15\\frac{T^2}{m^2}
-\\end{aligned}\$\$ さらに電場が掛かっている状態のとき Boltzmann 分布
+$upright(d) bold(v) = 4 pi v^2 upright(d) v$
+$ chevron.l 1 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = 1\
+chevron.l q bold(v) chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral q bold(v) exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = bold(0)\
+⟨1 / 2 m v^2⟩ & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral 1 / 2 m v^2 exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = 3 / 2 m v_t^2 = 3 / 2 k_B T\
+⟨1 / 2 m v^2 bold(v)⟩ & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral 1 / 2 m v^2 bold(v) exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = bold(0)\
+chevron.l v^3 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral_0^oo 4 pi v^5 exp (- frac(v^2, 2 v_t^2)) upright(d) v = 4 pi (frac(2 v_t^2, pi))^(3 \/ 2)\
+chevron.l v^4 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral_0^oo 4 pi v^6 exp (- frac(v^2, 2 v_t^2)) upright(d) v = 15 v_t^4 = 15 T^2 / m^2 $
+さらに電場が掛かっている状態のとき Boltzmann 分布
 $ f \( bold(v) \, bold(r) \) & = n_0 (frac(m, 2 pi k_B T))^(3 \/ 2) exp (- frac(m v^2 \/ 2 + q phi \( bold(r) \), k_B T)) = frac(n \( bold(r) \), \( 2 v_t^2 pi \)^(3 \/ 2)) exp (- frac(v^2, 2 v_t^2))\
 integral f \( bold(v) \, bold(r) \) upright(d) bold(v) & = n \( bold(r) \) = n_0 exp (- frac(q phi \( bold(r) \), k_B T)) $
 速度 $bold(u)_0 = \( 0 \, 0 \, u_0 \)$ で移流している温度 $T$

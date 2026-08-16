@@ -588,14 +588,12 @@ $ bold(S) = mat(delim: "[", s_0; s_1; s_2; s_3) = mat(delim: "[", s_0, s_1, s_2,
 
 = Stokesパラメータの応用
 <stokesパラメータの応用>
-スピンの量子状態 \$\\ket{\\Psi}\$ は2つの基底状態
-\$\\ket{\\uparrow}, \\ket{\\downarrow}\$ の重ね合わせで与えられる.
-\$\$\\begin{aligned}
-  \\ket{\\Psi} = c\_1\\ket{\\uparrow} + c\_2\\ket{\\downarrow} \\quad (c\_1, c\_2 \\in \\mathbb{C})
-\\end{aligned}\$\$ ここで次の $S^1$ gauge
-変換に対し観測可能量の期待値は変化しない. \$\$\\begin{aligned}
-  \\ket{\\Psi} \\mapsto \\ket{\\Psi\'} = e^{\\mathrm{i}\\delta}\\ket{\\Psi} \\quad (\\delta\\in\\mathbb{R})
-\\end{aligned}\$\$ 規格化条件と $S^1$ gauge 変換による同一視を課すと 2
+スピンの量子状態 $\|Psi⟩$ は2つの基底状態 $\|arrow.t⟩ \, \|arrow.b⟩$
+の重ね合わせで与えられる.
+$ \|Psi⟩ = c_1 \|arrow.t⟩ + c_2 \|arrow.b⟩ quad \( c_1 \, c_2 in bb(C) \) $
+ここで次の $S^1$ gauge 変換に対し観測可能量の期待値は変化しない.
+$ \|Psi⟩ mapsto \|Psi'⟩ = e^(upright(i) delta) \|Psi⟩ quad \( delta in bb(R) \) $
+規格化条件と $S^1$ gauge 変換による同一視を課すと 2
 つの実数パラメータにより指定でき, これは $S^2$
 と同相であるという事実が知られている.
 よってスピンの量子状態と光の偏光状態は $S^2$

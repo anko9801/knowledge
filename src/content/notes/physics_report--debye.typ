@@ -503,10 +503,9 @@ $ g \( omega \) & = sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha =
 $omega \( bold(k)_(j_x \, j_y \, j_z) \) gt.eq 0$ に限られるから
 $omega gt.eq 0$ となる.
 
-(ii) これより調和振動子の総数は次のようになる. \$\$\\begin{aligned}
-  \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega) & = 3\\int\_0^\\infty\\mathrm{d}\\omega\\sum\_{j\_x=1}^{N}\\sum\_{j\_y=1}^{N}\\sum\_{j\_z=1}^{N}\\delta(\\omega - \\omega(\\bm{k}\_{j\_x,j\_y,j\_z})) \\\\
-                                    & = 3N^3.
-\\end{aligned}\$\$
+(ii) これより調和振動子の総数は次のようになる.
+$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+ & = 3 N^3 . $
 
 ただこのような調和振動子の角振動数の個数分布関数 $g \( omega \)$
 をさらに簡単にすることは分散関係 $omega \( bold(k) \)$
@@ -573,10 +572,8 @@ $ g \( omega \) & = sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha =
  & = 3 sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \) #h(2em) \( omega gt.eq 0 \) . $
 
 (ii) また調和振動子の総数は 3 次元結晶の模型と同様に $3 N^3$ となる.
-\$\$\\begin{aligned}
-  \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega) & = 3\\int\_0^\\infty\\mathrm{d}\\omega\\sum\_{j\_x=1}^{N}\\sum\_{j\_y=1}^{N}\\sum\_{j\_z=1}^{N}\\sum\_{\\alpha=x,y,z}\\delta(\\omega - \\omega(\\bm{k}\_{j\_x,j\_y,j\_z})) \\\\
-                                    & = 3N^3.
-\\end{aligned}\$\$
+$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha = x \, y \, z) delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+ & = 3 N^3 . $
 
 (iii) ここでDebye 模型における調和振動子の角振動数の個数分布関数
 $g \( omega \)$ を具体的に計算すると次のようになる.
@@ -620,15 +617,12 @@ $g \( omega \)$ は表される. \$\$\\begin{aligned}
                 \\end{dcases}.
 \\end{aligned}\$\$ ただし $N gt.double 1$ であることから $N + 1$ を $N$
 と近似し, また打ち切る角振動数 $omega_D$ を次のように定める.
-\$\$\\begin{aligned}
-  \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega) & = \\int\_0^{\\omega\_D}\\mathrm{d}\\omegag(\\omega) = 3N^3.
-\\end{aligned}\$\$ この $omega_D$ を Debye の角振動数という.
+$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega g \( omega \) = 3 N^3 . $
+この $omega_D$ を Debye の角振動数という.
 
 (viii) これより Debye の角振動数 $omega_D$ は次のように計算される.
-\$\$\\begin{aligned}
-  \\int\_0^{\\omega\_D}\\mathrm{d}\\omegag(\\omega) & = \\int\_0^{\\omega\_D}\\mathrm{d}\\omega\\frac{3\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega^2 = \\frac{\\pi}{2}\\left(\\sqrt{\\frac{m}{\\kappa}}\\frac{N}{\\pi}\\right)^3\\omega\_D^3 = 3N^3, \\\\
-  \\omega\_D                              & = \\left(3N^3\\frac{2}{\\pi}\\right)^{1/3}\\sqrt{\\frac{\\kappa}{m}}\\frac{\\pi}{N} = (6\\pi^2)^{1/3}\\sqrt{\\frac{\\kappa}{m}}.
-\\end{aligned}\$\$
+$ integral_0^(omega_D) upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3 \,\
+omega_D & = (3 N^3 2 / pi)^(1 \/ 3) sqrt(kappa / m) pi / N = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) . $
 
 (ix) また Debye の角振動数 $omega_D$ を用いて $g \( omega \)$
 は次のように表される. \$\$\\begin{aligned}
@@ -730,15 +724,14 @@ $ U_0 & = 3 / 8 \( 3 N^3 \) planck omega_D \,\
 I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) . $
 
 ]
-\$\$\\begin{aligned}
-  U & = \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega)u(\\omega)                                                                                                        \\\\
-    & = \\int\_0^{\\omega\_D}\\mathrm{d}\\omega\\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2\\left(\\frac{1}{2} + \\frac{1}{e^{\\beta\\hbar\\omega} - 1}\\right)\\hbar\\omega \\\\
-    & = 9N^3\\hbar\\int\_0^{\\omega\_D}\\mathrm{d}\\omega\\left(\\frac{\\omega}{\\omega\_D}\\right)^3\\left(\\frac{1}{2} + \\frac{1}{e^{\\beta\\hbar\\omega} - 1}\\right)                        \\\\
-    & = 9N^3\\hbar\\omega\_D\\int\_0^1\\mathrm{d}x\\left(\\frac{1}{2} + \\frac{1}{e^{\\beta\\hbar\\omega\_Dx} - 1}\\right)x^3                                                       \\\\
-    & = \\frac{3}{8}(3N^3)\\hbar\\omega\_D + 9N^3\\hbar\\omega\_DI(\\beta\\hbar\\omega\_D)                                                                           \\\\
-    & = U\_0 + 9N^3\\hbar\\omega\_DI(\\beta\\hbar\\omega\_D).
-\\end{aligned}\$\$ ただし温度 $T$ に依存しない定数のエネルギー $U_0$,
-$I \( b \)$ について次のように定められる.
+$ U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \)\
+ & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 (1 / 2 + frac(1, e^(beta planck omega) - 1)) planck omega\
+ & = 9 N^3 planck integral_0^(omega_D) upright(d) omega (omega / omega_D)^3 (1 / 2 + frac(1, e^(beta planck omega) - 1))\
+ & = 9 N^3 planck omega_D integral_0^1 upright(d) x (1 / 2 + frac(1, e^(beta planck omega_D x) - 1)) x^3\
+ & = 3 / 8 \( 3 N^3 \) planck omega_D + 9 N^3 planck omega_D I \( beta planck omega_D \)\
+ & = U_0 + 9 N^3 planck omega_D I \( beta planck omega_D \) . $
+ただし温度 $T$ に依存しない定数のエネルギー $U_0$, $I \( b \)$
+について次のように定められる.
 $ U_0 & = 3 / 8 \( 3 N^3 \) planck omega_D \,\
 I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) . $
 
@@ -751,13 +744,12 @@ Q 17-16. Debye 模型における比熱 $C$ の表式は次のようになる.
 $ C & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) . $
 
 ]
-比熱の定義式に代入することで次のようになる. \$\$\\begin{aligned}
-  C & = \\int\_0^\\infty\\mathrm{d}\\omegag(\\omega)c(\\omega)                                                                                                                          \\\\
-    & = \\int\_0^{\\omega\_D}\\mathrm{d}\\omega\\frac{9N^3}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^2k\_B\\left(\\frac{\\beta\\hbar\\omega e^{\\beta\\hbar\\omega/2}}{e^{\\beta\\hbar\\omega} - 1}\\right)^2 \\\\
-    & = 9k\_BN^3(\\beta\\hbar\\omega\_D)^2\\int\_0^{\\omega\_D}\\frac{\\mathrm{d}\\omega}{\\omega\_D}\\left(\\frac{\\omega}{\\omega\_D}\\right)^4\\frac{ e^{\\beta\\hbar\\omega}}{(e^{\\beta\\hbar\\omega} - 1)^2} \\\\
-    & = 3nR\\cdot 3b^2\\int\_0^1\\mathrm{d}x\\frac{x^4e^{bx}}{(e^{bx} - 1)^2}                                                                                                         \\\\
-    & = 3nR\\cdot (-3)b^2\\frac{\\mathrm{d} I(b)}{\\mathrm{d} b}.
-\\end{aligned}\$\$
+比熱の定義式に代入することで次のようになる.
+$ C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \)\
+ & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2\
+ & = 9 k_B N^3 \( beta planck omega_D \)^2 integral_0^(omega_D) frac(upright(d) omega, omega_D) (omega / omega_D)^4 frac(e^(beta planck omega), \( e^(beta planck omega) - 1 \)^2)\
+ & = 3 n R dot.op 3 b^2 integral_0^1 upright(d) x frac(x^4 e^(b x), \( e^(b x) - 1 \)^2)\
+ & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) . $
 
 #block[
 Q 17-17. 高温の漸近領域 $b lt.double 1$ における積分 $I \( b \)$
@@ -977,29 +969,24 @@ $ B_0 = 1 \, B_1 = - 1 / 2 \, B_2 = 1 / 6 \, B_3 = 0 \, B_4 = - 1 / 30 \, B_5 = 
 == ガンマ関数 $Gamma \( s \)$ のまとめ
 <ガンマ関数-gammas-のまとめ>
 ガンマ関数 $Gamma \( s \)$ について次のような性質が知られている.
-\$\$\\begin{aligned}
-  \\Gamma(s)                                    & = \\int\_0^\\infty \\mathrm{d}xx^{s-1}e^{-x} \\qquad (\\real s \> 0),         \\\\
-  \\Gamma(s + 1)                                & = s\\Gamma(s),                                                     \\\\
-  \\Gamma(1)                                    & = 1, \\quad \\Gamma\\left(\\frac{1}{2}\\right) = \\sqrt{\\pi},                  \\\\
-  \\Gamma(n + 1)                                & = n! \\qquad (n = 0,1,2,\\ldots),                                   \\\\
-  \\operatorname{Res}\[\\Gamma(s); s = -n\]                      & = \\frac{(-1)^n}{n!} \\qquad (n = 0,1,2,\\ldots),                    \\\\
-  \\lbrace\\Gamma(s) = 0\\mid |s| \< \\infty\\rbrace & = \\emptyset,                                                      \\\\
-  \\Gamma(s)\\Gamma(1-s)                         & = \\frac{\\pi}{\\sin\\pi s},                                          \\\\
-  \\Gamma(2s)                                   & = \\frac{2^{2s}}{2\\sqrt{\\pi}}\\Gamma(s)\\Gamma\\left(s + \\frac{1}{2}\\right).
-\\end{aligned}\$\$
+$ Gamma \( s \) & = integral_0^oo upright(d) x x^(s - 1) e^(- x) #h(2em) \( "Re" s > 0 \) \,\
+Gamma \( s + 1 \) & = s Gamma \( s \) \,\
+Gamma \( 1 \) & = 1 \, quad Gamma (1 / 2) = sqrt(pi) \,\
+Gamma \( n + 1 \) & = n ! #h(2em) \( n = 0 \, 1 \, 2 \, dots.h \) \,\
+"Res" \[ Gamma \( s \) ; s = - n \] & = frac(\( - 1 \)^n, n !) #h(2em) \( n = 0 \, 1 \, 2 \, dots.h \) \,\
+{ Gamma \( s \) = 0 divides \| s \| < oo } & = nothing \,\
+Gamma \( s \) Gamma \( 1 - s \) & = frac(pi, sin pi s) \,\
+Gamma \( 2 s \) & = frac(2^(2 s), 2 sqrt(pi)) Gamma \( s \) Gamma (s + 1 / 2) . $
 
 == ゼータ関数 $zeta \( s \)$ の定義と基礎的性質
 <ゼータ関数-zetas-の定義と基礎的性質>
 #block[
 Definition. ゼータ関"数ゼ"ータ関数 $zeta \( s \)$ は次のように定義される.
-\$\$\\begin{aligned}
-    \\zeta(s) & := \\sum\_{n=1}^{\\infty}\\frac{1}{n^s} \\qquad (\\real s \> 1).
-  
-\\end{aligned}\$\$
+$ zeta \( s \) & := sum_(n = 1)^oo 1 / n^s #h(2em) \( "Re" s > 1 \) . $
 
 ]
 #block[
-Q 17A-4. $zeta \( s \)$ が \$\\real s \> 1\$
+Q 17A-4. $zeta \( s \)$ が $"Re" s > 1$
 において一様絶対収束することを示す.
 
 ]
@@ -1008,10 +995,8 @@ $ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n
 よってゼータ関数 $zeta \( s \)$ は一様絶対収束する.
 
 #block[
-Q 17A-5. \$\$\\begin{aligned}
-    \\zeta(s) & = \\prod\_{p:prime}\\frac{1}{1 - p^{-s}} \\qquad (\\real s \> 1).
-  
-\\end{aligned}\$\$
+Q 17A-5.
+$ zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - p^(- s)) #h(2em) \( "Re" s > 1 \) . $
 
 ]
 素因数分解の一意性より次のようにゼータ関数 $zeta \( s \)$
@@ -1022,27 +1007,23 @@ Q 17A-5. \$\$\\begin{aligned}
  & = product_(p : p r i m e) frac(1, 1 - p^(- s)) . $
 
 #block[
-Q 17A-6. \$\$\\begin{aligned}
-    \\zeta(s) & = 0 \\implies \\real s \\leq 1.
-  
-\\end{aligned}\$\$
+Q 17A-6. $ zeta \( s \) & = 0 arrow.r.double.long "Re" s lt.eq 1 . $
 
 ]
-\$\\real s \> 1\$ において $s = a + b sqrt(- 1) med \( a > 1 \)$
-とおくと $p^(- s)$ の大きさは次のように評価される.
+$"Re" s > 1$ において $s = a + b sqrt(- 1) med \( a > 1 \)$ とおくと
+$p^(- s)$ の大きさは次のように評価される.
 $ \| p^(- s) \| = \| p^(- a - b sqrt(- 1)) \| = \| p^(- a) \| dot.op \| e^(- sqrt(- 1) b ln p) \| = p^(- a) . $
 これより $zeta \( s \)$ の大きさは次のように評価される.
 $ \| zeta \( s \) \| & = lr(|product_(p : p r i m e) frac(1, 1 - p^(- s))|) gt.eq product_(p : p r i m e) frac(1, 1 - \| p^(- s) \|) = product_(p : p r i m e) frac(1, 1 - p^(- a)) > 0 . $
-よって \$\\real s \> 1\$ において $zeta \( s \)$ はゼロとならない.
-つまり次のようになる. \$\$\\begin{aligned}
-  \\zeta(s) & = 0 \\implies \\real s \\leq 1.
-\\end{aligned}\$\$
+よって $"Re" s > 1$ において $zeta \( s \)$ はゼロとならない.
+つまり次のようになる.
+$ zeta \( s \) & = 0 arrow.r.double.long "Re" s lt.eq 1 . $
 
 #block[
 Q 17A-7. 素数が無限に存在することを示す.
 
 ]
-ゼータ関数 \$\\zeta(s)\\ (\\real s \> 1)\$ について $s arrow.r 1$
+ゼータ関数 $zeta \( s \) med \( "Re" s > 1 \)$ について $s arrow.r 1$
 の極限を取ると発散する.
 $ lim_(s arrow.r 1) zeta \( s \) & = lim_(s arrow.r 1) sum_(n = 1)^oo 1 / n^s = oo . $
 また Euler 積表示についても極限を取る.
@@ -1053,10 +1034,8 @@ $ lim_(s arrow.r 1) zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - 1 \/ p)
 == ゼータ関数 $zeta \( s \)$ の基本的性質 : 関数等式ほか
 <ゼータ関数-zetas-の基本的性質-関数等式ほか>
 #block[
-Q 17A-8. \$\$\\begin{aligned}
-    \\Gamma(s)\\zeta(s) = \\int\_0^\\infty\\mathrm{d}x\\frac{x^{s-1}}{e^x - 1} \\qquad (\\real s \> 1).
-  
-\\end{aligned}\$\$
+Q 17A-8.
+$ Gamma \( s \) zeta \( s \) = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) #h(2em) \( "Re" s > 1 \) . $
 
 ]
 ガンマ関数の定義式について $x := n x$
@@ -1086,7 +1065,7 @@ Q 17A-9. $0 < delta < 2 pi$ を満たす範囲で $delta$
 を動かしても極の数は変化しないから積分値は一定である.
 
 #block[
-Q 17A-10. \$\\real s \> 1\$ のとき $delta arrow.r 0$ とすると
+Q 17A-10. $"Re" s > 1$ のとき $delta arrow.r 0$ とすると
 $C_0 \( delta \)$ に沿った積分 $I \( s \; C_0 \( delta \) \)$
 がゼロになる.
 
@@ -1115,18 +1094,15 @@ Q 17A-12.
 $ zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) . $
 
 ]
-(i) 17A-11 より\$\\real s \> 1\$ において次が成り立つ.
-\$\$\\begin{aligned}
-  \\Gamma(s)\\zeta(s) & = \\int\_0^\\infty\\mathrm{d}x\\frac{x^{s-1}}{e^x - 1}                        \\\\
-                    & = \\frac{I(s; C)}{e^{2\\pi is} - 1},                                  \\\\
-  \\zeta(s)          & = \\frac{1}{(e^{2\\pi is} - 1)\\Gamma(s)}I(s; C) \\qquad (\\real s \> 1).
-\\end{aligned}\$\$
+(i) 17A-11 より$"Re" s > 1$ において次が成り立つ.
+$ Gamma \( s \) zeta \( s \) & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1)\
+ & = frac(I \( s \; C \), e^(2 pi i s) - 1) \,\
+zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) #h(2em) \( "Re" s > 1 \) . $
 
 (ii) $I \( s \; C \)$ は次のように定義された.
 $ I \( s \; C \) & = integral_(C \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1) . $
 これは複素平面全体 $s in bb(C)$ に対して正則である. よって (i)
-で求めた式は \$\\real s \> 1\$ の条件を取り外すことができ,
-解析接続となる.
+で求めた式は $"Re" s > 1$ の条件を取り外すことができ, 解析接続となる.
 
 #block[
 Q 17A-13.

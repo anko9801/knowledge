@@ -77,23 +77,21 @@ $ frac(partial, partial t) rho \( bold(r) \, t \) + bold(nabla) dot.op bold(j) \
 == 期待値と演算子
 <期待値と演算子>
 #block[
-物理量 $F$ に対する期待値を次のように定義する。 \$\$\\begin{aligned}
-    \\ev{F} & := \\int\\psi^\*(\\bm{r}, t)F\\psi(\\bm{r}, t)\\mathrm{d} \\bm{r}
-  
-\\end{aligned}\$\$
+物理量 $F$ に対する期待値を次のように定義する。
+$ ⟨F⟩ & := integral psi^(\*) \( bold(r) \, t \) F psi \( bold(r) \, t \) upright(d) bold(r) $
 
 ]
 まずは運動量の期待値を計算すると次のようになる。 \$\$\\begin{aligned}
-  \\ev{\\bm{p}} & = m\\frac{\\mathrm{d} \\ev{\\bm{r}}}{\\mathrm{d} t} = m\\dv{t}\\int\\psi^\*\\bm{r}\\psi\\mathrm{d} \\bm{r}= m\\int\\left(\\psi^\*\\bm{r}\\frac{\\partial \\psi}{\\partial t} + \\frac{\\partial \\psi^\*}{\\partial t}\\bm{r}\\psi\\right)\\mathrm{d} \\bm{r}\\\\
+  \\left\\langle \\bm{p}\\right\\rangle  & = m\\frac{\\mathrm{d} \\left\\langle \\bm{r}\\right\\rangle }{\\mathrm{d} t} = m\\dv{t}\\int\\psi^\*\\bm{r}\\psi\\mathrm{d} \\bm{r}= m\\int\\left(\\psi^\*\\bm{r}\\frac{\\partial \\psi}{\\partial t} + \\frac{\\partial \\psi^\*}{\\partial t}\\bm{r}\\psi\\right)\\mathrm{d} \\bm{r}\\\\
            & = -m\\int\\psi^\*\\bm{r}\\frac{i}{\\hbar}\\left(-\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\bm{r})\\right)\\psi\\mathrm{d} \\bm{r}+ m\\int\\frac{i}{\\hbar}\\left(-\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\bm{r})\\right)\\psi^\*\\bm{r}\\psi\\mathrm{d} \\bm{r}\\\\
            & = \\frac{i\\hbar}{2}\\int\\left(\\psi^\*\\bm{r}\\nabla^2\\psi - \\nabla^2\\psi^\*\\bm{r}\\psi\\right)\\mathrm{d} \\bm{r}\\\\
            & = \\frac{i\\hbar}{2}\\int\\left(\\psi^\*\\bm{r}\\nabla^2\\psi - \\psi^\*\\nabla^2(\\bm{r}\\psi)\\right)\\mathrm{d} \\bm{r}- \\frac{i\\hbar}{2}\\left\[\\nabla\\psi^\*\\bm{r}\\psi\\right\] + \\frac{i\\hbar}{2}\\left\[\\psi^\*\\nabla(\\bm{r}\\psi)\\right\] \\\\
-           & = \\int\\psi^\*(-i\\hbar\\boldsymbol{\\nabla})\\psi\\mathrm{d} \\bm{r}= \\ev{-i\\hbar\\boldsymbol{\\nabla}}
+           & = \\int\\psi^\*(-i\\hbar\\boldsymbol{\\nabla})\\psi\\mathrm{d} \\bm{r}= \\left\\langle -i\\hbar\\boldsymbol{\\nabla}\\right\\rangle 
 \\end{aligned}\$\$ また力の期待値も次のようになる。 \$\$\\begin{aligned}
-  m\\frac{\\mathrm{d}^{2} \\ev{\\bm{r}}}{\\mathrm{d} t^{2}} & = \\frac{\\mathrm{d} \\ev{\\bm{p}}}{\\mathrm{d} t} = -i\\hbar\\dv{t}\\int\\psi^\*\\boldsymbol{\\nabla}\\psi\\mathrm{d} \\bm{r}= \\int\\left(-\\psi^\*\\boldsymbol{\\nabla}\\left(i\\hbar\\frac{\\partial \\psi}{\\partial t}\\right) + \\left(-i\\hbar\\frac{\\partial \\psi^\*}{\\partial t}\\right)\\boldsymbol{\\nabla}\\psi\\right)\\mathrm{d} \\bm{r}\\\\
+  m\\frac{\\mathrm{d}^{2} \\left\\langle \\bm{r}\\right\\rangle }{\\mathrm{d} t^{2}} & = \\frac{\\mathrm{d} \\left\\langle \\bm{p}\\right\\rangle }{\\mathrm{d} t} = -i\\hbar\\dv{t}\\int\\psi^\*\\boldsymbol{\\nabla}\\psi\\mathrm{d} \\bm{r}= \\int\\left(-\\psi^\*\\boldsymbol{\\nabla}\\left(i\\hbar\\frac{\\partial \\psi}{\\partial t}\\right) + \\left(-i\\hbar\\frac{\\partial \\psi^\*}{\\partial t}\\right)\\boldsymbol{\\nabla}\\psi\\right)\\mathrm{d} \\bm{r}\\\\
                        & = -\\int\\psi^\*\\boldsymbol{\\nabla}\\left(-\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\bm{r})\\right)\\psi\\mathrm{d} \\bm{r}+ \\int\\left(-\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\bm{r})\\right)\\psi^\*\\boldsymbol{\\nabla}\\psi\\mathrm{d} \\bm{r}\\\\
                        & = \\frac{\\hbar^2}{2m}\\int\\left(\\psi^\*\\boldsymbol{\\nabla}\\left(\\nabla^2\\psi\\right) - \\left(\\nabla^2\\psi^\*\\right)\\boldsymbol{\\nabla}\\psi\\right)\\mathrm{d} \\bm{r}- \\int\\psi^\*\\boldsymbol{\\nabla}V(\\bm{r})\\psi\\mathrm{d} \\bm{r}\\\\
-                       & = - \\int\\psi^\*\\boldsymbol{\\nabla}V(\\bm{r})\\psi\\mathrm{d} \\bm{r}= \\ev{-\\boldsymbol{\\nabla}V}
+                       & = - \\int\\psi^\*\\boldsymbol{\\nabla}V(\\bm{r})\\psi\\mathrm{d} \\bm{r}= \\left\\langle -\\boldsymbol{\\nabla}V\\right\\rangle 
 \\end{aligned}\$\$ このようなことから位置演算子 $hat(bold(r))$,
 運動量演算子 $hat(bold(p))$, ハミルトニアン演算子 $hat(H)$
 を次のように定義する。
@@ -128,15 +126,13 @@ $ integral psi_(f')^(\*) \( bold(r) \, t \) psi_f \( bold(r) \, t \) upright(d) 
 $ Delta r_i Delta p_j gt.eq planck / 2 delta_(i j) $
 
 ]
-波動関数が次のような関数のとき \$\$\\begin{aligned}
-    \\Psi(\\bm{r}, t) & := \\left(is(\\hat{r}\_i - \\ev{\\hat{r}\_i}) + (\\hat{p}\_j - \\ev{\\hat{p}\_j})\\right)\\psi(\\bm{r}, t)
-  
-\\end{aligned}\$\$
+波動関数が次のような関数のとき
+$ Psi \( bold(r) \, t \) & := (i s \( hat(r)_i - ⟨hat(r)_i⟩ \) + \( hat(p)_j - ⟨hat(p)_j⟩ \)) psi \( bold(r) \, t \) $
 
 \$\$\\begin{aligned}
     \\int|\\Psi(\\bm{r}, t)|^2\\mathrm{d} \\bm{r}& = \\int\\Psi^\*(\\bm{r}, t)\\Psi(\\bm{r}, t)\\mathrm{d} \\bm{r}\\\\
-                                 & = \\int\\psi^\*(\\bm{r}, t)\\left(s^2(\\hat{r}\_i - \\ev{\\hat{r}\_i})^2 - is\[\\hat{r}\_i - \\ev{\\hat{r}\_i}, \\hat{p}\_j - \\ev{\\hat{p}\_j}\] + (\\hat{p}\_j - \\ev{\\hat{p}\_j})^2\\right)\\psi(\\bm{r}, t)\\mathrm{d} \\bm{r}\\\\
-                                 & = s^2\\ev{(\\hat{r}\_i - \\ev{\\hat{r}\_i})^2} + s\\hbar\\delta\_{ij} + \\ev{(\\hat{p}\_j - \\ev{\\hat{p}\_j})^2}                                                                           \\\\
+                                 & = \\int\\psi^\*(\\bm{r}, t)\\left(s^2(\\hat{r}\_i - \\left\\langle \\hat{r}\_i\\right\\rangle )^2 - is\[\\hat{r}\_i - \\left\\langle \\hat{r}\_i\\right\\rangle , \\hat{p}\_j - \\left\\langle \\hat{p}\_j\\right\\rangle \] + (\\hat{p}\_j - \\left\\langle \\hat{p}\_j\\right\\rangle )^2\\right)\\psi(\\bm{r}, t)\\mathrm{d} \\bm{r}\\\\
+                                 & = s^2\\left\\langle (\\hat{r}\_i - \\ev{\\hat{r}\_i})^2\\right\\rangle  + s\\hbar\\delta\_{ij} + \\left\\langle (\\hat{p}\_j - \\ev{\\hat{p}\_j})^2\\right\\rangle                                                                            \\\\
                                  & = s^2\\Delta r\_i^2 + s\\hbar\\delta\_{ij} + \\Delta p\_j^2                                                                                                                         \\\\
                                  & = \\left(s + \\frac{\\hbar\\delta\_{ij}}{2\\Delta r\_i^2}\\right)^2\\Delta r\_i^2 - \\frac{\\hbar^2\\delta\_{ij}}{4\\Delta r\_i^2} + \\Delta p\_j^2 \\geq 0
   

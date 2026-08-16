@@ -14,7 +14,7 @@ import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { basename, dirname, extname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { preprocess } from './preprocess.mjs'
+import { preprocess, selfDefined } from './preprocess.mjs'
 import { repairTypst } from './repair-typst.mjs'
 
 const run = promisify(execFile)
@@ -73,6 +73,55 @@ const withFrontMatter = (body, { title, group, source }) => `#import "/src/typst
 
 ${body}`
 
+/**
+ * corpus 全体から \newcommand の定義を集める。
+ *
+ * 同じマクロを別のファイルでは定義しているのに、使う側では定義し忘れている
+ * ことがある（\kk や \rr など）。本人の定義を流用して補えば、
+ * こちらが意味を推測せずに済む。
+ */
+const collectDefinitions = async (files) => {
+  const table = new Map()
+
+  for (const file of files) {
+    const source = await readFile(file, 'utf8')
+    for (const match of source.matchAll(
+      /\\newcommand\s*(?:\{\\([a-zA-Z@]+)\}|\\([a-zA-Z@]+))\s*(\[[0-9]\])?\s*(\{(?:[^{}]|\{[^{}]*\})*\})/g,
+    )) {
+      const name = match[1] ?? match[2]
+      if (table.has(name)) continue
+      table.set(name, { arity: match[3] ?? '', body: match[4] })
+    }
+  }
+
+  return table
+}
+
+/**
+ * 前処理側が自前で展開するマクロ。ここに定義を足すと、
+ * 展開結果と定義が二重にかかって壊れる（\providecommand{\nabla^{2}} など）。
+ */
+const HANDLED = new Set([
+  'ab', 'qty', 'mqty', 'pmqty', 'vmqty', 'smqty',
+  'vb', 'va', 'vu', 'dd', 'dv', 'pdv', 'diff', 'diffp', 'dl', 'difsp',
+  'laplacian', 'grad', 'curl', 'div', 'vdot', 'cross',
+  'ket', 'bra', 'braket', 'ketbra', 'ev', 'abs', 'norm', 'ce',
+])
+
+/** そのファイルが使っていて定義していないマクロを補う \providecommand を作る。 */
+const fallbacksFor = (source, table) => {
+  const defined = selfDefined(source)
+  const lines = []
+
+  for (const [name, { arity, body }] of table) {
+    if (defined.has(name) || HANDLED.has(name)) continue
+    if (!new RegExp(`\\\\${name}(?![a-zA-Z@])`).test(source)) continue
+    lines.push(`\\providecommand{\\${name}}${arity}${body}`)
+  }
+
+  return lines.length > 0 ? `\n${lines.join('\n')}\n` : ''
+}
+
 /** 各グループで実在する画像ファイル名を集める。 */
 const availableAssets = async (group) => {
   const dir = join(SOURCE, group, 'assets')
@@ -106,13 +155,13 @@ const copyAssets = async () => {
   return copied
 }
 
-const convertOne = async (file, assets) => {
+const convertOne = async (file, assets, definitions) => {
   const id = relative(SOURCE, file).replace(/\.tex$/, '').replace(/\//g, '--')
   const prepared = join(OUT, `${id}.pre.tex`)
   const target = join(DEST, `${id}.typ`)
 
   const source = await readFile(file, 'utf8')
-  const pre = preprocess(source)
+  const pre = preprocess(source, { extraDefinitions: fallbacksFor(source, definitions) })
   await writeFile(prepared, pre.text, 'utf8')
 
   let warnings = 0
@@ -198,7 +247,10 @@ const main = async () => {
     await Promise.all(groups.map(async (g) => [g, await availableAssets(g)])),
   )
 
-  const results = await mapLimit(files, 6, (file) => convertOne(file, assets))
+  const definitions = await collectDefinitions(files)
+  process.stdout.write(`共通マクロ      : ${definitions.size} 個を corpus から収集\n`)
+
+  const results = await mapLimit(files, 6, (file) => convertOne(file, assets, definitions))
 
   const ok = results.filter((r) => r.ok)
   const failed = results.filter((r) => !r.ok)

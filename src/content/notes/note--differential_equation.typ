@@ -48,10 +48,7 @@ $ cal(L) \[ delta \( t - a \) \] & = integral_0^oo delta \( t - a \) e^(- s t) u
 #block[
 #strong[定理 2] (Gauss 積分). \
 
-\$\$\\begin{aligned}
-    \\int\_{-\\infty}^{\\infty} e^{-\\alpha x^2}\\mathrm{d} x = \\sqrt{\\frac{\\pi}{\\alpha}} \\qquad (\\real a \> 0)
-  
-\\end{aligned}\$\$
+$ integral_(- oo)^oo e^(- alpha x^2) upright(d) x = sqrt(pi / alpha) #h(2em) \( "Re" a > 0 \) $
 
 ]
 まず積分値を $I$ とおく。
@@ -305,14 +302,12 @@ $ B_0 = 1 \, B_1 = - 1 / 2 \, B_2 = 1 / 6 \, B_3 = 0 \, B_4 = - 1 / 30 \, B_5 = 
 == ゼータ関数 $zeta \( s \)$
 <ゼータ関数-zetas>
 #block[
-ゼータ関数 $zeta \( s \)$ は次のように定義される. \$\$\\begin{aligned}
-    \\zeta(s) & := \\sum\_{n=1}^{\\infty}\\frac{1}{n^s} \\qquad (\\real s \> 1).
-  
-\\end{aligned}\$\$
+ゼータ関数 $zeta \( s \)$ は次のように定義される.
+$ zeta \( s \) & := sum_(n = 1)^oo 1 / n^s #h(2em) \( "Re" s > 1 \) . $
 
 ]
 #block[
-$zeta \( s \)$ が \$\\real s \> 1\$ において一様絶対収束することを示す.
+$zeta \( s \)$ が $"Re" s > 1$ において一様絶対収束することを示す.
 
 ]
 $s = a + b i med \( a > 1 \)$ とおく. すると次のようになる.
@@ -320,10 +315,7 @@ $ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n
 よってゼータ関数 $zeta \( s \)$ は一様絶対収束する. 0◻
 
 #block[
-\$\$\\begin{aligned}
-    \\zeta(s) & = \\prod\_{p:prime}\\frac{1}{1 - p^{-s}} \\qquad (\\real s \> 1).
-  
-\\end{aligned}\$\$
+$ zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - p^(- s)) #h(2em) \( "Re" s > 1 \) . $
 
 ]
 素因数分解の一意性より次のようにゼータ関数 $zeta \( s \)$
@@ -334,28 +326,23 @@ $ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n
  & = product_(p : p r i m e) frac(1, 1 - p^(- s)) . $ 0◻
 
 #block[
-\$\$\\begin{aligned}
-    \\zeta(s) & = 0 \\implies \\real s \\leq 1.
-  
-\\end{aligned}\$\$
+$ zeta \( s \) & = 0 arrow.r.double.long "Re" s lt.eq 1 . $
 
 ]
-\$\\real s \> 1\$ において $s = a + b sqrt(- 1) med \( a > 1 \)$
-とおくと $p^(- s)$ の大きさは次のように評価される.
+$"Re" s > 1$ において $s = a + b sqrt(- 1) med \( a > 1 \)$ とおくと
+$p^(- s)$ の大きさは次のように評価される.
 $ \| p^(- s) \| = \| p^(- a - b sqrt(- 1)) \| = \| p^(- a) \| dot.op \| e^(- sqrt(- 1) b ln p) \| = p^(- a) . $
 これより $zeta \( s \)$ の大きさは次のように評価される.
 $ \| zeta \( s \) \| & = lr(|product_(p : p r i m e) frac(1, 1 - p^(- s))|) gt.eq product_(p : p r i m e) frac(1, 1 - \| p^(- s) \|) = product_(p : p r i m e) frac(1, 1 - p^(- a)) > 0 . $
-よって \$\\real s \> 1\$ において $zeta \( s \)$ はゼロとならない.
-つまり次のようになる. \$\$\\begin{aligned}
-    \\zeta(s) & = 0 \\implies \\real s \\leq 1.
-  
-\\end{aligned}\$\$ 0◻
+よって $"Re" s > 1$ において $zeta \( s \)$ はゼロとならない.
+つまり次のようになる.
+$ zeta \( s \) & = 0 arrow.r.double.long "Re" s lt.eq 1 . $ 0◻
 
 #block[
 素数が無限に存在することを示す.
 
 ]
-ゼータ関数 \$\\zeta(s)\\ (\\real s \> 1)\$ について $s arrow.r 1$
+ゼータ関数 $zeta \( s \) med \( "Re" s > 1 \)$ について $s arrow.r 1$
 の極限を取ると発散する.
 $ lim_(s arrow.r 1) zeta \( s \) & = lim_(s arrow.r 1) sum_(n = 1)^oo 1 / n^s = oo . $
 また Euler 積表示についても極限を取る.
@@ -364,10 +351,7 @@ $ lim_(s arrow.r 1) zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - 1 \/ p)
 ただゼータ関数は極限を取ると発散するので素数は無限個存在する. 0◻
 
 #block[
-\$\$\\begin{aligned}
-    \\Gamma(s)\\zeta(s) = \\int\_0^\\infty\\mathrm{d} x\\frac{x^{s-1}}{e^x - 1} \\qquad (\\real s \> 1).
-  
-\\end{aligned}\$\$
+$ Gamma \( s \) zeta \( s \) = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) #h(2em) \( "Re" s > 1 \) . $
 
 ]
 ガンマ関数の定義式について $x := n x$
@@ -388,9 +372,9 @@ $C = C \( delta \) = C_(+) \( delta \) + C_0 \( delta \) + C_(+) \( delta \)$
 を定義しておく.
 $ I \( s \; C \) & := integral_C upright(d) z frac(z^(s - 1), e^z - 1) . $
 $0 < delta < 2 pi$ を満たす範囲で $delta$
-を動かしても積分値は一定である. \$\\real s \> 1\$ のとき
-$delta arrow.r 0$ とすると $C_0 \( delta \)$ に沿った積分
-$I \( s \; C_0 \( delta \) \)$ がゼロになる.
+を動かしても積分値は一定である. $"Re" s > 1$ のとき $delta arrow.r 0$
+とすると $C_0 \( delta \)$ に沿った積分 $I \( s \; C_0 \( delta \) \)$
+がゼロになる.
 
 ]
 被積分関数は $2 n pi sqrt(- 1)$ について 1 位の極がある.
@@ -421,18 +405,15 @@ Q 17A-12.
 $ zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) . $
 
 ]
-(i) 17A-11 より\$\\real s \> 1\$ において次が成り立つ.
-\$\$\\begin{aligned}
-  \\Gamma(s)\\zeta(s) & = \\int\_0^\\infty\\mathrm{d} x\\frac{x^{s-1}}{e^x - 1}                        \\\\
-                    & = \\frac{I(s; C)}{e^{2\\pi is} - 1},                                  \\\\
-  \\zeta(s)          & = \\frac{1}{(e^{2\\pi is} - 1)\\Gamma(s)}I(s; C) \\qquad (\\real s \> 1).
-\\end{aligned}\$\$
+(i) 17A-11 より$"Re" s > 1$ において次が成り立つ.
+$ Gamma \( s \) zeta \( s \) & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1)\
+ & = frac(I \( s \; C \), e^(2 pi i s) - 1) \,\
+zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) #h(2em) \( "Re" s > 1 \) . $
 
 (ii) $I \( s \; C \)$ は次のように定義された.
 $ I \( s \; C \) & = integral_(C \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1) . $
 これは複素平面全体 $s in bb(C)$ に対して正則である. よって (i)
-で求めた式は \$\\real s \> 1\$ の条件を取り外すことができ,
-解析接続となる.
+で求めた式は $"Re" s > 1$ の条件を取り外すことができ, 解析接続となる.
 
 #block[
 Q 17A-13.

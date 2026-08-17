@@ -46,13 +46,13 @@
 #let proof(body) = context {
   if target() == "html" {
     html.elem("div", attrs: (class: "proof"), {
-      html.elem("span", attrs: (class: "proof-head"), [証明．])
+      html.elem("span", attrs: (class: "proof-head"), [Proof.])
       body
       html.elem("span", attrs: (class: "proof-end"), sym.square.stroked)
     })
   } else {
     block(width: 100%, inset: (y: 0.4em), {
-      emph[証明．]
+      emph[Proof.]
       body
       h(1fr)
       sym.square.stroked

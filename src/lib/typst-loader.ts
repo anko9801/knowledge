@@ -15,6 +15,14 @@ export type TypstLoaderOptions = {
   readonly expectedLang?: string
   /** 別行立て数式に通し番号を振る。参照が「式 1」と出る文書向け。 */
   readonly numberEquations?: boolean
+  /**
+   * 本文が #import する共有ファイルの置き場（プロジェクトルートからの相対）。
+   *
+   * digest に混ぜないと、テンプレートを直しても本文の digest が変わらず
+   * キャッシュが効いたままになる。証明の見出しを変えたのに反映されない、
+   * といった形で現れる。
+   */
+  readonly dependsOn?: readonly string[]
 }
 
 type EntryResult = {
@@ -68,21 +76,54 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     bin = process.env.TYPST_BIN ?? 'typst',
     expectedLang,
     numberEquations = false,
+    dependsOn = [],
   } = options
 
   /** 1 ファイルをコンパイルしてストアに入れる。full load と watch の両方から使う。 */
+  /**
+   * 本文が #import する共有ファイルをまとめた digest。
+   *
+   * これを本文の digest に混ぜないと、テンプレートを直しても本文側の digest が
+   * 変わらず、キャッシュが効いたままになる。証明の見出しを変えたのに
+   * 反映されない、という形で現れる。
+   */
+  const dependencyDigest = async (root: string): Promise<string> => {
+    const parts: string[] = []
+
+    for (const relative of dependsOn) {
+      const target = join(root, relative)
+      const entries = await readdir(target, { withFileTypes: true }).catch(() => null)
+
+      if (!entries) {
+        parts.push(await readFile(target, 'utf8').catch(() => ''))
+        continue
+      }
+
+      const files = entries
+        .filter((entry) => entry.isFile())
+        .sort((a, b) => a.name.localeCompare(b.name))
+
+      for (const entry of files) {
+        parts.push(await readFile(join(target, entry.name), 'utf8'))
+      }
+    }
+
+    return digest(parts.join('\u0000'))
+  }
+
   const ingest = async (
     file: string,
     context: LoaderContext,
     root: string,
     dirRoot: string,
+    shared: string,
   ): Promise<EntryResult> => {
     const { store, logger, parseData } = context
     const id = entryId(dirRoot, file)
     const typstOptions = { bin, root } as const
 
     const source = await readFile(file, 'utf8')
-    const sourceDigest = digest(source)
+    const sourceDigest = digest(`${shared}\u0000${source}`)
 
     const cached = store.get(id)
     if (cached?.digest === sourceDigest) {
@@ -137,9 +178,11 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
         logger.warn(`${dir} に .typ が 1 つもありません`)
       }
 
+      const shared = await dependencyDigest(root)
+
       const results: EntryResult[] = []
       for (const file of files) {
-        results.push(await ingest(file, context, root, absoluteDir))
+        results.push(await ingest(file, context, root, absoluteDir, shared))
       }
 
       // 削除された .typ をストアから落とす。
@@ -167,7 +210,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
         if (!watched(changed)) return
 
         try {
-          await ingest(changed, context, root, absoluteDir)
+          await ingest(changed, context, root, absoluteDir, await dependencyDigest(root))
         } catch (error) {
           // dev サーバを落とさない。show rule の穴を踏んだときはここに出る。
           logger.error(error instanceof Error ? error.message : String(error))
@@ -175,6 +218,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
       }
 
       watcher.add(absoluteDir)
+      for (const relative of dependsOn) watcher.add(join(root, relative))
 
       // change だけ見ていると、執筆中に新しい記事を足しても 404 のままになる。
       watcher.on('change', reingest)

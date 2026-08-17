@@ -46,7 +46,8 @@ export const series: readonly Series[] = [
     slug: 'set-theory',
     field: 'math',
     title: '集合論',
-    blurb: '素朴集合論の破綻から、順序数・基数・選択公理を経て、連続体仮説の独立性まで。',
+    blurb:
+      '素朴集合論の破綻から、順序数・基数・選択公理を経て、連続体仮説の独立性と記述集合論まで。全 12 回。',
   },
 ]
 

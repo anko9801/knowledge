@@ -224,7 +224,22 @@ HTML コメント（`<!-- -->`）は出力に漏れるので `{/* */}` に替え
 `<link>` の有無だけ見ていると気づけない。ビルド後に
 `grep -o '<html[^>]*>' dist/**/*.html` で確かめること。
 
-**10. HTML export は experimental**
+**10. 証明終わりの □ は 2 通りの形で出てくる**
+
+Typst は証明の終わりの記号を、証明が本文で終わるときは最終段落の中に
+インラインで、別行立て数式で終わるときは単独の段落として出す。
+`display: block` を当てると前者が行を分けてしまうので、`float: right` で
+両方とも右端に寄せる。浮かせたぶんは `.proof::after` で閉じる。
+
+**11. テンプレートを直しても本文に反映されない**
+
+loader が本文の digest だけを見ていると、`src/typst/*.typ` を直しても
+Content Collection のキャッシュが効いたままになる。証明の見出しを
+`証明．` から `Proof.` に変えたのに出力が変わらない、という形で現れる。
+`dependsOn: ['src/typst']` で共有ファイルの digest を混ぜてある。
+キャッシュの実体は `node_modules/.astro`（`.astro` だけ消しても残る）。
+
+**12. HTML export は experimental**
 
 `--features html` が要る。公式に production 非推奨で、未対応要素や show rule の穴を
 たまに踏む。回避の show rule を書くか upstream にパッチを送る。`target()` だけは

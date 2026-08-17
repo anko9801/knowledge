@@ -18,6 +18,7 @@ const posts = defineCollection({
   loader: typstLoader({
     dir: 'src/content/posts',
     expectedLang: 'ja',
+    dependsOn: ['src/typst'],
   }),
   schema: postSchema,
 })
@@ -40,6 +41,7 @@ const articles = defineCollection({
     dir: 'src/content/articles',
     expectedLang: 'ja',
     numberEquations: true,
+    dependsOn: ['src/typst'],
   }),
   schema: articleSchema,
 })
@@ -54,6 +56,7 @@ const notes = defineCollection({
     dir: 'src/content/notes',
     expectedLang: 'ja',
     numberEquations: true,
+    dependsOn: ['src/typst'],
   }),
   schema: postSchema,
 })

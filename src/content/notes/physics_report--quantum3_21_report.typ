@@ -224,9 +224,7 @@ $cal(H)^(\( 2 \))$ において交換演算子 (exchange operator) $hat(E)$
 を次のように定義する. $ hat(E) \|psi⟩ \|psi'⟩ & = \|psi'⟩ \|psi⟩ . $
 ]
 ]
-#block[
-#strong[問題 3] (Q21-1(i)). \
-
+#proposition("Q21-1(i)")[
 粒子が区別できないならば粒子状態を区別できないとは示せないが,
 ここでは粒子状態を区別できないと仮定する. このとき粒子状態
 $\|Psi⟩ in cal(H)^(\( 2 \))$
@@ -236,7 +234,7 @@ $ \|Psi⟩ & = hat(E) \|Psi⟩ arrow.l.r.double c_1 \|alpha⟩ \|beta⟩ + c_2 \
 $ \|Psi⟩ & = 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ plus.minus \|beta⟩ \|alpha⟩ \) . $
 これより粒子状態を区別できないならば係数に対して条件を足さなければならないことが分かる.
 
-] <Q21-1-i>
+]<Q21-1-i>
 #block[
 #proposition("Q21-1(ii)")[
 粒子状態
@@ -352,7 +350,7 @@ $ ⟨Psi_S\| hat(O) \|Psi_S⟩ & = 1 / 2 \( ⟨alpha\| ⟨beta\| + ⟨beta\| ⟨
 交換演算子が Hilbert
 空間の代数構造において既約元であることは直感的に成り立つので,
 区別できない情報が観測量の演算子に吸収され,
-粒子状態の粒子を区別できないとは示せない. 問題 #link(<Q21-1-i>)[Q21-1-i]
+粒子状態の粒子を区別できないとは示せない. @Q21-1-i
 のようには係数は決まらず, 理論の予言能力に問題はない.
 
 ]
@@ -822,9 +820,9 @@ $ \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S & = 1 / sqrt(N ! product_(i in I) 
 粒子状態
 $\|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_S$ は $cal(H)_S^(\( N \))$
 の完全正規直交系となる.
-]
+]<symmetric-completely-orthonormal-system>
 
-] <symmetric-completely-orthonormal-system>
+]
 #proof[
 まず正規直交関係については次のように計算できる.
 $ chevron.l phi.alt_(i_1) dots.h.c phi.alt_(i_N) \| phi.alt_(i_(1')) dots.h.c phi.alt_(i_(N')) chevron.r_S & = frac(N !^(- 1), sqrt(product_(i in I) n_i ! n_(i') !)) sum_(sigma in frak(S)_N) sum_(tau in frak(S)_N) ⟨phi.alt_(i_1)\| dots.h.c ⟨phi.alt_(i_N)\| hat(P) \( sigma^(- 1) tau \) \| phi.alt_(i_(1')) chevron.r dots.h.c \| phi.alt_(i_(N')) chevron.r\
@@ -874,9 +872,9 @@ $ \|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A & = 1 / sqrt(N !) det mat(delim: "
 粒子状態
 $\|phi.alt_(i_1) dots.h.c phi.alt_(i_N)⟩_A$ は $cal(H)_A^(\( N \))$
 の完全正規直交系となる.
-]
+]<asymmetric-completely-orthonormal-system>
 
-] <asymmetric-completely-orthonormal-system>
+]
 #proof[
 まず正規直交関係については次のように計算できる.
 $ chevron.l phi.alt_(i_1) dots.h.c phi.alt_(i_N) \| phi.alt_(i_(1')) dots.h.c phi.alt_(i_(N')) chevron.r_A & = frac(1, N !) sum_(sigma in frak(S)_N) sum_(tau in frak(S)_N) "sgn" \( sigma^(- 1) tau \) ⟨phi.alt_(i_1)\| dots.h.c ⟨phi.alt_(i_N)\| hat(P) \( sigma^(- 1) tau \) \| phi.alt_(i_(1')) chevron.r dots.h.c \| phi.alt_(i_(N')) chevron.r\
@@ -1043,8 +1041,8 @@ ${ \|\( n_i \)_(i in I)⟩_S divides n_i in bb(Z)_(lt.eq 0) } \, { \|\( n_i \)_(
 まず全粒子数 $N$ の Hilbert 空間
 $cal(H)_S^(\( N \)) \, cal(H)_A^(\( N \))$ の粒子数表示について命題
 @particles-well-defined より粒子数表示と完全正規直交系が対応する.
-よって命題 #link(<symmetric-completely-orthonormal-system>)[symmetric-completely-orthonormal-system], 命題
-#link(<asymmetric-completely-orthonormal-system>)[asymmetric-completely-orthonormal-system]
+よって @symmetric-completely-orthonormal-system と
+@asymmetric-completely-orthonormal-system
 より粒子数表示は完全正規直交系となる. これより次の式が成り立つ.
 $  & ⟨\( n_i \)_(i in I) mid(bar.v) \( n_(i') \)_(i in I)⟩_S = product_(i in I) delta_(n_i n_(i'))\
  & ⟨\( n_i \)_(i in I) mid(bar.v) \( n_(i') \)_(i in I)⟩_A = product_(i in I) delta_(n_i n_(i'))\
@@ -1186,9 +1184,9 @@ $ cases(delim: "{", hat(a)_i \|upright(v a c)⟩ = 0 & \( forall i in I \), ⟨u
 真空状態 $\|upright(v a c)⟩$
 は粒子が 1 個も存在しない状態 $\|0 \, dots.h \, 0 \, dots.h⟩$
 と同じである.
-]
+]<Bose-vac-0>
 
-] <Bose-vac-0>
+]
 #proof[
 任意の個数演算子で係数が $0$ となることから分かる.
 $ hat(n)_i \|upright(v a c)⟩ & = hat(a)_i^dagger hat(a)_i \|upright(v a c)⟩ = 0 $
@@ -1202,7 +1200,7 @@ $ \|\( n_i \)_(i in I)⟩ & = product_(i in I) frac(\( hat(a)_i^dagger \)^(n_i),
 
 ]
 #proof[
-命題 #link(<Bose-vac-0>)[Bose-vac-0] より次のように変形できる.
+@Bose-vac-0 より次のように変形できる.
 $ product_(i in I) frac(\( hat(a)_i^dagger \)^(n_i), sqrt(n_i !)) \|upright(v a c)⟩ & = product_(i in I) frac(\( hat(a)_i^dagger \)^(n_i), sqrt(n_i !)) \|0 \, dots.h \, 0 \, dots.h⟩\
  & = product_(i in I) 1 / sqrt(n_i !) sqrt(n_i !) \|0 \, dots.h \, n_i \, dots.h⟩\
  & = \|n_1 \, dots.h \, n_i \, dots.h⟩ $
@@ -1913,9 +1911,9 @@ $\( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, M' \) = 0$ となる.
 #lemma("Q21-94(vii)(viii)(ix)(x)(xi)(xii)(xiv)(xv)(xvi)")[
 Hamiltonian 中の 1 粒子演算子は次の固有値を持つ.
 $ hat(H)_(upright(o n e)) \| 1 \, dots.h \, N \) & = sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] \| 1 \, dots.h \, N \) $
-]
+]<Hamiltonian-one-eigen>
 
-] <Hamiltonian-one-eigen>
+]
 #proof[
 1 粒子演算子 $hat(H)_(upright(o n e))$
 を固有状態に適用すると
@@ -1978,7 +1976,7 @@ $ i planck frac(upright(d), upright(d) t) \( 1 \, dots.h \, N \|Psi \( t \)⟩ &
  & = i planck frac(partial, partial t) Psi \( 1 \, dots.h \, N \; t \)\
 \( 1 \, dots.h \, N \| hat(H) \|Psi \( t \)⟩ & = sum_(M = 0)^oo sum_(1' \, dots.h \, M') \( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, M' \) Psi \( 1' \, dots.h \, M' \; t \)\
  & = sum_(1' \, dots.h \, N') \( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, N' \) Psi \( 1' \, dots.h \, N' \; t \) $
-ここで補題 #link(<Hamiltonian-one-eigen>)[Hamiltonian-one-eigen], 補題 を用いることで Hamiltonian
+ここで @Hamiltonian-one-eigen を用いることで Hamiltonian
 の行列要素を計算できる.
 $ \( 1 \, dots.h \, N \| hat(H) \| 1' \, dots.h \, N' \) & = \( 1 \, dots.h \, N \| hat(H)_(upright(o n e)) \| 1' \, dots.h \, N' \) + \( 1 \, dots.h \, N \| hat(H)_(upright(t w o)) \| 1' \, dots.h \, N' \)\
  & = sum_(I' = 1')^(N') [- frac(planck^2, 2 m) Delta_(I') + V \( I' \)] \( 1 \, dots.h \, N \| 1' \, dots.h \, N' \)\

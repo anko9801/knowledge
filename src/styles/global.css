@@ -198,26 +198,49 @@ blockquote {
 
 /* --- 定義・定理・証明 -------------------------------------------------------
  * 構造と番号は src/typst/theorem.typ が持つ。ここは見た目だけを足す。
- * 通し番号なので、種類の違いは見出し行の色だけで示せば足りる。 */
+ *
+ * 数学書の組み方に寄せる。見出しは本文の行に走り込ませ、主張は実線・証明は
+ * 点線の左罫で区別する。通し番号なので、種類の違いは罫と見出しの色で示す。
+ */
 
 .statement {
-  margin: 1.9rem 0;
-  padding-left: 1.1rem;
-  border-left: 2px solid var(--rule);
+  margin: 2rem 0;
+  padding-left: 1.15rem;
+  border-left: 2px solid var(--accent);
 }
 
+/* 見出しを本文と同じ行に流し込む。縦の間隔を食わず、書籍の組みに近くなる。 */
 .statement-head {
-  margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
+  display: inline;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.statement-head::after {
+  content: '．';
+}
+
+.statement-head + p {
+  display: inline;
+}
+
+/* 公理と定義は「約束事」なので、罫を控えて見出しに色を持たせる。 */
+.statement-axiom,
+.statement-definition {
+  border-left-color: var(--rule);
+}
+
+.statement-axiom .statement-head,
+.statement-definition .statement-head {
   color: var(--accent);
 }
 
-/* 公理と定義は「約束事」なので、枠を本文寄りに寄せて主張と区別する。 */
-.statement-axiom,
-.statement-definition {
-  border-left-style: double;
-  border-left-width: 4px;
+/* 例と注意は本文の補足なので、いちばん弱い罫にする。 */
+.statement-example,
+.statement-remark {
+  border-left: 1px dotted var(--rule);
 }
 
 .statement-example .statement-head,
@@ -225,25 +248,47 @@ blockquote {
   color: var(--muted);
 }
 
+/* 証明は主張より弱い罫にして、主張 → 証明の流れが見えるようにする。 */
+.proof {
+  margin: 1.8rem 0 2.2rem;
+  padding-left: 1.15rem;
+  border-left: 1px dotted var(--rule);
+}
+
+/* Proof. はラテン文字のイタリック。英文数学書の作法で、和文と混ぜても締まる。 */
+.proof-head {
+  display: inline;
+  margin-right: 0.6em;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.proof-head + p {
+  display: inline;
+}
+
 .statement > :last-child,
 .proof > :last-child {
   margin-bottom: 0;
 }
 
-.proof {
-  margin: 1.6rem 0;
-}
-
-.proof-head {
-  margin-right: 0.35em;
-  font-style: italic;
-  color: var(--muted);
-}
-
-/* 証明終わりの □ は行末に逃がす。最後が数式やリストでも右端に付く。 */
+/* 証明終わりの □ は最終行の右端へ。
+ *
+ * Typst の出す形は 2 通りある。証明が本文で終わるときは最終段落の中に
+ * インラインで入り、別行立て数式で終わるときは単独の段落になる。
+ * float なら両方とも右端に寄るので、display を変えずに浮かせる。 */
 .proof-end {
   float: right;
-  color: var(--muted);
+  line-height: inherit;
+  color: var(--ink);
+}
+
+/* 浮かせた □ が次の要素に回り込まないように閉じる。 */
+.proof::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
 pre {

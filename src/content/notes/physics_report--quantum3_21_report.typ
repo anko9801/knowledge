@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "量子力学 III 複数の同一粒子からなる量子系：発展編 (第二量子化)",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("レポート",),
   summary: "physics_report/quantum3_21_report.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 <table:data_type>
 
@@ -237,7 +241,7 @@ $ \|Psi⟩ & = hat(E) \|Psi⟩ arrow.l.r.double c_1 \|alpha⟩ \|beta⟩ + c_2 \
 $ \|Psi⟩ & = 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ plus.minus \|beta⟩ \|alpha⟩ \) . $
 これより粒子状態を区別できないならば係数に対して条件を足さなければならないことが分かる.
 
-] #label("Q21-1(i)")
+] <Q21-1-i>
 #block[
 #strong[命題 4] (Q21-1(ii)). \
 
@@ -322,7 +326,7 @@ $ chevron.l hat(O) chevron.r & = ⟨Psi\| hat(O) \|Psi⟩\
  & = \( c_S^(\*) ⟨Psi_S\| + c_A^(\*) ⟨Psi_A\| \) hat(O) \( c_S \|Psi_S⟩ + c_A \|Psi_A⟩ \)\
  & = \| c_S \|^2 ⟨Psi_S\| hat(O) \|Psi_S⟩ + \| c_A \|^2 ⟨Psi_A\| hat(O) \|Psi_A⟩ + c_S^(\*) c_A ⟨Psi_S\| hat(O) \|Psi_A⟩ + c_A^(\*) c_S ⟨Psi_A\| hat(O) \|Psi_S⟩\
  & = \| c_S \|^2 ⟨Psi_S\| hat(O) \|Psi_S⟩ + \| c_A \|^2 ⟨Psi_A\| hat(O) \|Psi_A⟩ . $<O-expected>
-ただし式 #link(<O-expected>)[O-expected] において次のような計算をした.
+ただし式 @O-expected において次のような計算をした.
 $ ⟨Psi_S\| hat(O) \|Psi_A⟩ & = ⟨Psi_S\| hat(E) hat(O) hat(E) \|Psi_A⟩ = - ⟨Psi_S\| hat(O) \|Psi_A⟩ = 0\
 ⟨Psi_A\| hat(O) \|Psi_S⟩ & = ⟨Psi_A\| hat(E) hat(O) hat(E) \|Psi_S⟩ = - ⟨Psi_A\| hat(O) \|Psi_S⟩ = 0 . $
 
@@ -341,7 +345,7 @@ $ ⟨Psi_S\| hat(O) \|Psi_S⟩ & = 1 / 2 \( ⟨alpha\| ⟨beta\| + ⟨beta\| ⟨
 交換演算子が Hilbert
 空間の代数構造において既約元であることは直感的に成り立つので,
 区別できない情報が観測量の演算子に吸収され,
-粒子状態の粒子を区別できないとは示せない. 問題 #link(label("Q21-1(i)"))[Q21-1(i)]
+粒子状態の粒子を区別できないとは示せない. 問題 #link(<Q21-1-i>)[Q21-1-i]
 のようには係数は決まらず, 理論の予言能力に問題はない.
 
 ]
@@ -454,7 +458,7 @@ $i_1 mapsto i_2 mapsto dots.h.c mapsto i_m mapsto i_1$ と移し,
 ]
 ]
 #block[
-#strong[補題 17] (). \
+#strong[補題 17]. \
 
 任意の置換は一意の巡回置換の積で表現できる.
 
@@ -694,7 +698,7 @@ $hat(P) \( sigma \) \|Psi⟩ = hat(P) \( tau \) \|Psi⟩$ となる. よって
 $hat(cal(A))^(\( N \)) \|psi_1⟩ dots.h.c \|psi_N⟩ = 0$ となる.
 
 #block[
-#strong[補題 31] (). \
+#strong[補題 31]. \
 
 Hilbert 空間に演算子 $hat(cal(S))^(\( N \)) \, hat(cal(A))^(\( N \))$
 を作用させるとそれぞれの部分空間となる.
@@ -982,7 +986,7 @@ $ n_i^(\( s \)) & in bb(Z)_(gt.eq 0) \, #h(2em) sum_(i in I) n_i^(\( s \)) = N\
 n_i^(\( a \)) & in { 0 \, 1 } \, quad sum_(i in I) n_i^(\( a \)) = N . $
 
 #block[
-#strong[命題 42] (). \
+#strong[命題 42]. \
 
 Bose, Fermi 粒子系の粒子数表示は well-defined である.
 
@@ -997,7 +1001,7 @@ $  & \|\( n_i \)_(i in I)⟩_S #h(2em) (n_i in bb(Z)_(gt.eq 0) \, sum_(i in I) n
 よって同値な表現であることがわかる.
 
 #block[
-#strong[定理 43] (). \
+#strong[定理 43]. \
 
 Bose, Fermi 粒子系の粒子数表示
 ${ \|\( n_i \)_(i in I)⟩_S divides n_i in bb(Z)_(lt.eq 0) } \, { \|\( n_i \)_(i in I)⟩_A divides n_i in { 0 \, 1 } }$
@@ -1034,7 +1038,7 @@ sum_(n_i in { 0 \, 1 }) \|\( n_i \)_(i in I)⟩_A ⟨\( n_(i') \)_(i in I)\|_A &
 <bose-粒子系の消滅演算子-hata_i-と生成演算子-hata_idagger>
 #block[
 #block[
-#strong[定義 44] (). \
+#strong[定義 44]. \
 
 Bose 粒子系の消滅演算子 $hat(a)_i$ と生成演算子 $hat(a)_i^dagger$
 を次のように定義する.
@@ -1134,7 +1138,7 @@ hat(N) \|\( n_i \)_(i in I)⟩ & = sum_(j in I) hat(n)_j \|\( n_i \)_(i in I)⟩
 
 #block[
 #block[
-#strong[定義 50] (). \
+#strong[定義 50]. \
 
 真空状態 $\|upright(v a c)⟩$ を次のように定義する.
 $ cases(delim: "{", hat(a)_i \|upright(v a c)⟩ = 0 & \( forall i in I \), ⟨upright(v a c) mid(bar.v) upright(v a c)⟩ = 1) $
@@ -1189,7 +1193,7 @@ hat(a)_i^dagger \|dots.h \, n_i \, dots.h⟩ & = sqrt(n_i + 1) \|dots.h \, n_i +
 <fermi-粒子系の消滅演算子-hatc_i-と生成演算子-hatc_idagger>
 #block[
 #block[
-#strong[定義 54] (). \
+#strong[定義 54]. \
 
 Fermi 粒子系の消滅演算子 $hat(c)_i$ と生成演算子 $hat(c)_i^dagger$
 を次のように定義する.
@@ -1314,7 +1318,7 @@ hat(N) \|\( n_i \)_(i in I)⟩_A & = sum_(i in I) hat(n)_i \|\( n_i \)_(i in I)�
 
 #block[
 #block[
-#strong[定義 60] (). \
+#strong[定義 60]. \
 
 真空状態 $\|upright(v a c)⟩$ を次のように定義する.
 $ cases(delim: "{", hat(c)_i \|upright(v a c)⟩ = 0 & \( i in I \), ⟨upright(v a c) mid(bar.v) upright(v a c)⟩ = 1) $
@@ -1405,7 +1409,7 @@ $ \|i_1 dots.h.c i_N⟩ = \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩ $
 ]
 ]
 #block[
-#strong[例 65] (). \
+#strong[例 65]. \
 
 例えば Hamiltonian 演算子 $hat(H)$ は 1 粒子演算子の粒子に関する和
 $hat(h)^(upright(t o t))$ と2 粒子演算子の粒子対に関する和
@@ -1432,7 +1436,7 @@ Bose, Fermi 粒子系や 1, 2 粒子演算子を分ける理由がよく分か�
 2 粒子演算子において $alpha \, beta$ の定義がよろしくないです.
 
 #block[
-#strong[定理 66] (). \
+#strong[定理 66]. \
 
 $n$ 粒子演算子について次のような性質が認められる.
 $ hat(f)^(upright(t o t)) & = hat(P) \( sigma \) hat(f)^(upright(t o t)) hat(P)^dagger \( sigma \)\
@@ -1741,7 +1745,7 @@ $  & quad sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dot
  & = \| \( bold(r)_(mu') \, s_(z mu') \)_(mu in X') \) $
 
 #block[
-#strong[定理 79] (). \
+#strong[定理 79]. \
 
 $n$ 粒子演算子の和 $hat(f)^(upright(t o t))$
 は場の演算子によって次のように表現できる.
@@ -1999,7 +2003,7 @@ $ i planck frac(partial, partial t) hat(phi.alt) \( bold(r)_0 \, s_(z 0) \; t \)
 <第二量子化---場の正準量子化の手続き>
 #block[
 #block[
-#strong[定義 91] (). \
+#strong[定義 91]. \
 
 古典的な Schrödinger の場 $phi.alt \( bold(r) \, s_z \; t \)$
 について次の Schrödinger 方程式が成り立つとする.

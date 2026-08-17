@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "光学",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/optics.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 光学 (Optics)
 <光学-optics>
@@ -354,7 +358,7 @@ $ T \( theta \) = R \( theta \) T R \( - theta \) $
 
 ]
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 直線偏光子は同じ角度で何度通しても同じ結果となる。 また次のように行列
 $T^(upright("直線偏光子")) \( theta \)$
@@ -368,7 +372,7 @@ $ T^(upright("直線偏光子")) \( theta \) & = R \( theta \) T^(upright("直�
  & = T^(upright("直線偏光子")) \( theta \) $
 
 #block[
-#strong[定理 2] (). \
+#strong[定理 2]. \
 
 一般の偏光状態 $bold(J) = \[ cal(E)_1 \, cal(E)_2 \]^t in bb(C)^2$
 の光を直線偏光子 $T^(upright("直線偏光子")) \( theta \)$
@@ -394,7 +398,7 @@ $ cos phi = s_1 / sqrt(s_1^2 + s_2^2) \, sin phi = s_2 / sqrt(s_1^2 + s_2^2) $
 に傾けた直線偏光子に透過して強度を測定することによって決定できる。」
 
 #block[
-#strong[定理 3] (). \
+#strong[定理 3]. \
 
 $ s_0 & prop \( upright("全強度") \)\
 s_1 & prop \( upright("水平偏光成分の強度") \) - \( upright("鉛直偏光成分の強度") \)\
@@ -486,7 +490,7 @@ $ cal(bold(E)) \( bold(r) \, t \) & = integral_(\| bold(k)' - bold(k) \| lt.eq D
  $<EC-fourier> ここでコヒーレンス時間 $t_c = Delta nu^(- 1)$
 より十分短い時間間隔 $Delta t lt.double t_c$ のとき
 $\( omega \( bold(k) + delta bold(k) \) - omega \( bold(k) \) \) Delta t tilde.op Delta nu t_c lt.double 1$
-となるので式 #link(<EC-fourier>)[EC-fourier] は単色光と見なすことができる. \
+となるので式 @EC-fourier は単色光と見なすことができる. \
 #strong[Q 21B-49.]
 コヒーレンス時間を超える時間スケールではコヒーレンス時間 $t_c$
 程度の時間間毎ごとに定まる Stokes
@@ -506,7 +510,7 @@ $ s_0^2 & = (chevron.l a_1^2 chevron.r + chevron.l a_2^2 chevron.r)^2\
  & = s_1^2 + 4 chevron.l a_1 a_2 chevron.r^2 chevron.l cos^2 delta + sin^2 delta chevron.r\
  & gt.eq s_1^2 + \( 2 chevron.l a_1 a_2 cos delta chevron.r \)^2 + \( 2 chevron.l a_1 a_2 sin delta chevron.r \)^2\
  & = s_1^2 + s_2^2 + s_3^2 $ このような不等式となるので新しいパラメータ
-$p in \[ 0 \, 1 \]$ を用いて式 #link(<s1-def>)[s1-def] #link(<s2-def>)[s2-def] #link(<s3-def>)[s3-def] を修正する.
+$p in \[ 0 \, 1 \]$ を用いて式 @s1-def   を修正する.
 $ s_0 & = chevron.l a_1^2 chevron.r + chevron.l a_2^2 chevron.r\
 s_1 & = p s_0 cos 2 psi cos 2 chi\
 s_2 & = p s_0 sin 2 psi cos 2 chi\
@@ -536,7 +540,7 @@ of polarization) と呼ばれる.
 == 電磁波の角運動量
 <電磁波の角運動量>
 #block[
-#strong[定理 4] (). \
+#strong[定理 4]. \
 
 電磁波の角運動量 $bold(L)$ はスピン角運動量 $bold(L)_(s p i n)$
 と軌道角運動量 $bold(L)_(o r b i t)$ の和で表される。
@@ -550,7 +554,7 @@ $ bold(L) & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) time
  & = bold(L)_(s p i n) + bold(L)_(o r b i t) $
 
 #block[
-#strong[定理 5] (). \
+#strong[定理 5]. \
 
 スピン角運動量 $bold(L)_(s p i n)$ の期待値は次のように表される。
 $ chevron.l bold(L)_(s p i n) chevron.r & = frac(1, 2 pi c) integral_(bb(R)^3) frac(upright(d) bold(k), \( 2 pi \)^3) bold(k) (\| a_(+) \( bold(k) \) \|^2 - \| a_(-) \( bold(k) \) \|^2) $
@@ -698,29 +702,26 @@ $ bold(L)_(o r b i t) & = frac(1, 4 pi c) integral_V d i f f \( bold(r) \) E_j \
   $bold(L)_(o r b i t)$ はスピン部分 $bold(L)_(s p i n)$
   に比べて無視できるようになって、電磁波の全角運動量
   $bold(L) = bold(L)_(s p i n) + bold(L)_(o r b i t)$ はスピン部分
-  $bold(L)_(s p i n)$ だけからなるようになる: \$\$\\begin{aligned}
-            \\bm{L}\\to \\bm{L}\_{spin} = \\pm \\frac{1}{4\\pi\\omega}\\left(\\int\_V\\dl V(\\bm{r})|f|^2\\right)\\bm{e}\_z \\label{L-limit}
-          
-  \\end{aligned}\$\$
+  $bold(L)_(s p i n)$ だけからなるようになる:
+  $ bold(L) arrow.r bold(L)_(s p i n) = plus.minus frac(1, 4 pi omega) (integral_V upright(d) V \( bold(r) \) \| f \|^2) bold(e)_z $<L-limit>
 
 + この結果を見る限り、「平面波の角運動量ベクトルの方向は、偏光状態が左円偏光ならば進行方向に平行であり、偏光状態が右円偏光ならば進行方向に反平行である。」と言える。
 
 #strong[Q 21B-63.] CGSガウス単位系でのエネルギー密度の総和を考えると
 $ U = frac(1, 8 pi) integral_V d i f f \( bold(r) \) (lr(|bold(E)|)^2 + lr(|bold(B)|)^2) $
-式 #link(<def-ET-D>)[def-ET-D], #link(<B-tilde-E>)[B-tilde-E], #link(<def-g>)[def-g] より
+式 @def-ET-D, @B-tilde-E, @def-g より
 $ lr(|tilde(bold(E))|)^2 & = \| bold(E) \|^2 + \| bold(B) \|^2\
  & = 2 \| f \|^2 + \| g \|^2\
  & = 2 \| f \|^2 + 1 / k^2 lr(|frac(upright(d) f, upright(d) rho)|)^2 $
-となるので \$\$\\begin{aligned}
-  U         & = U\_{spin} + U\_{orbit}                                   \\\\
-  U\_{spin}  & = \\frac{1}{4\\pi}\\int\_V\\dl V(\\bm{r})|f|^2                    \\\\
-  U\_{orbit} & = \\frac{1}{8k^2\\pi}\\int\_V\\dl V(\\bm{r})\\left\\lvert \\frac{\\mathrm{d} f}{\\mathrm{d} \\rho}\\right\\rvert ^2 \\\\
-\\end{aligned}\$\$ 次の式より電磁場の広がりを十分大きくすると
-$U_(s p i n)$ が主要項となる.
+となるので $ U & = U_(s p i n) + U_(o r b i t)\
+U_(s p i n) & = frac(1, 4 pi) integral_V upright(d) V \( bold(r) \) \| f \|^2\
+U_(o r b i t) & = frac(1, 8 k^2 pi) integral_V upright(d) V \( bold(r) \) lr(|frac(upright(d) f, upright(d) rho)|)^2\
+ $ 次の式より電磁場の広がりを十分大きくすると $U_(s p i n)$
+が主要項となる.
 $ U_(o r b i t) / U_(s p i n) & tilde.op (frac(1, k L))^2\
 U & = U_(s p i n) #h(2em) (frac(1, k L) arrow.r 0) $<U-limit>
 
-#strong[Q 21B-64.] 式 #link(<L-limit>)[L-limit], #link(<U-limit>)[U-limit] より次の式が導かれる.
+#strong[Q 21B-64.] 式 @L-limit, @U-limit より次の式が導かれる.
 $ L_z = plus.minus 1 / omega U $
 
 #strong[Q 21B-65.] 電磁波を担う実体が光子 (photon) であることを認めると,
@@ -784,9 +785,3 @@ $ L_r \( x \, bold(omega)_r \) & = s L_i \( x \, bold(omega)_i \) $
 ]
 #block[
 ]
-
-
-// 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)<s2-def>
-#metadata(none)<s3-def>
-#metadata(none)<L-limit>

@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "フーリエ解析",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/fourier_analysis.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = フーリエ解析
 <フーリエ解析>
@@ -95,7 +99,7 @@ c_n & := frac(1, 2 L) integral_(- L)^L f \( x \) e^(- i frac(n pi, L) x) upright
 
 ]
 #block[
-#strong[定理 3] (). \
+#strong[定理 3]. \
 
 $ lim_(n arrow.r oo) a_n = 0 $
 
@@ -120,7 +124,7 @@ $ s \( x \) = sum_(n = 1)^oo f_n \( x \) $
 
 
 #block[
-#strong[定理 5] (). \
+#strong[定理 5]. \
 
 $f \( x \) = x^n$ を $\[ - 1 \, 1 \]$ で Fourier 変換を行うことで $zeta$
 関数の値がわかる

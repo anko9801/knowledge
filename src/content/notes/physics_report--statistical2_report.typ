@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "統計力学 II",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("レポート",),
   summary: "physics_report/statistical2_report.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 熱力学の復習、古典・量子統計力学の復習、グランドカノニカル分布の基礎
 <熱力学の復習古典量子統計力学の復習グランドカノニカル分布の基礎>

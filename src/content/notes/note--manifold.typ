@@ -2,24 +2,25 @@
 
 #show: post.with(
   title: "多様体",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/manifold.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = ユークリッド空間
 <ユークリッド空間>
 ユークリッド空間 $bb(R)^n$
 はすべての多様体の原型となるもの。すべての多様体は局所的に $bb(R)^n$
-のように見える。 実ベクトル空間 $V \, W$ \$\$\\begin{aligned}
-  \\mathop{\\mathrm{Hom}}(V, W) \\ni f: V \\to W         \\\\
-  \\alpha^i: \\sum v^ie\_i \\mapsto v^i \\\\
-  \\begin{array}{rccc}
-    f\\colon & A                     & \\longrightarrow & B                     \\\\
-            & \$\\in\$ &                 & \$\\in\$ \\\\
-            & x                     & \\longmapsto     & f(x)
-  \\end{array}
-\\end{aligned}\$\$
+のように見える。 実ベクトル空間 $V \, W$
+$ "Hom" \( V \, W \) in.rev f : V arrow.r W\
+alpha^i : sum v^i e_i mapsto v^i\
+f : & A & arrow.r & B\
+ & in &  & in\
+ & x & mapsto & f \( x \) $
 
 座標関数 $alpha^i$
 

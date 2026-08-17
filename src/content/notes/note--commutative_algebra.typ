@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "可換環論",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/commutative_algebra.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 環論
 <環論>
@@ -235,7 +239,7 @@ $frak(m) subset.neq frak(a) subset.neq \( 1 \)$ を満たすいかなる $A$
 
 ]
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 $ frak(p) "が素イデアルである" arrow.l.r.double A \/ frak(p) "は整域である"\
 frak(m) "が極大イデアルである" arrow.l.r.double A \/ frak(m) "は体である" $

@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "高温超伝導",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("レポート",),
   summary: "physics_report/superconductivity.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 実験目的
 <実験目的>
@@ -192,13 +196,13 @@ v / V & = frac(upright(I m) \( V_(1') - V_2 \), omega C_0 V_01 M_01) $
 <磁気浮上効果の観察-1>
 今回作製した 2 つの試料を用いて磁気浮上効果を観察した。
 
-まず図 #link(<fig:mag1>)[fig:mag1] のように磁石を配置したときに磁気浮上効果が確認できた。
+まず図 @fig:mag1 のように磁石を配置したときに磁気浮上効果が確認できた。
 磁気浮上効果により浮上した高さはどちらも 6 mm 程度で持続時間はそれぞれ 7
 s, 13 s であった。
 またアルミホイールを巻いて試料の温度を上がらないようにした状態のとき、高さは変わらず持続時間がそれぞれ
 16 s, 25 s と倍程度長くなった。
 
-次に図 #link(<fig:mag2>)[fig:mag2]
+次に図 @fig:mag2
 のようなレール状に配置して冷却した試料を置いて力を加えたとき試料は滑走した。
 曲がるときに試料は中心に対して向きが変わらないように曲がった。
 
@@ -232,7 +236,7 @@ s, 13 s であった。
 
 == X 線回折による物質の同定
 <x-線回折による物質の同定-1>
-X 線回折装置を用いて回折による角度に対する強度は図 #link(<fig:xray>)[fig:xray]
+X 線回折装置を用いて回折による角度に対する強度は図 @fig:xray
 のようになる。
 
 #figure(image("/public/notes/physics_report/assets/YBCO_xray.jpg", width: 10cm),
@@ -292,7 +296,7 @@ X 線回折装置を用いて回折による角度に対する強度は図 #link
 ] <table:miller>
 == 電気抵抗の測定
 <電気抵抗の測定-1>
-熱電対の出力と電圧の関係は図 #link(<fig:resistance>)[fig:resistance] のようになった。
+熱電対の出力と電圧の関係は図 @fig:resistance のようになった。
 
 #figure(image("/public/notes/physics_report/assets/YBCO_resistance.jpg", width: 10cm),
   caption: [
@@ -303,7 +307,7 @@ X 線回折装置を用いて回折による角度に対する強度は図 #link
 
 == 交流帯磁率の測定
 <交流帯磁率の測定-1>
-熱電対の出力と電圧の関係は図 #link(<fig:magnetic>)[fig:magnetic] のようになった。
+熱電対の出力と電圧の関係は図 @fig:magnetic のようになった。
 
 #figure(image("/public/notes/physics_report/assets/YBCO_magnetic.jpg", width: 10cm),
   caption: [
@@ -316,7 +320,7 @@ X 線回折装置を用いて回折による角度に対する強度は図 #link
 <考察>
 == 磁気浮上
 <磁気浮上>
-図 #link(<fig:mag1>)[fig:mag1], 図 #link(<fig:mag2>)[fig:mag2] のような Maxwell
+図 @fig:mag1, 図 @fig:mag2 のような Maxwell
 の応力が働くことにより試料は浮上している。ピン止め効果については実験結果でまとめたように磁束の向きや場所が固定されることで反発や回転などを引き起こした。
 
 == X 線回折
@@ -344,7 +348,7 @@ $- 0.012$ となった。
 幅が広いのは完全に超伝導になるまで完全反磁性を示さないことと \_2\_3\_7
 が酸素欠損の量に依って転移温度が変わる為、均一でなくランダムに酸素欠損していると標準分布に従い、グラフは曲線のようになる。
 
-グラフとしては図 #link(<fig:graph>)[fig:graph] のようになった。
+グラフとしては図 @fig:graph のようになった。
 
 #figure(image("/public/notes/physics_report/assets/YBCO_graph.jpg", width: 10cm),
   caption: [

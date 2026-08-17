@@ -154,6 +154,16 @@ const stripQedResidue = (source) =>
     // $ ごと消すと数式の対応が崩れる。
     .replace(/0?◻/g, '')
 
+/**
+ * 定理などに題名が付いていないとき、pandoc は空の括弧を残す。
+ *
+ *   #strong[定理 2] ().   ->   #strong[定理 2].
+ *
+ * 括弧だけが浮いて壊れて見えるので畳む。
+ */
+const dropEmptyTitles = (source) =>
+  source.replace(/(#strong\[[^\]]*\])\s*\(\)\s*(\.?)/g, '$1$2')
+
 /** 空セルに対して pandoc が置く #none。mat の中では構文エラーになる。 */
 const stripStrayNone = (source) => source.replace(/;\s*#none\s*\)/g, ')')
 
@@ -261,17 +271,75 @@ export const dedupeLabels = (source) => {
 }
 
 /**
- * #ref は図表や数式しか参照できない。定義が別種のブロックだと
- * 「cannot reference block」で止まるので、汎用の #link に寄せる。
+ * 参照の書き方を、参照先の種類に応じて決める。
+ *
+ * Typst の @label は数式・図表・見出しにしか使えない。pandoc は定理などを
+ * #block[...] に落とすので、そこへの @label は「cannot reference block」で
+ * 止まる。一方で数式への参照は @label のままにしないと採番が出ず、
+ * ラベル名がそのまま本文に出てしまう（tilde-E のように読めない文字列になる）。
+ *
+ * そこでラベルの直前を見て、参照可能なものは @ のまま、それ以外は #link、
+ * 定義が無いものは素のテキストにする。
  */
-const preferLinks = (source) =>
-  source
-    .replace(/#ref\(label\("([^"]+)"\)\)/g, (_, name) => `#link(label(${JSON.stringify(name)}))[${name}]`)
-    .replace(/#ref\(<([^<>]+)>\)/g, (_, name) => `#link(<${name}>)[${name}]`)
-    .replace(
-      /(^|[^\w@])@([A-Za-z][\w:.-]*)/g,
-      (_, lead, name) => `${lead}#link(<${name}>)[${name}]`,
-    )
+const referenceableLabels = (source) => {
+  const labels = new Set()
+
+  // $ ... $<name> は数式。= 見出し の直後の <name> は見出し。
+  for (const match of source.matchAll(/\$\s*<([^<>\s]+)>/g)) labels.add(match[1])
+  for (const match of source.matchAll(/^=+ .*\n<([^<>\s]+)>/gm)) labels.add(match[1])
+  for (const match of source.matchAll(/#figure\([\s\S]*?\)\s*<([^<>\s]+)>/g)) {
+    labels.add(match[1])
+  }
+
+  return labels
+}
+
+const preferLinks = (source) => {
+  const defined = definedLabels(source)
+  const referenceable = referenceableLabels(source)
+
+  const render = (name, body) => {
+    if (referenceable.has(name)) return `@${name}`
+    if (defined.has(name)) return `#link(<${name}>)[${body ?? name}]`
+    // 参照先が失われたものは、ラベル名を晒さず本文だけ残す。
+    return body ?? ''
+  }
+
+  return source
+    .replace(/#ref\(label\("([^"]+)"\)\)/g, (_, name) => render(name))
+    .replace(/#ref\(<([^<>]+)>\)/g, (_, name) => render(name))
+    .replace(/#link\(label\("([^"]+)"\)\)\[([^\]]*)\]/g, (_, name, body) => render(name, body))
+    .replace(/(^|[^\w@])@([A-Za-z][\w:.-]*)/g, (_, lead, name) => `${lead}${render(name)}`)
+}
+
+/**
+ * pandoc が変換を諦めて残した生の TeX を、読める体裁に包む。
+ *
+ * 残るのは可換図式や Feynman 図で、数式ではないため自動変換の手段がない。
+ * 素のまま出すと $$\\begin{tikzcd} が本文に露出するので、
+ * 「変換できなかった」と明示したうえで元の LaTeX を併記する。
+ */
+export const wrapUnconvertedTex = (source) => {
+  let wrapped = 0
+
+  const text = source.replace(/\\\$\\\$([\s\S]*?)\\\$\\\$/g, (whole, body) => {
+    wrapped += 1
+
+    const tex = body
+      .replace(/\\([\\$&%#_{}~^[\]"])/g, '$1')
+      .replace(/\r/g, '')
+      .trim()
+
+    return [
+      '#block(inset: (left: 0.9em), stroke: (left: 2pt + luma(80%)))[',
+      '  #text(size: 0.85em, fill: luma(45%))[図は変換できていません（元の LaTeX）]',
+      `  #raw(${JSON.stringify(tex)}, lang: "latex", block: true)`,
+      ']',
+    ].join('\n')
+  })
+
+  return { text, wrapped }
+}
 
 export const repairTypst = (source, { group, available }) => {
   const symbols = SYMBOL_FIXUPS.reduce(
@@ -282,15 +350,19 @@ export const repairTypst = (source, { group, available }) => {
     (text, [pattern, to]) => text.replace(pattern, to),
     symbols,
   )
-  const cleaned = stripQedResidue(escapeArgumentSemicolons(stripStrayNone(delimiters)))
+  const cleaned = dropEmptyTitles(
+    stripQedResidue(escapeArgumentSemicolons(stripStrayNone(delimiters))),
+  )
   const japanese = groupJapaneseInMath(cleaned)
   const images = rewriteImages(japanese.text, group, available)
   const deduped = dedupeLabels(images.text)
   const linked = preferLinks(deduped.text)
   const anchored = anchorDanglingLabels(linked)
+  const unconverted = wrapUnconvertedTex(anchored.text)
 
   return {
-    text: anchored.text,
+    text: unconverted.text,
+    unconverted: unconverted.wrapped,
     anchored: anchored.anchored,
     deduped: deduped.removed,
     japanese: japanese.grouped,

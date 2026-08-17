@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "統計力学",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/statistics.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 統計力学の基礎
 <統計力学の基礎>
@@ -73,7 +77,7 @@ $W_X \( E_X \)$、エントロピーを $S_X \( E_X \)$ と書くことにする
 状態数で計算すると指数が出がちなのでエントロピーで計算すると簡単になる。
 
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 $N$ 次元の調和振動子で $E = M planck omega$
 とおくと状態数とエントロピーは次のように書ける。
@@ -96,7 +100,7 @@ $ S \( E \) & = k_B log W \( E \)\
  & = k_B N ((1 + M / N) log (1 + M / N) - M / N log M / N) $ 
 
 #block[
-#strong[定理 2] (). \
+#strong[定理 2]. \
 
 熱平衡の条件は系 $A$ の温度 $T_A$ と系 $B$ の温度 $T_B$ が一致すること。
 
@@ -194,7 +198,7 @@ G = F + p V & #h(2em) upright(d) G = - S upright(d) T + V upright(d) p $
 $F \( T \, V \)$ は重宝される。
 
 #block[
-#strong[定理 4] (). \
+#strong[定理 4]. \
 
 定義より次の関係式を満たす。
 $ 3 T & = (frac(partial E, partial S))_V & #h(2em) - p & = (frac(partial E, partial V))_S\
@@ -247,7 +251,7 @@ $ p_i & = frac(e^(- beta E_i), sum_i e^(- beta E_i)) #h(2em) (beta = frac(1, k_B
 
 ]
 #block[
-#strong[定理 7] (). \
+#strong[定理 7]. \
 
 $ Z & = sum_i e^(- beta E_i)\
 F & = - k_B T ln Z\
@@ -257,7 +261,7 @@ C & = frac(partial U, partial T) = - k_B beta^2 frac(partial U, partial beta) = 
 
 ]
 #block[
-#strong[定理 8] (). \
+#strong[定理 8]. \
 
 $N$ 個の独立な部分系からなる全体系の熱力学量は次のようになる。
 $ Z \( beta \) = z \( beta \)^N \, #h(2em) F = N f \, #h(2em) S = N s \, #h(2em) U = N u \, #h(2em) C = c $
@@ -283,7 +287,7 @@ e^x & approx 1 + x $
 
 ]
 #block[
-#strong[定理 9] (). \
+#strong[定理 9]. \
 
 二準位系における熱力学的量は次のようなグラフとなる。
 
@@ -345,7 +349,7 @@ arrow.l.r.double & frac(cosh x_0 - x_0 sinh x_0, cosh^2 x_0) = 0\
 arrow.l.r.double & x_0 tanh x_0 = 1\
 arrow.l.r.double & x_0 = 1.199678640257734 dots.h $
 
-ただしプログラム #link(<newton>)[newton] を用いて $x gt.eq 0$ の範囲で
+ただしプログラム  を用いて $x gt.eq 0$ の範囲で
 $x_0 tanh x_0 = 1$ は $x_0 = 1.199678640257734 dots.h$
 のとき満たすことが分かる。これより比熱 $c$ は次のように定義される $T_0$
 のときに極大を取る。
@@ -374,7 +378,7 @@ $ E_n = (n + 1 / 2) planck omega #h(2em) \( n = 0 \, 1 \, 2 \, dots.h \) $
 低温$beta planck omega gt.double 1$
 
 #block[
-#strong[定理 10] (). \
+#strong[定理 10]. \
 
 調和振動子系のグラフ
 
@@ -502,7 +506,7 @@ $ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(
 この $omega_D$ を Debye の角振動数という.
 
 #block[
-#strong[定理 11] (). \
+#strong[定理 11]. \
 
 独立な調和振動子の角振動数に関する個数分布関数 $g \( omega \)$
 について幾何学的解釈で近似できる.
@@ -522,7 +526,7 @@ $ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 o
 Debye 角振動数 $omega_D$ を持つことになる.
 
 #block[
-#strong[定理 12] (). \
+#strong[定理 12]. \
 
 Debye 模型における内部エネルギーの表式は次のようになる.
 $ U & = U_0 + 9 N^3 planck omega_D I \( beta planck omega_D \) #h(2em) (U_0 = 3 / 8 \( 3 N^3 \) planck omega_D)\
@@ -548,7 +552,7 @@ $ C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \)\
 
 
 #block[
-#strong[定理 13] (). \
+#strong[定理 13]. \
 
 高温と低温の漸近領域における積分 $I \( b \)$ は次のように評価できる.
 $ I \( b \) = cases(delim: "{", frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 + 1 / 272160 b^5 - dots.h.c & \( b lt.double 1 \), pi^4 / 15 1 / b^4 + cal(O) \( b^(- 1) e^(- b) \) & \( b gt.double 1 \)) $
@@ -597,7 +601,7 @@ $ I \( b \) & = 1 / b^4 (pi^4 / 15 - sum_(n = 1)^oo 1 / n^4 e^(- n b) (\( n b \)
 $I \( b \)$ の最低次の漸近評価は十分正確である. 
 
 #block[
-#strong[定理 14] (). \
+#strong[定理 14]. \
 
 比熱 $C$ は次のように評価できる.
 $ C = cases(delim: "{", 3 n R (1 - 1 / 20 (frac(planck omega_D, k_B T))^2 + 1 / 560 (frac(planck omega_D, k_B T))^4 - 1 / 18144 (frac(planck omega_D, k_B T))^6 + dots.h.c) & \( b lt.double 1 \), 3 n R (frac(4 pi^4, 5) (frac(k_B T, planck omega_D))^3 + cal(O) \( e^(- k_B T \/ planck omega_D) \)) & \( b gt.double 1 \)) $
@@ -626,7 +630,7 @@ $ C & approx 3 n R times cases(delim: "{", 1 & \( k_B T gt.double planck omega_D
 = 古典統計力学 (classical statistical mechanics) 近似
 <古典統計力学-classical-statistical-mechanics-近似>
 #block[
-#strong[定理 15] (). \
+#strong[定理 15]. \
 
 $ Z & = frac(1, \( 2 pi planck \)^f) integral e^(- H \( p \, q \) \/ k_B T) product_(i = 1)^f upright(d) p_i upright(d) q_i $
 
@@ -653,7 +657,7 @@ J = F - N mu & #h(2em) upright(d) J = - S upright(d) T - p upright(d) V - N upri
 
 ]
 #block[
-#strong[定理 16] (). \
+#strong[定理 16]. \
 
 $ 5 T & = (frac(partial U, partial S))_(V \, mu) & #h(2em) - p & = (frac(partial U, partial V))_(S \, mu) & #h(2em) mu & = (frac(partial U, partial mu))_(S \, V)\
 T & = (frac(partial H, partial S))_(p \, mu) & #h(2em) V & = (frac(partial H, partial p))_(S \, mu) & #h(2em) mu & = (frac(partial H, partial mu))_(S \, p)\
@@ -693,7 +697,7 @@ V upright(d) p - S upright(d) T - N upright(d) mu & = 0 $
 
 ]
 #block[
-#strong[定理 18] (). \
+#strong[定理 18]. \
 
 このときグランドポテンシャル $J$ や粒子数 $N$ など
 $ J & = - k_B T ln Xi\
@@ -720,7 +724,7 @@ $ (frac(partial N, partial mu))_(T \, V) = beta chevron.l Delta N^2 chevron.r $
 = Bose 統計と Fermi 統計
 <bose-統計と-fermi-統計>
 #block[
-#strong[定理 20] (). \
+#strong[定理 20]. \
 
 2 粒子の波動関数は $phi \( bold(r)_1 \, bold(r)_2 \)$ と書かれる。
 $ phi \( bold(r)_1 \, bold(r)_2 \) = plus.minus phi \( bold(r)_2 \, bold(r)_1 \) $
@@ -809,7 +813,7 @@ $ I \( beta \, mu \) & = G \( mu \) + frac(pi^2, 6 beta^2) G'' \( mu \) + O \( b
 
 
 #block[
-#strong[定理 23] (). \
+#strong[定理 23]. \
 
 $ mu & approx epsilon_F - pi^2 / 6 frac(nu' \( epsilon_F \), nu \( epsilon_F \)) \( k_B T \)^2\
 c \( T \, rho \) & = pi^2 / 3 nu \( epsilon_F \) k_B^2 T $
@@ -841,7 +845,7 @@ $epsilon = mu$ において発散する関数となる。通常は $mu < 0$
 TODO: 解釈
 
 #block[
-#strong[定理 24] (). \
+#strong[定理 24]. \
 
 3 次元空間の自由なボゾンを考えてエネルギー $epsilon$
 とエネルギーに対する状態密度 $nu \( epsilon \)$
@@ -901,7 +905,3 @@ $ C_0 & = frac(upright(d) U_0, upright(d) T) = frac(15 V, 4) (frac(m T, 2 pi pla
 = イジング模型
 <イジング模型>
 $ chevron.l S chevron.r $
-
-
-// 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)<newton>

@@ -52,3 +52,19 @@ export const extractStyles = (head: string): string => {
 
   return styles.map((match) => match[1].trim()).join('\n\n')
 }
+
+/**
+ * 別行立て数式を採番用のラッパーで包む。
+ *
+ * Typst の HTML export は式番号を出力しない。参照側だけが「式 1」と表示され、
+ * どの式か分からなくなるので、CSS カウンタで番号を振れるようにする。
+ * <math> 自身には疑似要素が効かない（MathML の描画規則）ため、外側が要る。
+ *
+ * ラベル（id）は数式に付いているので、ラッパーではなく元の要素に残す。
+ */
+export const wrapBlockEquations = (html: string): string =>
+  html.replace(
+    /<math\b([^>]*\bdisplay="block"[^>]*)>([\s\S]*?)<\/math>/g,
+    (_, attributes, body) =>
+      `<div class="equation"><math${attributes}>${body}</math></div>`,
+  )

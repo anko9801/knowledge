@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "複素解析",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/complex_analysis.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 複素関数
 <複素関数>
@@ -98,7 +102,7 @@ $ frac(partial u, partial x) = frac(partial v, partial y) \, frac(partial u, par
 == 正則関数
 <正則関数>
 #block[
-#strong[定理 2] (). \
+#strong[定理 2]. \
 
 Riemman Roch の定理
 

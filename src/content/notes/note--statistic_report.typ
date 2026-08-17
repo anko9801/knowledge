@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "統計力学",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/statistic_report.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 構成要素である 1 個の二準位系の統計力学
 <構成要素である-1-個の二準位系の統計力学>
@@ -157,7 +161,7 @@ arrow.l.r.double & frac(cosh x_0 - x_0 sinh x_0, cosh^2 x_0) = 0\
 arrow.l.r.double & x_0 tanh x_0 = 1\
 arrow.l.r.double & x_0 = 1.199678640257734 dots.h $
 
-ただしプログラム #link(<newton>)[newton] を用いて $x gt.eq 0$ の範囲で
+ただしプログラム  を用いて $x gt.eq 0$ の範囲で
 $x_0 tanh x_0 = 1$ は $x_0 = 1.199678640257734 dots.h$
 のとき満たすことが分かる。これより比熱 $c$ は次のように定義される $T_0$
 のときに極大を取る。
@@ -203,7 +207,7 @@ fn _f(x: f64) -> f64 {
 Q 15-8. 二準位系の熱力学量のグラフを描け。
 
 ]
-図 #link(<fig:2level>)[fig:2level] のように描ける。
+図 @fig:2level のように描ける。
 
 #figure([#block[
   #box(image("/public/notes/note/assets/2level_system.jpg", height: 8cm))
@@ -350,7 +354,7 @@ $ c & = k_B (frac(1 / 2 beta planck omega, sinh 1 / 2 beta planck omega))^2\
 Q 16-4. 熱力学量のグラフを描け。
 
 ]
-図 #link(<fig:oscillator>)[fig:oscillator] のように描ける。
+図 @fig:oscillator のように描ける。
 
 #figure([#block[
   #box(image("/public/notes/note/assets/oscillator_system.jpg", height: 8cm))
@@ -435,7 +439,3 @@ Q 16-7. 固体の比熱の Einstein
 $ C & approx 3 n R (frac(planck omega, k_B T))^2 e^(- frac(planck omega, k_B T))\
  & prop frac(1, T^2 e^(1 / T)) $ これより $C prop T^3$
 とはならない為、固体の比熱の Einstein 模型は実験事実と合致しない。
-
-
-// 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)<newton>

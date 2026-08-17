@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "elemag",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/elemag.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 虚数単位は立体 $upright(i)$ で書くこととする.
 
@@ -39,7 +43,7 @@ $ B_1 \( bold(k) \) = - E_2 \( bold(k) \) \, B_2 \( bold(k) \) = E_1 \( bold(k) 
 また, $bold(k) \/ \| bold(k) \| = 0$ のとき電磁波が横波であることを表す.
 このとき,
 $tilde(bold(E)) \( bold(r) \, t \) \, tilde(bold(B)) \( bold(r) \, t \)$
-の展開式 #link(<tilde-E>)[tilde-E] #link(<tilde-B>)[tilde-B]
+の展開式 @tilde-E 
 は「電磁波に対する直線偏光をもつ基底による展開」と呼ばれる.
 横波のときの基底は
 $ upright(e)_1 \( bold(k) \) e^(upright(i) \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) \, upright(e)_2 \( bold(k) \) e^(upright(i) \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
@@ -64,8 +68,8 @@ bold(B) \( bold(r) \, t \) & = Re tilde(bold(B)) \( bold(r) \, t \)\
  & = integral.triple_(bb(R)^3) d V \( bold(k) \) (Re \( - E_2 \( bold(k) \) e^(upright(i) \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) \) upright(e)_1 \( bold(k) \) + Re \( E_1 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) \) upright(e)_2 \( bold(k) \))\
  & = integral.triple_(bb(R)^3) d V \( bold(k) \) { - a_2 \( bold(k) \) cos \( bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon.alt_2 \( bold(k) \) \) upright(e)_1 \( bold(k) \) + a_1 \( bold(k) \) cos \( bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon.alt_1 \( bold(k) \) \) upright(e)_2 \( bold(k) \) } & square.stroked $<E>
 
-これより真空中を伝搬する電場 $bold(E) \( bold(r) \, t \)$ の表式 #link(<E>)[E]
-が分かれば, 磁場 $bold(B) \( bold(r) \, t \)$ の表式 #link(<B>)[B] が分かる. \
+これより真空中を伝搬する電場 $bold(E) \( bold(r) \, t \)$ の表式 @E
+が分かれば, 磁場 $bold(B) \( bold(r) \, t \)$ の表式  が分かる. \
 #strong[Q 21B-2.] \
 ここでは直線偏光の単色波について考える. 単色波 (monochromatic wave)
 とは1つの振動数しか持たない波のことである. \
@@ -133,7 +137,7 @@ B_(+) \( bold(k) \) & = 1 / sqrt(2) (B_1 \( bold(k) \) - upright(i) B_2 \( bold(
 
 #block[
 #emph[Proof.] $tilde(bold(E)) \( bold(r) \, t \)$ と
-$tilde(bold(B)) \( bold(r) \, t \)$ の表示式 #link(<tilde-E>)[tilde-E], #link(<tilde-B>)[tilde-B]
+$tilde(bold(B)) \( bold(r) \, t \)$ の表示式 @tilde-E, 
 より次のように式変形できる.
 $ tilde(bold(E)) \( bold(r) \, t \) & = integral.triple_(bb(R)^3) d V \( bold(k) \) (E_1 \( bold(k) \) upright(e)_1 \( bold(k) \) + E_2 \( bold(k) \) upright(e)_2 \( bold(k) \)) e^(upright(i) \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
  & = integral.triple_(bb(R)^3) d V \( bold(k) \) \(1 / sqrt(2) (E_1 \( bold(k) \) - upright(i) E_2 \( bold(k) \)) dot.op 1 / sqrt(2) (upright(e)_1 \( bold(k) \) + upright(i) upright(e)_2 \( bold(k) \))\
@@ -164,7 +168,7 @@ $ mat(delim: "[", E_1; E_2) = a / sqrt(2) mat(delim: "[", cos \( bold(k) dot.op 
 $a \/ sqrt(2)$ の円となる.
 $ {(E_1 \( bold(r) \, t \) \, E_2 \( bold(r) \, t \)) : t in bb(R)} = {(E_1 \, E_2) in bb(R)^2 : E_1^2 + E_2^2 = a^2 / 2} quad \( i = plus.minus \) $
 これよりこのときの電場は円偏光を持つという. また $i = +$ と $i = -$
-については #link(<circle-E-vector>)[circle-E-vector] より $t$
+については @circle-E-vector より $t$
 が増加する方向を考えると次のように解釈できる.
 $ i & = + arrow.l.r.double upright("「Lissajous 図形の円上を点 ") \( E_1 \, E_2 \) upright(" は左回りに周回する。」")\
 i & = - arrow.l.r.double upright("「Lissajous 図形の円上を点 ") \( E_1 \, E_2 \) upright(" は右回りに周回する。」") $
@@ -198,7 +202,7 @@ $ mat(delim: "[", E_1; E_2) = mat(delim: "[", a_1 cos \( bold(k) dot.op bold(r) 
 となる.
 
 #strong[Q 21B-7.] $epsilon = epsilon_2 - epsilon_1$ とおくと式
-#link(<genral-E-vector>)[genral-E-vector] から Lissajous 図形は次のようになり,
+@genral-E-vector から Lissajous 図形は次のようになり,
 それが楕円の方程式であることを示せ.
 $ {\( E_1 \( bold(r) \, t \) \, E_2 \( bold(r) \, t \) \) : t in bb(R)} = {\( E_1 \, E_2 \) in bb(R)^2 : (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 = sin^2 epsilon} $
 
@@ -211,7 +215,7 @@ $A_1 = bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon_1 \, A_2 = bold(
  & = \( 1 - cos^2 A_2 \) cos^2 A_1 + \( 1 - cos^2 A_1 \) cos^2 A_2 - 2 cos A_1 cos A_2 sin A_1 sin A_2\
  & = cos^2 A_1 + cos^2 A_2 - 2 (cos A_1 cos A_2 - sin A_1 sin A_2) cos A_1 cos A_2\
  & = cos^2 A_1 + cos^2 A_2 - 2 cos epsilon cos A_1 cos A_2 $ ここで式
-#link(<genral-E-vector>)[genral-E-vector] より
+@genral-E-vector より
 $ sin^2 epsilon & = cos^2 A_1 + cos^2 A_2 - 2 cos epsilon cos A_1 cos A_2\
  & = (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 $
 を得られる. よって時間 $t$ を動かした軌跡の任意の点 $\( E_1 \, E_2 \)$
@@ -221,7 +225,7 @@ $ {\( E_1 \( bold(r) \, t \) \, E_2 \( bold(r) \, t \) \) : t in bb(R)} = {\( E_
 そしてこれは式の形から二次曲線の中で回転移動させた楕円の方程式である.~
 
 ]
-#strong[Q 21B-8.] 式 #link(<genral-E-vector>)[genral-E-vector] より
+#strong[Q 21B-8.] 式 @genral-E-vector より
 $ mat(delim: "[", E_1; E_2) = mat(delim: "[", a_1 cos \( bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon_1 \); a_2 cos \( bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon_1 + epsilon \)) $<E12-phase>
 となるから「$E_2$ は $E_1$ より $epsilon$
 だけ位相が遅れている。」または「$E_1$ は $E_2$ より $epsilon$
@@ -249,7 +253,7 @@ $ tan^2 2 psi = frac(1, cos^2 2 psi) - 1 & = frac(4 a_1^2 a_2^2, \( a_1^2 - a_2^
 \( a_1^2 - a_2^2 \)^2 sec 2 psi & = {\( a_1^2 - a_2^2 \)^2 + 4 a_1^2 a_2^2 cos^2 epsilon} cos 2 psi $
 となる. このとき, $xi$ と $eta$ に対する方程式は
 $ (xi / a_xi)^2 + (eta / a_eta)^2 = 1 $<eclipse> と書ける.
-ここで用いられる係数 $a_xi \, a_eta$ については二次形式 #link(<xi-eta>)[xi-eta]
+ここで用いられる係数 $a_xi \, a_eta$ については二次形式 @xi-eta
 から次のような条件を満たす.
 $ 1 / a_xi^2 & = frac(1, sin^2 epsilon) (1 / 2 (1 / a_1^2 + 1 / a_2^2) + 1 / 2 (1 / a_1^2 - 1 / a_2^2) cos 2 psi - frac(cos epsilon, a_1 a_2) sin 2 psi)\
  & = frac(1, sin^2 epsilon) (1 / 2 (1 / a_1^2 + 1 / a_2^2) + (1 / 2 (1 / a_1^2 - 1 / a_2^2) - frac(cos epsilon, a_1 a_2) tan 2 psi) cos 2 psi)\
@@ -279,7 +283,7 @@ a_eta^2 & = 1 / 2 (\( a_xi^2 + a_eta^2 \) - \( a_xi^2 - a_eta^2 \)) = 1 / 2 \( 1
 $ a_xi^2 & = a_1^2 cos^2 psi + a_2^2 sin^2 psi + 2 a_1 a_2 cos epsilon cos psi sin psi\
 a_eta^2 & = a_1^2 cos^2 psi + a_2^2 sin^2 psi - 2 a_1 a_2 cos epsilon cos psi sin psi $
 が求まる. \
-#strong[Q 21B-10.] 条件式 #link(<psi-condition>)[psi-condition] において
+#strong[Q 21B-10.] 条件式 @psi-condition において
 $tan 2 psi = tan 2 (psi + pi / 2)$ より位相を $pi \/ 2$
 ずらしたものも解となる. これより $psi$ が解ならば
 $psi \, psi + pi \/ 2 \, psi + pi \, psi + 3 pi \/ 2$ は解となる.
@@ -296,14 +300,14 @@ $ sin epsilon > 0 & arrow.l.r.double upright("「楕円偏光は左偏光であ�
 sin epsilon < 0 & arrow.l.r.double upright("「楕円偏光は右偏光である。」") $
 
 #block[
-#emph[Proof.] まず, $xi \, eta$ は式 #link(<E12-xi-eta>)[E12-xi-eta] より $E_1 \, E_2$
+#emph[Proof.] まず, $xi \, eta$ は式 @E12-xi-eta より $E_1 \, E_2$
 を用いて次のように表される.
 $ mat(delim: "[", xi; eta) = mat(delim: "[", cos psi, sin psi; - sin psi, cos psi) mat(delim: "[", E_1; E_2) $<xi-eta-E12>
-また, 式 #link(<E12-phase>)[E12-phase] より $E_1 \, E_2$ は
+また, 式 @E12-phase より $E_1 \, E_2$ は
 $p = bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon_1$
 を用いて次のように表される. $ E_1 & = a_1 cos p\
 E_2 & = a_2 cos \( p + epsilon \) $<E1-p> これより $xi \, eta$ の表式
-#link(<xi-eta-E12>)[xi-eta-E12] は三角関数の合成公式より $E_1 \, E_2$ の表式 #link(<E1-p>)[E1-p] #link(<E2-p>)[E2-p]
+@xi-eta-E12 は三角関数の合成公式より $E_1 \, E_2$ の表式 @E1-p 
 を用いて次のように表される. $ xi & = E_1 cos psi + E_2 sin psi\
  & = a_1 cos psi cos p + a_2 sin psi cos \( p + epsilon \)\
  & = a_1 cos psi cos p + a_2 sin psi \( cos p cos epsilon - sin p sin epsilon \)\
@@ -324,7 +328,7 @@ $ A_xi^2 & = (med med a_1 cos psi + a_2 cos epsilon sin psi)^2 + \( a_2 sin epsi
  & = a_1^2 cos^2 psi + a_2^2 sin^2 psi + 2 a_1 a_2 cos epsilon cos psi sin psi\
  & = a_xi^2\
 A_eta^2 & = (- a_1 sin psi + a_2 cos epsilon cos psi)^2 + \( a_2 sin epsilon cos psi \)^2\
- & = a_eta^2 $ これは, 楕円の方程式 #link(<eclipse>)[eclipse] から $xi \, eta$ の振幅は
+ & = a_eta^2 $ これは, 楕円の方程式 @eclipse から $xi \, eta$ の振幅は
 $a_xi \, a_eta$ であることが分かるので自明である.
 
 次に位相差 $theta_eta - theta_xi$の表式を求める.
@@ -337,7 +341,7 @@ $ A_eta / A_xi & = frac(a_1 a_2 \| sin epsilon \|, \( a_1 cos psi + a_2 cos epsi
 e^(upright(i) \( theta_eta - theta_xi \)) & = upright(s g n) \( sin epsilon \) upright(i) $
 すると, 位相差 $theta_eta - theta_xi$ について
 $ theta_eta - theta_xi & = cases(delim: "{", pi / 2 & \( sin epsilon > 0 \), frac(3 pi, 2) & \( sin epsilon < 0 \)) $
-となるので $xi \, eta$ の表式 #link(<xi>)[xi] #link(<eta>)[eta] は次のようになる.
+となるので $xi \, eta$ の表式 @xi  は次のようになる.
 $ xi & = A_xi cos \( p + theta_xi \)\
 eta & = A_eta cos \( p + theta_eta \)\
  & = minus.plus A_eta sin \( p + theta_xi \) #h(2em) \( sin epsilon gt.lt 0 \) $
@@ -354,8 +358,7 @@ sin epsilon < 0 & arrow.l.r.double upright("「楕円偏光は右偏光である
 を用いて次のように定義される. $ tan \| chi \| := a_eta / a_xi $
 楕円の軸の長さを一意に決定させるには $\| chi \|$ の範囲は
 $0 lt.eq \| chi \| lt.eq pi / 4$ である必要がある. このとき, 式
-#link(<axiaeta-a1a2>)[axiaeta-a1a2], #link(label("a^2"))[a^2] と $a_xi \, a_eta \, a_1 \, a_2 > 0$
-より
+@axiaeta-a1a2,  と $a_xi \, a_eta \, a_1 \, a_2 > 0$ より
 $ sin 2 \| chi \| & = 2 sin \| chi \| cos \| chi \| = 2 tan \| chi \| cos^2 \| chi \|\
  & = frac(2 tan \| chi \|, 1 + tan^2 \| chi \|)\
  & = frac(2 a_xi a_eta, a_xi^2 + a_eta^2)\
@@ -376,7 +379,7 @@ $- pi / 4 lt.eq chi lt.eq pi / 4$ という範囲のとき,
 楕円偏光の形と偏光の回転の向きを一意に決定できる. \
 #strong[Q 21B-13.]
 この問題では楕円偏光の中でも円偏光はどのような条件の下で生じるのかを考える.
-楕円偏光の方程式 #link(<eclipse>)[eclipse] は次のようであった.
+楕円偏光の方程式 @eclipse は次のようであった.
 $ (xi / a_xi)^2 + (eta / a_eta)^2 = 1 $ これより円偏光になる条件は
 $a_xi = a_eta$ のときである. $a_1 \, a_2$ の楕円偏光の方程式より
 $ upright("「楕円偏光は円偏光である。」") & arrow.l.r.double a_xi = a_eta arrow.l.r.double tan chi = plus.minus 1 arrow.l.r.double chi = plus.minus pi / 4\
@@ -384,23 +387,23 @@ $ upright("「楕円偏光は円偏光である。」") & arrow.l.r.double a_xi 
  & arrow.l.r.double a_1 = a_2 and epsilon in pi (bb(Z) + 1 / 2) $ \
 #strong[Q 21B-14.]
 同様に直線偏光はどうのような条件の下で生じるのかを考える.
-楕円偏光の方程式 #link(<eclipse>)[eclipse] と $chi$ の定義より直線偏光となる条件は
+楕円偏光の方程式 @eclipse と $chi$ の定義より直線偏光となる条件は
 $a_eta = 0$ となる.
 $ upright("「楕円偏光は直線偏光である。」") & arrow.l.r.double a_eta = 0 arrow.l.r.double tan chi = 0 arrow.l.r.double chi = 0\
  & arrow.l.r.double a_1 a_2 = 0 or epsilon in pi bb(Z) $
 このとき振動面の角度 $psi$ は $epsilon = n pi quad \( n in bb(Z) \)$
-とおくと式 #link(<psi-condition>)[psi-condition] より
+とおくと式 @psi-condition より
 $ tan 2 psi & = frac(2 tan psi, 1 + tan^2 psi) = frac(2 a_1 a_2, a_1^2 - a_2^2) cos epsilon = frac(2 (plus.minus a_2 / a_1), 1 + (plus.minus a_2 / a_1)^2) & (n "の偶奇")\
 tan psi & = plus.minus a_2 / a_1 & (n "の偶奇")\
 psi & = cases(delim: "{", alpha & \( n : "偶数" \), pi - alpha & \( n : "奇数" \)) $
 となる. \
-#strong[Q 21B-15.] 式 #link(<axi---aeta>)[axi---aeta] は次のようであった.
+#strong[Q 21B-15.] 式  は次のようであった.
 $ a_xi^2 - a_eta^2 & = frac(a_1^2 - a_2^2, cos 2 psi) $ $a_xi \, a_eta$
 はそれぞれ長軸, 短軸の長さであるから左辺は正である.
 よって次のようになる.
 $ upright(s g n) \( a_1 - a_2 \) = upright(s g n) \( cos 2 psi \) $<sgn-psi>
 \
-#strong[Q 21B-16.] 式 #link(<psi-condition>)[psi-condition], #link(<chi-def>)[chi-def], #link(<sgn-psi>)[sgn-psi],
+#strong[Q 21B-16.] 式 @psi-condition, @chi-def, @sgn-psi,
 $- pi / 4 lt.eq chi lt.eq pi / 4$ より次の事がわかる.
 $ cos^22 chi & = 1 - sin^22 chi = 1 - (frac(2 a_1 a_2, a_1^2 + a_2^2) sin epsilon)^2\
  & = (frac(a_1^2 - a_2^2, a_1^2 + a_2^2))^2 (1 - (frac(2 a_1 a_2, a_1^2 - a_2^2) cos^2 epsilon)^2)\
@@ -418,7 +421,7 @@ $ mat(delim: "[", E_1; E_2) & = mat(delim: "[", a_1 cos \( bold(k) dot.op bold(r
 ただし
 $delta_i = - epsilon_i \( i = 1 \, 2 \) \, q = omega \( bold(k) \) t - bold(k) dot.op bold(r) + delta_1 \, delta = delta_2 - delta_1$
 とおく. すると $delta = - epsilon$ という関係が成り立つ. \
-#strong[Q 21B-17.] 式 #link(<E12-delta>)[E12-delta] より場所 $bold(r)$ に留まり, 時間 $t$
+#strong[Q 21B-17.] 式 @E12-delta より場所 $bold(r)$ に留まり, 時間 $t$
 の経過とともに, 電場ベクトルの波動を観測する立場から見て, 位相差 $delta$
 について「$E_2$ は $E_1$ より $delta$
 だけ位相が進んでいる。」つまり「$E_1$ は $E_2$ より $delta$
@@ -431,7 +434,7 @@ sin delta > 0 arrow.l.r.double sin epsilon < 0 arrow.l.r.double upright("「楕�
 = Stokes パラメータ
 <stokes-パラメータ>
 #strong[Q 21B-18.] 波数 $bold(k) in bb(R)^3$ を持つ一般の単色波の電場は
-#link(<E-def>)[E-def] 式より4つのパラメータ
+@E-def 式より4つのパラメータ
 $a_1 \, a_2 gt.eq 0 ; epsilon = - delta_1 \, epsilon = - delta in bb(R)$
 によって記述される. これらは関係式
 $tilde(E)_i = a_i e^(upright(i) epsilon_i)$ によって結びついている.
@@ -601,7 +604,7 @@ a_(+)^2 - a_(-)^2 & = \| tilde(E)_(+) \|^2 - \| tilde(E)_(+) \|^2\
 
 #strong[Q 21B-24.]
 Stokesパラメータを直線偏光のパラメータで表現することを考える. 式
-#link(<cos-2chi>)[cos-2chi], #link(<chi-def>)[chi-def] より $ s_0 & = a_1^2 + a_2^2\
+@cos-2chi, @chi-def より $ s_0 & = a_1^2 + a_2^2\
 s_1 & = s_0 cos 2 psi cos 2 chi\
  & = a_1^2 - a_2^2\
 s_2 & = s_0 sin 2 psi cos 2 chi\
@@ -621,7 +624,7 @@ $ upright(e)_i \( bold(k) \)^(\*) dot.op tilde(bold(E)) & = tilde(E)_i e^(uprigh
 となる. 特に直線偏光の基底ベクトル
 $upright(e)_1 \, upright(e)_2 in bb(R)^3$ より,
 $upright(e)_i = upright(e)_i^(\*) quad \( i = 1 \, 2 \)$ となる. \
-#strong[Q 21B-27.] 式 #link(<Ei-Ej>)[Ei-Ej]
+#strong[Q 21B-27.] 式 @Ei-Ej
 よりStokesパラメータは直線偏光のパラメータを用いて
 $ s_0 & = a_1^2 + a_2^2 = lr(|upright(e)_1 \( bold(k) \) dot.op tilde(bold(E))|)^2 + lr(|upright(e)_2 \( bold(k) \) dot.op tilde(bold(E))|)^2\
 s_1 & = a_1^2 - a_2^2 = lr(|upright(e)_1 \( bold(k) \) dot.op tilde(bold(E))|)^2 - lr(|upright(e)_2 \( bold(k) \) dot.op tilde(bold(E))|)^2\
@@ -644,7 +647,7 @@ s_3 & = - (a_(+)^2 - a_(-)^2) = - {lr(|upright(e)_(+) \( bold(k) \)^(\*) dot.op 
 $ bold(cal(E)) \( bold(r) \, t \) = tilde(bold(E)) \( bold(r) \, t \)^(\*) $
 これを「光学の流儀の複素表示」あるいは「新しい複素表示」と呼ぶこととする.
 \
-#strong[Q 21B-29, Q 21B-30.] 式 #link(<ET-line-def>)[ET-line-def], #link(<ET-circle-def>)[ET-circle-def]
+#strong[Q 21B-29, Q 21B-30.] 式 @ET-line-def, 
 に複素共役を取って新しい複素表示は次のように表される.
 $ bold(cal(E)) \( bold(r) \, t \) & = cal(E)_1 upright(e)_1 \( bold(k) \) e^(upright(i) \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) + cal(E)_2 upright(e)_2 \( bold(k) \) e^(upright(i) \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \))\
 cal(E)_i & = tilde(E)_i^(\*) = a_i e^(upright(i) delta_i) #h(2em) \( i = 1 \, 2 \)\
@@ -663,15 +666,15 @@ $ bold(cal(E)) \( bold(r) \, t \) = cal(E)_(+) upright(e)_(+) \( bold(k) \) e^(u
 bold(cal(E)) \( bold(r) \, t \) = cal(E)_(-) upright(e)_(-) \( bold(k) \) e^(upright(i) \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) & arrow.l.r.double upright("「円偏光は左偏光である。」")\
  & arrow.l.r.double upright("「helicity が ") + 1 upright(" である。」") $
 \
-#strong[Q 21B-32.] 式 #link(<EC-ET-converter-12>)[EC-ET-converter-12] より Stokes パラメータは
+#strong[Q 21B-32.] 式 @EC-ET-converter-12 より Stokes パラメータは
 $bold(cal(E))$ を用いて次のように表される.
 $ s_0 & = lr(|upright(e)_1 \( bold(k) \) dot.op tilde(bold(E))|)^2 + lr(|upright(e)_2 \( bold(k) \) dot.op tilde(bold(E))|)^2 = \| upright(e)_1 \( bold(k) \) dot.op bold(cal(E)) \|^2 + \| upright(e)_2 \( bold(k) \) dot.op bold(cal(E)) \|^2\
 s_1 & = lr(|upright(e)_1 \( bold(k) \) dot.op tilde(bold(E))|)^2 - lr(|upright(e)_2 \( bold(k) \) dot.op tilde(bold(E))|)^2 = \| upright(e)_1 \( bold(k) \) dot.op bold(cal(E)) \|^2 - \| upright(e)_2 \( bold(k) \) dot.op bold(cal(E)) \|^2\
 s_2 & = 2 Re {(upright(e)_1 \( bold(k) \) dot.op tilde(bold(E)))^(\*) (upright(e)_2 \( bold(k) \) dot.op tilde(bold(E)))} = 2 Re {(upright(e)_1 \( bold(k) \) dot.op bold(cal(E)))^(\*) (upright(e)_2 \( bold(k) \) dot.op bold(cal(E)))}\
 s_3 & = - 2 Im {(upright(e)_1 \( bold(k) \) dot.op tilde(bold(E)))^(\*) (upright(e)_2 \( bold(k) \) dot.op tilde(bold(E)))} = 2 Im {(upright(e)_1 \( bold(k) \) dot.op bold(cal(E)))^(\*) (upright(e)_2 \( bold(k) \) dot.op bold(cal(E)))} $
 \
-#strong[Q 21B-33.] 式 #link(label("EC-ET-converter-+-"))[EC-ET-converter-+-] より Stokes
-パラメータは $bold(cal(E))$ を用いて次のように表される.
+#strong[Q 21B-33.] 式  より Stokes パラメータは
+$bold(cal(E))$ を用いて次のように表される.
 $ s_0 & = lr(|upright(e)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2 + lr(|upright(e)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2 = lr(|upright(e)_(+) \( bold(k) \)^(\*) dot.op bold(cal(E))|)^2 + lr(|upright(e)_(-) \( bold(k) \)^(\*) dot.op bold(cal(E))|)^2\
 s_1 & = 2 Re {(upright(e)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E)))^(\*) (upright(e)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E)))} = 2 Re {(upright(e)_(+) \( bold(k) \)^(\*) dot.op bold(cal(E)))^(\*) (upright(e)_(-) \( bold(k) \)^(\*) dot.op bold(cal(E)))}\
 s_2 & = 2 Im {(upright(e)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E)))^(\*) (upright(e)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E)))} = 2 Im {(upright(e)_(+) \( bold(k) \)^(\*) dot.op bold(cal(E)))^(\*) (upright(e)_(-) \( bold(k) \)^(\*) dot.op bold(cal(E)))}\
@@ -738,7 +741,7 @@ $ {T^(upright("直線偏光子")) \( theta \)}^2 & = mat(delim: "[", cos^2 theta
 #strong[Q 21B-41.] 水平状態 $bold(J) = \[ cal(E) \, 0 \]^t in bb(C)^2$
 の光を直線偏光子 $T^(upright("直線偏光子")) \( theta \)$
 に通したときの出力の光の強度 $I \( theta \)$ を考える. 式
-#link(<Jones-strength>)[Jones-strength] より Jones ベクトルを用いて光の強度を表せられる.
+@Jones-strength より Jones ベクトルを用いて光の強度を表せられる.
 $ I \( theta \) & = 1 / 2 lr(|T^(upright("直線偏光子")) \( theta \) mat(delim: "[", cal(E); 0)|)^2\
  & = 1 / 2 lr(|cal(E) mat(delim: "[", cos^2 theta; cos theta sin theta)|)^2\
  & = 1 / 2 \| cal(E) \|^2 cos^2 theta\
@@ -760,7 +763,7 @@ $ cos phi = s_1 / sqrt(s_1^2 + s_2^2) \, sin phi = s_2 / sqrt(s_1^2 + s_2^2) $
 「与えられた単色光の Stokes パラメータのうちの 3 個 $s_0 \, s_1 \, s_2$
 は, その光をいろいろな角度 $theta$
 に傾けた直線偏光子に透過して強度を測定することによって決定できる.」 \
-#strong[Q 21B-43.] 上の事実について具体式を考える. 式 #link(<I-s012>)[I-s012] より
+#strong[Q 21B-43.] 上の事実について具体式を考える. 式 @I-s012 より
 $ I \( 0 \) & = s_0 + s_1\
 I (pi / 4) & = s_0 + s_2\
 I (pi / 2) & = s_0 - s_1\
@@ -776,7 +779,7 @@ s_2 & prop \( + 45 upright("° 偏光成分の強度") \) - \( - 45 upright("° 
 
 == $1 \/ 4$ 波長板も用いると何が測定できるか？
 <波長板も用いると何が測定できるか>
-式 #link(<s3-circle>)[s3-circle] より $s_3$ は次のような意味を持つ.
+式 @s3-circle より $s_3$ は次のような意味を持つ.
 $ s_3 prop \( upright("右円偏光成分の強度") \) - \( upright("左円偏光成分の強度") \) $
 これを測定するにはどうすればよいのか?
 これは円偏光成分を直線偏光成分に変換できれば測定できる. この変換が
@@ -814,7 +817,7 @@ T^(1 \/ 4 upright("波長板")) 1 / sqrt(2) mat(delim: "[", 1; - upright(i)) & =
 波長板はサランラップを半ダースほど向きを揃えて重ねることにより自作できるらしい.
 \
 #strong[Q 21B-47.] 円偏光した光は $1 \/ 4$ 波長板により直線偏光に変換し,
-その光強度を求めることで右偏光, 左偏光の光強度が求まる. 式 #link(<s3-circle>)[s3-circle]
+その光強度を求めることで右偏光, 左偏光の光強度が求まる. 式 @s3-circle
 より $s 3$ が求まる.
 
 = 準単色光と部分偏光
@@ -832,7 +835,7 @@ $ bold(cal(E)) \( bold(r) \, t \) & = integral.triple_(\| bold(k)' - bold(k) \| 
  $<EC-fourier> ここでコヒーレンス時間 $t_c = Delta nu^(- 1)$
 より十分短い時間間隔 $Delta t lt.double t_c$ のとき
 $\( omega \( bold(k) + delta bold(k) \) - omega \( bold(k) \) \) Delta t tilde.op Delta nu t_c lt.double 1$
-となるので式 #link(<EC-fourier>)[EC-fourier] は単色光と見なすことができる. \
+となるので式 @EC-fourier は単色光と見なすことができる. \
 #strong[Q 21B-49.]
 コヒーレンス時間を超える時間スケールではコヒーレンス時間 $t_c$
 程度の時間間毎ごとに定まる Stokes
@@ -853,7 +856,7 @@ $ s_0^2 & = (chevron.l a_1^2 chevron.r + chevron.l a_2^2 chevron.r)^2\
  & = s_1^2 + 4 chevron.l a_1 a_2 chevron.r^2 chevron.l cos^2 delta + sin^2 delta chevron.r\
  & gt.eq s_1^2 + \( 2 chevron.l a_1 a_2 cos delta chevron.r \)^2 + \( 2 chevron.l a_1 a_2 sin delta chevron.r \)^2\
  & = s_1^2 + s_2^2 + s_3^2 $ このような不等式となるので新しいパラメータ
-$p in \[ 0 \, 1 \]$ を用いて式 #link(<s1-def>)[s1-def] #link(<s2-def>)[s2-def] #link(<s3-def>)[s3-def] を修正する.
+$p in \[ 0 \, 1 \]$ を用いて式 @s1-def   を修正する.
 $ s_0 & = chevron.l a_1^2 chevron.r + chevron.l a_2^2 chevron.r\
 s_1 & = p s_0 cos 2 psi cos 2 chi\
 s_2 & = p s_0 sin 2 psi cos 2 chi\
@@ -1056,7 +1059,7 @@ $ bold(L)_(o r b i t) & = frac(1, 4 pi c) integral.triple_V d V \( bold(r) \) E_
 
 #strong[Q 21B-63.] CGSガウス単位系でのエネルギー密度の総和を考えると
 $ U = frac(1, 8 pi) integral.triple_V d V \( bold(r) \) (lr(|bold(E)|)^2 + lr(|bold(B)|)^2) $
-式 #link(<def-ET-D>)[def-ET-D], #link(<B-tilde-E>)[B-tilde-E], #link(<def-g>)[def-g] より
+式 @def-ET-D, @B-tilde-E, @def-g より
 $ lr(|tilde(bold(E))|)^2 & = \| bold(E) \|^2 + \| bold(B) \|^2\
  & = 2 \| f \|^2 + \| g \|^2\
  & = 2 \| f \|^2 + 1 / k^2 lr(|frac(upright(d) f, upright(d) rho)|)^2 $
@@ -1068,7 +1071,7 @@ U_(o r b i t) & = frac(1, 8 k^2 pi) integral.triple_V d V \( bold(r) \) lr(|frac
 $ U_(o r b i t) / U_(s p i n) & tilde.op (frac(1, k L))^2\
 U & = U_(s p i n) #h(2em) (frac(1, k L) arrow.r 0) $<U-limit>
 
-#strong[Q 21B-64.] 式 #link(<L-limit>)[L-limit], #link(<U-limit>)[U-limit] より次の式が導かれる.
+#strong[Q 21B-64.] 式 @L-limit, @U-limit より次の式が導かれる.
 $ L_z = plus.minus 1 / omega U $
 
 #strong[Q 21B-65.] 電磁波を担う実体が光子 (photon) であることを認めると,
@@ -1079,16 +1082,3 @@ $planck bold(k)$ である事実が知られている. Q21B-64
 $ upright("1個の光子の角運動量 ") bold(L) upright(" の ") bold(k) \/ \| bold(k) \| upright(" 方向の成分") = cases(delim: "{", + planck & "左円偏光状態", - planck & "右円偏光状態") $
 このように helicity とは光子の角運動量の進行方向の成分を $planck$
 単位で測った量である.
-
-
-// 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)#label("a^2")
-#metadata(none)#label("EC-ET-converter-+-")
-#metadata(none)<tilde-B>
-#metadata(none)<B>
-#metadata(none)<E2-p>
-#metadata(none)<eta>
-#metadata(none)<axi---aeta>
-#metadata(none)<ET-circle-def>
-#metadata(none)<s2-def>
-#metadata(none)<s3-def>

@@ -202,23 +202,75 @@ const PREAMBLE_NOISE = [
  */
 const MATH_ENVIRONMENTS = /\\begin\{(align\*?|aligned|alignat\*?|equation\*?|gather\*?|cases|dcases|multline\*?)\}([\s\S]*?)\\end\{\1\}/g
 
+/** \text / \textrm などの本文群。 */
+// 長い名前から並べる。text を先に置くと textrm の rm が取り残される。
+const TEXT_GROUP = /\\(?:textrm|textbf|textit|textsf|textnormal|mbox|text)\s*\{(?:[^{}]|\{[^{}]*\})*\}/g
+
+/**
+ * テキスト群の中の裸の数式マクロを $ で囲む。
+ * \textrm{... \bm{L} ...} のように書かれていると pandoc が解釈できない。
+ */
+const wrapMathInText = (group) =>
+  group.replace(
+    /\\([a-zA-Z]{2,})((?:\{(?:[^{}]|\{[^{}]*\})*\})?)/g,
+    (whole, name, arg, offset) =>
+      // 群そのものの名前は囲まない。
+      offset === 0 ? whole : `$\\${name}${arg}$`,
+  )
+
 export const stripReferencesInMath = (source) => {
   let stripped = 0
   const text = source.replace(MATH_ENVIRONMENTS, (whole, env, body) => {
-    const cleaned = body.replace(/\\(?:eq)?ref\{([^{}]*)\}/g, (_, name) => {
-      stripped += 1
-      return `\\mathrm{${name}}`
+    const parked = []
+    const guarded = body.replace(TEXT_GROUP, (group) => {
+      parked.push(wrapMathInText(group))
+      return `\uE400${parked.length - 1}\uE401`
     })
-    return `\\begin{${env}}${cleaned}\\end{${env}}`
+
+    const cleaned = guarded
+      .replace(/\\(?:eq)?ref\{([^{}]*)\}/g, (_, name) => {
+        stripped += 1
+        return `\\mathrm{${name}}`
+      })
+      // 数式環境の中の $ の扱いは 2 通りに分かれる。
+      //
+      //   array の中の $\in$   -> $ を外す。中身はもともと数式なのでそのまま通る。
+      //   \textrm{... \bm{L} ...} -> 逆に $ で囲む。テキスト群の中では数式マクロが
+      //                              裸だと pandoc が解釈できない。
+      //
+      // まずテキスト群を退避してから $ を外し、退避した中で数式マクロを囲む。
+      .replace(/\$/g, () => {
+        stripped += 1
+        return ''
+      })
+    const restored = cleaned.replace(
+      /\uE400(\d+)\uE401/g,
+      (_, index) => parked[Number(index)],
+    )
+
+    return `\\begin{${env}}${restored}\\end{${env}}`
   })
 
   return { text, stripped }
 }
 
+/**
+ * ラベル名を Typst の <...> に収まる形にする。
+ *
+ * 元の LaTeX には「Q17-3. iii 1」「Q21-1(i)」のような名前があり、
+ * 空白・ドット・括弧が混ざる。そのままだと Typst のラベル構文が閉じられない。
+ */
+const sanitizeLabel = (name) =>
+  name
+    .replace(/[^A-Za-z0-9_:-]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    .replace(/^(?![A-Za-z])/, 'L-') || 'label'
+
 export const normalizeLabels = (source) =>
   source.replace(
     /\\(label|ref|eqref|autoref)\{([^{}]*)\}/g,
-    (_, command, name) => `\\${command}{${name.replace(/[\s.]+/g, '-')}}`,
+    (_, command, name) => `\\${command}{${sanitizeLabel(name)}}`,
   )
 
 const EQUIVALENTS = [
@@ -494,7 +546,15 @@ export const expandDerivatives = (source, skip = new Set()) => {
     }
 
     const optional = readOptional(text, hit + 3)
-    const argument = readGroup(text, optional ? optional.end : hit + 3)
+    const start = optional ? optional.end : hit + 3
+    let argument = readGroup(text, start)
+
+    // \dl V のように波括弧を使わない形もある。次の 1 トークンを引数とみなす。
+    if (!argument) {
+      const bare = /^\s*(\\[a-zA-Z@]+|[A-Za-z0-9])/.exec(text.slice(start))
+      if (bare) argument = { text: bare[1], end: start + bare[0].length }
+    }
+
     if (!argument) {
       out += text.slice(cursor, hit + 3)
       cursor = hit + 3
@@ -824,10 +884,14 @@ export const expandSingleArgMacros = (source, skip = new Set()) => {
         continue
       }
 
+      // 引数の中に同種のマクロが入ることがある
+      // （\ev{(\hat{r} - \ev{\hat{r}})^2} など）。素通しすると内側が残る。
+      const inner = expandSingleArgMacros(argument.text, skip)
+
       out += text.slice(cursor, hit)
-      out += macro.wrap(argument.text)
+      out += macro.wrap(inner.text)
       cursor = argument.end
-      expanded += 1
+      expanded += 1 + inner.expanded
     }
 
     text = out + text.slice(cursor)

@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "色素レーザー",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("レポート",),
   summary: "physics_report/dye_laser.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 実験目的
 <実験目的>
@@ -82,7 +86,7 @@ $ Gamma > frac(gamma_01 gamma_2 gamma_3, gamma_32 gamma_10 - gamma_21 gamma_32 -
 本実験で使う分光器は Spectral Products 社製小型分光器 (SM240) である。
 
 SM240 には入力フィルターとして 530 nm のローパスフィルターが入っている。
-まずこれに裸電球の光を当てると図 #link(<fig:bare-light>)[fig:bare-light] のようになった。
+まずこれに裸電球の光を当てると図 @fig:bare-light のようになった。
 
 #figure(image("/public/notes/physics_report/assets/bare_light_bulb.png", width: 14cm),
   caption: [
@@ -98,8 +102,8 @@ $ E & = frac(8 pi h nu^3, c^3) frac(1, exp (frac(h nu, k_B T)) - 1) $
 そして 530 nm
 以下の波長の光はローパスフィルターにより削られるので正しいグラフが得られていることがわかる。
 (課題 1.1.1) \
-次に Ne ランプを分光器に当てると図 #link(<fig:Ne-lump>)[fig:Ne-lump] のようになった。 Ne
-の輝線スペクトルは図 #link(<fig:Ne-spectre>)[fig:Ne-spectre] のようになり, 633 nm
+次に Ne ランプを分光器に当てると図  のようになった。 Ne
+の輝線スペクトルは図 @fig:Ne-spectre のようになり, 633 nm
 近くのスペクトル線は表 #link(<table:spectre>)[table:spectre] のように対応していることがわかる。
 (課題 1.1.2) \
 
@@ -158,8 +162,8 @@ n_p & = frac(1 W, E) = 3.18 times 10^18\
 n_e & = frac(1 W times 400 m A \/ W, e) = 2.5 times 10^17\
 alpha & = n_e / n_p approx 0.785 $ これより HeNe
 レーザーの波長での量子効率は 79 % となる。 (課題 1.2.2) \
-Ne ランプの電極の向きを受光に対して縦向きか横向きかで図 #link(<ne-lamp-1>)[ne-lamp-1], 図
-#link(<ne-lamp-2>)[ne-lamp-2] ように変わった。 Ne ランプの構造として 50 Hz
+Ne ランプの電極の向きを受光に対して縦向きか横向きかで図 , 図
+@ne-lamp-2 ように変わった。 Ne ランプの構造として 50 Hz
 の交流の電気が流れて $+$, $-$ に対して片方の電極が光る。
 そして光の強度は距離に対して逆 2
 乗で減っていくから横向きだと交互に光強度の強弱 (課題 1.2.3) \
@@ -176,7 +180,7 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 )
 <ne-lamp-2>
 
-これよりオシロスコープに 50Ω の終端抵抗をおくと図 #link(<noise>)[noise]
+これよりオシロスコープに 50Ω の終端抵抗をおくと図 @noise
 のように電圧がノイズのオーダーに近くなってしまい、観測しづらい。 (課題
 1.2.4)
 
@@ -191,8 +195,8 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 <波長固定色素レーザーの実験>
 色素レーザーとは量子効率の高い蛍光物質を用いたレーザーである。
 今回はローダミン 6G と呼ばれる蛍光物質をメタノールで $0.0001 m o l \/ L$
-まで希釈した溶液を扱う。 ローダミン 6G は図 #link(<rhodamine>)[rhodamine]
-のような構造式で図 #link(<rhodamine_spectrum>)[rhodamine_spectrum] のように波長 500-550 nm
+まで希釈した溶液を扱う。 ローダミン 6G は図 
+のような構造式で図 @rhodamine_spectrum のように波長 500-550 nm
 に強い光吸収スペクトルを持ち, 560-600 nm で蛍光する物質である。 \
 
 #figure([#block[
@@ -210,7 +214,7 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 
 実際に実験で用いる色素溶液を 100
 倍希釈したものに緑、赤のレーザーポインタの光や白色 LED
-を当ててみるとそれぞれ図 #link(<green>)[green], 図 #link(<red>)[red], 図 #link(<white>)[white] のようになった。
+を当ててみるとそれぞれ図 , 図 @red, 図 @white のようになった。
 これらを観察してみると緑色や白色の光を当てると黄色に蛍光することが分かる。
 これはローダミン 6G の性質と一致している。(課題 2.1.1) \
 
@@ -250,8 +254,8 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 蛍光スペクトルは連続的なスペクトルとなっている。 \
 発振成功率が 50 % となる放電電圧の閾値は 3.35V となった。 (課題 2.2.1) \
 フラッシュランプ、蛍光、色素レーザー光のスペクトルはそれぞれ図
-#link(<flush-lamp>)[flush-lamp], 図 #link(<fluorescene>)[fluorescene], 図 #link(<dye-laser>)[dye-laser], 時間波形はそれぞれ図
-#link(<flush-lamp-oscillo>)[flush-lamp-oscillo], 図 #link(<fluorescene-oscillo>)[fluorescene-oscillo], 図 #link(<dye-laser-oscillo>)[dye-laser-oscillo]
+@flush-lamp, 図 , 図 @dye-laser, 時間波形はそれぞれ図
+#link(<flush-lamp-oscillo>)[flush-lamp-oscillo], 図 , 図 @dye-laser-oscillo
 のようになった。 これらを観察すると表 #link(<table:light>)[table:light]
 のようにまとめられる。
 オシロスコープで得られた電圧に関しては距離や立体角などに依存して定量的で話せないことに注意する。
@@ -330,8 +334,8 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 600 nm の鋭いピークに対して 10nm ほど長短に拡がっている。
 これは波長を選択することによって誘導放出がしやすくなったことによると考えられる。
 (課題 3.1.2) \
-最も強い発振スペクトルは図 #link(<prism-strongest>)[prism-strongest]
-のようになった。プリズムを挟まなかった図 #link(<dye-laser>)[dye-laser]
+最も強い発振スペクトルは図 @prism-strongest
+のようになった。プリズムを挟まなかった図 @dye-laser
 と比べると線幅は変わらず、ピーク自体が振動しているように見える。 (課題
 3.1.3) \
 
@@ -353,8 +357,8 @@ Delta lambda & = 2 times 300 m m times frac(1, \( 1.0 times 10^6 \)^2) = 6.0 tim
 これより $6.0 times 10^(- 4) n m$ ごとに共振する。
 $ m & = frac(lambda_max - lambda_min, Delta lambda) = frac(23 n m, 6.0 times 10^(- 4) n m) = 3.83 times 10^4 $
 更に $3.8 times 10^4$ 個程度のモード数がある。 (課題 3.1.4, 0.1.3) \
-最も強く発振する波長での時間波形は図 #link(<dye-laser-prism-oscillo>)[dye-laser-prism-oscillo]
-のようになった。 これは図 #link(<dye-laser-oscillo>)[dye-laser-oscillo]
+最も強く発振する波長での時間波形は図 @dye-laser-prism-oscillo
+のようになった。 これは図 @dye-laser-oscillo
 に比べて色素レーザー光の強度が弱くなっている。 (課題 3.1.5) \
 
 #figure(image("/public/notes/physics_report/assets/dye_laser_prism.jpg", width: 12cm),
@@ -403,12 +407,3 @@ $2.6 times 10^13$ 個の光子数が発射される。 (課題 3.1.9) \
 = 参考文献
 <参考文献>
 Neon https:\/\/www.oceaninsight.jp/Products/2series.html
-
-
-// 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)<fig:Ne-lump>
-#metadata(none)<ne-lamp-1>
-#metadata(none)<rhodamine>
-#metadata(none)<green>
-#metadata(none)<fluorescene>
-#metadata(none)<fluorescene-oscillo>

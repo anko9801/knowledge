@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "相対論的量子力学 期末レポート",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("レポート",),
   summary: "physics_report/relativistic_quantum.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 2次元時空におけるディラック方程式
 <次元時空におけるディラック方程式>

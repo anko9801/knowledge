@@ -71,6 +71,10 @@ const withFrontMatter = (body, { title, group, source }) => `#import "/src/typst
   summary: ${JSON.stringify(`${source} から変換`)},
 )
 
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
+
 ${body}`
 
 /**

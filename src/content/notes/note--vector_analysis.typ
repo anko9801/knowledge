@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "ベクトル解析",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/vector_analysis.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = ベクトル空間
 <ベクトル空間>
@@ -29,7 +33,7 @@ bold(A) times bold(B) & = \( A_2 B_3 - A_3 B_2 \) bold(e)_1 + \( A_3 B_1 - A_1 B
 
 ]
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 内積と外積について Einstein の縮約記法を用いて次のように書ける。
 $ bold(A) dot.op bold(B) & = A_i bold(e)_i dot.op B_j bold(e)_j = A_i B_i\
@@ -56,7 +60,7 @@ $ epsilon_(mu_1 dots.h.c mu_k) & := cases(delim: "{", "sgn" mat(delim: "(", 1, d
 
 ]
 #block[
-#strong[定理 2] (). \
+#strong[定理 2]. \
 
 $f_(i j) = f_(j i)$ と対称性があるとき $epsilon_(i j k) f_(i j) = 0$
 となる。

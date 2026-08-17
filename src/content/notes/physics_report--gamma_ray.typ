@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "線と宇宙線の計測",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("レポート",),
   summary: "physics_report/gamma_ray.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 実験目的
 <実験目的>
@@ -127,7 +131,7 @@ h^(+) & arrow.r h^(+) + \( e^(-) \, h^(+) \) $ また MPPC
 信号の波形を歪めることなく回路間を伝搬する為に使われるのが伝送線であり、最もポピュラーなものが同軸線あるいは同軸ケーブル
 (coaxial cable) と呼ばれるケーブルである。
 
-まず同軸ケーブルは図 #link(<fig:coaxial-cable>)[fig:coaxial-cable]
+まず同軸ケーブルは図 @fig:coaxial-cable
 のような仕組みとなっている。それぞれの部品は表 #link(<table:coaxial-cable>)[table:coaxial-cable]
 にまとめた。
 
@@ -282,7 +286,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 <fig:cable-diff-time>
 
 終端抵抗を変えたときのパルス波の強度は表 #link(<table:resistance>)[table:resistance]
-のようになり、パルス波の様子は図 #link(<fig:reflection>)[fig:reflection] のようになった。
+のようになり、パルス波の様子は図 @fig:reflection のようになった。
 
 #block[
 #figure(
@@ -311,7 +315,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 == MPPC のダークレート測定
 <mppc-のダークレート測定-1>
 ディスクリミネータの閾値を少しずつ変えて計数を比較する実験については図
-#link(<fig:darkrate-discriminator>)[fig:darkrate-discriminator] のようになった。
+@fig:darkrate-discriminator のようになった。
 
 #figure(image("/public/notes/physics_report/assets/discriminator.png", width: 12cm),
   caption: [
@@ -320,7 +324,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 )
 <fig:darkrate-discriminator>
 
-またオシロスコープでは図 #link(<fig:trigger-1>)[fig:trigger-1] のような波形が見られた。
+またオシロスコープでは図 @fig:trigger-1 のような波形が見られた。
 
 #figure(image("/public/notes/physics_report/assets/trigger1.jpg", width: 12cm),
   caption: [
@@ -332,7 +336,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 == $gamma$ 線の計測
 <gamma-線の計測-1>
 線源 ^60, ^22, ^137, ^133 のガンマ線の計測結果をそれぞれ図
-#link(<fig:Co60-gamma>)[fig:Co60-gamma], #link(<fig:Na22-gamma>)[fig:Na22-gamma], #link(<fig:Cs137-gamma>)[fig:Cs137-gamma], #link(<fig:Ba133-gamma>)[fig:Ba133-gamma]
+@fig:Co60-gamma, @fig:Na22-gamma, @fig:Cs137-gamma, @fig:Ba133-gamma
 に示す。
 
 #figure(image("/public/notes/physics_report/assets/Co60_gamma.jpg", width: 14cm),
@@ -370,7 +374,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 )
 <fig:Ba133-plastic>
 
-またオシロスコープでは図 #link(<fig:trigger-2>)[fig:trigger-2] のような波形が見られた。
+またオシロスコープでは図 @fig:trigger-2 のような波形が見られた。
 
 #figure(image("/public/notes/physics_report/assets/trigger2.jpg", width: 12cm),
   caption: [
@@ -392,7 +396,7 @@ $40 m m times 40 m m$ のシンチレータに対して平均毎分 14.7
 )
 <fig:trigger-3>
 
-仰角に対する宇宙線は図 #link(<fig:cosmic-ray-angle>)[fig:cosmic-ray-angle] のように観測された。
+仰角に対する宇宙線は図 @fig:cosmic-ray-angle のように観測された。
 
 #figure(image("/public/notes/physics_report/assets/cosmic_ray_elevation_angle.png", width: 14cm),
   caption: [
@@ -422,7 +426,7 @@ $ r & = V_r / V_0 = frac(Z_L - Z_0, Z_L + Z_0) = cases(delim: "{", - 0.96 & \( 1
 
 == MPPC のダークレート測定
 <mppc-のダークレート測定-2>
-図 #link(<fig:darkrate-discriminator>)[fig:darkrate-discriminator]
+図 @fig:darkrate-discriminator
 の対数グラフを見ると大方直線となっているのに対して 25 mV
 毎に上下していることが分かる。
 これにはクロストークが原因であると考えられる。 すべてが 1
@@ -434,7 +438,7 @@ $ r & = V_r / V_0 = frac(Z_L - Z_0, Z_L + Z_0) = cases(delim: "{", - 0.96 & \( 1
 == $gamma$ 線の計測
 <gamma-線の計測-2>
 観測した光電ピークとチャンネルとエネルギーの対応が分かっているので図
-#link(<fig:energy-ch>)[fig:energy-ch] のように線形近似して関係式を導ける。
+@fig:energy-ch のように線形近似して関係式を導ける。
 
 #figure(image("/public/notes/physics_report/assets/gamma_energy_ch.png", width: 14cm),
   caption: [
@@ -550,7 +554,7 @@ phi.alt \( x_n \) - phi.alt \( x_p \) & = (- 1 / 2 A_n x_n + B_n) - (- 1 / 2 A_p
 これより空乏層の厚さが求まる。
 $ D & = sqrt(frac(2 epsilon \( rho_n + rho_p \), rho_n rho_p) V_0) $
 空乏層内の電場は $E \( x \) = - nabla phi.alt$ と表せるから計算すると図
-#link(<fig:kubosou-E>)[fig:kubosou-E] のようなグラフとなる。
+@fig:kubosou-E のようなグラフとなる。
 
 #figure([],
   caption: [
@@ -587,7 +591,7 @@ L & = frac(mu, 2 pi) ln b / a $
 これより静電容量とインダクタンスが求まった。
 $ C & = frac(2 pi epsilon, ln \( b \/ a \))\
 L & = frac(mu, 2 pi) ln b / a $ これらについて同軸ケーブルの等価回路の図
-#link(<fig:circuit>)[fig:circuit] を参考に微小長さ $Delta z$ に対して電圧, 電流の差分
+@fig:circuit を参考に微小長さ $Delta z$ に対して電圧, 電流の差分
 $Delta V \, Delta I$ の関係式を導く。
 
 #figure(image("/public/notes/physics_report/assets/circuit.jpg", width: 10cm),

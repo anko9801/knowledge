@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "体論",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/field_theory.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 #block[
 体 $K$ について自然な環準同型
@@ -19,7 +23,7 @@ $upright(K e r) \( phi.alt \)$ も $\( 0 \)$ または $\( p \)$ である.
 
 ]
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 標数に対応する体の性質
 
@@ -35,7 +39,7 @@ $upright(F r o b)_q : K in.rev x mapsto x^q in K$
 
 ]
 #block[
-#strong[定理 2] (). \
+#strong[定理 2]. \
 
 フロベニウス準同型は体の準同型である.
 
@@ -97,7 +101,7 @@ $B = { x_i y_j divides i = 1 \, dots.h.c \, l \, j = 1 \, dots.h.c \, m }$
 
 ]
 #block[
-#strong[定理 3] (). \
+#strong[定理 3]. \
 
 以下は互いに同値である.
 
@@ -148,7 +152,7 @@ $f' \( x \) = 0$ ならば \
 ($2 arrow.l.r.double 3$)
 
 #block[
-#strong[定理 4] (). \
+#strong[定理 4]. \
 
 Steinitzの定理
 

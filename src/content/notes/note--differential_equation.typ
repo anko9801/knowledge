@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "微分方程式",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/differential_equation.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = ラプラス変換
 <ラプラス変換>
@@ -15,7 +19,7 @@ f \( t \) = cal(L)^(- 1) \[ F \( s \) \] & = lim_(p arrow.r oo) frac(1, 2 pi i) 
 
 ]
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 $ cal(L) \[ f' \( t \) \] & = s cal(L) \[ f \( t \) \] - f \( 0 \)\
 cal(L) [integral_0^t f \( u \) upright(d) u] & = $
@@ -151,7 +155,7 @@ B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
  $ 
 
 #block[
-#strong[定理 4] (). \
+#strong[定理 4]. \
 
 $ B \( m \, n \) & = frac(n - 1, m) B \( m + 1 \, n - 1 \)\
 B \( m \, n + 1 \) & = frac(n !, product_(k = 0)^n \( m + k \)) $
@@ -196,7 +200,7 @@ $ Gamma \( 2 z \) & = frac(2^(2 z), 2 sqrt(pi)) Gamma \( z \) Gamma (z + 1 / 2) 
 == $n$ 次元超球の体積と表面積
 <n-次元超球の体積と表面積>
 #block[
-#strong[定理 5] (). \
+#strong[定理 5]. \
 
 $ V_n \( R \) & = R^n frac(pi^(n / 2), Gamma \( n / 2 + 1 \)) = R^n frac(pi^(n / 2), \( n / 2 \) !) $
 
@@ -223,7 +227,7 @@ $ V_n \( R \) & = R^n frac(pi^(n / 2), Gamma \( n / 2 + 1 \)) = R^n frac(pi^(n /
 
 
 #block[
-#strong[定理 6] (). \
+#strong[定理 6]. \
 
 表面積
 $ S_n \( R \) = R^(n - 1) frac(2 pi^(pi / 2), Gamma \( n / 2 \)) $
@@ -267,7 +271,7 @@ $ B_1 & = - 1 / 2 \, #h(2em) B_(2 n + 1) = 0 #h(2em) \( n = 1 \, 2 \, 3 \, dots.
 
 
 #block[
-#strong[定理 7] (). \
+#strong[定理 7]. \
 
 $ sum_(m = 0)^(n - 1) frac(B_n, \( n - m \) ! m !) x^n = delta_(n \, 1) #h(2em) \( n = 1 \, 2 \, 3 \, dots.h \) . $
 
@@ -463,7 +467,7 @@ H_(n') \( x \) & = 2 n H_(n - 1) \( x \) $
 
 
 #block[
-#strong[定理 9] (). \
+#strong[定理 9]. \
 
 $ frac(upright(d)^2, upright(d) x^2) f \( x \) - 2 x frac(upright(d), upright(d) x) f \( x \) + 2 n f \( x \) = 0 $
 
@@ -471,7 +475,7 @@ $ frac(upright(d)^2, upright(d) x^2) f \( x \) - 2 x frac(upright(d), upright(d)
 
 
 #block[
-#strong[定理 10] (). \
+#strong[定理 10]. \
 
 $ integral_(- oo)^oo H_m \( x \) H_n \( x \) e^(- x^2) upright(d) x & = 2^n n ! sqrt(pi) delta_(m n) $
 

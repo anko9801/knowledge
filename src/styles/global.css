@@ -78,6 +78,11 @@ body {
   margin-inline: auto;
 }
 
+/* 講義ノートは別行立て数式が本文より広い。和文の読み幅より数式の可読性を優先する。 */
+.wrapper.wide {
+  max-width: 48rem;
+}
+
 /* --- 見出し ---------------------------------------------------------------
  * Typst の = は <h2> から始まる（h1 は文書タイトルぶん空いている）。
  * ページの h1 はレイアウト側が front matter の title から出す。
@@ -136,6 +141,35 @@ math[display='block'] {
   overflow-y: hidden;
   margin: 1.8rem 0;
   padding-block: 0.2rem;
+}
+
+/* 別行立て数式の通し番号。
+ *
+ * Typst の HTML export は式番号を出さないので、参照の「式 1」に対応する番号が
+ * 本文側に無い。loader が数式を .equation で包むので、そこに CSS カウンタで振る。
+ * <math> 自身には疑似要素が効かない。 */
+article {
+  counter-reset: equation;
+}
+
+.equation {
+  position: relative;
+  counter-increment: equation;
+}
+
+.equation::after {
+  content: '(' counter(equation) ')';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+/* 番号のぶんだけ数式の場所を空ける。 */
+.equation > math[display='block'] {
+  padding-right: 3.2em;
 }
 
 /* --- その他の本文要素 --- */

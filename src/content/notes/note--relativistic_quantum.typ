@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "相対論的量子力学",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/relativistic_quantum.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 == 電磁場中の荷電粒子
 <電磁場中の荷電粒子>
@@ -104,7 +108,7 @@ $  & \( i planck gamma^mu partial_mu - m c \) psi \( x \) = 0 $
 $  & \( gamma^0 \)^dagger = gamma^0 \, #h(2em) \( gamma^i \)^dagger = - gamma^i \, #h(2em) { gamma^mu \, gamma^nu } = 2 g^(mu nu) $
 
 ]
-式 #link(<condition>)[condition] を満たす行列は例えばディラック表示がある。
+式 @condition を満たす行列は例えばディラック表示がある。
 $ alpha^i = sigma^i times.o sigma^1 = mat(delim: "(", 0, sigma^i; sigma^i, 0) \, #h(2em) beta = sigma^0 times.o sigma^3 = mat(delim: "(", sigma^0, 0; 0, - sigma^0) $
 ただしパウリ行列 $bold(sigma)$ は次のように定義される。
 $ sigma_0 = mat(delim: "(", 1, 0; 0, 1) \, #h(2em) sigma_1 = mat(delim: "(", 0, 1; 1, 0) \, #h(2em) sigma_2 = mat(delim: "(", 0, - i; i, 0) \, #h(2em) sigma_3 = mat(delim: "(", 1, 0; 0, - 1) $

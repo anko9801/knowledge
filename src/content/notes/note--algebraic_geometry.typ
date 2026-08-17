@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "代数幾何",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/algebraic_geometry.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = スキーム
 <スキーム>
@@ -205,15 +209,10 @@ tilde(phi)^(\#) : med & k \[ bb(A)^2 \] = k \[ x \, y \] quad & arrow.r quad & k
  & f \( x \, y \) quad & mapsto quad & f \( t^2 \, t^3 \)\
 iota^(\#) : med & k \[ bb(A)^2 \] = k \[ x \, y \] quad & arrow.r quad & k \[ C \] = k \[ x \, y \] \/ \( y^2 - x^3 \)\
  & f \( x \, y \) quad & mapsto quad & overline(f \( x \, y \)) $
-\$\$\\begin{tikzcd}
-      \\mathbb{A}^1 \\arrow\[r,\"\\tilde{\\varphi}\"\]\\arrow\[dr,\"\\varphi\"\] & C \\arrow\[d,\"\\iota\"\] \\\\
-      & \\mathbb{A}^2
-    \\end{tikzcd}
-    \\qquad
-    \\begin{tikzcd}
-      k\[\\mathbb{A}^1\] & k\[C\] \\arrow\[l,\"\\tilde{\\varphi}^\\\#\"\] \\\\
-      & k\[\\mathbb{A}^2\] \\arrow\[u,\"\\iota^\\\#\"\]\\arrow\[ul,\"\\varphi^\\\#\"\]
-    \\end{tikzcd}\$\$ ここで $phi$ は全単射であるが $phi^(\#)$ は $t$
+#block(inset: (left: 0.9em), stroke: (left: 2pt + luma(80%)))[
+  #text(size: 0.85em, fill: luma(45%))[図は変換できていません（元の LaTeX）]
+  #raw("\\begin{tikzcd}\n      \\mathbb{A}^1 \\arrow[r,\"\\tilde{\\varphi}\"]\\arrow[dr,\"\\varphi\"] & C \\arrow[d,\"\\iota\"] \\\\\n      & \\mathbb{A}^2\n    \\end{tikzcd}\n    \\qquad\n    \\begin{tikzcd}\n      k[\\mathbb{A}^1] & k[C] \\arrow[l,\"\\tilde{\\varphi}^\\#\"] \\\\\n      & k[\\mathbb{A}^2] \\arrow[u,\"\\iota^\\#\"]\\arrow[ul,\"\\varphi^\\#\"]\n    \\end{tikzcd}", lang: "latex", block: true)
+] ここで $phi$ は全単射であるが $phi^(\#)$ は $t$
 の一次式は得られないことから全射ではない。
 
 ]

@@ -30,6 +30,7 @@ const notes = defineCollection({
   loader: typstLoader({
     dir: 'src/content/notes',
     expectedLang: 'ja',
+    numberEquations: true,
   }),
   schema: postSchema,
 })

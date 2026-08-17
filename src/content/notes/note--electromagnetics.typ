@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "電磁気学",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/electromagnetics.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 真空中の電磁気学
 <真空中の電磁気学>
@@ -42,7 +46,7 @@ $ bold(F) & = rho bold(E) + bold(j) times bold(B) $
 $ frac(partial rho, partial t) + upright(bold(nabla)) dot.op bold(j) = 0 $
 
 ]
-式 #link(<Ampere>)[Ampere]
+式 @Ampere
 の両辺の発散を計算することで連続の方程式を導出する。$upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(B) \) = 0$
 より
 $ upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(B) \) & = upright(bold(nabla)) dot.op (mu_0 bold(j) + 1 / c^2 frac(partial bold(E), partial t))\
@@ -140,7 +144,7 @@ $ upright(bold(nabla)) dot.op bold(B) & = upright(bold(nabla)) dot.op \( upright
 upright(bold(nabla)) times bold(E) + frac(partial bold(B), partial t) & = upright(bold(nabla)) times (bold(E) + frac(partial bold(A), partial t)) = upright(bold(nabla)) times (- upright(bold(nabla)) phi.alt) = 0 $
 
 #block[
-#strong[定理 6] (). \
+#strong[定理 6]. \
 
 Maxwell の方程式は電磁ポテンシャルを用いて次のように表される。
 $  & - nabla^2 phi.alt - frac(partial, partial t) \( upright(bold(nabla)) dot.op bold(A) \) = rho / epsilon_0\
@@ -421,7 +425,7 @@ $ \( nabla^2 + k^2 \) bold(E) & = 0\
 
 ]
 #block[
-#strong[定理 25] (). \
+#strong[定理 25]. \
 
 $ E = sigma / epsilon_0 $
 
@@ -738,7 +742,7 @@ $ bold(j)_S & = - frac(n_s q^2, m) bold(A) #h(2em) (q = - 2 e \, m = 2 m_e) $
 
 ]
 #block[
-#strong[定理 40] (). \
+#strong[定理 40]. \
 
 ]
 $ upright(bold(nabla)) times bold(j)_S & = - frac(n_s q^2, m) upright(bold(nabla)) times bold(A) = - frac(n_s q^2, m) bold(B)\

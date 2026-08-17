@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "統計力学演習レポート 2",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("レポート",),
   summary: "physics_report/debye.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 <table:data_type>
 
@@ -586,7 +590,7 @@ $ g \( omega \) & approx 3 sqrt(m / kappa) frac(N + 1, pi) times ("半径" sqrt(
  & = 3 sqrt(m / kappa) frac(N + 1, pi) times frac(4 pi, 8) (sqrt(m / kappa) frac(N + 1, pi) omega)^2\
  & = frac(3 pi, 2) (sqrt(m / kappa) frac(N + 1, pi))^3 omega^2 . $
 
-(vii) $omega$ に関する条件 #link(<omega_condition>)[omega_condition]
+(vii) $omega$ に関する条件 @omega_condition
 が成り立たない場合は立方体の積分範囲と球面の表面の共通部分の面積となるので複雑な式となってしまう.
 ただ Debye 模型は低温における比熱の振る舞いからの要請により
 $omega \( bold(k) \)$ が大きいときは気にしなくて良い模型でした. これより

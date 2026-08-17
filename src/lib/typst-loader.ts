@@ -4,7 +4,7 @@ import { basename, extname, join, relative } from 'node:path'
 import { createHash } from 'node:crypto'
 
 import { compileHtml, evalMetadata } from './typst-cli.ts'
-import { extractStyles, splitDocument } from './typst-html.ts'
+import { extractStyles, splitDocument, wrapBlockEquations } from './typst-html.ts'
 
 export type TypstLoaderOptions = {
   /** .typ を置くディレクトリ（プロジェクトルートからの相対パス）。 */
@@ -13,6 +13,8 @@ export type TypstLoaderOptions = {
   readonly bin?: string
   /** #set text(lang: ...) に期待する値。ズレたら警告する。 */
   readonly expectedLang?: string
+  /** 別行立て数式に通し番号を振る。参照が「式 1」と出る文書向け。 */
+  readonly numberEquations?: boolean
 }
 
 type EntryResult = {
@@ -43,7 +45,12 @@ const digest = (input: string): string =>
  * ビルドが巻き込まれない。digest を突き合わせて変更のないファイルは再利用する。
  */
 export const typstLoader = (options: TypstLoaderOptions): Loader => {
-  const { dir, bin = process.env.TYPST_BIN ?? 'typst', expectedLang } = options
+  const {
+    dir,
+    bin = process.env.TYPST_BIN ?? 'typst',
+    expectedLang,
+    numberEquations = false,
+  } = options
 
   /** 1 ファイルをコンパイルしてストアに入れる。full load と watch の両方から使う。 */
   const ingest = async (
@@ -82,16 +89,18 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
       filePath: file,
     })
 
+    const rendered = numberEquations ? wrapBlockEquations(body) : body
+
     store.set({
       id,
       data,
-      body,
+      body: rendered,
       digest: sourceDigest,
       filePath: relative(root, file),
-      rendered: { html: body },
+      rendered: { html: rendered },
     })
 
-    logger.info(`${id} (${Buffer.byteLength(body)} bytes)`)
+    logger.info(`${id} (${Buffer.byteLength(rendered)} bytes)`)
 
     return { id, mathCss: extractStyles(head) }
   }

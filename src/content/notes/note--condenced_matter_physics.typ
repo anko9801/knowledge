@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "condenced_matter_physics",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/condenced_matter_physics.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 #strong[電子] \
 群速度 $bold(v)_e = frac(partial omega, partial bold(k))$, エネルギー

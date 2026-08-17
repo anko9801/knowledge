@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "量子力学",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/quantum.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 量子力学の基礎
 <量子力学の基礎>
@@ -51,7 +55,7 @@ nabla^2 psi \( bold(r) \, t \) & = nabla^2 integral_(bold(k)) tilde(phi) \( bold
 $ i planck frac(partial, partial t) psi \( bold(r) \, t \) & = (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi \( bold(r) \, t \) $
 
 #block[
-#strong[定理 2] (). \
+#strong[定理 2]. \
 
 粒子の確率密度について連続の方程式を満たす。
 $ frac(partial, partial t) rho \( bold(r) \, t \) + bold(nabla) dot.op bold(j) \( bold(r) \, t \) = 0 $
@@ -125,14 +129,11 @@ $ Delta r_i Delta p_j gt.eq planck / 2 delta_(i j) $
 波動関数が次のような関数のとき
 $ Psi \( bold(r) \, t \) & := (i s \( hat(r)_i - ⟨hat(r)_i⟩ \) + \( hat(p)_j - ⟨hat(p)_j⟩ \)) psi \( bold(r) \, t \) $
 
-\$\$\\begin{aligned}
-    \\int|\\Psi(\\bm{r}, t)|^2\\mathrm{d}{\\bm{r}} & = \\int\\Psi^\*(\\bm{r}, t)\\Psi(\\bm{r}, t)\\mathrm{d}{\\bm{r}}                                                                                                                                     \\\\
-                                 & = \\int\\psi^\*(\\bm{r}, t)\\left(s^2(\\hat{r}\_i - \\left\\langle \\hat{r}\_i\\right\\rangle )^2 - is\[\\hat{r}\_i - \\left\\langle \\hat{r}\_i\\right\\rangle , \\hat{p}\_j - \\left\\langle \\hat{p}\_j\\right\\rangle \] + (\\hat{p}\_j - \\left\\langle \\hat{p}\_j\\right\\rangle )^2\\right)\\psi(\\bm{r}, t)\\mathrm{d}{\\bm{r}} \\\\
-                                 & = s^2\\left\\langle (\\hat{r}\_i - \\ev{\\hat{r}\_i})^2\\right\\rangle  + s\\hbar\\delta\_{ij} + \\left\\langle (\\hat{p}\_j - \\ev{\\hat{p}\_j})^2\\right\\rangle                                                                            \\\\
-                                 & = s^2\\Delta r\_i^2 + s\\hbar\\delta\_{ij} + \\Delta p\_j^2                                                                                                                         \\\\
-                                 & = \\left(s + \\frac{\\hbar\\delta\_{ij}}{2\\Delta r\_i^2}\\right)^2\\Delta r\_i^2 - \\frac{\\hbar^2\\delta\_{ij}}{4\\Delta r\_i^2} + \\Delta p\_j^2 \\geq 0
-  
-\\end{aligned}\$\$
+$ integral \| Psi \( bold(r) \, t \) \|^2 upright(d) bold(r) & = integral Psi^(\*) \( bold(r) \, t \) Psi \( bold(r) \, t \) upright(d) bold(r)\
+ & = integral psi^(\*) \( bold(r) \, t \) (s^2 \( hat(r)_i - ⟨hat(r)_i⟩ \)^2 - i s \[ hat(r)_i - ⟨hat(r)_i⟩ \, hat(p)_j - ⟨hat(p)_j⟩ \] + \( hat(p)_j - ⟨hat(p)_j⟩ \)^2) psi \( bold(r) \, t \) upright(d) bold(r)\
+ & = s^2 ⟨\( hat(r)_i - ⟨hat(r)_i⟩ \)^2⟩ + s planck delta_(i j) + ⟨\( hat(p)_j - ⟨hat(p)_j⟩ \)^2⟩\
+ & = s^2 Delta r_i^2 + s planck delta_(i j) + Delta p_j^2\
+ & = (s + frac(planck delta_(i j), 2 Delta r_i^2))^2 Delta r_i^2 - frac(planck^2 delta_(i j), 4 Delta r_i^2) + Delta p_j^2 gt.eq 0 $
 $s = - frac(planck delta_(i j), 2 Delta r_i^2)$
 とすると位置と運動量における不確定性原理が求まる。
 $ Delta r_i Delta p_j gt.eq planck / 2 delta_(i j) $
@@ -232,13 +233,8 @@ E_n & = frac(planck^2, 2 m) (frac(n pi, 2 L))^2 $
 <立方体剛体壁ポテンシャル>
 #block[
 立方体中にしか粒子が存在しないようなポテンシャルを考える。
-\$\$\\begin{aligned}
-    V(x) & = \\begin{cases}
-               0        & (\$0 \< x, y, z \< L\$) \\\\
-               + \\infty & (otherwise)
-             \\end{cases}
-  
-\\end{aligned}\$\$ このとき固有関数、固有エネルギーは次のようになる。
+$ V \( x \) & = cases(delim: "{", 0 & \( 0 < x \, y \, z < L \), + oo & \( o t h e r w i s e \)) $
+このとき固有関数、固有エネルギーは次のようになる。
 $ phi \( x \, y \, z \) & = (2 / L)^(3 \/ 2) sin \( frac(n_x pi, L) x \) sin \( frac(n_y pi, L) y \) sin \( frac(n_z pi, L) z \)\
 E & = frac(pi^2 planck^2, 2 m L^2) (n_x^2 + n_y^2 + n_z^2) $
 
@@ -819,13 +815,13 @@ $ ⟨lambda \, m\| hat(bold(j))^2 \|lambda \, m⟩ & = ⟨lambda \, m\| lambda \
  & = ⟨lambda \, m\| hat(j)_x^2 + hat(j)_y^2 + hat(j)_z^2 \|lambda \, m⟩ = ⟨lambda \, m\| hat(j)_x^2 + hat(j)_y^2 \|lambda \, m⟩ + m^2\
  & = ⟨lambda \, m\| hat(j)_(-) hat(j)_(+) + hat(j)_z^2 + hat(j)_z \|lambda \, m⟩ = ⟨lambda \, m\| hat(j)_(-) hat(j)_(+) \|lambda \, m⟩ + m \( m + 1 \)\
  & = ⟨lambda \, m\| hat(j)_(+) hat(j)_(-) + hat(j)_z^2 - hat(j)_z \|lambda \, m⟩ = ⟨lambda \, m\| hat(j)_(+) hat(j)_(-) \|lambda \, m⟩ + m \( m - 1 \) $<j2-lambda>
-まず式 #link(<j2-lambda>)[j2-lambda] と #link(<j2-m2>)[j2-m2] について $hat(j)_x \, hat(j)_y$
+まず式 @j2-lambda と  について $hat(j)_x \, hat(j)_y$
 はエルミート演算子であるから
 $⟨lambda \, m\| hat(j)_x^2 \|lambda \, m⟩ gt.eq 0$,
 $⟨lambda \, m\| hat(j)_y^2 \|lambda \, m⟩ gt.eq 0$ より
 $0 lt.eq m^2 lt.eq lambda$ となる。 これより $m$ の上限値 $j$ とおくと式
-#link(label("j2-m2-+-m"))[j2-m2-+-m] と #link(<j2-lambda>)[j2-lambda] より $lambda = j \( j + 1 \)$
-となり、下限値 $j - n$ とおくと式 #link(<j2-m2---m>)[j2-m2---m] と #link(<j2-lambda>)[j2-lambda] より
+ と @j2-lambda より $lambda = j \( j + 1 \)$ となり、下限値
+$j - n$ とおくと式  と @j2-lambda より
 $lambda = \( j - n \) \( j - n - 1 \)$ となる。 これら 2 つの式を用いて
 $j$ を求める。 $ {lambda = j \( j + 1 \)\
 lambda = \( j - n \) \( j - n - 1 \) arrow.l.r.double {lambda = j \( j + 1 \)\
@@ -884,7 +880,7 @@ $ \|j \, m⟩ chevron.r & = sum_(m_1 \, m_2) C_(j_1 m_1 j_2 m_2)^(j m) \|j_1 \, 
 
 ]
 #block[
-#strong[定理 5] (). \
+#strong[定理 5]. \
 
 合成系の角運動量演算子は角運動量代数を満たす。
 
@@ -986,7 +982,7 @@ $ \[ sigma_i \, sigma_j \] & = sigma_i sigma_j - sigma_j sigma_i = \( delta_(i j
 {sigma_i \, sigma_j} & = sigma_i sigma_j + sigma_j sigma_i = \( delta_(i j) I + i epsilon_(i j k) sigma_k \) + \( delta_(j i) I + i epsilon_(j i k) sigma_k \) = 2 delta_(i j) I $
 
 #block[
-#strong[定理 6] (). \
+#strong[定理 6]. \
 
 $s = 1 \/ 2$ における $hat(s)_z$ の固有状態 $\|arrow.t⟩ \, \|arrow.b⟩$
 についてスピンとスピン演算子を行列表現すると次のようになる。
@@ -1039,7 +1035,7 @@ $ {(E_n^(\( 0 \)) - H_0) \|phi.alt_n^(\( 0 \))⟩ = 0\
 (E_n^(\( 0 \)) - H_0) \|phi.alt_n^(\( 2 \))⟩ = (V - E_n^(\( 1 \))) \|phi.alt_n^(\( 1 \))⟩ - E_n^(\( 2 \)) \|phi.alt_n^(\( 0 \))⟩ $<perturbation>
 まず 0 次については次のように書ける。
 $ H_0 \|phi.alt_n^(\( 0 \))⟩ = E_n^(\( 0 \)) \|phi.alt_n^(\( 0 \))⟩ $ 式
-#link(<perturbation>)[perturbation] に $⟨phi.alt_m^(\( 0 \))\|$ を掛けると
+@perturbation に $⟨phi.alt_m^(\( 0 \))\|$ を掛けると
 $  & {⟨phi.alt_m^(\( 0 \))\| (E_n^(\( 0 \)) - H_0) \|phi.alt_n^(\( 1 \))⟩ = ⟨phi.alt_m^(\( 0 \))\| (V - E_n^(\( 1 \))) \|phi.alt_n^(\( 0 \))⟩\
 ⟨phi.alt_m^(\( 0 \))\| (E_n^(\( 0 \)) - H_0) \|phi.alt_n^(\( 2 \))⟩ = ⟨phi.alt_m^(\( 0 \))\| (V - E_n^(\( 1 \))) \|phi.alt_n^(\( 1 \))⟩ - ⟨phi.alt_m^(\( 0 \))\| E_n^(\( 2 \)) \|phi.alt_n^(\( 0 \))⟩\
 arrow.l.r.double & {(E_n^(\( 0 \)) - E_m^(\( 0 \))) ⟨phi.alt_m^(\( 0 \)) mid(bar.v) phi.alt_n^(\( 1 \))⟩ = ⟨phi.alt_m^(\( 0 \))\| V \|phi.alt_n^(\( 0 \))⟩ - E_n^(\( 1 \)) delta_(m n)\
@@ -1070,9 +1066,3 @@ $ J \( x \) & = - i frac(planck, 2 m) (psi^(\*) frac(upright(d) psi, upright(d) 
 frac(upright(d) J, upright(d) x) & = - i frac(planck, 2 m) (psi^(\*) frac(upright(d) psi, upright(d) x) - psi frac(upright(d) psi^(\*), upright(d) x)) $
 $ t' & = frac(1 - \| r \|^2, t^(\*))\
 r' & = - frac(r^(\*) t, t^(\*)) $
-
-
-// 変換時に定義が失われた参照先。リンクを生かすための錨。
-#metadata(none)#label("j2-m2-+-m")
-#metadata(none)<j2-m2>
-#metadata(none)<j2-m2---m>

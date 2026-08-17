@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "計算物理",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/computational.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 差分法
 <差分法>
@@ -79,7 +83,7 @@ $ frac(partial f \( x \, t \), partial t) & = kappa frac(partial^2 f \( x \, t \
 
 ]
 #block[
-#strong[定理 4] (). \
+#strong[定理 4]. \
 
 $ f_i^(\( n + 1 \)) & = f_i^(\( n \)) + frac(kappa Delta t, Delta x^2) (f_(i + 1)^(\( n \)) - 2 f_i^(\( n \)) + f_(i - 1)^(\( n \))) $
 
@@ -99,7 +103,7 @@ $ frac(partial f \( x \, t \), partial t) & = - c frac(partial f \( x \, t \), p
 
 ]
 #block[
-#strong[定理 5] (). \
+#strong[定理 5]. \
 
 移流方程式は時間について(1次)前進差分、空間について(2次)中心差分を取ると安全性を満たさない。
 \
@@ -133,7 +137,7 @@ $ frac(partial tilde(bold(v)), partial tilde(t)) & = - \( tilde(bold(v)) dot.op 
 
 ]
 #block[
-#strong[定理 6] (). \
+#strong[定理 6]. \
 
 Navier-Stokes 方程式
 
@@ -159,7 +163,7 @@ $ frac(partial omega, partial t) & = frac(partial Phi, partial x) frac(partial o
 nabla^2 Phi & = - omega $ 
 
 #block[
-#strong[定理 7] (). \
+#strong[定理 7]. \
 
 ポアソン方程式については差分法で解ける。 $  & nabla^2 Phi = - omega\
  & frac(Phi_(i + 1 \, j) - 2 Phi_(i \, j) + Phi_(i - 1 \, j), Delta x^2) + frac(Phi_(i \, j + 1) - 2 Phi_(i \, j) + Phi_(i \, j - 1), Delta y^2) = omega_(i \, j)\
@@ -221,7 +225,7 @@ $ dot(bold(z)) & = T^(- 1) A T bold(z) + T^(- 1) B bold(u)\
 bold(y) & = C T bold(z) $ により $A$ を対角化できる。
 
 #block[
-#strong[定理 8] (). \
+#strong[定理 8]. \
 
 $ bold(y) & = C exp \( A \( t - t_0 \) \) bold(x)_0 + C integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) \( tau \) upright(d) tau $
 

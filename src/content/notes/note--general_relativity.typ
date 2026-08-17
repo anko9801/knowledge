@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "相対性理論",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/general_relativity.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 特殊相対性理論
 <特殊相対性理論>
@@ -178,7 +182,7 @@ $ A_(med ; alpha)^alpha & = frac(partial A^alpha, partial alpha) + Gamma_(med mu
 == 局所平坦性定理
 <局所平坦性定理>
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 任意の計量 $g_(alpha beta)$
 は座標変換することである点で平坦な計量となる。
@@ -273,7 +277,7 @@ $ R_(med beta mu nu)^alpha = 0 arrow.l.r.double "平坦な多様体" $
 
 ]
 #block[
-#strong[定理 3] (). \
+#strong[定理 3]. \
 
 $  & R_(alpha beta mu nu) = - R_(beta alpha mu nu) = - R_(alpha beta nu mu) = R_(mu nu alpha beta)\
  & R_(alpha beta mu nu) + R_(alpha nu beta mu) + R_(alpha mu nu beta) = 0\

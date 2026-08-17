@@ -7,9 +7,11 @@ import '../styles/global.css'
 type Props = {
   title: string
   description?: string
+  /** 数式の多いページ用。本文の読み幅を広げる。 */
+  wide?: boolean
 }
 
-const { title, description } = Astro.props
+const { title, description, wide = false } = Astro.props
 const siteName = 'knowledge'
 ---
 
@@ -25,7 +27,7 @@ const siteName = 'knowledge'
     <link rel="preload" href="/fonts/math.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
-    <div class="wrapper">
+    <div class:list={['wrapper', { wide }]}>
       <slot />
     </div>
   </body>

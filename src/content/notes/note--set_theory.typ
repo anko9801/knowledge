@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "集合論",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/set_theory.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 公理的集合論の基礎
 <公理的集合論の基礎>
@@ -112,7 +116,7 @@ upright(r a n) \( R \) & = { y : exists x med ⟨x \, y⟩ in R } $ 関係 $R$
 
 ]
 #block[
-#strong[定理 2] (). \
+#strong[定理 2]. \
 
 関係 $R$ に対し ${ R^(- 1) }^(- 1) = R$ となる。
 
@@ -138,7 +142,7 @@ upright("非反射律") quad & forall x in A { not { x R x } } $
 
 ]
 #block[
-#strong[定理 3] (). \
+#strong[定理 3]. \
 
 $⟨A \, R⟩$ が狭義全順序ならば, 任意の $B subset A$ について $⟨B \, R⟩$
 は狭義全順序となる。
@@ -164,7 +168,7 @@ $R$-最小の要素があるとき, $⟨A \, R⟩$ が整列順序であると�
 
 ]
 #block[
-#strong[定理 4] (). \
+#strong[定理 4]. \
 
 $⟨A \, R⟩$ を整列順序とするとき, 任意の $x in A$ に対して
 $⟨A \, R⟩ tilde.equiv.not ⟨upright(p r e d) \( A \, x \, R \) \, R⟩$
@@ -176,7 +180,7 @@ $f : A arrow.r upright(p r e d) \( A \, x \, R \)$
 $R$-最小要素 $y$ が。
 
 #block[
-#strong[定理 5] (). \
+#strong[定理 5]. \
 
 $⟨A \, R⟩ \, ⟨B \, S⟩$ を互いに同型な整列順序とするとき,
 この間の同型写像は唯一つ存在する。
@@ -186,7 +190,7 @@ $⟨A \, R⟩ \, ⟨B \, S⟩$ を互いに同型な整列順序とするとき,
 であるような $y in A$ のうち $R$-最小の $y$ を考えると矛盾。
 
 #block[
-#strong[定理 6] (). \
+#strong[定理 6]. \
 
 $⟨A \, R⟩ \, ⟨B \, S⟩$ を整列順序とするとき,
 次の3つの命題は互いに背反である。
@@ -222,7 +226,7 @@ g compose f & = { \( x \, z \) in a times c divides f \( x \) inter g^(- 1) \( z
 
 ]
 #block[
-#strong[定理 7] (). \
+#strong[定理 7]. \
 
 + $x$ が順序数で $y in x$ なら, $y$ も順序数で
   $y = upright(p r e d) \( x \, y \)$。
@@ -256,7 +260,7 @@ g compose f & = { \( x \, z \) in a times c divides f \( x \) inter g^(- 1) \( z
 よって全て示された。
 
 #block[
-#strong[定理 8] (). \
+#strong[定理 8]. \
 
 \$\\lnot\\exists z\\forall x(x\\text!{は順序数}\\to x\\in z)\$
 
@@ -272,7 +276,7 @@ $A$ は順序数である。
 
 ]
 #block[
-#strong[定理 9] (). \
+#strong[定理 9]. \
 
 $⟨A \, R⟩$ が整列順序であれば, あるただ一つに定まる順序数 $C$ について
 $⟨A \, R⟩ tilde.equiv C$ となる。

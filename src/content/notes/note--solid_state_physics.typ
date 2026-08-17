@@ -2,10 +2,14 @@
 
 #show: post.with(
   title: "固体物理学",
-  date: "2026-08-16",
+  date: "2026-08-17",
   tags: ("ノート",),
   summary: "note/solid_state_physics.tex から変換",
 )
+
+// 元の LaTeX が式番号で参照していた。採番しないと @ラベル が解決できず、
+// 参照がラベル名のまま本文に出る。
+#set math.equation(numbering: "(1)")
 
 = 格子
 <格子>
@@ -25,7 +29,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
 
 ]
 #block[
-#strong[定理 1] (). \
+#strong[定理 1]. \
 
 同じ格子でも基本並進ベクトルの取り方は無数にある。 \
 

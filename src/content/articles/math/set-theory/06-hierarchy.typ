@@ -2,9 +2,12 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "集合論 6: 累積階層と独立性",
+  title: "累積階層と独立性",
   date: "2026-08-17",
-  tags: ("集合論", "数学"),
+  field: "math",
+  series: "set-theory",
+  order: 6,
+  tags: ("集合論",),
   summary: "集合の宇宙を段階に分けて眺める。共終数、到達不能基数、そして CH が独立であるとはどういうことか。",
 )
 
@@ -16,7 +19,7 @@
 
 = 宇宙を段階に分ける
 
-#link("/notes/set-theory-1-axioms")[集合論 1] で、公理的集合論は
+#link("/math/set-theory/1")[第 1 回] で、公理的集合論は
 「すでにある集合から新しい集合をどう作るか」だけを定めるのだ、と書いた。
 ならば、作れる順に並べてみたらどうなるか。それをやったのが累積階層である。
 
@@ -165,7 +168,7 @@ Gödel の第二不完全性定理に反してしまう。
   (2) $cf(aleph_(alpha+1)) <= aleph_alpha$ と仮定すると、
   $aleph_(alpha+1)$ が $aleph_alpha$ 個以下の、それぞれ濃度 $aleph_alpha$ 以下の
   集合の和として書ける。すると Hessenberg の定理
-  （#link("/notes/set-theory-4-cardinals")[集合論 4]）より
+  （#link("/math/set-theory/4")[第 4 回]）より
   $aleph_alpha dot aleph_alpha = aleph_alpha < aleph_(alpha+1)$ となって矛盾する。
   各部分の番号づけを選ぶところで選択公理を使っている。
 ]

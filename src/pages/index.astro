@@ -2,88 +2,169 @@
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { fields, seriesOf } from '../lib/taxonomy.ts'
 
+const articles = await getCollection('articles', ({ data }) => !data.draft)
 const posts = await getCollection('posts', ({ data }) => !data.draft)
 const notes = await getCollection('notes')
-const written = notes.length
 
-// date は zod の z.coerce.date() で Date になっているので、そのまま新しい順に並べる。
-const sorted = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+// 分野ごとの本数を数えて、グリッドに出す。0 本の分野も枠だけ出しておく。
+const boxes = fields.map((field) => ({
+  field,
+  series: seriesOf(field.slug),
+  count: articles.filter((article) => article.data.field === field.slug).length,
+}))
+
+const recent = [...articles]
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5)
+
+const sortedPosts = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 ---
 
 <BaseLayout title="knowledge">
   <h1>knowledge</h1>
-
-  <p class="nav">
-    <a href="/notes">講義ノート</a>
-    <span class="count">{written} 本</span>
+  <p class="lead">
+    数学と物理を、定義の気持ちから順に解説していきます。数式は MathML なので、
+    画像ではなく文字として選択もコピーも検索もできます。
   </p>
 
-  <ul class="posts">
+  <ul class="grid">
     {
-      sorted.map((post) => (
+      boxes.map(({ field, series, count }) => (
         <li>
-          <a href={`/posts/${post.id}`}>{post.data.title}</a>
-          <p class="meta">
-            <time datetime={post.data.date.toISOString().slice(0, 10)}>
-              {post.data.date.toISOString().slice(0, 10)}
-            </time>
-            {post.data.tags.map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </p>
-          {post.data.summary && <p class="summary">{post.data.summary}</p>}
+          <a href={`/${field.slug}`}>
+            <span class="title">{field.title}</span>
+            <span class="count">{count > 0 ? `${count} 本` : '準備中'}</span>
+          </a>
+          <p class="blurb">{field.blurb}</p>
+          {series.length > 0 && (
+            <p class="series">{series.map((entry) => entry.title).join('・')}</p>
+          )}
         </li>
       ))
     }
   </ul>
+
+  {
+    recent.length > 0 && (
+      <section>
+        <h2>最近書いたもの</h2>
+        <ul class="recent">
+          {recent.map((article) => (
+            <li>
+              <a href={`/${article.data.field}/${article.data.series}/${article.data.order}`}>
+                {article.data.title}
+              </a>
+              <time datetime={article.data.date.toISOString().slice(0, 10)}>
+                {article.data.date.toISOString().slice(0, 10)}
+              </time>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section>
+    <h2>サイトについて</h2>
+    <ul class="recent">
+      {
+        sortedPosts.map((post) => (
+          <li>
+            <a href={`/posts/${post.id}`}>{post.data.title}</a>
+            <time datetime={post.data.date.toISOString().slice(0, 10)}>
+              {post.data.date.toISOString().slice(0, 10)}
+            </time>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <p class="raw">
+    書き直し前の講義ノートが <a href="/notes">{notes.length} 本</a> あります。
+    機械変換したままなので組版は崩れています。
+  </p>
 </BaseLayout>
 
 <style>
-  .posts {
+  .lead {
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .grid {
     list-style: none;
     padding: 0;
-    margin: 2.5rem 0 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1.5rem;
   }
 
-  .posts li {
-    margin-bottom: 2.2rem;
+  .grid li {
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
   }
 
-  .posts a {
-    font-size: 1.15rem;
-  }
-
-  .meta {
-    margin: 0.2rem 0 0;
-    font-size: 0.85rem;
-    color: var(--muted);
+  .grid a {
     display: flex;
-    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
     gap: 0.6rem;
-    align-items: baseline;
+    text-decoration: none;
   }
 
-  .tag::before {
-    content: '#';
-    opacity: 0.55;
+  .grid .title {
+    font-size: 1.15rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
-  .nav {
-    margin: 1.5rem 0 0;
-    display: flex;
-    gap: 0.7rem;
-    align-items: baseline;
-  }
-
-  .count {
-    font-size: 0.85rem;
+  .grid .count {
+    font-size: 0.8rem;
     color: var(--muted);
   }
 
-  .summary {
+  .grid .blurb {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .grid .series {
     margin: 0.4rem 0 0;
+    font-size: 0.8rem;
     color: var(--muted);
-    font-size: 0.95rem;
+  }
+
+  .recent {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .recent li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+  }
+
+  .recent time {
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .raw {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.9rem;
+    color: var(--muted);
   }
 </style>

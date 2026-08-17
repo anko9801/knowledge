@@ -2,9 +2,12 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "集合論 2: 関係と順序",
+  title: "関係と順序",
   date: "2026-08-17",
-  tags: ("集合論", "数学"),
+  field: "math",
+  series: "set-theory",
+  order: 2,
+  tags: ("集合論",),
   summary: "関数はグラフである、と言い切ってしまう流儀。整列順序の基本定理まで一気に。",
 )
 
@@ -15,7 +18,7 @@
 
 = 関数とは何か、を集合で答える
 
-#link("/notes/set-theory-1-axioms")[集合論 1] で順序対
+#link("/math/set-theory/1")[第 1 回] で順序対
 $⟨x, y⟩ = \{\{x\}, \{x, y\}\}$ と直積 $A times B$ が手に入った。
 これから、数学で日常的に使う道具をこの上に全部載せていく。
 
@@ -124,7 +127,7 @@ $x$ も $y$ も $union.big union.big R$ の要素になっている。
 
 #proof[
   関数 $f : A -> B$ は $A times B$ の部分集合だから ${}^A B subset.eq cal(P)(A times B)$ である。
-  $A times B$ は集合であり（#link("/notes/set-theory-1-axioms")[集合論 1]）、
+  $A times B$ は集合であり（#link("/math/set-theory/1")[第 1 回]）、
   その冪集合も集合なので、分出より ${}^A B$ が得られる。
 ]
 
@@ -171,7 +174,7 @@ $x$ も $y$ も $union.big union.big R$ の要素になっている。
 
 ……のだが、後者は素直にいかない。同値類が真のクラスになってしまうのである。
 $bb(N)$ と対等な集合を全部集めた「類」は、集合ではない。
-この躓きをどう回避するかは #link("/notes/set-theory-4-cardinals")[集合論 4] の見どころである。
+この躓きをどう回避するかは #link("/math/set-theory/4")[第 4 回] の見どころである。
 
 = 順序
 
@@ -186,7 +189,7 @@ $bb(N)$ と対等な集合を全部集めた「類」は、集合ではない。
 
 $<=$ で書く流儀もあって、そちらのほうが馴染みがあるかも知れない。
 集合論で狭義のほうを採るのは、順序数を $in$ で順序づけたいからである。
-$in$ は非反射的だ（#link("/notes/set-theory-1-axioms")[集合論 1] の正則性より $x in.not x$）。
+$in$ は非反射的だ（#link("/math/set-theory/1")[第 1 回] の正則性より $x in.not x$）。
 道具を後で使う場面に合わせておく、という実利的な理由である。
 
 #definition[
@@ -206,7 +209,7 @@ $in$ は非反射的だ（#link("/notes/set-theory-1-axioms")[集合論 1] の�
   任意の部分族 $cal(X) subset.eq cal(P)(A)$ が上限
   $sup cal(X) = union.big cal(X)$ を持つので、これは完備束になる。
   Zorn の補題が活躍するのは、だいたいこの型の順序である
-  （#link("/notes/set-theory-5-choice")[集合論 5]）。
+  （#link("/math/set-theory/5")[第 5 回]）。
 ]
 
 #proposition[
@@ -358,4 +361,4 @@ $bb(Z)$ 上の $f(n) = n - 1$ は順序を保つ単射だが、全部を下に�
 比較定理が言っているのは「整列順序たちは一列に並ぶ」ということである。
 どの二つを持ってきても、どちらかがどちらかの先頭部分になっている。
 ならば、その列に目盛りを打ちたくなるのが人情だろう。
-その目盛りが順序数で、#link("/notes/set-theory-3-ordinals")[集合論 3] でいよいよ構成する。
+その目盛りが順序数で、#link("/math/set-theory/3")[第 3 回] でいよいよ構成する。

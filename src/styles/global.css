@@ -38,8 +38,23 @@
   box-sizing: border-box;
 }
 
+/*
+ * 和文フォント。
+ *
+ * 最後の serif まで落ちると、環境によっては汎 CJK フォントの中国語字形が選ばれ、
+ * 「直」「骨」「海」などが中国語の形になる。日本語フォントを名前で数多く並べて
+ * 取りこぼしを減らす。ロケールによって英語名と日本語名のどちらで登録されるかが
+ * 変わるので、両方を書く。
+ *
+ * <html lang="ja"> も必須。これが無いと汎 CJK フォントは中国語字形を選ぶ。
+ */
 html {
-  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+  font-family:
+    'Hiragino Mincho ProN', 'ヒラギノ明朝 ProN', 'Hiragino Mincho Pro',
+    'Yu Mincho', 'YuMincho', '游明朝', '游明朝体',
+    'Noto Serif CJK JP', 'Noto Serif JP', 'Source Han Serif JP',
+    'BIZ UDPMincho', 'BIZ UDMincho', 'IPAexMincho', 'IPA明朝',
+    serif;
   font-size: 17px;
   line-height: 1.9;
   color: var(--ink);

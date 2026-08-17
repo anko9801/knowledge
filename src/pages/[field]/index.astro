@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { fields, seriesOf, type Field, type Series } from '../../lib/taxonomy.ts'
+
+export const getStaticPaths: GetStaticPaths = async () =>
+  fields.map((field) => ({ params: { field: field.slug }, props: { field } }))
+
+type Props = { field: Field }
+
+const { field } = Astro.props
+
+const articles = await getCollection('articles', ({ data }) => !data.draft)
+
+// シリーズごとに、order の順で並べたものを用意する。
+// 定義だけあって記事のないシリーズは「準備中」として残す（何を書く気なのかは見せる）。
+const groups = seriesOf(field.slug).map((series: Series) => ({
+  series,
+  items: articles
+    .filter((article) => article.data.field === field.slug && article.data.series === series.slug)
+    .sort((a, b) => a.data.order - b.data.order),
+}))
+---
+
+<BaseLayout title={field.title} description={field.blurb}>
+  <p class="back"><a href="/">← knowledge</a></p>
+  <h1>{field.title}</h1>
+  <p class="lead">{field.blurb}</p>
+
+  {
+    groups.map(({ series, items }) => (
+      <section class="series">
+        <h2>{series.title}</h2>
+        <p class="blurb">{series.blurb}</p>
+
+        {items.length === 0 ? (
+          <p class="empty">準備中</p>
+        ) : (
+          <ol class="articles">
+            {items.map((article) => (
+              <li value={article.data.order}>
+                <a href={`/${field.slug}/${series.slug}/${article.data.order}`}>
+                  {article.data.title}
+                </a>
+                {article.data.summary && <p class="summary">{article.data.summary}</p>}
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
+    ))
+  }
+
+  {groups.length === 0 && <p class="empty">この分野はまだ何もありません。</p>}
+</BaseLayout>
+
+<style>
+  .back {
+    margin: 0 0 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .lead {
+    color: var(--muted);
+  }
+
+  .series {
+    margin-top: 3rem;
+  }
+
+  .blurb {
+    margin: 0.4rem 0 1.2rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .articles {
+    margin: 0;
+    padding-left: 1.6rem;
+  }
+
+  .articles li {
+    margin-bottom: 1.1rem;
+  }
+
+  .articles a {
+    font-size: 1.05rem;
+  }
+
+  .summary {
+    margin: 0.2rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .empty {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

@@ -2,9 +2,12 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "集合論 4: 基数と濃度",
+  title: "基数と濃度",
   date: "2026-08-17",
-  tags: ("集合論", "数学"),
+  field: "math",
+  series: "set-theory",
+  order: 4,
+  tags: ("集合論",),
   summary: "無限の大きさを比べる。Cantor の対角線論法から基数算術、そして連続体仮説の入口まで。",
 )
 
@@ -132,7 +135,7 @@ $bb(N) prec cal(P)(bb(N)) prec cal(P)(cal(P)(bb(N))) prec dots$ と、いくら�
 (1) にわざわざ「選択公理を使う」と書いたのは、意地悪ではない。
 各 $A_n$ から番号づけを一つずつ選ぶ、というところで無限回の選択をしている。
 $upright("ZF")$ だけでは「可算集合の可算和が非可算になる」モデルが作れてしまうのだ。
-このあたりの話は #link("/notes/set-theory-5-choice")[集合論 5] でやる。
+このあたりの話は #link("/math/set-theory/5")[第 5 回] でやる。
 
 = 基数をどう定義するか
 
@@ -145,7 +148,7 @@ $upright("ZF")$ だけでは「可算集合の可算和が非可算になる」�
 
 回避の道は二つある。
 
-一つ目は、代表元を選ぶ道である。#link("/notes/set-theory-3-ordinals")[集合論 3] で
+一つ目は、代表元を選ぶ道である。#link("/math/set-theory/3")[第 3 回] で
 順序数を作ったときと同じ発想で、同じ大きさの集合たちから代表を一つ選ぶ。
 順序数は $in$ で整列されているので、「$A$ と対等な順序数のうち最小のもの」という選び方ができる。
 
@@ -165,7 +168,7 @@ $omega + 1 approx omega$ だからだ。
 
 #remark("Scott のトリック")[
   $A$ と対等な集合すべてではなく、そのうち#strong[階数が最小のものだけ]を集める。
-  累積階層 $V_alpha$（#link("/notes/set-theory-6-hierarchy")[集合論 6]）を使うと
+  累積階層 $V_alpha$（#link("/math/set-theory/6")[第 6 回]）を使うと
   「最小の $alpha$ で $V_alpha$ に $A$ と対等な集合が現れるもの」が決まり、
   そこで切り取れば集合になる。これを $card(A)$ と定義してもよい。
   選択公理は要らないが、代わりに正則性公理が要る。
@@ -329,7 +332,7 @@ $2^(aleph_0)$ の値は、$upright("ZFC")$ の範囲では $aleph_1$ かも知�
 $ upright("cf")(2^(aleph_0)) > aleph_0 $
 という制約はかかる。だから $2^(aleph_0) = aleph_omega$ はあり得ない。
 共終数 $upright("cf")$ が何者かと、独立性がどうやって証明されたのかは、
-#link("/notes/set-theory-6-hierarchy")[集合論 6] で扱う。
+#link("/math/set-theory/6")[第 6 回] で扱う。
 
 順序数のときと同じで、基数もまた「作った本人が中身を把握しきれない」道具である。
 冪集合の公理を書いた瞬間に、我々は自分の手に負えないものを呼び出してしまったのだ、

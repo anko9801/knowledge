@@ -11,13 +11,18 @@ type Props = {
   wide?: boolean
 }
 
+// lang は .typ 側の #set text(lang: "ja") と揃える。en のままだと和文の
+// text-spacing-trim / word-break: auto-phrase が効かず、汎 CJK フォントが
+// 中国語字形を選ぶ。
+//
+// なお <!doctype html> と <html> の間に式（{/* ... */} を含む）を挟むと、
+// Astro が文書をフラグメントとみなして html/head/body を出力しなくなる。
+// 説明はテンプレートではなくここに書く。
 const { title, description, wide = false } = Astro.props
 const siteName = 'knowledge'
 ---
 
 <!doctype html>
-{/* lang は .typ 側の #set text(lang: "ja") と揃える。
-    これが en だと text-spacing-trim / word-break: auto-phrase が効かない。 */}
 <html lang="ja">
   <head>
     <meta charset="utf-8" />

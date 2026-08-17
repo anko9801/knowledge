@@ -2,9 +2,12 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "集合論 5: 選択公理",
+  title: "選択公理",
   date: "2026-08-17",
-  tags: ("集合論", "数学"),
+  field: "math",
+  series: "set-theory",
+  order: 5,
+  tags: ("集合論",),
   summary: "無限個の箱から一つずつ選ぶ。Zorn の補題と整列可能定理が同じものである理由。",
 )
 
@@ -71,7 +74,7 @@ Russell はこれを靴と靴下で説明した。靴の対が無限にあるな
   （$C$ の上界 $b$ を取り、$b$ が極大でないので $b < b'$ なる $b'$ を取ればよい）。
   そこで、鎖 $C$ にその真の上界の集合を対応させ、選択公理でその一つを選ぶ関数を $u$ とする。
 
-  超限再帰（#link("/notes/set-theory-3-ordinals")[集合論 3]）により
+  超限再帰（#link("/math/set-theory/3")[第 3 回]）により
   $ g(alpha) := u(\{g(beta) : beta < alpha\}) $
   と定める。$\{g(beta) : beta < alpha\}$ が鎖であることは $alpha$ についての帰納法で分かる。
   実際、$beta < gamma$ ならば $g(gamma)$ は $\{g(delta) : delta < gamma\}$ の真の上界なので
@@ -119,7 +122,7 @@ $ON$ が集合でないという事実（Burali-Forti）が、ここで初めて
   逆に $\{X_i\}$ の直和からの射影に右逆を取れば選択関数が得られる。
 
   (3) から $upright("WO")$ を導くところだけ書く。集合 $A$ に対し Hartogs 数 $h(A)$
-  （#link("/notes/set-theory-4-cardinals")[集合論 4]）を取る。三分律より
+  （#link("/math/set-theory/4")[第 4 回]）を取る。三分律より
   $h(A) prec.eq A$ か $A prec.eq h(A)$ である。前者は $h(A)$ の定義に反するので後者であり、
   $A$ は順序数 $h(A)$ の部分集合と対等になる。順序数の部分集合は整列されているので、
   その順序を $A$ に移せば $A$ は整列可能である。逆向きは @thm:ac-equiv から従う。
@@ -151,7 +154,7 @@ $ON$ が集合でないという事実（Burali-Forti）が、ここで初めて
   （$1$ を含まないことが保たれる）。Zorn より極大元があり、これが極大イデアルである。
 
   (3) 各 $A_n$ の番号づけを選ぶところで可算選択公理を使う。
-  詳細は #link("/notes/set-theory-4-cardinals")[集合論 4] を参照。
+  詳細は #link("/math/set-theory/4")[第 4 回] を参照。
 
   (4) $A$ を無限集合とする。選択関数 $f$ を $cal(P)(A) without \{nothing\}$ 上に取り、
   $a_n := f(A without \{a_0, dots, a_(n-1)\})$ と再帰的に定める。
@@ -234,4 +237,4 @@ Vitali 集合や Banach--Tarski は代償として受け入れる、というの
 私はこの決着の仕方がかなり好きである。公理は真理ではなく、道具の設計仕様なのだ、
 という態度がはっきり出ているからだ。
 どうやって独立性を証明するのか、$L$ とは何なのかは、
-#link("/notes/set-theory-6-hierarchy")[集合論 6] で見る。
+#link("/math/set-theory/6")[第 6 回] で見る。

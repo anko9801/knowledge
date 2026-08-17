@@ -23,8 +23,31 @@ const posts = defineCollection({
 })
 
 /**
- * lecture-notes から Typst に移行した講義ノート。
- * 記事と同じ経路（typst compile / typst eval）を通るので、front matter も同じ形。
+ * 分野ごとに書き下ろす解説記事。
+ *
+ * ファイルは src/content/articles/<field>/<series>/NN-slug.typ に置く。
+ * ディレクトリは人が並べ替えやすいようにあるだけで、URL を決めるのは
+ * この field / series / order の 3 つ。ファイルを移動しても URL は動かない。
+ */
+const articleSchema = postSchema.extend({
+  field: z.string().min(1),
+  series: z.string().min(1),
+  order: z.number().int().min(1),
+})
+
+const articles = defineCollection({
+  loader: typstLoader({
+    dir: 'src/content/articles',
+    expectedLang: 'ja',
+    numberEquations: true,
+  }),
+  schema: articleSchema,
+})
+
+/**
+ * lecture-notes から機械変換しただけの素材。
+ * 組版が崩れたままのものが混じるので、分野目次には出さず /notes にまとめて置く。
+ * 書き直したものは articles に移して昇格させる。
  */
 const notes = defineCollection({
   loader: typstLoader({
@@ -36,5 +59,6 @@ const notes = defineCollection({
 })
 
 export type Post = z.infer<typeof postSchema>
+export type Article = z.infer<typeof articleSchema>
 
-export const collections = { posts, notes }
+export const collections = { posts, articles, notes }

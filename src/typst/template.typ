@@ -5,13 +5,28 @@
 
 /// front matter。`typst eval 'query(<fm>).first().value'` がこれを拾う。
 /// HTML 出力には現れない（metadata は不可視要素）。
-#let frontmatter(title: "", date: "", tags: (), summary: none, draft: false) = [
+///
+/// field / series / order は解説記事だけが使う。ここが URL を決めるので、
+/// ファイルを別ディレクトリに移してもリンクは切れない。
+#let frontmatter(
+  title: "",
+  date: "",
+  tags: (),
+  summary: none,
+  draft: false,
+  field: none,
+  series: none,
+  order: none,
+) = [
   #metadata((
     title: title,
     date: date,
     tags: tags,
     summary: summary,
     draft: draft,
+    field: field,
+    series: series,
+    order: order,
   ))<fm>
 ]
 
@@ -20,7 +35,17 @@
 /// - html target: 紙面設定を一切かけない。見た目は CSS 側の担当なので、
 ///   Typst には構造と意味だけ出させる。
 /// - paged target: A4 の紙面設定とタイトルを足して、そのまま PDF にする。
-#let post(title: "", date: "", tags: (), summary: none, draft: false, body) = {
+#let post(
+  title: "",
+  date: "",
+  tags: (),
+  summary: none,
+  draft: false,
+  field: none,
+  series: none,
+  order: none,
+  body,
+) = {
   set text(lang: "ja")
   set document(title: title)
 
@@ -30,6 +55,9 @@
     tags: tags,
     summary: summary,
     draft: draft,
+    field: field,
+    series: series,
+    order: order,
   )
 
   show: content => context {

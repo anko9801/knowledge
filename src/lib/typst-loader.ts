@@ -1,6 +1,6 @@
 import type { Loader, LoaderContext } from 'astro/loaders'
 import { readdir, readFile } from 'node:fs/promises'
-import { basename, extname, join, relative } from 'node:path'
+import { extname, join, relative, sep } from 'node:path'
 import { createHash } from 'node:crypto'
 
 import { compileHtml, evalMetadata } from './typst-cli.ts'
@@ -22,14 +22,32 @@ type EntryResult = {
   readonly mathCss: string
 }
 
+/**
+ * dir 以下の .typ を再帰的に集める。
+ * 分野やシリーズでディレクトリを切れるようにしてあるので、ここは掘る必要がある。
+ */
 const listTypstFiles = async (dir: string): Promise<readonly string[]> => {
   const entries = await readdir(dir, { withFileTypes: true })
 
-  return entries
-    .filter((entry) => entry.isFile() && extname(entry.name) === '.typ')
-    .map((entry) => join(dir, entry.name))
-    .sort()
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      const path = join(dir, entry.name)
+
+      if (entry.isDirectory()) return listTypstFiles(path)
+      return entry.isFile() && extname(entry.name) === '.typ' ? [path] : []
+    }),
+  )
+
+  return nested.flat().sort()
 }
+
+/**
+ * ファイルパスをエントリ ID にする。
+ * `math/set-theory/03-ordinals.typ` -> `math/set-theory/03-ordinals`
+ * ディレクトリ構造がそのまま ID に出るので、同じ題名の記事が別分野にあっても衝突しない。
+ */
+const entryId = (dirRoot: string, file: string): string =>
+  relative(dirRoot, file).split(sep).join('/').replace(/\.typ$/, '')
 
 const digest = (input: string): string =>
   createHash('sha256').update(input).digest('hex').slice(0, 16)
@@ -57,9 +75,10 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     file: string,
     context: LoaderContext,
     root: string,
+    dirRoot: string,
   ): Promise<EntryResult> => {
     const { store, logger, parseData } = context
-    const id = basename(file, '.typ')
+    const id = entryId(dirRoot, file)
     const typstOptions = { bin, root } as const
 
     const source = await readFile(file, 'utf8')
@@ -120,7 +139,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
 
       const results: EntryResult[] = []
       for (const file of files) {
-        results.push(await ingest(file, context, root))
+        results.push(await ingest(file, context, root, absoluteDir))
       }
 
       // 削除された .typ をストアから落とす。
@@ -148,7 +167,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
         if (!watched(changed)) return
 
         try {
-          await ingest(changed, context, root)
+          await ingest(changed, context, root, absoluteDir)
         } catch (error) {
           // dev サーバを落とさない。show rule の穴を踏んだときはここに出る。
           logger.error(error instanceof Error ? error.message : String(error))
@@ -162,7 +181,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
       watcher.on('add', reingest)
       watcher.on('unlink', (removed) => {
         if (!watched(removed)) return
-        store.delete(basename(removed, '.typ'))
+        store.delete(entryId(absoluteDir, removed))
       })
     },
   }

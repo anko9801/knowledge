@@ -211,7 +211,20 @@ MathML export は 0.15 から。`flake.nix` で typst だけ unstable（0.15.1�
 `unknown variable: html` で失敗する。警告は stderr に出るが、読むのは stdout の
 JSON だけなので実害はない。
 
-**9. HTML export は experimental**
+**9. doctype と `<html>` の間に式を挟むと文書構造が消える**
+
+Astro のテンプレートで `<!doctype html>` の直後に `{/* ... */}` を書くと、
+文書がフラグメントとみなされ **`<html>` `<head>` `<body>` が一切出力されない**。
+`<html lang="ja">` も消えるため、汎 CJK フォントが中国語字形を選び、
+`text-spacing-trim` と `word-break: auto-phrase` も黙って無効になる。
+
+HTML コメント（`<!-- -->`）は出力に漏れるので `{/* */}` に替えたくなるが、
+この位置だけは駄目。説明は frontmatter の JS コメントに書く。
+
+`<link>` の有無だけ見ていると気づけない。ビルド後に
+`grep -o '<html[^>]*>' dist/**/*.html` で確かめること。
+
+**10. HTML export は experimental**
 
 `--features html` が要る。公式に production 非推奨で、未対応要素や show rule の穴を
 たまに踏む。回避の show rule を書くか upstream にパッチを送る。`target()` だけは

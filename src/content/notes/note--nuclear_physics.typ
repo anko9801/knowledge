@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "原子核物理学",
@@ -196,22 +197,21 @@ $ V \( r \) = - V_0 + underbrace(1 / 2 m omega^2 r^2, "調和振動" ⼦) + unde
   )
 
 ] <table:magic-number>
-#block[
-Woods-Saxon ポテンシャルと軌道スピン相互作用により核子の軌道が数 MeV
+#definition("殻模型")[
+Woods-Saxon
+ポテンシャルと軌道スピン相互作用により核子の軌道が数 MeV
 以上離れたグループ化した軌道を殻と呼ぶ。
 その殻の準位数を魔法数と呼び、次のような数となる。
 $ 2 \, 8 \, 20 \, 28 \, 50 \, 82 \, 126 $
 ある殻までのすべての軌道が詰まっている状態を閉殻またはコア核という。真空状態ともいう。そこから核子が減った状態を空孔という。
 それに対して核子がまだ埋まっていない殻をオープン殻という。
 基底状態は下から順に核子が埋まっている状態、励起状態は飛ばして上の準位が埋まっている状態とする。
-
 ]
-#block[
+#definition("核スピンとパリティ")[
 原子核において軌道角運動量 $l$, スピン角運動量 $s$
 とその和の全⾓運動量を核スピン $J^pi$
 $ bold(J) & = sum_(i = 1)^A bold(j)_i = sum_(i = 1)^A \( bold(l)_i + bold(s)_i \) = bold(L) + bold(S) $
 パリティは $\( - \)^l$ となる。
-
 ]
 対相互作⽤などのオープン殻の核⼦-核⼦間相互作⽤を残留相互作⽤と呼ぶ
 同じ軌道で傾きが同じで真反対⽅向に回る 2

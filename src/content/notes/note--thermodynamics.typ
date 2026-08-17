@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "熱力学",

@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "elemag",
@@ -110,7 +111,7 @@ $upright(e)_(+) \( bold(k) \) \, upright(e)_(-) \( bold(k) \) \, bold(k) \/ \| b
 は正規直交基底を成す.
 
 #block[
-#emph[Proof.]
+#emph[Proof.] #proof[
 $ upright(e)_(+) \( bold(k) \)^(\*) dot.op upright(e)_(+) \( bold(k) \) & = 1 / 2 \( upright(e)_1 \( bold(k) \) - upright(i) upright(e)_2 \( bold(k) \) \) dot.op \( upright(e)_1 \( bold(k) \) + upright(i) upright(e)_2 \( bold(k) \) \)\
  & = 1 / 2 \( upright(e)_1 \( bold(k) \)^2 + upright(e)_2 \( bold(k) \)^2 \)\
  & = 1\
@@ -124,7 +125,8 @@ upright(e)_(+) \( bold(k) \)^(\*) dot.op upright(e)_(-) \( bold(k) \) & = 1 / 2 
 upright(e)_(+) \( bold(k) \)^(\*) dot.op frac(bold(k), \| bold(k) \|) & = 1 / sqrt(2) \( upright(e)_1 \( bold(k) \) - upright(i) upright(e)_2 \( bold(k) \) \) dot.op frac(bold(k), \| bold(k) \|)\
  & = 0\
 upright(e)_(-) \( bold(k) \)^(\*) dot.op frac(bold(k), \| bold(k) \|) & = 1 / sqrt(2) \( upright(e)_1 \( bold(k) \) + upright(i) upright(e)_2 \( bold(k) \) \) dot.op frac(bold(k), \| bold(k) \|)\
- & = 0 $ よりこれらは正規直交系となる.~
+ & = 0 $ よりこれらは正規直交系となる.
+]~
 
 ]
 #strong[Q 21B-4.]
@@ -136,7 +138,8 @@ $ E_(+) \( bold(k) \) & = 1 / sqrt(2) (E_1 \( bold(k) \) - upright(i) E_2 \( bol
 B_(+) \( bold(k) \) & = 1 / sqrt(2) (B_1 \( bold(k) \) - upright(i) B_2 \( bold(k) \)) \, & B_(-) \( bold(k) \) & = 1 / sqrt(2) (B_1 \( bold(k) \) + upright(i) B_2 \( bold(k) \)) $
 
 #block[
-#emph[Proof.] $tilde(bold(E)) \( bold(r) \, t \)$ と
+#emph[Proof.] #proof[
+$tilde(bold(E)) \( bold(r) \, t \)$ と
 $tilde(bold(B)) \( bold(r) \, t \)$ の表示式 @tilde-E, 
 より次のように式変形できる.
 $ tilde(bold(E)) \( bold(r) \, t \) & = integral.triple_(bb(R)^3) d V \( bold(k) \) (E_1 \( bold(k) \) upright(e)_1 \( bold(k) \) + E_2 \( bold(k) \) upright(e)_2 \( bold(k) \)) e^(upright(i) \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
@@ -147,7 +150,8 @@ tilde(bold(B)) \( bold(r) \, t \) & = integral.triple_(bb(R)^3) d V \( bold(k) \
  & = integral.triple_(bb(R)^3) d V \( bold(k) \) \(1 / sqrt(2) (B_1 \( bold(k) \) - upright(i) B_2 \( bold(k) \)) dot.op 1 / sqrt(2) (upright(e)_1 \( bold(k) \) + upright(i) upright(e)_2 \( bold(k) \))\
  & + 1 / sqrt(2) (B_1 \( bold(k) \) + upright(i) B_2 \( bold(k) \)) dot.op 1 / sqrt(2) (upright(e)_1 \( bold(k) \) - upright(i) upright(e)_2 \( bold(k) \))\) e^(upright(i) \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
  & = integral.triple_(bb(R)^3) d V \( bold(k) \) {B_(+) \( bold(k) \) upright(e)_(+) \( bold(k) \) + B_(-) \( bold(k) \) upright(e)_(-) \( bold(k) \)} e^(upright(i) \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
-これより示せた.~
+これより示せた.
+]~
 
 ]
 #strong[Q 21B-5.] 波数 $bold(k) in bb(R)^3$ を持ち, 複素電場ベクトル
@@ -207,7 +211,8 @@ $ mat(delim: "[", E_1; E_2) = mat(delim: "[", a_1 cos \( bold(k) dot.op bold(r) 
 $ {\( E_1 \( bold(r) \, t \) \, E_2 \( bold(r) \, t \) \) : t in bb(R)} = {\( E_1 \, E_2 \) in bb(R)^2 : (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 = sin^2 epsilon} $
 
 #block[
-#emph[Proof.] 式の簡略化の為に
+#emph[Proof.] #proof[
+式の簡略化の為に
 $A_1 = bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon_1 \, A_2 = bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon_2$
 とおくと $ sin^2 epsilon & = sin^2 \( A_2 - A_1 \)\
  & = (sin A_2 cos A_1 - cos A_2 sin A_1)^2\
@@ -222,7 +227,8 @@ $ sin^2 epsilon & = cos^2 A_1 + cos^2 A_2 - 2 cos epsilon cos A_1 cos A_2\
 を考えることで
 $ {\( E_1 \( bold(r) \, t \) \, E_2 \( bold(r) \, t \) \) : t in bb(R)} = {\( E_1 \, E_2 \) in bb(R)^2 : (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 = sin^2 epsilon} $
 となる.
-そしてこれは式の形から二次曲線の中で回転移動させた楕円の方程式である.~
+そしてこれは式の形から二次曲線の中で回転移動させた楕円の方程式である.
+]~
 
 ]
 #strong[Q 21B-8.] 式 @genral-E-vector より
@@ -300,8 +306,9 @@ $ sin epsilon > 0 & arrow.l.r.double upright("「楕円偏光は左偏光であ�
 sin epsilon < 0 & arrow.l.r.double upright("「楕円偏光は右偏光である。」") $
 
 #block[
-#emph[Proof.] まず, $xi \, eta$ は式 @E12-xi-eta より $E_1 \, E_2$
-を用いて次のように表される.
+#emph[Proof.] #proof[
+まず, $xi \, eta$ は式 @E12-xi-eta より
+$E_1 \, E_2$ を用いて次のように表される.
 $ mat(delim: "[", xi; eta) = mat(delim: "[", cos psi, sin psi; - sin psi, cos psi) mat(delim: "[", E_1; E_2) $<xi-eta-E12>
 また, 式 @E12-phase より $E_1 \, E_2$ は
 $p = bold(k) dot.op bold(r) - omega \( bold(k) \) t + epsilon_1$
@@ -347,7 +354,8 @@ eta & = A_eta cos \( p + theta_eta \)\
  & = minus.plus A_eta sin \( p + theta_xi \) #h(2em) \( sin epsilon gt.lt 0 \) $
 よって, 次の式が確立される.
 $ sin epsilon > 0 & arrow.l.r.double upright("「楕円偏光は左偏光である。」")\
-sin epsilon < 0 & arrow.l.r.double upright("「楕円偏光は右偏光である。」") $~
+sin epsilon < 0 & arrow.l.r.double upright("「楕円偏光は右偏光である。」") $
+]~
 
 ]
 #strong[Q 21B-12.]

@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "線と宇宙線の計測",
@@ -489,29 +490,35 @@ $planck c = 197 M e V dot.op f m$ であることを確かめよ。1 GeV
 のフォトンの波長を調べよ。
 
 ]
+#proof[
 $ planck c & approx \( 6.582 times 10^(- 16) e V dot.op s \) times \( 2.998 times 10^8 m \/ s \)\
  & approx 1.973 times 10^(- 7) e V dot.op m\
  & approx 197.3 med M e V dot.op f m $ $ E & = frac(h c, lambda)\
 lambda & = frac(2 pi planck c, E) = frac(6.28 times 197 M e V dot.op f m, 1 G e V) = 1.24 f m $
 よって波長は $1.24 f m$ となる。
+]
 
 #block[
 特殊相対論の次の式を用いて $beta \, gamma \, gamma beta$ を計算せよ。
 $ E^2 - \( p c \)^2 & = \( m c^2 \)^2 \, #h(2em) p = frac(E v, c^2) $
 
 ]
+#proof[
 $ beta & := v / c = frac(p c, E)\
 gamma & := 1 / sqrt(1 - beta^2) = 1 / sqrt(1 - (frac(p c, E))^2) = frac(E, m c^2)\
 gamma beta & = frac(p, m c) $
+]
 
 #block[
 2.2~s で崩壊する $mu$ 粒子がなぜ地表 20 km に到達するのか？
 ただし静止質量 105.6 MeV/c#super[2];, 運動量 3 GeV/c とする。
 
 ]
+#proof[
 $ E & = sqrt(\( m c^2 \)^2 + \( p c \)^2) = sqrt(\( 105.6 M e V \)^2 + \( 3 G e V \)^2) = 3.001858 G e V\
 gamma & = frac(E, m c^2) = 28.43 $ よって $2.2 mu s$ で
 $660 m times gamma = 18.8 k m$ まで進めることが分かる.
+]
 
 #block[
 2
@@ -521,6 +528,7 @@ $660 m times gamma = 18.8 k m$ まで進めることが分かる.
 に一致することを示せ。
 
 ]
+#proof[
 2
 個の電子を無限遠方から徐々に近づけると静電ポテンシャルが徐々に増加していき,
 静電ポテンシャルが電子の質量エネルギー $m_e c^2$ に等しくなるとき
@@ -529,6 +537,7 @@ $  & frac(e^2, 4 pi epsilon_0 r) = m_e c^2\
 は古典電子半径 $r_e$ に一致する. そして次のように計算できる。
 $ r_e & = frac(e^2, 4 pi epsilon_0 m_e c^2) approx frac(\( 1.602 times 10^(- 19) C \)^2, 12.56 times \( 8.85 times 10^(- 12) F \/ m \) times \( 8.19 times 10^(- 14) J \)) = 2.818 times 10^(- 15) m\
 4 pi r_e^2 & approx 0.998 times 10^(- 28) m^2 = 10^(- 24) c m^2 = 1 b a r n $
+]
 
 == MPPC の原理
 <mppc-の原理>

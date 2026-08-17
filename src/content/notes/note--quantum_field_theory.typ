@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "場の理論",
@@ -21,33 +22,30 @@ $S_z plus.minus$ が出てきて $S_z +$ を取り出し、$x$ 方向で
 光の偏光について縦フィルターを通してから横フィルターを通しても光量ゼロなのに縦と横の間に斜め
 45 度フィルターを通すと光が出てくる。
 
-#block[
-$cal(H)$ がヒルベルト空間であるとは、$H$
+#definition("Hilbert 空間")[
+$cal(H)$
+がヒルベルト空間であるとは、$H$
 は複素内積空間であって、さらに内積によって誘導される距離関数に関して完備距離空間をなすことを言う。
 $ chevron.l y \, x chevron.r & = chevron.l x \, y chevron.r^(\*)\
 chevron.l a x_1 + b x_2 \, y chevron.r & = a chevron.l x_1 \, y chevron.r + b chevron.l x_2 \, y chevron.r\
 chevron.l x \, x chevron.r & gt.eq 0 \, quad chevron.l x \, x chevron.r = 0 arrow.l.r.double x = 0 $
-
 ]
 $cal(H)$ に内積が！ $cal(H)^(\*)$ $f : V arrow.r W$ $"Hom" \( V \, W \)$
 $ \( \|a⟩ \, \|a⟩ \) = ⟨a mid(bar.v) a⟩\
 a^(\*) ⟨a\| $ $V$ $V$ 関数との関係とは？
 
-#block[
+#definition[
 代数を構築する ケット空間
-
 ]
-#block[
-内積 ケット空間のコベクトルとしてブラ空間がある。 双対空間 $V^(\*)$
-コベクトル空間 $V^or = "Hom" \( V \, bb(R) \)$
-
+#definition[
+内積 ケット空間のコベクトルとしてブラ空間がある。
+双対空間 $V^(\*)$ コベクトル空間 $V^or = "Hom" \( V \, bb(R) \)$
 ]
 無限次元ベクトル表現を持つ
 
 = 場の理論
 <場の理論>
-#block[
+#axiom[
 いかなる粒子状態も粒子交換に関して位相を除いて不変である. 組み紐群
-
 ]
 テンソルは定数

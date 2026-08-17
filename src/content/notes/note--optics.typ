@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "光学",
@@ -15,15 +16,15 @@
 <光学-optics>
 == 単色波と完全偏光
 <単色波と完全偏光>
-#block[
-単色波 (monochromatic wave) とは1つの振動数しか持たない波のことである。
+#definition("単色波")[
+単色波 (monochromatic wave)
+とは1つの振動数しか持たない波のことである。
 $ bold(E) \( t \, bold(r) \) & = bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
-
 ]
-#block[
-振動方向 $bold(E)_0 \( bold(k) \)$ に関して振幅
-$a_1 \( bold(k) \) \, a_2 \( bold(k) \) in bb(R)_(gt.eq 0)$ と位相
-$epsilon_1 \( bold(k) \) \, epsilon_2 \( bold(k) \) in bb(R)$
+#definition("偏光")[
+振動方向 $bold(E)_0 \( bold(k) \)$
+に関して振幅 $a_1 \( bold(k) \) \, a_2 \( bold(k) \) in bb(R)_(gt.eq 0)$
+と位相 $epsilon_1 \( bold(k) \) \, epsilon_2 \( bold(k) \) in bb(R)$
 を用いてベクトル表現する。位相差については向かって来る光を観測する立場で見たときと進んで行く光子の立場で見たときでそれぞれ
 $epsilon \( bold(k) \) \, delta \( bold(k) \)$ を用いる。
 $ bold(E) \( bold(r) \, t \) & = bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) = vec(E_1 \( bold(k) \), E_2 \( bold(k) \))\
@@ -35,9 +36,8 @@ $  & sin epsilon > 0 arrow.l.r.double sin delta < 0 arrow.l.r.double upright("�
  & arrow.l.r.double upright("「円偏光の helicity は ") + 1 upright(" である。」")\
  & sin epsilon < 0 arrow.l.r.double sin delta > 0 arrow.l.r.double upright("「楕円偏光は右偏光である。」")\
  & arrow.l.r.double upright("「円偏光の helicity は ") - 1 upright(" である。」") $
-
 ]
-#block[
+#proposition[
 場所 $bold(r)$ に留まり、時間 $t$
 の経過とともに、電場ベクトルの波動を観測する立場から見て、「$E_2$ は
 $E_1$ より $epsilon$ だけ位相が遅れている。」または「$E_1$ は $E_2$ より
@@ -45,13 +45,12 @@ $epsilon$ だけ位相が進んでいる。」といえる。位相差 $delta$
 について「$E_2$ は $E_1$ より $delta$
 だけ位相が進んでいる。」つまり「$E_1$ は $E_2$ より $delta$
 だけ位相が遅れている。」と言える。
-
 ]
-#block[
-位置 $bold(r)$ を固定し、時間 $t$ を動かしたときに $\( E_1 \, E_2 \)$
-が作る軌跡の図形は Lissajous 図形、特に楕円となる。
+#proposition[
+位置 $bold(r)$ を固定し、時間 $t$
+を動かしたときに $\( E_1 \, E_2 \)$ が作る軌跡の図形は Lissajous
+図形、特に楕円となる。
 $ (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 & = sin^2 epsilon $
-
 ]
 #figure(
   align(center)[#table(
@@ -67,9 +66,9 @@ $ (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 & = sin^2 ep
   , kind: table
   )
 
-#block[
-光学では伝統的に楕円の傾きを記述するパラメータ $psi$
-と楕円の形と偏光の回転の向きを記述するパラメータ $chi$
+#definition[
+光学では伝統的に楕円の傾きを記述するパラメータ
+$psi$ と楕円の形と偏光の回転の向きを記述するパラメータ $chi$
 が用いられている。
 
 + パラメータ $psi$ は $\( E_1 \, E_2 \)$ 面において $E_1$
@@ -83,7 +82,6 @@ $ (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 & = sin^2 ep
   $ tan \| chi \| & = a_eta / a_xi #h(2em) (- pi / 4 lt.eq chi lt.eq pi / 4) $
   ただし $chi$ が正ならば右偏光、負ならば左偏光である。特に
   $chi = plus.minus pi / 4$ が円偏光、$chi = 0$ が直線偏光である。
-
 ]
 == Stokes パラメータ
 <stokes-パラメータ>
@@ -119,17 +117,18 @@ $a_1 \, a_2 gt.eq 0 ; epsilon = - delta_1 \, epsilon = - delta in bb(R)$
 必要性に関しては電場の定義となる実パラメータが4つと等しい数であることから成り立つ.
 よってこれら4つのパラメータで電場を表現できる.
 
-#block[
-さらに電場の強度 $\| E \|^2$ のパラメータ空間は非負実数空間
-$bb(R)_(gt.eq 0)$ であり, 電場の強度と偏光状態は独立である為,
+#proposition[
+さらに電場の強度 $\| E \|^2$
+のパラメータ空間は非負実数空間 $bb(R)_(gt.eq 0)$ であり,
+電場の強度と偏光状態は独立である為,
 電場の強度を半径と見なすことができる. よって強度と偏光のパラメータ空間は
 3 次元実 Euclid 空間 $bb(R)^3$ と同相である.
 $ bb(R)_(gt.eq 0) times S^2 tilde.equiv bb(R)^3 $
 このことから強度と偏光状態のパラメータを 3 次元空間 $bb(R)^3$
 上の点と対応させて考える. その点を極座標 $\( s_0 \, theta \, phi.alt \)$
 で表すこととする. 上での対応させ方から次のように定義できる.
-
 ]
+#proof[
 $psi = pi$ のとき $psi = 0$ と比べて,
 軸の正の向きは逆であるが主軸の方向は同じなので偏光楕円の軌跡は等しく,
 同一視できる. また, $chi = plus.minus pi / 4$ のとき,
@@ -171,8 +170,9 @@ s_3 & = s_0 sin 2 chi $<s1-def> このような状況を「完全偏光」と呼
 $s_0^2 = s_1^2 + s_2^2 + s_3^2$ を満たす. このように点
 $\( s_1 \, s_2 \, s_3 \)$ は原点を中心とする半径 $s_0$ の球面上にある.
 この球面を「Poincaré 球面」と呼ぶ. \
+]
 
-#block[
+#definition("Stokes パラメータ")[
 このように用意された電場の強度と偏光を記述する 4 つの実パラメータの組
 $\( s_0 \, s_1 \, s_2 \, s_3 \)$
 は「Stokesパラメータ」と呼ばれる。Stokesパラメータはパラメータ
@@ -182,16 +182,14 @@ s_1 & = s_0 cos 2 psi cos 2 chi\
 s_2 & = s_0 sin 2 psi cos 2 chi\
 s_3 & = s_0 sin 2 chi $ 次のベクトルを「Stokesベクトル」と呼ぶ。
 $ bold(S) = vec(s_0, s_1, s_2, s_3) $
-
 ]
-#block[
+#definition("Jones ベクトル")[
 電場の複素表示の複素共役 $cal(bold(E)) \( bold(r) \, t \)$ を定義する。
 $ cal(bold(E)) \( bold(r) \, t \) = bold(E)^(\*) \( bold(r) \, t \) $
 これを「光学の流儀の複素表示」と呼ぶこととする。
 $ cal(bold(E)) \( bold(r) \, t \) = vec(cal(E)_1 \( bold(r) \, t \), cal(E)_2 \( bold(r) \, t \)) = vec(cal(E)_1, cal(E)_2) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) $
 このとき次のベクトルを Jones ベクトルと呼び、それに作用する行列を Jones
 行列という。 $ bold(J) = vec(cal(E)_1, cal(E)_2) in bb(C)^2 $
-
 ]
 アメリカの物理学者 R.C.Jones が Jones ベクトルと Jones
 行列を提案したのは 1941 年のことです。
@@ -227,13 +225,16 @@ $ cal(bold(E)) \( bold(r) \, t \) = vec(cal(E)_1 \( bold(r) \, t \), cal(E)_2 \(
 
 ] 
 #block[
+#proposition("(直線偏光の) Stokes パラメータの Jones ベクトルによる表現")[
 Stokes パラメータは Jones ベクトルを用いて次のように表される。
 $ s_0 & = \| cal(E)_1 \|^2 + \| cal(E)_2 \|^2\
 s_1 & = \| cal(E)_1 \|^2 - \| cal(E)_2 \|^2\
 s_2 & = 2 Re \( cal(E)_1^(\*) cal(E)_2 \)\
 s_3 & = 2 Im \( cal(E)_1^(\*) cal(E)_2 \) $
+]
 
 ]
+#proof[
 $ s_0 & = a_1^2 + a_2^2\
  & = lr(|bold(epsilon.alt)_1 \( bold(k) \) dot.op tilde(bold(E))|)^2 + lr(|bold(epsilon.alt)_2 \( bold(k) \) dot.op tilde(bold(E))|)^2\
  & = \| bold(epsilon.alt)_1 \( bold(k) \) dot.op cal(bold(E)) \|^2 + \| bold(epsilon.alt)_2 \( bold(k) \) dot.op cal(bold(E)) \|^2\
@@ -252,14 +253,15 @@ s_3 & = s_0 sin 2 chi\
  & = - 2 Im {(bold(epsilon.alt)_1 \( bold(k) \) dot.op tilde(bold(E)))^(\*) (bold(epsilon.alt)_2 \( bold(k) \) dot.op tilde(bold(E)))}\
  & = 2 Im {(bold(epsilon.alt)_1 \( bold(k) \) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_2 \( bold(k) \) dot.op cal(bold(E)))}\
  & = 2 Im \( cal(E)_1^(\*) cal(E)_2 \) $
+]
 
-#block[
+#proposition("円偏光の Stokes パラメータの Jones ベクトルによる表現")[
 $ s_0 & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 + lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2\
 s_1 & = 2 Re {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E)))}\
 s_2 & = 2 Im {(bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E)))^(\*) (bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E)))}\
 s_3 & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 - lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 $
-
 ]
+#proof[
 $ s_0 & = a_1^2 + a_2^2\
  & = 1 / 2 (\| a_1 e^(i epsilon_1) - i a_2 e^(i epsilon_2) \|^2 + \| a_1 e^(i epsilon_1) + i a_2 e^(i epsilon_2) \|^2)\
  & = \| tilde(E)_(+) \|^2 + \| tilde(E)_(+) \|^2\
@@ -284,6 +286,7 @@ s_3 & = 2 a_1 a_2 sin \( epsilon_2 - epsilon_1 \)\
  & = - (a_(+)^2 - a_(-)^2)\
  & = - {lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2 - lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op tilde(bold(E))|)^2}\
  & = lr(|bold(epsilon.alt)_(+) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 - lr(|bold(epsilon.alt)_(-) \( bold(k) \)^(\*) dot.op cal(bold(E))|)^2 $
+]
 
 また上式の考察より次のように偏光の向きも逆転する.
 $ cal(bold(E)) \( bold(r) \, t \) = cal(E)_(+) bold(epsilon.alt)_(+) \( bold(k) \) e^(i \( omega \( bold(k) \) t - bold(k) dot.op bold(r) \)) & arrow.l.r.double upright("「円偏光は右偏光である。」")\
@@ -314,9 +317,10 @@ $ I & = ⟨bold(E) \( bold(r) \, t \)⟩\
 
 == Stokes パラメータの測定
 <stokes-パラメータの測定>
-#block[
-直線偏光子 (linear polarizer) とは、入力の電磁波をその透過軸
-(transmission asix) とそれに垂直な軸に沿った 2
+#definition("光学素子")[
+直線偏光子 (linear
+polarizer) とは、入力の電磁波をその透過軸 (transmission asix)
+とそれに垂直な軸に沿った 2
 つの直線偏光の成分に分解したとき、出力においては、前者の成分を透過するのに、後者の成分を遮断するような光学素子です。この作用は線形です。ですから、直線偏光子は対応する
 Jones 行列によって数学的には表現されます。
 物理的に原理が最も単純な直線偏光子は「針金格子偏光子」（wire grid
@@ -324,7 +328,6 @@ polarizer）でしょう。電磁波の波長 λ
 よりもずっと細い直径を持つ直線状の伝導性の良い金属の針金を多数用意します。その多数の針金を波長
 $lambda$
 よりもずっと狭い間隔だけ離して等間隔に平行に板状に並べます。この多数の針金が並べられた「すだれ」あるいは「牢屋の鉄格子」のような板状の物体が「針金格子偏光子」です。
-
 ]
 可視光の領域での具体的な直線偏光子として便利なのは、「ポラロイド」のプラスチック板でしょう。ポラロイドは針金格子偏光子を近似的に実現していると考えることができます。最初のポラロイドはヨウ素を含む化合物である過ヨウ化硫酸キニーネ（ヘラパタイト）の多数の小さな針状結晶を方向を揃えて酢酸セルロースのフィルムに埋め込んだものです。ヘラパタイトの中のヨウ素が伝導性を担い、特定の方向の伝導性が高い針金のような状況が出来ていると考えられます。この「ポラロイド
 J 板」が E.H.Land によってつくられたのは 1928 年のことです。さらに、1938
@@ -349,40 +352,37 @@ $M \( 2 \; bb(C) \)$ で書ける. これを Jones 行列と呼ぶ.
 電磁波を通さない. よって「針金格子偏光子の透過軸は,
 針金が並べられた面内で, すきまと垂直な方向である」
 
-#block[
-Jones 行列が $T$ の光学素子 $d$ について角度 $theta$
-だけ回転させた光学素子を $d \( theta \)$ として, その Jones 行列
+#proposition[
+Jones 行列が $T$ の光学素子 $d$ について角度
+$theta$ だけ回転させた光学素子を $d \( theta \)$ として, その Jones 行列
 $T \( theta \)$ について回転させた座標系で $T$
 を適用していると考えられる為, 次のような関係式が成り立つ.
 $ T \( theta \) = R \( theta \) T R \( - theta \) $
-
 ]
-#block[
-#strong[定理 1]. \
-
-直線偏光子は同じ角度で何度通しても同じ結果となる。 また次のように行列
-$T^(upright("直線偏光子")) \( theta \)$
+#theorem[
+直線偏光子は同じ角度で何度通しても同じ結果となる。
+また次のように行列 $T^(upright("直線偏光子")) \( theta \)$
 は射影演算子を表す行列であることが分かる.
-
 ]
+#proof[
 $ T^(upright("直線偏光子")) \( theta \) & = R \( theta \) T^(upright("直線偏光子")) \( 0 \) R \( - theta \)\
  & = mat(delim: "(", cos theta, - sin theta; sin theta, cos theta) mat(delim: "(", 1, 0; 0, 0) mat(delim: "(", cos theta, sin theta; - sin theta, cos theta)\
  & = mat(delim: "(", cos^2 theta, cos theta sin theta; sin theta cos theta, sin^2 theta)\
 {T^(upright("直線偏光子")) \( theta \)}^2 & = mat(delim: "(", cos^2 theta, cos theta sin theta; sin theta cos theta, sin^2 theta)\
  & = T^(upright("直線偏光子")) \( theta \) $
+]
 
-#block[
-#strong[定理 2]. \
-
-一般の偏光状態 $bold(J) = \[ cal(E)_1 \, cal(E)_2 \]^t in bb(C)^2$
-の光を直線偏光子 $T^(upright("直線偏光子")) \( theta \)$
-に通したときの出力の光の強度 $I \( theta \)$ を考える.
+#theorem[
+一般の偏光状態
+$bold(J) = \[ cal(E)_1 \, cal(E)_2 \]^t in bb(C)^2$ の光を直線偏光子
+$T^(upright("直線偏光子")) \( theta \)$ に通したときの出力の光の強度
+$I \( theta \)$ を考える.
 $ I \( theta \) & = 1 / 2 (\| cal(E)_1 \|^2 cos^2 theta + \| cal(E)_2 \|^2 sin^2 theta + \( cal(E)_1^(\*) cal(E)_2 + cal(E)_1 cal(E)_2^(\*) \) cos theta sin theta)\
  & = 1 / 4 (s_0 + sqrt(s_1^2 + s_2^2) cos \( 2 theta - phi \)) $
 特に水平状態 $bold(J) = \[ cal(E) \, 0 \]^t in bb(C)^2$ の光のとき Malus
 の法則と呼ぶ $ I \( theta \) & = 1 / 2 \| cal(E) \|^2 cos^2 theta $
-
 ]
+#proof[
 $ I \( theta \) & = 1 / 2 lr(|T^(upright("直線偏光子")) \( theta \) bold(J)|)^2\
  & = 1 / 2 bold(J)^dagger {T^(upright("直線偏光子")) \( theta \)}^dagger T^(upright("直線偏光子")) \( theta \) bold(J)\
  & = 1 / 2 bold(J)^dagger T^(upright("直線偏光子")) \( theta \) bold(J)\
@@ -392,41 +392,40 @@ $ I \( theta \) & = 1 / 2 lr(|T^(upright("直線偏光子")) \( theta \) bold(J)
  & = 1 / 4 (s_0 + sqrt(s_1^2 + s_2^2) cos \( 2 theta - phi \)) $
 ただし、
 $ cos phi = s_1 / sqrt(s_1^2 + s_2^2) \, sin phi = s_2 / sqrt(s_1^2 + s_2^2) $
-である。 これらは次の極めて重要な事実を教えてくれている。
+である。
+] これらは次の極めて重要な事実を教えてくれている。
 「与えられた単色光の Stokes パラメータのうちの 3 個 $s_0 \, s_1 \, s_2$
 は、その光をいろいろな角度 $theta$
 に傾けた直線偏光子に透過して強度を測定することによって決定できる。」
 
-#block[
-#strong[定理 3]. \
-
+#theorem[
 $ s_0 & prop \( upright("全強度") \)\
 s_1 & prop \( upright("水平偏光成分の強度") \) - \( upright("鉛直偏光成分の強度") \)\
 s_2 & prop \( + 45 upright("° 偏光成分の強度") \) - \( - 45 upright("° 偏光成分の強度") \) $
-
 ]
+#proof[
 $ I \( 0 \) & = s_0 + s_1 \, #h(2em) I (pi / 4) = s_0 + s_2 \, #h(2em) I (pi / 2) = s_0 - s_1 \, #h(2em) I (frac(3 pi, 4)) = s_0 - s_2 $
 よって Stokes パラメータ $s_0 \, s_1 \, s_2$ は次のように表される。
 $ s_0 & = 2 {I \( 0 \) + I (pi / 2)}\
  & = 2 {I (pi / 4) + I (pi / 2)}\
 s_1 & = 2 {I \( 0 \) - I (pi / 2)}\
 s_2 & = 2 {I (pi / 4) - I (frac(3 pi, 4))} $ これらは次の意味を表す。
+]
 
 $ s_3 prop \( upright("右円偏光成分の強度") \) - \( upright("左円偏光成分の強度") \) $
 これを測定するにはどうすればよいのか?
 これは円偏光成分を直線偏光成分に変換できれば測定できる. この変換が
 $1 \/ 4$ 波長板を用いて実行できることをここで学ぶ. \
 
-#block[
+#definition[
 遅相子 (wave retarder)
 は直線偏光成分のうちの片方をもう片方に対して一定の位相だけ遅らせる変換を行い出力する光学素子である.
 $ T^(upright("遅相子")) \( phi.alt \) = mat(delim: "(", e^(i phi.alt / 2), 0; 0, e^(- i phi.alt / 2)) = mat(delim: "(", 1, 0; 0, e^(- i phi.alt)) e^(i phi.alt / 2) $
 $1 \/ 2$ 波長板と $1 \/ 4$ 波長板の Jones 行列を次のように定義する。
 $ T^(1 \/ 2 upright("波長板")) & = T^(upright("遅相子")) \( pi \) = mat(delim: "(", i, 0; 0, - i)\
 T^(1 \/ 4 upright("波長板")) & = T^(upright("遅相子")) (pi / 2) = mat(delim: "(", e^(i pi / 4), 0; 0, e^(- i pi / 4)) = mat(delim: "(", frac(1 + i, sqrt(2)), 0; 0, frac(1 - i, sqrt(2))) $
-
 ]
-#block[
+#proposition[
 #figure(
   align(center)[#table(
     columns: 4,
@@ -447,8 +446,8 @@ T^(1 \/ 4 upright("波長板")) & = T^(upright("遅相子")) (pi / 2) = mat(deli
   , caption: [偏光状態]
   , kind: table
   )
-
 ]
+#proof[
 遅相子に純粋に直線偏光した光を入れることを考える.
 $ T^(upright("遅相子")) \( phi.alt \) vec(1, 0) & = vec(e^(i phi.alt / 2), 0)\
 T^(upright("遅相子")) \( phi.alt \) vec(0, 1) & = vec(0, e^(- i phi.alt / 2)) $
@@ -472,7 +471,7 @@ T^(1 \/ 4 upright("波長板")) 1 / sqrt(2) vec(1, - i) & = frac(1 + i, 2) vec(1
 光学領域での $1 \/ 4$
 波長板はサランラップを半ダースほど向きを揃えて重ねることにより自作できるらしい.
 \
-円偏光した光は $1 \/ 4$ 波長板により直線偏光に変換し,
+] 円偏光した光は $1 \/ 4$ 波長板により直線偏光に変換し,
 その光強度を求めることで右偏光, 左偏光の光強度が求まる。$s_3$ が求まる。
 
 == 準単色光と部分偏光
@@ -539,24 +538,23 @@ of polarization) と呼ばれる.
 
 == 電磁波の角運動量
 <電磁波の角運動量>
-#block[
-#strong[定理 4]. \
-
-電磁波の角運動量 $bold(L)$ はスピン角運動量 $bold(L)_(s p i n)$
-と軌道角運動量 $bold(L)_(o r b i t)$ の和で表される。
-
+#theorem[
+電磁波の角運動量 $bold(L)$ はスピン角運動量
+$bold(L)_(s p i n)$ と軌道角運動量 $bold(L)_(o r b i t)$
+の和で表される。
 ]
+#proof[
 $ bold(L) & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) times \( bold(E) times bold(B) \)\
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) times \( bold(E) times \( upright(bold(nabla)) times bold(A) \) \)\
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) times \( upright(bold(nabla)) \( bold(E) dot.op bold(A) \) - \( bold(E) dot.op upright(bold(nabla)) \) bold(A) \)\
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) (bold(E) times bold(A) + bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j)\
  & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E) times bold(A) + frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j\
  & = bold(L)_(s p i n) + bold(L)_(o r b i t) $
+]
 
-#block[
-#strong[定理 5]. \
-
-スピン角運動量 $bold(L)_(s p i n)$ の期待値は次のように表される。
+#theorem[
+スピン角運動量 $bold(L)_(s p i n)$
+の期待値は次のように表される。
 $ chevron.l bold(L)_(s p i n) chevron.r & = frac(1, 2 pi c) integral_(bb(R)^3) frac(upright(d) bold(k), \( 2 pi \)^3) bold(k) (\| a_(+) \( bold(k) \) \|^2 - \| a_(-) \( bold(k) \) \|^2) $
 これより次のようなことを教えてくれる.
 
@@ -579,8 +577,8 @@ $ chevron.l bold(L)_(s p i n) chevron.r & = frac(1, 2 pi c) integral_(bb(R)^3) f
   のスピン角運動量にマイナスの寄与をする。
 
 + (直線偏光ではなく)円偏光による分解が、電磁波の角運動量に直結している。
-
 ]
+#proof[
 $bold(A)$ について Fourier 変換すると次のようになる。
 $ bold(A) \( bold(r) \, t \) & = sum_(j = plus.minus) integral_(bb(R)^3) frac(upright(d) bold(k), \( 2 pi \)^3) (bold(a)_j \( bold(k) \) e^(i bold(k) dot.op bold(r)) + bold(a)_j^(\*) \( bold(k) \) e^(- i bold(k) dot.op bold(r)))\
 bold(a)_j \( bold(k) \) & = bold(epsilon.alt)_j \( bold(k) \) a_j \( bold(k) \) e^(- i omega \( bold(k) \) t) $
@@ -605,6 +603,7 @@ $  & bold(L)_(s p i n) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) b
  & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) \| bold(k) \| frac(bold(k), \| bold(k) \|) sum_(j = plus.minus) (i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) + j \| a_j \( bold(k) \) \|^2 + j \| a_j \( bold(k) \) \|^2 - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t))\
  & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) bold(k) sum_(j = plus.minus) (2 j \| a_j \( bold(k) \) \|^2 + i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t)) $
 時間平均を取ると次のようになる。
+]
 
 == 有限の広がりを持つ円偏光の近似的平面波の角運動量
 <有限の広がりを持つ円偏光の近似的平面波の角運動量>
@@ -612,7 +611,8 @@ $  & bold(L)_(s p i n) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) b
 程度の有限の領域 $D subset.eq bb(R)^2$ だけで振幅がゼロでなく,
 ほぼ一定であるような近似的平面波を考える. \
 
-#block[
+#proposition("円筒対称性")[
+
 ]
 #strong[Q21B-55.] このとき円偏光の近似的平面波の電場の複素表示
 $tilde(bold(E)) \( x \, y \, z \, t \)$ を次のように与える.
@@ -735,27 +735,23 @@ $ upright("1個の光子の角運動量 ") bold(L) upright(" の ") bold(k) \/ \
 
 = Ray Tracing
 <ray-tracing>
-#block[
+#definition[
 可視光
-
 ]
-#block[
+#definition[
 視点から仮想の光線レイをシーンに向けて飛ばし、さらに反射・屈折して光源へ飛ばす。
 $ bold(r) = bold(r)_0 + t bold(d) $
-
 ]
-#block[
+#definition("ガンマ補正")[
 $ gamma : \( R \, G \, B \) mapsto \( R^(1 \/ 2.2) \, G^(1 \/ 2.2) \, B^(1 \/ 2.2) \) $
-
 ]
-#block[
+#definition("影")[
 太陽の方向を $bold(l)$ とすると光の強さを
 $max \( bold(l) dot.op bold(n) \, 0 \)$ とする。
-
 ]
 = 物理ベースレンダリング理論
 <物理ベースレンダリング理論>
-#block[
+#definition[
 光の方向を一方向に絞り、
 $ bold(E) \( t \, bold(r) \) & = integral_(bb(R)) upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
 放射束
@@ -765,23 +761,23 @@ $ L \( x \, bold(omega) \) = frac(1, cos theta) frac(upright(d) Phi, upright(d) 
 RGB それぞれの放射束をそのまま画像にすればいい。
 本来は可視光領域全てのスペクトルなので荒い近似になる。
 全波長考慮したレンダリングはフルスペクトラムレンダリングと呼ぶ。
-
 ]
 #block[
+#definition("双方向反射率分布関数 (BRDF)")[
 発光 $L_e \( x \, bold(omega)_r \)$
 $ L_r \( x \, bold(omega)_r \) & = integral_Omega f \( x \, bold(omega)_i \, bold(omega)_r \) L_i \( x \, bold(omega)_i \) cos theta upright(d) bold(omega)_i\
 upright(d) L_r \( x \, bold(omega)_r \) & = f \( x \, bold(omega)_i \, bold(omega)_r \) L_i \( x \, bold(omega)_i \) cos theta upright(d) bold(omega)_i\
  $
+]
 
 ]
-#block[
+#definition("レンダリング方程式")[
 $ L_o \( x \, bold(omega)_r \) & = L_e \( x \, bold(omega)_r \) + L_r \( x \, bold(omega)_r \)\
 L_i \( x \, bold(omega)_i \) & = L_o \( t \( x \, bold(omega)_i \) \, bold(omega)_i \) $
-
 ]
-#block[
+#proposition[
 $ L_r \( x \, bold(omega)_r \) & = s L_i \( x \, bold(omega)_i \) $
-
 ]
-#block[
+#definition[
+
 ]

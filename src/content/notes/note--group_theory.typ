@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "群論",
@@ -15,13 +16,12 @@
 <群に触れる>
 == 群ってなんだろう？
 <群ってなんだろう>
-#block[
+#definition("群")[
 空集合でない集合 $G$
 上で単位元と逆元を持つ結合的な演算が定義されているとき $G$ を群という。
 演算 $dot.op$ $ a e = e a = a\
 a a^(- 1) = a^(- 1) a = e\
 \( a + b \) + c = a + \( b + c \) $
-
 ]
 これはもう覚えるしかないです。
 
@@ -75,14 +75,13 @@ bb(Z)^times & = { plus.minus 1 } $
 
 == 部分群と生成元
 <部分群と生成元>
-#block[
-群 $G$ の部分集合 $H$ が群となるとき $H$ は $G$ の部分群であるという。
-
+#definition("部分群")[
+群 $G$ の部分集合 $H$
+が群となるとき $H$ は $G$ の部分群であるという。
 ]
-#block[
+#definition[
 $G$ を群として $g in G$
 $ chevron.l g chevron.r := { g^n divides n in bb(Z) } $
-
 ]
 一般的な代数を扱っているのに整数が入っていいのか！？ってのを気づいて欲しい。
 
@@ -95,11 +94,11 @@ $ chevron.l 2 chevron.r = { 2^n divides n in bb(Z) } = {dots.h \, 1 / 4 \, 1 / 2
 
 == 位数
 <位数>
-#block[
-群 $G$ の濃度 $\| G \|$ を群 $G$ の位数という。 \
+#definition("群の位数")[
+群 $G$ の濃度 $\| G \|$
+を群 $G$ の位数という。 \
 また $G$ について $\| G \| < oo$ のとき有限群, $\| G \| gt.eq oo$
 のとき無限群という。
-
 ]
 == 剰余群
 <剰余群>

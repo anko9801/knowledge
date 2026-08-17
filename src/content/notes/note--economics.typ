@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "経済学",
@@ -31,10 +32,9 @@
 <ケインズ>
 ケインズは購入されて初めて生産物としての価値を示すことになると考えた。
 
-#block[
+#definition[
 有効需要とは紙幣支出を伴う需要であり、国民所得の大きさは有効需要の大きさで決まる
 (有効需要の原理)。
-
 ]
 需要が無ければいくら供給を増やしても価値がない
 
@@ -83,14 +83,13 @@ underbrace(\( S - I \), "民間収支") + underbrace(\( T - G \), "財政収支"
 割引現在価値は数年後のお金は現在の価値に直すと利子率 $r$
 で割ったものになる。 $ frac(1, \( 1 + r \)^n) $
 
-#block[
-#strong[定理 1] (Frisch-Waugh-Lovell 定理). \
-
+#theorem("Frisch-Waugh-Lovell 定理")[
 $ Y_i = beta_0 + beta_1 X_(1 i) + beta_2 X_(2 i) + dots.h.c + beta_k X_(k i) + u_i $
 $ hat(beta)_1 = frac(sum_(i = 1)^N tilde(X)_(1 i) tilde(Y)_i, sum_(i = 1)^N tilde(X)_(1 i)) $
-
 ]
+#proof[
 $ X_(1 i) = gamma_0 + gamma_2 X_(2 i) + dots.h.c + gamma_k X_(k i) + v_i $
 $ Y = vec(Y_1, Y_2, dots.v, Y_N) \, quad X_i = vec(X_(i 1), X_(i 2), dots.v, X_(i N)) $
 
 $ vec(1, X_(1 i), X_(2 i), dots.v, X_(k i)) = vec(0) vec(1, X_(1 i), X_(2 i), dots.v, X_(k i)) $
+]

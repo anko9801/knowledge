@@ -971,6 +971,69 @@ const closeDocument = (source) =>
     ? `${source}\n\\end{document}\n`
     : source
 
+
+/**
+ * 定理・定義・証明の環境に、種類と題名を持ち回るための印を差し込む。
+ *
+ * pandoc は theorem 系の環境を #block[...] に落とすだけで、種類も題名も落とす。
+ * 特に星付き（無番号）の環境では見出しが丸ごと消え、\begin{axiom}[ド・ブロイの
+ * 関係式] の題名が出力に残らない。
+ *
+ * そこで本文の先頭に印を置いて pandoc を通し、repair-typst 側で
+ * #theorem("題名")[...] のような呼び出しに組み替える。
+ * 題名は日本語や括弧を含むので、pandoc が触らないよう 16 進で運ぶ。
+ */
+const STATEMENT_ENVIRONMENTS = new Map([
+  ['theorem', 'theorem'],
+  ['theorem*', 'theorem'],
+  ['sctheorem*', 'theorem'],
+  ['thm', 'theorem'],
+  ['definition', 'definition'],
+  ['dfn', 'definition'],
+  ['axiom', 'axiom'],
+  ['lemma', 'lemma'],
+  ['lem', 'lemma'],
+  ['proposition', 'proposition'],
+  ['prop', 'proposition'],
+  ['corollary', 'corollary'],
+  ['cor', 'corollary'],
+  ['example', 'example'],
+  ['fact', 'remark'],
+  ['rem', 'remark'],
+  ['proof', 'proof'],
+])
+
+const toHex = (text) =>
+  [...Buffer.from(text, 'utf8')].map((b) => b.toString(16).padStart(2, '0')).join('')
+
+export const markStatements = (source) => {
+  let marked = 0
+
+  const text = source.replace(
+    /\\begin\{([a-zA-Z]+\*?)\}[ \t]*(\[(?:[^\[\]]|\[[^\[\]]*\])*\])?/g,
+    (whole, env, optional) => {
+      const variant = STATEMENT_ENVIRONMENTS.get(env)
+      if (!variant) return whole
+
+      const title = optional ? optional.slice(1, -1) : ''
+      marked += 1
+
+      // 題名は印で運ぶので、環境の任意引数は落とす。
+      // 残すと pandoc が「(題名).」として本文に出してしまう。
+      return `\\begin{${env}}ZZSTMTZZ${variant}ZZ${toHex(title)}ZZ `
+    },
+  )
+
+  // 終端にも印を打つ。pandoc は環境によって #block[...] で囲んだり囲まなかったり
+  // するので、始まりだけでは主張の範囲が決められない。
+  const closed = text.replace(/\\end\{([a-zA-Z]+\*?)\}/g, (whole, env) => {
+    const variant = STATEMENT_ENVIRONMENTS.get(env)
+    return variant ? ` ZZENDZZ${variant}ZZ\\end{${env}}` : whole
+  })
+
+  return { text: closed, marked }
+}
+
 export const preprocess = (source, { extraDefinitions = '' } = {}) => {
   const stripped = stripPreambleNoise(closeDocument(source))
   const withFallbacks = injectFallbacks(stripped, extraDefinitions)
@@ -983,7 +1046,8 @@ export const preprocess = (source, { extraDefinitions = '' } = {}) => {
   // 書き換えてしまい、文書全体が読めなくなる。
   const { text: guarded, parked } = parkDefinitions(withFallbacks)
 
-  const references = stripReferencesInMath(guarded)
+  const statements = markStatements(guarded)
+  const references = stripReferencesInMath(statements.text)
   const equivalents = normalizeEquivalents(normalizeLabels(references.text))
   const bracedArgs = braceControlArguments(equivalents.text)
   const matrices = expandMatrices(bracedArgs.text, defined)
@@ -1018,5 +1082,6 @@ export const preprocess = (source, { extraDefinitions = '' } = {}) => {
     singleArg: single.expanded,
     braced: bracedArgs.braced,
     equivalents: equivalents.replaced,
+    statements: statements.marked,
   }
 }

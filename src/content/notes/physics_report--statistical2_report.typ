@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "統計力学 II",
@@ -20,6 +21,7 @@
 $ zeta \( x \) := sum_(n = 1)^oo 1 / n^x #h(2em) \( x > 1 \) $
 
 ]
+#proof[
 $f_m \( x \) = x^m$ をフーリエ展開する。
 $ f_m \( x \) = x^m = sum_(n = - oo)^oo c_(n \, m) e^(i n x) $
 このときの係数は次のようになる。
@@ -33,6 +35,7 @@ c_(0 \, m) & = frac(1, 2 pi) integral_(- pi)^pi x^m upright(d) x = frac(pi^m, m 
 $ f_m \( x \) & = frac(pi^m, m + 1) + sum_(n eq.not 0) (m / n^2 pi^(m - 2) - frac(m \( m - 1 \) \( m - 2 \), n^4) pi^(m - 4)) \( - 1 \)^n e^(i n x)\
 f_2 \( pi \) = pi^2 & = pi^2 / 3 + sum_(n eq.not 0) 2 / n^2 \, #h(2em) f_4 \( pi \) = pi^4 = pi^4 / 5 + sum_(n eq.not 0) (4 / n^2 pi^2 - 24 / n^4)\
 zeta \( 2 \) & = sum_(n = 1)^oo 1 / n^2 = pi^2 / 6 \, #h(2em) zeta \( 4 \) = sum_(n = 1)^oo 1 / n^4 = pi^4 / 90 $
+]
 
 #block[
 次の関数 $I_plus.minus \( alpha \)$ が収束する実数 $alpha$
@@ -40,6 +43,7 @@ zeta \( 2 \) & = sum_(n = 1)^oo 1 / n^2 = pi^2 / 6 \, #h(2em) zeta \( 4 \) = sum
 $ I_plus.minus \( alpha \) & = integral_0^oo frac(z^(alpha - 1), e^z plus.minus 1) upright(d) z $
 
 ]
+#proof[
 分母を展開すると
 $ I_plus.minus \( alpha \) & = integral_0^oo frac(z^(alpha - 1) e^(- z), 1 plus.minus e^(- z)) upright(d) z\
  & = integral_0^oo z^(alpha - 1) e^(- z) sum_(k = 0)^oo \( minus.plus e^(- z) \)^k upright(d) z\
@@ -52,6 +56,7 @@ $I_plus.minus \( alpha \)$ は発散し、$alpha > 1$
 のとき次のように収束する。
 $ I_(+) \( alpha \) & = \( 1 - 2^(1 - alpha) \) zeta \( alpha \) Gamma \( alpha \)\
 I_(-) \( alpha \) & = zeta \( alpha \) Gamma \( alpha \) $
+]
 
 == 3 次元調和振動子
 <次元調和振動子>
@@ -62,6 +67,7 @@ $ hat(H) & = - frac(planck^2, 2 m) nabla^2 + V \( bold(r) \) \, #h(2em) V \( bol
 と変数分離できるとすると固有エネルギーを求めよ。
 
 ]
+#proof[
 $ hat(H) psi & = - frac(planck^2, 2 m) nabla^2 psi + V \( bold(r) \) psi\
  & = - frac(planck^2, 2 m) \( X'' Y Z + X Y'' Z + X Y Z'' \) + V \( bold(r) \) X Y Z\
  & = (- frac(planck^2, 2 m) (X'' / X + Y'' / Y + Z'' / Z) + 1 / 2 \( x^2 + y^2 + z^2 \)) X Y Z\
@@ -74,6 +80,7 @@ $ - frac(planck^2, 2 m) frac(X_(i'') \( x_i \), X_i \( x_i \)) + k / 2 x_i^2 & =
 次元調和振動子のポテンシャルであるので固有エネルギーは次のようになる。
 $ E_(i \, n) & = (n + 1 / 2) planck omega #h(2em) (n = 0 \, 1 \, 2 \, dots.h.c)\
 E_(\( n_x \, n_y \, n_z \)) & = (n_x + n_y + n_z + 3 / 2) planck omega #h(2em) (n_x \, n_y \, n_z = 0 \, 1 \, 2 \, dots.h.c) $
+]
 
 #block[
 固有エネルギー $epsilon$ が
@@ -83,8 +90,9 @@ $E_0 = 100 planck omega lt.eq epsilon < E_0 + delta E = 110 planck omega$
 概数を評価する方法を考えて評価し、次に具体的に求めてみよう。
 
 ]
-まず概数についてエネルギー $E$ までの状態数 $D \( E \)$ は平面
-$x + y + z + 3 \/ 2 = E \/ planck omega$
+#proof[
+まず概数についてエネルギー $E$ までの状態数
+$D \( E \)$ は平面 $x + y + z + 3 \/ 2 = E \/ planck omega$
 の第一象限を底とし、原点を頂点とする三角錐の体積と近似できるから
 $ D \( E \) & = 1 / 6 (frac(E, planck omega) - 3 / 2)^3 $
 となる。これより $E_0$ から $E_0 + delta E$
@@ -92,6 +100,7 @@ $ D \( E \) & = 1 / 6 (frac(E, planck omega) - 3 / 2)^3 $
 $ D \( E_0 + delta E \) - D \( E_0 \) & = 1 / 6 ((frac(E_0 + delta E, planck omega) - 3 / 2)^3 - (frac(E_0, planck omega) - 3 / 2)^3) approx 53603 $
 実際に計算すると次のようになる。
 $ sum_(k = 99)^108 zws_(k + 2) C_2 & = 55165 $
+]
 
 #block[
 極座標において固有関数が
@@ -101,6 +110,7 @@ $ x & = r sin theta cos phi.alt \, y = r sin theta sin phi.alt \, z = r cos thet
 nabla^2 & = frac(partial^2, partial r^2) + 2 / r frac(partial, partial r) + 1 / r^2 (frac(1, sin theta) frac(partial, partial theta) sin theta frac(partial, partial theta) + frac(1, sin^2 theta) frac(partial^2, partial phi.alt^2)) $
 
 ]
+#proof[
 $ hat(H) & = - frac(planck^2, 2 m) nabla^2 + V \( r \)\
  & = - frac(planck^2, 2 m) (1 / r^2 frac(partial, partial r) (r^2 frac(partial, partial r)) + frac(1, r^2 sin theta) frac(partial, partial theta) (sin theta frac(partial, partial theta)) + frac(1, r^2 sin^2 theta) frac(partial^2, partial phi.alt^2)) + V \( r \)\
 0 & = (frac(partial, partial r) (r^2 frac(partial, partial r)) + frac(1, sin theta) frac(partial, partial theta) (sin theta frac(partial, partial theta)) + frac(1, sin^2 theta) frac(partial^2, partial phi.alt^2) + frac(2 m r^2 \( E - V \( r \) \), planck^2)) psi \( r \, theta \, phi.alt \) $
@@ -156,6 +166,7 @@ Theta_(l m) \( theta \) & = \( - 1 \)^(frac(m + \| m \|, 2)) sqrt((l + 1 / 2) fr
 R_(n l) \( rho \) & = rho^l e^(- rho^2 \/ 2) L_(n + alpha)^alpha \( rho^2 \) & (rho = sqrt(frac(m omega, planck)) r) $
 固有エネルギーについては次のようになる。
 $ E & = lambda / 2 planck omega = (2 n + l + 3 / 2) planck omega $
+]
 
 == 2 準位系, 3 準位系
 <準位系-3-準位系>
@@ -166,6 +177,7 @@ $ E & = lambda / 2 planck omega = (2 n + l + 3 / 2) planck omega $
 とおく。
 
 ]
+#proof[
 カノニカル分布を用いることで次のように計算できる。
 $ Z_N \( beta \) & = (m + n e^(- beta epsilon))^N = m^N (1 + a e^(- beta epsilon))^N\
 E \( beta \) & = - frac(partial, partial beta) ln Z_N \( beta \) = N frac(a epsilon e^(- beta epsilon), 1 + a e^(- beta epsilon))\
@@ -180,6 +192,7 @@ $ frac(C \( T \), N k_B) & = (frac(epsilon, k_B T))^2 frac(a e^(- epsilon \/ k_B
 $ frac(partial, partial x) (frac(C \( T \), N k_B)) & = cases(delim: "{", e^(- 1 \/ x) / x^4 \( 1 - 2 x \) & \( a lt.double 1 \), e^(1 \/ x) / x^4 \( - 1 - 2 x \) & \( a gt.double 1 \)) $
 よりピークはそれぞれ $1 \/ 2$,
 なしとなる。これより次のようなグラフとなる。
+]
 
 #block[
 エネルギー準位が $0 \, epsilon \, b epsilon$ からなる独立な $N$
@@ -187,6 +200,7 @@ $ frac(partial, partial x) (frac(C \( T \), N k_B)) & = cases(delim: "{", e^(- 1
 の熱平衡状態にあるとする。このとき分配関数、エネルギーの期待値、比熱を求めよ。
 
 ]
+#proof[
 前問と同様にして
 $ Z_N \( beta \) & = (1 + e^(- beta epsilon) + e^(- beta b epsilon))^N\
 E \( beta \) & = - frac(partial, partial beta) ln Z_N \( beta \)\
@@ -196,6 +210,7 @@ C \( T \) & = frac(upright(d) E, upright(d) T) = - frac(1, k_B T^2) frac(upright
  & = N k_B \( beta epsilon \)^2 frac(e^(- beta epsilon) + \( b - 1 \)^2 e^(- beta \( 1 + b \) epsilon) + b^2 e^(- beta b epsilon), \( 1 + e^(- beta epsilon) + e^(- beta b epsilon) \)^2)\
 frac(C \( T \), N k_B) & = (frac(epsilon, k_B T))^2 frac(e^(- epsilon \/ k_B T) + \( b - 1 \)^2 e^(- \( 1 + b \) epsilon \/ k_B T) + b^2 e^(- b epsilon \/ k_B T), \( 1 + e^(- epsilon \/ k_B T) + e^(- b epsilon \/ k_B T) \)^2) $
 これよりグラフは次のようになる。
+]
 
 = 理想量子気体とグランドカノニカル分布
 <理想量子気体とグランドカノニカル分布>
@@ -205,6 +220,7 @@ frac(C \( T \), N k_B) & = (frac(epsilon, k_B T))^2 frac(e^(- epsilon \/ k_B T) 
 Fermi 粒子系、Bose 粒子系における粒子数の揺らぎを調べよ。
 
 ]
+#proof[
 グランドカノニカル分布の分布関数 $f \( epsilon \)$
 が与えられたときに粒子数の揺らぎは次のように書ける。
 $ N & = sum_(j = 1)^oo f \( epsilon_j \)\
@@ -218,6 +234,7 @@ chevron.l \( accent(Delta N, ̂) \)^2 chevron.r & = frac(e^(beta \( epsilon - mu
 これより $chevron.l hat(N) chevron.r arrow.r oo$ の極限において
 $ sqrt(chevron.l \( accent(Delta N, ̂) \)^2 chevron.r) / N & arrow.r e^(beta \( epsilon - mu \) \/ 2) $
 となる。
+]
 
 = 理想ボーズ気体、ボーズ凝縮
 <理想ボーズ気体ボーズ凝縮>
@@ -233,6 +250,7 @@ $D \( omega \) upright(d) omega$ を求めよ。固体を各辺の長さが $L$
 ($L^3 = V$) の立方体と考え、周期境界条件をとってよい。
 
 ]
+#proof[
 周期境界条件と媒体が奇妙な振動をしない条件として分散関係
 $omega = v_l \| bold(k) \|$ より次のように書ける。
 $ bold(k) & = pi / L \( n_x \, n_y \, n_z \) #h(2em) (0 lt.eq n_i lt.eq root(3, N))\
@@ -244,16 +262,19 @@ $ D \( omega \) & = 1 / 8 frac(4 pi, 3) (frac(omega L, v_l pi))^3 + 2 / 8 frac(4
  & = frac(omega^3 L^3, 6 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3)\
 D \( omega \) upright(d) omega & = frac(omega^2 L^3, 2 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3) upright(d) omega\
  $
+]
 
 #block[
 $D \( omega \)$ を Debye 振動数 $omega_D$ を用いて表せ。
 
 ]
+#proof[
 $omega_D$ の条件に代入することで
 $ integral_0^(omega_D) D \( omega \) upright(d) omega & = integral_0^(omega_D) frac(omega^2 L^3, 2 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3) upright(d) omega = 3 N\
 omega_D & = frac(v_l v_t, L) (frac(18 N pi^2, v_t^3 + 2 v_l^3))^(1 \/ 3) $
 となる為、$omega_D$ を用いて $D \( omega \)$ は次のように求まる。
 $ D \( omega \) & = cases(delim: "{", frac(9 N omega^2, omega_D^3) & \( omega < omega_D \), 0 & \( omega > omega_D \)) $
+]
 
 #block[
 この模型における固体の定積比熱 $C$
@@ -262,8 +283,9 @@ $ D \( omega \) & = cases(delim: "{", frac(9 N omega^2, omega_D^3) & \( omega < 
 と比較せよ。
 
 ]
-$omega$ に対する調和振動子における比熱 $c \( omega \)$ を用いて比熱 $C$
-は次のように求まる。
+#proof[
+$omega$ に対する調和振動子における比熱 $c \( omega \)$
+を用いて比熱 $C$ は次のように求まる。
 $ C & = integral_0^oo D \( omega \) c \( omega \) upright(d) omega\
  & = integral_0^(omega_D) frac(9 N omega^2, omega_D^3) k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2 upright(d) omega\
  & = 9 N k_B b^2 integral_0^1 frac(x^4 e^(b x), \( e^(b x) - 1 \)^2) upright(d) x & (x = omega / omega_D \, b = beta planck omega_D)\
@@ -287,14 +309,16 @@ $ C & = 3 N k_B (frac(beta planck omega, 2 sinh 1 / 2 beta planck omega))^2\
  & approx 3 N k_B b^2 e^(- b) $ よって低温における温度 $T$ 依存性が
 Debye 模型は $b^(- 3)$ に対して Einstein 模型は $b^2 e^(- b)$
 と異なることが分かる。
+]
 
 #block[
 一般化して、$d$ 次元における格子比熱の低温 ($T lt.double omega_D$)
 での温度依存性を調べよ。
 
 ]
-一般の $d$ 次元において状態密度 $D \( omega \)$ と比熱 $C$
-は次のようになる。
+#proof[
+一般の $d$ 次元において状態密度 $D \( omega \)$ と比熱
+$C$ は次のようになる。
 $ D \( omega \) & = cases(delim: "{", 3 N frac(d omega^(d - 1), omega_D^d) & \( omega < omega_D \), 0 & \( omega > omega_D \))\
 C & = integral_0^oo D \( omega \) c \( omega \) upright(d) omega\
  & = 3 d N k_B b^2 integral_0^1 frac(x^(d + 1) e^(b x), \( e^(b x) - 1 \)^2) upright(d) x\
@@ -305,6 +329,7 @@ $ integral_0^1 frac(x^d, e^(b x) - 1) upright(d) x & = integral_0^1 x^d sum_(n =
 これより比熱は次のようになる。
 $ C & approx 3 N k_B 1 / b^d d \( d + 1 \) zeta \( d + 1 \) Gamma \( d + 1 \) $
 よって比熱は $T^d$ に比例する。
+]
 
 == 3 次元調和トラップ中での Bose-Einstein 凝縮での比熱の変化
 <次元調和トラップ中での-bose-einstein-凝縮での比熱の変化>
@@ -318,6 +343,7 @@ $omega = 2 pi times 60$ Hz, 原子の個数 $2.0 times 10^3$
 個のとき、転移温度を求めよ。
 
 ]
+#proof[
 3
 次元等方調和ポテンシャル中でボース凝縮しているとき凝縮温度近くの比熱は次のようになる。
 $ D \( epsilon \) & = frac(epsilon^2, 2 planck^3 omega^3)\
@@ -328,6 +354,7 @@ U \( epsilon \) & = integral_0^oo epsilon D \( epsilon \) f_B \( epsilon \) upri
 C \( T \) & = frac(2 pi^4, 15 planck^3 omega^3) k_B^4 T^3\
 C \( T_c + Delta T \) & approx frac(2 pi^4, 15 planck^3 omega^3) k_B^4 (T_c^3 + 3 T_c^2 Delta T)\
  & approx frac(2 pi^4, 15) k_B + frac(2 pi^4, 5) frac(k_B^2, planck omega) (frac(N, zeta \( 3 \)))^(2 \/ 3) Delta T $
+]
 
 = 理想フェルミ気体、低温展開
 <理想フェルミ気体低温展開>
@@ -340,9 +367,11 @@ $ epsilon_plus.minus = frac(p^2, 2 m) plus.minus mu_B H $
 このとき磁場下での磁化 $M$ と絶対零度のスピン磁化率を求めよ。
 
 ]
-3 次元自由フェルミ粒子系の状態密度を $D \( epsilon \) = c sqrt(epsilon)$
-とおき、各スピン状態における粒子数 $N_plus.minus$
-を求め、ゾンマーフェルト展開を行うことで磁化 $M$ は次のようになる。
+#proof[
+3 次元自由フェルミ粒子系の状態密度を
+$D \( epsilon \) = c sqrt(epsilon)$ とおき、各スピン状態における粒子数
+$N_plus.minus$ を求め、ゾンマーフェルト展開を行うことで磁化 $M$
+は次のようになる。
 $ N_plus.minus & = integral_(- oo)^oo D \( epsilon \) f \( epsilon plus.minus mu_B H \) upright(d) epsilon\
 M & = mu_B N_(+) - mu_B N_(-)\
  & = mu_B integral_(- oo)^oo frac(D \( epsilon \), 2) \( f \( epsilon + mu_B H \) - f \( epsilon - mu_B H \) \) upright(d) epsilon\
@@ -351,24 +380,30 @@ M & = mu_B N_(+) - mu_B N_(-)\
 これより絶対零度におけるスピン磁化率 $chi_s$ は次のようになる。
 $ chi_s \( T = 0 \) & = lim_(H arrow.r 0) M / H = mu_B^2 D \( mu \) = c mu_B^2 sqrt(mu) = 3 / 2 mu_B^2 / mu N $
 ただし $N$ は系の粒子数とする。
+]
 
 #block[
 $chi_s$ について、低温での $T$ について最低次の補正を求めよ。
 
 ]
+#proof[
 低温のスピン磁化率 $chi_s$ は次のようになる。
 $ chi_s & approx mu_B^2 (D \( mu \) + frac(pi^2, 6 beta^2) D'' \( mu \)) = mu_B^2 c sqrt(mu) (1 - frac(pi^2, 6 beta^2) frac(1, 2 mu^2)) = 3 / 2 mu_B^2 / mu N (1 - frac(k_B^2 T^2 pi^2, 12 mu^2)) $
+]
 
 #block[
 Fermi 縮退温度 $T_F$
 に比べ充分高温での表式を求めよ。低温の場合と比べてどうなるか?
 
 ]
-高温のとき $f \( epsilon \) approx e^(- beta \( epsilon - mu \))$
+#proof[
+高温のとき
+$f \( epsilon \) approx e^(- beta \( epsilon - mu \))$
 と近似できる。これよりスピン磁化率は次のように近似できる。
 $ chi_s & = mu_B^2 integral_0^oo D \( epsilon \) f' \( epsilon \) upright(d) epsilon = mu_B^2 integral_0^oo D' \( epsilon \) f \( epsilon \) upright(d) epsilon = mu_B^2 integral_0^oo 1 / 2 c epsilon^(- 1 \/ 2) e^(- beta \( epsilon - mu \)) upright(d) epsilon\
  & = 1 / 2 c mu_B^2 e^(beta mu) beta^(1 \/ 2) Gamma (1 / 2) = sqrt(pi) / 2 c mu_B^2 e^(beta mu) beta^(1 \/ 2) $
 低温の場合と比べ、$T$ が大きくなるほど $0$ に近づくことが分かる。
+]
 
 == ブロッホの定理
 <ブロッホの定理>
@@ -381,6 +416,7 @@ $psi \( bold(r) \)$ について考えてみよう。
 と $cal(T)_a$ は交換することを示せ。
 
 ]
+#proof[
 $ cal(H) \( x \) & = - frac(planck^2, 2 m) frac(partial^2, partial x^2) + V \( x \) \, #h(2em) V \( x + a \) = V \( a \)\
 cal(T)_a psi \( x \) & = psi \( x + a \) $ このとき $cal(H) \( x \)$ と
 $cal(T)_a$ を波動関数に作用させると次のようになる。
@@ -389,17 +425,20 @@ $ cal(T)_a cal(H) \( x \) psi \( x \) & = cal(T)_a (cal(H) \( x \) psi \( x \))\
  & = cal(H) \( x \) psi \( x + a \)\
  & = cal(H) \( x \) cal(T)_a psi \( x \) $ よって $cal(H) \( x \)$ と
 $cal(T)_a$ は交換する。
+]
 
 #block[
 次のようになることを説明せよ。
 $ psi \( x + n a \) = e^(i k n a) psi \( x \) $
 
 ]
-並進演算子 $cal(T)_a$ の固有関数 $psi \( x \)$ に対して $n$
-回作用させることでその固有値 $E_a$ に関して $E_a^n = 1$
+#proof[
+並進演算子 $cal(T)_a$ の固有関数 $psi \( x \)$
+に対して $n$ 回作用させることでその固有値 $E_a$ に関して $E_a^n = 1$
 という関係式が得られる。
 $ cal(T)_a^n psi \( x \) = psi \( x + n a \) = psi \( x \) = E_a^n psi \( x \) $
 これより、ある波数 $k$ を用いて $E_a = e^(i k a)$ と書ける。
+]
 
 #block[
 3 次元のとき基本格子ベクトル $\( bold(a)_1 \, bold(a)_2 \, bold(a)_3 \)$
@@ -410,6 +449,7 @@ $ psi \( bold(r) + bold(R) \) = e^(i bold(k) dot.op bold(R)) psi \( bold(r) \) $
 が成り立つことを説明せよ。
 
 ]
+#proof[
 基本格子ベクトルについて次の関係が成り立つ。
 $ psi \( bold(r) + bold(a)_1 \) = psi \( bold(r) + bold(a)_2 \) = psi \( bold(r) + bold(a)_3 \) = psi \( bold(r) \) $
 それぞれに対して上の推論を用いることで固有値は
@@ -417,6 +457,7 @@ $e^(i \( n_1 k_1 a_1 \)) \, e^(i \( n_2 k_2 a_2 \)) \, e^(i \( n_3 k_3 a_3 \))$
 となる。これよりある波数 $bold(k)$ を用いて
 $ psi \( bold(r) + bold(R) \) = e^(i bold(k) dot.op bold(R)) psi \( bold(r) \) $
 と表される。
+]
 
 == 1 次元周期的井戸型ポテンシャル
 <次元周期的井戸型ポテンシャル>
@@ -439,6 +480,7 @@ $p a$ と $k a$ の満たすべき式を求め、$P = 3 pi \/ 2$ のときに、
 を含む適当な範囲で) 図示せよ。
 
 ]
+#proof[
 まず $V \( x \)$ について次のような図となる。
 
 このときの波動関数は次のようになる。
@@ -460,6 +502,7 @@ $ cos \( k l \) & = frac(q^2 - p^2, 2 p q) sin \( p a \) sinh \( q b \) + cos \(
  & approx frac(q^2 b, 2 p) sin \( p a \) + cos \( p a \)\
 cos \( k a \) & approx P frac(sin \( p a \), p a) + cos \( p a \) $
 これより $P = 3 pi \/ 2$ のとき拡張ゾーン形式は次のように書ける。
+]
 
 == グラフェンにおける分散関係
 <グラフェンにおける分散関係>
@@ -480,6 +523,7 @@ $eta = e^(i bold(k) dot.op bold(a)_1) \, xi = e^(i bold(k) dot.op bold(a)_2)$
 として、非零となる $E \( bold(k) \)$ の条件を調べよ。
 
 ]
+#proof[
 このときハミルトニアンと固有ケットは次のようになる。
 $ cal(H) & = - t sum_(bold(R)) (\|bold(R) \, A⟩ (⟨bold(R) \, B\| + sum_(j = 1 \, 2) ⟨bold(R) - bold(a)_j \, B\|) + \|bold(R) \, B⟩ (⟨bold(R) \, A\| + sum_(j = 1 \, 2) ⟨bold(R) + bold(a)_j \, A\|))\
 \|bold(k)⟩ & = sum_(bold(R)) eta^(n_1) xi^(n_2) \( u_A \|bold(R) \, A⟩ + u_B \|bold(R) \, B⟩ \) $
@@ -490,6 +534,7 @@ $ cal(H) \|bold(k)⟩ & = - t sum_(bold(R)) eta^(n_1) xi^(n_2) (\( 1 + eta^(- 1)
 の条件は次のようになる。
 $ E \( bold(k) \) & = - t \( 1 + eta^(- 1) + xi^(- 1) \) u_B / u_A = - t \( 1 + eta + xi \) u_A / u_B\
 E \( bold(k) \) & = plus.minus t sqrt(\( 1 + eta + xi \) \( 1 + eta^(- 1) + xi^(- 1) \)) $
+]
 
 #block[
 逆格子空間の点
@@ -499,6 +544,7 @@ $Gamma$ から対称性の高い点 $K'$ を経由してブリルアン・ゾー
 に達するまでのバンド構造の概形を図示せよ。
 
 ]
+#proof[
 まず $bold(k)$ と格子ベクトルの内積を計算する。
 $ bold(k) dot.op bold(a)_1 & = (0 \, y / a) dot.op (frac(3 a, 2) \, frac(sqrt(3) a, 2)) = sqrt(3) / 2 y\
 bold(k) dot.op bold(a)_2 & = (0 \, y / a) dot.op (0 \, sqrt(3) a) = sqrt(3) y $
@@ -509,14 +555,16 @@ $bold(k) = y / a hat(bold(k))_y med (0 lt.eq y lt.eq frac(2 pi, sqrt(3)))$
 の具体値を代入すると次のようになる。
 $ E (0 hat(bold(k))_y) & = plus.minus 3 t & E (frac(pi, sqrt(3) a) hat(bold(k))_y) & = plus.minus t & E (frac(4 pi, 3 sqrt(3) a) hat(bold(k))_y) & = 0 & E (frac(2 pi, sqrt(3) a) hat(bold(k))_y) & = plus.minus 3 t $
 よってバンド構造の概形は次のようになる。
+]
 
 #block[
 K' 点近傍での 2
 つのバンドのエネルギーと、対応する波動関数の振る舞いについて調べ、考察せよ。
 
 ]
-K' 点近傍での 2 つのバンドのエネルギーについて $Delta y lt.double 1$
-より 2 次まで展開すると
+#proof[
+K' 点近傍での 2 つのバンドのエネルギーについて
+$Delta y lt.double 1$ より 2 次まで展開すると
 $  & E ((frac(4 pi, 3 sqrt(3)) + Delta y) hat(bold(k))_y / a)\
  & = plus.minus t sqrt(3 + 4 cos (2 / 3 pi + sqrt(3) / 2 Delta y) + 2 cos (4 / 3 pi + sqrt(3) Delta y))\
  & = plus.minus t sqrt(3 + 4 (- 1 / 2 cos (sqrt(3) / 2 Delta y) - sqrt(3) / 2 sin (sqrt(3) / 2 Delta y)) + 2 (- 1 / 2 cos (sqrt(3) Delta y) + sqrt(3) / 2 sin (sqrt(3) Delta y)))\
@@ -527,6 +575,7 @@ $  & E ((frac(4 pi, 3 sqrt(3)) + Delta y) hat(bold(k))_y / a)\
 $  & {u_A approx e^(i theta) sqrt(frac(Delta y, 2))\
 u_B approx plus.minus e^(i theta) sqrt(frac(Delta y, 2))\
 \|bold(k)⟩ & = sum_(bold(R)) e^(i bold(k) dot.op bold(R) + i theta) (sqrt(frac(Delta y, 2)) \|bold(R) \, A⟩ plus.minus sqrt(frac(Delta y, 2)) \|bold(R) \, B⟩) $
+]
 
 = 多電子系の波動関数と相互作用、相転移と臨界現象 I
 <多電子系の波動関数と相互作用相転移と臨界現象-i>
@@ -540,6 +589,7 @@ $chevron.l sigma_i sigma i + r chevron.r prop e^(- r \/ xi)$、相関長 $xi$
 $ H = - J sum_(i = 1)^(N - 1) sigma_i sigma_(i + 1) - h sum_(i = 1)^N sigma_i $
 
 ]
+#proof[
 $h = 0$ においてハミルトニアンは次のようになる。
 $ H = - J sum_(i = 1)^(N - 1) sigma_i sigma_(i + 1) $
 これより熱力学的関数はそれぞれ次のようになる。
@@ -558,6 +608,7 @@ $ chevron.l sigma_i sigma_(i + r) chevron.r & = 1 / Z sum_(sigma_i = plus.minus 
  & = frac(tanh^r \( beta J \), 2 \( 2 cosh \( beta J \) \)^(i - 1)) sum_(sigma_i = plus.minus 1) sigma_i^2 product_(j = 1)^(i - 1) e^(beta J sigma_j sigma_(j + 1))\
  & = tanh^r \( beta J \) $ より相関長 $xi$ は次のようになる。
 $ xi & = - frac(1, ln tanh \( beta J \)) $
+]
 
 == Landau 理論
 <landau-理論>
@@ -568,6 +619,7 @@ $ F \( T \, h \) = min_sigma (F_0 - h sigma + a \( T - T_c \) sigma^2 + b sigma^
 となることが期待される。
 
 ]
+#proof[
 まず自由エネルギーについて $sigma$
 に対して極小値となる条件は次のようになる。
 $ frac(partial F, partial sigma) & = - h + 2 a \( T - T_c \) sigma + 4 b sigma^3 = 0 $
@@ -581,25 +633,30 @@ $ frac(partial F, partial sigma) & approx - h + 2 a \( T - T_c \) \( sigma_0 + \
 sigma & = sigma_0 + frac(h, 4 a \( T_c - T \)) $ $sigma = - sigma_0$
 も同様であるから $sigma$ は次のようになる。
 $ sigma = cases(delim: "{", frac(h, 2 a \( T - T_c \)) & \( T > T_c \), sqrt(frac(a \( T_c - T \), 2 b)) + frac(h, 4 a \( T - T_c \)) & \( T < T_c \, h > 0 \), - sqrt(frac(a \( T_c - T \), 2 b)) + frac(h, 4 a \( T - T_c \)) & \( T < T_c \, h < 0 \), ) $
+]
 
 #block[
 転移温度前後での磁化率の温度依存性を求めよ。
 
 ]
+#proof[
 $ chi & = frac(partial sigma, partial h)\|_(h arrow.r 0) = cases(delim: "{", frac(1, 2 a \( T - T_c \)) & \( T > T_c \), frac(1, 4 a \( T - T_c \)) & \( T < T_c \), ) $
 より磁化率 $chi$ は $T^(- 1)$ に依存する。
+]
 
 #block[
 転移温度近傍において、$h = 0$
 における比熱に有限の飛びが現れることを示せ。
 
 ]
-$h = 0$ において自由エネルギー $F$, エントロピー $S$, 比熱 $C$
-は次のようになる。
+#proof[
+$h = 0$ において自由エネルギー $F$, エントロピー $S$,
+比熱 $C$ は次のようになる。
 $ F & = cases(delim: "{", F_0 & \( T > T_c \), F_0 - frac(a^2 \( T - T_c \)^2, 4 b) & \( T < T_c \), )\
 S = - frac(partial F, partial T) & = cases(delim: "{", - frac(partial F_0, partial T) & \( T > T_c \), - frac(partial F_0, partial T) + frac(a^2 \( T - T_c \), 2 b) & \( T < T_c \), )\
 C = T frac(partial S, partial T) & = cases(delim: "{", - T frac(partial^2 F_0, partial T^2) & \( T > T_c \), - T frac(partial^2 F_0, partial T^2) + T frac(a^2, 2 b) & \( T < T_c \), ) $
 これより $T = T_c$ 付近において $T_c a^2 \/ 2 b$ の有限の飛びがある。
+]
 
 = 期末レポート問題
 <期末レポート問題>
@@ -618,8 +675,10 @@ bold(S)_i dot.op bold(S)_j & = S^2 cos \( theta_i - theta_j \) approx c o n s t 
 とする。 このときハミルトニアンを近似せよ。
 
 ]
+#proof[
 $ hat(H) & = - J_0 sum_(chevron.l i \, j chevron.r) bold(S)_i dot.op bold(S)_j = - J sum_(chevron.l i \, j chevron.r) cos \( theta_i - theta_j \) approx - J sum_(chevron.l i \, j chevron.r) (1 - frac(\( theta_i - theta_j \)^2, 2))\
  & = J / 2 sum_(chevron.l i \, j chevron.r) \( theta_i - theta_j \)^2 + c o n s t . approx J / 2 integral_A upright(d) bold(r) \( upright(bold(nabla)) theta \( bold(r) \) \)^2 + c o n s t . $
+]
 
 #block[
 充分に高温であれば磁化は存在せず、温度を下げていっても有限温度で巨視的な磁化が生じる相転移は起きないことを説明する。
@@ -629,9 +688,11 @@ $Delta E$ の $l$ 依存性と、似たようなスピンの揃わない状況 (
 が充分大きければ巨視的な磁化が生じないことを説明せよ。
 
 ]
-系全体でスピンの向きが揃った ($theta \( bold(r) \) = theta_0$) 状態
-$Theta_0$ とスピンの向きが平面波 $theta \( x \, y \) = frac(pi y, l)$
-に従う状態 $Pi_y$ のエネルギーの差 $Delta E$ について
+#proof[
+系全体でスピンの向きが揃った
+($theta \( bold(r) \) = theta_0$) 状態 $Theta_0$ とスピンの向きが平面波
+$theta \( x \, y \) = frac(pi y, l)$ に従う状態 $Pi_y$ のエネルギーの差
+$Delta E$ について
 $ Delta E & = (J / 2 integral_A upright(d) bold(r) (upright(bold(nabla)) frac(pi y, l))^2 + c o n s t .) - (J / 2 integral_A upright(d) bold(r) \( upright(bold(nabla)) theta_0 \)^2 + c o n s t .)\
  & = J / 2 integral_A pi^2 / l^2 upright(d) bold(r) = J / 2 pi^2 $
 となり $Delta E$ は $l$ に依存しない。またスピンの揃わない状況 (欠陥)
@@ -640,6 +701,7 @@ $ S & approx k_B l / a $ これより自由エネルギーは
 $ F & = E - T S approx J / 2 pi^2 - k_B T l / a $
 となり、$l \/ a gt.double 1$
 より高温あるいは有限温度では巨視的な磁化は存在できない。
+]
 
 #block[
 系全体としては巨視的な磁化が生じるような相転移はないにもかかわらず、有限温度で相転移が起きることを説明せよ。
@@ -650,12 +712,14 @@ $ F & = E - T S approx J / 2 pi^2 - k_B T l / a $
 を求めよ。
 
 ]
+#proof[
 $4 times 4$ の格子において渦は次の図のようになる。
 $ upright(bold(nabla)) theta = upright(bold(nabla)) \( n phi.alt \) = (0 \, n / r) $
 渦を形成することによるエネルギーの増加 $E_n$
 について、渦の中心におけるエネルギーはゼロと考えてよいから積分の下端は
 $a$, 上端は $l$ とおいて問題ない。
 $ E_n & = J / 2 integral_A upright(d) bold(r) \( upright(bold(nabla)) theta \( bold(r) \) \)^2 = J / 2 integral_0^(2 pi) integral_a^l n^2 / r^2 r upright(d) r upright(d) phi.alt = n^2 pi J ln l / a $
+]
 
 #block[
 $n = plus.minus 1$ の自由な渦 1 個のエネルギーは $E_1$,
@@ -666,11 +730,13 @@ $ Delta cal(F) & = E_1 - k_B T ln W $ と見積もれる。相転移の起きる
 $T_(K T)$ を評価せよ。
 
 ]
+#proof[
 $n = plus.minus 1$
 の自由な渦が生成されるときの自由エネルギーが極小となる点において相転移が起きるから転移温度
 $T_(K T)$ は次のようになる。
 $ Delta cal(F) & = E_1 - k_B T_(K T) ln W = pi J ln l / a - 2 k_B T_(K T) ln l / a = 0\
 T_(K T) & = frac(pi J, 2 k_B) $
+]
 
 == Dirac Fermion
 <dirac-fermion>
@@ -693,12 +759,14 @@ $k = sqrt(k_x^2 + k_y^2)$ は ($K$ 点から測った) 波数の大きさ、 $c$
 でゼロになるが、通常の半導体とは異なり、完全なギャップを開かないことからゼロギャップ半導体と呼ばれる。
 
 ]
-エネルギー $epsilon$ までの状態数 $Omega \( epsilon \)$ は
-$epsilon_(bold(k)) = plus.minus c k$
+#proof[
+エネルギー $epsilon$ までの状態数
+$Omega \( epsilon \)$ は $epsilon_(bold(k)) = plus.minus c k$
 より状態数は円錐の表面積で近似できる。
 $ Omega \( epsilon \) & = N times pi epsilon / c epsilon sqrt(1 + 1 / c^2) = sqrt(1 + c^2) / c^2 N pi epsilon^2 $
 これより状態密度は次のようになる。
 $ D \( epsilon \) & = frac(2 N pi sqrt(1 + c^2), c^2) epsilon $
+]
 
 #block[
 以下、絶対零度 $T = 0$ においては電子が $epsilon = 0$
@@ -706,16 +774,19 @@ $ D \( epsilon \) & = frac(2 N pi sqrt(1 + c^2), c^2) epsilon $
 $0$ のままであることを示せ。
 
 ]
+#proof[
 $D \( 0 \)$
 において有限値を取ると考えると、ゾンマーフェルト展開を行うことで化学ポテンシャルは次のように近似できる。
 $ mu & approx epsilon_F - pi^2 / 6 frac(D' \( epsilon_F \), D \( epsilon_F \)) \( k_B T \)^2 = 0 $
 これより化学ポテンシャルは有限温度でも $0$ となる。
+]
 
 #block[
 有限温度で $T = 0$
 と比べた内部エネルギーの増分を計算して比熱を求め、通常の金属における電子比熱の場合と温度の冪が異なる理由を考察せよ。
 
 ]
+#proof[
 有限温度においてボーズ凝縮を起こしているから内部エネルギーの増分と比熱は次のようになる。
 $ U & = integral_0^oo epsilon D \( epsilon \) f_B \( epsilon \) upright(d) epsilon = frac(2 N pi sqrt(1 + c^2), c^2) integral_0^oo frac(epsilon^2, e^(beta epsilon) - 1) upright(d) epsilon\
  & = frac(2 N pi sqrt(1 + c^2), c^2 beta^3) integral_0^oo frac(u^2, e^u - 1) upright(d) u = frac(2 N pi sqrt(1 + c^2), c^2 beta^3) Gamma \( 3 \) zeta \( 3 \) & \( u = beta epsilon \)\
@@ -723,3 +794,4 @@ $ U & = integral_0^oo epsilon D \( epsilon \) f_B \( epsilon \) upright(d) epsil
 C & = frac(12 N pi sqrt(1 + c^2), c^2) zeta \( 3 \) k_B^3 T^2 $
 通常の金属における電子比熱の場合は $T^(3 \/ 2)$
 に依存するが、これは単純に分散関係が異なることにより比熱での温度の冪が異なると考えられる。
+]

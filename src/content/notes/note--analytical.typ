@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "解析力学",
@@ -13,7 +14,7 @@
 
 = ニュートン力学の復習
 <ニュートン力学の復習>
-#block[
+#definition[
 ニュートンの運動の 3 法則
 
 - 第 1 法則:
@@ -23,7 +24,6 @@
 
 - 第 3 法則: 物体 1, 2
   の間に力が働くとき、互いに大きさが等しく逆向きとなる。(作用・反作用の法則)
-
 ]
 これらを定式化する。
 $ m frac(upright(d)^2 bold(r), upright(d) t^2) = bold(F) $
@@ -32,11 +32,10 @@ $ m frac(upright(d)^2 bold(r), upright(d) t^2) = bold(F) $
 
 \- 電磁気力 - ばね - 垂直抗力 - 慣性力 - 外力 - 重力
 
-#block[
+#definition("仕事")[
 $ upright(d) W & = bold(F) dot.op upright(d) bold(r)\
 W & = integral_C bold(F) dot.op upright(d) bold(r) $ 一般に仕事は経路
 $C$ に依存する。 仕事が経路に依らない力を保存力という。
-
 ]
 保存力のとき始点 $bold(r)_0$ と終点 $bold(r)$ を用いて
 $ W = integral_(bold(r)_0)^(bold(r)) bold(F) dot.op upright(d) bold(r) $
@@ -45,11 +44,8 @@ $bold(r)$ までに進むのに必要な仕事と定義する。
 $ U & = - integral_(bold(r)_0)^(bold(r)) bold(F) dot.op upright(d) bold(r) $
 これは保存力でしか定義できない。
 
-#block[
-#strong[定理 1] (エネルギー保存則). \
-
+#theorem("エネルギー保存則")[
 $ T + U \( bold(r) \) $
-
 ]
 = 解析力学
 <解析力学>
@@ -78,11 +74,10 @@ $ m frac(upright(d)^2 bold(r), upright(d) t^2) = - nabla U $
 ] <table:potential>
 == ラグランジュ形式
 <ラグランジュ形式>
-#block[
+#definition("ラグランジアン")[
 ラグランジュ形式において、ラグランジアン (Lagrangian)
 とよばれる物理量が基本的な量となる。
 $ L & = 1 / 2 m dot(bold(r))^2 - U \( bold(r) \) $
-
 ]
 $ frac(partial L, partial dot(bold(r))) = m dot(bold(r)) \, quad frac(partial L, partial bold(r)) = - nabla U $
 運動方程式は Euler-Lagrange 方程式とよばれる。
@@ -99,11 +94,10 @@ $ frac(partial L, partial q_i) - frac(d, d t) (frac(partial L, partial dot(q)_i)
 
 == ハミルトン形式
 <ハミルトン形式>
-#block[
+#definition("ハミルトニアン")[
 ハミルトニアン (Hamiltonian)
 $ H & = frac(bold(p)^2, 2 m) + U \( bold(r) \, dot(bold(r)) \)\
 H \( q_i \, p_i \) & = sum_i p_i dot(q)_i - L $
-
 ]
 $ frac(partial H, partial bold(p)) = bold(p) / m \, quad frac(partial H, partial bold(r)) = nabla U $
 ニュートンの運動方程式は $bold(p) = m dot(bold(r))$ より
@@ -116,9 +110,8 @@ $ frac(upright(d) bold(r), upright(d) t) = frac(partial H, partial bold(p)) \, q
 あるいはハミルトンの原理 (Hamilton's principle)
 と呼ばれる次の原理が存在する。
 
-#block[
+#axiom("変分原理")[
 物体の運動は作用が極値を取るような経路をたどる。
-
 ]
 作用とは
 $ S \[ q \] & = integral_(t_1)^(t_2) L \( q \( t \) \, dot(q) \( t \) \, t \) upright(d) t\
@@ -132,15 +125,14 @@ frac(delta S \[ q \], delta q_i) & = frac(partial L, partial q_i) - frac(d, d t)
 
 == Noether の定理
 <noether-の定理>
-#block[
-#strong[定理 2] (Noether's theorem). \
-
-無限小変換に対して $ t & arrow.r t' = t + delta t\
+#theorem("Noether's theorem")[
+無限小変換に対して
+$ t & arrow.r t' = t + delta t\
 q_i & arrow.r q_(i') = q_i + delta q_i $
 作用積分が不変に保たれるならば保存量 $Phi$ が存在する。
 $ Phi = p_i \( delta q_i - dot(q)_i delta t \) + L delta t $
-
 ]
+#proof[
 $ delta S = S' - S & = integral_(t_(1'))^(t_(2')) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) upright(d) t' - integral_(t_1)^(t_2) L \( q_i \, dot(q)_i \) upright(d) t\
  & = integral_(t_1)^(t_2) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) frac(upright(d) t', upright(d) t) upright(d) t - integral_(t_1)^(t_2) L \( q_i \, dot(q)_i \) upright(d) t\
  & = integral_(t_1)^(t_2) (L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) - L \( q_i \, dot(q)_i \)) upright(d) t + integral_(t_1)^(t_2) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) accent(delta t, ̇) upright(d) t\
@@ -155,8 +147,9 @@ delta L + L (q_i \, dot(q)_i) accent(delta t, ̇) & = frac(upright(d), upright(d
  & = frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i) \( delta q_i - dot(q)_i delta t \) + L delta t) + (frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i)) dot(q)_i + frac(partial L, partial dot(q)_i) dot.double(q)_i) delta t - (frac(partial L, partial q_i) dot(q)_i + frac(partial L, partial dot(q)_i) dot.double(q)_i) delta t\
  & = frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i) \( delta q_i - dot(q)_i delta t \) + L delta t) - (frac(partial L, partial q_i) - frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i))) dot(q)_i delta t\
  & = frac(upright(d), upright(d) t) (frac(partial L, partial dot(q)_i) \( delta q_i - dot(q)_i delta t \) + L delta t) = 0 $
+]
 
-#block[
+#example[
 微少量 $epsilon$ を用いて表現する。
 $p_i \( delta q_i - dot(q)_i delta t \) + L delta t$
 
@@ -170,7 +163,6 @@ $p_i \( delta q_i - dot(q)_i delta t \) + L delta t$
 
 - 時間推進対称性 $delta q_i = 0$, $delta t = - epsilon$ より
   $p_i dot(q)_i - L = H$ は保存量となる。
-
 ]
 == 正準変換
 <正準変換>

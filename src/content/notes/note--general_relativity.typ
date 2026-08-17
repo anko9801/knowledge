@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "相対性理論",
@@ -13,13 +14,11 @@
 
 = 特殊相対性理論
 <特殊相対性理論>
-#block[
+#definition("Einstein の相対性原理")[
 自然法則は全ての慣性系において同じ形になる。
-
 ]
-#block[
+#definition("光速度不変の原理")[
 光の速度は全ての慣性系で、光源の速度によらず一定である。
-
 ]
 世界線がどんな慣性系 Lorentz 変換に対して不変
 $ upright(d) s^2 & := \( c upright(d) t \)^2 - upright(d) x^2 - upright(d) y^2 - upright(d) z^2 = \( c upright(d) tau \)^2 $
@@ -73,25 +72,22 @@ j^mu \( x \) & := \( c rho \, bold(j) \) $
 
 = 一般相対性理論
 <一般相対性理論>
-#block[
+#axiom("アインシュタインの等価原理")[
 加速系と重力場の系は局所的には原理的に区別できない。
-
 ]
 例えば宇宙人によって部屋に閉じ込められたとき地球と同じ重力があるからといって地球にいるとは限らない。
 
 == 座標系
 <座標系>
-#block[
+#definition("デカルト座標")[
 $ bold(e)_x dot.op bold(e)_x & = bold(e)_y dot.op bold(e)_y = 1 \, #h(2em) bold(e)_x dot.op bold(e)_y = 0 $
-
 ]
-#block[
+#definition("極座標")[
 ユークリッド平面においてデカルト座標 $\( x \, y \)$ から極座標
 $\( r \, theta \)$ への変換は次のように定義する。
 $ r = sqrt(x^2 + y^2) \, #h(2em) theta = arctan y / x $ 逆に極座標
 $\( r \, theta \)$ からデカルト座標 $\( x \, y \)$ へは次のようになる。
 $ x = r cos theta \, #h(2em) y = r sin theta $
-
 ]
 $ bold(e)_r & = frac(partial x, partial r) bold(e)_x + frac(partial y, partial r) bold(e)_y = cos theta bold(e)_x + sin theta bold(e)_y\
 bold(e)_theta & = frac(partial x, partial theta) bold(e)_x + frac(partial y, partial theta) bold(e)_y = - r sin theta bold(e)_x + r cos theta bold(e)_y $
@@ -106,7 +102,7 @@ bold(e)_r dot.op bold(e)_theta & = \( cos theta bold(e)_x + sin theta bold(e)_y 
 <様々な座標系における演算>
 どのような座標系においても同じ形の式を作る。 異なる座標系での内積
 
-#block[
+#definition("座標系の基底ベクトル")[
 座標変換によって基底ベクトルによる
 $ bold(e)_(alpha') & = Lambda_(med alpha')^beta bold(e)_beta = frac(partial x^beta, partial x^(alpha')) bold(e)_beta $
 ある座標系において基底ベクトル同士の内積を計量テンソル $g_(alpha beta)$
@@ -115,7 +111,6 @@ $ bold(e)_alpha dot.op bold(e)_beta & = g_(alpha beta) $
 また基底ベクトルの微分による係数をクリストッフェル記号といい、$Gamma_(med alpha beta)^mu$
 と書く。
 $ frac(partial bold(e)_alpha, partial x^beta) & = Gamma_(med alpha beta)^mu bold(e)_mu $
-
 ]
 $ g^(alpha beta) & = g_(alpha beta)^(- 1)\
 g_(alpha beta) & = g_(beta alpha)\
@@ -158,14 +153,13 @@ T_(quad ; gamma)^(alpha beta) & = T_(quad \, gamma)^(alpha beta) + Gamma_(med mu
 Gamma_(med alpha beta)^mu = Gamma_(med beta alpha)^mu & = 1 / 2 g^(mu nu) \( g_(alpha nu \, beta) + g_(beta nu \, alpha) - g_(alpha beta \, nu) \) $
 
 ]
-#block[
+#example("デカルト座標")[
 $ g_(alpha beta) & = delta_(alpha beta)\
 frac(partial bold(e)_alpha, partial x^beta) & = Gamma_(med alpha beta)^mu bold(e)_mu = 0\
 A_(med ; beta)^alpha & = A_(med \, beta)^alpha = A_(alpha \, beta)\
 A_(med ; alpha)^alpha & = frac(partial A^x, partial x) + frac(partial A^y, partial y) $
-
 ]
-#block[
+#example("極座標")[
 $ Lambda_(med alpha)^beta & = mat(delim: "(", Lambda_(med r)^x, Lambda_(med r)^y; Lambda_(med theta)^x, Lambda_(med theta)^y) = mat(delim: "(", frac(partial x, partial r), frac(partial y, partial r); frac(partial x, partial theta), frac(partial y, partial theta)) = mat(delim: "(", cos theta, sin theta; - r sin theta, r cos theta)\
 bold(e)_r & = cos theta bold(e)_x + sin theta bold(e)_y\
 bold(e)_theta & = - r sin theta bold(e)_x + r cos theta bold(e)_y $
@@ -177,18 +171,15 @@ frac(partial bold(e)_theta, partial theta) & = Gamma_(med theta theta)^r bold(e)
 $ A_(med ; alpha)^alpha & = frac(partial A^alpha, partial alpha) + Gamma_(med mu alpha)^alpha A^mu\
  & = frac(partial A^r, partial r) + frac(partial A^theta, partial theta) + 1 / r A^r\
  & = 1 / r frac(partial, partial r) \( r A^r \) + frac(partial, partial theta) A^theta $
-
 ]
 == 局所平坦性定理
 <局所平坦性定理>
-#block[
-#strong[定理 1]. \
-
+#theorem[
 任意の計量 $g_(alpha beta)$
 は座標変換することである点で平坦な計量となる。
 $ \( eta_(mu nu) \) = mat(delim: "(", - 1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0; 0, 0, 0, 1) $
-
 ]
+#proof[
 一般相対論において計量は 3 つの正の固有値と 1
 つの負の固有値を持つ。これより任意の計量 $g_(alpha beta)$
 に対して次のように定式化できる。
@@ -218,14 +209,15 @@ $ g_(mu nu \, gamma) \|_(cal(P)) & = 0 $ については 40 個と 40
 個でなんとか満たすことができる。
 $ g_(mu nu \, gamma lambda) \|_(cal(P)) & = 0 $ を満たすことについては
 100 個に対して 80 個で不可能である。
+]
 
-#block[
+#proposition[
 長さ $upright(d) l$ と体積
 $upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3$ について
 $ upright(d) l & = lr(|bold(A)|) upright(d) lambda\
 upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3 & = sqrt(- g) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3 $
-
 ]
+#proof[
 長さ $upright(d) l$ を計算する。
 $ upright(d) l & = \| g_(alpha beta) upright(d) x^alpha upright(d) x^beta \|^(1 \/ 2)\
  & = lr(|g_(alpha beta) frac(upright(d) x^alpha, upright(d) lambda) frac(upright(d) x^beta, upright(d) lambda)|)^(1 \/ 2) upright(d) lambda\
@@ -241,6 +233,7 @@ g = det \( g_(alpha beta) \) & = det \( Lambda_(med beta)^alpha \) det \( eta_(a
 det \( Lambda_(med beta)^alpha \) & = sqrt(- g) $ となるから
 $ upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3 & = sqrt(- g) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3 $
 となる。
+]
 
 #block[
 局所慣性系 ある点 $cal(P)$ が局所慣性系となっているとき
@@ -248,19 +241,18 @@ $ g_(alpha beta) & = eta_(alpha beta)\
 g_(alpha beta \, mu) & = 0 arrow.r.double.long Gamma_(med alpha beta)^mu = 0 $
 
 ]
-#block[
-#strong[定理 2] (発散の公式). \
-
+#theorem("発散の公式")[
 $ A_(med ; alpha)^alpha & = 1 / sqrt(- g) \( sqrt(- g) A^mu \)_(\, mu) $
-
 ]
+#proof[
 $ Gamma_(med mu alpha)^alpha & = 1 / 2 g^(alpha beta) \( g_(mu beta \, alpha) + g_(alpha beta \, mu) - g_(mu alpha \, beta) \)\
  & = 1 / 2 underbrace(g^(alpha beta), "対称") underbrace(\( g_(mu beta \, alpha) - g_(mu alpha \, beta) \), "反対称") + 1 / 2 g^(alpha beta) g_(alpha beta \, mu)\
  & = 1 / 2 g^(alpha beta) g_(alpha beta \, mu)\
  & = 1 / sqrt(- g) \( sqrt(- g) \)_(\, mu) #h(2em) \( g_(\, mu) = g g^(alpha beta) g_(alpha beta \, mu) \) $
 $ A_(med ; alpha)^alpha & = A_(med \, alpha)^alpha + A^mu Gamma_(med mu alpha)^alpha\
  & = A_(med \, alpha)^alpha + 1 / sqrt(- g) A^mu \( sqrt(- g) \)_(\, mu)\
- & = 1 / sqrt(- g) \( sqrt(- g) A^mu \)_(\, mu) $ 測地線
+ & = 1 / sqrt(- g) \( sqrt(- g) A^mu \)_(\, mu) $
+] 測地線
 $ V^alpha \( B \) - V^alpha \( A \) & = integral_A^B frac(partial V^alpha, partial x^1) upright(d) x^1 = - integral_(x^2 = b) Gamma_(med mu 1)^alpha V^mu upright(d) x^1 $
 $ delta V^alpha & = "最初に" delta a bold(e)_sigma \, "次に" delta b bold(e)_lambda \, "そして" - delta a bold(e)_sigma \, "最後に" - delta b bold(e)_lambda "の移動による" V^alpha "の変化"\
  & = - integral_(x^lambda = b) Gamma_(med mu sigma)^alpha V^mu upright(d) x^sigma - integral_(x^sigma = a + delta a) Gamma_(med mu lambda)^alpha V^mu upright(d) x^lambda + integral_(x^lambda = b + delta b) Gamma_(med mu sigma)^alpha V^mu upright(d) x^sigma + integral_(x^sigma = a) Gamma_(med mu lambda)^alpha V^mu upright(d) x^lambda\
@@ -269,20 +261,16 @@ $ delta V^alpha & = "最初に" delta a bold(e)_sigma \, "次に" delta b bold(e
  & = delta a delta b \[ Gamma_(med mu sigma \, lambda)^alpha - Gamma_(med mu lambda \, sigma)^alpha + Gamma_(med nu lambda)^alpha Gamma_(med mu sigma)^nu - Gamma_(med nu sigma)^alpha Gamma_(med mu lambda)^nu \] V^mu $
 $ \[ nabla_alpha \, nabla_beta \] V^mu = R_(nu alpha beta)^mu V^nu $
 
-#block[
+#definition("リーマンの曲率テンソル")[
 ぱっと見テンソルではないけどテンソルとなる。
 $ R_(med beta mu nu)^alpha & = Gamma_(med beta nu \, mu)^alpha - Gamma_(med beta mu \, nu)^alpha + Gamma_(med sigma mu)^alpha Gamma_(med beta nu)^sigma - Gamma_(med sigma nu)^alpha Gamma_(med beta mu)^nu\
 R_(alpha beta mu nu) & = g_(alpha lambda) R_(med beta mu nu)^lambda $
 $ R_(med beta mu nu)^alpha = 0 arrow.l.r.double "平坦な多様体" $
-
 ]
-#block[
-#strong[定理 3]. \
-
+#theorem[
 $  & R_(alpha beta mu nu) = - R_(beta alpha mu nu) = - R_(alpha beta nu mu) = R_(mu nu alpha beta)\
  & R_(alpha beta mu nu) + R_(alpha nu beta mu) + R_(alpha mu nu beta) = 0\
  & R_(alpha beta mu nu ; lambda) + R_(alpha beta lambda mu ; nu) + R_(alpha beta nu lambda ; mu) = 0 $
-
 ]
 局所慣性系において $Gamma_(med mu nu)^alpha = 0$ であるから
 $ R_(med beta mu nu)^alpha & = Gamma_(med beta nu \, mu)^alpha - Gamma_(med beta mu \, nu)^alpha\
@@ -298,11 +286,10 @@ $  & R_(alpha beta mu nu) = - R_(beta alpha mu nu) = - R_(alpha beta nu mu) = R_
 $ R_(alpha beta mu nu ; lambda) + R_(alpha beta lambda mu ; nu) + R_(alpha beta nu lambda ; mu) = 0 $
 これをビアンキの恒等式という。
 
-#block[
+#definition[
 $ R_(alpha beta) & = R_(med alpha mu beta)^mu = R_(beta alpha)\
 R & = g^(mu nu) R_(mu nu) = g^(mu nu) g^(alpha beta) R_(alpha mu beta nu)\
 G^(alpha beta) & = R^(alpha beta) - 1 / 2 g^(alpha beta) R $
-
 ]
 ビアンキ恒等式に対して $alpha mu$、$beta nu$ の順に縮約を取ると
 $ R_(alpha beta mu nu ; lambda) + R_(alpha beta lambda mu ; nu) + R_(alpha beta nu lambda ; mu) = 0 $

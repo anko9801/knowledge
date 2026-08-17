@@ -290,13 +290,16 @@ const referenceableLabels = (source) => {
   for (const match of source.matchAll(/#figure\([\s\S]*?\)\s*<([^<>\s]+)>/g)) {
     labels.add(match[1])
   }
+  // 主張（theorem.typ の figure）に付いたラベルは statementLabels が返す。
+  // ここで正規表現から推測すると、直前に主張があるだけの無関係なラベルまで
+  // 参照可能とみなしてしまい「cannot reference block」で落ちる。
 
   return labels
 }
 
-const preferLinks = (source) => {
+const preferLinks = (source, extraReferenceable = new Set()) => {
   const defined = definedLabels(source)
-  const referenceable = referenceableLabels(source)
+  const referenceable = new Set([...referenceableLabels(source), ...extraReferenceable])
 
   const render = (name, body) => {
     if (referenceable.has(name)) return `@${name}`
@@ -341,6 +344,135 @@ export const wrapUnconvertedTex = (source) => {
   return { text, wrapped }
 }
 
+/**
+ * preprocess が付けた印をもとに、pandoc の #block[...] を
+ * テンプレートの主張関数（#theorem など）に組み替える。
+ *
+ * これで採番と相互参照が Typst 側の責任になる。pandoc が本文に焼き付けた
+ * 「定理 1」という文字列は捨てる。番号は figure の counter が振る。
+ */
+const fromHex = (hex) =>
+  hex.length === 0
+    ? ''
+    : Buffer.from(hex.match(/../g).map((b) => parseInt(b, 16))).toString('utf8')
+
+/**
+ * pandoc が本文の頭に置く見出し。
+ * 「#strong[定理 1] (題名). \」のような形で、番号まで文字列で入っている。
+ */
+const PANDOC_HEAD = /^\s*#strong\[[^\]]*\]\s*(?:\([^)]*\))?\s*\.?\s*(?:\\)?\s*/
+
+const START_MARK = /ZZSTMTZZ([a-z]+)ZZ([0-9a-f]*)ZZ/
+const END_MARK = /ZZENDZZ([a-z]+)ZZ/
+
+/**
+ * 主張の呼び出しの直後に置かれたラベルを集める。
+ *
+ * 主張は figure なので @label で参照できる。呼び出しの閉じ括弧を数えて、
+ * その直後にあるものだけを拾う。位置を数えずに正規表現で近似すると、
+ * 無関係なラベルまで参照可能とみなして「cannot reference block」で落ちる。
+ */
+export const statementLabels = (source) => {
+  const labels = new Set()
+  const call =
+    /#(?:axiom|corollary|definition|example|lemma|proof|proposition|remark|theorem)(?:\([^)]*\))?\[/g
+
+  for (const match of source.matchAll(call)) {
+    const open = match.index + match[0].length - 1
+    let depth = 0
+    let i = open
+
+    for (; i < source.length; i += 1) {
+      if (source[i] === '\\') { i += 1; continue }
+      if (source[i] === '[') depth += 1
+      else if (source[i] === ']') {
+        depth -= 1
+        if (depth === 0) break
+      }
+    }
+
+    const after = source.slice(i + 1).match(/^\s*<([^<>\s]+)>/)
+    if (after) labels.add(after[1])
+  }
+
+  return labels
+}
+
+export const rebuildStatements = (source) => {
+  let text = source
+  let rebuilt = 0
+
+  // 内側から畳む。証明が定理の中に入ることがあるため、
+  // 始まりの印に最も近い終わりの印を相方とみなす。
+  for (;;) {
+    const start = text.search(START_MARK)
+    if (start === -1) break
+
+    const head = text.slice(start).match(START_MARK)
+    const bodyStart = start + head[0].length
+
+    const rest = text.slice(bodyStart)
+    const tail = rest.match(END_MARK)
+    if (!tail) {
+      // 相方が無い印は消すだけにして、次へ進む。
+      text = text.slice(0, start) + rest
+      continue
+    }
+
+    const variant = head[1]
+    const title = fromHex(head[2])
+    const inner = rest.slice(0, tail.index).replace(PANDOC_HEAD, '').trim()
+    const after = rest.slice(tail.index + tail[0].length)
+
+    const call =
+      variant === 'proof'
+        ? `#proof[\n${inner}\n]`
+        : title
+          ? `#${variant}(${JSON.stringify(title)})[\n${inner}\n]`
+          : `#${variant}[\n${inner}\n]`
+
+    text = `${text.slice(0, start)}${call}${after}`
+    rebuilt += 1
+  }
+
+  return { text, rebuilt }
+}
+
+/**
+ * pandoc が主張の周りに残した #block[...] を外す。
+ * 中身が主張の呼び出しひとつだけなら、二重の入れ物になるので畳む。
+ */
+const STATEMENT_CALL =
+  '#(?:axiom|corollary|definition|example|lemma|proof|proposition|remark|theorem)(?:\\([^)]*\\))?\\[[\\s\\S]*?\\n\\]'
+
+// pandoc は見出しを印より前、#block[ の内側に置く。
+// 「#block[ #strong[定理 1]. \ #theorem(...)[...] ]」という形になるので、
+// 囲みを外すときに見出しも一緒に落とす。番号は figure の counter が振り直す。
+/**
+ * 主張の呼び出しの直前に残った pandoc の見出しを落とす。
+ *
+ * 「#strong[定理 8]. \」のように番号が文字列で焼き付いている。番号は
+ * figure の counter が振り直すので、ここに残っていると二重に出る。
+ * #block[ の閉じ位置は一定でないため、囲みの構造には依存しない。
+ */
+const dropBakedHeadings = (source) =>
+  source.replace(
+    new RegExp(
+      `#strong\\[[^\\]]*\\]\\s*(?:\\([^)]*\\))?\\s*\\.?\\s*(?:\\\\)?\\s*(?=#(?:axiom|corollary|definition|example|lemma|proof|proposition|remark|theorem)[\\[(])`,
+      'g',
+    ),
+    '',
+  )
+
+const unwrapStatementBlocks = (source) =>
+  source.replace(
+    new RegExp(
+      `#block\\[\\s*(?:#strong\\[[^\\]]*\\]\\s*(?:\\([^)]*\\))?\\s*\\.?\\s*(?:\\\\)?\\s*)?(${STATEMENT_CALL})\\s*\\]`,
+      'g',
+    ),
+    '$1',
+  )
+
 export const repairTypst = (source, { group, available }) => {
   const symbols = SYMBOL_FIXUPS.reduce(
     (text, [pattern, to]) => text.replace(pattern, to),
@@ -356,12 +488,19 @@ export const repairTypst = (source, { group, available }) => {
   const japanese = groupJapaneseInMath(cleaned)
   const images = rewriteImages(japanese.text, group, available)
   const deduped = dedupeLabels(images.text)
-  const linked = preferLinks(deduped.text)
+
+  // 主張を先に組み替える。#block[...] のままだと参照可能かどうかを
+  // 判定できず、定理へのリンクがラベル名のまま本文に出る。
+  const statements = rebuildStatements(deduped.text)
+  statements.text = unwrapStatementBlocks(dropBakedHeadings(statements.text))
+
+  const linked = preferLinks(statements.text, statementLabels(statements.text))
   const anchored = anchorDanglingLabels(linked)
   const unconverted = wrapUnconvertedTex(anchored.text)
 
   return {
     text: unconverted.text,
+    statements: statements.rebuilt,
     unconverted: unconverted.wrapped,
     anchored: anchored.anchored,
     deduped: deduped.removed,

@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "固体物理学",
@@ -18,21 +19,17 @@
 結晶中での原子・分子は周期的に配列された格子 (lattice)
 という構造を持っている。
 
-#block[
-ユークリッド空間 $bb(R)^n$ において基底となる
-${ bold(a)_i }_(1 lt.eq i lt.eq n)$ を選び、$bold(R)_n$
-をその整数倍の線形結合で表現できるとする。
+#definition("格子")[
+ユークリッド空間 $bb(R)^n$
+において基底となる ${ bold(a)_i }_(1 lt.eq i lt.eq n)$
+を選び、$bold(R)_n$ をその整数倍の線形結合で表現できるとする。
 $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
 このとき $bold(a)_i$ を基本並進ベクトル (primitive translation vector)
 と呼び、$bold(R)_n$ を格子点 (lattice point)
 または格子ベクトル、$bold(R)_n$ の集合全体を格子 (lattice) と呼ぶ。
-
 ]
-#block[
-#strong[定理 1]. \
-
+#theorem[
 同じ格子でも基本並進ベクトルの取り方は無数にある。 \
-
 ]
 3 次元格子の格子点を原子・分子と対応付けたものが結晶構造となる。
 そして格子を細かく区切っていくとある形の繰り返しの構造となっていて、その内面積最小となるものを基本単位胞
@@ -111,25 +108,25 @@ $bold(G)_m$ を 3 次元の逆格子ベクトル (reciprocal lattice vector)
 Wigner-Seitz 胞の逆格子空間を Brillouin ゾーンという。
 
 #block[
+#example("単純立方格子 (simple cubic lattice)")[
 ($3 C_4 \, 4 C_3 \, 7 m$) 例えば単純立方格子の逆格子空間は単純立方格子
 $ bold(a)_1 & = a \( 1 \, 0 \, 0 \) & bold(b)_1 & = frac(2 pi, a) \( 1 \, 0 \, 0 \)\
 bold(a)_2 & = a \( 0 \, 1 \, 0 \) quad arrow.r.double.long quad & bold(b)_2 & = frac(2 pi, a) \( 0 \, 1 \, 0 \)\
 bold(a)_3 & = a \( 0 \, 0 \, 1 \) & bold(b)_3 & = frac(2 pi, a) \( 0 \, 0 \, 1 \) $
+]
 
 ]
-#block[
+#example("面心立方格子")[
 逆格子空間は体心立方格子
 $ bold(a)_1 & = a / 2 \( 0 \, 1 \, 1 \) & bold(b)_1 & = frac(2 pi, a) \( - 1 \, 1 \, 1 \)\
 bold(a)_2 & = a / 2 \( 1 \, 0 \, 1 \) quad arrow.r.double.long quad & bold(b)_2 & = frac(2 pi, a) \( 1 \, - 1 \, 1 \)\
 bold(a)_3 & = a / 2 \( 1 \, 1 \, 0 \) & bold(b)_3 & = frac(2 pi, a) \( 1 \, 1 \, - 1 \) $
-
 ]
-#block[
+#example("体心立方格子")[
 逆格子空間は面心立方格子
 $ bold(a)_1 & = a / 2 \( 0 \, 1 \, 1 \) & bold(b)_1 & = frac(2 pi, a) \( - 1 \, 1 \, 1 \)\
 bold(a)_2 & = a / 2 \( 1 \, 0 \, 1 \) quad arrow.r.double.long quad & bold(b)_2 & = frac(2 pi, a) \( 1 \, - 1 \, 1 \)\
 bold(a)_3 & = a / 2 \( 1 \, 1 \, 0 \) & bold(b)_3 & = frac(2 pi, a) \( 1 \, 1 \, - 1 \) $
-
 ]
 == 回折
 <回折>
@@ -138,10 +135,10 @@ Laue 条件 $ bold(k) = bold(k)_0 + bold(G)_m $ $bold(k)$ と $bold(k)_0$
 2 d sin theta & = lambda #h(2em) (\| bold(k) \| = frac(2 pi, lambda) \, \| bold(G)_m \| = frac(2 pi, d)) $
 これを Bragg の条件という。 $ A \( bold(K) \) & = integral_a $
 
-#block[
-Miller 指数 (Miller indices) $\[ h med k med l \]$
+#definition[
+Miller 指数 (Miller indices)
+$\[ h med k med l \]$
 $ bold(A) & = h bold(a)_1 + k bold(a)_2 + l bold(a)_3 $
-
 ]
 = 固体における結合
 <固体における結合>

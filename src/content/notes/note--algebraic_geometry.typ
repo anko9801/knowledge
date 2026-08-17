@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "代数幾何",
@@ -13,9 +14,9 @@
 
 = スキーム
 <スキーム>
-#block[
-位相空間 $X$ 上の各開集合 $U$ に対して加群 $cal(F) \( U \)$
-が対応し、開集合 $V subset.eq U$
+#definition("前層")[
+位相空間 $X$ 上の各開集合 $U$
+に対して加群 $cal(F) \( U \)$ が対応し、開集合 $V subset.eq U$
 に対して制限写像と呼ばれる加群の準同型写像
 $rho_(V \, U) : cal(F) \( U \) arrow.r cal(F) \( V \)$ が定義され、
 以下の性質を満たすとき、$cal(F)$ を $X$ 上の前層 (presheaf) という。
@@ -25,11 +26,10 @@ $rho_(V \, U) : cal(F) \( U \) arrow.r cal(F) \( V \)$ が定義され、
 + $rho_(U \, U) = i d_(cal(F) \( U \))$
 
 + $rho_(W \, U) = rho_(W \, V) compose rho_(V \, U)$
-
 ]
-#block[
-さらに次の 2 つの性質を満足するとき、$cal(F)$ を $X$ 上の層 (sheaf)
-という。
+#definition("層")[
+さらに次の 2
+つの性質を満足するとき、$cal(F)$ を $X$ 上の層 (sheaf) という。
 
 + $a in cal(F) \( U \)$ が $rho_(U_j \, U) \( a \) = 0 \, j in J$
   を満足すれば $a = 0$ となる。
@@ -40,7 +40,6 @@ $rho_(V \, U) : cal(F) \( U \) arrow.r cal(F) \( V \)$ が定義され、
   が存在する。
 
 $ cal(F) \( U \) arrow.r product_j cal(F) \( U_i \) arrows.rr product_(i \, j) cal(F) \( U_i inter U_j \) $
-
 ]
 位相空間 $X$ 上の点 $P$ における茎 (stalk) $cal(F)_P$ を $P$
 を含むすべての開集合 $U$ に対する $cal(F) \( U \)$
@@ -80,10 +79,10 @@ $ cal(F)_P = upright(accent(lim, ⃯))_(P in U) cal(F) \( U \) $ 点 $P$
 
 == アフィン空間
 <アフィン空間>
-#block[
-代数的閉体 $k$ に対して解の全体 $k^n$ を $n$ 次元アフィン空間 (affine
-space) と呼び、$bb(A)_k^n$ または $bb(A)^n$ と書く。
-
+#definition("アフィン空間")[
+代数的閉体
+$k$ に対して解の全体 $k^n$ を $n$ 次元アフィン空間 (affine space)
+と呼び、$bb(A)_k^n$ または $bb(A)^n$ と書く。
 ]
 代数的閉体 $k$ 上の $n$ 変数多項式環 $k \[ x_1 \, dots.h \, x_n \]$
 について連立方程式の解の 1 つはアフィン空間の元
@@ -98,7 +97,7 @@ V \( I \) & = { \( a_1 \, dots.h \, a_n \) in k^n divides forall f in I med f \(
 の代数的集合 $V \( frak(m) \) = { \( a_1 \, dots.h \, a_n \) }$ は 1
 点と対応する。
 
-#block[
+#proposition[
 代数的集合について次の性質がわかる。
 $ V \( \( f_1 \, dots.h \, f_l \) \) & = V \( f_1 \, dots.h \, f_l \)\
 V \( I \) union V \( J \) & = V \( I inter J \)\
@@ -107,8 +106,8 @@ inter.big V \( I_lambda \) & = V (sum I_lambda)\
 V \( \( 1 \) \) & = nothing \, #h(2em) V \( \( 0 \) \) = bb(A)_k^n\
 sqrt(I) supset.eq sqrt(J) & arrow.r.double.long V \( I \) subset.eq V \( J \)\
 I \( V \( J \) \) & = sqrt(J) $
-
 ]
+#proof[
 + イデアル $I = \( f_1 \, dots.h \, f_l \)$ の任意の元
   $f \( x_1 \, dots.h \, x_n \) in I$ について
   $ f \( x_1 \, dots.h \, x_n \) & = sum_(alpha = 1)^l g_alpha \( x_1 \, dots.h \, x_n \) f_alpha \( x_1 \, dots.h \, x_n \)\
@@ -155,33 +154,36 @@ I \( V \( J \) \) & = sqrt(J) $
 + ($arrow.r.double.long$) $0 = 0$ は任意のアフィン空間の元が成り立つ。 \
   ($arrow.l.double.long$) $V \( I \) = bb(A)_k^n$ のとき Hilbert
   の零点定理より $I = sqrt(\( 0 \)) = \( 0 \)$ となる。
-
-#block[
-1 次元アフィン空間 $bb(A)^1$ 内の代数的集合は $bb(A)^1$
-以外有限個の点である。
-
 ]
+
+#proposition[
+1 次元アフィン空間 $bb(A)^1$ 内の代数的集合は
+$bb(A)^1$ 以外有限個の点である。
+]
+#proof[
 体 $k$ の $1$
 変数多項式環は単項イデアル整域であるから自明でないイデアルは $f \( x \)$
 を用いて $I = \( f \( x \) \) eq.not \( 0 \)$ と表される。これより
 $ V \( I \) & = { a in k divides f \( a \) = 0 } $
 となるから有限個の解しかない。
+]
 
-#block[
-実数体 $bb(R)$ 上の 1 変数多項式環の極大イデアルは
-$  & \( x - a \) \, a in bb(R)\
+#proposition[
+実数体 $bb(R)$ 上の 1
+変数多項式環の極大イデアルは $  & \( x - a \) \, a in bb(R)\
  & \( x^2 + a x + b \) \, a \, b in bb(R) \, a^2 - 4 b < 0 $
 の形となる。
-
 ]
+#proof[
 単項イデアル整域より既約元のイデアルと極大イデアルは同値である。
+]
 
 #block[
 交点 平面曲線 $C_f : f \( x \, y \) = 0$ と $C_g : g \( x \, y \) = 0$
 の交点について
 
 ]
-#block[
+#definition("座標環")[
 $ k \[ V \] := k \[ x_1 \, x_2 \, dots.h \, x_n \] \/ I \( V \) $
 変数変換を一般化した
 
@@ -190,9 +192,8 @@ $P = \( a_1 \, dots.h \, a_m \)$ に対して射 (morphism) を定義する。
 $ 3 phi : med & V quad & arrow.r quad & W\
  & P quad & mapsto quad & \( f_1 \( P \) \, dots.h \, f_n \( P \) \) $
 $k \[ V \] subset.eq bb(A)_k^m \, k \[ W \] subset.eq bb(A)_k^n$
-
 ]
-#block[
+#example[
 3 次曲線 $C = V \( y^2 - x^3 \) subset.eq bb(A)_k^2$
 を考える。アフィン直線 $bb(A)^1$ とアフィン平面 $bb(A)^2$
 の座標環はそれぞれ $k \[ bb(A)^1 \] = k \[ t \]$,
@@ -214,9 +215,8 @@ iota^(\#) : med & k \[ bb(A)^2 \] = k \[ x \, y \] quad & arrow.r quad & k \[ C 
   #raw("\\begin{tikzcd}\n      \\mathbb{A}^1 \\arrow[r,\"\\tilde{\\varphi}\"]\\arrow[dr,\"\\varphi\"] & C \\arrow[d,\"\\iota\"] \\\\\n      & \\mathbb{A}^2\n    \\end{tikzcd}\n    \\qquad\n    \\begin{tikzcd}\n      k[\\mathbb{A}^1] & k[C] \\arrow[l,\"\\tilde{\\varphi}^\\#\"] \\\\\n      & k[\\mathbb{A}^2] \\arrow[u,\"\\iota^\\#\"]\\arrow[ul,\"\\varphi^\\#\"]\n    \\end{tikzcd}", lang: "latex", block: true)
 ] ここで $phi$ は全単射であるが $phi^(\#)$ は $t$
 の一次式は得られないことから全射ではない。
-
 ]
-#block[
+#example[
 $ E & = V \( y^2 - x^3 + 1 \) subset.eq bb(A)^2\
 D & = V \( \( x_2^2 - x_1^3 + 1 \, x_3 - x_1^2 \) \) subset.eq bb(A)^3 $
 $ 3 psi : med & E quad & arrow.r quad & D\
@@ -227,13 +227,12 @@ $ 3 psi^(\#) : med & k \[ D \] = k \[ x_1 \, x_2 \, x_3 \] \/ I quad & arrow.r q
  & overline(g \( x_1 \, x_2 \, x_3 \)) quad & mapsto quad & overline(g \( x \, y \, x^2 \))\
 tilde(psi)^(\#) : med & k \[ bb(A)^3 \] = k \[ x_1 \, x_2 \, x_3 \] quad & arrow.r quad & k \[ bb(A)^2 \] = k \[ x \, y \]\
  & g \( x_1 \, x_2 \, x_3 \) quad & mapsto quad & g \( x \, y \, x^2 \) $
-
 ]
-#block[
-代数的集合の射 $phi : V arrow.r W$ が与えられると、座標環の $k$
-準同型写像 $phi^(\#) : k \[ W \] arrow.r k \[ V \]$ が定まり、かつ点
+#proposition[
+代数的集合の射 $phi : V arrow.r W$
+が与えられると、座標環の $k$ 準同型写像
+$phi^(\#) : k \[ W \] arrow.r k \[ V \]$ が定まり、かつ点
 $\( a_1 \, dots.h \, a_m \) in V$ から定まる
-
 ]
 #block[
 重複度・局所交点数 平面曲線 $C_f : f \( x \, y \) = 0$ と
@@ -245,19 +244,22 @@ $I = \( f_1 \, dots.h \, f_l \)$ で割った環の $k$
 と書く。 $ I_P \( C_1 \, dots.h \, C_l \) = dim_k R_P \/ I $
 
 ]
-$R = k \[ x_1 \, dots.h \, x_n \]$ の $I = \( f_1 \, dots.h \, f_l \)$
-に関する局所化 $R_P$
+#proof[
+$R = k \[ x_1 \, dots.h \, x_n \]$ の
+$I = \( f_1 \, dots.h \, f_l \)$ に関する局所化 $R_P$
 $ f \( x \) & = a_0 product_(j = 1)^m \( x - alpha_j \)^(n_j) $
+]
 
-#block[
+#example[
+
 ]
 == 射影空間
 <射影空間>
 無限遠点を含む空間を用いて議論したい。
 
-#block[
-代数的閉体 $k$ 上の $n + 1$ 次元アフィン空間 $k^(n + 1)$
-から原点を除いたものを $W$ とおく。
+#definition("射影空間")[
+代数的閉体 $k$ 上の
+$n + 1$ 次元アフィン空間 $k^(n + 1)$ から原点を除いたものを $W$ とおく。
 $ W = k^(n + 1) \/ { \( 0 \, dots.h \, 0 \) } $ $W$ に同値関係
 $tilde.op$ を次のように定義する。
 $ \( a_0 \, dots.h \, a_n \) tilde.op \( b_0 \, dots.h \, b_n \) arrow.l.r.double exists alpha in k^times \( a_0 \, dots.h \, a_n \) = \( alpha b_0 \, dots.h \, alpha b_n \) $
@@ -266,7 +268,6 @@ $bb(P)_k^n$ と記し、$n$ 次元射影空間 ($n$-dimensional projective space
 という。 $bb(P)_k^n$ の元は $\( a_0 \, a_1 \, dots.h \, a_n \)$
 の定める同値類を $\( a_0 : a_1 : dots.h : a_n \)$ と記し $bb(P)_k^n$
 の点という。 $ \( a_0 : a_1 : dots.h : a_n \) in bb(P)_k^n $
-
 ]
 斉次式
 
@@ -282,5 +283,6 @@ lim_(frak(p) in U) Gamma \( X_f \, cal(O)_X \) & = cal(O)_(X \, frak(p)) = R_(fr
 
 == 代入
 <代入>
-#block[
+#definition[
+
 ]

@@ -1,4 +1,5 @@
 #import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
 
 #show: post.with(
   title: "ホモロジー代数",
@@ -11,7 +12,6 @@
 // 参照がラベル名のまま本文に出る。
 #set math.equation(numbering: "(1)")
 
-#block[
-#strong[定理 1] (蛇の補題). \
+#theorem("蛇の補題")[
 
 ]

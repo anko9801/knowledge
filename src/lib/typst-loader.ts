@@ -4,6 +4,7 @@ import { extname, join, relative, sep } from 'node:path'
 import { createHash } from 'node:crypto'
 
 import { compileHtml, evalMetadata } from './typst-cli.ts'
+import { collectHeadings } from './headings.ts'
 import {
   extractStyles,
   repairBinaryOperators,
@@ -165,7 +166,10 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
 
     // 本文の #link("/math/…") はサイトのルート起点で書かれている。
     // base はビルド設定なので本文には焼き込まず、ここで補う。
-    const rendered = rewriteInternalLinks(numbered, base)
+    const linked = rewriteInternalLinks(numbered, base)
+
+    // 見出しの id はここで振る。Typst は出さないので、目次のリンク先が無い。
+    const { html: rendered, headings } = collectHeadings(linked)
 
     store.set({
       id,
@@ -173,7 +177,8 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
       body: rendered,
       digest: sourceDigest,
       filePath: relative(root, file),
-      rendered: { html: rendered },
+      // headings は render() が返す形。ページ側は Markdown と同じ書き方で読める。
+      rendered: { html: rendered, metadata: { headings: [...headings] } },
     })
 
     logger.info(`${id} (${Buffer.byteLength(rendered)} bytes)`)

@@ -3,6 +3,14 @@ import { defineCollection, z } from 'astro:content'
 import { typstLoader } from './lib/typst-loader.ts'
 
 /**
+ * 本文の HTML を左右するもの。digest に混ぜてキャッシュを無効化する。
+ *
+ * .typ とテンプレートだけを見ていると、後処理（見出しの id 付けなど）を
+ * 直しても古い HTML が残る。目次が空のページが残る、という形で現れる。
+ */
+const DEPENDS_ON = ['src/typst', 'src/lib/typst-html.ts', 'src/lib/headings.ts'] as const
+
+/**
  * .typ 側の #metadata((...))<fm> をここで検証する。
  * 型が合わなければビルドが止まるので、front matter の書き忘れが本番に出ない。
  */
@@ -18,7 +26,7 @@ const posts = defineCollection({
   loader: typstLoader({
     dir: 'src/content/posts',
     expectedLang: 'ja',
-    dependsOn: ['src/typst'],
+    dependsOn: DEPENDS_ON,
     base: import.meta.env.BASE_URL.replace(/\/?$/, '/'),
   }),
   schema: postSchema,
@@ -42,7 +50,7 @@ const articles = defineCollection({
     dir: 'src/content/articles',
     expectedLang: 'ja',
     numberEquations: true,
-    dependsOn: ['src/typst'],
+    dependsOn: DEPENDS_ON,
     base: import.meta.env.BASE_URL.replace(/\/?$/, '/'),
   }),
   schema: articleSchema,
@@ -58,7 +66,7 @@ const notes = defineCollection({
     dir: 'src/content/notes',
     expectedLang: 'ja',
     numberEquations: true,
-    dependsOn: ['src/typst'],
+    dependsOn: DEPENDS_ON,
     base: import.meta.env.BASE_URL.replace(/\/?$/, '/'),
   }),
   schema: postSchema,

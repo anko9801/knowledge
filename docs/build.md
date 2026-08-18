@@ -1,8 +1,11 @@
 # ビルドの仕組み
 
 `.typ` で書いて、Typst 0.15 の HTML export でビルド時に HTML 化し、Astro に流す。
-同じソースから PDF も出せる。**ランタイム JS はゼロ**で、転送されるのは HTML と
-CSS、それに数学フォント 1 本だけ。
+同じソースから PDF も出せる。転送されるのは HTML と CSS、それに数学フォント 1 本。
+
+JS は 3 つだけで、いずれも無くても読める補助にとどめてある。全文検索（最初の入力まで
+索引を読まない）、目次のスクロール追従、サイドバーを現在地まで送る処理。骨格の開閉は
+`<details>` とチェックボックスで、CSS だけで動く。
 
 ## パイプライン
 
@@ -25,9 +28,14 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 | `src/typst/template.typ` | `target()` で HTML / PDF を分岐する共有テンプレート |
 | `src/lib/typst-cli.ts` | `typst compile` / `typst eval` の薄いラッパ |
 | `src/lib/typst-html.ts` | 出力文書を body / head / lang に切り分ける |
+| `src/lib/headings.ts` | 見出しに id を振り、目次用の一覧を取り出す |
+| `src/lib/nav.ts` | サイドバーに出す木（分野 → 連載 → 記事）を組み立てる |
 | `src/lib/typst-loader.ts` | Astro Content Loader（digest でキャッシュ、`.typ` を watch） |
-| `src/content.config.ts` | front matter の zod スキーマ |
+| `src/content.config.ts` | front matter の zod スキーマと、キャッシュを無効化する依存 |
 | `src/layouts/*.astro` | ページの外枠と記事の外枠 |
+| `src/components/Sidebar.astro` | 左の柱。サイト内の案内と検索 |
+| `src/components/Toc.astro` | 右の柱。そのページの見出しとスクロール追従 |
+| `src/styles/layout.css` | 3 段組の骨格と、幅に応じた畳み方 |
 | `src/pages/` | 一覧 (`index.astro`) と記事 (`posts/[...slug].astro`) |
 | `src/styles/global.css` | 見た目。和文組版の progressive enhancement もここ |
 | `scripts/emit-math-css.mjs` | MathML 用 stylesheet を 1 度だけ回収 |
@@ -67,6 +75,24 @@ PDF は同じソースからそのまま出る。
 typst compile src/content/posts/foo.typ --root . foo.pdf
 ```
 
+## ページの骨格
+
+どのページも 3 段組。左に分野 → 連載 → 記事の木、中央に本文、右にそのページの
+見出し（目次）。組み方は `src/styles/layout.css`、中身は `Sidebar.astro` と
+`Toc.astro` が持つ。
+
+```
+1250px 超   案内 | 本文 | 目次
+1250px 以下  案内 | 本文（目次は本文の上に畳んで置く）
+900px 以下   本文のみ（案内は ☰ で引き出す）
+```
+
+- 現在地は `Astro.url` から各リンクが自分で判定する。ページ側は何も渡さない。
+- 講義ノート 44 本は `<details>` に畳んであり、ノートのページでだけ開く。
+  柱が長いときは現在地まで送る（`Sidebar.astro` の 6 行）。
+- 全文検索の索引に入るのは `searchable` を渡したページだけ。`BaseLayout` が
+  `<main data-pagefind-body>` を出し、一覧ページは索引から外れる。
+
 ## 記事の書き方
 
 ```typst
@@ -102,7 +128,7 @@ src/content/notes/*.typ      ← 移行後の原本
 
 ```sh
 npm run notes    # 再変換（44 本で 15 分ほど）。画像も public/notes に配置する
-npm test         # 前処理のテスト
+npm test         # 前処理と見出し抽出のテスト
 ```
 
 **再変換は `src/content/notes/*.typ` を上書きする。** 移行後に手で直したものは
@@ -187,11 +213,15 @@ U+2200-22FF 演算子   / U+27E6-27FF 括弧       / U+1D400-1D7FF 数式用英�
 根号・積分が縦に潰れる。`block math` と書くこと。HTML だけ見ても気づけないので、
 数式まわりを触ったらブラウザで実物を見る。
 
-**5. 見出しレベルが 1 つずれる**
+**5. 見出しレベルが 1 つずれる。id は付かない**
 
 `=` → `<h2>`、`==` → `<h3>`、`===` → `<h4>`（実測）。`<h1>` は文書タイトルぶん
 空けてある。ページの `<h1>` は front matter の `title` から `PostLayout` が出す前提
 なので、この構成では都合がいい。ただし `=` を 5 段重ねると `<h6>` で頭打ちになる。
+
+id は振られないので、そのままでは目次からリンクする先が無い。`headings.ts` が
+ビルド時に見出し文から id を作り（和文はそのまま残して約物だけ落とす）、
+`render()` が返す `headings` に載せている。ラベル由来の id が既にあれば尊重する。
 
 **6. `lang` の既定は `en`**
 
@@ -238,6 +268,10 @@ Content Collection のキャッシュが効いたままになる。証明の見�
 `証明．` から `Proof.` に変えたのに出力が変わらない、という形で現れる。
 `dependsOn: ['src/typst']` で共有ファイルの digest を混ぜてある。
 キャッシュの実体は `node_modules/.astro`（`.astro` だけ消しても残る）。
+
+同じ理由で、loader 側の後処理（見出しの id 付けなど）を直したときも古い HTML が
+残る。`dependsOn` には `src/typst` に加えて `typst-html.ts` と `headings.ts` を
+挙げてあり、これらを触ると全記事が組み直される。
 
 **12. HTML export は experimental**
 

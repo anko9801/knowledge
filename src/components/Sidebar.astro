@@ -1,0 +1,204 @@
+---
+/**
+ * 左のサイドバー。サイト全体の木を、どのページでも同じ形で出す。
+ *
+ * 今どこにいるかは Astro.url から自分で判定するので、ページ側は何も渡さなくていい。
+ * 開閉は <details> だけで済ませてある（JS は要らない）。
+ */
+import Search from './Search.astro'
+import { base, buildNav, contains, isCurrent } from '../lib/nav.ts'
+
+const sections = await buildNav()
+const here = Astro.url.pathname
+---
+
+<nav class="sidebar" aria-label="サイト内の案内">
+  <a class="brand" href={base} aria-current={isCurrent(here, base) ? 'page' : undefined}>
+    knowledge
+  </a>
+
+  <Search />
+
+  {
+    sections.map((section) => {
+      const inside = section.href !== undefined && contains(here, section.href)
+
+      const heading = section.href ? (
+        <a class="section-title" href={section.href} aria-current={isCurrent(here, section.href) ? 'page' : undefined}>
+          {section.title}
+        </a>
+      ) : (
+        <span class="section-title">{section.title}</span>
+      )
+
+      const body = section.groups.map((group) => (
+        <div class="group">
+          {group.title && (
+            <p
+              class:list={[
+                'group-title',
+                { current: group.prefix !== undefined && contains(here, group.prefix) },
+              ]}
+            >
+              {group.title}
+            </p>
+          )}
+          {group.links.length === 0 ? (
+            <p class="empty">準備中</p>
+          ) : (
+            <ul>
+              {group.links.map((link) => (
+                <li>
+                  <a href={link.href} aria-current={isCurrent(here, link.href) ? 'page' : undefined}>
+                    {link.order !== undefined && <span class="order">{link.order}</span>}
+                    <span class="label">{link.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))
+
+      return section.collapsed ? (
+        <details class="section" open={inside}>
+          <summary>{section.title}</summary>
+          {section.href && (
+            <p class="group">
+              <a class="all" href={section.href}>
+                一覧ページへ
+              </a>
+            </p>
+          )}
+          {body}
+        </details>
+      ) : (
+        <section class="section">
+          {heading}
+          {section.groups.length === 0 ? <p class="empty">準備中</p> : body}
+        </section>
+      )
+    })
+  }
+</nav>
+
+<script>
+  // 今いる項目が柱の中に見えている状態にする。講義ノートは 44 本あるので、
+  // 何もしないと現在地がずっと下に隠れたままになる。
+  // 柱そのものをずらすだけで、ページ側のスクロール位置は動かさない。
+  const rail = document.querySelector('.rail')
+  const current = rail?.querySelector('[aria-current="page"]')
+
+  if (rail instanceof HTMLElement && current instanceof HTMLElement) {
+    // 最初から見えているなら動かさない。上の題字と検索欄を無駄に隠さないため。
+    const hidden = current.offsetTop + current.offsetHeight > rail.clientHeight
+
+    if (hidden) rail.scrollTop = current.offsetTop - rail.clientHeight / 2
+  }
+</script>
+
+<style>
+  .sidebar {
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  .brand {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section {
+    margin-top: 1.6rem;
+  }
+
+  .section-title,
+  summary {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  summary {
+    cursor: pointer;
+  }
+
+  a.section-title:hover,
+  summary:hover {
+    color: var(--accent);
+  }
+
+  .group {
+    margin: 0.5rem 0 0;
+  }
+
+  .group-title {
+    margin: 0.9rem 0 0.2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* 今読んでいる連載。記事が並ぶ中でどの群にいるかを示す。 */
+  .group-title.current {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* 節の区切りを縦罫で示す。深さが一目で分かる。 */
+    border-left: 1px solid var(--rule);
+  }
+
+  li a {
+    display: flex;
+    gap: 0.45rem;
+    padding: 0.15rem 0.5rem 0.15rem 0.7rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: var(--ink);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+
+  /* 今いるページ。読み手が木のどこにいるかを示す唯一の手掛かりなので、
+     色と罫の両方で示す（色だけだと拡大時や色覚の条件で消える）。 */
+  li a[aria-current='page'] {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+  }
+
+  .order {
+    flex: none;
+    width: 1.2em;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+
+  .label {
+    min-width: 0;
+  }
+
+  .all {
+    font-size: 0.8rem;
+  }
+
+  .empty {
+    margin: 0.2rem 0 0 0.7rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+</style>

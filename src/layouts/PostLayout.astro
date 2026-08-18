@@ -1,4 +1,6 @@
 ---
+import type { MarkdownHeading } from 'astro'
+
 import BaseLayout from './BaseLayout.astro'
 
 type Props = {
@@ -6,20 +8,17 @@ type Props = {
   date: Date
   tags: readonly string[]
   summary?: string
+  /** そのページの見出し。右の柱の目次になる。 */
+  headings?: readonly MarkdownHeading[]
 }
 
-const { title, date, tags, summary } = Astro.props
+const { title, date, tags, summary, headings = [] } = Astro.props
 
 const formatted = date.toISOString().slice(0, 10)
-
-// GitHub Pages ではサイトがリポジトリ名の下に載る。
-// BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
-<BaseLayout title={title} description={summary}>
+<BaseLayout title={title} description={summary} headings={headings} searchable>
   <header class="post-header">
-    <p class="back"><a href={base}>← 一覧</a></p>
     {/* .typ の = は h2 から始まるので、ページの h1 はここが供給する。 */}
     <h1>{title}</h1>
     <p class="meta">
@@ -36,11 +35,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 <style>
   .post-header {
     margin-bottom: 2.5rem;
-  }
-
-  .back {
-    margin: 0 0 1.5rem;
-    font-size: 0.85rem;
   }
 
   .meta {

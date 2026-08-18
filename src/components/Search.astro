@@ -67,7 +67,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 <style>
   .search {
     position: relative;
-    margin: 1.5rem 0 2rem;
+    margin: 1.2rem 0 0;
   }
 
   input {
@@ -86,11 +86,20 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     outline-offset: 1px;
   }
 
+  /* 結果は柱の上に重ねる。流し込むと、入力するたびに下の案内が押し下げられる。 */
   .results {
-    margin-top: 0.5rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.4rem);
+    z-index: 5;
+    max-height: 65vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 3px;
-    overflow: hidden;
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--ink) 14%, transparent);
   }
 
   .results :global(.hit) {

@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import Search from '../../components/Search.astro'
 
 const notes = await getCollection('notes')
 
@@ -37,10 +36,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <BaseLayout title="講義ノート">
-  <p class="back"><a href={base}>← knowledge</a></p>
   <h1>講義ノート（素材）</h1>
 
-  <Search />
   <p class="lead">
     LaTeX で書いた古いノートを機械変換したものです。組版が崩れたままのものや、
     書きかけで終わっているものが混じります。書き直したものから順に、
@@ -66,11 +63,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 </BaseLayout>
 
 <style>
-  .back {
-    margin: 0 0 1.5rem;
-    font-size: 0.85rem;
-  }
-
   .lead {
     color: var(--muted);
     font-size: 0.95rem;

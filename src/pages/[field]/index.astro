@@ -29,7 +29,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <BaseLayout title={field.title} description={field.blurb}>
-  <p class="back"><a href={base}>← knowledge</a></p>
   <h1>{field.title}</h1>
   <p class="lead">{field.blurb}</p>
 
@@ -61,11 +60,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 </BaseLayout>
 
 <style>
-  .back {
-    margin: 0 0 1.5rem;
-    font-size: 0.85rem;
-  }
-
   .lead {
     color: var(--muted);
   }

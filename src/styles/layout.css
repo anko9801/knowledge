@@ -1,0 +1,242 @@
+/*
+ * ページの骨格。左にサイト内の案内、中央に本文、右にそのページの目次。
+ *
+ * 文字まわりの見た目は global.css、ここは配置だけを持つ。
+ * 3 段 → 2 段 → 1 段（引き出し）と、幅に応じて畳んでいく。
+ */
+
+:root {
+  --sidebar-width: 16.5rem;
+  --toc-width: 13rem;
+  --gutter: 2.5rem;
+}
+
+.shell {
+  display: grid;
+  /* 目次が無いページでも右の柱ぶんを空けておく。
+     一覧から記事へ移ったときに本文が横に飛ばない。 */
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(--toc-width);
+  column-gap: var(--gutter);
+  align-items: start;
+
+  /* 大画面で本文が中央からずれないように、全体の幅を止めて中央に置く。 */
+  max-width: 92rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* 左右の柱は本文と一緒には流れず、画面に貼り付いて自分だけ縦にスクロールする。 */
+.rail,
+.rail-toc {
+  position: sticky;
+  top: 0;
+  max-height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.rail {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 2.5rem 1.2rem 3rem 0;
+  border-right: 1px solid var(--rule);
+}
+
+.content {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding: 2.5rem 0 6rem;
+}
+
+/* 講義ノートは別行立て数式が本文より広い。和文の読み幅より数式の可読性を優先する。 */
+.content.wide {
+  max-width: 48rem;
+}
+
+.rail-toc {
+  grid-column: 3;
+  grid-row: 1;
+  padding: 2.6rem 0 3rem;
+}
+
+/* 本文へ飛ばす。キーボードで来た人が案内を毎回通らずに済む。 */
+.skip {
+  position: absolute;
+  left: -100vw;
+}
+
+.skip:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 30;
+  padding: 0.5rem 0.9rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+
+/* 引き出しの部品は広い画面では出さない。 */
+.drawer-switch,
+.drawer-button,
+.drawer-scrim {
+  display: none;
+}
+
+/* --- 目次の柱を畳む ---------------------------------------------------------
+ * 3 段が入らない幅では、目次を本文の上に置く。位置は明示しておく
+ * （自動配置に任せると、要素の並び順と段の対応が崩れる）。
+ */
+@media (max-width: 78rem) {
+  .shell {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  }
+
+  .rail {
+    grid-row: 1 / span 2;
+  }
+
+  /* 畳んだ目次は本文の上に置く。左端が本文と揃うように、幅も本文に合わせる。 */
+  .rail-toc {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    max-height: none;
+    width: 100%;
+    max-width: var(--measure);
+    margin-inline: auto;
+    padding: 2.5rem 0 0.8rem;
+  }
+
+  .shell:has(.content.wide) .rail-toc {
+    max-width: 48rem;
+  }
+
+  .content {
+    grid-row: 2;
+    padding-top: 1.5rem;
+  }
+}
+
+/* --- 案内を引き出しにする ---------------------------------------------------
+ * チェックボックス 1 つで開閉する。JS を使っていないので、
+ * 読み込みの途中でも確実に開く。
+ */
+@media (max-width: 56rem) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 1.2rem;
+  }
+
+  .rail {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 20;
+    width: min(21rem, 85vw);
+    height: 100dvh;
+    max-height: none;
+    /* 上は開閉ボタンのぶんを空ける。重なると題字が読めない。 */
+    padding: 4.2rem 1.2rem 3rem;
+    background: var(--paper);
+    transform: translateX(-100%);
+    transition: transform 0.18s ease-out;
+  }
+
+  .drawer-switch:checked ~ .rail {
+    transform: none;
+  }
+
+  .rail-toc,
+  .content {
+    grid-column: 1;
+  }
+
+  .rail-toc {
+    grid-row: 1;
+    padding-top: 4.5rem;
+  }
+
+  .content {
+    grid-row: 2;
+  }
+
+  /* 目次を持たないページでは、本文が開閉ボタンの下に潜らないよう空ける。 */
+  .shell:not(.with-toc) .content {
+    padding-top: 4.5rem;
+  }
+
+  /* 開閉ボタン。当たり判定はチェックボックス自身が持ち、
+     見た目はラベルが持つ。こうすると Tab で辿れて Space で開く。 */
+  .drawer-switch {
+    display: block;
+    position: fixed;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 22;
+    width: 2.6rem;
+    height: 2.4rem;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .drawer-button {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 21;
+    width: 2.6rem;
+    height: 2.4rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  .drawer-switch:focus-visible ~ .drawer-button {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  /* 引き出しの外側を触ったら閉じる。 */
+  .drawer-switch:checked ~ .drawer-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 19;
+    background: color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+}
+
+/* 紙に出すときは案内も目次も要らない。本文だけを幅いっぱいに置く。 */
+@media print {
+  .shell {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+
+  .rail,
+  .rail-toc,
+  .drawer-switch,
+  .drawer-button,
+  .drawer-scrim,
+  .skip {
+    display: none;
+  }
+
+  .content {
+    max-width: none;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail {
+    transition: none;
+  }
+}

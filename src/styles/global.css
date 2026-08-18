@@ -94,9 +94,9 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* 余白は段ごとに違う（左の柱は上端まで届く）ので、layout.css が持つ。 */
 body {
   margin: 0;
-  padding: 3rem 1.5rem 6rem;
 }
 
 /*
@@ -120,20 +120,21 @@ body {
   }
 }
 
-.wrapper {
-  max-width: var(--measure);
-  margin-inline: auto;
-}
-
-/* 講義ノートは別行立て数式が本文より広い。和文の読み幅より数式の可読性を優先する。 */
-.wrapper.wide {
-  max-width: 48rem;
-}
-
 /* --- 見出し ---------------------------------------------------------------
  * Typst の = は <h2> から始まる（h1 は文書タイトルぶん空いている）。
  * ページの h1 はレイアウト側が front matter の title から出す。
  */
+
+/* 目次から飛んだ見出しが画面の上端に貼り付かないようにする。 */
+:is(h2, h3, h4, h5, h6)[id] {
+  scroll-margin-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 
 h1 {
   font-size: 1.7rem;
@@ -158,6 +159,21 @@ h4 {
   font-size: 1rem;
   margin: 1.8rem 0 0.5rem;
   color: var(--muted);
+}
+
+/* 見出し自身へのリンク。id は typst-loader が振る。
+ * 常に出すと本文が騒がしいので、その見出しに触れたときだけ見せる。 */
+.heading-anchor {
+  margin-left: 0.4em;
+  font-size: 0.8em;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+:is(h2, h3, h4, h5, h6):hover > .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
 }
 
 p {

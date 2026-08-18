@@ -1,0 +1,131 @@
+---
+/**
+ * 右の目次。そのページの見出しだけを出す。
+ *
+ * 見出しと id は typst-loader が振ったものを render() 経由で受け取る。
+ * <details> なので JS が無くても開閉でき、無ければ開いたままになる。
+ */
+import type { MarkdownHeading } from 'astro'
+
+import { tocHeadings } from '../lib/headings.ts'
+
+type Props = {
+  readonly headings: readonly MarkdownHeading[]
+  /** 何段目まで出すか。既定は h3（Typst の `==`）まで。 */
+  readonly depth?: number
+}
+
+const { headings, depth = 3 } = Astro.props
+
+const shown = tocHeadings(headings, depth)
+---
+
+{
+  shown.length > 0 && (
+    <details class="page-toc" open>
+      <summary>このページの見出し</summary>
+      <nav aria-label="このページの見出し">
+        <ul>
+          {shown.map((heading) => (
+            <li class={`depth-${heading.depth}`}>
+              <a href={`#${heading.slug}`}>{heading.text}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </details>
+  )
+}
+
+<script>
+  // 読んでいる位置に合わせて目次の項目を光らせる。
+  // 無くても目次は使えるので、対応していない環境では何もしない。
+  const toc = document.querySelector('.page-toc')
+  const links = toc ? [...toc.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')] : []
+
+  if (toc && links.length > 0 && 'IntersectionObserver' in window) {
+    // 狭い画面では本文の前に目次が積まれるので、最初は畳んでおく。
+    if (window.matchMedia('(max-width: 78rem)').matches) {
+      toc.removeAttribute('open')
+    }
+
+    const byId = new Map(links.map((link) => [decodeURIComponent(link.hash.slice(1)), link]))
+    const targets = [...byId.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((element): element is HTMLElement => element !== null)
+
+    const visible = new Set<string>()
+
+    const highlight = () => {
+      // 画面に複数の見出しが入るので、いちばん上のものを現在地とする。
+      const current = targets.find((target) => visible.has(target.id))
+      for (const [id, link] of byId) {
+        link.classList.toggle('active', current !== undefined && id === current.id)
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target.id)
+          else visible.delete(entry.target.id)
+        }
+        highlight()
+      },
+      // 見出しが画面上部に来た時点で切り替える。下端の余白を大きく取ることで、
+      // 節の本文を読んでいる間はその節が現在地のままになる。
+      { rootMargin: '0px 0px -75% 0px' },
+    )
+
+    for (const target of targets) observer.observe(target)
+  }
+</script>
+
+<style>
+  .page-toc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  summary {
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  nav {
+    margin-top: 0.6rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid var(--rule);
+  }
+
+  li a {
+    display: block;
+    padding: 0.12rem 0.4rem 0.12rem 0.7rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: var(--ink);
+  }
+
+  li a:global(.active) {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  .depth-3 a {
+    padding-left: 1.5rem;
+  }
+
+  .depth-4 a {
+    padding-left: 2.3rem;
+  }
+</style>

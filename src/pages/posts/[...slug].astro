@@ -20,7 +20,7 @@ type Props = {
 
 const { post } = Astro.props
 // loader が rendered.html に body を入れているので、ここは素通しで済む。
-const { Content } = await render(post)
+const { Content, headings } = await render(post)
 ---
 
 <PostLayout
@@ -28,6 +28,7 @@ const { Content } = await render(post)
   date={post.data.date}
   tags={post.data.tags}
   summary={post.data.summary}
+  headings={headings}
 >
   <Content />
 </PostLayout>

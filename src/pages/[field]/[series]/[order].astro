@@ -30,7 +30,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
       props: {
         article,
-        siblings,
         prev: siblings[index - 1] ?? null,
         next: siblings[index + 1] ?? null,
       },
@@ -40,13 +39,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 type Props = {
   article: Entry
-  siblings: Entry[]
   prev: Entry | null
   next: Entry | null
 }
 
-const { article, siblings, prev, next } = Astro.props
-const { Content } = await render(article)
+const { article, prev, next } = Astro.props
+// headings は typst-loader が本文から集めたもの。右の目次に出す。
+const { Content, headings } = await render(article)
 
 const field: Field | undefined = findField(article.data.field)
 const series: Series | undefined = findSeries(article.data.field, article.data.series)
@@ -61,7 +60,13 @@ const updated = article.data.date.toISOString().slice(0, 10)
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
-<BaseLayout title={article.data.title} description={article.data.summary} wide>
+<BaseLayout
+  title={article.data.title}
+  description={article.data.summary}
+  headings={headings}
+  wide
+  searchable
+>
   <nav class="crumbs">
     <a href={base}>knowledge</a>
     <span aria-hidden="true">/</span>
@@ -102,22 +107,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     }
   </nav>
 
-  <section class="toc">
-    <h2>{series?.title ?? article.data.series}</h2>
-    <ol>
-      {
-        siblings.map((entry) => (
-          <li value={entry.data.order} aria-current={entry.id === article.id ? 'page' : undefined}>
-            {entry.id === article.id ? (
-              <span>{entry.data.title}</span>
-            ) : (
-              <a href={href(entry)}>{entry.data.title}</a>
-            )}
-          </li>
-        ))
-      }
-    </ol>
-  </section>
 </BaseLayout>
 
 <style>
@@ -186,27 +175,4 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     text-underline-offset: 0.2em;
   }
 
-  .toc {
-    margin-top: 3rem;
-  }
-
-  .toc h2 {
-    font-size: 1rem;
-    border: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .toc ol {
-    margin: 0;
-    padding-left: 1.6rem;
-    font-size: 0.95rem;
-  }
-
-  .toc li {
-    margin-bottom: 0.3rem;
-  }
-
-  .toc li[aria-current='page'] span {
-    color: var(--muted);
-  }
 </style>

@@ -3,12 +3,23 @@
 // 1 本の共有 stylesheet として配る。prebuild で生成される。
 import '../styles/typst-math.css'
 import '../styles/global.css'
+import '../styles/layout.css'
+
+import type { MarkdownHeading } from 'astro'
+
+import Sidebar from '../components/Sidebar.astro'
+import Toc from '../components/Toc.astro'
+import { tocHeadings } from '../lib/headings.ts'
 
 type Props = {
   title: string
   description?: string
   /** 数式の多いページ用。本文の読み幅を広げる。 */
   wide?: boolean
+  /** 全文検索の索引に入れる。読み物のページだけに付ける。 */
+  searchable?: boolean
+  /** そのページの見出し。渡すと右の柱に目次が出る。 */
+  headings?: readonly MarkdownHeading[]
 }
 
 // lang は .typ 側の #set text(lang: "ja") と揃える。en のままだと和文の
@@ -18,8 +29,11 @@ type Props = {
 // なお <!doctype html> と <html> の間に式（{/* ... */} を含む）を挟むと、
 // Astro が文書をフラグメントとみなして html/head/body を出力しなくなる。
 // 説明はテンプレートではなくここに書く。
-const { title, description, wide = false } = Astro.props
+const { title, description, wide = false, searchable = false, headings = [] } = Astro.props
 const siteName = 'knowledge'
+
+// 見出しが 2 つ以上あるページだけ 3 段組にする。無ければ本文が右まで使う。
+const toc = tocHeadings(headings)
 
 // GitHub Pages ではサイトがリポジトリ名の下に載る。
 // BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
@@ -39,8 +53,30 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     <link rel="preload" href={`${base}fonts/math.woff2`} as="font" type="font/woff2" crossorigin />
   </head>
   <body>
-    <div class:list={['wrapper', { wide }]}>
-      <slot />
+    <a class="skip" href="#main">本文へ</a>
+
+    <div class:list={['shell', { 'with-toc': toc.length > 0 }]}>
+      {/* 引き出しの開閉。狭い画面でだけ姿を現す。順序に意味があり、
+          checked の兄弟セレクタで .rail と .drawer-scrim を動かす。 */}
+      <input class="drawer-switch" id="drawer" type="checkbox" aria-label="サイト内の案内を開閉" />
+      <label class="drawer-button" for="drawer" aria-hidden="true">☰</label>
+      <label class="drawer-scrim" for="drawer" aria-hidden="true"></label>
+
+      <div class="rail">
+        <Sidebar />
+      </div>
+
+      <main id="main" class:list={['content', { wide }]} data-pagefind-body={searchable || undefined}>
+        <slot />
+      </main>
+
+      {
+        toc.length > 0 && (
+          <aside class="rail-toc">
+            <Toc headings={toc} />
+          </aside>
+        )
+      }
     </div>
   </body>
 </html>

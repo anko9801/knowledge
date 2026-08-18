@@ -20,6 +20,11 @@ export type Series = {
   readonly field: string
   readonly title: string
   readonly blurb: string
+  /**
+   * このサイトの入口。まだ何も読んでいない人には、ここの第 1 回だけを示す。
+   * 道を 1 本に絞るのは、並んだ選択肢の前で立ち止まらせないため。1 つだけ立てる。
+   */
+  readonly start?: boolean
 }
 
 /** 並び順は宣言順。分野グリッドと分野目次はこの順に出る。 */
@@ -60,6 +65,7 @@ export const series: readonly Series[] = [
     slug: 'set-theory',
     field: 'math',
     title: '集合論',
+    start: true,
     blurb:
       '素朴集合論の破綻から、順序数・基数・選択公理を経て、連続体仮説の独立性と記述集合論まで。全 12 回。',
   },
@@ -73,3 +79,6 @@ export const findSeries = (field: string, slug: string): Series | undefined =>
 
 export const seriesOf = (field: string): readonly Series[] =>
   series.filter((entry) => entry.field === field)
+
+/** 入口に立てた連載。複数あっても先に宣言したものを使う。 */
+export const startSeries = (): Series | undefined => series.find((entry) => entry.start === true)

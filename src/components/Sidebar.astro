@@ -1,15 +1,16 @@
 ---
 /**
- * 左のサイドバー。サイト全体の木を、どのページでも同じ形で出す。
+ * 左のサイドバー。
  *
- * 今どこにいるかは Astro.url から自分で判定するので、ページ側は何も渡さなくていい。
- * 開閉は <details> だけで済ませてある（JS は要らない）。
+ * 出す範囲は nav-scope.ts が決める（今いる連載だけ開き、残りは畳む）。
+ * ここは受け取った木を描くだけ。今どこにいるかは Astro.url から自分で判定するので、
+ * ページ側は何も渡さなくていい。
  */
 import Search from './Search.astro'
-import { base, buildNav, contains, isCurrent } from '../lib/nav.ts'
+import { base, buildNav, isCurrent } from '../lib/nav.ts'
 
-const sections = await buildNav()
 const here = Astro.url.pathname
+const blocks = await buildNav(here)
 ---
 
 <nav class="sidebar" aria-label="サイト内の案内">
@@ -19,71 +20,151 @@ const here = Astro.url.pathname
 
   <Search />
 
+  {/* 続きから。記録があるときだけ、下のスクリプトが姿を出す。 */}
+  <a class="resume" id="resume" href={base} hidden>
+    <span class="resume-label">続きから</span>
+    <span class="resume-title"></span>
+  </a>
+
   {
-    sections.map((section) => {
-      const inside = section.href !== undefined && contains(here, section.href)
+    blocks.map((block) => (
+      <div class="block" data-start={block.sections.some((section) => section.key === 'start') || undefined}>
+        {block.heading && <p class="block-heading">{block.heading}</p>}
 
-      const heading = section.href ? (
-        <a class="section-title" href={section.href} aria-current={isCurrent(here, section.href) ? 'page' : undefined}>
-          {section.title}
-        </a>
-      ) : (
-        <span class="section-title">{section.title}</span>
-      )
-
-      const body = section.groups.map((group) => (
-        <div class="group">
-          {group.title && (
-            <p
-              class:list={[
-                'group-title',
-                { current: group.prefix !== undefined && contains(here, group.prefix) },
-              ]}
-            >
-              {group.title}
-            </p>
-          )}
-          {group.links.length === 0 ? (
-            <p class="empty">準備中</p>
-          ) : (
+        {block.sections.map((section) => {
+          const items = (
             <ul>
-              {group.links.map((link) => (
+              {section.entries.map((entry) => (
                 <li>
-                  <a href={link.href} aria-current={isCurrent(here, link.href) ? 'page' : undefined}>
-                    {link.order !== undefined && <span class="order">{link.order}</span>}
-                    <span class="label">{link.label}</span>
+                  <a
+                    href={entry.href}
+                    aria-current={isCurrent(here, entry.href) ? 'page' : undefined}
+                  >
+                    {entry.order !== undefined && <span class="order">{entry.order}</span>}
+                    <span class="label">{entry.label}</span>
+                    {entry.note && <span class="note">{entry.note}</span>}
                   </a>
                 </li>
               ))}
             </ul>
-          )}
-        </div>
-      ))
+          )
 
-      return section.collapsed ? (
-        <details class="section" open={inside}>
-          <summary>{section.title}</summary>
-          {section.href && (
-            <p class="group">
-              <a class="all" href={section.href}>
-                一覧ページへ
-              </a>
-            </p>
-          )}
-          {body}
-        </details>
-      ) : (
-        <section class="section">
-          {heading}
-          {section.groups.length === 0 ? <p class="empty">準備中</p> : body}
-        </section>
-      )
-    })
+          if (section.kind === 'links') return <div class="links">{items}</div>
+
+          if (section.kind === 'collapsed') {
+            return (
+              <details class="section" open={section.open}>
+                <summary>
+                  <span class="summary-title">{section.title}</span>
+                  {section.note && <span class="note">{section.note}</span>}
+                </summary>
+                {section.entries.length === 0 ? <p class="empty">準備中</p> : items}
+              </details>
+            )
+          }
+
+          return (
+            <section class="section">
+              {section.caption &&
+                (section.captionHref ? (
+                  <a class="caption" href={section.captionHref}>
+                    ← {section.caption}
+                  </a>
+                ) : (
+                  <p class="caption">{section.caption}</p>
+                ))}
+
+              <p class="section-title">{section.title}</p>
+
+              {/* 現在地の目盛り。読み終えた量ではなく「今どこか」を示す。
+                  まだ入っていない連載には出さない（0 % の並びは未読の借金に見える）。 */}
+              {section.total !== undefined && section.total > 1 && section.position !== undefined && (
+                <p class="progress">
+                  <span
+                    class="bar"
+                    style={`--filled:${(section.position / section.total) * 100}%`}
+                    aria-hidden="true"
+                  />
+                  <span class="progress-label">
+                    第 {section.position} 回 / 全 {section.total} 回
+                  </span>
+                </p>
+              )}
+
+              {items}
+            </section>
+          )
+        })}
+      </div>
+    ))
   }
 </nav>
 
 <script>
-  // 今いる項目が柱の中に見えている状態にする。講義ノートは 44 本あるので、
+  // 読んだ記事に印を付け、「続きから」を出す。
+  //
+  // 記録はこの端末の localStorage だけ。外へは出さないし、無くても案内は動く。
+  // 数を煽る仕掛け（連続記録や達成率）は置かない。読み手を急かさずに、
+  // どこまで来たかだけを静かに返す。
+  const READ = 'knowledge:read'
+  const LAST = 'knowledge:last'
+
+  const load = (key: string): unknown => {
+    try {
+      return JSON.parse(localStorage.getItem(key) ?? 'null')
+    } catch {
+      return null
+    }
+  }
+
+  const save = (key: string, value: unknown): void => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value))
+    } catch {
+      // 保存できない設定（プライベートモードなど）では、印が付かないだけ。
+    }
+  }
+
+  const trim = (path: string): string => path.replace(/\.html$/, '').replace(/\/+$/, '')
+
+  const here = trim(location.pathname)
+  const stored = load(READ)
+  const read = new Set(Array.isArray(stored) ? (stored as string[]) : [])
+
+  // 読み物のページだけを記録する。一覧は data-pagefind-body を持たない。
+  const article = document.querySelector('main[data-pagefind-body]')
+
+  if (article) {
+    read.add(here)
+    save(READ, [...read].slice(-300))
+
+    const title = article.querySelector('h1')?.textContent?.trim()
+    if (title) save(LAST, { path: here, title })
+  }
+
+  for (const link of document.querySelectorAll<HTMLAnchorElement>('.sidebar a[href]')) {
+    const target = trim(new URL(link.href).pathname)
+
+    if (target !== here && read.has(target)) link.classList.add('read')
+  }
+
+  const last = load(LAST) as { path?: string; title?: string } | null
+  const resume = document.getElementById('resume')
+
+  if (resume instanceof HTMLAnchorElement && last?.path && last.path !== here && last.title) {
+    resume.href = last.path
+    const slot = resume.querySelector('.resume-title')
+    if (slot) slot.textContent = last.title
+    resume.hidden = false
+  }
+
+  // もう中に入っている人に入口を指し示しても仕方がない。
+  const start = document.querySelector('.block[data-start]')
+  if (start instanceof HTMLElement && last?.path) start.hidden = true
+</script>
+
+<script>
+  // 今いる項目が柱の中に見えている状態にする。講義ノートは 1 群 30 本ほどあるので、
   // 何もしないと現在地がずっと下に隠れたままになる。
   // 柱そのものをずらすだけで、ページ側のスクロール位置は動かさない。
   const rail = document.querySelector('.rail')
@@ -112,59 +193,136 @@ const here = Astro.url.pathname
     border-bottom: 1px solid var(--rule);
   }
 
-  .section {
-    margin-top: 1.6rem;
-  }
-
-  .section-title,
-  summary {
+  /* 続きから。前回の続きへ 1 手で戻れるようにする。 */
+  .resume {
     display: block;
-    font-size: 0.9rem;
-    color: var(--ink);
+    margin-top: 1rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    border-radius: 3px;
     text-decoration: none;
+    color: var(--ink);
   }
 
-  summary {
-    cursor: pointer;
+  /* display を指定すると UA の [hidden] を打ち消してしまう。空の枠が残る。 */
+  .resume[hidden] {
+    display: none;
   }
 
-  a.section-title:hover,
-  summary:hover {
-    color: var(--accent);
+  .resume:hover {
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
   }
 
-  .group {
-    margin: 0.5rem 0 0;
-  }
-
-  .group-title {
-    margin: 0.9rem 0 0.2rem;
-    font-size: 0.8rem;
+  .resume-label {
+    display: block;
+    font-size: 0.75rem;
     color: var(--muted);
   }
 
-  /* 今読んでいる連載。記事が並ぶ中でどの群にいるかを示す。 */
-  .group-title.current {
+  .resume-title {
+    display: block;
+    color: var(--accent);
+  }
+
+  .block {
+    margin-top: 1.8rem;
+  }
+
+  .block-heading {
+    margin: 0 0 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  .section + .section,
+  .links + .section,
+  .section + .links {
+    margin-top: 0.7rem;
+  }
+
+  .caption {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  a.caption:hover {
+    color: var(--accent);
+  }
+
+  .section-title {
+    margin: 0.1rem 0 0;
+    font-size: 0.95rem;
     color: var(--ink);
-    font-weight: 700;
+  }
+
+  /* 現在地の目盛り。 */
+  .progress {
+    margin: 0.4rem 0 0.6rem;
+  }
+
+  .bar {
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--rule);
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-repeat: no-repeat;
+    background-size: var(--filled) 100%;
+  }
+
+  .progress-label {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: baseline;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  summary:hover .summary-title {
+    color: var(--accent);
   }
 
   ul {
     list-style: none;
-    margin: 0;
+    margin: 0.3rem 0 0;
     padding: 0;
     /* 節の区切りを縦罫で示す。深さが一目で分かる。 */
     border-left: 1px solid var(--rule);
   }
 
+  .links ul {
+    border-left: 0;
+  }
+
   li a {
     display: flex;
     gap: 0.45rem;
+    align-items: baseline;
     padding: 0.15rem 0.5rem 0.15rem 0.7rem;
     margin-left: -1px;
     border-left: 2px solid transparent;
     color: var(--muted);
     text-decoration: none;
+  }
+
+  .links li a {
+    justify-content: space-between;
+    padding-left: 0;
+    border-left: 0;
+    color: var(--ink);
   }
 
   li a:hover {
@@ -180,6 +338,14 @@ const here = Astro.url.pathname
     background: color-mix(in srgb, var(--accent) 8%, transparent);
   }
 
+  /* 読んだ記事。JS がある端末でだけ付く。控えめに、数えず、急かさず。 */
+  li a:global(.read) .label::after {
+    content: '✓';
+    margin-left: 0.4em;
+    font-size: 0.85em;
+    color: var(--muted);
+  }
+
   .order {
     flex: none;
     width: 1.2em;
@@ -192,8 +358,10 @@ const here = Astro.url.pathname
     min-width: 0;
   }
 
-  .all {
-    font-size: 0.8rem;
+  .note {
+    flex: none;
+    font-size: 0.75rem;
+    color: var(--muted);
   }
 
   .empty {

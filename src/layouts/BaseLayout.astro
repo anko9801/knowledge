@@ -20,6 +20,10 @@ type Props = {
 // 説明はテンプレートではなくここに書く。
 const { title, description, wide = false } = Astro.props
 const siteName = 'knowledge'
+
+// GitHub Pages ではサイトがリポジトリ名の下に載る。
+// BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <!doctype html>
@@ -29,7 +33,10 @@ const siteName = 'knowledge'
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title === siteName ? title : `${title} - ${siteName}`}</title>
     {description && <meta name="description" content={description} />}
-    <link rel="preload" href="/fonts/math.woff2" as="font" type="font/woff2" crossorigin />
+    {/* 本文の欧文と数式は最初の画面に必ず出るので、両方とも先読みする。
+        太字は出現頻度が低いので、必要になってから取りに行かせる。 */}
+    <link rel="preload" href={`${base}fonts/text-regular.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}fonts/math.woff2`} as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div class:list={['wrapper', { wide }]}>

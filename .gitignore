@@ -5,14 +5,15 @@ dist/
 # LaTeX の変換結果と作業用の複製。npm run notes で再生成できる。
 .cache/
 
-# lecture-notes からコピーした画像。同じく再生成できる。
-public/notes/
+# lecture-notes の図版は縮小済みのものを追跡する。
+# CI には ../lecture-notes が無いので、再生成では賄えない。
 
 # prebuild で typst から生成される。typst のバージョンに追随させるため追跡しない。
+# CI では nix develop 内で生成する。
 src/styles/typst-math.css
 
-# npm run fonts で生成される。元フォントはリポジトリに入れない。
-public/fonts/math.woff2
+# フォントのサブセットは追跡する。
+# npm run fonts で作り直せるが、範囲を調整したものを CI で上書きしたくない。
 
 .DS_Store
 *.log

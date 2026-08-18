@@ -10,9 +10,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "fonts": "sh scripts/subset-math-font.sh",
+    "fonts": "sh scripts/subset-math-font.sh && sh scripts/subset-text-font.sh",
     "test": "node --test scripts/latex/*.test.mjs",
-    "notes": "node scripts/latex/to-typst.mjs"
+    "notes": "node scripts/latex/to-typst.mjs",
+    "postbuild": "pagefind --site dist"
   },
   "dependencies": {
     "astro": "^5.0.0"
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@types/node": "^26.2.0",
+    "pagefind": "^1.5.2",
     "typescript": "^5.9.3"
   }
 }

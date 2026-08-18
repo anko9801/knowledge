@@ -186,7 +186,11 @@ export const rewriteImages = (source, group, available) => {
         missing.push(name)
         return '#text(fill: gray)[（画像なし）]'
       }
-      return whole.replace(`"${src}"`, `"${point(name)}"`)
+      // HTML では <img> を出したい。image() のままだと base64 で埋め込まれ、
+      // 写真のあるページが 10MB を超える。
+      return whole
+        .replace(`"${src}"`, `"${point(name)}"`)
+        .replace(/\bimage\(/, 'web-image(')
     },
   )
 

@@ -1,9 +1,10 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: "色素レーザー",
-  date: "2026-08-17",
+  date: "2026-08-18",
   tags: ("レポート",),
   summary: "physics_report/dye_laser.tex から変換",
 )
@@ -89,7 +90,7 @@ $ Gamma > frac(gamma_01 gamma_2 gamma_3, gamma_32 gamma_10 - gamma_21 gamma_32 -
 SM240 には入力フィルターとして 530 nm のローパスフィルターが入っている。
 まずこれに裸電球の光を当てると図 @fig:bare-light のようになった。
 
-#figure(image("/public/notes/physics_report/assets/bare_light_bulb.png", width: 14cm),
+#figure(web-image("/public/notes/physics_report/assets/bare_light_bulb.png", width: 14cm),
   caption: [
     裸電球のスペクトル
   ]
@@ -109,10 +110,10 @@ $ E & = frac(8 pi h nu^3, c^3) frac(1, exp (frac(h nu, k_B T)) - 1) $
 (課題 1.1.2) \
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/ne_lump.png", width: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/ne_lump.png", width: 8cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/Neon-Calibration.jpg", width: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/Neon-Calibration.jpg", width: 8cm))
   ]],
   caption: [
     Ne の輝線スペクトル
@@ -170,10 +171,10 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 乗で減っていくから横向きだと交互に光強度の強弱 (課題 1.2.3) \
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/ne_lamp1.jpg", width: 6cm))
+  #box(web-image("/public/notes/physics_report/assets/ne_lamp1.jpg", width: 6cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/ne_lamp2.jpg", width: 6cm))
+  #box(web-image("/public/notes/physics_report/assets/ne_lamp2.jpg", width: 6cm))
   ]],
   caption: [
     縦向き Ne ランプ
@@ -185,7 +186,7 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 のように電圧がノイズのオーダーに近くなってしまい、観測しづらい。 (課題
 1.2.4)
 
-#figure(image("/public/notes/physics_report/assets/noise.jpg", width: 6cm),
+#figure(web-image("/public/notes/physics_report/assets/noise.jpg", width: 6cm),
   caption: [
     50 Ω の終端抵抗における Ne ランプ
   ]
@@ -201,10 +202,10 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 に強い光吸収スペクトルを持ち, 560-600 nm で蛍光する物質である。 \
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/rhodamine6G.jpg", width: 6cm))
+  #box(web-image("/public/notes/physics_report/assets/rhodamine6G.jpg", width: 6cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/rhodamine6G_wave.jpg", width: 6cm))
+  #box(web-image("/public/notes/physics_report/assets/rhodamine6G_wave.jpg", width: 6cm))
   ]],
   caption: [
     吸収スペクトルと蛍光スペクトル (Handai Nanophotonics Volume3 2.3
@@ -220,10 +221,10 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 これはローダミン 6G の性質と一致している。(課題 2.1.1) \
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/green.jpg", width: 6cm))
+  #box(web-image("/public/notes/physics_report/assets/green.jpg", width: 6cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/red.jpg", width: 6cm))
+  #box(web-image("/public/notes/physics_report/assets/red.jpg", width: 6cm))
   ]],
   caption: [
     ローダミン 6G 希釈溶液に赤色のレーザー光を当てた場合
@@ -231,7 +232,7 @@ Ne ランプの電極の向きを受光に対して縦向きか横向きかで�
 )
 <red>
 
-#figure(image("/public/notes/physics_report/assets/white.jpg", width: 6cm),
+#figure(web-image("/public/notes/physics_report/assets/white.jpg", width: 6cm),
   caption: [
     ローダミン 6G 希釈溶液に白色のレーザー光を当てた場合
   ]
@@ -282,7 +283,7 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
   )
 
 ] <table:light>
-#figure(image("/public/notes/physics_report/assets/flush_lamp_true.png", width: 14cm),
+#figure(web-image("/public/notes/physics_report/assets/flush_lamp_true.png", width: 14cm),
   caption: [
     フラッシュランプのスペクトル
   ]
@@ -290,10 +291,10 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 <flush-lamp>
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/fluorescence.png", width: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/fluorescence.png", width: 8cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/dye_laser.png", width: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/dye_laser.png", width: 8cm))
   ]],
   caption: [
     色素レーザーのスペクトル
@@ -309,10 +310,10 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 <flush-lamp-oscillo>
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/fluorescence_oscillo.jpg", width: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/fluorescence_oscillo.jpg", width: 8cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/dye_laser_oscillo.jpg", width: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/dye_laser_oscillo.jpg", width: 8cm))
   ]],
   caption: [
     色素レーザーの時間波形
@@ -340,7 +341,7 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 と比べると線幅は変わらず、ピーク自体が振動しているように見える。 (課題
 3.1.3) \
 
-#figure(image("/public/notes/physics_report/assets/prism_strongest.png", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/prism_strongest.png", width: 12cm),
   caption: [
     最も強い発振スペクトル
   ]
@@ -362,7 +363,7 @@ $ m & = frac(lambda_max - lambda_min, Delta lambda) = frac(23 n m, 6.0 times 10^
 のようになった。 これは図 @dye-laser-oscillo
 に比べて色素レーザー光の強度が弱くなっている。 (課題 3.1.5) \
 
-#figure(image("/public/notes/physics_report/assets/dye_laser_prism.jpg", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/dye_laser_prism.jpg", width: 12cm),
   caption: [
     プリズムを通した色素レーザーの時間波形
   ]

@@ -35,7 +35,7 @@ $V_alpha$ の部分集合のうち、$V_alpha$ の言葉で「こういう条件
 方針は明快だが、実行には一つ厄介な問題がある。
 「定義できる」という言葉を、集合論の中で定義しなければならない。
 
-これは無条件にはできない。Tarski の定理により、
+これは無条件にはできない。Tarski の定理（#link("/math/logic/10")[数理論理学の第 10 回]）により、
 「$V$ 全体についての真理述語」は集合論の言語では書けない。
 書けてしまうと嘘つきのパラドクスが再現する。
 
@@ -215,7 +215,8 @@ $V$ に対してはこんなことは言えない。$V_alpha$ の構成には冪
   $A subset.eq kappa$ とする。$V = L$ より $A in L_delta$ なる $delta$ が取れ、
   $delta$ は十分な公理を満たす極限順序数としてよい。
 
-  Löwenheim--Skolem により、$kappa union \{A\}$ を含み濃度 $kappa$ の初等部分構造
+  Löwenheim--Skolem（#link("/math/logic/7")[数理論理学の第 7 回]）により、
+  $kappa union \{A\}$ を含み濃度 $kappa$ の初等部分構造
   $M prec L_delta$ を取る。$M$ を Mostowski 崩壊して推移的な $N$ にすると、
   @thm:condensation より $N = L_beta$ なる $beta$ がある。
 

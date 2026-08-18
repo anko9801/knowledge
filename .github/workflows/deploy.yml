@@ -1,0 +1,62 @@
+name: Deploy
+
+# ビルドに typst 0.15 が要る。GitHub Pages や Cloudflare のビルド環境には
+# 入っていないので、Actions 側で nix develop を通してから静的出力だけを渡す。
+# ホストを変えるときは deploy ジョブを差し替えるだけでよい。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 走行中のデプロイは止めず、後から来たものを待たせる。
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      # flake.lock で typst 0.15.1 まで固定してあるので、
+      # store をキャッシュすれば毎回の取得を省ける。
+      - uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # prebuild が typst-math.css を作るので、typst が要る。
+      - name: Build
+        run: nix develop --command npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

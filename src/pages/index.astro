@@ -20,6 +20,10 @@ const recent = [...articles]
   .slice(0, 5)
 
 const sortedPosts = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+// GitHub Pages ではサイトがリポジトリ名の下に載る。
+// BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <BaseLayout title="knowledge">
@@ -72,7 +76,7 @@ const sortedPosts = [...posts].sort((a, b) => b.data.date.getTime() - a.data.dat
       {
         sortedPosts.map((post) => (
           <li>
-            <a href={`/posts/${post.id}`}>{post.data.title}</a>
+            <a href={`${base}posts/${post.id}`}>{post.data.title}</a>
             <time datetime={post.data.date.toISOString().slice(0, 10)}>
               {post.data.date.toISOString().slice(0, 10)}
             </time>
@@ -83,7 +87,7 @@ const sortedPosts = [...posts].sort((a, b) => b.data.date.getTime() - a.data.dat
   </section>
 
   <p class="raw">
-    書き直し前の講義ノートが <a href="/notes">{notes.length} 本</a> あります。
+    書き直し前の講義ノートが <a href={`${base}notes`}>{notes.length} 本</a> あります。
     機械変換したままなので組版は崩れています。
   </p>
 </BaseLayout>

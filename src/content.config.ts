@@ -19,6 +19,7 @@ const posts = defineCollection({
     dir: 'src/content/posts',
     expectedLang: 'ja',
     dependsOn: ['src/typst'],
+    base: import.meta.env.BASE_URL.replace(/\/?$/, '/'),
   }),
   schema: postSchema,
 })
@@ -42,6 +43,7 @@ const articles = defineCollection({
     expectedLang: 'ja',
     numberEquations: true,
     dependsOn: ['src/typst'],
+    base: import.meta.env.BASE_URL.replace(/\/?$/, '/'),
   }),
   schema: articleSchema,
 })
@@ -57,6 +59,7 @@ const notes = defineCollection({
     expectedLang: 'ja',
     numberEquations: true,
     dependsOn: ['src/typst'],
+    base: import.meta.env.BASE_URL.replace(/\/?$/, '/'),
   }),
   schema: postSchema,
 })

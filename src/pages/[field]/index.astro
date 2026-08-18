@@ -22,10 +22,14 @@ const groups = seriesOf(field.slug).map((series: Series) => ({
     .filter((article) => article.data.field === field.slug && article.data.series === series.slug)
     .sort((a, b) => a.data.order - b.data.order),
 }))
+
+// GitHub Pages ではサイトがリポジトリ名の下に載る。
+// BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <BaseLayout title={field.title} description={field.blurb}>
-  <p class="back"><a href="/">← knowledge</a></p>
+  <p class="back"><a href={base}>← knowledge</a></p>
   <h1>{field.title}</h1>
   <p class="lead">{field.blurb}</p>
 

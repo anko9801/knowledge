@@ -54,6 +54,43 @@ export const extractStyles = (head: string): string => {
 }
 
 /**
+ * アクセント記号を合成用から独立字形に置き換える。
+ *
+ * Typst は $dot(q)$ を <mo>U+0307 COMBINING DOT ABOVE</mo> として出す。
+ * 合成用の文字は送り幅が 0 なので、ブラウザが <mover> の中心を送り幅から
+ * 計算すると点が基底文字の左端に乗る。実際 Chromium では q̇ の点が
+ * 左肩にずれる（フォントの MATH テーブルは正しく載っているのに、である）。
+ *
+ * 独立字形（U+02D9 DOT ABOVE など）は送り幅を持つので、素直に中央へ来る。
+ * ベクトルの U+20D7 も同じ理由でずれるうえ、矢印が小さい。
+ * 通常の矢印に置き換えると基底文字の幅に合わせて伸びる。
+ *
+ * 置換は <mo> の中に単独で入っている場合だけに限る。本文に出てくる
+ * ダイアクリティカル（Gödel のような合字前の表記）を巻き込まないため。
+ */
+const SPACING_ACCENTS: ReadonlyMap<string, string> = new Map([
+  ['̀', 'ˋ'], // グレイヴ
+  ['́', '´'], // アキュート
+  ['̂', 'ˆ'], // ハット
+  ['̃', '˜'], // チルダ
+  ['̄', '¯'], // マクロン（バー）
+  ['̆', '˘'], // ブレーヴェ
+  ['̇', '˙'], // ドット
+  ['̈', '¨'], // ダブルドット
+  ['̊', '˚'], // リング
+  ['̌', 'ˇ'], // キャロン
+  ['⃖', '←'], // 左向きベクトル
+  ['⃗', '→'], // ベクトル
+])
+
+export const useSpacingAccents = (html: string): string =>
+  html.replace(/<mo\b([^>]*)>([^<]+)<\/mo>/g, (whole, attributes: string, body: string) => {
+    const replaced = SPACING_ACCENTS.get(body)
+
+    return replaced === undefined ? whole : `<mo${attributes}>${replaced}</mo>`
+  })
+
+/**
  * 別行立て数式を採番用のラッパーで包む。
  *
  * Typst の HTML export は式番号を出力しない。参照側だけが「式 1」と表示され、

@@ -3,14 +3,45 @@
  * Typst が <head> に注入する MathML 用 CSS は typst-math.css として別に配る。
  */
 
+/* url は相対で書く。CSS は _astro/ に出るので ../fonts が
+   サイトのルート直下の fonts に解決され、base が変わっても追従する。 */
 @font-face {
   /* scripts/subset-math-font.sh が生成する。U+1D400 台を含むサブセット。
-     元フォントは flake.nix の MATH_FONT で決まるので、ここは役割名にしておく。 */
+     元フォントは flake.nix の MATH_FONT で決まるので、ここは役割名にしておく。
+
+     unicode-range は意図的に書かない。ここに範囲を書くとサブセット側の
+     --unicodes と二重管理になり、片方だけ広げたときに範囲外の文字（数字、
+     括弧、等号、アクセント）だけが本文の明朝で描かれて数式が不揃いになる。
+     このフォントを当てているのは math 要素だけなので、範囲を切る利点もない。 */
   font-family: 'Math Subset';
-  src: url('/fonts/math.woff2') format('woff2');
+  src: url('../fonts/math.woff2') format('woff2');
   font-display: swap;
-  unicode-range: U+0370-03FF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+27E6-27FF,
-    U+1D400-1D7FF;
+}
+
+/*
+ * 本文の欧文。scripts/subset-text-font.sh が生成する。
+ *
+ * 数式が STIX Two Math なのに地の文の欧文が和文フォントの欧文グリフだと、
+ * 骨格も太さも揃わず、数式だけが浮いて見える。Gödel や Löwenheim のような
+ * 固有名詞が頻出するので、この不一致は目立つ。
+ * STIX Two Text は数式フォントと同じ設計なので、並べても違和感が出ない。
+ *
+ * 和文はこのフォントに CJK が無いぶん、自動で下の明朝に落ちる。
+ */
+@font-face {
+  font-family: 'Text Serif';
+  src: url('../fonts/text-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Text Serif';
+  src: url('../fonts/text-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -50,6 +81,7 @@
  */
 html {
   font-family:
+    'Text Serif',
     'Hiragino Mincho ProN', 'ヒラギノ明朝 ProN', 'Hiragino Mincho Pro',
     'Yu Mincho', 'YuMincho', '游明朝', '游明朝体',
     'Noto Serif CJK JP', 'Noto Serif JP', 'Source Han Serif JP',
@@ -167,24 +199,40 @@ article {
   counter-reset: equation;
 }
 
+/* 三列のグリッドにして、式は読み幅の中央、番号は右端に置く。
+ *
+ * 両端に同じ幅の余白列を取っているので、番号のぶんだけ式が左に寄る、
+ * ということが起きない。中央の列は minmax(0, 1fr) にしておかないと、
+ * 長い式がグリッドを押し広げて横スクロールが効かなくなる。 */
 .equation {
-  position: relative;
   counter-increment: equation;
+  display: grid;
+  grid-template-columns: 3.2em minmax(0, 1fr) 3.2em;
+  align-items: center;
+  margin: 1.9rem 0;
+}
+
+.equation > math[display='block'] {
+  grid-column: 2;
+  justify-self: center;
+  max-width: 100%;
+  margin: 0;
 }
 
 .equation::after {
   content: '(' counter(equation) ')';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  grid-column: 3;
+  justify-self: end;
   font-size: 0.85em;
+  font-variant-numeric: tabular-nums;
   color: var(--muted);
 }
 
-/* 番号のぶんだけ数式の場所を空ける。 */
-.equation > math[display='block'] {
-  padding-right: 3.2em;
+/* 狭い画面では両端の余白列を畳んで、式に幅を渡す。 */
+@media (max-width: 30rem) {
+  .equation {
+    grid-template-columns: 0 minmax(0, 1fr) 2.6em;
+  }
 }
 
 /* --- その他の本文要素 --- */

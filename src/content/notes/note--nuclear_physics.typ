@@ -1,9 +1,10 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: "原子核物理学",
-  date: "2026-08-17",
+  date: "2026-08-18",
   tags: ("ノート",),
   summary: "note/nuclear_physics.tex から変換",
 )
@@ -578,7 +579,7 @@ $ ""^8 upright(B e) arrow.r 2^4 upright(H e)\
 ⾮束縛核となる。
 
 #figure([#block[
-  #box(image("/public/notes/note/assets/nuclear.png", width: 8cm))
+  #box(web-image("/public/notes/note/assets/nuclear.png", width: 8cm))
   ]],
   caption: [
   ]

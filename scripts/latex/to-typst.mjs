@@ -27,6 +27,14 @@ const OUT = join(ROOT, '.cache/typst-notes')
 const DEST = join(ROOT, 'src/content/notes')
 
 const PANDOC = process.env.PANDOC_BIN ?? 'pandoc'
+const MAGICK = process.env.MAGICK_BIN ?? 'magick'
+
+/**
+ * 図版の最大幅。本文の読み幅が 48rem（約 800px）なので、
+ * 高精細ディスプレイを考えても 1600px あれば足りる。
+ * 元は 3000〜3700px あり、そのままだと 1 枚で数 MB になる。
+ */
+const MAX_IMAGE_WIDTH = 1600
 const TYPST = process.env.TYPST_BIN ?? 'typst'
 
 const SKIP = new Set(['preamble.tex', 'template.tex'])
@@ -64,6 +72,7 @@ const titleOf = (source, fallback) => {
 /** 既存の .typ 経路に載せるための front matter を付ける。 */
 const withFrontMatter = (body, { title, group, source }) => `#import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: ${JSON.stringify(title)},
@@ -152,9 +161,32 @@ const copyAssets = async () => {
     if (!found) continue
 
     const target = join(publicDir, entry.name, 'assets')
-    await mkdir(dirname(target), { recursive: true })
-    await cp(assets, target, { recursive: true })
-    copied += found.length
+    await mkdir(target, { recursive: true })
+
+    for (const name of found) {
+      const from = join(assets, name)
+      const to = join(target, name)
+
+      if (!/\.(jpe?g|png)$/i.test(name)) {
+        await cp(from, to)
+        copied += 1
+        continue
+      }
+
+      // 幅が上限を超えるものだけ縮小する。小さい図はそのまま通す。
+      try {
+        await run(
+          MAGICK,
+          [from, '-auto-orient', '-resize', `${MAX_IMAGE_WIDTH}>`, '-strip', '-quality', '82', to],
+          { maxBuffer: 64 * 1024 * 1024 },
+        )
+      } catch {
+        // ImageMagick が無い環境ではそのまま複製する。
+        await cp(from, to)
+      }
+
+      copied += 1
+    }
   }
 
   return copied

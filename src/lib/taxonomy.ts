@@ -43,6 +43,20 @@ export const fields: readonly Field[] = [
 
 export const series: readonly Series[] = [
   {
+    slug: 'logic',
+    field: 'math',
+    title: '数理論理学',
+    blurb:
+      '証明そのものを数学の対象にする。完全性定理から Löwenheim–Skolem を経て、不完全性定理まで。全 10 回。',
+  },
+  {
+    slug: 'mechanics',
+    field: 'physics',
+    title: '解析力学',
+    blurb:
+      'Newton の運動方程式を書き換える。変分原理から Noether の定理、正準形式を経て、量子化の入口まで。',
+  },
+  {
     slug: 'set-theory',
     field: 'math',
     title: '集合論',

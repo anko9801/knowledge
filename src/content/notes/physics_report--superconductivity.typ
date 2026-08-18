@@ -1,9 +1,10 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: "高温超伝導",
-  date: "2026-08-17",
+  date: "2026-08-18",
   tags: ("レポート",),
   summary: "physics_report/superconductivity.tex から変換",
 )
@@ -161,7 +162,7 @@ $ sin theta & = 1 / 2 sqrt((lambda / a)^2 h^2 + (lambda / b)^2 k^2 + (lambda / c
 電圧から定常的な電流に変換して端子へ繋ぎ、電圧を測定する。
 これを熱電対で試料周辺の温度を測りながら液体窒素の中にゆっくり浸けて温度と抵抗の関係をプロットする。
 
-#figure(image("/public/notes/physics_report/assets/YBCO_thermocouple.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/YBCO_thermocouple.jpg", width: 10cm),
   caption: [
     熱電対の出力と温度の関係
   ]
@@ -212,10 +213,10 @@ s, 13 s であった。
 磁場中冷却すると試料内の磁束の向きが固定化され、裏返すと反発した。
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/YBCO_image2.jpg", width: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/YBCO_image2.jpg", width: 8cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/YBCO_magnet.jpg", width: 4cm))
+  #box(web-image("/public/notes/physics_report/assets/YBCO_magnet.jpg", width: 4cm))
   ]],
   caption: [
     磁気浮上効果1
@@ -224,10 +225,10 @@ s, 13 s であった。
 <fig:mag1>
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/YBCO_image3.jpg", width: 7cm))
+  #box(web-image("/public/notes/physics_report/assets/YBCO_image3.jpg", width: 7cm))
   ]
   #block[
-  #box(image("/public/notes/physics_report/assets/YBCO_mag_line.jpg", width: 6cm))
+  #box(web-image("/public/notes/physics_report/assets/YBCO_mag_line.jpg", width: 6cm))
   ]],
   caption: [
     磁気浮上効果2
@@ -240,7 +241,7 @@ s, 13 s であった。
 X 線回折装置を用いて回折による角度に対する強度は図 @fig:xray
 のようになる。
 
-#figure(image("/public/notes/physics_report/assets/YBCO_xray.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/YBCO_xray.jpg", width: 10cm),
   caption: [
     X 線回折
   ]
@@ -299,7 +300,7 @@ X 線回折装置を用いて回折による角度に対する強度は図 @fig:
 <電気抵抗の測定-1>
 熱電対の出力と電圧の関係は図 @fig:resistance のようになった。
 
-#figure(image("/public/notes/physics_report/assets/YBCO_resistance.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/YBCO_resistance.jpg", width: 10cm),
   caption: [
     電気抵抗
   ]
@@ -310,7 +311,7 @@ X 線回折装置を用いて回折による角度に対する強度は図 @fig:
 <交流帯磁率の測定-1>
 熱電対の出力と電圧の関係は図 @fig:magnetic のようになった。
 
-#figure(image("/public/notes/physics_report/assets/YBCO_magnetic.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/YBCO_magnetic.jpg", width: 10cm),
   caption: [
     交流帯磁率
   ]
@@ -351,7 +352,7 @@ $- 0.012$ となった。
 
 グラフとしては図 @fig:graph のようになった。
 
-#figure(image("/public/notes/physics_report/assets/YBCO_graph.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/YBCO_graph.jpg", width: 10cm),
   caption: [
     温度と抵抗率、帯磁率の関係
   ]

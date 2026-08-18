@@ -35,6 +35,8 @@
               fontTooling
               # lecture-notes の .tex を Typst に変換する（scripts/latex/to-typst.mjs）
               pkgs.pandoc
+              # ノートの図版を web 向けに縮小する
+              pkgs.imagemagick
             ];
 
             # HTML export は experimental なので明示的に有効化する。

@@ -4,7 +4,12 @@ import { extname, join, relative, sep } from 'node:path'
 import { createHash } from 'node:crypto'
 
 import { compileHtml, evalMetadata } from './typst-cli.ts'
-import { extractStyles, splitDocument, wrapBlockEquations } from './typst-html.ts'
+import {
+  extractStyles,
+  splitDocument,
+  useSpacingAccents,
+  wrapBlockEquations,
+} from './typst-html.ts'
 
 export type TypstLoaderOptions = {
   /** .typ を置くディレクトリ（プロジェクトルートからの相対パス）。 */
@@ -23,6 +28,8 @@ export type TypstLoaderOptions = {
    * といった形で現れる。
    */
   readonly dependsOn?: readonly string[]
+  /** サイトが載るパス。図版の src に前置きする。 */
+  readonly base?: string
 }
 
 type EntryResult = {
@@ -77,6 +84,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     expectedLang,
     numberEquations = false,
     dependsOn = [],
+    base = '/',
   } = options
 
   /** 1 ファイルをコンパイルしてストアに入れる。full load と watch の両方から使う。 */
@@ -120,7 +128,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
   ): Promise<EntryResult> => {
     const { store, logger, parseData } = context
     const id = entryId(dirRoot, file)
-    const typstOptions = { bin, root } as const
+    const typstOptions = { bin, root, base } as const
 
     const source = await readFile(file, 'utf8')
     const sourceDigest = digest(`${shared}\u0000${source}`)
@@ -149,7 +157,9 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
       filePath: file,
     })
 
-    const rendered = numberEquations ? wrapBlockEquations(body) : body
+    // アクセントの置換は全記事に効かせる。合成用のままだと <mover> の点がずれる。
+    const accented = useSpacingAccents(body)
+    const rendered = numberEquations ? wrapBlockEquations(accented) : accented
 
     store.set({
       id,

@@ -1,9 +1,10 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: "統計力学 II",
-  date: "2026-08-17",
+  date: "2026-08-18",
   tags: ("レポート",),
   summary: "physics_report/statistical2_report.tex から変換",
 )

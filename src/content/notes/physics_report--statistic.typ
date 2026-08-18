@@ -1,9 +1,10 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: "統計力学",
-  date: "2026-08-17",
+  date: "2026-08-18",
   tags: ("レポート",),
   summary: "physics_report/statistic.tex から変換",
 )
@@ -211,7 +212,7 @@ Q 15-8. 二準位系の熱力学量のグラフを描け。
 図 @fig:2level のように描ける。
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/2level_system.jpg", height: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/2level_system.jpg", height: 8cm))
   ]],
   caption: [
     二準位系におけるそれぞれの熱力学量の温度 $T$ に関するグラフ
@@ -358,7 +359,7 @@ Q 16-4. 熱力学量のグラフを描け。
 図 @fig:oscillator のように描ける。
 
 #figure([#block[
-  #box(image("/public/notes/physics_report/assets/oscillator_system.jpg", height: 8cm))
+  #box(web-image("/public/notes/physics_report/assets/oscillator_system.jpg", height: 8cm))
   ]],
   caption: [
     振動子系におけるそれぞれの熱力学量の温度 $T$ に関するグラフ

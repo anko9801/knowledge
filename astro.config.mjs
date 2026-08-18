@@ -1,6 +1,13 @@
 import { defineConfig } from 'astro/config'
 
+// GitHub Pages はリポジトリ名がパスに入る（anko9801.github.io/knowledge）。
+// 独自ドメインを当てるか Cloudflare へ移すときは base を外すだけでよい。
+const site = process.env.SITE_URL ?? 'https://anko9801.github.io'
+const base = process.env.SITE_BASE ?? '/knowledge'
+
 export default defineConfig({
+  site,
+  base,
   // 完全な静的出力。ランタイム JS はゼロで、転送されるのは HTML / CSS / 数学フォントのみ。
   output: 'static',
 

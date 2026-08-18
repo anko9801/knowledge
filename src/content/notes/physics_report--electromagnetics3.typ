@@ -1,9 +1,10 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: "電磁気学 III 演習 期末レポート",
-  date: "2026-08-17",
+  date: "2026-08-18",
   tags: ("レポート",),
   summary: "physics_report/electromagnetics3.tex から変換",
 )

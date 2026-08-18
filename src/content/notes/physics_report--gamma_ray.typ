@@ -1,9 +1,10 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/image.typ": web-image
 
 #show: post.with(
   title: "線と宇宙線の計測",
-  date: "2026-08-17",
+  date: "2026-08-18",
   tags: ("レポート",),
   summary: "physics_report/gamma_ray.tex から変換",
 )
@@ -136,7 +137,7 @@ h^(+) & arrow.r h^(+) + \( e^(-) \, h^(+) \) $ また MPPC
 のような仕組みとなっている。それぞれの部品は表 #link(<table:coaxial-cable>)[table:coaxial-cable]
 にまとめた。
 
-#figure(image("/public/notes/physics_report/assets/coaxial_cable.jpg", width: 14cm),
+#figure(web-image("/public/notes/physics_report/assets/coaxial_cable.jpg", width: 14cm),
   caption: [
     終端抵抗
   ]
@@ -279,7 +280,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 <同軸ケーブル-2>
 長さ $99.9 c m$ の同軸ケーブルに対し、$5.8 n s$ で信号が到達した。
 
-#figure(image("/public/notes/physics_report/assets/cable_diff_time.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/cable_diff_time.jpg", width: 10cm),
   caption: [
     ケーブル
   ]
@@ -306,7 +307,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
   )
 
 ] <table:resistance>
-#figure(image("/public/notes/physics_report/assets/reflection.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/reflection.jpg", width: 10cm),
   caption: [
     終端抵抗
   ]
@@ -318,7 +319,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 ディスクリミネータの閾値を少しずつ変えて計数を比較する実験については図
 @fig:darkrate-discriminator のようになった。
 
-#figure(image("/public/notes/physics_report/assets/discriminator.png", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/discriminator.png", width: 12cm),
   caption: [
     ダークレートにおいて閾値に対する計数
   ]
@@ -327,7 +328,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 
 またオシロスコープでは図 @fig:trigger-1 のような波形が見られた。
 
-#figure(image("/public/notes/physics_report/assets/trigger1.jpg", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/trigger1.jpg", width: 12cm),
   caption: [
     ダークレート測定におけるオシロスコープの観察
   ]
@@ -340,35 +341,35 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 @fig:Co60-gamma, @fig:Na22-gamma, @fig:Cs137-gamma, @fig:Ba133-gamma
 に示す。
 
-#figure(image("/public/notes/physics_report/assets/Co60_gamma.jpg", width: 14cm),
+#figure(web-image("/public/notes/physics_report/assets/Co60_gamma.jpg", width: 14cm),
   caption: [
     線源 ^60 のガンマ線の計測結果
   ]
 )
 <fig:Co60-gamma>
 
-#figure(image("/public/notes/physics_report/assets/Na22_gamma.png", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/Na22_gamma.png", width: 12cm),
   caption: [
     線源 ^22 のガンマ線の計測結果
   ]
 )
 <fig:Na22-gamma>
 
-#figure(image("/public/notes/physics_report/assets/Cs137_gamma.png", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/Cs137_gamma.png", width: 12cm),
   caption: [
     線源 ^137 のガンマ線の計測結果
   ]
 )
 <fig:Cs137-gamma>
 
-#figure(image("/public/notes/physics_report/assets/Ba133_gamma.png", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/Ba133_gamma.png", width: 12cm),
   caption: [
     線源 ^133 のガンマ線の計測結果
   ]
 )
 <fig:Ba133-gamma>
 
-#figure(image("/public/notes/physics_report/assets/plastic.png", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/plastic.png", width: 12cm),
   caption: [
     線源 ^133 のガンマ線のプラスチックシンチレータによる計測結果
   ]
@@ -377,7 +378,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 
 またオシロスコープでは図 @fig:trigger-2 のような波形が見られた。
 
-#figure(image("/public/notes/physics_report/assets/trigger2.jpg", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/trigger2.jpg", width: 12cm),
   caption: [
     $gamma$ 線の計測におけるオシロスコープの観察
   ]
@@ -390,7 +391,7 @@ $40 m m times 40 m m$ のシンチレータに対して平均毎分 14.7
 個の宇宙線が観測された。 また 2
 つのシンチレータを十分離すと宇宙線が観測されなくなった。
 
-#figure(image("/public/notes/physics_report/assets/trigger3.jpg", width: 12cm),
+#figure(web-image("/public/notes/physics_report/assets/trigger3.jpg", width: 12cm),
   caption: [
     宇宙線の計測におけるオシロスコープの観察
   ]
@@ -399,7 +400,7 @@ $40 m m times 40 m m$ のシンチレータに対して平均毎分 14.7
 
 仰角に対する宇宙線は図 @fig:cosmic-ray-angle のように観測された。
 
-#figure(image("/public/notes/physics_report/assets/cosmic_ray_elevation_angle.png", width: 14cm),
+#figure(web-image("/public/notes/physics_report/assets/cosmic_ray_elevation_angle.png", width: 14cm),
   caption: [
     宇宙線の天頂角分布
   ]
@@ -441,7 +442,7 @@ $ r & = V_r / V_0 = frac(Z_L - Z_0, Z_L + Z_0) = cases(delim: "{", - 0.96 & \( 1
 観測した光電ピークとチャンネルとエネルギーの対応が分かっているので図
 @fig:energy-ch のように線形近似して関係式を導ける。
 
-#figure(image("/public/notes/physics_report/assets/gamma_energy_ch.png", width: 14cm),
+#figure(web-image("/public/notes/physics_report/assets/gamma_energy_ch.png", width: 14cm),
   caption: [
     エネルギーとチャンネルの対応
   ]
@@ -603,7 +604,7 @@ L & = frac(mu, 2 pi) ln b / a $ これらについて同軸ケーブルの等価
 @fig:circuit を参考に微小長さ $Delta z$ に対して電圧, 電流の差分
 $Delta V \, Delta I$ の関係式を導く。
 
-#figure(image("/public/notes/physics_report/assets/circuit.jpg", width: 10cm),
+#figure(web-image("/public/notes/physics_report/assets/circuit.jpg", width: 10cm),
   caption: [
     同軸ケーブルの等価回路
   ]

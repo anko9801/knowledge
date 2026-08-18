@@ -43,6 +43,8 @@ export const collectWarnings = (stderr: string): readonly string[] =>
 export type TypstOptions = {
   readonly bin: string
   readonly root: string
+  /** サイトが載るパス。web-image が <img src> の前置きに使う。 */
+  readonly base?: string
 }
 
 /**
@@ -51,12 +53,24 @@ export type TypstOptions = {
  */
 export const compileHtml = async (
   file: string,
-  { bin, root }: TypstOptions,
+  { bin, root, base = '/' }: TypstOptions,
 ): Promise<string> => {
   try {
     const { stdout, stderr } = await run(
       bin,
-      ['compile', file, '--format', 'html', '--features', 'html', '--root', root, '-'],
+      [
+        'compile',
+        file,
+        '--format',
+        'html',
+        '--features',
+        'html',
+        '--root',
+        root,
+        '--input',
+        `base=${base}`,
+        '-',
+      ],
       { maxBuffer: 64 * 1024 * 1024 },
     )
 

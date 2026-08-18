@@ -1,0 +1,137 @@
+---
+// pagefind の索引はビルド後（postbuild）に dist/pagefind へ作られる。
+// 検索そのものはクライアントで完結するので、サーバは要らない。
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
+---
+
+<div class="search">
+  <label class="visually-hidden" for="search-input">ノートを検索</label>
+  <input id="search-input" type="search" placeholder="ノートを検索" autocomplete="off" />
+  <div id="search-results" class="results" hidden></div>
+</div>
+
+<script define:vars={{ base }}>
+  // 索引は最初の入力まで読み込まない。開いただけの人に負荷をかけない。
+  const input = document.getElementById('search-input')
+  const results = document.getElementById('search-results')
+
+  let pagefind = null
+  let seq = 0
+
+  const load = async () => {
+    if (pagefind) return pagefind
+    pagefind = await import(/* @vite-ignore */ `${base}pagefind/pagefind.js`)
+    await pagefind.options({ excerptLength: 24 })
+    return pagefind
+  }
+
+  const escape = (text) =>
+    String(text).replace(
+      /[&<>"]/g,
+      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+    )
+
+  const render = (items) => {
+    results.hidden = items.length === 0
+    // excerpt は pagefind が <mark> を付けて返すのでそのまま使う。
+    // 題名は自前で組み立てるため、こちらだけ escape する。
+    results.innerHTML = items
+      .map(
+        (item) =>
+          `<a class="hit" href="${escape(item.url)}">` +
+          `<span class="hit-title">${escape(item.meta?.title ?? '')}</span>` +
+          `<span class="hit-excerpt">${item.excerpt}</span></a>`,
+      )
+      .join('')
+  }
+
+  input.addEventListener('input', async () => {
+    const query = input.value.trim()
+    const mine = ++seq
+
+    if (query.length < 2) {
+      results.hidden = true
+      results.innerHTML = ''
+      return
+    }
+
+    const engine = await load()
+    const search = await engine.search(query)
+    const items = await Promise.all(search.results.slice(0, 8).map((r) => r.data()))
+
+    // 入力が速いと結果が前後する。最後の問い合わせだけ描く。
+    if (mine === seq) render(items)
+  })
+</script>
+
+<style>
+  .search {
+    position: relative;
+    margin: 1.5rem 0 2rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.55rem 0.8rem;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+  }
+
+  input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .results {
+    margin-top: 0.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .results :global(.hit) {
+    display: block;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .results :global(.hit:last-child) {
+    border-bottom: 0;
+  }
+
+  .results :global(.hit:hover) {
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+  }
+
+  .results :global(.hit-title) {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+
+  .results :global(.hit-excerpt) {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .results :global(mark) {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    color: inherit;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+</style>

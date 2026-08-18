@@ -22,11 +22,15 @@ const { note } = Astro.props
 const { Content } = await render(note)
 
 const updated = note.data.date.toISOString().slice(0, 10)
+
+// GitHub Pages ではサイトがリポジトリ名の下に載る。
+// BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <BaseLayout title={note.data.title} wide>
   <header class="note-header">
-    <p class="back"><a href="/notes">← 講義ノート一覧</a></p>
+    <p class="back"><a href={`${base}notes`}>← 講義ノート一覧</a></p>
     <h1>{note.data.title}</h1>
     <p class="meta">
       {note.data.tags.map((tag) => <span class="group">{tag}</span>)}
@@ -34,7 +38,7 @@ const updated = note.data.date.toISOString().slice(0, 10)
     </p>
   </header>
 
-  <article>
+  <article data-pagefind-body>
     <Content />
   </article>
 </BaseLayout>

@@ -55,11 +55,15 @@ const href = (entry: Entry) =>
   `/${entry.data.field}/${entry.data.series}/${entry.data.order}`
 
 const updated = article.data.date.toISOString().slice(0, 10)
+
+// GitHub Pages ではサイトがリポジトリ名の下に載る。
+// BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <BaseLayout title={article.data.title} description={article.data.summary} wide>
   <nav class="crumbs">
-    <a href="/">knowledge</a>
+    <a href={base}>knowledge</a>
     <span aria-hidden="true">/</span>
     <a href={`/${article.data.field}`}>{field?.title ?? article.data.field}</a>
     <span aria-hidden="true">/</span>

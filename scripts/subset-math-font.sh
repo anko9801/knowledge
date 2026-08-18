@@ -6,7 +6,7 @@
 # このブロックを持つフォントを配らないと本文フォントでは豆腐になるので、
 # これは任意の上乗せではなく必須の手順。
 #
-# 元フォントは devShell が MATH_FONT で渡す（nixpkgs の STIX Two Math）。
+# 元フォントは devShell が MATH_FONT で渡す（nixpkgs の Latin Modern Math）。
 # シェルの外で走らせたときだけ、既知のパスと fc-list を順に探す。
 set -eu
 

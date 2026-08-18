@@ -23,9 +23,13 @@
           # fonttools を単体で入れると "No module named brotli" で落ちる。
           fontTooling = pkgs.python3.withPackages (ps: with ps; [ fonttools brotli ]);
 
-          # サブセット元の数学フォント。システムの fc-list に頼ると
-          # 環境ごとに結果が変わるので、ここで固定する。
-          mathFont = "${pkgs.stix-two}/share/fonts/opentype/STIXTwoMath-Regular.otf";
+          # サブセット元のフォント。システムの fc-list に頼ると環境ごとに
+          # 結果が変わるので、ここで固定する。
+          #
+          # Latin Modern は LaTeX が既定で使う Computer Modern。元の講義ノートが
+          # LaTeX で組まれていたので、字形を揃えると見え方が変わらない。
+          mathFont = "${pkgs.lmmath}/share/fonts/opentype/latinmodern-math.otf";
+          textFontDir = "${pkgs.lmodern}/share/fonts/opentype/public/lm";
         in
         {
           default = pkgs.mkShell {
@@ -44,8 +48,9 @@
             # 同じソースの PDF ビルド側では不要。
             TYPST_FEATURES = "html";
 
-            # scripts/subset-math-font.sh が読む。
+            # scripts/subset-math-font.sh と subset-text-font.sh が読む。
             MATH_FONT = mathFont;
+            TEXT_FONT_DIR = textFontDir;
 
             shellHook = ''
               echo "typst   $(typst --version | cut -d' ' -f2)"

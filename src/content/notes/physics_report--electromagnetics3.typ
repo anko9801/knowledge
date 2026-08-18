@@ -18,28 +18,28 @@
 == Green の定理
 <green-の定理>
 #block[
-$ integral_V \( phi.alt nabla^2 psi + nabla phi.alt dot.op nabla psi \) upright(d) v = integral.cont_(partial V) phi.alt frac(partial psi, partial n) upright(d) S $
+$ integral_V \( phi.alt nabla^2 psi + nabla phi.alt dot.op nabla psi \) thin upright(d) v = integral.cont_(partial V) phi.alt frac(partial psi, partial n) thin upright(d) S $
 
 ]
 #proof[
 Gauss 発散定理においてスカラー場 $phi.alt \, psi$
 を用いて $bold(A) = phi.alt nabla psi$ とすると $bold(n)$ は $partial V$
 に垂直に内側から外側へ出る方向であるから次のように示せる。
-$ integral_V nabla dot.op \( phi.alt nabla psi \) upright(d) v & = integral_(partial V) \( phi.alt nabla psi \) dot.op bold(n) upright(d) S\
-integral_V (phi.alt nabla dot.op \( nabla psi \) + nabla psi dot.op nabla phi.alt) upright(d) v & = integral_(partial V) phi.alt \( nabla psi dot.op bold(n) \) upright(d) S\
-integral_V (phi.alt nabla^2 psi + nabla psi dot.op nabla phi.alt) upright(d) v & = integral.cont_(partial V) phi.alt frac(partial psi, partial n) upright(d) S $
+$ integral_V nabla dot.op \( phi.alt nabla psi \) thin upright(d) v & = integral_(partial V) \( phi.alt nabla psi \) dot.op bold(n) thin upright(d) S\
+integral_V (phi.alt nabla dot.op \( nabla psi \) + nabla psi dot.op nabla phi.alt) thin upright(d) v & = integral_(partial V) phi.alt \( nabla psi dot.op bold(n) \) thin upright(d) S\
+integral_V (phi.alt nabla^2 psi + nabla psi dot.op nabla phi.alt) thin upright(d) v & = integral.cont_(partial V) phi.alt frac(partial psi, partial n) thin upright(d) S $
 ]
 
 #block[
-$ integral_V \( phi.alt nabla^2 psi - psi nabla^2 phi.alt \) upright(d) v = integral_(partial V) (phi.alt frac(partial psi, partial n) - psi frac(partial phi.alt, partial n)) upright(d) S $
+$ integral_V \( phi.alt nabla^2 psi - psi nabla^2 phi.alt \) thin upright(d) v = integral_(partial V) (phi.alt frac(partial psi, partial n) - psi frac(partial phi.alt, partial n)) thin upright(d) S $
 
 ]
 #proof[
 (a) と同様に $bold(A) = psi nabla phi.alt$
 を代入した場合の式との差を計算することで示せる。
-$ integral_V (phi.alt nabla^2 psi + nabla psi dot.op nabla phi.alt) upright(d) v & = integral.cont_(partial V) phi.alt frac(partial psi, partial n) upright(d) S\
-integral_V (psi nabla^2 phi.alt + nabla phi.alt dot.op nabla psi) upright(d) v & = integral.cont_(partial V) psi frac(partial phi.alt, partial n) upright(d) S\
-integral_V (phi.alt nabla^2 psi - psi nabla^2 phi.alt) upright(d) v & = integral_(partial V) (phi.alt frac(partial psi, partial n) - psi frac(partial phi.alt, partial n)) upright(d) S $
+$ integral_V (phi.alt nabla^2 psi + nabla psi dot.op nabla phi.alt) thin upright(d) v & = integral.cont_(partial V) phi.alt frac(partial psi, partial n) thin upright(d) S\
+integral_V (psi nabla^2 phi.alt + nabla phi.alt dot.op nabla psi) thin upright(d) v & = integral.cont_(partial V) psi frac(partial phi.alt, partial n) thin upright(d) S\
+integral_V (phi.alt nabla^2 psi - psi nabla^2 phi.alt) thin upright(d) v & = integral_(partial V) (phi.alt frac(partial psi, partial n) - psi frac(partial phi.alt, partial n)) thin upright(d) S $
 ]
 
 #block[
@@ -55,9 +55,10 @@ $U \( bold(r) \) = Phi_1 \( bold(r) \) - Phi_2 \( bold(r) \)$ とおくと
 Poisson 方程式と 2 つの境界条件より $ nabla^2 U & = 0\
 U \|_(partial V) & = 0 "または" med frac(partial U, partial n)\|_(partial V) = 0 $
 が成り立つ。ここで Green の第一公式より
-$ integral_V \( U nabla^2 U + \( upright(bold(nabla)) U \)^2 \) upright(d) V & = integral.cont_(partial V) U frac(partial U, partial n) upright(d) S\
-integral_V \( upright(bold(nabla)) U \)^2 upright(d) V & = 0 $ よって
-$upright(bold(nabla)) U = bold(0)$ つまり $U$ は定数であるから Poisson
+$ integral_V \( U nabla^2 U + \( upright(bold(nabla)) U \)^2 \) thin upright(d) V & = integral.cont_(partial V) U frac(partial U, partial n) thin upright(d) S\
+integral_V \( upright(bold(nabla)) U \)^2 thin upright(d) V & = 0 $
+よって $upright(bold(nabla)) U = bold(0)$ つまり $U$ は定数であるから
+Poisson
 方程式の解はどちらかの境界条件を満たせば定数を除いて一意に定まる。
 ]
 
@@ -238,7 +239,7 @@ $ bold(p)_(E M) & = bold(Y) / c^2 $
 $bold(j) = - T_(i j)$ と定義することで次のように書ける。
 $ upright(bold(nabla)) dot.op bold(j) + partial_t (bold(p)_m + bold(p)_(E M)) = bold(0) $
 よってこれを積分形に書き直すと Gauss の発散定理を用いて次のようになる。
-$ integral.cont_(partial V) bold(j) \( bold(r) \, t \) dot.op bold(n) \( bold(r) \) upright(d) S + partial_t integral_V \( bold(p)_m + bold(p)_(E M) \) upright(d) v = 0 $
+$ integral.cont_(partial V) bold(j) \( bold(r) \, t \) dot.op bold(n) \( bold(r) \) thin upright(d) S + partial_t integral_V \( bold(p)_m + bold(p)_(E M) \) thin upright(d) v = 0 $
 ]
 
 = 誘電体の電場
@@ -381,7 +382,7 @@ rho h g \( \( 1 + chi \) d - chi h \)^2 & = 1 / 2 epsilon_0 V^2 \( 2 + chi \) \(
 は次のようになる。
 $ 4 pi R^2 H \( R \) = m arrow.l.r.double H \( r \) & = frac(1, 4 pi) m / r^2 $
 これより磁位は次のようになる。
-$ phi.alt_m \( r \) & = - integral_oo^r mu_0 H \( r' \) upright(d) r' = [frac(mu_0 m, 4 pi r')]_oo^r = frac(mu_0, 4 pi) m / r $
+$ phi.alt_m \( r \) & = - integral_oo^r mu_0 H \( r' \) thin upright(d) r' = [frac(mu_0 m, 4 pi r')]_oo^r = frac(mu_0, 4 pi) m / r $
 ]
 
 #block[

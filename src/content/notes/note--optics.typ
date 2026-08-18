@@ -545,18 +545,18 @@ $bold(L)_(s p i n)$ と軌道角運動量 $bold(L)_(o r b i t)$
 の和で表される。
 ]
 #proof[
-$ bold(L) & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) times \( bold(E) times bold(B) \)\
- & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) times \( bold(E) times \( upright(bold(nabla)) times bold(A) \) \)\
- & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(r) times \( upright(bold(nabla)) \( bold(E) dot.op bold(A) \) - \( bold(E) dot.op upright(bold(nabla)) \) bold(A) \)\
- & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) (bold(E) times bold(A) + bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j)\
- & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E) times bold(A) + frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j\
+$ bold(L) & = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) bold(r) times \( bold(E) times bold(B) \)\
+ & = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) bold(r) times \( bold(E) times \( upright(bold(nabla)) times bold(A) \) \)\
+ & = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) bold(r) times \( upright(bold(nabla)) \( bold(E) dot.op bold(A) \) - \( bold(E) dot.op upright(bold(nabla)) \) bold(A) \)\
+ & = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) (bold(E) times bold(A) + bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j)\
+ & = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) bold(E) times bold(A) + frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) bold(E)_j \( bold(r) times upright(bold(nabla)) \) A_j\
  & = bold(L)_(s p i n) + bold(L)_(o r b i t) $
 ]
 
 #theorem[
 スピン角運動量 $bold(L)_(s p i n)$
 の期待値は次のように表される。
-$ chevron.l bold(L)_(s p i n) chevron.r & = frac(1, 2 pi c) integral_(bb(R)^3) frac(upright(d) bold(k), \( 2 pi \)^3) bold(k) (\| a_(+) \( bold(k) \) \|^2 - \| a_(-) \( bold(k) \) \|^2) $
+$ chevron.l bold(L)_(s p i n) chevron.r & = frac(1, 2 pi c) integral_(bb(R)^3) frac(thin upright(d) bold(k), \( 2 pi \)^3) bold(k) (\| a_(+) \( bold(k) \) \|^2 - \| a_(-) \( bold(k) \) \|^2) $
 これより次のようなことを教えてくれる.
 
 + 電磁場の角運動量のスピン部分 $L_(s p i n)$ の時間平均
@@ -581,7 +581,7 @@ $ chevron.l bold(L)_(s p i n) chevron.r & = frac(1, 2 pi c) integral_(bb(R)^3) f
 ]
 #proof[
 $bold(A)$ について Fourier 変換すると次のようになる。
-$ bold(A) \( bold(r) \, t \) & = sum_(j = plus.minus) integral_(bb(R)^3) frac(upright(d) bold(k), \( 2 pi \)^3) (bold(a)_j \( bold(k) \) e^(i bold(k) dot.op bold(r)) + bold(a)_j^(\*) \( bold(k) \) e^(- i bold(k) dot.op bold(r)))\
+$ bold(A) \( bold(r) \, t \) & = sum_(j = plus.minus) integral_(bb(R)^3) frac(thin upright(d) bold(k), \( 2 pi \)^3) (bold(a)_j \( bold(k) \) e^(i bold(k) dot.op bold(r)) + bold(a)_j^(\*) \( bold(k) \) e^(- i bold(k) dot.op bold(r)))\
 bold(a)_j \( bold(k) \) & = bold(epsilon.alt)_j \( bold(k) \) a_j \( bold(k) \) e^(- i omega \( bold(k) \) t) $
 波数 $bold(k)$
 について対称性が成り立つようにすることで矛盾なく次のように定義できる.
@@ -589,20 +589,20 @@ $ bold(epsilon.alt)_1 \( - bold(k) \) = bold(epsilon.alt)_2 \( bold(k) \) \, bol
 このとき次の式が導かれる.
 $  & bold(epsilon.alt)_plus.minus \( bold(k) \) times bold(epsilon.alt)_plus.minus \( bold(k) \) = 0 \, #h(2em) bold(epsilon.alt)_plus.minus \( bold(k) \) times bold(epsilon.alt)_minus.plus \( bold(k) \) = minus.plus i frac(bold(k), \| bold(k) \|)\
  & bold(epsilon.alt)_minus.plus \( bold(k) \) = bold(epsilon.alt)_plus.minus^(\*) \( bold(k) \) \, #h(2em) bold(epsilon.alt)_plus.minus \( - bold(k) \) = plus.minus i bold(epsilon.alt)_minus.plus \( bold(k) \)\
- & frac(1, \( 2 pi \)^3) integral_(bb(R)^3) upright(d) bold(r) e^(i \( bold(k) - bold(k)' \) dot.op bold(r)) = delta \( bold(k) - bold(k)' \)\
+ & frac(1, \( 2 pi \)^3) integral_(bb(R)^3) thin upright(d) bold(r) e^(i \( bold(k) - bold(k)' \) dot.op bold(r)) = delta \( bold(k) - bold(k)' \)\
  & upright(bold(nabla)) dot.op bold(A) = 0 $ Dirac
 のデルタ関数の公式より角運動量のスピン成分 $bold(L)_(s p i n)$
 は次のようになる.
-$  & bold(L)_(s p i n) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) bold(E) times bold(A) = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) (- 1 / c frac(partial bold(A), partial t)) times bold(A)\
- & = frac(1, 4 pi c) integral_(bb(R)^3) upright(d) bold(r) (sum_(j = plus.minus) integral_(bb(R)^3) frac(i \| bold(k) \| upright(d) bold(k), \( 2 pi \)^3) (bold(a)_j \( bold(k) \) e^(i bold(k) dot.op bold(r)) - bold(a)_j^(\*) \( bold(k) \) e^(- i bold(k) dot.op bold(r)))) times (sum_(j' = plus.minus) integral_(bb(R)^3) frac(upright(d) bold(k)', \( 2 pi \)^3) (bold(a)_(j') \( bold(k)' \) e^(i bold(k)' dot.op bold(r)) + bold(a)_(j')^(\*) \( bold(k)' \) e^(- i bold(k)' dot.op bold(r))))\
- & = frac(1, 4 pi c) integral frac(upright(d) bold(r) upright(d) bold(k) upright(d) bold(k)', \( 2 pi \)^6) i \| bold(k) \| sum_(j = plus.minus) sum_(j' = plus.minus) #scale(x: 120%, y: 120%)[\(] bold(a)_j \( bold(k) \) times bold(a)_(j') \( bold(k)' \) e^(i \( bold(k) + bold(k)' \) dot.op bold(r))\
+$  & bold(L)_(s p i n) = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) bold(E) times bold(A) = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) (- 1 / c frac(partial bold(A), partial t)) times bold(A)\
+ & = frac(1, 4 pi c) integral_(bb(R)^3) thin upright(d) bold(r) (sum_(j = plus.minus) integral_(bb(R)^3) frac(i \| bold(k) \| thin upright(d) bold(k), \( 2 pi \)^3) (bold(a)_j \( bold(k) \) e^(i bold(k) dot.op bold(r)) - bold(a)_j^(\*) \( bold(k) \) e^(- i bold(k) dot.op bold(r)))) times (sum_(j' = plus.minus) integral_(bb(R)^3) frac(thin upright(d) bold(k)', \( 2 pi \)^3) (bold(a)_(j') \( bold(k)' \) e^(i bold(k)' dot.op bold(r)) + bold(a)_(j')^(\*) \( bold(k)' \) e^(- i bold(k)' dot.op bold(r))))\
+ & = frac(1, 4 pi c) integral frac(thin upright(d) bold(r) thin upright(d) bold(k) thin upright(d) bold(k)', \( 2 pi \)^6) i \| bold(k) \| sum_(j = plus.minus) sum_(j' = plus.minus) #scale(x: 120%, y: 120%)[\(] bold(a)_j \( bold(k) \) times bold(a)_(j') \( bold(k)' \) e^(i \( bold(k) + bold(k)' \) dot.op bold(r))\
  & + bold(a)_j \( bold(k) \) times bold(a)_(j')^(\*) \( bold(k)' \) e^(i \( bold(k) - bold(k)' \) dot.op bold(r)) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j') \( bold(k)' \) e^(- i \( bold(k) - bold(k)' \) dot.op bold(r)) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j')^(\*) \( bold(k)' \) e^(- i \( bold(k) + bold(k)' \) dot.op bold(r)) #scale(x: 120%, y: 120%)[\)]\
- & = frac(1, 4 pi c) integral frac(upright(d) bold(k) upright(d) bold(k)', \( 2 pi \)^3) i \| bold(k) \| sum_(j = plus.minus) sum_(j' = plus.minus) #scale(x: 120%, y: 120%)[\(] bold(a)_j \( bold(k) \) times bold(a)_(j') \( bold(k)' \) delta \( bold(k) + bold(k)' \)\
+ & = frac(1, 4 pi c) integral frac(thin upright(d) bold(k) thin upright(d) bold(k)', \( 2 pi \)^3) i \| bold(k) \| sum_(j = plus.minus) sum_(j' = plus.minus) #scale(x: 120%, y: 120%)[\(] bold(a)_j \( bold(k) \) times bold(a)_(j') \( bold(k)' \) delta \( bold(k) + bold(k)' \)\
  & + bold(a)_j \( bold(k) \) times bold(a)_(j')^(\*) \( bold(k)' \) delta \( bold(k) - bold(k)' \) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j') \( bold(k)' \) delta \( bold(k) - bold(k)' \) + bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j')^(\*) \( bold(k)' \) delta \( bold(k) + bold(k)' \) #scale(x: 120%, y: 120%)[\)]\
- & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) i \| bold(k) \| sum_(j = plus.minus \, j' = plus.minus) (bold(a)_j \( bold(k) \) times bold(a)_(j') \( - bold(k) \) + bold(a)_j \( bold(k) \) times bold(a)_(j')^(\*) \( bold(k) \) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j') \( bold(k) \) + bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j')^(\*) \( - bold(k) \))\
- & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) i \| bold(k) \| sum_(j = plus.minus) (bold(a)_j \( bold(k) \) times bold(a)_j \( - bold(k) \) + bold(a)_j \( bold(k) \) times bold(a)_j^(\*) \( bold(k) \) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_j \( bold(k) \) + bold(a)_j^(\*) \( bold(k) \) times bold(a)_j^(\*) \( - bold(k) \))\
- & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) \| bold(k) \| frac(bold(k), \| bold(k) \|) sum_(j = plus.minus) (i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) + j \| a_j \( bold(k) \) \|^2 + j \| a_j \( bold(k) \) \|^2 - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t))\
- & = frac(1, 4 pi c) integral frac(upright(d) bold(k), \( 2 pi \)^3) bold(k) sum_(j = plus.minus) (2 j \| a_j \( bold(k) \) \|^2 + i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t)) $
+ & = frac(1, 4 pi c) integral frac(thin upright(d) bold(k), \( 2 pi \)^3) i \| bold(k) \| sum_(j = plus.minus \, j' = plus.minus) (bold(a)_j \( bold(k) \) times bold(a)_(j') \( - bold(k) \) + bold(a)_j \( bold(k) \) times bold(a)_(j')^(\*) \( bold(k) \) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j') \( bold(k) \) + bold(a)_j^(\*) \( bold(k) \) times bold(a)_(j')^(\*) \( - bold(k) \))\
+ & = frac(1, 4 pi c) integral frac(thin upright(d) bold(k), \( 2 pi \)^3) i \| bold(k) \| sum_(j = plus.minus) (bold(a)_j \( bold(k) \) times bold(a)_j \( - bold(k) \) + bold(a)_j \( bold(k) \) times bold(a)_j^(\*) \( bold(k) \) - bold(a)_j^(\*) \( bold(k) \) times bold(a)_j \( bold(k) \) + bold(a)_j^(\*) \( bold(k) \) times bold(a)_j^(\*) \( - bold(k) \))\
+ & = frac(1, 4 pi c) integral frac(thin upright(d) bold(k), \( 2 pi \)^3) \| bold(k) \| frac(bold(k), \| bold(k) \|) sum_(j = plus.minus) (i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) + j \| a_j \( bold(k) \) \|^2 + j \| a_j \( bold(k) \) \|^2 - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t))\
+ & = frac(1, 4 pi c) integral frac(thin upright(d) bold(k), \( 2 pi \)^3) bold(k) sum_(j = plus.minus) (2 j \| a_j \( bold(k) \) \|^2 + i a_j \( bold(k) \) a_j \( - bold(k) \) e^(- 2 i omega \( bold(k) \) t) - i a_j^(\*) \( bold(k) \) a_j^(\*) \( - bold(k) \) e^(2 i omega \( bold(k) \) t)) $
 時間平均を取ると次のようになる。
 ]
 
@@ -704,7 +704,7 @@ $ bold(L)_(o r b i t) & = frac(1, 4 pi c) integral_V d i f f \( bold(r) \) E_j \
   に比べて無視できるようになって、電磁波の全角運動量
   $bold(L) = bold(L)_(s p i n) + bold(L)_(o r b i t)$ はスピン部分
   $bold(L)_(s p i n)$ だけからなるようになる:
-  $ bold(L) arrow.r bold(L)_(s p i n) = plus.minus frac(1, 4 pi omega) (integral_V upright(d) V \( bold(r) \) \| f \|^2) bold(e)_z $<L-limit>
+  $ bold(L) arrow.r bold(L)_(s p i n) = plus.minus frac(1, 4 pi omega) (integral_V thin upright(d) V \( bold(r) \) \| f \|^2) bold(e)_z $<L-limit>
 
 + この結果を見る限り、「平面波の角運動量ベクトルの方向は、偏光状態が左円偏光ならば進行方向に平行であり、偏光状態が右円偏光ならば進行方向に反平行である。」と言える。
 
@@ -715,8 +715,8 @@ $ lr(|tilde(bold(E))|)^2 & = \| bold(E) \|^2 + \| bold(B) \|^2\
  & = 2 \| f \|^2 + \| g \|^2\
  & = 2 \| f \|^2 + 1 / k^2 lr(|frac(upright(d) f, upright(d) rho)|)^2 $
 となるので $ U & = U_(s p i n) + U_(o r b i t)\
-U_(s p i n) & = frac(1, 4 pi) integral_V upright(d) V \( bold(r) \) \| f \|^2\
-U_(o r b i t) & = frac(1, 8 k^2 pi) integral_V upright(d) V \( bold(r) \) lr(|frac(upright(d) f, upright(d) rho)|)^2\
+U_(s p i n) & = frac(1, 4 pi) integral_V thin upright(d) V \( bold(r) \) \| f \|^2\
+U_(o r b i t) & = frac(1, 8 k^2 pi) integral_V thin upright(d) V \( bold(r) \) lr(|frac(upright(d) f, upright(d) rho)|)^2\
  $ 次の式より電磁場の広がりを十分大きくすると $U_(s p i n)$
 が主要項となる.
 $ U_(o r b i t) / U_(s p i n) & tilde.op (frac(1, k L))^2\
@@ -754,9 +754,9 @@ $max \( bold(l) dot.op bold(n) \, 0 \)$ とする。
 <物理ベースレンダリング理論>
 #definition[
 光の方向を一方向に絞り、
-$ bold(E) \( t \, bold(r) \) & = integral_(bb(R)) upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
+$ bold(E) \( t \, bold(r) \) & = integral_(bb(R)) thin upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
 放射束
-$ E_lambda & = n frac(h c, lambda) \, #h(2em) Phi_lambda = frac(upright(d) E_lambda, upright(d) t) \, #h(2em) Phi = integral_(bb(R)) Phi_lambda upright(d) lambda $
+$ E_lambda & = n frac(h c, lambda) \, #h(2em) Phi_lambda = frac(upright(d) E_lambda, upright(d) t) \, #h(2em) Phi = integral_(bb(R)) Phi_lambda thin upright(d) lambda $
 放射輝度
 $ L \( x \, bold(omega) \) = frac(1, cos theta) frac(upright(d) Phi, upright(d) A \, bold(omega)) $
 RGB それぞれの放射束をそのまま画像にすればいい。
@@ -766,8 +766,8 @@ RGB それぞれの放射束をそのまま画像にすればいい。
 #block[
 #definition("双方向反射率分布関数 (BRDF)")[
 発光 $L_e \( x \, bold(omega)_r \)$
-$ L_r \( x \, bold(omega)_r \) & = integral_Omega f \( x \, bold(omega)_i \, bold(omega)_r \) L_i \( x \, bold(omega)_i \) cos theta upright(d) bold(omega)_i\
-upright(d) L_r \( x \, bold(omega)_r \) & = f \( x \, bold(omega)_i \, bold(omega)_r \) L_i \( x \, bold(omega)_i \) cos theta upright(d) bold(omega)_i\
+$ L_r \( x \, bold(omega)_r \) & = integral_Omega f \( x \, bold(omega)_i \, bold(omega)_r \) L_i \( x \, bold(omega)_i \) cos theta thin upright(d) bold(omega)_i\
+thin upright(d) L_r \( x \, bold(omega)_r \) & = f \( x \, bold(omega)_i \, bold(omega)_r \) L_i \( x \, bold(omega)_i \) cos theta thin upright(d) bold(omega)_i\
  $
 ]
 

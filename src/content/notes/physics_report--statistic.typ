@@ -371,21 +371,21 @@ Q 16-4. 熱力学量のグラフを描け。
 <固体の比熱の-einstein-模型>
 #block[
 Q 16-5. 独立な調和振動子の集まりの系として記述される系 $X$
-において$upright(d) omega$ が十分小さいとして、角振動数が $omega$ から
-$omega + upright(d) omega$ の範囲にある調和振動子の個数を
-$g \( omega \) upright(d) omega$ と定義する。つまり $g \( omega \)$
+において$thin upright(d) omega$ が十分小さいとして、角振動数が $omega$
+から $omega + thin upright(d) omega$ の範囲にある調和振動子の個数を
+$g \( omega \) thin upright(d) omega$ と定義する。つまり $g \( omega \)$
 は調和振動子の角振動数の個数分布関数である。
 
 ]
 このとき角運動量が $omega$ である調和振動子 1 個の Helmholtz
 自由エネルギー, エントロピー, 内部エネルギー, 比熱をそれぞれ
 $f \( omega \) \, s \( omega \) \, u \( omega \) \, c \( omega \)$
-と書くこととすると、$upright(d) omega$
+と書くこととすると、$thin upright(d) omega$
 が十分小さいことから近い角運動量の変数を個数倍して積分することで元の変数と一致する。これより次のような式が成り立つ。
-$ F & = integral_0^oo upright(d) omega g \( omega \) f \( omega \)\
-S & = integral_0^oo upright(d) omega g \( omega \) s \( omega \)\
-U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \)\
-C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \) $
+$ F & = integral_0^oo thin upright(d) omega g \( omega \) f \( omega \)\
+S & = integral_0^oo thin upright(d) omega g \( omega \) s \( omega \)\
+U & = integral_0^oo thin upright(d) omega g \( omega \) u \( omega \)\
+C & = integral_0^oo thin upright(d) omega g \( omega \) c \( omega \) $
 
 #block[
 Q 16-6. ある元素の原子 $n$ \[mol\] からなる個体を考える。Einstein
@@ -412,8 +412,8 @@ Einstein 模型における調和振動子の角振動数の個数分布関数 $
 $ g \( omega \) = 3 N delta \( omega - omega_E \) . $
 
 これより比熱は次のように表される。
-$ C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \)\
- & = integral_0^oo upright(d) omega 3 N delta \( omega - omega_E \) c \( omega \)\
+$ C & = integral_0^oo thin upright(d) omega g \( omega \) c \( omega \)\
+ & = integral_0^oo thin upright(d) omega 3 N delta \( omega - omega_E \) c \( omega \)\
  & = 3 N c \( omega_E \)\
  & = 3 N k_B (frac(1 / 2 beta planck omega_E, sinh 1 / 2 beta planck omega_E))^2 $
 高温の漸近領域において比熱 $C$ は次のようになる。

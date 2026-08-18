@@ -22,10 +22,10 @@
 #definition("Maxwell 方程式")[
 電場 $bold(E)$
 と磁束密度 $bold(B)$ に対して次のような式が成り立つ。
-$  & integral_(partial V) bold(E) dot.op bold(n) upright(d) S = 1 / epsilon_0 integral_V rho upright(d) V &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(E) = rho / epsilon_0\
- & integral_(partial V) bold(B) dot.op bold(n) upright(d) S = 0 &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0\
- & integral_(partial S) bold(E) dot.op upright(d) bold(l) = - frac(upright(d), upright(d) t) integral_S bold(B) dot.op bold(n) upright(d) S &  & arrow.l.r.double upright(bold(nabla)) times bold(E) = - frac(partial bold(B), partial t)\
- & c^2 integral_(partial S) bold(B) dot.op upright(d) bold(l) = 1 / epsilon_0 integral_S bold(j) dot.op bold(n) upright(d) S + frac(upright(d), upright(d) t) integral_S bold(E) dot.op bold(n) upright(d) S &  & arrow.l.r.double upright(bold(nabla)) times bold(B) = mu_0 bold(j) + 1 / c^2 frac(partial bold(E), partial t) $<Ampere>
+$  & integral_(partial V) bold(E) dot.op bold(n) thin upright(d) S = 1 / epsilon_0 integral_V rho thin upright(d) V &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(E) = rho / epsilon_0\
+ & integral_(partial V) bold(B) dot.op bold(n) thin upright(d) S = 0 &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0\
+ & integral_(partial S) bold(E) dot.op thin upright(d) bold(l) = - frac(upright(d), upright(d) t) integral_S bold(B) dot.op bold(n) thin upright(d) S &  & arrow.l.r.double upright(bold(nabla)) times bold(E) = - frac(partial bold(B), partial t)\
+ & c^2 integral_(partial S) bold(B) dot.op thin upright(d) bold(l) = 1 / epsilon_0 integral_S bold(j) dot.op bold(n) thin upright(d) S + frac(upright(d), upright(d) t) integral_S bold(E) dot.op bold(n) thin upright(d) S &  & arrow.l.r.double upright(bold(nabla)) times bold(B) = mu_0 bold(j) + 1 / c^2 frac(partial bold(E), partial t) $<Ampere>
 ただし電荷密度 $rho \( t \, bold(r) \) = q n$, 電流密度
 $bold(j) \( t \, bold(r) \) = q n bold(v)$ とする。
 $ c = 1 / sqrt(epsilon_0 mu_0) $
@@ -53,7 +53,7 @@ $ upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(B) \) & = uprig
  & = mu_0 upright(bold(nabla)) dot.op bold(j) + 1 / c^2 frac(partial, partial t) upright(bold(nabla)) dot.op bold(E)\
  & = upright(bold(nabla)) dot.op bold(j) + frac(partial rho, partial t) = 0 $
 連続の方程式の両辺を空間微分することで電荷が保存することが分かる。
-$  & frac(upright(d), upright(d) t) integral_V rho upright(d) V + integral_(partial V) bold(j) dot.op upright(d) bold(S) = 0 $
+$  & frac(upright(d), upright(d) t) integral_V rho thin upright(d) V + integral_(partial V) bold(j) dot.op thin upright(d) bold(S) = 0 $
 ]
 
 #theorem("磁荷の存在")[
@@ -82,7 +82,7 @@ $ frac(partial u, partial t) & = frac(partial, partial t) (epsilon_0 / 2 bold(E)
  & = 1 / mu_0 (bold(E) dot.op (upright(bold(nabla)) times bold(B)) - bold(B) dot.op \( upright(bold(nabla)) times bold(E) \))\
  & = - 1 / mu_0 upright(bold(nabla)) dot.op \( bold(E) times bold(B) \) = - upright(bold(nabla)) dot.op bold(S) $
 連続の方程式の両辺を空間微分することでエネルギーが保存することが分かる。
-$ frac(upright(d), upright(d) t) integral u upright(d) V + integral_S bold(S) dot.op bold(n) upright(d) S & = 0 $
+$ frac(upright(d), upright(d) t) integral u thin upright(d) V + integral_S bold(S) dot.op bold(n) thin upright(d) S & = 0 $
 ]
 
 #definition("Poynting ベクトル")[
@@ -113,7 +113,7 @@ $ frac(partial g_j, partial t) & = rho E_j + epsilon_(j i k) j_i B_k + frac(part
  & = partial_i (epsilon_0 E_i E_j + 1 / mu_0 B_i B_j) - partial_j (frac(1, 2 mu_0) B_i^2 + 1 / 2 epsilon_0 E_i^2) #h(2em) \( because partial_i B_i = 0 \)\
  & = partial_i T_(i j) $
 連続の方程式の両辺を空間微分することで運動量が保存することが分かる。
-$ frac(upright(d), upright(d) t) integral bold(g) upright(d) V & = integral_S T_(i j) dot.op bold(n) upright(d) S $
+$ frac(upright(d), upright(d) t) integral bold(g) thin upright(d) V & = integral_S T_(i j) dot.op bold(n) thin upright(d) S $
 ]
 
 #theorem("角運動量保存則")[
@@ -189,19 +189,19 @@ $ 1 / c^2 frac(partial phi.alt, partial t) + upright(bold(nabla)) dot.op bold(A)
 ]
 #proposition[
 任意の状況においてクーロンゲージは存在し、静電磁場において次が成り立つ。
-$ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \), \| bold(r) - bold(r)' \|) upright(d) bold(r)'\
-bold(A) \( bold(r) \) & = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) upright(d) bold(r)' $
+$ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)'\
+bold(A) \( bold(r) \) & = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)' $
 ]
 #proof[
 任意の電磁ポテンシャル $\( phi.alt \, bold(A) \)$
 に対してゲージ変換し
 $\( phi.alt - frac(partial chi, partial t) \, bold(A) + upright(bold(nabla)) chi \)$
 がクーロンゲージを満たすような $chi$ の表式は次のようになる。
-$ nabla^2 chi & = - upright(bold(nabla)) dot.op bold(A) arrow.l.r.double chi \( bold(r) \, t \) = frac(1, 4 pi) integral_V frac(upright(bold(nabla))_(bold(r)') dot.op bold(A) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) upright(d) bold(r)' $
+$ nabla^2 chi & = - upright(bold(nabla)) dot.op bold(A) arrow.l.r.double chi \( bold(r) \, t \) = frac(1, 4 pi) integral_V frac(upright(bold(nabla))_(bold(r)') dot.op bold(A) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)' $
 これよりクーロンゲージは存在する。クーロンゲージにおいて静電磁場における
 Maxwell 方程式に代入すると
-$ - nabla^2 phi.alt = rho / epsilon_0 & arrow.l.r.double phi.alt \( bold(r) \) = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) upright(d) bold(r)'\
-- nabla^2 bold(A) = mu_0 bold(j) & arrow.l.r.double bold(A) \( bold(r) \) = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) upright(d) bold(r)' $
+$ - nabla^2 phi.alt = rho / epsilon_0 & arrow.l.r.double phi.alt \( bold(r) \) = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)'\
+- nabla^2 bold(A) = mu_0 bold(j) & arrow.l.r.double bold(A) \( bold(r) \) = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)' $
 より電磁ポテンシャルは電荷と電流により求められることが分かる。
 ]
 
@@ -225,8 +225,8 @@ $ (1 / c^2 frac(partial^2, partial t^2) - nabla^2) phi.alt & = rho / epsilon_0\
 #block[
 静電磁場まとめ
 静電磁場では電荷と電流を用いて電磁ポテンシャルと電磁場が次のように分かる。
-$ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \), \| bold(r) - bold(r)' \|) upright(d) bold(r)'\
-bold(A) \( bold(r) \) & = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \), \| bold(r) - bold(r)' \|) upright(d) bold(r)'\
+$ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)'\
+bold(A) \( bold(r) \) & = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)'\
 bold(E) \( bold(r) \) & = - upright(bold(nabla)) phi.alt\
 bold(B) \( bold(r) \) & = upright(bold(nabla)) times bold(A) $
 
@@ -244,7 +244,7 @@ bold(E) \( bold(r) \) & = frac(Q, 4 pi epsilon_0) frac(bold(r) - bold(r)', \| bo
 bold(F) \( bold(r) \) & = frac(Q q, 4 pi epsilon_0) frac(bold(r) - bold(r)', \| bold(r) - bold(r)' \|^3) $
 ]
 #proof[
-$ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \), \| bold(r) - bold(r)' \|) upright(d) bold(r)' = frac(1, 4 pi epsilon_0) frac(Q, \| bold(r) - bold(r)' \|)\
+$ phi.alt \( bold(r) \) & = frac(1, 4 pi epsilon_0) integral_V frac(rho \( bold(r)' \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)' = frac(1, 4 pi epsilon_0) frac(Q, \| bold(r) - bold(r)' \|)\
 bold(E) \( bold(r) \) & = - upright(bold(nabla)) phi.alt = frac(Q, 4 pi epsilon_0) frac(bold(r) - bold(r)', \| bold(r) - bold(r)' \|^3)\
 bold(F) \( bold(r) \) & = q bold(E) = frac(Q q, 4 pi epsilon_0) frac(bold(r) - bold(r)', \| bold(r) - bold(r)' \|^3) $
 ]
@@ -277,7 +277,7 @@ bold(E) \( r \, theta \, phi \) & = - nabla phi.alt \( r \, theta \)\
 
 ]
 #theorem("ビオ・サバールの法則")[
-$ upright(d) bold(B) \( bold(r) \) & = frac(mu_0, 4 pi) frac(I upright(d) s times \( bold(r) - bold(r)' \), \| bold(r) - bold(r)' \|^3) $
+$ thin upright(d) bold(B) \( bold(r) \) & = frac(mu_0, 4 pi) frac(I thin upright(d) s times \( bold(r) - bold(r)' \), \| bold(r) - bold(r)' \|^3) $
 ]
 #proposition("ソレノイド")[
 
@@ -314,8 +314,8 @@ nabla^2 bold(B) & = 1 / c^2 frac(partial^2, partial t^2) bold(B) $
 #theorem("電磁波の複素数表現")[
 真空中に伝搬する電磁波の複素数解は波数 $bold(k) in bb(R)^3$
 を用いて次のように表される。
-$ bold(E) \( t \, bold(r) \) & = integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
-bold(B) \( t \, bold(r) \) & = integral_(bb(R)^3) upright(d) bold(k) bold(B)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
+$ bold(E) \( t \, bold(r) \) & = integral_(bb(R)^3) thin upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
+bold(B) \( t \, bold(r) \) & = integral_(bb(R)^3) thin upright(d) bold(k) bold(B)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
 ただし電磁波の分散関係は光速度 $c$ を用いて
 $omega \( bold(k) \) = c \| bold(k) \|$ と与えられ、振動方向
 $bold(E)_0 \( bold(k) \) in bb(C)^2$ は進行方向 $bold(k)$ と直交する。
@@ -324,10 +324,10 @@ $bold(E)_0 \( bold(k) \) in bb(C)^2$ は進行方向 $bold(k)$ と直交する�
 ]
 #proof[
 波動方程式に代入して成り立つことを示す。
-$ nabla^2 bold(E) & = nabla^2 integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
- & = integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) \( - \| bold(k) \|^2 \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
- & = 1 / c^2 integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) \( - omega^2 \( bold(k) \) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
- & = 1 / c^2 frac(partial^2, partial t^2) integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
+$ nabla^2 bold(E) & = nabla^2 integral_(bb(R)^3) thin upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
+ & = integral_(bb(R)^3) thin upright(d) bold(k) bold(E)_0 \( bold(k) \) \( - \| bold(k) \|^2 \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
+ & = 1 / c^2 integral_(bb(R)^3) thin upright(d) bold(k) bold(E)_0 \( bold(k) \) \( - omega^2 \( bold(k) \) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
+ & = 1 / c^2 frac(partial^2, partial t^2) integral_(bb(R)^3) thin upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
  & = 1 / c^2 frac(partial^2, partial t^2) bold(E) $
 磁束密度も同様にして示せる。
 ]
@@ -361,8 +361,8 @@ $ chevron.l bold(g) chevron.r = 1 / c^2 chevron.l bold(S) chevron.r = frac(epsil
 #block[
 電磁波まとめ $bold(k)$ について波長 $bb(R)$ と球面のさまざまな方向 $S^2$
 での電磁波の和を取ったものが電磁波全体となる。
-$ bold(E) \( t \, bold(r) \) & = integral_(bb(R)^3) upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
-bold(B) \( t \, bold(r) \) & = integral_(bb(R)^3) upright(d) bold(k) bold(B)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
+$ bold(E) \( t \, bold(r) \) & = integral_(bb(R)^3) thin upright(d) bold(k) bold(E)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \))\
+bold(B) \( t \, bold(r) \) & = integral_(bb(R)^3) thin upright(d) bold(k) bold(B)_0 \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega \( bold(k) \) t \)) $
 
 ]
 == 電磁波の伝搬
@@ -455,7 +455,7 @@ $bold(P) \( bold(r) \)$ と表す。このとき電束密度 $bold(D) \( bold(r)
 ]
 #theorem("誘電体のガウスの法則")[
 誘電体による分極電荷を含むガウスの法則は次のように書ける。
-$ integral_(partial V) bold(D) dot.op bold(n) upright(d) S & = integral_V rho_e \( bold(r) \) upright(d) V arrow.l.r.double upright(bold(nabla)) dot.op bold(D) = rho_e $
+$ integral_(partial V) bold(D) dot.op bold(n) thin upright(d) S & = integral_V rho_e \( bold(r) \) thin upright(d) V arrow.l.r.double upright(bold(nabla)) dot.op bold(D) = rho_e $
 ]
 #proof[
 誘電体内部と誘電体表面における分極電荷の電荷密度を
@@ -465,19 +465,19 @@ $ rho_P \( bold(r) \) & = - upright(bold(nabla)) dot.op bold(P)\
 sigma_P \( bold(r) \) & = bold(n) dot.op bold(P) $
 誘電体の中の巨視的な電場 $bold(E)$ は外部電場 $bold(E)_e$ と分極電場
 $bold(E)_P$ からなる。
-$ epsilon_0 integral_(partial V) bold(E)_P dot.op bold(n) upright(d) S & = integral_V rho_P upright(d) V + integral_(S_P) sigma_P upright(d) S\
- & = integral_V \( - upright(bold(nabla)) dot.op bold(P) \) upright(d) V - integral_(S_P) bold(P) dot.op bold(n) upright(d) S\
- & = - integral_(partial V + S_P) bold(P) dot.op bold(n) upright(d) S\
-integral_(partial V) \( epsilon_0 bold(E) + bold(P) \) dot.op bold(n) upright(d) S & = integral_V rho_e upright(d) V $
+$ epsilon_0 integral_(partial V) bold(E)_P dot.op bold(n) thin upright(d) S & = integral_V rho_P thin upright(d) V + integral_(S_P) sigma_P thin upright(d) S\
+ & = integral_V \( - upright(bold(nabla)) dot.op bold(P) \) thin upright(d) V - integral_(S_P) bold(P) dot.op bold(n) thin upright(d) S\
+ & = - integral_(partial V + S_P) bold(P) dot.op bold(n) thin upright(d) S\
+integral_(partial V) \( epsilon_0 bold(E) + bold(P) \) dot.op bold(n) thin upright(d) S & = integral_V rho_e thin upright(d) V $
 これより
 $bold(D) \( bold(r) \) = epsilon_0 bold(E) \( bold(r) \) + bold(P) \( bold(r) \)$
 とおくことで誘電体におけるガウスの法則が求まる。
-$ integral_(partial V) bold(D) dot.op bold(n) upright(d) S & = integral_V rho_e upright(d) V arrow.l.r.double upright(bold(nabla)) dot.op bold(D) = rho_e $
+$ integral_(partial V) bold(D) dot.op bold(n) thin upright(d) S & = integral_V rho_e thin upright(d) V arrow.l.r.double upright(bold(nabla)) dot.op bold(D) = rho_e $
 ]
 
 #theorem("誘電体のエネルギー")[
 一般の誘電体において電場が作るエネルギー密度
-$ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op upright(d) bold(D) $
+$ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op thin upright(d) bold(D) $
 ]
 #proof[
 電場を作ってから分極させるようにしてエネルギー差を計算する。$bold(p)$
@@ -487,7 +487,7 @@ $Delta W = - bold(F) dot.op Delta bold(r) = q bold(E) dot.op Delta bold(r) = bol
 Delta u_P & = bold(E) dot.op Delta bold(P)\
 Delta u_e & = Delta u_E + Delta u_P = bold(E) dot.op \( epsilon_0 Delta bold(E) + Delta bold(P) \) = bold(E) dot.op Delta bold(D) $
 となる。これより単位体積当たりのエネルギーは
-$ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op upright(d) bold(D) $
+$ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op thin upright(d) bold(D) $
 ]
 
 #theorem("境界条件")[
@@ -496,8 +496,8 @@ $ 2 D_(1 perp) & = D_(2 perp) \, #h(2em) E_(1 parallel) & = E_(2 parallel) $
 ]
 #proof[
 Maxwell の方程式より
-$ 2 0 & = integral_S bold(D) dot.op bold(n) upright(d) S = D_(1 perp) Delta S + D_(2 perp) \( - Delta S \) #h(2em) & D_(1 perp) = D_(2 perp)\
-0 & = integral_(partial S) bold(E) dot.op upright(d) bold(l) = E_(1 parallel) l - E_(2 parallel) l #h(2em) & E_(1 parallel) = E_(2 parallel) $
+$ 2 0 & = integral_S bold(D) dot.op bold(n) thin upright(d) S = D_(1 perp) Delta S + D_(2 perp) \( - Delta S \) #h(2em) & D_(1 perp) = D_(2 perp)\
+0 & = integral_(partial S) bold(E) dot.op thin upright(d) bold(l) = E_(1 parallel) l - E_(2 parallel) l #h(2em) & E_(1 parallel) = E_(2 parallel) $
 ]
 
 #definition("磁性体")[
@@ -510,7 +510,7 @@ $ 2 0 & = integral_S bold(D) dot.op bold(n) upright(d) S = D_(1 perp) Delta S + 
 ]
 #theorem("磁場におけるガウスの法則")[
 磁性体による分極磁荷を含むガウスの法則は次のように書ける。
-$ integral_(partial V) bold(B) dot.op bold(n) upright(d) S & = 0 arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0 $
+$ integral_(partial V) bold(B) dot.op bold(n) thin upright(d) S & = 0 arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0 $
 ]
 #proof[
 磁性体内部と磁性体表面における分極磁荷の密度を
@@ -520,39 +520,39 @@ $ rho_M \( bold(r) \) & = - upright(bold(nabla)) dot.op bold(M)\
 sigma_M \( bold(r) \) & = bold(n) dot.op bold(M) $
 磁性体の中の巨視的な磁場 $bold(H)$ は外部磁場 $bold(H)_e$ と分極磁場
 $bold(H)_M$ からなる。
-$ mu_0 integral_(partial V) bold(H)_M dot.op bold(n) upright(d) S & = integral_V rho_M upright(d) V + integral_(S_M) sigma_M upright(d) S\
- & = integral_V \( - upright(bold(nabla)) dot.op bold(M) \) upright(d) V - integral_(S_M) bold(M) dot.op bold(n) upright(d) S\
- & = - integral_(partial V + S_M) bold(M) dot.op bold(n) upright(d) S\
-integral_(partial V) \( mu_0 bold(H) + bold(M) \) dot.op bold(n) upright(d) S & = mu_0 integral_(partial V) bold(H)_e dot.op bold(n) upright(d) S = 0 $
+$ mu_0 integral_(partial V) bold(H)_M dot.op bold(n) thin upright(d) S & = integral_V rho_M thin upright(d) V + integral_(S_M) sigma_M thin upright(d) S\
+ & = integral_V \( - upright(bold(nabla)) dot.op bold(M) \) thin upright(d) V - integral_(S_M) bold(M) dot.op bold(n) thin upright(d) S\
+ & = - integral_(partial V + S_M) bold(M) dot.op bold(n) thin upright(d) S\
+integral_(partial V) \( mu_0 bold(H) + bold(M) \) dot.op bold(n) thin upright(d) S & = mu_0 integral_(partial V) bold(H)_e dot.op bold(n) thin upright(d) S = 0 $
 これより $bold(B) = mu_0 bold(H) + bold(M)$ とおくことで
-$ integral_(partial V) bold(B) dot.op bold(n) upright(d) S & = 0 arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0 $
+$ integral_(partial V) bold(B) dot.op bold(n) thin upright(d) S & = 0 arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0 $
 ]
 
 #theorem("ファラデーの電磁誘導の法則")[
-$ integral.cont_(partial S) bold(E) dot.op upright(d) bold(l) = - integral_S frac(partial bold(B), partial t) dot.op upright(d) bold(S) & arrow.l.r.double upright(bold(nabla)) times bold(E) = - frac(partial bold(B), partial t) $
+$ integral.cont_(partial S) bold(E) dot.op thin upright(d) bold(l) = - integral_S frac(partial bold(B), partial t) dot.op thin upright(d) bold(S) & arrow.l.r.double upright(bold(nabla)) times bold(E) = - frac(partial bold(B), partial t) $
 ]
 #proof[
-$ integral_(partial S) bold(E)_P dot.op upright(d) bold(l) = 0\
-integral_(partial S) frac(partial bold(B)_M, partial t) dot.op upright(d) bold(l) = 0 $
+$ integral_(partial S) bold(E)_P dot.op thin upright(d) bold(l) = 0\
+integral_(partial S) frac(partial bold(B)_M, partial t) dot.op thin upright(d) bold(l) = 0 $
 ]
 
 #theorem("物質中のマクスウェル・アンペールの法則")[
-$ integral.cont_(partial S) bold(H) dot.op upright(d) bold(l) = integral_S (bold(j) + frac(partial bold(D), partial t)) dot.op upright(d) bold(S) arrow.l.r.double upright(bold(nabla)) times bold(H) = bold(j) + frac(partial bold(D), partial t) $
+$ integral.cont_(partial S) bold(H) dot.op thin upright(d) bold(l) = integral_S (bold(j) + frac(partial bold(D), partial t)) dot.op thin upright(d) bold(S) arrow.l.r.double upright(bold(nabla)) times bold(H) = bold(j) + frac(partial bold(D), partial t) $
 ]
 #proof[
 原点 $O$ に $z$ 軸に平行な電気双極子があり，正電荷 $q$
 と負電荷 $- q$ の $z$ 座標をそれぞれとする。正電荷と負電荷の間に電流
 $I_P$ が流れ、$q$ の値が時間と共に変化するとする。
 $ bold(H)_M \( bold(r) \) & = frac(I_P bold(d) times bold(r), 4 pi r^3) = frac(dot(bold(p)) times bold(r), 4 pi r^3)\
-integral.cont_(partial S) bold(H)_M dot.op upright(d) bold(l) & = frac(dot(p) a^2, 2 \( a^2 + z^2 \)^(3 \/ 2))\
-integral.cont_(partial S) bold(H)_M dot.op upright(d) bold(l) & = frac(upright(d) Psi_P, upright(d) t) $
+integral.cont_(partial S) bold(H)_M dot.op thin upright(d) bold(l) & = frac(dot(p) a^2, 2 \( a^2 + z^2 \)^(3 \/ 2))\
+integral.cont_(partial S) bold(H)_M dot.op thin upright(d) bold(l) & = frac(upright(d) Psi_P, upright(d) t) $
 磁化電流
-$ frac(upright(d) Psi_P, upright(d) t) & = integral epsilon_0 frac(partial bold(E), partial t) dot.op upright(d) bold(S) $
+$ frac(upright(d) Psi_P, upright(d) t) & = integral epsilon_0 frac(partial bold(E), partial t) dot.op thin upright(d) bold(S) $
 分極電荷の移動による電流 (レントゲン電流) は
-$ I_P & = integral frac(partial bold(P), partial t) dot.op upright(d) bold(S) $
-$ integral.cont_(partial S) bold(H) dot.op upright(d) bold(l) & = frac(upright(d) Psi_P, upright(d) t) + I_P\
- & = integral_S (epsilon_0 frac(partial bold(E), partial t) + frac(partial bold(P), partial t) + bold(j)) dot.op upright(d) bold(S)\
- & = integral_S (frac(partial bold(D), partial t) + bold(j)) dot.op upright(d) bold(S)\
+$ I_P & = integral frac(partial bold(P), partial t) dot.op thin upright(d) bold(S) $
+$ integral.cont_(partial S) bold(H) dot.op thin upright(d) bold(l) & = frac(upright(d) Psi_P, upright(d) t) + I_P\
+ & = integral_S (epsilon_0 frac(partial bold(E), partial t) + frac(partial bold(P), partial t) + bold(j)) dot.op thin upright(d) bold(S)\
+ & = integral_S (frac(partial bold(D), partial t) + bold(j)) dot.op thin upright(d) bold(S)\
 upright(bold(nabla)) times bold(H) & = bold(j) + frac(partial bold(D), partial t) $
 ]
 
@@ -564,17 +564,17 @@ $ upright(bold(nabla)) dot.op \( upright(bold(nabla)) times bold(H) \) & = uprig
 ]
 
 #theorem("磁性体中のエネルギー")[
-$ u_m = integral_0^B bold(H) dot.op upright(d) bold(B) $
+$ u_m = integral_0^B bold(H) dot.op thin upright(d) bold(B) $
 ]
 #proof[
 誘電体と同様にして
 $ Delta u_M & = bold(H) dot.op \( Delta bold(M) + mu_0 Delta bold(H) \) = bold(H) dot.op Delta bold(B)\
-u_M & = integral_0^B bold(H) dot.op upright(d) bold(B) $
+u_M & = integral_0^B bold(H) dot.op thin upright(d) bold(B) $
 ]
 
 #theorem("エネルギー保存則")[
 エネルギー密度 $u_(e m)$ は次のように表される。
-$ u_(e m) & = integral_0^(bold(D)) bold(E) dot.op upright(d) bold(D) + integral_0^(bold(B)) bold(H) dot.op upright(d) bold(B) $
+$ u_(e m) & = integral_0^(bold(D)) bold(E) dot.op thin upright(d) bold(D) + integral_0^(bold(B)) bold(H) dot.op thin upright(d) bold(B) $
 ]
 #proof[
 
@@ -604,16 +604,16 @@ $ frac(partial p_j, partial t) & = [rho bold(E) + bold(j) times bold(B) + frac(p
  & = partial_i (epsilon E_i E_j + mu H_i H_j) - partial_j (1 / 2 \( E_i^2 + H_i^2 \))\
  & = partial_i T_(i j) $ よってこれを積分形に書き直すと Gauss
 の発散定理を用いて次のようになる。
-$ integral.cont_(partial V) bold(j) \( bold(r) \, t \) dot.op bold(n) \( bold(r) \) upright(d) S + partial_t integral_V \( bold(p)_m + bold(p)_(E M) \) upright(d) v = 0 $
+$ integral.cont_(partial V) bold(j) \( bold(r) \, t \) dot.op bold(n) \( bold(r) \) thin upright(d) S + partial_t integral_V \( bold(p)_m + bold(p)_(E M) \) thin upright(d) v = 0 $
 ]
 
 #block[
 物質中の Maxwell 方程式 $bold(D) = epsilon_0 bold(E) + bold(P)$
 $bold(B) = mu_0 bold(H) + bold(M)$
-$ 3 & integral_(partial V) bold(D) dot.op upright(d) bold(S) = integral_V rho_e upright(d) V &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(D) = rho_e\
- & integral_(partial V) bold(B) dot.op upright(d) bold(S) = 0 &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0\
- & integral_(partial S) bold(E) dot.op upright(d) bold(l) = - frac(upright(d), upright(d) t) integral_S bold(B) dot.op upright(d) bold(S) &  & arrow.l.r.double upright(bold(nabla)) times bold(E) = - frac(partial bold(B), partial t)\
- & integral_(partial S) bold(H) dot.op upright(d) bold(l) = integral_S bold(j) dot.op upright(d) bold(S) + frac(upright(d), upright(d) t) integral_S bold(D) dot.op upright(d) bold(S) &  & arrow.l.r.double upright(bold(nabla)) times bold(H) = bold(j) + frac(partial bold(D), partial t) $
+$ 3 & integral_(partial V) bold(D) dot.op thin upright(d) bold(S) = integral_V rho_e thin upright(d) V &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(D) = rho_e\
+ & integral_(partial V) bold(B) dot.op thin upright(d) bold(S) = 0 &  & arrow.l.r.double upright(bold(nabla)) dot.op bold(B) = 0\
+ & integral_(partial S) bold(E) dot.op thin upright(d) bold(l) = - frac(upright(d), upright(d) t) integral_S bold(B) dot.op thin upright(d) bold(S) &  & arrow.l.r.double upright(bold(nabla)) times bold(E) = - frac(partial bold(B), partial t)\
+ & integral_(partial S) bold(H) dot.op thin upright(d) bold(l) = integral_S bold(j) dot.op thin upright(d) bold(S) + frac(upright(d), upright(d) t) integral_S bold(D) dot.op thin upright(d) bold(S) &  & arrow.l.r.double upright(bold(nabla)) times bold(H) = bold(j) + frac(partial bold(D), partial t) $
 
 ]
 == 誘電体の電磁気学
@@ -630,13 +630,13 @@ bold(D) & = epsilon_0 \( 1 + chi \) bold(E) = epsilon bold(E) $
 ]
 #theorem("常誘電体のエネルギー密度")[
 $ u_e \( bold(r) \) & = 1 / 2 bold(E) dot.op bold(D) = epsilon_0 / 2 bold(E)^2 = frac(1, 2 epsilon_0) bold(D)^2\
-U_e & = 1 / 2 integral phi.alt rho_e upright(d) V $
+U_e & = 1 / 2 integral phi.alt rho_e thin upright(d) V $
 ]
 #proof[
-$ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op upright(d) bold(D) = epsilon integral_0^E bold(E) dot.op upright(d) bold(E) = frac(epsilon bold(E)^2, 2) = frac(bold(D)^2, 2 epsilon) = 1 / 2 bold(E) dot.op bold(D) $
+$ u_e \( bold(r) \) & = integral_0^D bold(E) dot.op thin upright(d) bold(D) = epsilon integral_0^E bold(E) dot.op thin upright(d) bold(E) = frac(epsilon bold(E)^2, 2) = frac(bold(D)^2, 2 epsilon) = 1 / 2 bold(E) dot.op bold(D) $
 電位と電荷密度を用いると次のようになる。
 $ u_e \( bold(r) \) & = 1 / 2 bold(E) dot.op bold(D) = 1 / 2 \( - upright(bold(nabla)) phi.alt \) dot.op bold(D) = 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + phi.alt upright(bold(nabla)) dot.op bold(D)) = 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + phi.alt rho_e)\
-U_e & = integral 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + phi.alt rho_e) upright(d) V = 1 / 2 integral phi.alt rho_e upright(d) V $
+U_e & = integral 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + phi.alt rho_e) thin upright(d) V = 1 / 2 integral phi.alt rho_e thin upright(d) V $
 ]
 
 #proposition("中心に点電荷のある誘電体球")[
@@ -644,7 +644,7 @@ U_e & = integral 1 / 2 (- upright(bold(nabla)) dot.op \( phi.alt bold(D) \) + ph
 ]
 #proof[
 半径 $r$ の閉球面 $S$ においてガウスの法則を適用する
-$ integral.cont_S bold(D) \( bold(r) \) dot.op upright(d) bold(S) & = 4 pi r^2 D \( r \) = Q\
+$ integral.cont_S bold(D) \( bold(r) \) dot.op thin upright(d) bold(S) & = 4 pi r^2 D \( r \) = Q\
 D \( r \) & = frac(Q, 4 pi r^2) $ 電束密度 $D \( r \)$ から電場
 $E \( r \)$, 電位 $phi.alt \( r \)$, 電気分極 $P \( r \)$ を求められる。
 $ D \( r \) & = cases(delim: "{", epsilon E \( r \) & \( r < a \), epsilon_0 E \( r \) & \( r > a \))\
@@ -652,7 +652,7 @@ E \( r \) & = cases(delim: "{", frac(Q, 4 pi epsilon r^2) & \( r < a \), frac(Q,
 P \( r \) & = D \( r \) - epsilon_0 E \( r \) = cases(delim: "{", frac(epsilon - epsilon_0, epsilon) frac(Q, 4 pi r^2) & \( r < a \), 0 & \( r > a \))\
 rho_P \( r \) & = - upright(bold(nabla)) dot.op bold(P) = - frac(epsilon - epsilon_0, epsilon) Q (upright(bold(nabla)) dot.op frac(bold(r), 4 pi r^2)) = - frac(epsilon - epsilon_0, epsilon) Q delta \( bold(r) \)\
 sigma_P \( r \) & = bold(n) dot.op bold(P) = frac(epsilon - epsilon_0, epsilon) frac(Q, 4 pi a^2)\
-phi.alt \( r \) & = integral_r^oo E \( r \) upright(d) r = cases(delim: "{", frac(Q, 4 pi epsilon) (1 / r - 1 / a) + frac(Q, 4 pi epsilon_0 a) & \( r < a \), frac(Q, 4 pi epsilon_0 r) & \( r > a \)) $
+phi.alt \( r \) & = integral_r^oo E \( r \) thin upright(d) r = cases(delim: "{", frac(Q, 4 pi epsilon) (1 / r - 1 / a) + frac(Q, 4 pi epsilon_0 a) & \( r < a \), frac(Q, 4 pi epsilon_0 r) & \( r > a \)) $
 となる。
 ]
 

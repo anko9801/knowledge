@@ -37,7 +37,7 @@ $psi \( bold(r) \, t \) in C^1 \( bb(C) \)$
 $rho \( bold(r) \, t \) = \| psi \( bold(r) \, t \) \|^2$
 を粒子の確率密度 (probability density)
 と解釈し、次の規格化条件を満たすように波動関数を定義する。
-$ integral rho \( bold(r) \, t \) upright(d) bold(r) = 1 $
+$ integral rho \( bold(r) \, t \) thin upright(d) bold(r) = 1 $
 ]
 #theorem("Schrödinger の方程式")[
 波動関数 $psi \( bold(r) \, t \)$ は次の Schrödinger の方程式に従う。
@@ -49,10 +49,10 @@ $ k^2 / omega^2 frac(partial^2 psi \( bold(r) \, t \), partial t^2) & = nabla^2 
 このときダランベールの解より波数ベクトル $bold(k)$ を用いて波動関数は
 $f \( bold(k) dot.op bold(r) - omega t \)$
 の重ね合わせであるから次のようにおく。
-$ psi \( bold(r) \, t \) & = integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) upright(d) bold(k) $
+$ psi \( bold(r) \, t \) & = integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) thin upright(d) bold(k) $
 この波動関数に対して微分すると次のようになる。
-$ frac(partial, partial t) psi \( bold(r) \, t \) & = frac(partial, partial t) integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) upright(d) bold(k) = - i omega integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) upright(d) bold(k) = - i omega psi \( bold(r) \, t \)\
-nabla^2 psi \( bold(r) \, t \) & = nabla^2 integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) upright(d) bold(k) = - k^2 integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) upright(d) bold(k) = - k^2 psi \( bold(r) \, t \) $
+$ frac(partial, partial t) psi \( bold(r) \, t \) & = frac(partial, partial t) integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) thin upright(d) bold(k) = - i omega integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) thin upright(d) bold(k) = - i omega psi \( bold(r) \, t \)\
+nabla^2 psi \( bold(r) \, t \) & = nabla^2 integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) thin upright(d) bold(k) = - k^2 integral_(bold(k)) tilde(phi) \( bold(k) \) e^(i \( bold(k) dot.op bold(r) - omega t \)) thin upright(d) bold(k) = - k^2 psi \( bold(r) \, t \) $
 よって波動方程式は次のようになる。
 $ i planck frac(partial, partial t) psi \( bold(r) \, t \) & = (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi \( bold(r) \, t \) $
 ]
@@ -74,26 +74,26 @@ $ bold(j) \( bold(r) \, t \) & := - frac(i planck, 2 m) (psi^(\*) \( bold(r) \, 
 これより連続の方程式を満たす。
 $ frac(partial, partial t) rho \( bold(r) \, t \) + bold(nabla) dot.op bold(j) \( bold(r) \, t \) = 0 $
 これは
-$ frac(upright(d), upright(d) t) integral rho \( bold(r) \, t \) upright(d) V & = - integral bold(nabla) dot.op bold(j) \( bold(r) \, t \) upright(d) V = - lim_(\| bold(r) \| arrow.r oo) integral bold(j) \( bold(r) \, t \) dot.op bold(n) upright(d) S = 0 $
+$ frac(upright(d), upright(d) t) integral rho \( bold(r) \, t \) thin upright(d) V & = - integral bold(nabla) dot.op bold(j) \( bold(r) \, t \) thin upright(d) V = - lim_(\| bold(r) \| arrow.r oo) integral bold(j) \( bold(r) \, t \) dot.op bold(n) thin upright(d) S = 0 $
 ]
 
 == 期待値と演算子
 <期待値と演算子>
 #definition[
 物理量 $F$ に対する期待値を次のように定義する。
-$ ⟨F⟩ & := integral psi^(\*) \( bold(r) \, t \) F psi \( bold(r) \, t \) upright(d) bold(r) $
+$ ⟨F⟩ & := integral psi^(\*) \( bold(r) \, t \) F psi \( bold(r) \, t \) thin upright(d) bold(r) $
 ]
 まずは運動量の期待値を計算すると次のようになる。
-$ ⟨bold(p)⟩ & = m frac(upright(d) ⟨bold(r)⟩, upright(d) t) = m frac(upright(d), upright(d) t) integral psi^(\*) bold(r) psi upright(d) bold(r) = m integral (psi^(\*) bold(r) frac(partial psi, partial t) + frac(partial psi^(\*), partial t) bold(r) psi) upright(d) bold(r)\
- & = - m integral psi^(\*) bold(r) i / planck (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi upright(d) bold(r) + m integral i / planck (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi^(\*) bold(r) psi upright(d) bold(r)\
- & = frac(i planck, 2) integral (psi^(\*) bold(r) nabla^2 psi - nabla^2 psi^(\*) bold(r) psi) upright(d) bold(r)\
- & = frac(i planck, 2) integral (psi^(\*) bold(r) nabla^2 psi - psi^(\*) nabla^2 \( bold(r) psi \)) upright(d) bold(r) - frac(i planck, 2) [nabla psi^(\*) bold(r) psi] + frac(i planck, 2) [psi^(\*) nabla \( bold(r) psi \)]\
- & = integral psi^(\*) \( - i planck bold(nabla) \) psi upright(d) bold(r) = ⟨- i planck bold(nabla)⟩ $
+$ ⟨bold(p)⟩ & = m frac(upright(d) ⟨bold(r)⟩, upright(d) t) = m frac(upright(d), upright(d) t) integral psi^(\*) bold(r) psi thin upright(d) bold(r) = m integral (psi^(\*) bold(r) frac(partial psi, partial t) + frac(partial psi^(\*), partial t) bold(r) psi) thin upright(d) bold(r)\
+ & = - m integral psi^(\*) bold(r) i / planck (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi thin upright(d) bold(r) + m integral i / planck (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi^(\*) bold(r) psi thin upright(d) bold(r)\
+ & = frac(i planck, 2) integral (psi^(\*) bold(r) nabla^2 psi - nabla^2 psi^(\*) bold(r) psi) thin upright(d) bold(r)\
+ & = frac(i planck, 2) integral (psi^(\*) bold(r) nabla^2 psi - psi^(\*) nabla^2 \( bold(r) psi \)) thin upright(d) bold(r) - frac(i planck, 2) [nabla psi^(\*) bold(r) psi] + frac(i planck, 2) [psi^(\*) nabla \( bold(r) psi \)]\
+ & = integral psi^(\*) \( - i planck bold(nabla) \) psi thin upright(d) bold(r) = ⟨- i planck bold(nabla)⟩ $
 また力の期待値も次のようになる。
-$ m frac(upright(d)^2 ⟨bold(r)⟩, upright(d) t^2) & = frac(upright(d) ⟨bold(p)⟩, upright(d) t) = - i planck frac(upright(d), upright(d) t) integral psi^(\*) bold(nabla) psi upright(d) bold(r) = integral (- psi^(\*) bold(nabla) (i planck frac(partial psi, partial t)) + (- i planck frac(partial psi^(\*), partial t)) bold(nabla) psi) upright(d) bold(r)\
- & = - integral psi^(\*) bold(nabla) (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi upright(d) bold(r) + integral (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi^(\*) bold(nabla) psi upright(d) bold(r)\
- & = frac(planck^2, 2 m) integral (psi^(\*) bold(nabla) (nabla^2 psi) - (nabla^2 psi^(\*)) bold(nabla) psi) upright(d) bold(r) - integral psi^(\*) bold(nabla) V \( bold(r) \) psi upright(d) bold(r)\
- & = - integral psi^(\*) bold(nabla) V \( bold(r) \) psi upright(d) bold(r) = ⟨- bold(nabla) V⟩ $
+$ m frac(upright(d)^2 ⟨bold(r)⟩, upright(d) t^2) & = frac(upright(d) ⟨bold(p)⟩, upright(d) t) = - i planck frac(upright(d), upright(d) t) integral psi^(\*) bold(nabla) psi thin upright(d) bold(r) = integral (- psi^(\*) bold(nabla) (i planck frac(partial psi, partial t)) + (- i planck frac(partial psi^(\*), partial t)) bold(nabla) psi) thin upright(d) bold(r)\
+ & = - integral psi^(\*) bold(nabla) (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi thin upright(d) bold(r) + integral (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) psi^(\*) bold(nabla) psi thin upright(d) bold(r)\
+ & = frac(planck^2, 2 m) integral (psi^(\*) bold(nabla) (nabla^2 psi) - (nabla^2 psi^(\*)) bold(nabla) psi) thin upright(d) bold(r) - integral psi^(\*) bold(nabla) V \( bold(r) \) psi thin upright(d) bold(r)\
+ & = - integral psi^(\*) bold(nabla) V \( bold(r) \) psi thin upright(d) bold(r) = ⟨- bold(nabla) V⟩ $
 このようなことから位置演算子 $hat(bold(r))$, 運動量演算子
 $hat(bold(p))$, ハミルトニアン演算子 $hat(H)$ を次のように定義する。
 $ hat(bold(r)) := bold(r) \, #h(2em) hat(bold(p)) := - i planck bold(nabla) \, #h(2em) hat(H) := frac(hat(bold(p))^2, 2 m) + V \( hat(bold(r)) \, t \) $
@@ -101,7 +101,7 @@ $ hat(bold(r)) := bold(r) \, #h(2em) hat(bold(p)) := - i planck bold(nabla) \, #
 #definition("エルミート演算子, 固有関数, 固有値")[
 演算子 $hat(F)$ がエルミート演算子 (Hermite operator)
 であるとは次の式が成り立つということである。
-$ integral phi.alt^(\*) \( bold(r) \, t \) hat(F) psi \( bold(r) \, t \) upright(d) bold(r) = integral \( hat(F) phi.alt \( bold(r) \, t \) \)^(\*) psi \( bold(r) \, t \) upright(d) bold(r) $
+$ integral phi.alt^(\*) \( bold(r) \, t \) hat(F) psi \( bold(r) \, t \) thin upright(d) bold(r) = integral \( hat(F) phi.alt \( bold(r) \, t \) \)^(\*) psi \( bold(r) \, t \) thin upright(d) bold(r) $
 次のように演算子 $hat(F)$
 に対して定数倍を除いて波動関数が変化しないとき、波動関数
 $psi_f \( bold(r) \, t \)$ を演算子 $hat(F)$ の固有関数、定数 $f$
@@ -111,12 +111,12 @@ $ hat(F) psi_f \( bold(r) \, t \) & = f psi_f \( bold(r) \, t \) $
 エルミート演算子 $hat(F)$ における固有値 $f \, f'$ を持つ固有関数
 $psi_f \( bold(r) \, t \) \, psi_(f') \( bold(r) \, t \)$
 について定義より
-$ integral psi_(f')^(\*) \( bold(r) \, t \) hat(F) psi_f \( bold(r) \, t \) upright(d) bold(r) & = integral (hat(F) psi_(f') \( bold(r) \, t \))^(\*) psi_f \( bold(r) \, t \) upright(d) bold(r)\
-\( f - f'^(\*) \) integral psi_(f')^(\*) \( bold(r) \, t \) psi_f \( bold(r) \, t \) upright(d) bold(r) & = 0 $
+$ integral psi_(f')^(\*) \( bold(r) \, t \) hat(F) psi_f \( bold(r) \, t \) thin upright(d) bold(r) & = integral (hat(F) psi_(f') \( bold(r) \, t \))^(\*) psi_f \( bold(r) \, t \) thin upright(d) bold(r)\
+\( f - f'^(\*) \) integral psi_(f')^(\*) \( bold(r) \, t \) psi_f \( bold(r) \, t \) thin upright(d) bold(r) & = 0 $
 $f = f'$ のとき $f = f^(\*)$
 であるからエルミート演算子の固有値は必ず実数となる。 また $f eq.not f'$
 のとき
-$ integral psi_(f')^(\*) \( bold(r) \, t \) psi_f \( bold(r) \, t \) upright(d) bold(r) & = 0 $
+$ integral psi_(f')^(\*) \( bold(r) \, t \) psi_f \( bold(r) \, t \) thin upright(d) bold(r) & = 0 $
 となるからエルミート演算子の固有関数は互いに直交する。
 
 #theorem("不確定性原理")[
@@ -127,8 +127,8 @@ $ Delta r_i Delta p_j gt.eq planck / 2 delta_(i j) $
 波動関数が次のような関数のとき
 $ Psi \( bold(r) \, t \) & := (i s \( hat(r)_i - ⟨hat(r)_i⟩ \) + \( hat(p)_j - ⟨hat(p)_j⟩ \)) psi \( bold(r) \, t \) $
 
-$ integral \| Psi \( bold(r) \, t \) \|^2 upright(d) bold(r) & = integral Psi^(\*) \( bold(r) \, t \) Psi \( bold(r) \, t \) upright(d) bold(r)\
- & = integral psi^(\*) \( bold(r) \, t \) (s^2 \( hat(r)_i - ⟨hat(r)_i⟩ \)^2 - i s \[ hat(r)_i - ⟨hat(r)_i⟩ \, hat(p)_j - ⟨hat(p)_j⟩ \] + \( hat(p)_j - ⟨hat(p)_j⟩ \)^2) psi \( bold(r) \, t \) upright(d) bold(r)\
+$ integral \| Psi \( bold(r) \, t \) \|^2 thin upright(d) bold(r) & = integral Psi^(\*) \( bold(r) \, t \) Psi \( bold(r) \, t \) thin upright(d) bold(r)\
+ & = integral psi^(\*) \( bold(r) \, t \) (s^2 \( hat(r)_i - ⟨hat(r)_i⟩ \)^2 - i s \[ hat(r)_i - ⟨hat(r)_i⟩ \, hat(p)_j - ⟨hat(p)_j⟩ \] + \( hat(p)_j - ⟨hat(p)_j⟩ \)^2) psi \( bold(r) \, t \) thin upright(d) bold(r)\
  & = s^2 ⟨\( hat(r)_i - ⟨hat(r)_i⟩ \)^2⟩ + s planck delta_(i j) + ⟨\( hat(p)_j - ⟨hat(p)_j⟩ \)^2⟩\
  & = s^2 Delta r_i^2 + s planck delta_(i j) + Delta p_j^2\
  & = (s + frac(planck delta_(i j), 2 Delta r_i^2))^2 Delta r_i^2 - frac(planck^2 delta_(i j), 4 Delta r_i^2) + Delta p_j^2 gt.eq 0 $
@@ -148,8 +148,8 @@ $psi \( bold(r) \, t \) = phi \( bold(r) \) e^(- i omega t)$
 $ hat(H) & = - frac(planck^2, 2 m) nabla^2 + V \( bold(r) \) = frac(hat(bold(p))^2, 2 m) + V \( bold(r) \)\
 hat(H) psi \( bold(r) \, t \) & = i planck frac(partial, partial t) psi \( bold(r) \, t \) = planck omega psi \( bold(r) \, t \) = E psi \( bold(r) \, t \) $
 またポテンシャルが不連続であっても有限ならば波動関数は連続である。
-$ lim_(epsilon.alt arrow.r + 0) nabla psi \( bold(r) \, t \) \|_(bold(r)_0)^(bold(r)_0 + epsilon.alt) & = lim_(epsilon.alt arrow.r + 0) integral_(bold(r)_0)^(bold(r)_0 + epsilon.alt) nabla^2 psi \( bold(r) \, t \) upright(d) bold(r)\
- & = - frac(2 m, planck^2) lim_(epsilon.alt arrow.r + 0) integral_(bold(r)_0)^(bold(r)_0 + epsilon.alt) underbrace(\( E - V \( bold(r) \) \) psi \( bold(r) \, t \), "有限") upright(d) bold(r) arrow.r 0 $
+$ lim_(epsilon.alt arrow.r + 0) nabla psi \( bold(r) \, t \) \|_(bold(r)_0)^(bold(r)_0 + epsilon.alt) & = lim_(epsilon.alt arrow.r + 0) integral_(bold(r)_0)^(bold(r)_0 + epsilon.alt) nabla^2 psi \( bold(r) \, t \) thin upright(d) bold(r)\
+ & = - frac(2 m, planck^2) lim_(epsilon.alt arrow.r + 0) integral_(bold(r)_0)^(bold(r)_0 + epsilon.alt) underbrace(\( E - V \( bold(r) \) \) psi \( bold(r) \, t \), "有限") thin upright(d) bold(r) arrow.r 0 $
 ポテンシャルが空間反転対称性をもつとき $phi \( bold(r) \)$ が
 Schrödinger 方程式の解ならば $phi \( - bold(r) \)$ も解となる。
 $ E phi \( - bold(r) \) & = (- frac(planck^2, 2 m) \( - nabla \)^2 + V \( - bold(r) \)) phi \( - bold(r) \) = (- frac(planck^2, 2 m) nabla^2 + V \( bold(r) \)) phi \( - bold(r) \) = hat(H) phi \( - bold(r) \) $
@@ -176,12 +176,12 @@ $ psi_(bold(k)) \( bold(r) \, t \) & = C e^(i \( bold(k) dot.op bold(r) - omega_
 一辺の長さ $L$ の箱の中に閉じ込めるという周期境界条件を考える。
 $ psi \( bold(r) \, t \) = psi \( bold(r) + L bold(e)_i \, t \) arrow.l.r.double e^(i k_i L) = 1 arrow.l.r.double k_i = frac(2 pi n_i, L) #h(2em) \( n_i in bb(Z) \) $
 また規格化条件より次のようになる。
-$ integral \| psi_(bold(k)) \( bold(r) \, t \) \|^2 upright(d) bold(r) = \| C \|^2 L^3 = 1 arrow.l.r.double \| C \| & = 1 / L^(3 \/ 2) $
+$ integral \| psi_(bold(k)) \( bold(r) \, t \) \|^2 thin upright(d) bold(r) = \| C \|^2 L^3 = 1 arrow.l.r.double \| C \| & = 1 / L^(3 \/ 2) $
 また正規直交関係式より
-$ integral psi_(bold(k)')^(\*) \( bold(r) \, t \) psi_(bold(k)) \( bold(r) \, t \) upright(d) bold(r) & = delta_(bold(k) bold(k)') $
+$ integral psi_(bold(k)')^(\*) \( bold(r) \, t \) psi_(bold(k)) \( bold(r) \, t \) thin upright(d) bold(r) & = delta_(bold(k) bold(k)') $
 一辺の長さが無限大の箱を考えるときディラックのデルタ関数を用いると
-$ lim_(L arrow.r oo) integral psi_(bold(k)')^(\*) \( bold(r) \, t \) psi_(bold(k)) \( bold(r) \, t \) upright(d) bold(r) & = \| C \|^2 e^(- i \( omega_(bold(k)) - omega_(bold(k)') \) t) lim_(L arrow.r oo) integral e^(i \( bold(k) - bold(k)' \) dot.op bold(r)) upright(d) bold(r)\
- & = \| C \|^2 e^(- i \( omega_(bold(k)) - omega_(bold(k)') \) t) product_(i = x \, y \, z) lim_(L arrow.r oo) integral_(- L \/ 2)^(L \/ 2) e^(i \( k_i - k_(i') \) r_i) upright(d) r_i\
+$ lim_(L arrow.r oo) integral psi_(bold(k)')^(\*) \( bold(r) \, t \) psi_(bold(k)) \( bold(r) \, t \) thin upright(d) bold(r) & = \| C \|^2 e^(- i \( omega_(bold(k)) - omega_(bold(k)') \) t) lim_(L arrow.r oo) integral e^(i \( bold(k) - bold(k)' \) dot.op bold(r)) thin upright(d) bold(r)\
+ & = \| C \|^2 e^(- i \( omega_(bold(k)) - omega_(bold(k)') \) t) product_(i = x \, y \, z) lim_(L arrow.r oo) integral_(- L \/ 2)^(L \/ 2) e^(i \( k_i - k_(i') \) r_i) thin upright(d) r_i\
  & = \| C \|^2 e^(- i \( omega_(bold(k)) - omega_(bold(k)') \) t) product_(i = x \, y \, z) lim_(L arrow.r oo) frac(e^(i \( k_i - k_(i') \) L \/ 2) - e^(- i \( k_i - k_(i') \) L \/ 2), i \( k_i - k_(i') \))\
  & = \| C \|^2 e^(- i \( omega_(bold(k)) - omega_(bold(k)') \) t) product_(i = x \, y \, z) 2 pi lim_(L arrow.r oo) frac(sin \( \( k_i - k_(i') \) L \/ 2 \), pi \( k_i - k_(i') \))\
  & = \| C \|^2 e^(- i \( omega_(bold(k)) - omega_(bold(k)') \) t) product_(i = x \, y \, z) 2 pi delta \( k_i - k_(i') \)\
@@ -222,7 +222,7 @@ B = \( - 1 \)^(n + 1) A\
 において波動関数は次のように離散化される。
 $ phi_n \( x \) = A e^(i k x) + B e^(- i k x) & = cases(delim: "{", 2 A cos \( frac(n pi, 2 L) x \) & \( n = 1 \, 3 \, 5 \, dots.h \), 2 A i sin \( frac(n pi, 2 L) x \) & \( n = 2 \, 4 \, 6 \, dots.h \)) $
 最後に規格化条件を適用することで $A$ が決定される。
-$ integral_(- oo)^oo \| phi_n \( x \) \|^2 upright(d) x = integral_(- L)^L \| phi_n \( x \) \|^2 upright(d) x = \( 2 A \)^2 L = 1 arrow.l.r.double 2 A = 1 / sqrt(L) $
+$ integral_(- oo)^oo \| phi_n \( x \) \|^2 thin upright(d) x = integral_(- L)^L \| phi_n \( x \) \|^2 thin upright(d) x = \( 2 A \)^2 L = 1 arrow.l.r.double 2 A = 1 / sqrt(L) $
 よって固有関数とエネルギー固有値は
 $ phi_n \( x \) & = cases(delim: "{", 1 / sqrt(L) cos \( frac(n pi, 2 L) x \) & \( n = 1 \, 3 \, 5 \, dots.h \), 1 / sqrt(L) sin \( frac(n pi, 2 L) x \) & \( n = 2 \, 4 \, 6 \, dots.h \))\
 E_n & = frac(planck^2, 2 m) (frac(n pi, 2 L))^2 $
@@ -311,8 +311,8 @@ $ H_n \( x \) = \( - 1 \)^n e^(x^2) frac(upright(d)^n, upright(d) x^n) e^(- x^2)
 は不適。 TODO: なぜ $+$ の場合を排除できるのかを明確に記す。 これより
 $psi_n \( xi \) = c H_n \( xi \) e^(- xi^2 / 2)$
 となる。規格化条件を考えると
-$ integral_(bb(R)) psi_m^(\*) psi_n upright(d) xi & = c^2 integral_(bb(R)) (H_m \( xi \) e^(- xi^2 / 2))^(\*) H_n \( xi \) e^(- xi^2 / 2) upright(d) xi\
- & = c^2 integral_(bb(R)) H_m \( xi \) H_n \( xi \) e^(- xi^2) upright(d) xi\
+$ integral_(bb(R)) psi_m^(\*) psi_n thin upright(d) xi & = c^2 integral_(bb(R)) (H_m \( xi \) e^(- xi^2 / 2))^(\*) H_n \( xi \) e^(- xi^2 / 2) thin upright(d) xi\
+ & = c^2 integral_(bb(R)) H_m \( xi \) H_n \( xi \) e^(- xi^2) thin upright(d) xi\
  & = 2^n n ! sqrt(pi) c^2 delta_(m \, n)\
  & = delta_(m \, n) $ よって次のようになる。
 $ psi_n \( xi \) & = sqrt(frac(1, 2^n n ! sqrt(pi))) H_n \( xi \) e^(- xi^2 / 2)\
@@ -703,20 +703,20 @@ $ X & = mat(delim: "(", ⟨a^(\( 1 \))\| X \|a^(\( 1 \))⟩, ⟨a^(\( 1 \))\| X 
 ]
 
 #proposition[
-$ \|alpha⟩ & = integral upright(d) x' \|x'⟩ ⟨x' mid(bar.v) alpha⟩\
+$ \|alpha⟩ & = integral thin upright(d) x' \|x'⟩ ⟨x' mid(bar.v) alpha⟩\
 ⟨x' mid(bar.v) alpha⟩ & = psi_alpha \( x' \)\
-⟨beta mid(bar.v) alpha⟩ & = integral upright(d) x' ⟨beta mid(bar.v) x'⟩ ⟨x' mid(bar.v) alpha⟩\
- & = integral upright(d) x' psi_beta^(\*) \( x' \) psi_alpha \( x' \)\
-⟨alpha mid(bar.v) alpha⟩ & = integral upright(d) x' ⟨alpha mid(bar.v) x'⟩ ⟨x' mid(bar.v) alpha⟩\
- & = integral upright(d) x' psi_alpha^(\*) \( x' \) psi_alpha \( x' \)\
+⟨beta mid(bar.v) alpha⟩ & = integral thin upright(d) x' ⟨beta mid(bar.v) x'⟩ ⟨x' mid(bar.v) alpha⟩\
+ & = integral thin upright(d) x' psi_beta^(\*) \( x' \) psi_alpha \( x' \)\
+⟨alpha mid(bar.v) alpha⟩ & = integral thin upright(d) x' ⟨alpha mid(bar.v) x'⟩ ⟨x' mid(bar.v) alpha⟩\
+ & = integral thin upright(d) x' psi_alpha^(\*) \( x' \) psi_alpha \( x' \)\
  & = 1 $
 ]
 #definition("平行移動")[
 無限小平行移動演算子
-$ frak(J) \( upright(d) bold(r)' \) \|bold(r)'⟩ = \|bold(r)' + upright(d) bold(r)'⟩ $
+$ frak(J) \( thin upright(d) bold(r)' \) \|bold(r)'⟩ = \|bold(r)' + thin upright(d) bold(r)'⟩ $
 平行移動生成演算子
 ]
-$ frak(J) \( upright(d) bold(r)' \) \|alpha⟩ = frak(J) \( upright(d) bold(r)' \) integral upright(d) bold(r)' \|bold(r)'⟩ ⟨bold(r)' mid(bar.v) alpha⟩ = integral upright(d) bold(r)' \|bold(r)' + upright(d) bold(r)'⟩ ⟨bold(r)' mid(bar.v) alpha⟩ = integral upright(d) bold(r)' \|bold(r)'⟩ ⟨bold(r)' - upright(d) bold(r)' mid(bar.v) alpha⟩ $
+$ frak(J) \( thin upright(d) bold(r)' \) \|alpha⟩ = frak(J) \( thin upright(d) bold(r)' \) integral thin upright(d) bold(r)' \|bold(r)'⟩ ⟨bold(r)' mid(bar.v) alpha⟩ = integral thin upright(d) bold(r)' \|bold(r)' + thin upright(d) bold(r)'⟩ ⟨bold(r)' mid(bar.v) alpha⟩ = integral thin upright(d) bold(r)' \|bold(r)'⟩ ⟨bold(r)' - thin upright(d) bold(r)' mid(bar.v) alpha⟩ $
 
 #definition("交換関係・反交換関係")[
 2 つの演算子 $hat(A)$, $hat(B)$ について交換関係 (commutation relation)

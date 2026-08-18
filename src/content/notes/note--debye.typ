@@ -447,7 +447,7 @@ $omega \( bold(k)_(j_x \, j_y \, j_z) \) gt.eq 0$ に限られるから
 $omega gt.eq 0$ となる.
 
 (ii) これより調和振動子の総数は次のようになる.
-$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+$ integral_0^oo thin upright(d) omega g \( omega \) & = 3 integral_0^oo thin upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
  & = 3 N^3 . $
 
 ただこのような調和振動子の角振動数の個数分布関数 $g \( omega \)$
@@ -510,7 +510,7 @@ $ g \( omega \) & = sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha =
  & = 3 sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \) #h(2em) \( omega gt.eq 0 \) . $
 
 (ii) また調和振動子の総数は 3 次元結晶の模型と同様に $3 N^3$ となる.
-$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha = x \, y \, z) delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+$ integral_0^oo thin upright(d) omega g \( omega \) & = 3 integral_0^oo thin upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha = x \, y \, z) delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
  & = 3 N^3 . $
 
 (iii) ここでDebye 模型における調和振動子の角振動数の個数分布関数
@@ -524,14 +524,14 @@ $ g \( omega \) & = 3 sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( o
 $g \( omega \)$ を滑らかな分布として近似できる.
 これより総和は次のように積分で置き換えられることが言える.
 $ g \( omega \) & = 3 sqrt(m / kappa) frac(N + 1, pi) sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2))\
- & approx 3 sqrt(m / kappa) frac(N + 1, pi) integral_1^N upright(d) j_x integral_1^N upright(d) j_y integral_1^N upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2)) . $
+ & approx 3 sqrt(m / kappa) frac(N + 1, pi) integral_1^N thin upright(d) j_x integral_1^N thin upright(d) j_y integral_1^N thin upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2)) . $
 
 (v) ここで $omega$ に関する次の条件が成り立つとする.
 $ sqrt(m / kappa) frac(N + 1, pi) omega lt.eq N . $<omega_condition>
 特に $g \( omega \)$
 の被積分関数の積分値は次のような幾何学的解釈で近似できる.
-$  & integral_1^N upright(d) j_x integral_1^N upright(d) j_y integral_1^N upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2))\
-= & integral_V upright(d) bold(r) delta (\| bold(r) \| - sqrt(m / kappa) frac(N + 1, pi) omega) #h(2em) (V := { \( x \, y \, z \) divides 1 lt.eq x lt.eq N \, 1 lt.eq y lt.eq N \, 1 lt.eq z lt.eq N })\
+$  & integral_1^N thin upright(d) j_x integral_1^N thin upright(d) j_y integral_1^N thin upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2))\
+= & integral_V thin upright(d) bold(r) delta (\| bold(r) \| - sqrt(m / kappa) frac(N + 1, pi) omega) #h(2em) (V := { \( x \, y \, z \) divides 1 lt.eq x lt.eq N \, 1 lt.eq y lt.eq N \, 1 lt.eq z lt.eq N })\
 approx & ("半径" sqrt(m / kappa) frac(N + 1, pi) omega の 2 "次元球面" S_2 "を第" 1 "象限で切り取った曲面の表面積") . $
 これより $g \( omega \)$ は次のように書ける.
 $ g \( omega \) & approx 3 sqrt(m / kappa) frac(N + 1, pi) times ("半径" sqrt(m / kappa) frac(N + 1, pi) omega の 2 "次元球面" S_2 "を第" 1 "象限で切り取った曲面の表面積") . $
@@ -551,11 +551,11 @@ $g \( omega \)$ は表される.
 $ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
 ただし $N gt.double 1$ であることから $N + 1$ を $N$ と近似し,
 また打ち切る角振動数 $omega_D$ を次のように定める.
-$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega g \( omega \) = 3 N^3 . $
+$ integral_0^oo thin upright(d) omega g \( omega \) & = integral_0^(omega_D) thin upright(d) omega g \( omega \) = 3 N^3 . $
 この $omega_D$ を Debye の角振動数という.
 
 (viii) これより Debye の角振動数 $omega_D$ は次のように計算される.
-$ integral_0^(omega_D) upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3 \,\
+$ integral_0^(omega_D) thin upright(d) omega g \( omega \) & = integral_0^(omega_D) thin upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3 \,\
 omega_D & = (3 N^3 2 / pi)^(1 \/ 3) sqrt(kappa / m) pi / N = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) . $
 
 (ix) また Debye の角振動数 $omega_D$ を用いて $g \( omega \)$
@@ -648,19 +648,19 @@ $ U & = U_0 + 9 N^3 planck omega_D I \( beta planck omega_D \) . $
 ただし温度 $T$ に依存しない定数のエネルギー $U_0$, $I \( b \)$
 について次のように定められる.
 $ U_0 & = 3 / 8 \( 3 N^3 \) planck omega_D \,\
-I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) . $
+I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1) . $
 
 ]
-$ U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \)\
- & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 (1 / 2 + frac(1, e^(beta planck omega) - 1)) planck omega\
- & = 9 N^3 planck integral_0^(omega_D) upright(d) omega (omega / omega_D)^3 (1 / 2 + frac(1, e^(beta planck omega) - 1))\
- & = 9 N^3 planck omega_D integral_0^1 upright(d) x (1 / 2 + frac(1, e^(beta planck omega_D x) - 1)) x^3\
+$ U & = integral_0^oo thin upright(d) omega g \( omega \) u \( omega \)\
+ & = integral_0^(omega_D) thin upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 (1 / 2 + frac(1, e^(beta planck omega) - 1)) planck omega\
+ & = 9 N^3 planck integral_0^(omega_D) thin upright(d) omega (omega / omega_D)^3 (1 / 2 + frac(1, e^(beta planck omega) - 1))\
+ & = 9 N^3 planck omega_D integral_0^1 thin upright(d) x (1 / 2 + frac(1, e^(beta planck omega_D x) - 1)) x^3\
  & = 3 / 8 \( 3 N^3 \) planck omega_D + 9 N^3 planck omega_D I \( beta planck omega_D \)\
  & = U_0 + 9 N^3 planck omega_D I \( beta planck omega_D \) . $
 ただし温度 $T$ に依存しない定数のエネルギー $U_0$, $I \( b \)$
 について次のように定められる.
 $ U_0 & = 3 / 8 \( 3 N^3 \) planck omega_D \,\
-I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) . $
+I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1) . $
 
 以下からは
 $b = beta planck omega_D = planck omega_D \/ \( k_B T \)$
@@ -672,10 +672,10 @@ $ C & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) . $
 
 ]
 比熱の定義式に代入することで次のようになる.
-$ C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \)\
- & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2\
- & = 9 k_B N^3 \( beta planck omega_D \)^2 integral_0^(omega_D) frac(upright(d) omega, omega_D) (omega / omega_D)^4 frac(e^(beta planck omega), \( e^(beta planck omega) - 1 \)^2)\
- & = 3 n R dot.op 3 b^2 integral_0^1 upright(d) x frac(x^4 e^(b x), \( e^(b x) - 1 \)^2)\
+$ C & = integral_0^oo thin upright(d) omega g \( omega \) c \( omega \)\
+ & = integral_0^(omega_D) thin upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2\
+ & = 9 k_B N^3 \( beta planck omega_D \)^2 integral_0^(omega_D) frac(thin upright(d) omega, omega_D) (omega / omega_D)^4 frac(e^(beta planck omega), \( e^(beta planck omega) - 1 \)^2)\
+ & = 3 n R dot.op 3 b^2 integral_0^1 thin upright(d) x frac(x^4 e^(b x), \( e^(b x) - 1 \)^2)\
  & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) . $
 
 #block[
@@ -687,11 +687,11 @@ $ I \( b \) & = frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 + 1 / 272160 b^5 
 (i) $x lt.double 1$ において $e^x approx 1 + x$ と近似できる.
 これより高温の漸近領域 $b lt.double 1$ において $b x lt.double 1$
 であるから $I \( b \)$ は次のように近似できる.
-$ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) approx integral_0^1 upright(d) x frac(x^3, b x) = integral_0^1 upright(d) x x^2 / b = frac(1, 3 b) . $
+$ I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1) approx integral_0^1 thin upright(d) x frac(x^3, b x) = integral_0^1 thin upright(d) x x^2 / b = frac(1, 3 b) . $
 
 (ii) Bernoulli 数 $B_n$ の定義を用いて次のように計算できる.
-$ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1)\
- & = integral_0^1 upright(d) x sum_(n = 0)^oo frac(B_n b^(n - 1), n !) x^(n + 2)\
+$ I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1)\
+ & = integral_0^1 thin upright(d) x sum_(n = 0)^oo frac(B_n b^(n - 1), n !) x^(n + 2)\
  & = sum_(n = 0)^oo frac(B_n, \( n + 3 \) n !) b^(n - 1)\
  & = frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 + 1 / 272160 b^5 - dots.h.c . $
 
@@ -719,15 +719,15 @@ Q 17-19. 低温の漸近領域 $b gt.double 1$ における積分 $I \( b \)$
 (i) 初項 $e^(- b x)$ 公比 $e^(- b x)$ の無限等比数列の和は
 $1 \/ \( e^(b x) + 1 \)$ である. これより $I \( b \)$
 は次のように表される.
-$ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) = integral_0^1 upright(d) x x^3 sum_(n = 1)^oo e^(- n b x) = sum_(n = 1)^oo integral_0^1 upright(d) x x^3 e^(- n b x) . $
+$ I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1) = integral_0^1 thin upright(d) x x^3 sum_(n = 1)^oo e^(- n b x) = sum_(n = 1)^oo integral_0^1 thin upright(d) x x^3 e^(- n b x) . $
 
 (ii) これより
-$ I \( b \) & = sum_(n = 1)^oo integral_0^1 upright(d) x x^3 e^(- n b x)\
- & = sum_(n = 1)^oo frac(1, \( n b \)^4) integral_0^(n b) upright(d) t t^3 e^(- t) #h(2em) \( t = n b x \)\
+$ I \( b \) & = sum_(n = 1)^oo integral_0^1 thin upright(d) x x^3 e^(- n b x)\
+ & = sum_(n = 1)^oo frac(1, \( n b \)^4) integral_0^(n b) thin upright(d) t t^3 e^(- t) #h(2em) \( t = n b x \)\
  & = sum_(n = 1)^oo frac(1, \( n b \)^4) gamma \( 4 \, n b \) . $
 ただし, 第一種不完全ガンマ関数 $gamma \( z \, p \)$
 は次の式で定義される.
-$ gamma \( z \, p \) & := integral_0^p upright(d) t t^(z - 1) e^(- t) . $
+$ gamma \( z \, p \) & := integral_0^p thin upright(d) t t^(z - 1) e^(- t) . $
 
 (iii) さらに $I \( b \)$ は次のように式変形できる.
 $ I \( b \) & = sum_(n = 1)^oo frac(1, \( n b \)^4) gamma \( 4 \, n b \)\
@@ -736,8 +736,8 @@ $ I \( b \) & = sum_(n = 1)^oo frac(1, \( n b \)^4) gamma \( 4 \, n b \)\
  & = 1 / b^4 (6 zeta \( 4 \) - sum_(n = 1)^oo 1 / n^4 Gamma \( 4 \, n b \)) . $
 ただし, 第 2 種不完全ガンマ関数 $Gamma \( z \, p \)$, ガンマ関数
 $Gamma \( z \)$, ゼータ関数 $zeta \( z \)$ は次のように定義される.
-$ Gamma \( z \, p \) & := integral_p^oo upright(d) t t^(z - 1) e^(- t)\
-Gamma \( z \) & := integral_0^oo upright(d) t t^(z - 1) e^(- t) = gamma \( z \, p \) + Gamma \( z \, p \)\
+$ Gamma \( z \, p \) & := integral_p^oo thin upright(d) t t^(z - 1) e^(- t)\
+Gamma \( z \) & := integral_0^oo thin upright(d) t t^(z - 1) e^(- t) = gamma \( z \, p \) + Gamma \( z \, p \)\
 zeta \( s \) & := sum_(n = 1)^oo 1 / n^s . $
 
 (iv) ここでゼータ関数 $zeta \( 4 \)$ の値は次の通りとなる.
@@ -748,7 +748,7 @@ $ I \( b \) & = 1 / b^4 (6 zeta \( 4 \) - sum_(n = 1)^oo 1 / n^4 Gamma \( 4 \, n
 (v) 第二種不完全ガンマ関数 $Gamma \( z \, p \)$ の $p$
 の極限について積分範囲が小さくなっていき,
 被積分関数は発散しないので次のようになる.
-$ lim_(p arrow.r + oo) Gamma \( z \, p \) & = lim_(p arrow.r + oo) integral_p^oo upright(d) t t^(z - 1) e^(- t) = 0 . $
+$ lim_(p arrow.r + oo) Gamma \( z \, p \) & = lim_(p arrow.r + oo) integral_p^oo thin upright(d) t t^(z - 1) e^(- t) = 0 . $
 
 (vi) 低温の漸近領域 $b gt.double 1$ において (v)
 の考察から第二項を無視した近似を行えることがいえる. よって $I \( b \)$
@@ -763,9 +763,9 @@ $ I \( b \) & approx pi^4 / 15 1 / b^4 - b^3 e^(- b) . $
 ]
 (i) $Gamma \( z \, p \)$ について部分積分することで次のように書ける.
 $  & quad Gamma \( z \, p \)\
- & = integral_p^oo upright(d) t t^(z - 1) e^(- t)\
- & = - [t^(z - 1) e^(- t)]_p^oo - [\( z - 1 \) t^(z - 2) e^(- t)]_p^oo - dots.h.c - [\( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)]_p^oo + integral_p^oo upright(d) t \( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
- & = p^(z - 1) e^(- p) + \( z - 1 \) p^(z - 2) e^(- p) + dots.h.c + \( z - 1 \) dots.h.c \( z - n \) p^(z - n - 1) e^(- p) + integral_p^oo upright(d) t \( z - 1 \) \( z - 2 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
+ & = integral_p^oo thin upright(d) t t^(z - 1) e^(- t)\
+ & = - [t^(z - 1) e^(- t)]_p^oo - [\( z - 1 \) t^(z - 2) e^(- t)]_p^oo - dots.h.c - [\( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)]_p^oo + integral_p^oo thin upright(d) t \( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
+ & = p^(z - 1) e^(- p) + \( z - 1 \) p^(z - 2) e^(- p) + dots.h.c + \( z - 1 \) dots.h.c \( z - n \) p^(z - n - 1) e^(- p) + integral_p^oo thin upright(d) t \( z - 1 \) \( z - 2 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
  & = p^(z - 1) e^(- p) (1 + sum_(m = 1)^oo 1 / p^m \( z - 1 \) \( z - 2 \) dots.h.c \( z - m \)) #h(2em) \( because n arrow.r oo \) . $
 
 (ii) (i) の結果を用いて $z = 4$ を代入すると次のようになる.
@@ -879,7 +879,7 @@ $ B_0 = 1 \, B_1 = - 1 / 2 \, B_2 = 1 / 6 \, B_3 = 0 \, B_4 = - 1 / 30 \, B_5 = 
 == ガンマ関数 $Gamma \( s \)$ のまとめ
 <ガンマ関数-gammas-のまとめ>
 ガンマ関数 $Gamma \( s \)$ について次のような性質が知られている.
-$ Gamma \( s \) & = integral_0^oo upright(d) x x^(s - 1) e^(- x) #h(2em) \( "Re" s > 0 \) \,\
+$ Gamma \( s \) & = integral_0^oo thin upright(d) x x^(s - 1) e^(- x) #h(2em) \( "Re" s > 0 \) \,\
 Gamma \( s + 1 \) & = s Gamma \( s \) \,\
 Gamma \( 1 \) & = 1 \, quad Gamma (1 / 2) = sqrt(pi) \,\
 Gamma \( n + 1 \) & = n ! #h(2em) \( n = 0 \, 1 \, 2 \, dots.h \) \,\
@@ -901,7 +901,7 @@ Q 17A-4. $zeta \( s \)$ が $"Re" s > 1$
 
 ]
 $s = a + b i med \( a > 1 \)$ とおく. すると次のようになる.
-$ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n^a approx integral_1^oo upright(d) x x^(- a) = [frac(1, 1 - a) x^(1 - a)]_1^oo < oo . $
+$ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n^a approx integral_1^oo thin upright(d) x x^(- a) = [frac(1, 1 - a) x^(1 - a)]_1^oo < oo . $
 よってゼータ関数 $zeta \( s \)$ は一様絶対収束する.
 
 #block[
@@ -945,16 +945,16 @@ $ lim_(s arrow.r 1) zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - 1 \/ p)
 <ゼータ関数-zetas-の基本的性質-関数等式ほか>
 #block[
 Q 17A-8.
-$ Gamma \( s \) zeta \( s \) = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) #h(2em) \( "Re" s > 1 \) . $
+$ Gamma \( s \) zeta \( s \) = integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) #h(2em) \( "Re" s > 1 \) . $
 
 ]
 ガンマ関数の定義式について $x := n x$
 と置換積分することで次のように式変形できる.
-$ Gamma \( s \) & = integral_0^oo upright(d) x x^(s - 1) e^(- x)\
- & = integral_0^oo n upright(d) x (n x)^(s - 1) e^(- n x) \,\
+$ Gamma \( s \) & = integral_0^oo thin upright(d) x x^(s - 1) e^(- x)\
+ & = integral_0^oo n thin upright(d) x (n x)^(s - 1) e^(- n x) \,\
 Gamma \( s \) zeta \( s \) & = sum_(n = 1)^oo frac(Gamma \( s \), n^s)\
- & = sum_(n = 1)^oo integral_0^oo upright(d) x x^(s - 1) e^(- n x)\
- & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
+ & = sum_(n = 1)^oo integral_0^oo thin upright(d) x x^(s - 1) e^(- n x)\
+ & = integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) . $
 この積分値を求める為に複素解析を用いる. 積分路 $C$ を
 $C = C \( delta \) = C_(+) \( delta \) + C_0 \( delta \) + C_(+) \( delta \)$
 として $C_(+) \( delta \)$ は実軸上無限遠から原点から $delta$
@@ -962,7 +962,7 @@ $C = C \( delta \) = C_(+) \( delta \) + C_0 \( delta \) + C_(+) \( delta \)$
 の円を反時計回りに 1 周し, $C_(-) \( delta \)$ は実軸上原点から $delta$
 の距離にある点から無限遠までを積分する. また次の関数 $I \( s \; C \)$
 を定義しておく.
-$ I \( s \; C \) & := integral_C upright(d) z frac(z^(s - 1), e^z - 1) . $
+$ I \( s \; C \) & := integral_C thin upright(d) z frac(z^(s - 1), e^z - 1) . $
 
 #block[
 Q 17A-9. $0 < delta < 2 pi$ を満たす範囲で $delta$
@@ -980,24 +980,24 @@ $C_0 \( delta \)$ に沿った積分 $I \( s \; C_0 \( delta \) \)$
 がゼロになる.
 
 ]
-$ \| I \( s \; C_0 \( delta \) \) \| & = lr(|integral_(C_0 \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1)|)\
- & = lr(|integral_0^(2 pi) delta i e^(i theta) upright(d) theta frac(\( delta e^(i theta) \)^(s - 1), e^(delta \( cos theta + i sin theta \)) - 1)|)\
- & lt.eq integral_0^(2 pi) upright(d) theta frac(\| delta^s \|, e^(delta cos theta) - 1)\
+$ \| I \( s \; C_0 \( delta \) \) \| & = lr(|integral_(C_0 \( delta \)) thin upright(d) z frac(z^(s - 1), e^z - 1)|)\
+ & = lr(|integral_0^(2 pi) delta i e^(i theta) thin upright(d) theta frac(\( delta e^(i theta) \)^(s - 1), e^(delta \( cos theta + i sin theta \)) - 1)|)\
+ & lt.eq integral_0^(2 pi) thin upright(d) theta frac(\| delta^s \|, e^(delta cos theta) - 1)\
  & < \| delta^(s - 1) \| pi . $ これより $delta arrow.r 0$ のとき積分値
 $I \( s \; C_0 \( delta \) \)$ は $0$ となる.
 
 #block[
 Q 17A-11.
-$ I \( s \; C \) & = \( e^(2 pi i s) - 1 \) integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
+$ I \( s \; C \) & = \( e^(2 pi i s) - 1 \) integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) . $
 
 ]
 Q 17A-10 の考察から $delta arrow.r 0$ の極限において積分 $I \( s \; C \)$
 を考える.
-$ I \( s \; C \) & = integral_(C \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = integral_(C_(-) + C_0 + C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = integral_(C_(-)) upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_0) upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = e^(2 pi i s) integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1) + 0 + integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = \( e^(2 pi i s) - 1 \) integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
+$ I \( s \; C \) & = integral_(C \( delta \)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = integral_(C_(-) + C_0 + C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = integral_(C_(-)) thin upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_0) thin upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = e^(2 pi i s) integral_(C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1) + 0 + integral_(C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = \( e^(2 pi i s) - 1 \) integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) . $
 
 #block[
 Q 17A-12.
@@ -1005,12 +1005,12 @@ $ zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) 
 
 ]
 (i) 17A-11 より$"Re" s > 1$ において次が成り立つ.
-$ Gamma \( s \) zeta \( s \) & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1)\
+$ Gamma \( s \) zeta \( s \) & = integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1)\
  & = frac(I \( s \; C \), e^(2 pi i s) - 1) \,\
 zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) #h(2em) \( "Re" s > 1 \) . $
 
 (ii) $I \( s \; C \)$ は次のように定義された.
-$ I \( s \; C \) & = integral_(C \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1) . $
+$ I \( s \; C \) & = integral_(C \( delta \)) thin upright(d) z frac(z^(s - 1), e^z - 1) . $
 これは複素平面全体 $s in bb(C)$ に対して正則である. よって (i)
 で求めた式は $"Re" s > 1$ の条件を取り外すことができ, 解析接続となる.
 

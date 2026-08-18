@@ -53,9 +53,9 @@ $ ""_2^4 upright(H e) +_4^9 upright(B e)_5 arrow.r_6^12 upright(C)_6 + n $
 図が沢山必要やね
 $ frac(upright(d) sigma, upright(d) Omega) = (frac(a, 4 E))^(1 / 2) sin 4 \( theta \/ 2 \) $
 $ d_0 & = a / E = frac(alpha z Z \( planck c \), E)\
-upright(d) N & = 2 pi b upright(d) l N\
+thin upright(d) N & = 2 pi b thin upright(d) l N\
 b & = frac(a, 2 E) cot theta / 2\
-upright(d) sigma & = frac(upright(d) N, N)\
+thin upright(d) sigma & = frac(thin upright(d) N, N)\
 frac(upright(d) sigma, upright(d) Omega) & = 1 / N frac(upright(d) N, upright(d) Omega) = $
 https:\/\/www.nobelprize.org/prizes/physics/1961/hofstadter/lecture/
 
@@ -70,7 +70,7 @@ m_e & = 0.511 med M e V \/ c^2 $
 原子核の半径 $R$ は核子 1 個当たりの半径 $r_0 = 1.25$ fm から求まる。
 $ R = r_0 A^(1 \/ 3) $ 体積が質量数 $A$
 に比例することから密度の飽和性がわかる。
-$ ⟨r^2⟩ & = integral r^2 rho \( bold(r) \) upright(d)^3 r = integral r^2 rho \( bold(r) \) 4 pi r^2 upright(d) r 5 / 3 $
+$ ⟨r^2⟩ & = integral r^2 rho \( bold(r) \) thin upright(d)^3 r = integral r^2 rho \( bold(r) \) 4 pi r^2 thin upright(d) r 5 / 3 $
 
 原子核の形状はさまざまな近似方法があるが最も広く使われている Woods-Saxon
 型分布 (Fermi 関数) という原子核の形状因子を紹介する。 標準核密度
@@ -86,7 +86,7 @@ $d = chevron.l rho chevron.r^(- 1 \/ 3)$
 $ bold(k) & = (frac(2 pi, L) n_x \, frac(2 pi, L) n_y \, frac(2 pi, L) n_z)\
 psi \( bold(r) \) & = e^(i bold(k) dot.op bold(r))\
 d n & = 4 pi k^2 d k times 2 (frac(2 pi, L))^3 = V / pi^2 k^2 d k\
-N & = integral_0^(k_F) frac(upright(d) n, upright(d) k) upright(d) k = frac(V, 3 pi^2) k_F^3\
+N & = integral_0^(k_F) frac(upright(d) n, upright(d) k) thin upright(d) k = frac(V, 3 pi^2) k_F^3\
 k_F & = (frac(3 pi^2 N, V))^(1 \/ 3)\
 E_F & = frac(p_F^2, 2 m) = frac(\( planck k_F \)^2, 2 m) = frac(planck^2, 2 m) (frac(3 pi^2 N, V))^(2 \/ 3)\
 n & = 2 integral d bold(r) integral d bold(p) 1 / h^3 = 2 frac(Omega, \( 2 pi \)^3) integral_0^(k_F) 4 pi k^2 d k = 2 frac(Omega, \( 2 pi \)^3) 4 / 3 pi k_F^3\
@@ -149,7 +149,7 @@ A & = 2 D approx 2 / 3 \( N_max + 2 \)^3\
 A ⟨r^2⟩ & = sum_(N = 0)^(N_max) frac(planck, m omega) (N + 3 / 2) 2 \( N + 1 \) \( N + 2 \)\
  & = 1 / 2 frac(planck, m omega) \( N_max + 1 \) \( N_max + 2 \)^2 \( N_max + 3 \)\
  & approx 1 / 2 frac(planck, m omega) \( N_max + 2 \)^4 approx 1 / 2 frac(planck, m omega) (3 / 2 A)^(4 \/ 3)\
-⟨r^2⟩ & = frac(integral_0^R r^24 pi r^2 upright(d) r, integral_0^R 4 pi r^2 upright(d) r) = 3 / 5 R^2 = 3 / 5 r_0^2 A^(2 \/ 3)\
+⟨r^2⟩ & = frac(integral_0^R r^24 pi r^2 thin upright(d) r, integral_0^R 4 pi r^2 thin upright(d) r) = 3 / 5 R^2 = 3 / 5 r_0^2 A^(2 \/ 3)\
 3 / 5 r_0^2 A^(5 \/ 3) & approx 1 / 2 frac(planck, m omega) (3 / 2 A)^(4 \/ 3)\
 planck omega & approx 5 / 4 (3 / 2)^(1 \/ 3) frac(planck^2, m r_0^2) A^(- 1 \/ 3) approx 40 A^(- 1 \/ 3) med M e V $
 結合エネルギーの飽和性 $V_0 approx 50$ MeV
@@ -361,9 +361,9 @@ $ H = ⟨f\| V \|i⟩ = g integral \( psi_p^(\*) tau^(-) psi_n \) \( psi_e^(\*) 
 $ psi_e & = e^(i bold(k) dot.op bold(r)) / sqrt(V)\
 k r & = r / lambda lt.double 1\
 H & = g frac(\| M_(i f) \|^2, V)\
-M_(i f) & = integral \( psi_f^(\*) sum_i tau_i^(-) psi_i \) upright(d) tau upright(d) bold(r) $
+M_(i f) & = integral \( psi_f^(\*) sum_i tau_i^(-) psi_i \) thin upright(d) tau thin upright(d) bold(r) $
 
-$ W \( E \) upright(d) E & = frac(2 pi, planck) g^2 / V^2 \| M_(i f) \|^2 frac(upright(d) N, upright(d) E_0) = frac(g^2 \| M_(i f) \|^2, 2 pi^3 c^5 planck^7) p \( E_0 - E \)^2 upright(d) E $
+$ W \( E \) thin upright(d) E & = frac(2 pi, planck) g^2 / V^2 \| M_(i f) \|^2 frac(upright(d) N, upright(d) E_0) = frac(g^2 \| M_(i f) \|^2, 2 pi^3 c^5 planck^7) p \( E_0 - E \)^2 thin upright(d) E $
 
 $ frac(upright(d) N, upright(d) t) & = - lambda N\
 N \( t \) & = N_0 exp \( - lambda t \) = N_0 exp \( - t \/ tau \) = N_02^(- t \/ T_(1 \/ 2)) $

@@ -34,15 +34,15 @@ $ m frac(upright(d)^2 bold(r), upright(d) t^2) = bold(F) $
 \- 電磁気力 - ばね - 垂直抗力 - 慣性力 - 外力 - 重力
 
 #definition("仕事")[
-$ upright(d) W & = bold(F) dot.op upright(d) bold(r)\
-W & = integral_C bold(F) dot.op upright(d) bold(r) $ 一般に仕事は経路
-$C$ に依存する。 仕事が経路に依らない力を保存力という。
+$ thin upright(d) W & = bold(F) dot.op thin upright(d) bold(r)\
+W & = integral_C bold(F) dot.op thin upright(d) bold(r) $
+一般に仕事は経路 $C$ に依存する。 仕事が経路に依らない力を保存力という。
 ]
 保存力のとき始点 $bold(r)_0$ と終点 $bold(r)$ を用いて
-$ W = integral_(bold(r)_0)^(bold(r)) bold(F) dot.op upright(d) bold(r) $
+$ W = integral_(bold(r)_0)^(bold(r)) bold(F) dot.op thin upright(d) bold(r) $
 ポテンシャルエネルギー $U \( bold(r) \)$ を基準点 $bold(r)_0$ から
 $bold(r)$ までに進むのに必要な仕事と定義する。
-$ U & = - integral_(bold(r)_0)^(bold(r)) bold(F) dot.op upright(d) bold(r) $
+$ U & = - integral_(bold(r)_0)^(bold(r)) bold(F) dot.op thin upright(d) bold(r) $
 これは保存力でしか定義できない。
 
 #theorem("エネルギー保存則")[
@@ -51,7 +51,7 @@ $ T + U \( bold(r) \) $
 = 解析力学
 <解析力学>
 ニュートンの運動方程式の書き換えを行う。目的は解きやすくするためと定式化の適用範囲を拡張するためである。
-$ U \( bold(r) \) = - integral_(bold(r)_0)^(bold(r)) bold(F) upright(d) bold(r) $
+$ U \( bold(r) \) = - integral_(bold(r)_0)^(bold(r)) bold(F) thin upright(d) bold(r) $
 保存力に関するニュートンの運動方程式
 $ m frac(upright(d)^2 bold(r), upright(d) t^2) = - nabla U $
 運動エネルギー $ T & = 1 / 2 m dot(bold(r))^2 $ ポテンシャルエネルギー
@@ -115,7 +115,7 @@ $ frac(upright(d) bold(r), upright(d) t) = frac(partial H, partial bold(p)) \, q
 物体の運動は作用が極値を取るような経路をたどる。
 ]
 作用とは
-$ S \[ q \] & = integral_(t_1)^(t_2) L \( q \( t \) \, dot(q) \( t \) \, t \) upright(d) t\
+$ S \[ q \] & = integral_(t_1)^(t_2) L \( q \( t \) \, dot(q) \( t \) \, t \) thin upright(d) t\
 frac(delta S \[ q \], delta q_i) & = frac(partial L, partial q_i) - frac(d, d t) (frac(partial L, partial dot(q)_i)) = 0 $
 ボールを投げたときに放物線を描くのはどんな運動もさまざまな軌道の中で等速に近くポテンシャルが高くなるような\"ちょうどいい\"軌道を選ぶ。
 
@@ -134,10 +134,10 @@ q_i & arrow.r q_(i') = q_i + delta q_i $
 $ Phi = p_i \( delta q_i - dot(q)_i delta t \) + L delta t $
 ]
 #proof[
-$ delta S = S' - S & = integral_(t_(1'))^(t_(2')) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) upright(d) t' - integral_(t_1)^(t_2) L \( q_i \, dot(q)_i \) upright(d) t\
- & = integral_(t_1)^(t_2) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) frac(upright(d) t', upright(d) t) upright(d) t - integral_(t_1)^(t_2) L \( q_i \, dot(q)_i \) upright(d) t\
- & = integral_(t_1)^(t_2) (L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) - L \( q_i \, dot(q)_i \)) upright(d) t + integral_(t_1)^(t_2) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) accent(delta t, ̇) upright(d) t\
- & = integral_(t_1)^(t_2) (delta L + L (q_i \, dot(q)_i) accent(delta t, ̇)) upright(d) t $
+$ delta S = S' - S & = integral_(t_(1'))^(t_(2')) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) thin upright(d) t' - integral_(t_1)^(t_2) L \( q_i \, dot(q)_i \) thin upright(d) t\
+ & = integral_(t_1)^(t_2) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) frac(upright(d) t', upright(d) t) thin upright(d) t - integral_(t_1)^(t_2) L \( q_i \, dot(q)_i \) thin upright(d) t\
+ & = integral_(t_1)^(t_2) (L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) - L \( q_i \, dot(q)_i \)) thin upright(d) t + integral_(t_1)^(t_2) L (q_(i') \, frac(upright(d) q_(i'), upright(d) t')) accent(delta t, ̇) thin upright(d) t\
+ & = integral_(t_1)^(t_2) (delta L + L (q_i \, dot(q)_i) accent(delta t, ̇)) thin upright(d) t $
 任意の時間で $delta S = 0$ となるから
 $delta L + L (q_i \, dot(q)_i) accent(delta t, ̇) = 0$ となる。
 $ delta dot(q)_i & = frac(upright(d) q_(i'), upright(d) t') - dot(q)_i = frac(upright(d) t, upright(d) t') frac(upright(d) q_(i'), upright(d) t) - dot(q)_i = \( 1 - accent(delta t, ̇) \) \( dot(q)_i + accent(delta q_i, ̇) \) - dot(q)_i = - dot(q)_i accent(delta t, ̇) + accent(delta q_i, ̇) $
@@ -559,7 +559,7 @@ $omega \( bold(k)_(j_x \, j_y \, j_z) \) gt.eq 0$ に限られるから
 $omega gt.eq 0$ となる.
 
 (ii) これより調和振動子の総数は次のようになる.
-$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+$ integral_0^oo thin upright(d) omega g \( omega \) & = 3 integral_0^oo thin upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
  & = 3 N^3 . $
 
 ただこのような調和振動子の角振動数の個数分布関数 $g \( omega \)$
@@ -656,7 +656,7 @@ $ g \( omega \) & = sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha =
  & = 3 sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \) #h(2em) \( omega gt.eq 0 \) . $
 
 (ii) また調和振動子の総数は 3 次元結晶の模型と同様に $3 N^3$ となる.
-$ integral_0^oo upright(d) omega g \( omega \) & = 3 integral_0^oo upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha = x \, y \, z) delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
+$ integral_0^oo thin upright(d) omega g \( omega \) & = 3 integral_0^oo thin upright(d) omega sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N sum_(alpha = x \, y \, z) delta \( omega - omega \( bold(k)_(j_x \, j_y \, j_z) \) \)\
  & = 3 N^3 . $
 
 (iii) ここでDebye 模型における調和振動子の角振動数の個数分布関数
@@ -670,14 +670,14 @@ $ g \( omega \) & = 3 sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta \( o
 $g \( omega \)$ を滑らかな分布として近似できる.
 これより総和は次のように積分で置き換えられることが言える.
 $ g \( omega \) & = 3 sqrt(m / kappa) frac(N + 1, pi) sum_(j_x = 1)^N sum_(j_y = 1)^N sum_(j_z = 1)^N delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2))\
- & approx 3 sqrt(m / kappa) frac(N + 1, pi) integral_1^N upright(d) j_x integral_1^N upright(d) j_y integral_1^N upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2)) . $
+ & approx 3 sqrt(m / kappa) frac(N + 1, pi) integral_1^N thin upright(d) j_x integral_1^N thin upright(d) j_y integral_1^N thin upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2)) . $
 
 (v) ここで $omega$ に関する次の条件が成り立つとする.
 $ sqrt(m / kappa) frac(N + 1, pi) omega lt.eq N . $<omega_condition>
 特に $g \( omega \)$
 の被積分関数の積分値は次のような幾何学的解釈で近似できる.
-$  & integral_1^N upright(d) j_x integral_1^N upright(d) j_y integral_1^N upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2))\
-= & integral_V upright(d) bold(r) delta (\| bold(r) \| - sqrt(m / kappa) frac(N + 1, pi) omega) #h(2em) (V := { \( x \, y \, z \) divides 1 lt.eq x lt.eq N \, 1 lt.eq y lt.eq N \, 1 lt.eq z lt.eq N })\
+$  & integral_1^N thin upright(d) j_x integral_1^N thin upright(d) j_y integral_1^N thin upright(d) j_z delta (sqrt(m / kappa) frac(N + 1, pi) omega - sqrt(j_x^2 + j_y^2 + j_z^2))\
+= & integral_V thin upright(d) bold(r) delta (\| bold(r) \| - sqrt(m / kappa) frac(N + 1, pi) omega) #h(2em) (V := { \( x \, y \, z \) divides 1 lt.eq x lt.eq N \, 1 lt.eq y lt.eq N \, 1 lt.eq z lt.eq N })\
 approx & ("半径" sqrt(m / kappa) frac(N + 1, pi) omega の 2 "次元球面" S_2 "を第" 1 "象限で切り取った曲面の表面積") . $
 これより $g \( omega \)$ は次のように書ける.
 $ g \( omega \) & approx 3 sqrt(m / kappa) frac(N + 1, pi) times ("半径" sqrt(m / kappa) frac(N + 1, pi) omega の 2 "次元球面" S_2 "を第" 1 "象限で切り取った曲面の表面積") . $
@@ -697,11 +697,11 @@ $g \( omega \)$ は表される.
 $ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
 ただし $N gt.double 1$ であることから $N + 1$ を $N$ と近似し,
 また打ち切る角振動数 $omega_D$ を次のように定める.
-$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega g \( omega \) = 3 N^3 . $
+$ integral_0^oo thin upright(d) omega g \( omega \) & = integral_0^(omega_D) thin upright(d) omega g \( omega \) = 3 N^3 . $
 この $omega_D$ を Debye の角振動数という.
 
 (viii) これより Debye の角振動数 $omega_D$ は次のように計算される.
-$ integral_0^(omega_D) upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3 \,\
+$ integral_0^(omega_D) thin upright(d) omega g \( omega \) & = integral_0^(omega_D) thin upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3 \,\
 omega_D & = (3 N^3 2 / pi)^(1 \/ 3) sqrt(kappa / m) pi / N = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) . $
 
 (ix) また Debye の角振動数 $omega_D$ を用いて $g \( omega \)$

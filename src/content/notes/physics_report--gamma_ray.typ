@@ -44,7 +44,7 @@
 
 光電吸収は軌道上に拡がった電子にフォトンが衝突して、フォトンのエネルギーが全吸収される現象である。断面積は次のようにして
 $Z^5$ に比例することがわかる。
-$ sigma prop lr(|integral upright(d)^3 x psi_(1 s) \( r \)|)^2 & tilde.op lr(|integral upright(d)^3 x frac(exp \( - r \/ delta \), delta^(3 \/ 2))|)^2 tilde.op Z^5 & \( delta = a_0 \/ Z \) $
+$ sigma prop lr(|integral thin upright(d)^3 x psi_(1 s) \( r \)|)^2 & tilde.op lr(|integral thin upright(d)^3 x frac(exp \( - r \/ delta \), delta^(3 \/ 2))|)^2 tilde.op Z^5 & \( delta = a_0 \/ Z \) $
 
 次に宇宙線とは宇宙空間から飛来する高エネルギー放射線である。現代でも起源はよく分かっていない。
 まず地球大気に入射する宇宙線を一次宇宙線といい、これは高エネルギーの陽子が主成分である。
@@ -596,7 +596,7 @@ $ C & = frac(2 pi epsilon, ln \( b \/ a \)) $
 
 次に絶縁体内の磁場からインダクタンスの定義より次のように求まる。
 $ B \( r \) & = frac(mu I, 2 pi r)\
-L I & = integral_a^b B \( r \) upright(d) r = frac(mu I, 2 pi) ln b / a\
+L I & = integral_a^b B \( r \) thin upright(d) r = frac(mu I, 2 pi) ln b / a\
 L & = frac(mu, 2 pi) ln b / a $
 これより静電容量とインダクタンスが求まった。
 $ C & = frac(2 pi epsilon, ln \( b \/ a \))\
@@ -619,8 +619,8 @@ frac(partial I, partial z) & = - C frac(partial V, partial t) $
 よって電圧 $V$ について波動方程式が求まる。
 $ frac(partial^2 V, partial z^2) = - L frac(partial I, partial z \, t) = L C frac(partial^2 V, partial t^2) $
 この一般解については次のようになる。
-$ V \( z \, t \) & = integral_0^oo upright(d) k (V_(+) \( k \) e^(i k \( z - v t \)) + V_(-) \( k \) e^(i k \( z + v t \)))\
-I \( z \, t \) & = integral_0^oo upright(d) k (I_(+) \( k \) e^(i k \( z - v t \)) + I_(-) \( k \) e^(i k \( z + v t \))) $
+$ V \( z \, t \) & = integral_0^oo thin upright(d) k (V_(+) \( k \) e^(i k \( z - v t \)) + V_(-) \( k \) e^(i k \( z + v t \)))\
+I \( z \, t \) & = integral_0^oo thin upright(d) k (I_(+) \( k \) e^(i k \( z - v t \)) + I_(-) \( k \) e^(i k \( z + v t \))) $
 この進行波について上の微分方程式より次のような関係式が成り立つ。
 $ i k V_(+) \( k \) & = i omega L I_(+) \( k \)\
 i omega C V_(+) \( k \) & = i k I_(+) \( k \)\

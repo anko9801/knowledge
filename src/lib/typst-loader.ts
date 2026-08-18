@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto'
 import { compileHtml, evalMetadata } from './typst-cli.ts'
 import {
   extractStyles,
+  repairBinaryOperators,
   rewriteInternalLinks,
   splitDocument,
   useSpacingAccents,
@@ -159,7 +160,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     })
 
     // アクセントの置換は全記事に効かせる。合成用のままだと <mover> の点がずれる。
-    const accented = useSpacingAccents(body)
+    const accented = repairBinaryOperators(useSpacingAccents(body))
     const numbered = numberEquations ? wrapBlockEquations(accented) : accented
 
     // 本文の #link("/math/…") はサイトのルート起点で書かれている。

@@ -188,10 +188,10 @@ e^(- alpha) & = frac(N, sum_i e^(- epsilon_i \/ k_B T)) $
 とその束縛変数を変更させたエンタルピー $H \( S \, p \)$ と Helmholtz
 自由エネルギー $F \( T \, V \)$ と Gibbs 自由エネルギー $G \( T \, p \)$
 を次のように定義する。
-$  & #h(2em) upright(d) E = T upright(d) S - p upright(d) V\
-H = E + p V & #h(2em) upright(d) H = T upright(d) S + V upright(d) p\
-F = E - T S & #h(2em) upright(d) F = - S upright(d) T - p upright(d) V\
-G = F + p V & #h(2em) upright(d) G = - S upright(d) T + V upright(d) p $
+$  & #h(2em) thin upright(d) E = T thin upright(d) S - p thin upright(d) V\
+H = E + p V & #h(2em) thin upright(d) H = T thin upright(d) S + V thin upright(d) p\
+F = E - T S & #h(2em) thin upright(d) F = - S thin upright(d) T - p thin upright(d) V\
+G = F + p V & #h(2em) thin upright(d) G = - S thin upright(d) T + V thin upright(d) p $
 ]
 特に扱いやすい変数 $T$, $V$ を持つ Helmholtz 自由エネルギー
 $F \( T \, V \)$ は重宝される。
@@ -398,8 +398,9 @@ $omega_E$ を持って調和振動すると考える。
 $ hat(H) & = sum_(j = 1)^N (frac(hat(p)_j^2, 2 m) + 1 / 2 m omega_E^2 hat(x)_j^2) $
 
 独立な調和振動子の集まりの系として記述される系 $X$ において角振動数が
-$omega$ から $omega + upright(d) omega$ の範囲にある調和振動子の個数を
-$g \( omega \) upright(d) omega$ と定義する。つまり $g \( omega \)$
+$omega$ から $omega + thin upright(d) omega$
+の範囲にある調和振動子の個数を $g \( omega \) thin upright(d) omega$
+と定義する。つまり $g \( omega \)$
 は調和振動子の角振動数に対する個数分布関数である。
 
 調和振動子の角振動数の個数について、各原子の自由度が $3$ であるから
@@ -412,10 +413,10 @@ $omega$ である調和振動子 1 個の Helmholtz 自由エネルギー, エ�
 内部エネルギー, 比熱をそれぞれ
 $f \( omega \) \, s \( omega \) \, u \( omega \) \, c \( omega \)$
 と書くこととすると Einstein 模型は次のように書ける
-$ F & = integral_0^oo upright(d) omega g \( omega \) f \( omega \) = 3 N 1 / beta ln (2 sinh 1 / 2 beta planck omega_E)\
-S & = integral_0^oo upright(d) omega g \( omega \) s \( omega \) = 3 N k_B (- ln (2 sinh 1 / 2 beta planck omega_E) + 1 / 2 beta planck omega_E coth 1 / 2 beta planck omega_E)\
-U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \) = 3 N 1 / 2 planck omega_E coth 1 / 2 beta planck omega_E\
-C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \) = 3 N k_B (frac(1 / 2 beta planck omega_E, sinh 1 / 2 beta planck omega_E))^2 $
+$ F & = integral_0^oo thin upright(d) omega g \( omega \) f \( omega \) = 3 N 1 / beta ln (2 sinh 1 / 2 beta planck omega_E)\
+S & = integral_0^oo thin upright(d) omega g \( omega \) s \( omega \) = 3 N k_B (- ln (2 sinh 1 / 2 beta planck omega_E) + 1 / 2 beta planck omega_E coth 1 / 2 beta planck omega_E)\
+U & = integral_0^oo thin upright(d) omega g \( omega \) u \( omega \) = 3 N 1 / 2 planck omega_E coth 1 / 2 beta planck omega_E\
+C & = integral_0^oo thin upright(d) omega g \( omega \) c \( omega \) = 3 N k_B (frac(1 / 2 beta planck omega_E, sinh 1 / 2 beta planck omega_E))^2 $
 
 #block[
 実験事実
@@ -481,7 +482,7 @@ Einstein 模型と同じ結果を導くという要請をした。これを Deby
 $ omega_(bold(k)) & approx sqrt(kappa / m) a \| bold(k) \| + cal(O) \( \| bold(k) \|^3 \) #h(2em) \( a \| bold(k) \| lt.double 1 \)\
 omega_(bold(k)) & = sqrt(kappa / m) a \| bold(k) \| = sqrt(kappa / m) frac(pi, N + 1) sqrt(j_x^2 + j_y^2 + j_z^2) $
 また打ち切る角振動数 $omega_D$ を次のように定める.
-$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega g \( omega \) = 3 N^3 . $
+$ integral_0^oo thin upright(d) omega g \( omega \) & = integral_0^(omega_D) thin upright(d) omega g \( omega \) = 3 N^3 . $
 この $omega_D$ を Debye の角振動数という.
 
 #theorem[
@@ -495,7 +496,7 @@ $ g \( omega \) & approx 3 sqrt(m / kappa) frac(N + 1, pi) times ("半径" sqrt(
  & = frac(3 pi, 2) (sqrt(m / kappa) frac(N + 1, pi))^3 omega^2 . $
 正方形から球へ近似 ただし $N gt.double 1$ であることから $N + 1$ を $N$
 と近似し,
-$ integral_0^oo upright(d) omega g \( omega \) & = integral_0^(omega_D) upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3\
+$ integral_0^oo thin upright(d) omega g \( omega \) & = integral_0^(omega_D) thin upright(d) omega frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 = pi / 2 (sqrt(m / kappa) N / pi)^3 omega_D^3 = 3 N^3\
 omega_D & = \( 6 pi^2 \)^(1 \/ 3) sqrt(kappa / m) $
 $ g \( omega \) & = cases(delim: "{", frac(3 pi, 2) (sqrt(m / kappa) N / pi)^3 omega^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \))\
  & = cases(delim: "{", frac(9 N^3, omega_D) (omega / omega_D)^2 & \( omega lt.eq omega_D \), 0 & \( omega > omega_D \)) . $
@@ -508,22 +509,22 @@ Debye
 $ U & = U_0 + 9 N^3 planck omega_D I \( beta planck omega_D \) #h(2em) (U_0 = 3 / 8 \( 3 N^3 \) planck omega_D)\
 C & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) $
 ただし $I \( b \)$ について次のように定められる.
-$ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) . $
+$ I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1) . $
 ]
 #proof[
 以下からは
 $b = beta planck omega_D = planck omega_D \/ \( k_B T \)$
 という関係を用いる。
-$ U & = integral_0^oo upright(d) omega g \( omega \) u \( omega \)\
- & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 (1 / 2 + frac(1, e^(beta planck omega) - 1)) planck omega\
- & = 9 N^3 planck integral_0^(omega_D) upright(d) omega (omega / omega_D)^3 (1 / 2 + frac(1, e^(beta planck omega) - 1))\
- & = 9 N^3 planck omega_D integral_0^1 upright(d) x (1 / 2 + frac(1, e^(beta planck omega_D x) - 1)) x^3\
+$ U & = integral_0^oo thin upright(d) omega g \( omega \) u \( omega \)\
+ & = integral_0^(omega_D) thin upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 (1 / 2 + frac(1, e^(beta planck omega) - 1)) planck omega\
+ & = 9 N^3 planck integral_0^(omega_D) thin upright(d) omega (omega / omega_D)^3 (1 / 2 + frac(1, e^(beta planck omega) - 1))\
+ & = 9 N^3 planck omega_D integral_0^1 thin upright(d) x (1 / 2 + frac(1, e^(beta planck omega_D x) - 1)) x^3\
  & = 3 / 8 \( 3 N^3 \) planck omega_D + 9 N^3 planck omega_D I \( beta planck omega_D \) $
 比熱の定義式に代入することで次のようになる。
-$ C & = integral_0^oo upright(d) omega g \( omega \) c \( omega \)\
- & = integral_0^(omega_D) upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2\
- & = 9 k_B N^3 \( beta planck omega_D \)^2 integral_0^(omega_D) frac(upright(d) omega, omega_D) (omega / omega_D)^4 frac(e^(beta planck omega), \( e^(beta planck omega) - 1 \)^2)\
- & = 3 n R dot.op 3 b^2 integral_0^1 upright(d) x frac(x^4 e^(b x), \( e^(b x) - 1 \)^2)\
+$ C & = integral_0^oo thin upright(d) omega g \( omega \) c \( omega \)\
+ & = integral_0^(omega_D) thin upright(d) omega frac(9 N^3, omega_D) (omega / omega_D)^2 k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2\
+ & = 9 k_B N^3 \( beta planck omega_D \)^2 integral_0^(omega_D) frac(thin upright(d) omega, omega_D) (omega / omega_D)^4 frac(e^(beta planck omega), \( e^(beta planck omega) - 1 \)^2)\
+ & = 3 n R dot.op 3 b^2 integral_0^1 thin upright(d) x frac(x^4 e^(b x), \( e^(b x) - 1 \)^2)\
  & = 3 n R dot.op \( - 3 \) b^2 frac(upright(d) I \( b \), upright(d) b) . $
 ] 
 
@@ -535,16 +536,16 @@ $ I \( b \) = cases(delim: "{", frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 +
 #proof[
 Bernoulli 数 $B_n$
 の定義を用いて次のように計算できる。
-$ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1)\
- & = integral_0^1 upright(d) x sum_(n = 0)^oo frac(B_n b^(n - 1), n !) x^(n + 2)\
+$ I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1)\
+ & = integral_0^1 thin upright(d) x sum_(n = 0)^oo frac(B_n b^(n - 1), n !) x^(n + 2)\
  & = sum_(n = 0)^oo frac(B_n, \( n + 3 \) n !) b^(n - 1)\
  & = frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 + 1 / 272160 b^5 - dots.h.c . $
 
 初項 $e^(- b x)$ 公比 $e^(- b x)$ の無限等比数列の和は
 $1 \/ \( e^(b x) + 1 \)$ である. これより $I \( b \)$
 は次のように表される.
-$ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) = integral_0^1 upright(d) x x^3 sum_(n = 1)^oo e^(- n b x) = sum_(n = 1)^oo integral_0^1 upright(d) x x^3 e^(- n b x)\
- & = sum_(n = 1)^oo frac(1, \( n b \)^4) integral_0^(n b) upright(d) t t^3 e^(- t) #h(2em) \( t = n b x \)\
+$ I \( b \) & = integral_0^1 thin upright(d) x frac(x^3, e^(b x) - 1) = integral_0^1 thin upright(d) x x^3 sum_(n = 1)^oo e^(- n b x) = sum_(n = 1)^oo integral_0^1 thin upright(d) x x^3 e^(- n b x)\
+ & = sum_(n = 1)^oo frac(1, \( n b \)^4) integral_0^(n b) thin upright(d) t t^3 e^(- t) #h(2em) \( t = n b x \)\
  & = sum_(n = 1)^oo frac(1, \( n b \)^4) gamma \( 4 \, n b \)\
  & = sum_(n = 1)^oo frac(1, \( n b \)^4) \( Gamma \( 4 \) - Gamma \( 4 \, n b \) \)\
  & = 1 / b^4 (Gamma \( 4 \) zeta \( 4 \) - sum_(n = 1)^oo 1 / n^4 Gamma \( 4 \, n b \)) $
@@ -552,17 +553,17 @@ $ I \( b \) & = integral_0^1 upright(d) x frac(x^3, e^(b x) - 1) = integral_0^1 
 は次の式で定義される.第 2 種不完全ガンマ関数 $Gamma \( z \, p \)$,
 ガンマ関数 $Gamma \( z \)$, ゼータ関数 $zeta \( z \)$
 は次のように定義される.
-$ gamma \( z \, p \) & := integral_0^p upright(d) t t^(z - 1) e^(- t) \, #h(2em) Gamma \( z \, p \) := integral_p^oo upright(d) t t^(z - 1) e^(- t)\
-Gamma \( z \) & := integral_0^oo upright(d) t t^(z - 1) e^(- t) = gamma \( z \, p \) + Gamma \( z \, p \)\
+$ gamma \( z \, p \) & := integral_0^p thin upright(d) t t^(z - 1) e^(- t) \, #h(2em) Gamma \( z \, p \) := integral_p^oo thin upright(d) t t^(z - 1) e^(- t)\
+Gamma \( z \) & := integral_0^oo thin upright(d) t t^(z - 1) e^(- t) = gamma \( z \, p \) + Gamma \( z \, p \)\
 zeta \( s \) & := sum_(n = 1)^oo 1 / n^s . $ ここでゼータ関数
 $zeta \( 4 \)$ の値は次の通りとなる。第二種不完全ガンマ関数
 $Gamma \( z \, p \)$ の $p$ の極限について積分範囲が小さくなっていき,
 被積分関数は発散しないので次のようになる. $ Gamma \( 4 \) & = 6\
 zeta \( 4 \) & = pi^4 / 90 $ $Gamma \( z \, p \)$
 について部分積分することで次のように書ける.
-$ Gamma \( z \, p \) & = integral_p^oo upright(d) t t^(z - 1) e^(- t)\
- & = sum_(m = 0)^n (- [\( z - 1 \) dots.h.c \( z - m \) t^(z - m - 1) e^(- t)]_p^oo) + integral_p^oo upright(d) t \( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
- & = sum_(m = 0)^n (\( z - 1 \) dots.h.c \( z - m \) p^(z - m - 1) e^(- p)) + integral_p^oo upright(d) t \( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
+$ Gamma \( z \, p \) & = integral_p^oo thin upright(d) t t^(z - 1) e^(- t)\
+ & = sum_(m = 0)^n (- [\( z - 1 \) dots.h.c \( z - m \) t^(z - m - 1) e^(- t)]_p^oo) + integral_p^oo thin upright(d) t \( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
+ & = sum_(m = 0)^n (\( z - 1 \) dots.h.c \( z - m \) p^(z - m - 1) e^(- p)) + integral_p^oo thin upright(d) t \( z - 1 \) dots.h.c \( z - n \) t^(z - n - 1) e^(- t)\
  & = p^(z - 1) e^(- p) (1 + sum_(m = 1)^oo 1 / p^m \( z - 1 \) \( z - 2 \) dots.h.c \( z - m \)) #h(2em) \( because n arrow.r oo \) . $
 $z = 4$ を代入すると次のようになる.
 $ Gamma \( 4 \, p \) & = p^3 e^(- p) (1 + 3 / p + 6 / p^2 + 6 / p^3)\
@@ -605,7 +606,7 @@ $ C & approx 3 n R times cases(delim: "{", 1 & \( k_B T gt.double planck omega_D
 = 古典統計力学 (classical statistical mechanics) 近似
 <古典統計力学-classical-statistical-mechanics-近似>
 #theorem[
-$ Z & = frac(1, \( 2 pi planck \)^f) integral e^(- H \( p \, q \) \/ k_B T) product_(i = 1)^f upright(d) p_i upright(d) q_i $
+$ Z & = frac(1, \( 2 pi planck \)^f) integral e^(- H \( p \, q \) \/ k_B T) product_(i = 1)^f thin upright(d) p_i thin upright(d) q_i $
 ]
 == 振動子系の古典近似
 <振動子系の古典近似>
@@ -622,11 +623,11 @@ $ Z & = frac(1, \( 2 pi planck \)^f) integral e^(- H \( p \, q \) \/ k_B T) prod
 を次のように定義する。 グランドポテンシャル (grand potential)
 または熱力学ポテンシャル (thermodynamic potential)
 $J \( T \, V \, mu \)$
-$  & #h(2em) upright(d) U = T upright(d) S - p upright(d) V + mu upright(d) N\
-H = U + p V & #h(2em) upright(d) H = T upright(d) S + V upright(d) p + mu upright(d) N\
-F = U - T S & #h(2em) upright(d) F = - S upright(d) T - p upright(d) V + mu upright(d) N\
-G = F + p V & #h(2em) upright(d) G = - S upright(d) T + V upright(d) p + mu upright(d) N\
-J = F - N mu & #h(2em) upright(d) J = - S upright(d) T - p upright(d) V - N upright(d) mu $
+$  & #h(2em) thin upright(d) U = T thin upright(d) S - p thin upright(d) V + mu thin upright(d) N\
+H = U + p V & #h(2em) thin upright(d) H = T thin upright(d) S + V thin upright(d) p + mu thin upright(d) N\
+F = U - T S & #h(2em) thin upright(d) F = - S thin upright(d) T - p thin upright(d) V + mu thin upright(d) N\
+G = F + p V & #h(2em) thin upright(d) G = - S thin upright(d) T + V thin upright(d) p + mu thin upright(d) N\
+J = F - N mu & #h(2em) thin upright(d) J = - S thin upright(d) T - p thin upright(d) V - N thin upright(d) mu $
 ]
 #theorem[
 $ 5 T & = (frac(partial U, partial S))_(V \, mu) & #h(2em) - p & = (frac(partial U, partial V))_(S \, mu) & #h(2em) mu & = (frac(partial U, partial mu))_(S \, V)\
@@ -644,8 +645,8 @@ frac(partial J, partial T \, V) & = - (frac(partial S, partial V))_(T \, mu) = -
 ]
 #theorem("Gibbs-Duhem の関係")[
 グランドポテンシャルについて次の関係式が成り立つ。 $  & J = - p V\
- & V upright(d) p - S upright(d) T - N upright(d) mu = 0 $ 第二式を
-Gibbs-Duhem の関係という。
+ & V thin upright(d) p - S thin upright(d) T - N thin upright(d) mu = 0 $
+第二式を Gibbs-Duhem の関係という。
 ]
 #proof[
 グランドポテンシャル $J \( T \, V \, mu \)$ について
@@ -654,10 +655,9 @@ $V$ は示量変数、$T \, mu$ は示強変数であるから系の大きさを
 となる。これに両辺 $lambda$ で微分して $lambda = 1$ を代入する。
 $ frac(upright(d), upright(d) lambda) J \( T \, lambda V \, mu \)\|_(lambda = 1) & = (frac(partial \( lambda V \), partial lambda) frac(partial, partial \( lambda V \)) J \( T \, lambda V \, mu \))_(T \, mu)\|_(lambda = 1) = V (frac(partial J, partial V))_(T \, mu) = - p V $
 よって $J = - p V$ となる。また定義式より Gibbs-Duhem の関係が求まる。
-$ upright(d) J = upright(d) \( - p V \) = - p upright(d) V - V upright(d) p & = - S upright(d) T - p upright(d) V - N upright(d) mu\
-V upright(d) p - S upright(d) T - N upright(d) mu & = 0 $
-]
-
+$ thin upright(d) J = thin upright(d) \( - p V \) = - p thin upright(d) V - V thin upright(d) p & = - S thin upright(d) T - p thin upright(d) V - N thin upright(d) mu\
+V thin upright(d) p - S thin upright(d) T - N thin upright(d) mu & = 0 $
+] 
 
 #definition("グランドカノニカル分布")[
 グランドカノニカル分布において分配関数 $Xi \( T \, V \, mu \)$
@@ -670,13 +670,13 @@ N & = 1 / beta (frac(partial ln Xi, partial mu))_(T \, V) $
 ]
 #proof[
 整理して両辺を微分すると
-$ upright(d) \( log Xi \) & = frac(upright(d) Xi, Xi)\
- & = - beta frac(sum_n upright(d) \( E_n - mu N_n \) e^(- beta \( E_n - mu N_n \)), sum_n e^(- beta \( E_n - mu N_n \))) - upright(d) beta frac(sum_n \( E_n - mu N_n \) e^(- beta \( E_n - mu N_n \)), sum_n e^(- beta \( E_n - mu N_n \)))\
- & = - beta \( chevron.l upright(d) E chevron.r - chevron.l N chevron.r upright(d) mu \) - upright(d) beta \( chevron.l E chevron.r - chevron.l N chevron.r mu \)\
- & = - frac(1, k_B T) \( - p upright(d) V - N upright(d) mu \) + frac(upright(d) T, k_B T^2) \( U - N mu \)\
-upright(d) (frac(J, k_B T)) & = (frac(upright(d) J, k_B T)) - (frac(J, k_B T^2)) upright(d) T\
- & = (frac(- S upright(d) T - p upright(d) V - N upright(d) mu, k_B T)) - (frac(U - T S - N mu, k_B T^2)) upright(d) T\
- & = frac(1, k_B T) \( - p upright(d) V - N upright(d) mu \) - frac(upright(d) T, k_B T^2) \( U - N mu \) $
+$ thin upright(d) \( log Xi \) & = frac(thin upright(d) Xi, Xi)\
+ & = - beta frac(sum_n thin upright(d) \( E_n - mu N_n \) e^(- beta \( E_n - mu N_n \)), sum_n e^(- beta \( E_n - mu N_n \))) - thin upright(d) beta frac(sum_n \( E_n - mu N_n \) e^(- beta \( E_n - mu N_n \)), sum_n e^(- beta \( E_n - mu N_n \)))\
+ & = - beta \( chevron.l thin upright(d) E chevron.r - chevron.l N chevron.r thin upright(d) mu \) - thin upright(d) beta \( chevron.l E chevron.r - chevron.l N chevron.r mu \)\
+ & = - frac(1, k_B T) \( - p thin upright(d) V - N thin upright(d) mu \) + frac(thin upright(d) T, k_B T^2) \( U - N mu \)\
+thin upright(d) (frac(J, k_B T)) & = (frac(thin upright(d) J, k_B T)) - (frac(J, k_B T^2)) thin upright(d) T\
+ & = (frac(- S thin upright(d) T - p thin upright(d) V - N thin upright(d) mu, k_B T)) - (frac(U - T S - N mu, k_B T^2)) thin upright(d) T\
+ & = frac(1, k_B T) \( - p thin upright(d) V - N thin upright(d) mu \) - frac(thin upright(d) T, k_B T^2) \( U - N mu \) $
 ] 
 
 #theorem("粒子数の揺らぎ")[
@@ -749,25 +749,25 @@ lim_(T arrow.r oo) f_F \( epsilon \) & approx e^(- beta \( epsilon - mu \)) $
 
 #theorem("ゾンマーフェルト展開")[
 次の積分を次のように展開できる。
-$ I \( beta \, mu \) & := integral_(- oo)^oo upright(d) epsilon g \( epsilon \) f_F \( epsilon \) = integral_(- oo)^mu g \( epsilon \) upright(d) epsilon + pi^2 / 6 g' \( mu \) \( k_B T \)^2 + O \( \( k_B T \)^4 \) $
+$ I \( beta \, mu \) & := integral_(- oo)^oo thin upright(d) epsilon g \( epsilon \) f_F \( epsilon \) = integral_(- oo)^mu g \( epsilon \) thin upright(d) epsilon + pi^2 / 6 g' \( mu \) \( k_B T \)^2 + O \( \( k_B T \)^4 \) $
 ]
 #proof[
-$ G \( epsilon \) & = integral_(- oo)^epsilon g \( epsilon \) upright(d) epsilon $
+$ G \( epsilon \) & = integral_(- oo)^epsilon g \( epsilon \) thin upright(d) epsilon $
 
-$ I \( beta \, mu \) & = integral_(- oo)^oo upright(d) epsilon g \( epsilon \) f_F \( epsilon \)\
- & = \[ G \( epsilon \) f_F \( epsilon \) \]_(- oo)^oo - integral_(- oo)^oo upright(d) epsilon G \( epsilon \) f_(F') \( epsilon \)\
- & = - integral_(- oo)^oo upright(d) epsilon G \( epsilon \) f_(F') \( epsilon \)\
- & = - integral_(- oo)^oo upright(d) epsilon [G \( mu \) + G' \( mu \) \( epsilon - mu \) + 1 / 2 G'' \( mu \) \( epsilon - mu \)^2 + dots.h.c] f_(F') \( epsilon \) $
+$ I \( beta \, mu \) & = integral_(- oo)^oo thin upright(d) epsilon g \( epsilon \) f_F \( epsilon \)\
+ & = \[ G \( epsilon \) f_F \( epsilon \) \]_(- oo)^oo - integral_(- oo)^oo thin upright(d) epsilon G \( epsilon \) f_(F') \( epsilon \)\
+ & = - integral_(- oo)^oo thin upright(d) epsilon G \( epsilon \) f_(F') \( epsilon \)\
+ & = - integral_(- oo)^oo thin upright(d) epsilon [G \( mu \) + G' \( mu \) \( epsilon - mu \) + 1 / 2 G'' \( mu \) \( epsilon - mu \)^2 + dots.h.c] f_(F') \( epsilon \) $
 $x = beta \( epsilon - mu \)$ と変数変換すると奇関数性より
-$ integral_(- oo)^oo upright(d) epsilon f_(F') \( epsilon \) & = \[ f_F \( epsilon \) \]_(- oo)^oo = - 1\
-integral_(- oo)^oo upright(d) epsilon f_(F') \( epsilon \) \( epsilon - mu \) & = integral_(- oo)^oo upright(d) epsilon x / beta frac(e^x, \( e^x + 1 \)^2) = integral_(- oo)^oo upright(d) epsilon x / beta frac(x, 4 cosh^2 \( x \/ 2 \)) = 0\
-integral_(- oo)^oo upright(d) epsilon f_(F') \( epsilon \) \( epsilon - mu \)^2 & = 1 / beta^2 integral_(- oo)^oo upright(d) epsilon x^2 frac(upright(d), upright(d) x) (frac(1, e^x + 1))\
- & = 2 / beta^2 [frac(x^2, e^x + 1)]_0^oo - 4 / beta^2 integral_0^oo upright(d) epsilon frac(x, e^x + 1)\
- & = - 4 / beta^2 integral_0^oo upright(d) epsilon x sum_(n = 1)^oo \( - 1 \)^(n - 1) e^(- n x)\
+$ integral_(- oo)^oo thin upright(d) epsilon f_(F') \( epsilon \) & = \[ f_F \( epsilon \) \]_(- oo)^oo = - 1\
+integral_(- oo)^oo thin upright(d) epsilon f_(F') \( epsilon \) \( epsilon - mu \) & = integral_(- oo)^oo thin upright(d) epsilon x / beta frac(e^x, \( e^x + 1 \)^2) = integral_(- oo)^oo thin upright(d) epsilon x / beta frac(x, 4 cosh^2 \( x \/ 2 \)) = 0\
+integral_(- oo)^oo thin upright(d) epsilon f_(F') \( epsilon \) \( epsilon - mu \)^2 & = 1 / beta^2 integral_(- oo)^oo thin upright(d) epsilon x^2 frac(upright(d), upright(d) x) (frac(1, e^x + 1))\
+ & = 2 / beta^2 [frac(x^2, e^x + 1)]_0^oo - 4 / beta^2 integral_0^oo thin upright(d) epsilon frac(x, e^x + 1)\
+ & = - 4 / beta^2 integral_0^oo thin upright(d) epsilon x sum_(n = 1)^oo \( - 1 \)^(n - 1) e^(- n x)\
  & = - 4 / beta^2 sum_(n = 1)^oo frac(\( - 1 \)^(n - 1), 2 n^2)\
  & = - 4 / beta^2 pi^2 / 12 = - frac(pi^2, 3 beta^2) $
 $ I \( beta \, mu \) & = G \( mu \) + frac(pi^2, 6 beta^2) G'' \( mu \) + O \( beta^(- 4) \)\
- & = integral_(- oo)^mu g \( epsilon \) upright(d) epsilon + pi^2 / 6 g' \( mu \) \( k_B T \)^2 + O \( \( k_B T \)^4 \) $
+ & = integral_(- oo)^mu g \( epsilon \) thin upright(d) epsilon + pi^2 / 6 g' \( mu \) \( k_B T \)^2 + O \( \( k_B T \)^4 \) $
 ] 
 
 #theorem[
@@ -775,17 +775,17 @@ $ mu & approx epsilon_F - pi^2 / 6 frac(nu' \( epsilon_F \), nu \( epsilon_F \))
 c \( T \, rho \) & = pi^2 / 3 nu \( epsilon_F \) k_B^2 T $
 ]
 #proof[
-$ N & = integral_(- oo)^oo upright(d) epsilon nu \( epsilon \) f_F \( epsilon \)\
- & approx integral_(- oo)^mu upright(d) epsilon nu \( epsilon \) + pi^2 / 6 nu' \( mu \) \( k_B T \)^2\
- & = integral_(- oo)^(epsilon_F) upright(d) epsilon nu \( epsilon \) + integral_(epsilon_F)^mu upright(d) epsilon nu \( epsilon \) + pi^2 / 6 nu' \( mu \) \( k_B T \)^2\
+$ N & = integral_(- oo)^oo thin upright(d) epsilon nu \( epsilon \) f_F \( epsilon \)\
+ & approx integral_(- oo)^mu thin upright(d) epsilon nu \( epsilon \) + pi^2 / 6 nu' \( mu \) \( k_B T \)^2\
+ & = integral_(- oo)^(epsilon_F) thin upright(d) epsilon nu \( epsilon \) + integral_(epsilon_F)^mu thin upright(d) epsilon nu \( epsilon \) + pi^2 / 6 nu' \( mu \) \( k_B T \)^2\
  & approx N + \( mu - epsilon_F \) nu \( epsilon_F \) + pi^2 / 6 nu' \( mu \) \( k_B T \)^2 $
 $ mu approx epsilon_F - pi^2 / 6 frac(nu' \( epsilon_F \), nu \( epsilon_F \)) \( k_B T \)^2 $
 
-$ U & = integral_(- oo)^oo upright(d) epsilon epsilon nu \( epsilon \) f_F \( epsilon \)\
- & approx integral_(- oo)^mu upright(d) epsilon epsilon nu \( epsilon \) + pi^2 / 6 \( epsilon nu \( epsilon \) \)' \|_(epsilon = mu) \( k_B T \)^2\
- & = integral_(- oo)^(epsilon_F) upright(d) epsilon epsilon nu \( epsilon \) + integral_(epsilon_F)^mu upright(d) epsilon epsilon nu \( epsilon \) + pi^2 / 6 \( epsilon nu \( epsilon \) \)' \|_(epsilon = mu) \( k_B T \)^2\
- & = integral_(- oo)^(epsilon_F) upright(d) epsilon epsilon nu \( epsilon \) + \( mu - epsilon_F \) epsilon_F nu \( epsilon_F \) + pi^2 / 6 nu \( epsilon_F \) \( k_B T \)^2 + pi^2 / 6 epsilon_F nu' \( epsilon_F \) \( k_B T \)^2\
- & approx integral_(- oo)^(epsilon_F) upright(d) epsilon epsilon nu \( epsilon \) + pi^2 / 6 nu \( epsilon_F \) \( k_B T \)^2 $
+$ U & = integral_(- oo)^oo thin upright(d) epsilon epsilon nu \( epsilon \) f_F \( epsilon \)\
+ & approx integral_(- oo)^mu thin upright(d) epsilon epsilon nu \( epsilon \) + pi^2 / 6 \( epsilon nu \( epsilon \) \)' \|_(epsilon = mu) \( k_B T \)^2\
+ & = integral_(- oo)^(epsilon_F) thin upright(d) epsilon epsilon nu \( epsilon \) + integral_(epsilon_F)^mu thin upright(d) epsilon epsilon nu \( epsilon \) + pi^2 / 6 \( epsilon nu \( epsilon \) \)' \|_(epsilon = mu) \( k_B T \)^2\
+ & = integral_(- oo)^(epsilon_F) thin upright(d) epsilon epsilon nu \( epsilon \) + \( mu - epsilon_F \) epsilon_F nu \( epsilon_F \) + pi^2 / 6 nu \( epsilon_F \) \( k_B T \)^2 + pi^2 / 6 epsilon_F nu' \( epsilon_F \) \( k_B T \)^2\
+ & approx integral_(- oo)^(epsilon_F) thin upright(d) epsilon epsilon nu \( epsilon \) + pi^2 / 6 nu \( epsilon_F \) \( k_B T \)^2 $
 
 $ c \( T \, rho \) & = frac(partial U, partial T) = pi^2 / 3 nu \( epsilon_F \) k_B^2 T $
 ] 
@@ -819,11 +819,11 @@ C_0 & = frac(15 V, 4) (frac(m T, 2 pi planck^2))^(3 \/ 2) k_B^(5 \/ 2) zeta (5 /
 $N_0 \( beta \, mu \)$, $N' \( beta \, mu \)$
 とする。それぞれ次のように計算できる。
 $ N_0 \( beta \, mu \) & = frac(1, e^(- beta mu) - 1)\
-N' \( beta \, mu \) & = c integral_0^oo upright(d) epsilon frac(sqrt(epsilon), e^(beta \( epsilon - mu \)) - 1) = c beta^(- 3 \/ 2) integral_0^oo upright(d) u frac(u^(1 \/ 2), e^(- beta mu) e^u - 1) $
+N' \( beta \, mu \) & = c integral_0^oo thin upright(d) epsilon frac(sqrt(epsilon), e^(beta \( epsilon - mu \)) - 1) = c beta^(- 3 \/ 2) integral_0^oo thin upright(d) u frac(u^(1 \/ 2), e^(- beta mu) e^u - 1) $
 粒子数 $N' \( beta \, mu \)$ は $mu = 0$ において最大となる。これを
 $N'_max$ とおく。
-$ N' \( beta \, 0 \) & = c beta^(- 3 \/ 2) integral_0^oo upright(d) u frac(u^(1 \/ 2), e^u - 1)\
- & = c beta^(- 3 \/ 2) integral_0^oo upright(d) u sum_(n = 1)^oo u^(1 \/ 2) e^(- n u)\
+$ N' \( beta \, 0 \) & = c beta^(- 3 \/ 2) integral_0^oo thin upright(d) u frac(u^(1 \/ 2), e^u - 1)\
+ & = c beta^(- 3 \/ 2) integral_0^oo thin upright(d) u sum_(n = 1)^oo u^(1 \/ 2) e^(- n u)\
  & = c beta^(- 3 \/ 2) sum_(n = 1)^oo 1 / n^(3 \/ 2) Gamma (3 / 2)\
  & = c beta^(- 3 \/ 2) zeta (3 / 2) Gamma (3 / 2)\
  & = V / 8 (frac(2 m k_B T, pi planck^2))^(3 \/ 2) zeta (3 / 2) $
@@ -842,9 +842,9 @@ N > N'_max prop T_c^(3 \/ 2) > T^(3 \/ 2) arrow.l.r.double T < T_c #h(2em) (T_c 
 $ N_0 approx N - N'_max = N - V / 8 (frac(2 m k_B T, pi planck^2))^(3 \/ 2) zeta (3 / 2) = N (1 - (T / T_c)^(3 \/ 2)) $
 
 さらにエネルギーと比熱について
-$ U & = integral_0^oo upright(d) epsilon epsilon nu \( epsilon \) frac(1, e^(beta \( epsilon - mu \)) - 1) = c integral_0^oo upright(d) epsilon frac(epsilon^(3 \/ 2), e^(beta \( epsilon - mu \)) - 1)\
- & = frac(V, 4 pi^2) (frac(2 m, planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) integral_0^oo upright(d) u frac(u^(3 \/ 2), e^u e^(- beta mu) - 1)\
-U_0 & = frac(V, 4 pi^2) (frac(2 m, planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) integral_0^oo upright(d) u frac(u^(3 \/ 2), e^u - 1)\
+$ U & = integral_0^oo thin upright(d) epsilon epsilon nu \( epsilon \) frac(1, e^(beta \( epsilon - mu \)) - 1) = c integral_0^oo thin upright(d) epsilon frac(epsilon^(3 \/ 2), e^(beta \( epsilon - mu \)) - 1)\
+ & = frac(V, 4 pi^2) (frac(2 m, planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) integral_0^oo thin upright(d) u frac(u^(3 \/ 2), e^u e^(- beta mu) - 1)\
+U_0 & = frac(V, 4 pi^2) (frac(2 m, planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) integral_0^oo thin upright(d) u frac(u^(3 \/ 2), e^u - 1)\
  & = frac(V, 4 pi^2) (frac(2 m, planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) Gamma (5 / 2) zeta (5 / 2)\
  & = frac(3 V, 2) (frac(m, 2 pi planck^2))^(3 \/ 2) \( k_B T \)^(5 \/ 2) zeta (5 / 2) $
 

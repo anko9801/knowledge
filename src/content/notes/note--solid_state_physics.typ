@@ -151,11 +151,11 @@ $ hat(H) & = - frac(planck^2, 2 m_e) nabla^2 - frac(e^2, 4 pi epsilon_0 r_1) - f
 LCAO 法 (linear combination of atomic orbitals method)
 $ phi & = c_1 phi_1 + c_2 phi_2 #h(2em) \( H phi_i = cal(E) phi_i \) $
 
-$ integral phi_i hat(H) phi upright(d) bold(r) & = cal(E) integral phi_i phi upright(d) bold(r)\
+$ integral phi_i hat(H) phi thin upright(d) bold(r) & = cal(E) integral phi_i phi thin upright(d) bold(r)\
 c_j H_(i j) & = cal(E) c_j S_(i j) $ ただし $j$
 で縮約を取り、次のように定義した。
-$ H_(i j) & := integral phi_i^(\*) hat(H) phi_j upright(d) bold(r) & \( H_11 = H_22 \, H_12 = H_21 \)\
-S_(i j) & := integral phi_i^(\*) phi_j upright(d) bold(r) & \( S_11 = S_22 = 1 \, S_12 = S_21 \) $
+$ H_(i j) & := integral phi_i^(\*) hat(H) phi_j thin upright(d) bold(r) & \( H_11 = H_22 \, H_12 = H_21 \)\
+S_(i j) & := integral phi_i^(\*) phi_j thin upright(d) bold(r) & \( S_11 = S_22 = 1 \, S_12 = S_21 \) $
 このとき次が成り立つ。
 $ mat(delim: "(", H_11 - S_11 cal(E), H_12 - S_12 cal(E); H_21 - S_21 cal(E), H_22 - S_22 cal(E)) vec(c_1, c_2) = mat(delim: "(", H_11 - cal(E), H_12 - S cal(E); H_12 - S cal(E), H_11 - cal(E)) vec(c_1, c_2) = 0 $
 このとき行列式を考えることで次の式が成り立つ。
@@ -165,7 +165,7 @@ cal(E)_plus.minus & = frac(H_11 plus.minus H_12, 1 plus.minus S) $
 これを代入すると
 $ frac(1, 1 plus.minus S) mat(delim: "(", plus.minus H_11 S minus.plus H_12, H_12 - S H_11; H_12 - S H_11, plus.minus H_11 S minus.plus H_12) vec(c_1, c_2) = 0 $
 より $c_2 = plus.minus c_1$ となる。
-$ integral \| phi \|^2 upright(d) bold(r) & = integral \| c_1 phi_1 plus.minus c_1 phi_2 \|^2 upright(d) bold(r) = \| c_1 \|^2 integral \( \| phi_1 \|^2 plus.minus phi_1^(\*) phi_2 plus.minus phi_2^(\*) phi_1 + \| phi_2 \|^2 \) upright(d) bold(r)\
+$ integral \| phi \|^2 thin upright(d) bold(r) & = integral \| c_1 phi_1 plus.minus c_1 phi_2 \|^2 thin upright(d) bold(r) = \| c_1 \|^2 integral \( \| phi_1 \|^2 plus.minus phi_1^(\*) phi_2 plus.minus phi_2^(\*) phi_1 + \| phi_2 \|^2 \) thin upright(d) bold(r)\
  & = \| c_1 \|^2 \( 2 plus.minus 2 S \) = 1\
 c_1 & = 1 / sqrt(2 \( 1 plus.minus S \)) $
 よって波動関数は次のように表示できる。

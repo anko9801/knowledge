@@ -1637,8 +1637,8 @@ $phi.alt_i \( bold(r) \, s_z \) := ⟨bold(r) \, s_z mid(bar.v) phi.alt_i⟩$
 とする. 場の演算子とその Hermite 共役
 $hat(phi.alt) \, hat(phi.alt)^dagger$ と消滅, 生成演算子
 $hat(b)_i \, hat(b)_i^dagger$ は互いに表現できる.
-$ hat(phi.alt) \( bold(r) \, s_z \) & = sum_(i in I) phi.alt_i \( bold(r) \, s_z \) hat(b)_i & hat(b)_i & = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
-hat(phi.alt)^dagger \( bold(r) \, s_z \) & = sum_(i in I) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(b)_i^dagger & hat(b)_i^dagger & = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt_i \( bold(r) \, s_z \) hat(phi.alt)^dagger \( bold(r) \, s_z \) $
+$ hat(phi.alt) \( bold(r) \, s_z \) & = sum_(i in I) phi.alt_i \( bold(r) \, s_z \) hat(b)_i & hat(b)_i & = sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
+hat(phi.alt)^dagger \( bold(r) \, s_z \) & = sum_(i in I) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(b)_i^dagger & hat(b)_i^dagger & = sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt_i \( bold(r) \, s_z \) hat(phi.alt)^dagger \( bold(r) \, s_z \) $
 ]
 
 ]
@@ -1648,8 +1648,8 @@ hat(phi.alt)^dagger \( bold(r) \, s_z \) & = sum_(i in I) phi.alt_i^(\*) \( bold
 $ hat(phi.alt) \( bold(r) \, s_z \) & = hat(b)_(bold(r) \, s_z') = sum_(i in I) ⟨bold(r) \, s_z mid(bar.v) phi.alt_i⟩ hat(b)_i = sum_(i in I) phi.alt_i \( bold(r) \, s_z \) hat(b)_i\
 hat(phi.alt)^dagger \( bold(r) \, s_z \) & = hat(b)_(bold(r) \, s_z)^(' dagger) = sum_(i in I) ⟨phi.alt_i mid(bar.v) bold(r) \, s_z⟩ hat(b)_i^dagger = sum_(i in I) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(b)_i^dagger $
 逆に消滅, 生成演算子は次のように表現できる.
-$ hat(b)_i & = sum_(s_z = - s)^s integral upright(d) bold(r) ⟨phi.alt_i mid(bar.v) bold(r) \, s_z⟩ hat(b)_(bold(r) \, s_z') = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
-hat(b)_i^dagger & = sum_(s_z = - s)^s integral upright(d) bold(r) ⟨bold(r) \, s_z mid(bar.v) phi.alt_i⟩ hat(b)_(bold(r) \, s_z)^(' dagger) = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt_i \( bold(r) \, s_z \) hat(phi.alt)^dagger \( bold(r) \, s_z \) $
+$ hat(b)_i & = sum_(s_z = - s)^s integral thin upright(d) bold(r) ⟨phi.alt_i mid(bar.v) bold(r) \, s_z⟩ hat(b)_(bold(r) \, s_z') = sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt_i^(\*) \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
+hat(b)_i^dagger & = sum_(s_z = - s)^s integral thin upright(d) bold(r) ⟨bold(r) \, s_z mid(bar.v) phi.alt_i⟩ hat(b)_(bold(r) \, s_z)^(' dagger) = sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt_i \( bold(r) \, s_z \) hat(phi.alt)^dagger \( bold(r) \, s_z \) $
 ]
 
 #theorem("Q21-83")[
@@ -1673,7 +1673,7 @@ arrow.l.r.double & {\[ hat(phi.alt) \( bold(r) \, s_z \) \, hat(phi.alt)^dagger 
 全粒指数演算子 $hat(N)$
 は粒子数密度演算子 $hat(rho) \( bold(r) \, s_z \)$
 を用いて次のように表現できる.
-$ hat(N) & = sum_(s_z = - s)^s integral upright(d) bold(r) hat(rho) \( bold(r) \, s_z \) $
+$ hat(N) & = sum_(s_z = - s)^s integral thin upright(d) bold(r) hat(rho) \( bold(r) \, s_z \) $
 これは演算子 $hat(rho) \( bold(r) \, s_z \)$ がスピンの $z$ 成分 $s_z$
 を持った粒子の場所 $bold(r)$
 での粒子数密度を与える演算子であることを表すことがわかる.
@@ -1685,11 +1685,11 @@ $ hat(N) & = sum_(s_z = - s)^s integral upright(d) bold(r) hat(rho) \( bold(r) \
 $hat(b)_i^dagger \, hat(b)_i$
 を用いて表現であるので次のように展開して示せる.
 $ hat(N) & = sum_(i in I) hat(b)_i^dagger hat(b)_i\
- & = sum_(i in I) sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt_i \( bold(r) \, s_z \) hat(phi.alt)^dagger \( bold(r) \, s_z \) sum_(s_(z') = - s)^s integral upright(d) bold(r)' phi.alt_i^(\*) \( bold(r)' \, s_(z') \) hat(phi.alt) \( bold(r)' \, s_(z') \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) sum_(s_(z') = - s)^s integral upright(d) bold(r)' (sum_(i in I) phi.alt_i \( bold(r) \, s_z \) phi.alt_i^(\*) \( bold(r)' \, s_(z') \)) hat(phi.alt)^dagger \( bold(r) \, s_z \) hat(phi.alt) \( bold(r)' \, s_(z') \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) sum_(s_(z') = - s)^s integral upright(d) bold(r)' delta \( bold(r) - bold(r)' \) delta_(s_z s_(z')) hat(phi.alt)^dagger \( bold(r) \, s_z \) hat(phi.alt) \( bold(r)' \, s_(z') \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) hat(phi.alt)^dagger \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) hat(rho) \( bold(r) \, s_z \) $
+ & = sum_(i in I) sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt_i \( bold(r) \, s_z \) hat(phi.alt)^dagger \( bold(r) \, s_z \) sum_(s_(z') = - s)^s integral thin upright(d) bold(r)' phi.alt_i^(\*) \( bold(r)' \, s_(z') \) hat(phi.alt) \( bold(r)' \, s_(z') \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) sum_(s_(z') = - s)^s integral thin upright(d) bold(r)' (sum_(i in I) phi.alt_i \( bold(r) \, s_z \) phi.alt_i^(\*) \( bold(r)' \, s_(z') \)) hat(phi.alt)^dagger \( bold(r) \, s_z \) hat(phi.alt) \( bold(r)' \, s_(z') \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) sum_(s_(z') = - s)^s integral thin upright(d) bold(r)' delta \( bold(r) - bold(r)' \) delta_(s_z s_(z')) hat(phi.alt)^dagger \( bold(r) \, s_z \) hat(phi.alt) \( bold(r)' \, s_(z') \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) hat(phi.alt)^dagger \( bold(r) \, s_z \) hat(phi.alt) \( bold(r) \, s_z \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) hat(rho) \( bold(r) \, s_z \) $
 ]
 
 #block[
@@ -1731,8 +1731,8 @@ $ hat(rho) \( bold(r) \, s_z \) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) 
  & + (sum_(mu in bb(Z)_N) delta \( bold(r) - bold(r)_mu \) delta_(s_z s_(z mu))) 1 / sqrt(N !) hat(phi.alt)^dagger \( bold(r)_1 \, s_(z \, 1) \) dots.h.c hat(phi.alt)^dagger \( bold(r)_N \, s_(z \, N) \) \|upright(v a c)⟩\
  & = (sum_(mu in bb(Z)_N) delta \( bold(r) - bold(r)_mu \) delta_(s_z s_(z mu))) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \) $
 また全粒子演算子 $hat(N)$ に関しても次のように計算できる.
-$ hat(N) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \) & = sum_(s_z = - s)^s integral upright(d) bold(r) hat(rho) \( bold(r) \, s_z \) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) (sum_(mu in bb(Z)_N) delta \( bold(r) - bold(r)_mu \) delta_(s_z s_(z mu))) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \)\
+$ hat(N) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \) & = sum_(s_z = - s)^s integral thin upright(d) bold(r) hat(rho) \( bold(r) \, s_z \) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) (sum_(mu in bb(Z)_N) delta \( bold(r) - bold(r)_mu \) delta_(s_z s_(z mu))) \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \)\
  & = N \| \( bold(r)_mu \, s_(z mu) \)_(mu in bb(Z)_N) \) $
 ]
 
@@ -1766,7 +1766,7 @@ $ \( \( bold(r)_mu \, s_(z mu) \)_(mu in X) \| \( bold(r)_(mu') \, s_(z mu') \)_
 #block[
 #theorem("Q21-86(iii)")[
 単位演算子は多粒子系の固有状態を用いて分解できる.
-$ hat(1) & = sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dots.h.c sum_(s_(z N) = - s)^s integral upright(d) bold(r)_N \| \( bold(r)_mu \, s_(z mu) \)_(mu in X) \) \( \( bold(r)_mu \, s_(z mu) \)_(mu in X) \| $
+$ hat(1) & = sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 dots.h.c sum_(s_(z N) = - s)^s integral thin upright(d) bold(r)_N \| \( bold(r)_mu \, s_(z mu) \)_(mu in X) \) \( \( bold(r)_mu \, s_(z mu) \)_(mu in X) \| $
 ]
 
 ]
@@ -1774,8 +1774,8 @@ $ hat(1) & = sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 
 証明したい式の右辺を固有状態
 $\| \( bold(r)_(mu') \, s_(z mu') \)_(mu in bb(Z)_(N')) \)$
 に適用すると固有値が $1$ であるから単位演算子と同等であることがわかる.
-$  & quad sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dots.h.c sum_(s_(z N) = - s)^s integral upright(d) bold(r)_N \| \( bold(r)_mu \, s_(z mu) \)_(mu in X) \) \( \( bold(r)_mu \, s_(z mu) \)_(mu in X) \| \( bold(r)_(mu') \, s_(z mu') \)_(mu in X') \)\
- & = sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dots.h.c sum_(s_(z N) = - s)^s integral upright(d) bold(r)_N \| \( bold(r)_mu \, s_(z mu) \)_(mu in X) \)\
+$  & quad sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 dots.h.c sum_(s_(z N) = - s)^s integral thin upright(d) bold(r)_N \| \( bold(r)_mu \, s_(z mu) \)_(mu in X) \) \( \( bold(r)_mu \, s_(z mu) \)_(mu in X) \| \( bold(r)_(mu') \, s_(z mu') \)_(mu in X') \)\
+ & = sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 dots.h.c sum_(s_(z N) = - s)^s integral thin upright(d) bold(r)_N \| \( bold(r)_mu \, s_(z mu) \)_(mu in X) \)\
  & quad med delta_(N N') frac(1, N !) sum_(sigma in frak(S)_N) \( plus.minus 1 \)^sigma delta \( bold(r)_1 - bold(r)_(sigma \( 1 \)') \) delta_(s_(z 1) s_(z sigma \( 1 \)')) dots.h.c delta \( bold(r)_N - bold(r)_(sigma \( N \)') \) delta_(s_(z N) s_(z sigma \( N \)'))\
  & = frac(1, N' !) sum_(sigma in frak(S)_(N')) \( plus.minus 1 \)^sigma \| \( bold(r)_(sigma \( mu \)') \, s_(z sigma \( mu \)') \)_(mu in X') \)\
  & = \| \( bold(r)_(mu') \, s_(z mu') \)_(mu in X') \) $
@@ -1784,7 +1784,7 @@ $  & quad sum_(N = 0)^oo sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dot
 #theorem[
 $n$ 粒子演算子の和 $hat(f)^(upright(t o t))$
 は場の演算子によって次のように表現できる.
-$ hat(f)^(upright(t o t)) & = frac(1, n !) sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dots.h.c sum_(s_(z n) = - s)^s integral upright(d) bold(r)_n sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_(1') dots.h.c sum_(s_(z n') = - s)^s integral upright(d) bold(r)_(n')\
+$ hat(f)^(upright(t o t)) & = frac(1, n !) sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 dots.h.c sum_(s_(z n) = - s)^s integral thin upright(d) bold(r)_n sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_(1') dots.h.c sum_(s_(z n') = - s)^s integral thin upright(d) bold(r)_(n')\
  & hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) dots.h.c hat(phi.alt)^dagger \( bold(r)_n \, s_(z n) \) ⟨bold(r)_1 \, s_(z 1) \, dots.h \, bold(r)_n \, s_(z n)\| f \|bold(r)_(1') \, s_(z 1') \, dots.h \, bold(r)_(n') \, s_(z n')⟩ hat(phi.alt) \( bold(r)_(n') \, s_(z n') \) dots.h.c hat(phi.alt) \( bold(r)_(1') \, s_(z 1') \) $
 ]
 #proof[
@@ -1792,11 +1792,11 @@ $n$ 粒子演算子の和 $hat(f)^(upright(t o t))$
 の定義を場の演算子で書き換えることで示せる.
 $  & hat(f)^(upright(t o t)) = frac(1, n !) sum_(i_1 \, dots.h \, i_n in I\
 j_1 \, dots.h \, j_n in I) ⟨phi.alt_(i_1) dots.h.c phi.alt_(i_n)\| f \|phi.alt_(j_1) dots.h.c phi.alt_(j_n)⟩ hat(b)_(i_1)^dagger dots.h.c hat(b)_(i_n)^dagger hat(b)_(j_n) dots.h.c hat(b)_(j_1)\
- & = frac(1, n !) sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dots.h.c sum_(s_(z n) = - s)^s integral upright(d) bold(r)_n sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_(1') dots.h.c sum_(s_(z n') = - s)^s integral upright(d) bold(r)_(n')\
+ & = frac(1, n !) sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 dots.h.c sum_(s_(z n) = - s)^s integral thin upright(d) bold(r)_n sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_(1') dots.h.c sum_(s_(z n') = - s)^s integral thin upright(d) bold(r)_(n')\
  & sum_(i_1 \, dots.h \, i_n in I\
 j_1 \, dots.h \, j_n in I) phi.alt_(i_1)^(\*) \( bold(r)_1 \, s_(z 1) \) dots.h.c phi.alt_(i_n)^(\*) \( bold(r)_n \, s_(z n) \) phi.alt_(j_1) \( bold(r)_(1') \, s_(z 1') \) dots.h.c phi.alt_(j_n) \( bold(r)_(n') \, s_(z n') \) ⟨bold(r)_1 \, s_(z 1) \, dots.h \, bold(r)_n \, s_(z n)\| f \|bold(r)_(1') \, s_(z 1') \, dots.h \, bold(r)_(n') \, s_(z n')⟩\
  & phi.alt_(i_1) \( bold(r)_1 \, s_(z 1) \) hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) dots.h.c phi.alt_(i_n) \( bold(r)_n \, s_(z n) \) hat(phi.alt)^dagger \( bold(r)_n \, s_(z n) \) phi.alt_(j_n)^(\*) \( bold(r)_(n') \, s_(z n') \) hat(phi.alt) \( bold(r)_(n') \, s_(z n') \) dots.h.c phi.alt_(j_1)^(\*) \( bold(r)_(1') \, s_(z 1') \) hat(phi.alt) \( bold(r)_(1') \, s_(z 1') \)\
- & = frac(1, n !) sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 dots.h.c sum_(s_(z n) = - s)^s integral upright(d) bold(r)_n sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_(1') dots.h.c sum_(s_(z n') = - s)^s integral upright(d) bold(r)_(n')\
+ & = frac(1, n !) sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 dots.h.c sum_(s_(z n) = - s)^s integral thin upright(d) bold(r)_n sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_(1') dots.h.c sum_(s_(z n') = - s)^s integral thin upright(d) bold(r)_(n')\
  & quad med hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) dots.h.c hat(phi.alt)^dagger \( bold(r)_n \, s_(z n) \) ⟨bold(r)_1 \, s_(z 1) \, dots.h \, bold(r)_n \, s_(z n)\| f \|bold(r)_(1') \, s_(z 1') \, dots.h \, bold(r)_(n') \, s_(z n')⟩ hat(phi.alt) \( bold(r)_(n') \, s_(z n') \) dots.h.c hat(phi.alt) \( bold(r)_(1') \, s_(z 1') \) $
 ]
 
@@ -1808,15 +1808,15 @@ $ hat(h) & = - frac(planck^2, 2 m) nabla_(bold(r))^2 + V \( bold(r) \, hat(bold(
 hat(v) & = V \( bold(r)_1 \, hat(bold(s))_1 \, bold(r)_2 \, hat(bold(s))_2 \) #h(2em) \( V \( bold(r)_1 \, hat(bold(s))_1 \, bold(r)_2 \, hat(bold(s))_2 \) = V \( bold(r)_2 \, hat(bold(s))_2 \, bold(r)_1 \, hat(bold(s))_1 \) \) $
 このとき 1 粒子演算子の和 $hat(h)^(upright(t o t))$, 2 粒子演算子の和
 $hat(v)^(upright(t o t))$ は次のように展開できる.
-$ hat(h)^(upright(t o t)) & = sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s integral upright(d) bold(r)_2 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) ⟨bold(r)_1 \, s_(z 1)\| h \|bold(r)_2 \, s_(z 2)⟩ hat(phi.alt) \( bold(r)_2 \, s_(z 2) \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) sum_(s_(z') = - s)^s integral upright(d) bold(r)' hat(phi.alt)^dagger \( bold(r) \, s_z \) ⟨bold(r) \, s_z\| [- frac(planck^2, 2 m) nabla_(bold(r))^2 + V \( bold(r) \, hat(bold(s)) \)] \|bold(r)' \, s_(z')⟩ hat(phi.alt) \( bold(r)' \, s_(z') \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) sum_(s_(z') = - s)^s integral upright(d) bold(r)' hat(phi.alt)^dagger \( bold(r) \, s_z \) [- frac(planck^2, 2 m) ⟨bold(r) \, s_z mid(bar.v) bold(r)' \, s_(z')⟩ nabla_(bold(r))^2 + ⟨bold(r) mid(bar.v) bold(r)'⟩ ⟨s_z\| V \( bold(r) \, hat(bold(s)) \) \|s_(z')⟩] hat(phi.alt) \( bold(r)' \, s_(z') \)\
- & = sum_(s_z = - s)^s sum_(s_(z') = - s)^s integral upright(d) bold(r) hat(phi.alt)^dagger \( bold(r) \, s_z \) [- frac(planck^2, 2 m) delta_(s_z s_(z')) Delta_(bold(r)) + V_(s_z s_(z')) \( bold(r) \)] hat(phi.alt) \( bold(r) \, s_(z') \)\
-hat(v)^(upright(t o t)) & = 1 / 2 sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s integral upright(d) bold(r)_2 sum_(s_(z 3) = - s)^s integral upright(d) bold(r)_3 sum_(s_(z 4) = - s)^s integral upright(d) bold(r)_4\
+$ hat(h)^(upright(t o t)) & = sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s integral thin upright(d) bold(r)_2 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) ⟨bold(r)_1 \, s_(z 1)\| h \|bold(r)_2 \, s_(z 2)⟩ hat(phi.alt) \( bold(r)_2 \, s_(z 2) \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) sum_(s_(z') = - s)^s integral thin upright(d) bold(r)' hat(phi.alt)^dagger \( bold(r) \, s_z \) ⟨bold(r) \, s_z\| [- frac(planck^2, 2 m) nabla_(bold(r))^2 + V \( bold(r) \, hat(bold(s)) \)] \|bold(r)' \, s_(z')⟩ hat(phi.alt) \( bold(r)' \, s_(z') \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) sum_(s_(z') = - s)^s integral thin upright(d) bold(r)' hat(phi.alt)^dagger \( bold(r) \, s_z \) [- frac(planck^2, 2 m) ⟨bold(r) \, s_z mid(bar.v) bold(r)' \, s_(z')⟩ nabla_(bold(r))^2 + ⟨bold(r) mid(bar.v) bold(r)'⟩ ⟨s_z\| V \( bold(r) \, hat(bold(s)) \) \|s_(z')⟩] hat(phi.alt) \( bold(r)' \, s_(z') \)\
+ & = sum_(s_z = - s)^s sum_(s_(z') = - s)^s integral thin upright(d) bold(r) hat(phi.alt)^dagger \( bold(r) \, s_z \) [- frac(planck^2, 2 m) delta_(s_z s_(z')) Delta_(bold(r)) + V_(s_z s_(z')) \( bold(r) \)] hat(phi.alt) \( bold(r) \, s_(z') \)\
+hat(v)^(upright(t o t)) & = 1 / 2 sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s integral thin upright(d) bold(r)_2 sum_(s_(z 3) = - s)^s integral thin upright(d) bold(r)_3 sum_(s_(z 4) = - s)^s integral thin upright(d) bold(r)_4\
  & quad med hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) hat(phi.alt)^dagger \( bold(r)_2 \, s_(z 2) \) ⟨bold(r)_1 \, s_(z 1) \, bold(r)_2 \, s_(z 2)\| v \|bold(r)_3 \, s_(z 3) \, bold(r)_4 \, s_(z 4)⟩ hat(phi.alt) \( bold(r)_4 \, s_(z 4) \) hat(phi.alt) \( bold(r)_3 \, s_(z 3) \)\
- & = 1 / 2 sum_(s_(z 1) = - s)^s integral upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s integral upright(d) bold(r)_2 sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_(1') sum_(s_(z 2') = - s)^s integral upright(d) bold(r)_(2')\
+ & = 1 / 2 sum_(s_(z 1) = - s)^s integral thin upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s integral thin upright(d) bold(r)_2 sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_(1') sum_(s_(z 2') = - s)^s integral thin upright(d) bold(r)_(2')\
  & quad med hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) hat(phi.alt)^dagger \( bold(r)_2 \, s_(z 2) \) ⟨bold(r)_1 \, s_(z 1) \, bold(r)_2 \, s_(z 2)\| V \( bold(r)_1 \, hat(bold(s))_1 \, bold(r)_2 \, hat(bold(s))_2 \) \|bold(r)_(1') \, s_(z 1') \, bold(r)_(2') \, s_(z 2')⟩ hat(phi.alt) \( bold(r)_(2') \, s_(z 2') \) hat(phi.alt) \( bold(r)_(1') \, s_(z 1') \)\
- & = 1 / 2 sum_(s_(z 1) = - s)^s sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s sum_(s_(z 2') = - s)^s integral upright(d) bold(r)_2 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) hat(phi.alt)^dagger \( bold(r)_2 \, s_(z 2) \) V_(s_(z 1) \, s_(z 2) \, s_(z 1') \, s_(z 2')) \( bold(r)_1 \, bold(r)_2 \) hat(phi.alt) \( bold(r)_2 \, s_(z 2') \) hat(phi.alt) \( bold(r)_1 \, s_(z 1') \) $
+ & = 1 / 2 sum_(s_(z 1) = - s)^s sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_1 sum_(s_(z 2) = - s)^s sum_(s_(z 2') = - s)^s integral thin upright(d) bold(r)_2 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \) hat(phi.alt)^dagger \( bold(r)_2 \, s_(z 2) \) V_(s_(z 1) \, s_(z 2) \, s_(z 1') \, s_(z 2')) \( bold(r)_1 \, bold(r)_2 \) hat(phi.alt) \( bold(r)_2 \, s_(z 2') \) hat(phi.alt) \( bold(r)_1 \, s_(z 1') \) $
 ただしスピン状態を適用したポテンシャルを次のように定義した.
 $ V_(s_z s_(z')) \( bold(r) \) & := ⟨s_z\| V \( bold(r) \, hat(bold(s)) \) \|s_(z')⟩\
 V_(s_(z 1) \, s_(z 2) \, s_(z 1') \, s_(z 2')) \( bold(r)_1 \, bold(r)_2 \) & := ⟨s_(z 1) s_(z 2)\| V \( bold(r)_1 \, hat(bold(s))_1 \, bold(r)_2 \, hat(bold(s))_2 \) \|s_(z 1') s_(z 2')⟩ $
@@ -1924,7 +1924,7 @@ $ hat(H)_(upright(o n e)) \| 1 \, dots.h \, N \) & = sum_I hat(phi.alt)^dagger \
  & = sum_I hat(phi.alt)^dagger \( I \) [- frac(planck^2, 2 m) Delta_I + V \( I \)] 1 / sqrt(N !) sum_(J = 1)^N \( plus.minus 1 \)^J delta \( I \, J \) hat(phi.alt)^dagger \( 1 \) dots.h.c hat(phi.alt)^dagger \( J - 1 \) hat(phi.alt)^dagger \( J + 1 \) dots.h.c hat(phi.alt)^dagger \( N \) \|upright(v a c)⟩\
  & = sum_(J = 1)^N (sum_I hat(phi.alt)^dagger \( I \) [- frac(planck^2, 2 m) Delta_I + V \( I \)] delta \( I \, J \)) \( plus.minus 1 \)^J 1 / sqrt(N !) hat(phi.alt)^dagger \( 1 \) dots.h.c hat(phi.alt)^dagger \( J - 1 \) hat(phi.alt)^dagger \( J + 1 \) dots.h.c hat(phi.alt)^dagger \( N \) \|upright(v a c)⟩ $
 ここで部分積分を行うと無限遠点においてエネルギーはないから次のように変形できる.
-$ sum_I hat(phi.alt)^dagger \( I \) Delta_I delta \( I \, J \) & = sum_(s_(z I) \, s_(z I')) integral upright(d) bold(r)_I hat(phi.alt)^dagger \( I \) Delta_I delta \( I \, J \)\
+$ sum_I hat(phi.alt)^dagger \( I \) Delta_I delta \( I \, J \) & = sum_(s_(z I) \, s_(z I')) integral thin upright(d) bold(r)_I hat(phi.alt)^dagger \( I \) Delta_I delta \( I \, J \)\
  & = [sum_(s_(z I) \, s_(z I')) hat(phi.alt)^dagger \( I \) delta \( I \, J \)]_S + sum_I (Delta_I hat(phi.alt)^dagger \( I \)) delta \( I \, J \)\
  & = Delta_J hat(phi.alt)^dagger \( J \) $
 これより最終的に次のように固有値が求まる.
@@ -2031,7 +2031,7 @@ $ i planck frac(partial, partial t) hat(phi.alt) \( 0 \) & = [hat(phi.alt) \( 0 
  & = (- frac(planck^2, 2 m) Delta_0 + V \( 0 \) + sum_1 hat(phi.alt)^dagger \( 1 \) V \( 0 \, 1 \) hat(phi.alt) \( 1 \)) hat(phi.alt) \( 0 \) $
 省略せずに記述すると次のようになる.
 $ i planck frac(partial, partial t) hat(phi.alt) \( bold(r)_0 \, s_(z 0) \; t \) & = sum_(s_(z 0') = - s)^s #scale(x: 180%, y: 180%)[\(] - frac(planck^2, 2 m) delta_(s_(z 0) s_(z 0')) Delta_(bold(r)_0) + V_(s_(z 0) s_(z 0')) \( bold(r)_0 \)\
- & + sum_(s_(z 1) = - s)^s sum_(s_(z 1') = - s)^s integral upright(d) bold(r)_1 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \; t \) V_(s_(z 0) s_(z 1) s_(z 0') s_(z 1')) \( bold(r)_0 \, bold(r)_1 \) hat(phi.alt) \( bold(r)_1 \, s_(z 1') \; t \) #scale(x: 180%, y: 180%)[\)] hat(phi.alt) \( bold(r)_0 \, s_(z 0') \; t \) $
+ & + sum_(s_(z 1) = - s)^s sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_1 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \; t \) V_(s_(z 0) s_(z 1) s_(z 0') s_(z 1')) \( bold(r)_0 \, bold(r)_1 \) hat(phi.alt) \( bold(r)_1 \, s_(z 1') \; t \) #scale(x: 180%, y: 180%)[\)] hat(phi.alt) \( bold(r)_0 \, s_(z 0') \; t \) $
 ]
 
 = 第二量子化 - 場の正準量子化の手続き
@@ -2044,7 +2044,7 @@ $phi.alt \( bold(r) \, s_z \; t \)$ について次の Schrödinger
 $ i planck frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \) & = - frac(planck^2, 2 m) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \) $
 粒子数密度 $rho \( bold(r) \, t \)$ と全粒子数 $N \( t \)$
 について次のように定める.
-$ N \( t \) & := integral upright(d) bold(r) rho \( bold(r) \, t \) \, #h(2em) rho \( bold(r) \, t \) := sum_(s_z = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \) $
+$ N \( t \) & := integral thin upright(d) bold(r) rho \( bold(r) \, t \) \, #h(2em) rho \( bold(r) \, t \) := sum_(s_z = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \) $
 ]
 ]
 #block[
@@ -2073,14 +2073,14 @@ $ nabla_(bold(r)) dot.op bold(j) \( bold(r) \, t \) & = nabla_(bold(r)) dot.op (
  & = frac(planck, 2 m i) sum_(s_z = - s)^s { phi.alt^(\*) \( bold(r) \, s_z \; t \) \( Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) \) - \( Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) \) phi.alt \( bold(r) \, s_z \; t \) } $
 となるから和は $0$ となる. ちなみに全粒子数 $N \( t \)$
 について時間微分することで粒子数は保存することがはっきりとわかる.
-$ frac(partial, partial t) N \( t \) & = integral upright(d) bold(r) frac(partial rho \( bold(r) \, t \), partial t) = - integral upright(d) bold(r) nabla_(bold(r)) dot.op bold(j) \( bold(r) \, t \) = - integral upright(d) S bold(j) \( bold(r) \, t \) = 0 $
+$ frac(partial, partial t) N \( t \) & = integral thin upright(d) bold(r) frac(partial rho \( bold(r) \, t \), partial t) = - integral thin upright(d) bold(r) nabla_(bold(r)) dot.op bold(j) \( bold(r) \, t \) = - integral thin upright(d) S bold(j) \( bold(r) \, t \) = 0 $
 ]
 
 #block[
 #definition("エネルギー")[
 系の全エネルギー
 $H \( t \)$ はエネルギー密度を足し上げて表される.
-$ H \( t \) := integral upright(d) bold(r) w \( bold(r) \, t \) $
+$ H \( t \) := integral thin upright(d) bold(r) w \( bold(r) \, t \) $
 エネルギー密度 $w \( bold(r) \, t \)$ 自体は次のように表現される.
 $ w \( bold(r) \, t \) := frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \) $
 ]
@@ -2128,14 +2128,14 @@ $ nabla_(bold(r)) bold(s) \( bold(r) \, t \) & = frac(planck^3, 4 m^2 i) sum_(s_
  & + frac(planck, 2 m i) sum_(s_z = - s)^s sum_(s_(z') = - s)^s { phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) \( Delta_(bold(r)) phi.alt \( bold(r) \, s_(z') \; t \) \) - \( Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \) } $
 これより和は 0 となることがわかる. ちなみにエネルギーは無限遠点で 0
 となるから次のようになり, 全エネルギーは時間変化しない.
-$ frac(partial, partial t) H \( t \) & = integral upright(d) bold(r) frac(partial, partial t) w \( bold(r) \, t \) = - integral upright(d) bold(r) nabla_(bold(r)) bold(s) \( bold(r) \, t \) = - integral upright(d) S bold(s) \( bold(r) \, t \) = 0 $
+$ frac(partial, partial t) H \( t \) & = integral thin upright(d) bold(r) frac(partial, partial t) w \( bold(r) \, t \) = - integral thin upright(d) bold(r) nabla_(bold(r)) bold(s) \( bold(r) \, t \) = - integral thin upright(d) S bold(s) \( bold(r) \, t \) = 0 $
 ]
 
 #block[
 #definition("古典的な Schrödinger の場")[
 古典的な Schrödinger の場 $phi.alt \( bold(r) \, s_z \; t \)$
 について次の Schrödinger 方程式が成り立つとする.
-$ H := integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)} $
+$ H := integral thin upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)} $
 更に力学変数 $Q \( bold(r) \, s_z \; t \) \, P \( bold(r) \, s_z \; t \)$
 を次のように定める.
 $ {Q \( bold(r) \, s_z \; t \) = phi.alt \( bold(r) \, s_z \; t \)\
@@ -2196,7 +2196,7 @@ $ {{ Q \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s
 Schrödinger の場
 $phi.alt \( bold(r) \, s_z \; t \)$ の古典系の Hamiltonian
 に対する正準量子化をすると次のようになる.
-$ hat(H) = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) hat(phi.alt) \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)} $
+$ hat(H) = integral thin upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) hat(phi.alt) \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)} $
 これは場の理論で導出した $hat(H)_(upright(o n e))$ と同等である.
 ]
 
@@ -2204,14 +2204,14 @@ $ hat(H) = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s na
 #proof[
 Schrödinger の場における Hamiltonian
 は次のようなものであった.
-$ H = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)} $
+$ H = integral thin upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)} $
 これを正準量子化すると次のようになる.
-$ hat(H) = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) hat(phi.alt) \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)} $
+$ hat(H) = integral thin upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) hat(phi.alt) \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)} $
 また場の理論での $hat(H)_(upright(o n e))$ は次のように計算できる.
 $ hat(H)_(upright(o n e)) & = sum_1 hat(phi.alt)^dagger \( 1 \) [- frac(planck^2, 2 m) Delta_1 + V \( 1 \)] hat(phi.alt) \( 1 \)\
- & = sum_(s_z = - s)^s sum_(s_(z') = - s)^s integral upright(d) bold(r) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) [- frac(planck^2, 2 m) Delta_(bold(r)) + V_(s_z s_(z')) \( bold(r) \)] hat(phi.alt) \( bold(r) \, s_(z') \; t \)\
- & = integral upright(d) bold(r) {- frac(planck^2, 2 m) sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) Delta_(bold(r)) hat(phi.alt) \( bold(r) \, s_(z') \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)}\
- & = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) hat(phi.alt) \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)} $
+ & = sum_(s_z = - s)^s sum_(s_(z') = - s)^s integral thin upright(d) bold(r) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) [- frac(planck^2, 2 m) Delta_(bold(r)) + V_(s_z s_(z')) \( bold(r) \)] hat(phi.alt) \( bold(r) \, s_(z') \; t \)\
+ & = integral thin upright(d) bold(r) {- frac(planck^2, 2 m) sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) Delta_(bold(r)) hat(phi.alt) \( bold(r) \, s_(z') \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)}\
+ & = integral thin upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) hat(phi.alt) \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s hat(phi.alt)^dagger \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) hat(phi.alt) \( bold(r) \, s_(z') \; t \)} $
 よって一致することがわかる.
 ]
 
@@ -2281,15 +2281,15 @@ H & = sum_(i in I) epsilon_i b_i \( t \) b_i \( t \) $
 ]
 #proof[
 それぞれ定義に代入することで得られる.
-$ N & = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) sum_(i \, j in I) b_i^(\*) \( t \) phi.alt_i^(\*) \( bold(r) \, s_z \) b_j \( t \) phi.alt_j \( bold(r) \, s_z \)\
+$ N & = sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) sum_(i \, j in I) b_i^(\*) \( t \) phi.alt_i^(\*) \( bold(r) \, s_z \) b_j \( t \) phi.alt_j \( bold(r) \, s_z \)\
  & = sum_(i \, j in I) b_i^(\*) \( t \) b_j \( t \) delta_(i j)\
  & = sum_(i in I) b_i^(\*) \( t \) b_i \( t \) $
-$ H & = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)}\
- & = integral upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)}\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt^(\*) \( bold(r) \, s_z \; t \) {- frac(planck^2, 2 m) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)}\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) phi.alt^(\*) \( bold(r) \, s_z \; t \) i planck frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \)\
- & = sum_(s_z = - s)^s integral upright(d) bold(r) sum_(i \, j in I) b_i^(\*) \( t \) phi.alt_i^(\*) \( bold(r) \, s_z \) epsilon_j b_j \( t \) phi.alt_j \( bold(r) \, s_z \)\
+$ H & = integral thin upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) dot.op nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)}\
+ & = integral thin upright(d) bold(r) {frac(planck^2, 2 m) sum_(s_z = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_z = - s)^s sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)}\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt^(\*) \( bold(r) \, s_z \; t \) {- frac(planck^2, 2 m) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)}\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) phi.alt^(\*) \( bold(r) \, s_z \; t \) i planck frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \)\
+ & = sum_(s_z = - s)^s integral thin upright(d) bold(r) sum_(i \, j in I) b_i^(\*) \( t \) phi.alt_i^(\*) \( bold(r) \, s_z \) epsilon_j b_j \( t \) phi.alt_j \( bold(r) \, s_z \)\
  & = sum_(i in I) epsilon_i b_i^(\*) \( t \) b_i \( t \) $
 ]
 

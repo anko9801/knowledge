@@ -124,3 +124,21 @@ export const rewriteInternalLinks = (html: string, base: string): string => {
         : `${attribute}="${base}${url.slice(1)}"`,
   )
 }
+
+/**
+ * 二項演算子が前置扱いになっているのを直す。
+ *
+ * Typst は `∇^2 + V` のように演算子扱いの記号の後に来る +/− を単項と判定し、
+ * <mo form="prefix"> を出す。すると MathML の既定で前後の空きが消え、
+ * 「∇²+V(r)」のように詰まって読みにくくなる。x^2 + V なら正しく infix になる
+ * ので、記号の分類に引きずられた判定と思われる。
+ *
+ * 閉じた被演算子（</msup> や </mi> など）の直後に来る +/− は必ず二項なので、
+ * そこだけ form を外してブラウザ既定の間隔に戻す。単項マイナス（= -b など）は
+ * 直前が <mo> なので触らない。
+ */
+const OPERAND_END =
+  /(<\/(?:msup|msub|msubsup|mi|mn|mrow|mfrac|msqrt|mroot|mover|munder|munderover|mtext)>)(\s*)<mo form="prefix">([+\u2212-])<\/mo>/g
+
+export const repairBinaryOperators = (html: string): string =>
+  html.replace(OPERAND_END, (_, close, space, operator) => `${close}${space}<mo>${operator}</mo>`)

@@ -156,5 +156,5 @@ nabla times \( nabla times bold(A) \) & = bold(e)_i epsilon_(i j k) partial_j \(
 ]
 
 #theorem("Gauss の定理")[
-$ integral_V nabla dot.op bold(A) upright(d) V & = integral.cont_(partial V) bold(A) dot.op upright(d) bold(S) $
+$ integral_V nabla dot.op bold(A) thin upright(d) V & = integral.cont_(partial V) bold(A) dot.op thin upright(d) bold(S) $
 ]

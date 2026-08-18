@@ -38,7 +38,7 @@ $ alpha_sigma = n_sigma / N_sigma $
 <散乱断面積>
 $ D = r_1 + r_2 $ $ sigma \( chi \) = D^2 / 4 $
 $ sigma \( chi \) = lr(|frac(b, sin b) frac(upright(d) b, upright(d) chi)|) $
-$ Q = integral W \( chi \) sigma \( chi \) upright(d) Omega = integral_0^pi W \( chi \) sigma \( chi \) 2 pi sin chi upright(d) chi $
+$ Q = integral W \( chi \) sigma \( chi \) thin upright(d) Omega = integral_0^pi W \( chi \) sigma \( chi \) 2 pi sin chi thin upright(d) chi $
 
 $ {F_r = m \( dot.double(r) - r dot(theta)^2 \) = frac(q_0 q, r^2)\
 F_theta = 1 / r frac(upright(d), upright(d) t) \( m r^2 dot(theta) \) = 0 $
@@ -65,20 +65,20 @@ $ r_min = frac(q_0 q, 2 m v_0^2) = frac(q_0 q, 2 k_B T) = 5.0 times 10^(- 5) m $
 $v_t = sqrt(k_B T \/ m)$ を用いて次のように書ける。
 $ f \( bold(v) \) & = n (frac(m, 2 pi k_B T))^(3 \/ 2) exp (- frac(m v^2 \/ 2, k_B T)) = frac(n, \( 2 v_t^2 pi \)^(3 \/ 2)) exp (- frac(v^2, 2 v_t^2)) $
 これを積分すると
-$ integral f \( bold(v) \; t \) upright(d) bold(v) & = frac(n, \( 2 v_t^2 pi \)^(3 \/ 2)) integral exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = n $
+$ integral f \( bold(v) \; t \) thin upright(d) bold(v) & = frac(n, \( 2 v_t^2 pi \)^(3 \/ 2)) integral exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = n $
 より任意の物理量 $Q \( bold(v) \)$
 の全速度空間の平均値は次のようになる。
-$ chevron.l Q \( bold(v) \) chevron.r = integral Q \( bold(v) \) f \( bold(v) \; t \) upright(d) bold(v) #scale(x: 240%, y: 240%)[\/] integral f \( bold(v) \; t \) upright(d) bold(v) = 1 / n integral Q \( bold(v) \) f \( bold(v) \; t \) upright(d) bold(v) $
-$upright(d) bold(v) = 4 pi v^2 upright(d) v$
-$ chevron.l 1 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = 1\
-chevron.l q bold(v) chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral q bold(v) exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = bold(0)\
-⟨1 / 2 m v^2⟩ & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral 1 / 2 m v^2 exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = 3 / 2 m v_t^2 = 3 / 2 k_B T\
-⟨1 / 2 m v^2 bold(v)⟩ & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral 1 / 2 m v^2 bold(v) exp (- frac(v^2, 2 v_t^2)) upright(d) bold(v) = bold(0)\
-chevron.l v^3 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral_0^oo 4 pi v^5 exp (- frac(v^2, 2 v_t^2)) upright(d) v = 4 pi (frac(2 v_t^2, pi))^(3 \/ 2)\
-chevron.l v^4 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral_0^oo 4 pi v^6 exp (- frac(v^2, 2 v_t^2)) upright(d) v = 15 v_t^4 = 15 T^2 / m^2 $
+$ chevron.l Q \( bold(v) \) chevron.r = integral Q \( bold(v) \) f \( bold(v) \; t \) thin upright(d) bold(v) #scale(x: 240%, y: 240%)[\/] integral f \( bold(v) \; t \) thin upright(d) bold(v) = 1 / n integral Q \( bold(v) \) f \( bold(v) \; t \) thin upright(d) bold(v) $
+$thin upright(d) bold(v) = 4 pi v^2 thin upright(d) v$
+$ chevron.l 1 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = 1\
+chevron.l q bold(v) chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral q bold(v) exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = bold(0)\
+⟨1 / 2 m v^2⟩ & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral 1 / 2 m v^2 exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = 3 / 2 m v_t^2 = 3 / 2 k_B T\
+⟨1 / 2 m v^2 bold(v)⟩ & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral 1 / 2 m v^2 bold(v) exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = bold(0)\
+chevron.l v^3 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral_0^oo 4 pi v^5 exp (- frac(v^2, 2 v_t^2)) thin upright(d) v = 4 pi (frac(2 v_t^2, pi))^(3 \/ 2)\
+chevron.l v^4 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral_0^oo 4 pi v^6 exp (- frac(v^2, 2 v_t^2)) thin upright(d) v = 15 v_t^4 = 15 T^2 / m^2 $
 さらに電場が掛かっている状態のとき Boltzmann 分布
 $ f \( bold(v) \, bold(r) \) & = n_0 (frac(m, 2 pi k_B T))^(3 \/ 2) exp (- frac(m v^2 \/ 2 + q phi \( bold(r) \), k_B T)) = frac(n \( bold(r) \), \( 2 v_t^2 pi \)^(3 \/ 2)) exp (- frac(v^2, 2 v_t^2))\
-integral f \( bold(v) \, bold(r) \) upright(d) bold(v) & = n \( bold(r) \) = n_0 exp (- frac(q phi \( bold(r) \), k_B T)) $
+integral f \( bold(v) \, bold(r) \) thin upright(d) bold(v) & = n \( bold(r) \) = n_0 exp (- frac(q phi \( bold(r) \), k_B T)) $
 速度 $bold(u)_0 = \( 0 \, 0 \, u_0 \)$ で移流している温度 $T$
 のプラズマは次のように与えられる。 Debye 長の 2
 乗程度大きく個別運動をしつつ、より大きなスケールでは集団振動していることが分かる。
@@ -98,18 +98,18 @@ delta n_i = - frac(Z e phi, T_i) n_(i 0) $
 $ phi \( bold(r) \) & = q_0 / r exp \( - k_d r \)\
 rho \( bold(r) \) & = - frac(1, 4 pi) nabla^2 phi \( bold(r) \) = - 1 / r^2 frac(partial, partial r) (r^2 frac(partial phi, partial r)) = - frac(k_d^2 q_0, r) exp \( - k_d r \) $
 これより総電荷は次のようになる。
-$ integral rho \( bold(r) \) upright(d) bold(r) & = - k_d^2 q_0 integral frac(exp \( - k_d r \), r) upright(d) bold(r) = - q_0 $
+$ integral rho \( bold(r) \) thin upright(d) bold(r) & = - k_d^2 q_0 integral frac(exp \( - k_d r \), r) thin upright(d) bold(r) = - q_0 $
 
 == プラズマ振動
 <プラズマ振動>
 = 集団運動と個別運動
 <集団運動と個別運動>
 $ rho \( bold(r) \, t \) & = sum_i delta \( bold(r) - bold(r)_i \)\
-rho_(bold(k)) \( t \) & = integral rho \( bold(r) \, t \) e^(- i bold(k) dot.op bold(r)) upright(d) bold(r) = sum_i e^(- i bold(k) dot.op bold(r)_i) $
-$ nabla^2 phi \( bold(r)_i \) & = 4 pi e rho \( bold(r)_i \) = 4 pi e sum_(j eq.not i) delta \( bold(r)_i - bold(r)_j \) = 4 pi e sum_(j eq.not i) frac(1, \( 2 pi \)^3) integral e^(i bold(k) dot.op \( bold(r)_i - bold(r)_j \)) upright(d) bold(k)\
-nabla^2 phi \( bold(r)_i \) & = frac(1, \( 2 pi \)^3) integral phi \( bold(k) \) nabla^2 e^(i bold(k) dot.op bold(r)_i) upright(d) bold(k) = frac(1, \( 2 pi \)^3) integral \( - k^2 \) phi \( bold(k) \) e^(i bold(k) dot.op bold(r)_i) upright(d) bold(k)\
+rho_(bold(k)) \( t \) & = integral rho \( bold(r) \, t \) e^(- i bold(k) dot.op bold(r)) thin upright(d) bold(r) = sum_i e^(- i bold(k) dot.op bold(r)_i) $
+$ nabla^2 phi \( bold(r)_i \) & = 4 pi e rho \( bold(r)_i \) = 4 pi e sum_(j eq.not i) delta \( bold(r)_i - bold(r)_j \) = 4 pi e sum_(j eq.not i) frac(1, \( 2 pi \)^3) integral e^(i bold(k) dot.op \( bold(r)_i - bold(r)_j \)) thin upright(d) bold(k)\
+nabla^2 phi \( bold(r)_i \) & = frac(1, \( 2 pi \)^3) integral phi \( bold(k) \) nabla^2 e^(i bold(k) dot.op bold(r)_i) thin upright(d) bold(k) = frac(1, \( 2 pi \)^3) integral \( - k^2 \) phi \( bold(k) \) e^(i bold(k) dot.op bold(r)_i) thin upright(d) bold(k)\
 phi \( bold(k) \) & = - frac(4 pi e, k^2) sum_(j eq.not i) e^(- i bold(k) dot.op bold(r)_j)\
-phi \( bold(r) \) & = frac(1, \( 2 pi \)^3) integral phi \( bold(k) \) e^(i bold(k) dot.op bold(r)) upright(d) bold(k) = - frac(4 pi e, \( 2 pi \)^3) integral sum_(j eq.not i) 1 / k^2 e^(i bold(k) dot.op \( bold(r) - bold(r)_j \)) upright(d) bold(k)\
+phi \( bold(r) \) & = frac(1, \( 2 pi \)^3) integral phi \( bold(k) \) e^(i bold(k) dot.op bold(r)) thin upright(d) bold(k) = - frac(4 pi e, \( 2 pi \)^3) integral sum_(j eq.not i) 1 / k^2 e^(i bold(k) dot.op \( bold(r) - bold(r)_j \)) thin upright(d) bold(k)\
  & = - 4 pi e sum_(bold(k)) zws' sum_(j eq.not i) 1 / k^2 e^(i bold(k) dot.op \( bold(r) - bold(r)_j \))\
 nabla phi \( bold(r) \) & = - 4 pi e i sum_(bold(k)) zws' sum_(j eq.not i) bold(k) / k^2 e^(i bold(k) dot.op \( bold(r) - bold(r)_j \)) $
 $ dot(rho)_(bold(k)) & = - i sum_i \( bold(k) dot.op bold(v)_i \) e^(- i bold(k) dot.op bold(r)_i)\
@@ -127,4 +127,4 @@ $ dot.double(rho)_(bold(k)) + [omega_p^2 + frac(3 k_B T, m) k^2] rho_(bold(k)) =
 
 == ガウス積分
 <ガウス積分>
-$ integral_(- oo)^oo exp (- x^2 / alpha) upright(d) x = \( alpha pi \)^(1 \/ 2) $
+$ integral_(- oo)^oo exp (- x^2 / alpha) thin upright(d) x = \( alpha pi \)^(1 \/ 2) $

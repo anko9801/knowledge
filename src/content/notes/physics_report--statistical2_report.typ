@@ -26,11 +26,11 @@ $ zeta \( x \) := sum_(n = 1)^oo 1 / n^x #h(2em) \( x > 1 \) $
 $f_m \( x \) = x^m$ をフーリエ展開する。
 $ f_m \( x \) = x^m = sum_(n = - oo)^oo c_(n \, m) e^(i n x) $
 このときの係数は次のようになる。
-$ c_(n \, m) & = frac(1, 2 pi) integral_(- pi)^pi x^m e^(- i n x) upright(d) x\
+$ c_(n \, m) & = frac(1, 2 pi) integral_(- pi)^pi x^m e^(- i n x) thin upright(d) x\
  & = frac(1, 2 pi) sum_(i = 0)^4 [frac(m ! \( - 1 \)^i, \( m - i \) ! \( - i n \)^(i + 1)) x^(m - i) e^(- i n x)]_(- pi)^pi\
  & = frac(1, 2 pi) (- frac(m, \( - i n \)^2) \( - 1 \)^n (pi^(m - 1) - \( - pi^(m - 1) \)) - frac(m \( m - 1 \) \( m - 2 \), \( - i n \)^4) \( - 1 \)^n (pi^(m - 3) - \( - pi \)^(m - 3)))\
  & = \( - 1 \)^n (m / n^2 pi^(m - 2) - frac(m \( m - 1 \) \( m - 2 \), n^4) pi^(m - 4))\
-c_(0 \, m) & = frac(1, 2 pi) integral_(- pi)^pi x^m upright(d) x = frac(pi^m, m + 1) $
+c_(0 \, m) & = frac(1, 2 pi) integral_(- pi)^pi x^m thin upright(d) x = frac(pi^m, m + 1) $
 これより $f_m \( x \)$ が求まり、$x = pi$
 を代入することでゼータ関数の値が分かる。
 $ f_m \( x \) & = frac(pi^m, m + 1) + sum_(n eq.not 0) (m / n^2 pi^(m - 2) - frac(m \( m - 1 \) \( m - 2 \), n^4) pi^(m - 4)) \( - 1 \)^n e^(i n x)\
@@ -41,15 +41,15 @@ zeta \( 2 \) & = sum_(n = 1)^oo 1 / n^2 = pi^2 / 6 \, #h(2em) zeta \( 4 \) = sum
 #block[
 次の関数 $I_plus.minus \( alpha \)$ が収束する実数 $alpha$
 の範囲とその収束値を求めよ。
-$ I_plus.minus \( alpha \) & = integral_0^oo frac(z^(alpha - 1), e^z plus.minus 1) upright(d) z $
+$ I_plus.minus \( alpha \) & = integral_0^oo frac(z^(alpha - 1), e^z plus.minus 1) thin upright(d) z $
 
 ]
 #proof[
 分母を展開すると
-$ I_plus.minus \( alpha \) & = integral_0^oo frac(z^(alpha - 1) e^(- z), 1 plus.minus e^(- z)) upright(d) z\
- & = integral_0^oo z^(alpha - 1) e^(- z) sum_(k = 0)^oo \( minus.plus e^(- z) \)^k upright(d) z\
- & = sum_(k = 1)^oo \( minus.plus 1 \)^(k - 1) integral_0^oo z^(alpha - 1) e^(- k z) upright(d) z\
- & = (sum_(k = 1)^oo frac(\( minus.plus 1 \)^(k - 1), k^alpha)) integral_0^oo z^(alpha - 1) e^(- z) upright(d) z & \( k z arrow.r z \)\
+$ I_plus.minus \( alpha \) & = integral_0^oo frac(z^(alpha - 1) e^(- z), 1 plus.minus e^(- z)) thin upright(d) z\
+ & = integral_0^oo z^(alpha - 1) e^(- z) sum_(k = 0)^oo \( minus.plus e^(- z) \)^k thin upright(d) z\
+ & = sum_(k = 1)^oo \( minus.plus 1 \)^(k - 1) integral_0^oo z^(alpha - 1) e^(- k z) thin upright(d) z\
+ & = (sum_(k = 1)^oo frac(\( minus.plus 1 \)^(k - 1), k^alpha)) integral_0^oo z^(alpha - 1) e^(- z) thin upright(d) z & \( k z arrow.r z \)\
  & = cases(delim: "{", \( 1 - 2^(1 - alpha) \) zeta \( alpha \) Gamma \( alpha \) & \( I_(+) \( alpha \) \), zeta \( alpha \) Gamma \( alpha \) & \( I_(-) \( alpha \) \), ) $
 ゼータ関数 $zeta \( s \)$ は $Re s lt.eq 1$ において発散し、ガンマ関数は
 $0$ または負の整数で発散するから $alpha lt.eq 1$ のとき
@@ -246,8 +246,8 @@ $omega = v_l \| bold(k) \|$, $omega = v_t \| bold(k) \|$ と表される。
 
 #block[
 固体の体積を $V$、全原子数を $N$($gt.double 1$) として、振動数が $omega$
-と $omega + upright(d) omega$ の間にある状態の数
-$D \( omega \) upright(d) omega$ を求めよ。固体を各辺の長さが $L$
+と $omega + thin upright(d) omega$ の間にある状態の数
+$D \( omega \) thin upright(d) omega$ を求めよ。固体を各辺の長さが $L$
 ($L^3 = V$) の立方体と考え、周期境界条件をとってよい。
 
 ]
@@ -261,7 +261,7 @@ $D \( omega \)$ は速度 $v$ に対して $frac(omega L, v pi)$
 $ D \( omega \) & = 1 / 8 frac(4 pi, 3) (frac(omega L, v_l pi))^3 + 2 / 8 frac(4 pi, 3) (frac(omega L, v_t pi))^3\
  & = frac(omega^3 L^3, 6 pi^2) (1 / v_l^3 + 2 / v_t^3)\
  & = frac(omega^3 L^3, 6 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3)\
-D \( omega \) upright(d) omega & = frac(omega^2 L^3, 2 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3) upright(d) omega\
+D \( omega \) thin upright(d) omega & = frac(omega^2 L^3, 2 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3) thin upright(d) omega\
  $
 ]
 
@@ -271,7 +271,7 @@ $D \( omega \)$ を Debye 振動数 $omega_D$ を用いて表せ。
 ]
 #proof[
 $omega_D$ の条件に代入することで
-$ integral_0^(omega_D) D \( omega \) upright(d) omega & = integral_0^(omega_D) frac(omega^2 L^3, 2 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3) upright(d) omega = 3 N\
+$ integral_0^(omega_D) D \( omega \) thin upright(d) omega & = integral_0^(omega_D) frac(omega^2 L^3, 2 pi^2) frac(v_t^3 + 2 v_l^3, v_l^3 v_t^3) thin upright(d) omega = 3 N\
 omega_D & = frac(v_l v_t, L) (frac(18 N pi^2, v_t^3 + 2 v_l^3))^(1 \/ 3) $
 となる為、$omega_D$ を用いて $D \( omega \)$ は次のように求まる。
 $ D \( omega \) & = cases(delim: "{", frac(9 N omega^2, omega_D^3) & \( omega < omega_D \), 0 & \( omega > omega_D \)) $
@@ -287,23 +287,23 @@ $ D \( omega \) & = cases(delim: "{", frac(9 N omega^2, omega_D^3) & \( omega < 
 #proof[
 $omega$ に対する調和振動子における比熱 $c \( omega \)$
 を用いて比熱 $C$ は次のように求まる。
-$ C & = integral_0^oo D \( omega \) c \( omega \) upright(d) omega\
- & = integral_0^(omega_D) frac(9 N omega^2, omega_D^3) k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2 upright(d) omega\
- & = 9 N k_B b^2 integral_0^1 frac(x^4 e^(b x), \( e^(b x) - 1 \)^2) upright(d) x & (x = omega / omega_D \, b = beta planck omega_D)\
- & = - 9 N k_B b^2 frac(upright(d), upright(d) b) integral_0^1 frac(x^3, e^(b x) - 1) upright(d) x $
+$ C & = integral_0^oo D \( omega \) c \( omega \) thin upright(d) omega\
+ & = integral_0^(omega_D) frac(9 N omega^2, omega_D^3) k_B (frac(beta planck omega e^(beta planck omega \/ 2), e^(beta planck omega) - 1))^2 thin upright(d) omega\
+ & = 9 N k_B b^2 integral_0^1 frac(x^4 e^(b x), \( e^(b x) - 1 \)^2) thin upright(d) x & (x = omega / omega_D \, b = beta planck omega_D)\
+ & = - 9 N k_B b^2 frac(upright(d), upright(d) b) integral_0^1 frac(x^3, e^(b x) - 1) thin upright(d) x $
 高温極限 ($b lt.double 1$) のとき Bernoulli 数 $B_n$
 の定義を用いて次のように計算できる。
-$ integral_0^1 frac(x^3, e^(b x) - 1) upright(d) x & = integral_0^1 sum_(n = 0)^oo frac(B_n b^(n - 1), n !) x^(n + 2) upright(d) x\
+$ integral_0^1 frac(x^3, e^(b x) - 1) thin upright(d) x & = integral_0^1 sum_(n = 0)^oo frac(B_n b^(n - 1), n !) x^(n + 2) thin upright(d) x\
  & = sum_(n = 0)^oo frac(B_n, \( n + 3 \) n !) b^(n - 1)\
  & = frac(1, 3 b) - 1 / 8 + 1 / 60 b - 1 / 5040 b^3 + 1 / 272160 b^5 - dots.h.c . $
 低温極限 ($b gt.double 1$)
 のとき分母を展開することで次のように計算できる。
-$ integral_0^1 frac(x^3, e^(b x) - 1) upright(d) x & = integral_0^1 x^3 sum_(n = 1)^oo e^(- n b x) upright(d) x = sum_(n = 1)^oo integral_0^1 x^3 e^(- n b x) upright(d) x\
- & = sum_(n = 1)^oo frac(1, \( n b \)^4) integral_0^(n b) t^3 e^(- t) upright(d) t #h(2em) \( t = n b x \)\
+$ integral_0^1 frac(x^3, e^(b x) - 1) thin upright(d) x & = integral_0^1 x^3 sum_(n = 1)^oo e^(- n b x) thin upright(d) x = sum_(n = 1)^oo integral_0^1 x^3 e^(- n b x) thin upright(d) x\
+ & = sum_(n = 1)^oo frac(1, \( n b \)^4) integral_0^(n b) t^3 e^(- t) thin upright(d) t #h(2em) \( t = n b x \)\
  & approx 1 / b^4 zeta \( 4 \) Gamma \( 4 \)\
  & = 1 / b^4 pi^4 / 15 $
 よって比熱は高温、低温について次のような値となる。
-$ C & = 9 N k_B b^2 integral_0^1 frac(x^4 e^(b x), \( e^(b x) - 1 \)^2) upright(d) x\
+$ C & = 9 N k_B b^2 integral_0^1 frac(x^4 e^(b x), \( e^(b x) - 1 \)^2) thin upright(d) x\
  & approx cases(delim: "{", 3 N k_B & \( b lt.double 1 \), 3 N k_B frac(4 pi^4, 5 b^3) & \( b gt.double 1 \)) $
 Einstein 模型における比熱は次のようになる。
 $ C & = 3 N k_B (frac(beta planck omega, 2 sinh 1 / 2 beta planck omega))^2\
@@ -321,11 +321,11 @@ Debye 模型は $b^(- 3)$ に対して Einstein 模型は $b^2 e^(- b)$
 一般の $d$ 次元において状態密度 $D \( omega \)$ と比熱
 $C$ は次のようになる。
 $ D \( omega \) & = cases(delim: "{", 3 N frac(d omega^(d - 1), omega_D^d) & \( omega < omega_D \), 0 & \( omega > omega_D \))\
-C & = integral_0^oo D \( omega \) c \( omega \) upright(d) omega\
- & = 3 d N k_B b^2 integral_0^1 frac(x^(d + 1) e^(b x), \( e^(b x) - 1 \)^2) upright(d) x\
+C & = integral_0^oo D \( omega \) c \( omega \) thin upright(d) omega\
+ & = 3 d N k_B b^2 integral_0^1 frac(x^(d + 1) e^(b x), \( e^(b x) - 1 \)^2) thin upright(d) x\
  $ 低温極限 ($b gt.double 1$) において
-$ integral_0^1 frac(x^d, e^(b x) - 1) upright(d) x & = integral_0^1 x^d sum_(n = 1)^oo e^(- n b x) upright(d) x = sum_(n = 1)^oo integral_0^1 x^d e^(- n b x) upright(d) x\
- & = sum_(n = 1)^oo frac(1, \( n b \)^(d + 1)) integral_0^(n b) t^d e^(- t) upright(d) t #h(2em) \( t = n b x \)\
+$ integral_0^1 frac(x^d, e^(b x) - 1) thin upright(d) x & = integral_0^1 x^d sum_(n = 1)^oo e^(- n b x) thin upright(d) x = sum_(n = 1)^oo integral_0^1 x^d e^(- n b x) thin upright(d) x\
+ & = sum_(n = 1)^oo frac(1, \( n b \)^(d + 1)) integral_0^(n b) t^d e^(- t) thin upright(d) t #h(2em) \( t = n b x \)\
  & approx 1 / b^(d + 1) zeta \( d + 1 \) Gamma \( d + 1 \) $
 これより比熱は次のようになる。
 $ C & approx 3 N k_B 1 / b^d d \( d + 1 \) zeta \( d + 1 \) Gamma \( d + 1 \) $
@@ -350,7 +350,7 @@ $omega = 2 pi times 60$ Hz, 原子の個数 $2.0 times 10^3$
 $ D \( epsilon \) & = frac(epsilon^2, 2 planck^3 omega^3)\
 N & = (frac(k_B T, planck omega))^3 zeta \( 3 \)\
 T_c & = frac(planck omega, k_B) (frac(N, zeta \( 3 \)))^(1 \/ 3)\
-U \( epsilon \) & = integral_0^oo epsilon D \( epsilon \) f_B \( epsilon \) upright(d) epsilon = frac(1, 2 planck^3 omega^3) integral_0^oo frac(epsilon^3, e^(beta epsilon) - 1) upright(d) epsilon\
+U \( epsilon \) & = integral_0^oo epsilon D \( epsilon \) f_B \( epsilon \) thin upright(d) epsilon = frac(1, 2 planck^3 omega^3) integral_0^oo frac(epsilon^3, e^(beta epsilon) - 1) thin upright(d) epsilon\
  & = frac(1, 2 planck^3 omega^3) \( k_B T \)^4 Gamma \( 4 \) zeta \( 4 \) = frac(pi^4, 30 planck^3 omega^3) \( k_B T \)^4\
 C \( T \) & = frac(2 pi^4, 15 planck^3 omega^3) k_B^4 T^3\
 C \( T_c + Delta T \) & approx frac(2 pi^4, 15 planck^3 omega^3) k_B^4 (T_c^3 + 3 T_c^2 Delta T)\
@@ -373,10 +373,10 @@ $ epsilon_plus.minus = frac(p^2, 2 m) plus.minus mu_B H $
 $D \( epsilon \) = c sqrt(epsilon)$ とおき、各スピン状態における粒子数
 $N_plus.minus$ を求め、ゾンマーフェルト展開を行うことで磁化 $M$
 は次のようになる。
-$ N_plus.minus & = integral_(- oo)^oo D \( epsilon \) f \( epsilon plus.minus mu_B H \) upright(d) epsilon\
+$ N_plus.minus & = integral_(- oo)^oo D \( epsilon \) f \( epsilon plus.minus mu_B H \) thin upright(d) epsilon\
 M & = mu_B N_(+) - mu_B N_(-)\
- & = mu_B integral_(- oo)^oo frac(D \( epsilon \), 2) \( f \( epsilon + mu_B H \) - f \( epsilon - mu_B H \) \) upright(d) epsilon\
- & approx mu_B^2 H integral_(- oo)^oo D \( epsilon \) f' \( epsilon \) upright(d) epsilon + cal(O) \( H^3 \)\
+ & = mu_B integral_(- oo)^oo frac(D \( epsilon \), 2) \( f \( epsilon + mu_B H \) - f \( epsilon - mu_B H \) \) thin upright(d) epsilon\
+ & approx mu_B^2 H integral_(- oo)^oo D \( epsilon \) f' \( epsilon \) thin upright(d) epsilon + cal(O) \( H^3 \)\
  & approx mu_B^2 H (D \( mu \) + frac(pi^2, 6 beta^2) D'' \( mu \) + cal(O) \( beta^(- 4) \)) + cal(O) \( H^3 \) $
 これより絶対零度におけるスピン磁化率 $chi_s$ は次のようになる。
 $ chi_s \( T = 0 \) & = lim_(H arrow.r 0) M / H = mu_B^2 D \( mu \) = c mu_B^2 sqrt(mu) = 3 / 2 mu_B^2 / mu N $
@@ -401,7 +401,7 @@ Fermi 縮退温度 $T_F$
 高温のとき
 $f \( epsilon \) approx e^(- beta \( epsilon - mu \))$
 と近似できる。これよりスピン磁化率は次のように近似できる。
-$ chi_s & = mu_B^2 integral_0^oo D \( epsilon \) f' \( epsilon \) upright(d) epsilon = mu_B^2 integral_0^oo D' \( epsilon \) f \( epsilon \) upright(d) epsilon = mu_B^2 integral_0^oo 1 / 2 c epsilon^(- 1 \/ 2) e^(- beta \( epsilon - mu \)) upright(d) epsilon\
+$ chi_s & = mu_B^2 integral_0^oo D \( epsilon \) f' \( epsilon \) thin upright(d) epsilon = mu_B^2 integral_0^oo D' \( epsilon \) f \( epsilon \) thin upright(d) epsilon = mu_B^2 integral_0^oo 1 / 2 c epsilon^(- 1 \/ 2) e^(- beta \( epsilon - mu \)) thin upright(d) epsilon\
  & = 1 / 2 c mu_B^2 e^(beta mu) beta^(1 \/ 2) Gamma (1 / 2) = sqrt(pi) / 2 c mu_B^2 e^(beta mu) beta^(1 \/ 2) $
 低温の場合と比べ、$T$ が大きくなるほど $0$ に近づくことが分かる。
 ]
@@ -678,7 +678,7 @@ bold(S)_i dot.op bold(S)_j & = S^2 cos \( theta_i - theta_j \) approx c o n s t 
 ]
 #proof[
 $ hat(H) & = - J_0 sum_(chevron.l i \, j chevron.r) bold(S)_i dot.op bold(S)_j = - J sum_(chevron.l i \, j chevron.r) cos \( theta_i - theta_j \) approx - J sum_(chevron.l i \, j chevron.r) (1 - frac(\( theta_i - theta_j \)^2, 2))\
- & = J / 2 sum_(chevron.l i \, j chevron.r) \( theta_i - theta_j \)^2 + c o n s t . approx J / 2 integral_A upright(d) bold(r) \( upright(bold(nabla)) theta \( bold(r) \) \)^2 + c o n s t . $
+ & = J / 2 sum_(chevron.l i \, j chevron.r) \( theta_i - theta_j \)^2 + c o n s t . approx J / 2 integral_A thin upright(d) bold(r) \( upright(bold(nabla)) theta \( bold(r) \) \)^2 + c o n s t . $
 ]
 
 #block[
@@ -694,8 +694,8 @@ $Delta E$ の $l$ 依存性と、似たようなスピンの揃わない状況 (
 ($theta \( bold(r) \) = theta_0$) 状態 $Theta_0$ とスピンの向きが平面波
 $theta \( x \, y \) = frac(pi y, l)$ に従う状態 $Pi_y$ のエネルギーの差
 $Delta E$ について
-$ Delta E & = (J / 2 integral_A upright(d) bold(r) (upright(bold(nabla)) frac(pi y, l))^2 + c o n s t .) - (J / 2 integral_A upright(d) bold(r) \( upright(bold(nabla)) theta_0 \)^2 + c o n s t .)\
- & = J / 2 integral_A pi^2 / l^2 upright(d) bold(r) = J / 2 pi^2 $
+$ Delta E & = (J / 2 integral_A thin upright(d) bold(r) (upright(bold(nabla)) frac(pi y, l))^2 + c o n s t .) - (J / 2 integral_A thin upright(d) bold(r) \( upright(bold(nabla)) theta_0 \)^2 + c o n s t .)\
+ & = J / 2 integral_A pi^2 / l^2 thin upright(d) bold(r) = J / 2 pi^2 $
 となり $Delta E$ は $l$ に依存しない。またスピンの揃わない状況 (欠陥)
 を作る方法の数は $2^(l \/ a)$ 個あるからエントロピーは次のようになる。
 $ S & approx k_B l / a $ これより自由エネルギーは
@@ -719,7 +719,7 @@ $ upright(bold(nabla)) theta = upright(bold(nabla)) \( n phi.alt \) = (0 \, n / 
 渦を形成することによるエネルギーの増加 $E_n$
 について、渦の中心におけるエネルギーはゼロと考えてよいから積分の下端は
 $a$, 上端は $l$ とおいて問題ない。
-$ E_n & = J / 2 integral_A upright(d) bold(r) \( upright(bold(nabla)) theta \( bold(r) \) \)^2 = J / 2 integral_0^(2 pi) integral_a^l n^2 / r^2 r upright(d) r upright(d) phi.alt = n^2 pi J ln l / a $
+$ E_n & = J / 2 integral_A thin upright(d) bold(r) \( upright(bold(nabla)) theta \( bold(r) \) \)^2 = J / 2 integral_0^(2 pi) integral_a^l n^2 / r^2 r thin upright(d) r thin upright(d) phi.alt = n^2 pi J ln l / a $
 ]
 
 #block[
@@ -789,8 +789,8 @@ $ mu & approx epsilon_F - pi^2 / 6 frac(D' \( epsilon_F \), D \( epsilon_F \)) \
 ]
 #proof[
 有限温度においてボーズ凝縮を起こしているから内部エネルギーの増分と比熱は次のようになる。
-$ U & = integral_0^oo epsilon D \( epsilon \) f_B \( epsilon \) upright(d) epsilon = frac(2 N pi sqrt(1 + c^2), c^2) integral_0^oo frac(epsilon^2, e^(beta epsilon) - 1) upright(d) epsilon\
- & = frac(2 N pi sqrt(1 + c^2), c^2 beta^3) integral_0^oo frac(u^2, e^u - 1) upright(d) u = frac(2 N pi sqrt(1 + c^2), c^2 beta^3) Gamma \( 3 \) zeta \( 3 \) & \( u = beta epsilon \)\
+$ U & = integral_0^oo epsilon D \( epsilon \) f_B \( epsilon \) thin upright(d) epsilon = frac(2 N pi sqrt(1 + c^2), c^2) integral_0^oo frac(epsilon^2, e^(beta epsilon) - 1) thin upright(d) epsilon\
+ & = frac(2 N pi sqrt(1 + c^2), c^2 beta^3) integral_0^oo frac(u^2, e^u - 1) thin upright(d) u = frac(2 N pi sqrt(1 + c^2), c^2 beta^3) Gamma \( 3 \) zeta \( 3 \) & \( u = beta epsilon \)\
  & = frac(4 N pi sqrt(1 + c^2), c^2) zeta \( 3 \) \( k_B T \)^3\
 C & = frac(12 N pi sqrt(1 + c^2), c^2) zeta \( 3 \) k_B^3 T^2 $
 通常の金属における電子比熱の場合は $T^(3 \/ 2)$

@@ -112,13 +112,13 @@ X 線回折装置の全体としては電子銃から発射される電子を
 回折の仕組みについて詳しく説明する。 この X
 線は試料に当たるとそれを構成する原子の電子によって散乱される。 (Thomson
 散乱)
-$ A \( bold(K) \) & = integral rho \( bold(r) \) exp \( - i bold(K) dot.op bold(r) \) upright(d) bold(r)\
- & = sum_(n_1 = 0)^(N_1 - 1) sum_(n_2 = 0)^(N_2 - 1) sum_(n_3 = 0)^(N_3 - 1) exp \( - i bold(K) dot.op \( n_1 bold(a)_1 + n_2 bold(a)_2 + n_3 bold(a)_3 \) \) integral_(U C) rho \( bold(r) \) exp \( - i bold(K) dot.op bold(r) \) upright(d) bold(r)\
+$ A \( bold(K) \) & = integral rho \( bold(r) \) exp \( - i bold(K) dot.op bold(r) \) thin upright(d) bold(r)\
+ & = sum_(n_1 = 0)^(N_1 - 1) sum_(n_2 = 0)^(N_2 - 1) sum_(n_3 = 0)^(N_3 - 1) exp \( - i bold(K) dot.op \( n_1 bold(a)_1 + n_2 bold(a)_2 + n_3 bold(a)_3 \) \) integral_(U C) rho \( bold(r) \) exp \( - i bold(K) dot.op bold(r) \) thin upright(d) bold(r)\
  & = G \( bold(K) \) F \( bold(K) \) $
 $ G \( bold(K) \) & = sum_(n_1 = 0)^(N_1 - 1) sum_(n_2 = 0)^(N_2 - 1) sum_(n_3 = 0)^(N_3 - 1) exp \( - i bold(K) dot.op \( n_1 bold(a)_1 + n_2 bold(a)_2 + n_3 bold(a)_3 \) \)\
  & = exp (- i frac(N_1 - 1, 2) bold(K) dot.op bold(a)_1) frac(sin frac(N_1 bold(K) dot.op bold(a)_1, 2), sin frac(bold(K) dot.op bold(a)_1, 2)) exp (- i frac(N_2 - 1, 2) bold(K) dot.op bold(a)_2) frac(sin frac(N_2 bold(K) dot.op bold(a)_2, 2), sin frac(bold(K) dot.op bold(a)_2, 2))\
  & times exp (- i frac(N_3 - 1, 2) bold(K) dot.op bold(a)_3) frac(sin frac(N_3 bold(K) dot.op bold(a)_3, 2), sin frac(bold(K) dot.op bold(a)_3, 2))\
-F \( bold(K) \) & = integral_(U C) rho \( bold(r) \) exp \( - i bold(K) dot.op bold(r) \) upright(d) bold(r) $
+F \( bold(K) \) & = integral_(U C) rho \( bold(r) \) exp \( - i bold(K) dot.op bold(r) \) thin upright(d) bold(r) $
 $G \( bold(K) \)$ の絶対値が大きくなる条件は次のようになる。
 $ bold(K) dot.op bold(a)_1 = 2 pi m_1 \, quad bold(K) dot.op bold(a)_2 = 2 pi m_2 \, quad bold(K) dot.op bold(a)_3 = 2 pi m_3 $
 これは逆格子ベクトルの定義と等しいから $bold(K) = bold(G)_m$ となる。

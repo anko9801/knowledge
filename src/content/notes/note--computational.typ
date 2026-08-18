@@ -216,7 +216,7 @@ $ dot(bold(z)) & = T^(- 1) A T bold(z) + T^(- 1) B bold(u)\
 bold(y) & = C T bold(z) $ により $A$ を対角化できる。
 
 #theorem[
-$ bold(y) & = C exp \( A \( t - t_0 \) \) bold(x)_0 + C integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) \( tau \) upright(d) tau $
+$ bold(y) & = C exp \( A \( t - t_0 \) \) bold(x)_0 + C integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) \( tau \) thin upright(d) tau $
 ]
 #proof[
 まず $bold(u) = 0$
@@ -225,11 +225,11 @@ bold(x) & = exp \( A \( t - t_0 \) \) bold(x)_0 $ これより一般において
 $bold(x) = exp \( A t \) bold(k)$ とおくと
 $ dot(bold(x)) & = A bold(x) + exp \( A t \) dot(bold(k)) = A bold(x) + B bold(u)\
 dot(bold(k)) & = exp \( - A t \) B bold(u) $ この微分方程式を解くと
-$ bold(k) \( t \) - bold(k)_0 & = integral_(t_0)^t exp \( - A tau \) B bold(u) \( tau \) upright(d) tau\
-bold(k) & = exp \( - A t_0 \) bold(x)_0 + integral_(t_0)^t exp \( - A tau \) B bold(u) upright(d) tau $
+$ bold(k) \( t \) - bold(k)_0 & = integral_(t_0)^t exp \( - A tau \) B bold(u) \( tau \) thin upright(d) tau\
+bold(k) & = exp \( - A t_0 \) bold(x)_0 + integral_(t_0)^t exp \( - A tau \) B bold(u) thin upright(d) tau $
 となる。よって
-$ bold(x) & = exp \( A \( t - t_0 \) \) bold(x)_0 + integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) upright(d) tau\
-bold(y) & = C exp \( A \( t - t_0 \) \) bold(x)_0 + C integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) \( tau \) upright(d) tau $
+$ bold(x) & = exp \( A \( t - t_0 \) \) bold(x)_0 + integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) thin upright(d) tau\
+bold(y) & = C exp \( A \( t - t_0 \) \) bold(x)_0 + C integral_(t_0)^t exp \( A \( t - tau \) \) B bold(u) \( tau \) thin upright(d) tau $
 ] 
 
 #example[

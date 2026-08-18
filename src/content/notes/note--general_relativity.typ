@@ -22,7 +22,7 @@
 光の速度は全ての慣性系で、光源の速度によらず一定である。
 ]
 世界線がどんな慣性系 Lorentz 変換に対して不変
-$ upright(d) s^2 & := \( c upright(d) t \)^2 - upright(d) x^2 - upright(d) y^2 - upright(d) z^2 = \( c upright(d) tau \)^2 $
+$ thin upright(d) s^2 & := \( c thin upright(d) t \)^2 - thin upright(d) x^2 - thin upright(d) y^2 - thin upright(d) z^2 = \( c thin upright(d) tau \)^2 $
 すべての慣性系から見て $d s^2$ は不変であることがわかる。
 
 時刻 $t in bb(R)$ と場所 $bold(x) = \( x^1 \, x^2 \, x^3 \) in bb(R)^3$
@@ -69,7 +69,8 @@ j^mu \( x \) & := \( c rho \, bold(j) \) $
 
 運動方程式 $ m frac(upright(d)^2 x^mu, upright(d) tau^2) = 0 $
 
-作用 $ delta S & = integral epsilon^mu delta x_mu upright(d) tau = 0 $
+作用
+$ delta S & = integral epsilon^mu delta x_mu thin upright(d) tau = 0 $
 
 = 一般相対性理論
 <一般相対性理論>
@@ -213,26 +214,27 @@ $ g_(mu nu \, gamma lambda) \|_(cal(P)) & = 0 $ を満たすことについて�
 ]
 
 #proposition[
-長さ $upright(d) l$ と体積
-$upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3$ について
-$ upright(d) l & = lr(|bold(A)|) upright(d) lambda\
-upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3 & = sqrt(- g) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3 $
+長さ $thin upright(d) l$ と体積
+$thin upright(d) x^0 thin upright(d) x^1 thin upright(d) x^2 thin upright(d) x^3$
+について $ thin upright(d) l & = lr(|bold(A)|) thin upright(d) lambda\
+thin upright(d) x^0 thin upright(d) x^1 thin upright(d) x^2 thin upright(d) x^3 & = sqrt(- g) thin upright(d) x'^0 thin upright(d) x'^1 thin upright(d) x'^2 thin upright(d) x'^3 $
 ]
 #proof[
-長さ $upright(d) l$ を計算する。
-$ upright(d) l & = \| g_(alpha beta) upright(d) x^alpha upright(d) x^beta \|^(1 \/ 2)\
- & = lr(|g_(alpha beta) frac(upright(d) x^alpha, upright(d) lambda) frac(upright(d) x^beta, upright(d) lambda)|)^(1 \/ 2) upright(d) lambda\
- & = lr(|g_(alpha beta) A^alpha A^beta|)^(1 \/ 2) upright(d) lambda\
- & = sqrt(\| bold(A)^2 \|) upright(d) lambda $ 体積
-$upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3$ について
-$ upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3 & = frac(partial \( x^0 \, x^1 \, x^2 \, x^3 \), partial \( x'^0 thin x'^1 thin x'^2 thin x'^3 \)) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3\
- & = mat(delim: bar.double, partial x^0 \/ partial x'^0, partial x^0 \/ partial x'^1, partial x^0 \/ partial x'^2, partial x^0 \/ partial x'^3; partial x^1 \/ partial x'^0, partial x^1 \/ partial x'^1, partial x^1 \/ partial x'^2, partial x^1 \/ partial x'^3; partial x^2 \/ partial x'^0, partial x^2 \/ partial x'^1, partial x^2 \/ partial x'^2, partial x^2 \/ partial x'^3; partial x^3 \/ partial x'^0, partial x^3 \/ partial x'^1, partial x^3 \/ partial x'^2, partial x^3 \/ partial x'^3) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3\
- & = det \( Lambda_(med beta)^alpha \) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3 $
+長さ $thin upright(d) l$ を計算する。
+$ thin upright(d) l & = \| g_(alpha beta) thin upright(d) x^alpha thin upright(d) x^beta \|^(1 \/ 2)\
+ & = lr(|g_(alpha beta) frac(upright(d) x^alpha, upright(d) lambda) frac(upright(d) x^beta, upright(d) lambda)|)^(1 \/ 2) thin upright(d) lambda\
+ & = lr(|g_(alpha beta) A^alpha A^beta|)^(1 \/ 2) thin upright(d) lambda\
+ & = sqrt(\| bold(A)^2 \|) thin upright(d) lambda $ 体積
+$thin upright(d) x^0 thin upright(d) x^1 thin upright(d) x^2 thin upright(d) x^3$
+について
+$ thin upright(d) x^0 thin upright(d) x^1 thin upright(d) x^2 thin upright(d) x^3 & = frac(partial \( x^0 \, x^1 \, x^2 \, x^3 \), partial \( x'^0 thin x'^1 thin x'^2 thin x'^3 \)) thin upright(d) x'^0 thin upright(d) x'^1 thin upright(d) x'^2 thin upright(d) x'^3\
+ & = mat(delim: bar.double, partial x^0 \/ partial x'^0, partial x^0 \/ partial x'^1, partial x^0 \/ partial x'^2, partial x^0 \/ partial x'^3; partial x^1 \/ partial x'^0, partial x^1 \/ partial x'^1, partial x^1 \/ partial x'^2, partial x^1 \/ partial x'^3; partial x^2 \/ partial x'^0, partial x^2 \/ partial x'^1, partial x^2 \/ partial x'^2, partial x^2 \/ partial x'^3; partial x^3 \/ partial x'^0, partial x^3 \/ partial x'^1, partial x^3 \/ partial x'^2, partial x^3 \/ partial x'^3) thin upright(d) x'^0 thin upright(d) x'^1 thin upright(d) x'^2 thin upright(d) x'^3\
+ & = det \( Lambda_(med beta)^alpha \) thin upright(d) x'^0 thin upright(d) x'^1 thin upright(d) x'^2 thin upright(d) x'^3 $
 $det \( Lambda_(med beta)^alpha \)$ について計算すると
 $ \( g_(alpha beta) \) & = \( Lambda_(med beta)^alpha \) \( eta_(alpha beta) \) \( Lambda_(med beta)^alpha \)^T\
 g = det \( g_(alpha beta) \) & = det \( Lambda_(med beta)^alpha \) det \( eta_(alpha beta) \) det \( Lambda_(med beta)^alpha \) = - det \( Lambda_(med beta)^alpha \)^2\
 det \( Lambda_(med beta)^alpha \) & = sqrt(- g) $ となるから
-$ upright(d) x^0 upright(d) x^1 upright(d) x^2 upright(d) x^3 & = sqrt(- g) upright(d) x'^0 upright(d) x'^1 upright(d) x'^2 upright(d) x'^3 $
+$ thin upright(d) x^0 thin upright(d) x^1 thin upright(d) x^2 thin upright(d) x^3 & = sqrt(- g) thin upright(d) x'^0 thin upright(d) x'^1 thin upright(d) x'^2 thin upright(d) x'^3 $
 となる。
 ]
 
@@ -254,10 +256,10 @@ $ A_(med ; alpha)^alpha & = A_(med \, alpha)^alpha + A^mu Gamma_(med mu alpha)^a
  & = A_(med \, alpha)^alpha + 1 / sqrt(- g) A^mu \( sqrt(- g) \)_(\, mu)\
  & = 1 / sqrt(- g) \( sqrt(- g) A^mu \)_(\, mu) $
 ] 測地線
-$ V^alpha \( B \) - V^alpha \( A \) & = integral_A^B frac(partial V^alpha, partial x^1) upright(d) x^1 = - integral_(x^2 = b) Gamma_(med mu 1)^alpha V^mu upright(d) x^1 $
+$ V^alpha \( B \) - V^alpha \( A \) & = integral_A^B frac(partial V^alpha, partial x^1) thin upright(d) x^1 = - integral_(x^2 = b) Gamma_(med mu 1)^alpha V^mu thin upright(d) x^1 $
 $ delta V^alpha & = "最初に" delta a bold(e)_sigma \, "次に" delta b bold(e)_lambda \, "そして" - delta a bold(e)_sigma \, "最後に" - delta b bold(e)_lambda "の移動による" V^alpha "の変化"\
- & = - integral_(x^lambda = b) Gamma_(med mu sigma)^alpha V^mu upright(d) x^sigma - integral_(x^sigma = a + delta a) Gamma_(med mu lambda)^alpha V^mu upright(d) x^lambda + integral_(x^lambda = b + delta b) Gamma_(med mu sigma)^alpha V^mu upright(d) x^sigma + integral_(x^sigma = a) Gamma_(med mu lambda)^alpha V^mu upright(d) x^lambda\
- & approx integral_a^(a + delta a) delta b frac(partial, partial x^lambda) \( Gamma_(med mu sigma)^alpha V^mu \) upright(d) x^sigma + integral_b^(b + delta b) delta a frac(partial, partial x^sigma) \( Gamma_(med mu lambda)^alpha V^mu \) upright(d) x^lambda\
+ & = - integral_(x^lambda = b) Gamma_(med mu sigma)^alpha V^mu thin upright(d) x^sigma - integral_(x^sigma = a + delta a) Gamma_(med mu lambda)^alpha V^mu thin upright(d) x^lambda + integral_(x^lambda = b + delta b) Gamma_(med mu sigma)^alpha V^mu thin upright(d) x^sigma + integral_(x^sigma = a) Gamma_(med mu lambda)^alpha V^mu thin upright(d) x^lambda\
+ & approx integral_a^(a + delta a) delta b frac(partial, partial x^lambda) \( Gamma_(med mu sigma)^alpha V^mu \) thin upright(d) x^sigma + integral_b^(b + delta b) delta a frac(partial, partial x^sigma) \( Gamma_(med mu lambda)^alpha V^mu \) thin upright(d) x^lambda\
  & approx delta a delta b [frac(partial, partial x^lambda) \( Gamma_(med mu sigma)^alpha V^mu \) - frac(partial, partial x^sigma) \( Gamma_(med mu lambda)^alpha V^mu \)]\
  & = delta a delta b \[ Gamma_(med mu sigma \, lambda)^alpha - Gamma_(med mu lambda \, sigma)^alpha + Gamma_(med nu lambda)^alpha Gamma_(med mu sigma)^nu - Gamma_(med nu sigma)^alpha Gamma_(med mu lambda)^nu \] V^mu $
 $ \[ nabla_alpha \, nabla_beta \] V^mu = R_(nu alpha beta)^mu V^nu $
@@ -309,8 +311,8 @@ G_(med med ; beta)^(alpha beta) & = 0 $ となる。
 + 時空 (すべての事象の集合) は、メトリックをもった四次元多様体である。
 
 + メトリックは棒と時計で測ることができる。二つの近傍の点の間の棒に沿った距離は
-  $\| upright(d) x^2 \|^(1 \/ 2)$
-  であり、短時間に引き続いて起こる二つの事象を通過した時計の測る、それらの時間間隔は、$\| - upright(d) x^2 \|^(1 \/ 2)$
+  $\| thin upright(d) x^2 \|^(1 \/ 2)$
+  であり、短時間に引き続いて起こる二つの事象を通過した時計の測る、それらの時間間隔は、$\| - thin upright(d) x^2 \|^(1 \/ 2)$
   である。
 
 + 時空のメトリックは、適当な座標系を選ぶことによって任意の一点でローレンツ系での形
@@ -329,4 +331,4 @@ U^alpha S_(; alpha) & = 0\
 T_(quad ; nu)^(mu nu) & = 0 $
 
 $ T^(mu nu) & = \( rho + p \) U^mu U^nu + p g^(mu nu) $
-$ upright(d) s^2 = - \( 1 + 2 phi.alt \) upright(d) t^2 + \( 1 - 2 phi.alt \) \( upright(d) x^2 + upright(d) y^2 + upright(d) z^2 \) $
+$ thin upright(d) s^2 = - \( 1 + 2 phi.alt \) thin upright(d) t^2 + \( 1 - 2 phi.alt \) \( thin upright(d) x^2 + thin upright(d) y^2 + thin upright(d) z^2 \) $

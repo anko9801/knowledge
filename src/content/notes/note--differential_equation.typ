@@ -16,67 +16,67 @@
 = ラプラス変換
 <ラプラス変換>
 #definition("ラプラス変換")[
-$ F \( s \) = cal(L) \[ f \( t \) \] & = integral_0^oo f \( t \) e^(- s t) upright(d) t\
-f \( t \) = cal(L)^(- 1) \[ F \( s \) \] & = lim_(p arrow.r oo) frac(1, 2 pi i) integral_(c - i p)^(c + i p) F \( s \) e^(s t) upright(d) s $
+$ F \( s \) = cal(L) \[ f \( t \) \] & = integral_0^oo f \( t \) e^(- s t) thin upright(d) t\
+f \( t \) = cal(L)^(- 1) \[ F \( s \) \] & = lim_(p arrow.r oo) frac(1, 2 pi i) integral_(c - i p)^(c + i p) F \( s \) e^(s t) thin upright(d) s $
 ]
 #theorem[
 $ cal(L) \[ f' \( t \) \] & = s cal(L) \[ f \( t \) \] - f \( 0 \)\
-cal(L) [integral_0^t f \( u \) upright(d) u] & = $
+cal(L) [integral_0^t f \( u \) thin upright(d) u] & = $
 ]
 #proof[
 テスト
-$ cal(L) \[ f' \( t \) \] & = integral_0^oo f' \( t \) e^(- s t) upright(d) t = [f \( t \) e^(- s t)]_0^oo + s integral_0^oo f \( t \) e^(- s t) upright(d) t = s cal(L) \[ f \( t \) \] - f \( 0 \)\
-cal(L) [integral_0^t f \( u \) upright(d) u] & = $
-] 
-例えば
-$ cal(L) \[ 1 \] & = integral_0^oo e^(- s t) upright(d) t = [frac(e^(- s t), - s)]_0^oo = 1 / s\
-cal(L) \[ t \] & = integral_0^oo t e^(- s t) upright(d) t = [t frac(e^(- s t), - s) - frac(e^(- s t), \( - s \)^2)]_0^oo = 1 / s^2\
-cal(L) \[ t^2 \] & = integral_0^oo t^2 e^(- s t) upright(d) t = [t^2 frac(e^(- s t), - s) - 2 t frac(e^(- s t), \( - s \)^2) + 2 frac(e^(- s t), \( - s \)^3)]_0^oo = 2 / s^3\
-cal(L) \[ t^3 \] & = integral_0^oo t^3 e^(- s t) upright(d) t = [t^3 frac(e^(- s t), - s) - 3 t^2 frac(e^(- s t), \( - s \)^2) + 6 t frac(e^(- s t), \( - s \)^3) - 6 frac(e^(- s t), \( - s \)^4)]_0^oo = 6 / s^4\
-cal(L) \[ t^n \] & = integral_0^oo t^n e^(- s t) upright(d) t = sum_(i = 0)^n \( - 1 \)^i [frac(upright(d)^i t^n, upright(d) t^i) frac(e^(- s t), \( - s \)^(i + 1))]_0^oo = frac(n !, s^(n + 1)) $
+$ cal(L) \[ f' \( t \) \] & = integral_0^oo f' \( t \) e^(- s t) thin upright(d) t = [f \( t \) e^(- s t)]_0^oo + s integral_0^oo f \( t \) e^(- s t) thin upright(d) t = s cal(L) \[ f \( t \) \] - f \( 0 \)\
+cal(L) [integral_0^t f \( u \) thin upright(d) u] & = $
+]
+ 例えば
+$ cal(L) \[ 1 \] & = integral_0^oo e^(- s t) thin upright(d) t = [frac(e^(- s t), - s)]_0^oo = 1 / s\
+cal(L) \[ t \] & = integral_0^oo t e^(- s t) thin upright(d) t = [t frac(e^(- s t), - s) - frac(e^(- s t), \( - s \)^2)]_0^oo = 1 / s^2\
+cal(L) \[ t^2 \] & = integral_0^oo t^2 e^(- s t) thin upright(d) t = [t^2 frac(e^(- s t), - s) - 2 t frac(e^(- s t), \( - s \)^2) + 2 frac(e^(- s t), \( - s \)^3)]_0^oo = 2 / s^3\
+cal(L) \[ t^3 \] & = integral_0^oo t^3 e^(- s t) thin upright(d) t = [t^3 frac(e^(- s t), - s) - 3 t^2 frac(e^(- s t), \( - s \)^2) + 6 t frac(e^(- s t), \( - s \)^3) - 6 frac(e^(- s t), \( - s \)^4)]_0^oo = 6 / s^4\
+cal(L) \[ t^n \] & = integral_0^oo t^n e^(- s t) thin upright(d) t = sum_(i = 0)^n \( - 1 \)^i [frac(upright(d)^i t^n, upright(d) t^i) frac(e^(- s t), \( - s \)^(i + 1))]_0^oo = frac(n !, s^(n + 1)) $
 
-$ cal(L) \[ e^(s_0 t) \] & = integral_0^oo e^(\( s_0 - s \) t) upright(d) t = frac(1, s - s_0) $
-$ cal(L) \[ sin omega t \] & = integral_0^oo sin omega t e^(- s t) upright(d) t = frac(1, 2 i) integral_0^oo (e^(i omega t) - e^(- i omega t)) e^(- s t) upright(d) t\
+$ cal(L) \[ e^(s_0 t) \] & = integral_0^oo e^(\( s_0 - s \) t) thin upright(d) t = frac(1, s - s_0) $
+$ cal(L) \[ sin omega t \] & = integral_0^oo sin omega t e^(- s t) thin upright(d) t = frac(1, 2 i) integral_0^oo (e^(i omega t) - e^(- i omega t)) e^(- s t) thin upright(d) t\
  & = - frac(1, 2 i) (frac(1, i omega - s) - frac(1, - i omega - s)) = frac(omega, s^2 + omega^2)\
-cal(L) \[ cos omega t \] & = integral_0^oo cos omega t e^(- s t) upright(d) t = 1 / 2 integral_0^oo (e^(i omega t) + e^(- i omega t)) e^(- s t) upright(d) t\
+cal(L) \[ cos omega t \] & = integral_0^oo cos omega t e^(- s t) thin upright(d) t = 1 / 2 integral_0^oo (e^(i omega t) + e^(- i omega t)) e^(- s t) thin upright(d) t\
  & = - 1 / 2 (frac(1, i omega - s) + frac(1, - i omega - s)) = frac(s, s^2 + omega^2) $
-$ cal(L) \[ sinh a t \] & = integral_0^oo sinh a t e^(- s t) upright(d) t = 1 / 2 integral_0^oo (e^(a t) - e^(- a t)) e^(- s t) upright(d) t\
+$ cal(L) \[ sinh a t \] & = integral_0^oo sinh a t e^(- s t) thin upright(d) t = 1 / 2 integral_0^oo (e^(a t) - e^(- a t)) e^(- s t) thin upright(d) t\
  & = - 1 / 2 (frac(1, a - s) - frac(1, - a - s)) = frac(a, s^2 - a^2)\
-cal(L) \[ cosh a t \] & = integral_0^oo cosh a t e^(- s t) upright(d) t = 1 / 2 integral_0^oo (e^(a t) + e^(- a t)) e^(- s t) upright(d) t\
+cal(L) \[ cosh a t \] & = integral_0^oo cosh a t e^(- s t) thin upright(d) t = 1 / 2 integral_0^oo (e^(a t) + e^(- a t)) e^(- s t) thin upright(d) t\
  & = - 1 / 2 (frac(1, a - s) + frac(1, - a - s)) = frac(s, s^2 - a^2) $
-$ cal(L) \[ delta \( t - a \) \] & = integral_0^oo delta \( t - a \) e^(- s t) upright(d) t = e^(- s a) $
+$ cal(L) \[ delta \( t - a \) \] & = integral_0^oo delta \( t - a \) e^(- s t) thin upright(d) t = e^(- s a) $
 
 = 特殊関数
 <特殊関数>
 == ガウス積分
 <ガウス積分>
 #theorem("Gauss 積分")[
-$ integral_(- oo)^oo e^(- alpha x^2) upright(d) x = sqrt(pi / alpha) #h(2em) \( "Re" a > 0 \) $
+$ integral_(- oo)^oo e^(- alpha x^2) thin upright(d) x = sqrt(pi / alpha) #h(2em) \( "Re" a > 0 \) $
 ]
 #proof[
 まず積分値を $I$ とおく。
-$ I & := integral_(- oo)^oo e^(- alpha x^2) upright(d) x $ ここで $I^2$
-を変数変換して計算する。
-$ I^2 & = integral_(- oo)^oo e^(- alpha x^2) upright(d) x integral_(- oo)^oo e^(- alpha y^2) upright(d) y\
- & = integral_(- oo)^oo integral_(- oo)^oo e^(- alpha \( x^2 + y^2 \)) upright(d) x upright(d) y\
- & = integral_0^oo integral_0^(2 pi) e^(- alpha r^2) r upright(d) theta upright(d) r\
+$ I & := integral_(- oo)^oo e^(- alpha x^2) thin upright(d) x $ ここで
+$I^2$ を変数変換して計算する。
+$ I^2 & = integral_(- oo)^oo e^(- alpha x^2) thin upright(d) x integral_(- oo)^oo e^(- alpha y^2) thin upright(d) y\
+ & = integral_(- oo)^oo integral_(- oo)^oo e^(- alpha \( x^2 + y^2 \)) thin upright(d) x thin upright(d) y\
+ & = integral_0^oo integral_0^(2 pi) e^(- alpha r^2) r thin upright(d) theta thin upright(d) r\
  & = 2 pi [frac(e^(- alpha r^2), - 2 alpha)]_0^oo\
  & = pi / alpha $ よって示される。
-$ integral_(- oo)^oo e^(- alpha x^2) upright(d) x = sqrt(pi / alpha) $
+$ integral_(- oo)^oo e^(- alpha x^2) thin upright(d) x = sqrt(pi / alpha) $
 ] 
 
 #theorem("Gauss 積分")[
-$  & integral_0^oo x^(2 n) e^(- x^2 \/ a^2) upright(d) x = sqrt(pi) \( 2 n - 1 \) ! ! a^(2 n + 1) / 2^(n + 1)\
- & integral_0^oo x^(2 n + 1) e^(- x^2 \/ a^2) upright(d) x = frac(n !, 2) a^(2 n + 2)\
- & integral_(- oo)^oo e^(- k^2 \/ 4) e^(i k x) upright(d) k = 2 sqrt(pi) e^(- x^2) $
+$  & integral_0^oo x^(2 n) e^(- x^2 \/ a^2) thin upright(d) x = sqrt(pi) \( 2 n - 1 \) ! ! a^(2 n + 1) / 2^(n + 1)\
+ & integral_0^oo x^(2 n + 1) e^(- x^2 \/ a^2) thin upright(d) x = frac(n !, 2) a^(2 n + 2)\
+ & integral_(- oo)^oo e^(- k^2 \/ 4) e^(i k x) thin upright(d) k = 2 sqrt(pi) e^(- x^2) $
 ]
 #proof[
-$ integral_0^oo x^(2 n) e^(- alpha x^2) upright(d) x & = \( - 1 \)^n integral_0^oo frac(partial^n, partial alpha^n) e^(- alpha x^2) upright(d) x\
- & = \( - 1 \)^n frac(partial^n, partial alpha^n) integral_0^oo e^(- alpha x^2) upright(d) x\
+$ integral_0^oo x^(2 n) e^(- alpha x^2) thin upright(d) x & = \( - 1 \)^n integral_0^oo frac(partial^n, partial alpha^n) e^(- alpha x^2) thin upright(d) x\
+ & = \( - 1 \)^n frac(partial^n, partial alpha^n) integral_0^oo e^(- alpha x^2) thin upright(d) x\
  & = \( - 1 \)^n frac(partial^n, partial alpha^n) (1 / 2 sqrt(pi / alpha))\
  & = sqrt(pi) frac(\( 2 n - 1 \) ! !, 2^(n + 1)) alpha^(- \( 2 n + 1 \) \/ 2) $
-$ integral_0^oo x^(2 n + 1) e^(- alpha x^2) upright(d) x & = \( - 1 \)^n integral_0^oo frac(partial^n, partial alpha^n) x e^(- alpha x^2) upright(d) x\
- & = \( - 1 \)^n frac(partial^n, partial alpha^n) integral_0^oo x e^(- alpha x^2) upright(d) x\
+$ integral_0^oo x^(2 n + 1) e^(- alpha x^2) thin upright(d) x & = \( - 1 \)^n integral_0^oo frac(partial^n, partial alpha^n) x e^(- alpha x^2) thin upright(d) x\
+ & = \( - 1 \)^n frac(partial^n, partial alpha^n) integral_0^oo x e^(- alpha x^2) thin upright(d) x\
  & = \( - 1 \)^n frac(partial^n, partial alpha^n) frac(1, 2 alpha)\
  & = frac(n !, 2) alpha^(- \( n + 1 \)) $
 ] 
@@ -87,21 +87,21 @@ $ integral_0^oo x^(2 n + 1) e^(- alpha x^2) upright(d) x & = \( - 1 \)^n integra
 複素平面上で $Re z > 1$
 を満たす領域内にある閉曲線 $C$ 上の点 $z$
 に対して次の関数は一様収束し正則な関数となる.
-$ Gamma \( z \) := integral_0^oo t^(z - 1) e^(- t) upright(d) t $
+$ Gamma \( z \) := integral_0^oo t^(z - 1) e^(- t) thin upright(d) t $
 ]
 #proposition[
 $ Gamma \( z + 1 \) & = z Gamma \( z \) \, #h(2em) Gamma \( n + 1 \) = n ! \, #h(2em) Gamma \( 1 \) = 1 \, #h(2em) Gamma (1 / 2) = sqrt(pi) $
 ]
 #proof[
-$ Gamma \( z + 1 \) & = integral_0^oo t^z e^(- t) upright(d) t\
- & = \[ - t^z e^(- t) \]_0^oo + z integral_0^oo t^(z - 1) e^(- t) upright(d) t\
+$ Gamma \( z + 1 \) & = integral_0^oo t^z e^(- t) thin upright(d) t\
+ & = \[ - t^z e^(- t) \]_0^oo + z integral_0^oo t^(z - 1) e^(- t) thin upright(d) t\
  & = z Gamma \( z \)\
-Gamma \( 1 \) & = integral_0^oo e^(- t) upright(d) t\
+Gamma \( 1 \) & = integral_0^oo e^(- t) thin upright(d) t\
  & = \[ - e^(- t) \]_0^oo\
  & = 1\
-Gamma (1 / 2) & = integral_0^oo t^(- 1 \/ 2) e^(- t) upright(d) t\
- & = integral_0^oo s^(- 1) e^(- s^2) 2 s upright(d) s\
- & = 2 integral_0^oo e^(- s^2) upright(d) s\
+Gamma (1 / 2) & = integral_0^oo t^(- 1 \/ 2) e^(- t) thin upright(d) t\
+ & = integral_0^oo s^(- 1) e^(- s^2) 2 s thin upright(d) s\
+ & = 2 integral_0^oo e^(- s^2) thin upright(d) s\
  & = sqrt(pi) $
 ] 
 
@@ -112,12 +112,12 @@ $ Gamma \( x + 1 \) & = sqrt(2 pi x) e^(- x) x^x #h(2em) \( x gt.double 1 \) $
 
 ]
 #proof[
-$ Gamma \( x \) & = integral_0^oo t^(x - 1) e^(- t) upright(d) t\
- & = integral_0^oo e^(s \( x - 1 \)) e^(- e^s) e^s upright(d) s\
- & = integral_0^oo e^(s x - e^s) upright(d) s\
- & approx integral_0^oo e^(\( x ln x - x \) - x / 2 \( s - ln x \)^2) upright(d) s #h(2em) \( x gt.double 1 \)\
- & = x^x e^(- x) integral_0^oo e^(- x / 2 \( s - ln x \)^2) upright(d) s\
- & = x^x e^(- x) integral_0^oo e^(- x / 2 s^2) upright(d) s\
+$ Gamma \( x \) & = integral_0^oo t^(x - 1) e^(- t) thin upright(d) t\
+ & = integral_0^oo e^(s \( x - 1 \)) e^(- e^s) e^s thin upright(d) s\
+ & = integral_0^oo e^(s x - e^s) thin upright(d) s\
+ & approx integral_0^oo e^(\( x ln x - x \) - x / 2 \( s - ln x \)^2) thin upright(d) s #h(2em) \( x gt.double 1 \)\
+ & = x^x e^(- x) integral_0^oo e^(- x / 2 \( s - ln x \)^2) thin upright(d) s\
+ & = x^x e^(- x) integral_0^oo e^(- x / 2 s^2) thin upright(d) s\
  & = sqrt(frac(2 pi, x)) x^x e^(- x) $ これより
 $ Gamma \( x + 1 \) & = x Gamma \( x \) = sqrt(2 pi x) x^x e^(- x) $
 ] 
@@ -139,22 +139,22 @@ gamma & := lim_(n arrow.r oo) (sum_(m = 1)^n 1 / m - log n) = 0.577216 dots.h.c 
 <ベータ関数>
 #definition[
 ベータ関数 (Beta function)
-$ B \( m \, n \) := integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t $
+$ B \( m \, n \) := integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) thin upright(d) t $
 ]
 #proposition[
 $ B \( m \, n \) & = B \( n \, m \)\
-B \( m \, n \) & = 2 integral_0^(pi \/ 2) sin^(2 m - 1) theta cos^(2 n - 1) theta upright(d) theta\
-B \( m \, n \) & = integral_0^oo frac(u^(m - 1), \( 1 + u \)^(m + n)) upright(d) theta $
+B \( m \, n \) & = 2 integral_0^(pi \/ 2) sin^(2 m - 1) theta cos^(2 n - 1) theta thin upright(d) theta\
+B \( m \, n \) & = integral_0^oo frac(u^(m - 1), \( 1 + u \)^(m + n)) thin upright(d) theta $
 ]
 #proof[
-$ B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
- & = integral_1^0 \( 1 - s \)^(m - 1) s^(n - 1) \( - upright(d) t \) #h(2em) \( s = 1 - t \)\
- & = integral_0^1 s^(n - 1) \( 1 - s \)^(m - 1) upright(d) t\
+$ B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) thin upright(d) t\
+ & = integral_1^0 \( 1 - s \)^(m - 1) s^(n - 1) \( - thin upright(d) t \) #h(2em) \( s = 1 - t \)\
+ & = integral_0^1 s^(n - 1) \( 1 - s \)^(m - 1) thin upright(d) t\
  & = B \( n \, m \)\
-B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
- & = integral_0^(pi \/ 2) sin^(2 \( m - 1 \)) theta cos^(2 \( n - 1 \)) theta 2 sin theta cos theta upright(d) theta #h(2em) \( t = sin^2 theta \)\
- & = 2 integral_0^(pi \/ 2) sin^(2 m - 1) theta cos^(2 n - 1) theta upright(d) theta\
-B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
+B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) thin upright(d) t\
+ & = integral_0^(pi \/ 2) sin^(2 \( m - 1 \)) theta cos^(2 \( n - 1 \)) theta 2 sin theta cos theta thin upright(d) theta #h(2em) \( t = sin^2 theta \)\
+ & = 2 integral_0^(pi \/ 2) sin^(2 m - 1) theta cos^(2 n - 1) theta thin upright(d) theta\
+B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) thin upright(d) t\
  $
 ] 
 
@@ -163,8 +163,8 @@ $ B \( m \, n \) & = frac(n - 1, m) B \( m + 1 \, n - 1 \)\
 B \( m \, n + 1 \) & = frac(n !, product_(k = 0)^n \( m + k \)) $
 ]
 #proof[
-$ B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) upright(d) t\
- & = [1 / m t^m \( 1 - t \)^(n - 1)]_0^1 + frac(n - 1, m) integral_0^1 t^m \( 1 - t \)^(n - 2) upright(d) t\
+$ B \( m \, n \) & = integral_0^1 t^(m - 1) \( 1 - t \)^(n - 1) thin upright(d) t\
+ & = [1 / m t^m \( 1 - t \)^(n - 1)]_0^1 + frac(n - 1, m) integral_0^1 t^m \( 1 - t \)^(n - 2) thin upright(d) t\
  & = frac(n - 1, m) B \( m + 1 \, n - 1 \)\
 B \( m \, n + 1 \) & = frac(n dot.op \( n - 1 \) dots.h.c 1, a dot.op \( m + 1 \) dots.h.c \( m + n - 1 \)) B \( m + n \, 1 \)\
  & = frac(n !, product_(k = 0)^(n - 1) \( m + k \)) frac(1, m + n)\
@@ -176,17 +176,17 @@ $ B \( m \, n \) & = frac(Gamma \( m \) Gamma \( n \), Gamma \( m + n \))\
 Gamma \( z \) Gamma \( 1 - z \) & = frac(pi, sin pi z) $
 ]
 #proof[
-$ Gamma \( m \) Gamma \( n \) & = integral_0^oo s^(m - 1) e^(- s) upright(d) s integral_0^oo t^(n - 1) e^(- t) upright(d) t\
- & = integral_0^oo q^(2 \( m - 1 \)) e^(- q^2) 2 q upright(d) q integral_0^oo p^(2 \( n - 1 \)) e^(- p^2) 2 p upright(d) p & \( s = q^2 \, t = p^2 \)\
- & = 4 integral_0^oo integral_0^oo e^(- \( q^2 + p^2 \)) q^(2 m - 1) p^(2 n - 1) upright(d) p upright(d) q\
- & = 4 integral_0^(pi / 2) integral_0^oo e^(- r^2) r^(2 \( m + n - 1 \)) cos^(2 m - 1) theta sin^(2 n - 1) theta r upright(d) r upright(d) theta & \( q = r cos theta \, p = r sin theta \)\
- & = 4 integral_0^oo e^(- r^2) r^(2 \( m + n \) - 1) upright(d) r integral_0^(pi / 2) cos^(2 m - 1) theta sin^(2 n - 1) theta upright(d) theta\
- & = 2 integral_0^oo e^(- R) R^(m + n - 1) r frac(1, 2 r) upright(d) R B \( m \, n \) & \( R = r^2 \)\
- & = integral_0^oo e^(- R) R^(m + n - 1) upright(d) R B \( m \, n \)\
+$ Gamma \( m \) Gamma \( n \) & = integral_0^oo s^(m - 1) e^(- s) thin upright(d) s integral_0^oo t^(n - 1) e^(- t) thin upright(d) t\
+ & = integral_0^oo q^(2 \( m - 1 \)) e^(- q^2) 2 q thin upright(d) q integral_0^oo p^(2 \( n - 1 \)) e^(- p^2) 2 p thin upright(d) p & \( s = q^2 \, t = p^2 \)\
+ & = 4 integral_0^oo integral_0^oo e^(- \( q^2 + p^2 \)) q^(2 m - 1) p^(2 n - 1) thin upright(d) p thin upright(d) q\
+ & = 4 integral_0^(pi / 2) integral_0^oo e^(- r^2) r^(2 \( m + n - 1 \)) cos^(2 m - 1) theta sin^(2 n - 1) theta r thin upright(d) r thin upright(d) theta & \( q = r cos theta \, p = r sin theta \)\
+ & = 4 integral_0^oo e^(- r^2) r^(2 \( m + n \) - 1) thin upright(d) r integral_0^(pi / 2) cos^(2 m - 1) theta sin^(2 n - 1) theta thin upright(d) theta\
+ & = 2 integral_0^oo e^(- R) R^(m + n - 1) r frac(1, 2 r) thin upright(d) R B \( m \, n \) & \( R = r^2 \)\
+ & = integral_0^oo e^(- R) R^(m + n - 1) thin upright(d) R B \( m \, n \)\
  & = Gamma \( m + n \) B \( m \, n \) $ これより
 $ B \( m \, n \) & = frac(Gamma \( m \) Gamma \( n \), Gamma \( m + n \)) $
 $ Gamma \( z \) Gamma \( 1 - z \) & = Gamma \( 1 \) B \( z \, 1 - z \)\
- & = integral_0^1 t^(z - 1) \( 1 - t \)^(- z) upright(d) t\
+ & = integral_0^1 t^(z - 1) \( 1 - t \)^(- z) thin upright(d) t\
  & = frac(pi, sin pi z) $
 ] 
 
@@ -211,15 +211,15 @@ $ V_n \( R \) & = R^n frac(pi^(n / 2), Gamma \( n / 2 + 1 \)) = R^n frac(pi^(n /
 ]
 #proof[
 $n$ 次元超球の体積は次のように表現できる。
-$ V_n \( R \) = integral_(x_1^2 + x_2^2 + dots.h.c + x_n^2 lt.eq R^2) upright(d) x_1 upright(d) x_2 dots.h.c upright(d) x_n $
+$ V_n \( R \) = integral_(x_1^2 + x_2^2 + dots.h.c + x_n^2 lt.eq R^2) thin upright(d) x_1 thin upright(d) x_2 dots.h.c thin upright(d) x_n $
 各 $x_i$ を $R$ 倍することで
-$ V_n \( R \) & = integral_(x_1^2 + x_2^2 + dots.h.c + x_n^2 lt.eq R^2) upright(d) x_1 upright(d) x_2 dots.h.c upright(d) x_n\
- & = R^n integral_(x_1^2 + x_2^2 + dots.h.c + x_n^2 lt.eq 1) upright(d) x_1 upright(d) x_2 dots.h.c upright(d) x_n\
+$ V_n \( R \) & = integral_(x_1^2 + x_2^2 + dots.h.c + x_n^2 lt.eq R^2) thin upright(d) x_1 thin upright(d) x_2 dots.h.c thin upright(d) x_n\
+ & = R^n integral_(x_1^2 + x_2^2 + dots.h.c + x_n^2 lt.eq 1) thin upright(d) x_1 thin upright(d) x_2 dots.h.c thin upright(d) x_n\
  & = R^n V_n \( 1 \) $ これより $V_n \( 1 \)$
 を求めればよい。$V_n \( 1 \)$ と $V_(n - 1) \( 1 \)$ の関係を求める。
-$ V_n \( 1 \) & = integral_(x_1^2 + x_2^2 + dots.h.c + x_(n - 1)^2 lt.eq 1 - x_n^2) upright(d) x_1 upright(d) x_2 dots.h.c upright(d) x_n\
- & = V_(n - 1) \( 1 \) integral_(- 1)^1 (1 - x_n^2)^(frac(n - 1, 2)) upright(d) x_n\
- & = 2 V_(n - 1) \( 1 \) integral_0^(pi \/ 2) cos^n theta upright(d) theta\
+$ V_n \( 1 \) & = integral_(x_1^2 + x_2^2 + dots.h.c + x_(n - 1)^2 lt.eq 1 - x_n^2) thin upright(d) x_1 thin upright(d) x_2 dots.h.c thin upright(d) x_n\
+ & = V_(n - 1) \( 1 \) integral_(- 1)^1 (1 - x_n^2)^(frac(n - 1, 2)) thin upright(d) x_n\
+ & = 2 V_(n - 1) \( 1 \) integral_0^(pi \/ 2) cos^n theta thin upright(d) theta\
  & = V_(n - 1) \( 1 \) B (1 / 2 \, frac(n + 1, 2))\
  & = V_(n - 1) \( 1 \) frac(Gamma \( 1 / 2 \) Gamma \( frac(n + 1, 2) \), Gamma \( n / 2 + 1 \))\
  & = V_(n - 1) \( 1 \) sqrt(pi) frac(Gamma \( frac(n + 1, 2) \), Gamma \( frac(n + 2, 2) \)) $
@@ -315,7 +315,7 @@ $zeta \( s \)$ が $"Re" s > 1$
 #proof[
 $s = a + b i med \( a > 1 \)$ とおく.
 すると次のようになる.
-$ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n^a approx integral_1^oo upright(d) x x^(- a) = [frac(1, 1 - a) x^(1 - a)]_1^oo < oo . $
+$ \| zeta \( s \) \| & lt.eq sum_(n = 1)^oo lr(|1 / n^s|) = sum_(n = 1)^oo 1 / n^a approx integral_1^oo thin upright(d) x x^(- a) = [frac(1, 1 - a) x^(1 - a)]_1^oo < oo . $
 よってゼータ関数 $zeta \( s \)$ は一様絶対収束する.
 ] 
 
@@ -361,16 +361,16 @@ $ lim_(s arrow.r 1) zeta \( s \) & = product_(p : p r i m e) frac(1, 1 - 1 \/ p)
 ] 
 
 #proposition[
-$ Gamma \( s \) zeta \( s \) = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) #h(2em) \( "Re" s > 1 \) . $
+$ Gamma \( s \) zeta \( s \) = integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) #h(2em) \( "Re" s > 1 \) . $
 ]
 #proof[
 ガンマ関数の定義式について $x := n x$
 と置換積分することで次のように式変形できる.
-$ Gamma \( s \) & = integral_0^oo upright(d) x x^(s - 1) e^(- x)\
- & = integral_0^oo n upright(d) x (n x)^(s - 1) e^(- n x) \,\
+$ Gamma \( s \) & = integral_0^oo thin upright(d) x x^(s - 1) e^(- x)\
+ & = integral_0^oo n thin upright(d) x (n x)^(s - 1) e^(- n x) \,\
 Gamma \( s \) zeta \( s \) & = sum_(n = 1)^oo frac(Gamma \( s \), n^s)\
- & = sum_(n = 1)^oo integral_0^oo upright(d) x x^(s - 1) e^(- n x)\
- & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
+ & = sum_(n = 1)^oo integral_0^oo thin upright(d) x x^(s - 1) e^(- n x)\
+ & = integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) . $
 ] 
 
 #proposition[
@@ -382,7 +382,7 @@ $C = C \( delta \) = C_(+) \( delta \) + C_0 \( delta \) + C_(+) \( delta \)$
 の円を反時計回りに 1 周し, $C_(-) \( delta \)$ は実軸上原点から $delta$
 の距離にある点から無限遠までを積分する. また次の関数 $I \( s \; C \)$
 を定義しておく.
-$ I \( s \; C \) & := integral_C upright(d) z frac(z^(s - 1), e^z - 1) . $
+$ I \( s \; C \) & := integral_C thin upright(d) z frac(z^(s - 1), e^z - 1) . $
 $0 < delta < 2 pi$ を満たす範囲で $delta$
 を動かしても積分値は一定である. $"Re" s > 1$ のとき $delta arrow.r 0$
 とすると $C_0 \( delta \)$ に沿った積分 $I \( s \; C_0 \( delta \) \)$
@@ -394,24 +394,24 @@ $0 < delta < 2 pi$ を満たす範囲で $delta$
 これより留数定理から積分路の内部の極の数が変化しないなら積分値は一定である.
 よって $0 < delta < 2 pi$ を満たす範囲で $delta$
 を動かしても極の数は変化しないから積分値は一定である.
-$ \| I \( s \; C_0 \( delta \) \) \| & = lr(|integral_(C_0 \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1)|)\
- & = lr(|integral_0^(2 pi) delta i e^(i theta) upright(d) theta frac(\( delta e^(i theta) \)^(s - 1), e^(delta \( cos theta + i sin theta \)) - 1)|)\
- & lt.eq integral_0^(2 pi) upright(d) theta frac(\| delta^s \|, e^(delta cos theta) - 1)\
+$ \| I \( s \; C_0 \( delta \) \) \| & = lr(|integral_(C_0 \( delta \)) thin upright(d) z frac(z^(s - 1), e^z - 1)|)\
+ & = lr(|integral_0^(2 pi) delta i e^(i theta) thin upright(d) theta frac(\( delta e^(i theta) \)^(s - 1), e^(delta \( cos theta + i sin theta \)) - 1)|)\
+ & lt.eq integral_0^(2 pi) thin upright(d) theta frac(\| delta^s \|, e^(delta cos theta) - 1)\
  & < \| delta^(s - 1) \| pi . $ これより $delta arrow.r 0$ のとき積分値
 $I \( s \; C_0 \( delta \) \)$ は $0$ となる.
 ] 
 
 #proposition[
-$ I \( s \; C \) & = \( e^(2 pi i s) - 1 \) integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
+$ I \( s \; C \) & = \( e^(2 pi i s) - 1 \) integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) . $
 ]
 #proof[
 Q 17A-10 の考察から $delta arrow.r 0$
 の極限において積分 $I \( s \; C \)$ を考える.
-$ I \( s \; C \) & = integral_(C \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = integral_(C_(-) + C_0 + C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = integral_(C_(-)) upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_0) upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = e^(2 pi i s) integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1) + 0 + integral_(C_(+)) upright(d) z frac(z^(s - 1), e^z - 1)\
- & = \( e^(2 pi i s) - 1 \) integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1) . $
+$ I \( s \; C \) & = integral_(C \( delta \)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = integral_(C_(-) + C_0 + C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = integral_(C_(-)) thin upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_0) thin upright(d) z frac(z^(s - 1), e^z - 1) + integral_(C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = e^(2 pi i s) integral_(C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1) + 0 + integral_(C_(+)) thin upright(d) z frac(z^(s - 1), e^z - 1)\
+ & = \( e^(2 pi i s) - 1 \) integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1) . $
 ] 
 
 #block[
@@ -420,12 +420,12 @@ $ zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) 
 
 ]
 (i) 17A-11 より$"Re" s > 1$ において次が成り立つ.
-$ Gamma \( s \) zeta \( s \) & = integral_0^oo upright(d) x frac(x^(s - 1), e^x - 1)\
+$ Gamma \( s \) zeta \( s \) & = integral_0^oo thin upright(d) x frac(x^(s - 1), e^x - 1)\
  & = frac(I \( s \; C \), e^(2 pi i s) - 1) \,\
 zeta \( s \) & = frac(1, \( e^(2 pi i s) - 1 \) Gamma \( s \)) I \( s \; C \) #h(2em) \( "Re" s > 1 \) . $
 
 (ii) $I \( s \; C \)$ は次のように定義された.
-$ I \( s \; C \) & = integral_(C \( delta \)) upright(d) z frac(z^(s - 1), e^z - 1) . $
+$ I \( s \; C \) & = integral_(C \( delta \)) thin upright(d) z frac(z^(s - 1), e^z - 1) . $
 これは複素平面全体 $s in bb(C)$ に対して正則である. よって (i)
 で求めた式は $"Re" s > 1$ の条件を取り外すことができ, 解析接続となる.
 
@@ -467,8 +467,8 @@ $ H_n \( x \) = - e^(x^2) frac(partial^n, partial x^n) e^(- x^2) $
 ] 
 
 #proposition[
-$ H_n \( x \) & = frac(n !, 2 pi i) integral_C e^(- z^2 + 2 z x) / z^(n + 1) upright(d) z\
-H_n \( x \) & = frac(1, 2 sqrt(pi)) \( - i \)^n integral_(- oo + 2 i x)^(oo + 2 i x) e^(- q^2 \/ 4) \( q + 2 i x \)^n upright(d) q\
+$ H_n \( x \) & = frac(n !, 2 pi i) integral_C e^(- z^2 + 2 z x) / z^(n + 1) thin upright(d) z\
+H_n \( x \) & = frac(1, 2 sqrt(pi)) \( - i \)^n integral_(- oo + 2 i x)^(oo + 2 i x) e^(- q^2 \/ 4) \( q + 2 i x \)^n thin upright(d) q\
 H_n \( x \) & = sum_(l = 0)^(\[ n \/ 2 \]) \( - 1 \)^l frac(n !, \( n - 2 l \) ! l !) \( 2 x \)^(n - 2 l) $
 ]
 #proposition[
@@ -488,7 +488,7 @@ $ frac(upright(d)^2, upright(d) x^2) f \( x \) - 2 x frac(upright(d), upright(d)
 ] 
 
 #theorem[
-$ integral_(- oo)^oo H_m \( x \) H_n \( x \) e^(- x^2) upright(d) x & = 2^n n ! sqrt(pi) delta_(m n) $
+$ integral_(- oo)^oo H_m \( x \) H_n \( x \) e^(- x^2) thin upright(d) x & = 2^n n ! sqrt(pi) delta_(m n) $
 ]
 #proof[
 

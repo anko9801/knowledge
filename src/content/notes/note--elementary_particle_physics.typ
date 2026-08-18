@@ -338,8 +338,8 @@ $ sigma \( e e arrow.r mu mu \) = 4 / 3 frac(pi alpha^2, s) Q_e^2 Q_mu^2 $
 == 散乱断面積
 <散乱断面積>
 素過程 $A + B arrow.r C + D$ において入射流束 $F_i$ と断面積
-$upright(d) sigma$ の積は遷移確率 $T_(i f)$ と終状態数 $N_f$
-の積と一致する。 $ F_i upright(d) sigma & = T_(i f) N_f $
+$thin upright(d) sigma$ の積は遷移確率 $T_(i f)$ と終状態数 $N_f$
+の積と一致する。 $ F_i thin upright(d) sigma & = T_(i f) N_f $
 衝突の重心系から見ると $p_i = \| bold(p)_A \| = \| bold(p)_B \|$,
 $p_f = \| bold(p)_C \| = \| bold(p)_D \|$
 $ W & = sqrt(s) = E_A + E_B = E_C + E_D = sqrt(p_C^2 + m_C^2) + sqrt(p_D^2 + m_D^2)\
@@ -348,14 +348,14 @@ bold(0) & = bold(p)_A + bold(p)_B = bold(p)_C + bold(p)_D $ Fermi
 不変振幅 $M_(i f) = ⟨f\| V \|i⟩$
 $ W & = frac(2 pi, planck) \| ⟨f\| V \|i⟩ \|^2 frac(upright(d) N, upright(d) E) = frac(2 pi, planck) \| M_(i f) \|^2 rho_f $
 $ T_(i f) & = \( 2 pi \)^4 delta^(\( 4 \)) \( p_A + p_B - p_C - p_D \) \| M_(i f) \|^2\
-N_f & = frac(upright(d) bold(p)_C, \( 2 pi \)^3) frac(1, 2 E_C) dot.op frac(upright(d) bold(p)_D, \( 2 pi \)^3) frac(1, 2 E_D)\
+N_f & = frac(thin upright(d) bold(p)_C, \( 2 pi \)^3) frac(1, 2 E_C) dot.op frac(thin upright(d) bold(p)_D, \( 2 pi \)^3) frac(1, 2 E_D)\
 F_i & = v_i n_A n_B = (p_i / E_A - frac(- p_i, E_B)) \( 2 E_A \) \( 2 E_B \) = 4 W p_i $
 これより散乱断面積
-$ frac(F_i upright(d) sigma, \| M_(i f) \|^2) & = frac(T_(i f) N_f, \| M_(i f) \|^2) = frac(1, \( 2 pi \)^2) frac(upright(d) bold(p)_C, 2 E_C) frac(upright(d) bold(p)_D, 2 E_D) delta^(\( 4 \)) \( p_A + p_B - p_C - p_D \)\
- & = frac(1, 16 pi^2) frac(upright(d) bold(p)_C, E_C E_D) delta \( W - E_C - E_D \)\
- & = frac(1, 16 pi^2) frac(p_C^2 upright(d) p_C upright(d) Omega, E_C E_D) delta \( W - E_C - E_D \)\
- & = frac(1, 16 pi^2) frac(p_C upright(d) W upright(d) Omega, W) delta \( W - E_C - E_D \)\
- & = frac(p_f upright(d) Omega, 16 pi^2 W) $
+$ frac(F_i thin upright(d) sigma, \| M_(i f) \|^2) & = frac(T_(i f) N_f, \| M_(i f) \|^2) = frac(1, \( 2 pi \)^2) frac(thin upright(d) bold(p)_C, 2 E_C) frac(thin upright(d) bold(p)_D, 2 E_D) delta^(\( 4 \)) \( p_A + p_B - p_C - p_D \)\
+ & = frac(1, 16 pi^2) frac(thin upright(d) bold(p)_C, E_C E_D) delta \( W - E_C - E_D \)\
+ & = frac(1, 16 pi^2) frac(p_C^2 thin upright(d) p_C thin upright(d) Omega, E_C E_D) delta \( W - E_C - E_D \)\
+ & = frac(1, 16 pi^2) frac(p_C thin upright(d) W thin upright(d) Omega, W) delta \( W - E_C - E_D \)\
+ & = frac(p_f thin upright(d) Omega, 16 pi^2 W) $
 $ frac(upright(d) sigma, upright(d) Omega) & = frac(\| M_(i f) \|^2, 64 pi^2 s) p_f / p_i $
 
 - 重心系エネルギーの 2 乗に反比例する
@@ -372,8 +372,8 @@ $ p_i = p_f = \| bold(k) \| = \| bold(p) \| $
 $E = E_0 - i Gamma \/ 2$ とおくと
 $ \| psi \( t \) \|^2 = \| psi_0 e^(- i E t) \|^2 = \| psi_0 e^(- i \( E_0 - i Gamma \/ 2 \) t) \|^2 = \| psi_0 \|^2 e^(- Gamma t) $
 波動関数をフーリエ変換すると
-$ chi \( E \) & = 1 / sqrt(2 pi) integral_0^oo upright(d) t psi \( t \) e^(i E t)\
- & = psi_0 / sqrt(2 pi) integral_0^oo upright(d) t e^(i \( E - E_0 + i Gamma \/ 2 \) t)\
+$ chi \( E \) & = 1 / sqrt(2 pi) integral_0^oo thin upright(d) t psi \( t \) e^(i E t)\
+ & = psi_0 / sqrt(2 pi) integral_0^oo thin upright(d) t e^(i \( E - E_0 + i Gamma \/ 2 \) t)\
  & = psi_0 / sqrt(2 pi) frac(1, i \( E - E_0 + i Gamma \/ 2 \)) $
 Breit-Wigner の式
 $ frac(\| chi \( E \) \|^2, \| chi \( E_0 \) \|^2) = frac(Gamma^2 \/ 4, \( E - E_0 \)^2 + Gamma^2 \/ 4) $

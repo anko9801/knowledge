@@ -565,7 +565,10 @@ export const expandDerivatives = (source, skip = new Set()) => {
     out += text.slice(cursor, hit)
     // 引数を波括弧で残す。\dl{\omega}g(...) が \mathrm{d}\omegag(...) と
     // 繋がって存在しないマクロ名になるため。
-    out += `\\mathrm{d}${order}{${argument.text}}`
+    //
+    // 直前に細空きを入れる。積分の微分要素は LaTeX でも \, を挟むのが慣習で、
+    // 入れないと ρ(r,t)dr のように直前へ貼り付いて読みにくい。
+    out += `\\,\\mathrm{d}${order}{${argument.text}}`
     cursor = argument.end
     expanded += 1
   }
@@ -842,7 +845,8 @@ const SINGLE_ARG_MACROS = [
   { name: 'vu', wrap: (arg) => `\\hat{${arg}}` },
   // 引数を波括弧で残す。\dd{\omega}g(...) が \mathrm{d}\omegag(...) と
   // 繋がって別のマクロ名になってしまうため。
-  { name: 'dd', wrap: (arg) => `\\mathrm{d}{${arg}}` },
+  // 積分の微分要素。直前に細空きを入れるのは LaTeX の慣習に合わせるため。
+  { name: 'dd', wrap: (arg) => `\\,\\mathrm{d}{${arg}}` },
   // physics(v1) の波括弧形式。区切り記号形式と混在している。
   { name: 'ket', wrap: (arg) => `\\left\\lvert ${arg}\\right\\rangle ` },
   { name: 'bra', wrap: (arg) => `\\left\\langle ${arg}\\right\\rvert ` },

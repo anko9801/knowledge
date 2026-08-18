@@ -37,7 +37,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     {
       boxes.map(({ field, series, count }) => (
         <li>
-          <a href={`/${field.slug}`}>
+          <a href={`${base}${field.slug}`}>
             <span class="title">{field.title}</span>
             <span class="count">{count > 0 ? `${count} 本` : '準備中'}</span>
           </a>
@@ -57,7 +57,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
         <ul class="recent">
           {recent.map((article) => (
             <li>
-              <a href={`/${article.data.field}/${article.data.series}/${article.data.order}`}>
+              <a href={`${base}${article.data.field}/${article.data.series}/${article.data.order}`}>
                 {article.data.title}
               </a>
               <time datetime={article.data.date.toISOString().slice(0, 10)}>

@@ -105,3 +105,22 @@ export const wrapBlockEquations = (html: string): string =>
     (_, attributes, body) =>
       `<div class="equation"><math${attributes}>${body}</math></div>`,
   )
+
+/**
+ * 本文に書かれたサイト内リンクへ base を前置きする。
+ *
+ * 記事は `#link("/math/set-theory/6")` のようにサイトのルート起点で書く。
+ * base はビルド設定（GitHub Pages ならリポジトリ名）なので本文には焼き込まず、
+ * ここで補う。外部リンクと、既に base が付いているものは触らない。
+ */
+export const rewriteInternalLinks = (html: string, base: string): string => {
+  if (base === '/' || base === '') return html
+
+  return html.replace(
+    /\b(href|src)="(\/[^"]*)"/g,
+    (whole, attribute, url) =>
+      url.startsWith(base) || url.startsWith('//')
+        ? whole
+        : `${attribute}="${base}${url.slice(1)}"`,
+  )
+}

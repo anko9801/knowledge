@@ -45,7 +45,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
           <ol class="articles">
             {items.map((article) => (
               <li value={article.data.order}>
-                <a href={`/${field.slug}/${series.slug}/${article.data.order}`}>
+                <a href={`${base}${field.slug}/${series.slug}/${article.data.order}`}>
                   {article.data.title}
                 </a>
                 {article.data.summary && <p class="summary">{article.data.summary}</p>}

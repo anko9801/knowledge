@@ -23,31 +23,38 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: cachix/install-nix-action@v27
+      - uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
+            accept-flake-config = true
 
-      # flake.lock で typst 0.15.1 まで固定してあるので、
-      # store をキャッシュすれば毎回の取得を省ける。
-      - uses: DeterminateSystems/magic-nix-cache-action@v8
+      # flake.lock で typst 0.15.1 まで固定してある。
+      # nix store をキャッシュして、毎回の取得を省く。
+      - name: Cache nix store
+        uses: actions/cache@v4
+        with:
+          path: /nix/store
+          key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          restore-keys: nix-${{ runner.os }}-
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
 
       - run: npm ci
 
-      # prebuild が typst-math.css を作るので、typst が要る。
+      # prebuild が typst-math.css を作り、postbuild が pagefind の索引を作る。
+      # どちらも nix develop の中で動かす。
       - name: Build
         run: nix develop --command npm run build
 
       - uses: actions/configure-pages@v5
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 

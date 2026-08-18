@@ -52,7 +52,7 @@ const field: Field | undefined = findField(article.data.field)
 const series: Series | undefined = findSeries(article.data.field, article.data.series)
 
 const href = (entry: Entry) =>
-  `/${entry.data.field}/${entry.data.series}/${entry.data.order}`
+  `${base}${entry.data.field}/${entry.data.series}/${entry.data.order}`
 
 const updated = article.data.date.toISOString().slice(0, 10)
 
@@ -65,7 +65,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
   <nav class="crumbs">
     <a href={base}>knowledge</a>
     <span aria-hidden="true">/</span>
-    <a href={`/${article.data.field}`}>{field?.title ?? article.data.field}</a>
+    <a href={`${base}${article.data.field}`}>{field?.title ?? article.data.field}</a>
     <span aria-hidden="true">/</span>
     <span>{series?.title ?? article.data.series}</span>
   </nav>

@@ -40,6 +40,24 @@ export const collectWarnings = (stderr: string): readonly string[] =>
     .filter((line) => !/html export is under active development/.test(line))
     .map((line) => line.replace(/^warning:\s*/, ''))
 
+/**
+ * typst のバージョン文字列。キャッシュの鍵に混ぜる。
+ *
+ * 同じ .typ でも typst を上げれば出力は変わりうるので、これを見ていないと
+ * 古い HTML が残る。1 ビルドにつき 1 回しか呼ばないよう、呼び出し側で束ねる。
+ */
+export const typstVersion = async (bin: string): Promise<string> => {
+  try {
+    const { stdout } = await run(bin, ['--version'])
+
+    return stdout.trim()
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error)
+
+    throw new Error(`typst を実行できませんでした (${bin}):\n${detail}`)
+  }
+}
+
 export type TypstOptions = {
   readonly bin: string
   readonly root: string

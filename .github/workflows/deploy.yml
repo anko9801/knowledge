@@ -23,38 +23,60 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: cachix/install-nix-action@v31
+      # flake.lock で typst 0.15.1 まで固定してある。
+      # nix store のキャッシュは専用の action に任せる。actions/cache で
+      # /nix/store を直接扱うと、権限の都合で復元が tar のエラーで落ちる。
+      - uses: nixbuild/nix-quick-install-action@v35
         with:
-          extra_nix_config: |
+          nix_conf: |
             experimental-features = nix-command flakes
             accept-flake-config = true
 
-      # flake.lock で typst 0.15.1 まで固定してある。
-      # nix store をキャッシュして、毎回の取得を省く。
-      - name: Cache nix store
-        uses: actions/cache@v4
+      - uses: nix-community/cache-nix-action@v7
         with:
-          path: /nix/store
-          key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
-          restore-keys: nix-${{ runner.os }}-
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('flake.lock') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-
+          # 保存前に掃除する。溜め続けると 10 GB の上限を一つのキャッシュで食い潰す。
+          gc-max-store-size-linux: 2G
+          purge: true
+          purge-prefixes: nix-${{ runner.os }}-
+          purge-created: 0
+          purge-primary-key: never
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - run: npm ci
+
+      # typst の出力（Content Collection の data-store）を持ち越す。
+      # 71 本の組版に 1 分以上かかるので、変わった .typ だけを組み直せば済む。
+      # 鍵が外れても restore-keys で古いものを拾えば、差分だけの再組版になる。
+      - name: Cache typst output
+        uses: actions/cache@v6
+        with:
+          path: node_modules/.astro
+          key: >-
+            typst-${{ runner.os }}-${{ hashFiles('flake.lock',
+            'src/content/**/*.typ', 'src/typst/**',
+            'src/lib/typst-*.ts', 'src/lib/headings.ts') }}
+          restore-keys: typst-${{ runner.os }}-
+
+      # 型と単体テスト。壊れたものを公開しないための関所。
+      - name: Verify
+        run: nix develop --command npm run verify
 
       # prebuild が typst-math.css を作り、postbuild が pagefind の索引を作る。
       # どちらも nix develop の中で動かす。
       - name: Build
         run: nix develop --command npm run build
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -66,4 +88,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

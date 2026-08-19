@@ -33,6 +33,7 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 | `src/lib/nav.ts` | サイドバーの素材を Content Collection から集める |
 | `src/lib/nav-scope.ts` | 今いる文脈に合わせて、出す範囲を絞る（純関数） |
 | `src/lib/typst-loader.ts` | Astro Content Loader（digest でキャッシュ、`.typ` を watch） |
+| `src/lib/pool.ts` | 同時実行数を絞って並べる（typst の起動を CPU 数まで） |
 | `src/content.config.ts` | front matter の zod スキーマと、キャッシュを無効化する依存 |
 | `src/layouts/*.astro` | ページの外枠と記事の外枠 |
 | `src/components/Sidebar.astro` | 左の柱。サイト内の案内と検索 |
@@ -49,12 +50,13 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 ## 使い方
 
 ```sh
-nix develop                 # typst 0.15.1 / node 22 / fonttools / STIX Two Math / pandoc
+nix develop                 # typst 0.15.1 / node 24 / fonttools / Latin Modern / pandoc
 npm install
 npm run fonts               # public/fonts/math.woff2 を生成（初回のみ）
 npm run dev                 # prebuild で typst-math.css も生成される
 npm run build
 npm run check               # astro check（型）
+npm run verify              # check + test。CI もこれを通してから公開する
 ```
 
 devShell の外で回すときは、typst 0.15 の場所とサブセット元フォントを環境変数で渡す。
@@ -76,6 +78,31 @@ PDF は同じソースからそのまま出る。
 ```sh
 typst compile src/content/posts/foo.typ --root . foo.pdf
 ```
+
+## 依存の版
+
+| | 版 | 備考 |
+| --- | --- | --- |
+| typst | 0.15.1 | MathML export は 0.15 から。`flake.nix` が unstable から取る |
+| Node | 24 | Astro 7 の要求は 22.12 以上。devShell と CI を揃えてある |
+| Astro | 7 | Vite 8。zod は `astro:content` から外れたので `astro/zod` から取る |
+| TypeScript | 6 | 7 にはまだ上げられない。`@astrojs/check` の peer が `^5 \|\| ^6` |
+| pagefind | 1.5 | 全文検索の索引を postbuild で作る |
+
+## ビルドにかかる時間
+
+.typ 1 本につき typst を 2 回起動する（本文の HTML と front matter）。
+互いに依存しないので、ファイル間もファイル内の 2 回も並べてある
+（`src/lib/pool.ts`、同時実行は CPU 数 − 1 で頭打ち 8）。
+
+```
+初回（キャッシュなし）  71 本で 59 秒   ※直列だと 3 分 1 秒
+2 回目以降              2 秒            変わった .typ だけ組み直す
+```
+
+キャッシュの実体は `node_modules/.astro/data-store.json`（約 10 MB）。
+CI でもこれを持ち越すので、記事 1 本の修正で 3 分待たされることはない。
+鍵には .typ とテンプレートに加えて **typst のバージョン**も混ぜてある。
 
 ## ページの骨格
 
@@ -286,7 +313,7 @@ Typst は証明の終わりの記号を、証明が本文で終わるときは�
 `display: block` を当てると前者が行を分けてしまうので、`float: right` で
 両方とも右端に寄せる。浮かせたぶんは `.proof::after` で閉じる。
 
-**11. テンプレートを直しても本文に反映されない**
+**11. テンプレートや typst を替えても本文に反映されない**
 
 loader が本文の digest だけを見ていると、`src/typst/*.typ` を直しても
 Content Collection のキャッシュが効いたままになる。証明の見出しを
@@ -296,9 +323,25 @@ Content Collection のキャッシュが効いたままになる。証明の見�
 
 同じ理由で、loader 側の後処理（見出しの id 付けなど）を直したときも古い HTML が
 残る。`dependsOn` には `src/typst` に加えて `typst-html.ts` と `headings.ts` を
-挙げてあり、これらを触ると全記事が組み直される。
+挙げてあり、これらを触ると全記事が組み直される。typst 自体を上げたときも同じ
+問題が起きるので、`typst --version` の文字列も digest に混ぜてある。
 
-**12. HTML export は experimental**
+**12. 数式フォントの名前に空白を入れると、圧縮で消える**
+
+`font-family: 'Math Subset', math` と書くと、CSS の圧縮で引用符が外れて
+`font-family: Math Subset, math` になる。すると先頭の識別子 `Math` が総称ファミリ
+`math` と（大文字小文字を無視して）一致し、**宣言ごと無効**になる。数式は
+ブラウザ既定のフォントに落ちるだけなので、豆腐にはならず字形が変わるだけ。
+気づきにくい。名前は `MathSubset` のように 1 語にしておくこと。
+
+Astro 5 は引用符を残していたが、7（Vite 8）は外す。上げたときに踏んだ。
+
+```sh
+# 効いているかは計算後の値で見る。'math' だけなら落ちている。
+getComputedStyle(document.querySelector('math')).fontFamily
+```
+
+**13. HTML export は experimental**
 
 `--features html` が要る。公式に production 非推奨で、未対応要素や show rule の穴を
 たまに踏む。回避の show rule を書くか upstream にパッチを送る。`target()` だけは

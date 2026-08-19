@@ -1,9 +1,11 @@
 import type { Loader, LoaderContext } from 'astro/loaders'
 import { readdir, readFile } from 'node:fs/promises'
+import { availableParallelism } from 'node:os'
 import { extname, join, relative, sep } from 'node:path'
 import { createHash } from 'node:crypto'
 
-import { compileHtml, evalMetadata } from './typst-cli.ts'
+import { compileHtml, evalMetadata, typstVersion } from './typst-cli.ts'
+import { mapWithLimit } from './pool.ts'
 import { collectHeadings } from './headings.ts'
 import {
   extractStyles,
@@ -99,7 +101,9 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
    * 反映されない、という形で現れる。
    */
   const dependencyDigest = async (root: string): Promise<string> => {
-    const parts: string[] = []
+    // typst のバージョンも混ぜる。上げると出力（MathML の形や CSS）が変わるのに、
+    // .typ が同じままだとキャッシュが効いて古い HTML が残る。
+    const parts: string[] = [await typstVersion(bin)]
 
     for (const relative of dependsOn) {
       const target = join(root, relative)
@@ -142,8 +146,12 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
       return { id, mathCss: cachedCss }
     }
 
-    const html = await compileHtml(file, typstOptions)
-    const raw = await evalMetadata(file, typstOptions)
+    // 本文とメタデータは別々の typst 呼び出しで、互いに依存しない。
+    // 並べると 1 本あたりの待ち時間がおよそ半分になる。
+    const [html, raw] = await Promise.all([
+      compileHtml(file, typstOptions),
+      evalMetadata(file, typstOptions),
+    ])
     const { body, head, lang } = splitDocument(html, relative(root, file))
 
     if (expectedLang && lang !== expectedLang) {
@@ -201,10 +209,14 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
 
       const shared = await dependencyDigest(root)
 
-      const results: EntryResult[] = []
-      for (const file of files) {
-        results.push(await ingest(file, context, root, absoluteDir, shared))
-      }
+      // .typ どうしは独立なので、CPU の数だけ並べる。1 本につき typst が
+      // 2 回起動するぶん、直列だと待ち時間がそのまま積み上がる。
+      // 1 コア残すのは、ビルド中の端末が固まらないようにするため。
+      const width = Math.max(1, Math.min(8, availableParallelism() - 1))
+
+      const results = await mapWithLimit(files, width, (file) =>
+        ingest(file, context, root, absoluteDir, shared),
+      )
 
       // 削除された .typ をストアから落とす。
       const live = new Set(results.map((result) => result.id))

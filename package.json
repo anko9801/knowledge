@@ -9,19 +9,21 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "precheck": "node scripts/emit-math-css.mjs",
     "check": "astro check",
+    "verify": "npm run check && npm test",
     "fonts": "sh scripts/subset-math-font.sh && sh scripts/subset-text-font.sh",
     "test": "node --test scripts/latex/*.test.mjs src/lib/*.test.ts",
     "notes": "node scripts/latex/to-typst.mjs",
     "postbuild": "pagefind --site dist"
   },
   "dependencies": {
-    "astro": "^5.0.0"
+    "astro": "^7.2.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@types/node": "^26.2.0",
     "pagefind": "^1.5.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   }
 }

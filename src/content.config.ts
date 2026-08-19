@@ -1,4 +1,6 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
+// astro:content からの再輸出は Astro 7 で外れた。zod は astro/zod から取る。
+import { z } from 'astro/zod'
 
 import { typstLoader } from './lib/typst-loader.ts'
 

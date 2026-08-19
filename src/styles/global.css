@@ -13,7 +13,11 @@
      --unicodes と二重管理になり、片方だけ広げたときに範囲外の文字（数字、
      括弧、等号、アクセント）だけが本文の明朝で描かれて数式が不揃いになる。
      このフォントを当てているのは math 要素だけなので、範囲を切る利点もない。 */
-  font-family: 'Math Subset';
+  /* 名前に空白を入れないこと。CSS の圧縮で引用符が外れると
+     `font-family: Math Subset, math` になり、先頭の識別子 Math が総称
+     ファミリ math と（大文字小文字を無視して）一致するため、宣言ごと無効に
+     なる。数式が既定のフォントに落ちて字形が変わる、という形で現れる。 */
+  font-family: MathSubset;
   src: url('../fonts/math.woff2') format('woff2');
   font-display: swap;
 }
@@ -191,7 +195,7 @@ a {
  */
 
 math {
-  font-family: 'Math Subset', math;
+  font-family: MathSubset, math;
 }
 
 /* 長い別行立て数式が狭い画面で溢れるのを、切らずに横スクロールで逃がす。

@@ -35,7 +35,7 @@
           default = pkgs.mkShell {
             packages = [
               typst
-              pkgs.nodejs_22
+              pkgs.nodejs_24
               fontTooling
               # lecture-notes の .tex を Typst に変換する（scripts/latex/to-typst.mjs）
               pkgs.pandoc

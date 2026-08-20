@@ -7,7 +7,7 @@
 ## 連載
 
 - [数学](https://anko9801.github.io/knowledge/math) — 集合論 12 本、数理論理学 10 本
-- [物理](https://anko9801.github.io/knowledge/physics) — 解析力学 3 本
+- [物理](https://anko9801.github.io/knowledge/physics) — 解析力学 4 本
 
 ## 講義ノート
 

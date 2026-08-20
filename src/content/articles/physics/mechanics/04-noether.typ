@@ -6,7 +6,7 @@
   date: "2026-08-17",
   field: "physics",
   series: "mechanics",
-  order: 3,
+  order: 4,
   tags: ("解析力学",),
   summary: "Noether の定理。対称性があれば保存量がある。そして対称性を要求するだけでラグランジアンの形が決まる。",
 )
@@ -70,7 +70,7 @@ $epsilon$ は変換の「量」である。平行移動なら移動距離、回�
 積の微分の形に組み直しただけである。
 
 #remark[
-  ラグランジアンの非一意性（#link("/physics/mechanics/2")[第 2 回]）で見たように、$L$ は全微分の分だけ変えても同じ運動を与える。
+  ラグランジアンの非一意性（#link("/physics/mechanics/3")[第 3 回]）で見たように、$L$ は全微分の分だけ変えても同じ運動を与える。
   したがって対称性の条件も
   $ L(Q, dot(Q), t) = L(q, dot(q), t) + epsilon frac(dif, dif t) F(q, t) + O(epsilon^2) $
   まで緩めてよい。この場合、保存量は
@@ -184,7 +184,7 @@ $L$ の形そのものを絞り込む。#link("/physics/mechanics/1")[第 1 回]
 
   ここに Galilei 変換の要請を加える。速度 $bold(w)$ の慣性系へ移ると
   $bold(v) arrow.bar bold(v) + bold(w)$ だが、運動方程式は変わってはいけない。
-  #link("/physics/mechanics/2")[第 2 回]より、$L$ は全微分の差までしか変わってよくない。
+  #link("/physics/mechanics/3")[第 3 回]より、$L$ は全微分の差までしか変わってよくない。
 
   $bold(w)$ が微小なら
   $ L((bold(v) + bold(w))^2) = L(v^2) + frac(partial L, partial v^2) thin 2 bold(v) dot bold(w) + O(w^2) $

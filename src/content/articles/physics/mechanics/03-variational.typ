@@ -6,7 +6,7 @@
   date: "2026-08-17",
   field: "physics",
   series: "mechanics",
-  order: 2,
+  order: 3,
   tags: ("解析力学",),
   summary: "運動方程式を一行の原理から出す。最小作用の「最小」は嘘で、正しくは停留である。",
 )

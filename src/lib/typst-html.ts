@@ -144,33 +144,76 @@ export const repairBinaryOperators = (html: string): string =>
   html.replace(OPERAND_END, (_, close, space, operator) => `${close}${space}<mo>${operator}</mo>`)
 
 /**
- * 括弧の外側に付く空きを詰められるよう、印を付ける。
+ * 伸ばす必要のない括弧の伸縮を止める。
  *
- * Latin Modern Math の括弧は、グリフの外側に内側の倍ほどの空きを持つ
- * （( は左 0.101em / 右 0.057em、] は右 0.114em / 左 0.022em）。伸縮すると
- * 外側だけがさらに広がり、分数を囲むサイズでは左 0.156em、いちばん大きい
- * 変種では 0.277em に達する。ディスプレイの分数が増えると、括弧の外だけが
- * 空いて式が締まらない。
+ * Chrome の MathML では、伸縮する括弧の送り幅が中身に関係なく
+ * 最大の異体字のものになる。Latin Modern Math の ( なら 0.875em で、
+ * 実際に描かれる 0.389em の 2.25 倍。差の 0.486em が前後に散って、
+ * S(q) の括弧の周りに 0.32em ずつの空きができる。maxsize では止まらない。
+ * 元フォントでもサブセットでも同じなので、サブセットの副作用ではない。
  *
- * MathML の側は正しい。Typst は括弧を必ず自前の <mrow> に包むので form は
- * prefix / postfix と推論され、辞書上の lspace / rspace は 0 になっている。
- * 空いているのはグリフの送り幅なので、CSS の負のマージンで引き戻すしかない。
+ * 負のマージンでは直らない。余分な送りは箱の内側にも入っているため、
+ * 外側を引いても ( と中身の間が 0.33em のまま残り、かえって不揃いになる。
+ * stretchy="false" にすると外 0.073em / 内 0.094em まで落ちる。
  *
- * 詰め幅は global.css が持つ。ここは open / close を見分けて印を付けるだけ。
- * 左右対称な { } | は触らない。詰めると内側まで痩せる。
+ * ただし分数や根号を囲む括弧は伸びてもらわないと困る。中身を見て、
+ * 背の高くなる要素を含まないものだけ止める。
+ * Typst がすでに stretchy="false" を付けているものは触らない。
  */
 const FENCE_OPEN = '([⟨⟦⌈⌊'
 const FENCE_CLOSE = ')]⟩⟧⌉⌋'
 
-export const markFences = (html: string): string =>
-  html.replace(/<mo\b([^>]*)>([^<])<\/mo>/g, (whole, attributes: string, body: string) => {
-    if (attributes.includes('class=')) return whole
+/** 中にあると括弧を伸ばす必要が出る要素。 */
+const TALL = /<(mfrac|msqrt|mroot|mtable|munder|mover|munderover|msubsup)\b/
 
-    const side = FENCE_OPEN.includes(body)
-      ? 'open'
-      : FENCE_CLOSE.includes(body)
-        ? 'close'
-        : null
+/** <mrow> の入れ子を数えて、開き括弧に対応する </mrow> の位置を返す。 */
+const findGroupEnd = (html: string, from: number): number => {
+  const token = /<(\/?)mrow\b[^>]*>/g
+  token.lastIndex = from
+  let depth = 1
 
-    return side === null ? whole : `<mo${attributes} class="fence-${side}">${body}</mo>`
-  })
+  for (let m = token.exec(html); m !== null; m = token.exec(html)) {
+    depth += m[1] === '/' ? -1 : 1
+    if (depth === 0) return m.index
+  }
+
+  return -1
+}
+
+export const freezeShortFences = (html: string): string => {
+  // Typst は括弧を必ず <mrow><mo>(</mo> … <mo>)</mo></mrow> の形で包む。
+  const cls = (chars: string) => chars.replace(/[\]\\^-]/g, '\\$&')
+  const opener = new RegExp(`<mrow>(<mo([^>]*)>([${cls(FENCE_OPEN)}])</mo>)`, 'g')
+  const edits: { at: number; length: number; text: string }[] = []
+
+  for (let m = opener.exec(html); m !== null; m = opener.exec(html)) {
+    const [, tag, attributes] = m
+    if (attributes.includes('stretchy=')) continue
+
+    const contentStart = m.index + m[0].length
+    const end = findGroupEnd(html, contentStart)
+    if (end < 0) continue
+
+    const content = html.slice(contentStart, end)
+    if (TALL.test(content)) continue
+
+    // 閉じ括弧も同じ <mrow> の末尾にある。両方まとめて止める。
+    const closer = new RegExp(`<mo([^>]*)>([${cls(FENCE_CLOSE)}])</mo>\\s*$`)
+    const tail = content.match(closer)
+    if (!tail) continue
+
+    edits.push({ at: m.index + '<mrow>'.length, length: tag.length, text: tag.replace('<mo', '<mo stretchy="false"') })
+    edits.push({
+      at: contentStart + (tail.index ?? 0),
+      length: tail[0].length,
+      text: tail[0].replace('<mo', '<mo stretchy="false"'),
+    })
+  }
+
+  let out = html
+  for (const edit of edits.sort((a, b) => b.at - a.at)) {
+    out = out.slice(0, edit.at) + edit.text + out.slice(edit.at + edit.length)
+  }
+
+  return out
+}

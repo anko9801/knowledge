@@ -60,12 +60,12 @@ const c = (
 
 export const concepts: readonly Concept[] = [
   // --- 土台。まだ記事が無い ---------------------------------------------
-  c('vector-space', 'ベクトル空間', '足せてスカラー倍できる集合。基底と次元', 'definition', 'math'),
+  c('vector-space', 'ベクトル空間', '足せてスカラー倍できる集合。基底と次元', 'definition', 'math', ['field']),
   c('linear-map', '線形写像', '和とスカラー倍を保つ写像', 'definition', 'math', ['vector-space']),
   c('quotient-space', '商空間', '部分空間で割る。同値類をベクトル空間にする', 'definition', 'math', ['vector-space']),
-  c('multivariable-calculus', '多変数の微積分', '偏微分、連鎖律、重積分', 'technique', 'math'),
+  c('multivariable-calculus', '多変数の微積分', '偏微分、連鎖律、重積分', 'technique', 'math', ['landau-notation']),
   c('topology-basics', '位相の基礎', '開集合、連続、コンパクト、連結', 'definition', 'math'),
-  c('homotopy', 'ホモトピー', '連続変形で移り合うこと。可縮性', 'definition', 'math', ['topology-basics']),
+  c('homotopy', 'ホモトピー', '連続変形で移り合うこと。可縮性', 'definition', 'math', ['topology-basics', 'connectedness']),
   c('group', '群', '結合的で単位元と逆元を持つ演算', 'definition', 'math'),
   c('symmetric-group', '対称群', '置換の群。符号', 'definition', 'math', ['group']),
   c('ode-existence', '常微分方程式の解の存在と一意性', '初期値を与えれば解が一意に決まる。証明は縮小写像', 'theorem', 'math', ['multivariable-calculus', 'banach-fixed-point']),
@@ -75,7 +75,7 @@ export const concepts: readonly Concept[] = [
   c('matrix-representation', '行列表示', '写像＋基底の記録。写像そのものではない', 'viewpoint', 'math', ['linear-map', 'basis-choice']),
   c('change-of-basis', '基底変換', '$A \\mapsto P^{-1}AP$', 'technique', 'math', ['matrix-representation']),
   c('invariants-of-a-map', '写像の不変量', '基底を替えても動かないもの。跡、行列式、固有値', 'viewpoint', 'math', ['change-of-basis']),
-  c('diagonalization', '対角化', '写像が最も簡単に見える基底を探す', 'technique', 'math', ['invariants-of-a-map']),
+  c('diagonalization', '対角化', '写像が最も簡単に見える基底を探す', 'technique', 'math', ['invariants-of-a-map', 'characteristic-polynomial']),
   c('jordan-form', 'Jordan 標準形', '対角化できないときの限界', 'theorem', 'math', ['diagonalization']),
   c('dual-space', '双対空間', 'ベクトルを食って数を返す写像の全体', 'definition', 'math', ['vector-space', 'linear-map']),
   c('dual-basis', '双対基底', '$e^i(e_j) = \\delta^i_j$', 'definition', 'math', ['dual-space', 'basis-choice']),
@@ -134,10 +134,10 @@ export const concepts: readonly Concept[] = [
   c('lie-derivative', 'Lie 微分', '流れに沿った変化。Cartan の公式', 'definition', 'math', ['interior-product', 'exterior-derivative', 'lie-bracket']),
   c('closed-vs-exact', '閉形式と完全形式', '完全なら閉。逆は領域の形に依る', 'definition', 'math', ['dd-zero']),
   c('form-basis', '形式の基底', '$dx^{i_1} \\wedge \\cdots$ が $\\Lambda^k$ を張る', 'theorem', 'math', ['k-form', 'binomial-dimension']),
-  c('manifold', '多様体', '地図の貼り合わせ。1 枚では足りない', 'definition', 'math', ['topology-basics', 'tangent-space', 'smoothness-class']),
+  c('manifold', '多様体', '地図の貼り合わせ。1 枚では足りない', 'definition', 'math', ['topology-basics', 'tangent-space', 'smoothness-class', 'separation-axioms', 'second-countable']),
   c('atlas', 'アトラス', 'チャートの族と、滑らかな遷移関数', 'definition', 'math', ['manifold']),
   c('orientability', '向き付け可能性', '体積形式が大域的に取れるか。メビウスの帯', 'definition', 'math', ['manifold', 'orientation']),
-  c('partition-of-unity', '1 の分割', '局所でできることを大域へ持ち上げる', 'technique', 'math', ['manifold', 'smoothness-class']),
+  c('partition-of-unity', '1 の分割', '局所でできることを大域へ持ち上げる', 'technique', 'math', ['manifold', 'bump-function']),
   c('integration-of-forms', '形式の積分', '$n$ 形式だけが積分できる。計量は要らない', 'definition', 'math', ['k-form', 'orientability', 'partition-of-unity', 'jacobian-from-wedge']),
   c('boundary', '境界と誘導される向き', '外向きを先頭に置く。$\\partial \\partial = \\emptyset$', 'definition', 'math', ['manifold', 'orientability']),
   c('stokes-theorem', '一般化された Stokes の定理', '$\\int_\\Omega d\\omega = \\int_{\\partial\\Omega} \\omega$', 'theorem', 'math', ['integration-of-forms', 'exterior-derivative', 'boundary']),
@@ -258,7 +258,7 @@ export const concepts: readonly Concept[] = [
   c('random-variable', '確率変数', '可測関数。値ではなく写像である', 'definition', 'math', ['probability-space']),
   c('expectation', '期待値', '確率測度による積分', 'definition', 'math', ['random-variable', 'lebesgue-integral']),
   c('independence-probabilistic', '独立性', '同時分布が積に分かれる', 'definition', 'math', ['random-variable']),
-  c('law-of-large-numbers', '大数の法則', '標本平均が期待値に収束する', 'theorem', 'math', ['expectation', 'independence-probabilistic', 'convergence-theorems']),
+  c('law-of-large-numbers', '大数の法則', '標本平均が期待値に収束する', 'theorem', 'math', ['expectation', 'independence-probabilistic', 'convergence-theorems', 'concentration-inequality']),
   c('characteristic-function', '特性関数', 'Fourier 変換。分布を一意に決める', 'definition', 'math', ['expectation']),
   c('central-limit-theorem', '中心極限定理', '和の分布が正規分布に近づく', 'theorem', 'math', ['characteristic-function', 'law-of-large-numbers']),
   c('conditional-expectation', '条件付き期待値', '部分 $\\sigma$ 加法族への射影', 'definition', 'math', ['expectation', 'sigma-algebra']),
@@ -329,6 +329,30 @@ export const concepts: readonly Concept[] = [
   c('implicit-function-theorem', '陰関数定理', '逆関数定理の言い換え。部分多様体を作る道具', 'theorem', 'math', ['inverse-function-theorem']),
   c('sard-theorem', 'Sard の定理', '臨界値は測度ゼロ。横断性の議論を支える', 'theorem', 'math', ['smoothness-class', 'measure']),
   c('distribution-theory', '超関数', '微分できない対象を、試験関数との組で扱う', 'definition', 'math', ['function-space', 'dual-space']),
+  c('landau-notation', 'Landau 記号', '$o$ と $O$。微分の定義に使っている', 'definition', 'math', ['metric-space']),
+  c('power-series', 'べき級数', '収束半径。項別微分してよい範囲', 'definition', 'math', ['uniform-convergence']),
+  c('analytic-function', '解析関数', '各点で Taylor 級数が収束して一致する。$C^\\omega$', 'definition', 'math', ['power-series', 'smoothness-class']),
+  c('identity-theorem', '一致の定理', '解析関数は一点の近傍で決まれば全体が決まる', 'theorem', 'math', ['analytic-function']),
+  c('bump-function', '山形関数', '$C^\\infty$ でだけ作れる。1 の分割の材料', 'technique', 'math', ['smoothness-class', 'identity-theorem']),
+
+  // --- 位相の続き（mathlib の Topology.Separation / Order / Connected） --
+  c('separation-axioms', '分離公理', 'Hausdorff、正則、正規。点をどこまで区別できるか', 'definition', 'math', ['topology-basics']),
+  c('second-countable', '第二可算', '可算な基底を持つ。多様体の定義に入る', 'definition', 'math', ['topology-basics']),
+  c('connectedness', '連結性', '二つの開集合に分けられない。弧状連結との差', 'definition', 'math', ['topology-basics']),
+  c('order-topology', '順序位相', '順序から位相を入れる。実数の位相の出どころ', 'definition', 'math', ['topology-basics', 'relation-order']),
+  c('lattice', '束', '任意の二元に上限と下限がある順序集合', 'definition', 'math', ['relation-order']),
+
+  // --- 代数の土台（mathlib の Algebra.Field / Polynomial、RingTheory） --
+  c('ring', '環', '足し算と掛け算。掛け算に逆元を要求しない', 'definition', 'math', ['group']),
+  c('ideal', 'イデアル', '環の中で割り算をするための部分集合', 'definition', 'math', ['ring']),
+  c('field', '体', '零でない元がすべて可逆な環。スカラーの住む場所', 'definition', 'math', ['ring']),
+  c('polynomial-ring', '多項式環', '不定元を一つ足した環', 'definition', 'math', ['ring']),
+  c('characteristic-polynomial', '固有多項式', '$\\det(A - \\lambda I)$。固有値の定義に使う', 'definition', 'math', ['polynomial-ring', 'determinant']),
+
+  // --- 確率の続き（mathlib の Probability.Distributions / Moments） ------
+  c('distribution', '分布', '確率変数が誘導する測度。正規、Poisson、指数', 'definition', 'math', ['random-variable']),
+  c('moments', 'モーメント', '平均、分散、高次の積率。分布を特徴づける', 'definition', 'math', ['expectation', 'distribution']),
+  c('concentration-inequality', '集中不等式', 'Markov、Chebyshev、Hoeffding。ずれの確率を抑える', 'theorem', 'math', ['moments']),
 
   // --- 群の表現論 -------------------------------------------------------
   c('group-action', '群作用', '群が集合に作用する。軌道と固定部分群', 'definition', 'math', ['group']),

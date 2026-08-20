@@ -1,0 +1,91 @@
+import { ok, strictEqual } from 'node:assert/strict'
+import { test } from 'node:test'
+
+import { attachPeeks } from './peek.ts'
+
+const statement = (id: string, body: string) =>
+  `<div id="${id}" class="statement statement-definition">` +
+  `<p class="statement-head">定義 2</p><p>${body}</p></div>`
+
+test('参照に、指す先の中身が添う', () => {
+  const html = `${statement('loc-1', '可算合併で閉じる族')}<p><a href="#loc-1">定義 2</a>より</p>`
+  const out = attachPeeks(html)
+
+  ok(out.includes('<span class="peek">'))
+  ok(out.includes('<a href="#loc-1" class="peek-link">定義 2</a>'))
+  // 中身は参照点にも複製される（本体と合わせて 2 回）。
+  strictEqual(out.split('可算合併で閉じる族').length - 1, 2)
+})
+
+test('添えた中身にブロック要素は残らない', () => {
+  const html =
+    '<div id="loc-1" class="statement statement-definition"><p>族が</p>' +
+    '<ol><li>補集合</li><li>可算合併</li></ol></div><p><a href="#loc-1">定義 2</a>より</p>'
+  const peek = attachPeeks(html).split('<span class="peek-body" aria-hidden="true">')[1] as string
+  const body = peek.slice(0, peek.indexOf('</span></span>'))
+
+  // <p> の中に <p> や <ol> を差し込むと、パーサが外側の <p> をそこで閉じる。
+  strictEqual(/<(p|div|ol|ul|li)\b/.test(body), false)
+  ok(body.includes('<span class="peek-ol">'))
+  ok(body.includes('<span class="peek-li">補集合</span>'))
+})
+
+test('複製した数式は式番号の counter を持たない', () => {
+  const html =
+    '<div id="loc-1" class="statement statement-theorem"><p>主張</p>' +
+    '<div class="equation"><math display="block"></math></div></div><a href="#loc-1">定理 1</a>'
+  const out = attachPeeks(html)
+
+  // .equation は counter-increment を持つ。複製すると本文の式番号がずれる。
+  strictEqual(out.split('class="equation"').length - 1, 1)
+  ok(out.includes('<span class="peek-div">'))
+})
+
+test('添えた中身から id が落ちる', () => {
+  const html = `${statement('loc-1', 'x')}<a href="#loc-1">定義 2</a>`
+  const out = attachPeeks(html)
+
+  // 文書に残る id は本体の 1 つだけ。複製が同じ id を名乗るとリンク先が定まらない。
+  strictEqual(out.split('id="loc-1"').length - 1, 1)
+})
+
+test('答えは添えない（想起の問いを参照したとき）', () => {
+  const html =
+    '<div id="loc-9" class="statement statement-check"><p class="statement-head">問 4</p>' +
+    '<p>なぜ可算か</p><details class="check-answer"><summary>答え</summary>' +
+    '<p>一点集合から作れてしまう</p></details></div><a href="#loc-9">問 4</a>'
+  const out = attachPeeks(html)
+
+  ok(out.includes('<span class="peek">'))
+  // 本体のほうには残っている。添えたほうには出ない。
+  strictEqual(out.split('一点集合から作れてしまう').length - 1, 1)
+})
+
+test('主張を指していない参照はそのまま通る', () => {
+  const html = '<span id="loc-3" class="equation">式</span><a href="#loc-3">式 1</a>'
+  strictEqual(attachPeeks(html), html)
+})
+
+test('入れ子の div があっても千切れない', () => {
+  const html =
+    '<div id="loc-1" class="statement statement-theorem"><p>主張</p>' +
+    '<div class="proof">証明</div></div><a href="#loc-1">定理 1</a>'
+  const out = attachPeeks(html)
+
+  ok(
+    out.includes(
+      '<span class="peek-body" aria-hidden="true">' +
+        '<span class="peek-p">主張</span><span class="peek-div proof">証明</span></span>',
+    ),
+  )
+})
+
+test('参照が無ければ何も変わらない', () => {
+  const html = statement('loc-1', 'x')
+  strictEqual(attachPeeks(html), html)
+})
+
+test('主張が無ければ何も変わらない', () => {
+  const html = '<p><a href="#loc-1">定義 2</a></p>'
+  strictEqual(attachPeeks(html), html)
+})

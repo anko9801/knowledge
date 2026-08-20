@@ -217,6 +217,8 @@ math[display='block'] {
  * 本文側に無い。loader が数式を .equation で包むので、そこに CSS カウンタで振る。
  * <math> 自身には疑似要素が効かない。 */
 article {
+  /* 参照に添える中身（.peek-body）の包含ブロック。段の左端に揃えるため。 */
+  position: relative;
   counter-reset: equation;
 }
 
@@ -353,6 +355,130 @@ blockquote {
 .statement-example .statement-head,
 .statement-remark .statement-head {
   color: var(--muted);
+}
+
+/* 参照の先を、その場に出す。
+ *
+ * 「@def:measure より」を押すと定義まで飛ぶが、読者は読んでいた場所を失い、
+ * スクロールで戻ることになる。定義を思い出すたびに往復が入り、作業記憶が
+ * そこに食われる。だから参照点に中身を添えて、飛ばずに済むようにする。
+ *
+ * 中身を添えるのは `src/lib/peek.ts`（ビルド時）。ここは出し入れだけで、
+ * JS は使わない。
+ *
+ * ホバーできる端末に限る。触るだけの端末では、押す = リンクをたどるなので、
+ * 開いた瞬間に画面が変わって読めない。そこは従来どおり飛ばせばよい。 */
+/* 添えてあることを示す。実線の下線（普通のリンク）とは別の合図にする。 */
+.peek-link {
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+}
+
+.peek-body {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* 参照そのものではなく、本文の段に合わせる。
+   *
+   * 参照点に合わせると、行末近くの参照で右へはみ出す（実測で最大 324px、
+   * 横スクロールが出る）。段の左端に揃えれば、幅を段に収めるだけで済む。
+   *
+   * `left` だけ指定して `top` は auto のままにすると、横は段の左端、縦は
+   * 本来置かれるはずだった位置（＝その行）になる。包含ブロックは
+   * `article { position: relative }`。 */
+  .peek-body {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    display: block;
+    visibility: hidden;
+    width: max-content;
+    max-width: 100%;
+    margin-top: 1.5em;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    border-radius: 2px;
+    background: var(--paper);
+    box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    text-indent: 0;
+    opacity: 0;
+    transition:
+      opacity 90ms ease-out,
+      visibility 0s linear 90ms;
+  }
+
+  /* focus-within で、キーボードでたどっている人にも開く。 */
+  .peek:hover > .peek-body,
+  .peek:focus-within > .peek-body {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  /* 中身は span に均してある（peek.ts）。段組みはここで戻す。
+   * <p> の中に <p> を差し込むとパーサが外側を閉じてしまうので、あちらでは
+   * ブロック要素を出せない。 */
+  .peek-p,
+  .peek-div,
+  .peek-ol,
+  .peek-ul {
+    display: block;
+    margin: 0.6rem 0;
+  }
+
+  .peek-body > :first-child {
+    margin-top: 0;
+  }
+
+  .peek-body > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* 主張の見出しは本文と同じ行に流し込む。本体（.statement-head）と同じ組み。 */
+  .peek-body .statement-head,
+  .peek-body .statement-head + .peek-p {
+    display: inline;
+    margin: 0;
+  }
+
+  .peek-ol,
+  .peek-ul {
+    padding-left: 1.5em;
+    counter-reset: peek-item;
+  }
+
+  .peek-li {
+    display: list-item;
+    counter-increment: peek-item;
+  }
+
+  .peek-ol > .peek-li {
+    list-style: none;
+  }
+
+  .peek-ol > .peek-li::before {
+    content: counter(peek-item) '.';
+    margin-left: -1.5em;
+    display: inline-block;
+    width: 1.5em;
+  }
+
+  /* 別行立て数式。番号は本体だけが持つ（複製で counter がずれるため、
+   * peek.ts が equation クラスを外している）。 */
+  .peek-div > math[display='block'] {
+    margin: 0.6rem 0;
+  }
+}
+
+/* 紙には添えない。参照は番号で引ける。 */
+@media print {
+  .peek-body {
+    display: none;
+  }
 }
 
 /* 想起の問い。

@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto'
 import { compileHtml, evalMetadata, typstVersion } from './typst-cli.ts'
 import { mapWithLimit } from './pool.ts'
 import { collectHeadings } from './headings.ts'
+import { attachPeeks } from './peek.ts'
 import {
   extractStyles,
   freezeShortFences,
@@ -177,8 +178,12 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     // base はビルド設定なので本文には焼き込まず、ここで補う。
     const linked = rewriteInternalLinks(numbered, base)
 
+    // 参照の先を参照点に添える。飛ばずに読めるようにする（JS は使わない）。
+    // 見出しに id を振る前でよい。添えるのは主張だけで、見出しは対象外。
+    const peeked = attachPeeks(linked)
+
     // 見出しの id はここで振る。Typst は出さないので、目次のリンク先が無い。
-    const { html: rendered, headings } = collectHeadings(linked)
+    const { html: rendered, headings } = collectHeadings(peeked)
 
     store.set({
       id,

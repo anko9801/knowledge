@@ -10,7 +10,12 @@ import { typstLoader } from './lib/typst-loader.ts'
  * .typ とテンプレートだけを見ていると、後処理（見出しの id 付けなど）を
  * 直しても古い HTML が残る。目次が空のページが残る、という形で現れる。
  */
-const DEPENDS_ON = ['src/typst', 'src/lib/typst-html.ts', 'src/lib/headings.ts'] as const
+const DEPENDS_ON = [
+  'src/typst',
+  'src/lib/typst-html.ts',
+  'src/lib/headings.ts',
+  'src/lib/peek.ts',
+] as const
 
 /**
  * .typ 側の #metadata((...))<fm> をここで検証する。

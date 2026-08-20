@@ -68,7 +68,7 @@ export const concepts: readonly Concept[] = [
   c('homotopy', 'ホモトピー', '連続変形で移り合うこと。可縮性', 'definition', 'math', ['topology-basics']),
   c('group', '群', '結合的で単位元と逆元を持つ演算', 'definition', 'math'),
   c('symmetric-group', '対称群', '置換の群。符号', 'definition', 'math', ['group']),
-  c('ode-existence', '常微分方程式の解の存在と一意性', '初期値を与えれば解が一意に決まる', 'theorem', 'math', ['multivariable-calculus']),
+  c('ode-existence', '常微分方程式の解の存在と一意性', '初期値を与えれば解が一意に決まる。証明は縮小写像', 'theorem', 'math', ['multivariable-calculus', 'banach-fixed-point']),
 
   // --- 線形代数 ---------------------------------------------------------
   c('basis-choice', '基底の選択', '基底は無数にあり、どれも同じ資格を持つ', 'viewpoint', 'math', ['vector-space']),
@@ -118,7 +118,7 @@ export const concepts: readonly Concept[] = [
   c('laplacian', 'Laplacian', '$\\star d \\star d$。計量が要る', 'definition', 'math', ['hodge-star', 'exterior-derivative']),
 
   // --- 微分形式 ---------------------------------------------------------
-  c('tangent-space', '接空間', '曲線の速度、あるいは微分作用素。外の空間が要らない', 'definition', 'math', ['multivariable-calculus', 'vector-space']),
+  c('tangent-space', '接空間', '曲線の速度、あるいは微分作用素。外の空間が要らない', 'definition', 'math', ['multivariable-calculus', 'vector-space', 'smoothness-class']),
   c('vector-field', 'ベクトル場', '各点に接ベクトルを滑らかに置く', 'definition', 'math', ['tangent-space']),
   c('lie-bracket', 'Lie 括弧', '$[X,Y] = XY - YX$。流れが可換か', 'definition', 'math', ['vector-field']),
   c('cotangent-space', '余接空間', '接空間の双対。1 形式が住む', 'definition', 'math', ['tangent-space', 'dual-space']),
@@ -134,10 +134,10 @@ export const concepts: readonly Concept[] = [
   c('lie-derivative', 'Lie 微分', '流れに沿った変化。Cartan の公式', 'definition', 'math', ['interior-product', 'exterior-derivative', 'lie-bracket']),
   c('closed-vs-exact', '閉形式と完全形式', '完全なら閉。逆は領域の形に依る', 'definition', 'math', ['dd-zero']),
   c('form-basis', '形式の基底', '$dx^{i_1} \\wedge \\cdots$ が $\\Lambda^k$ を張る', 'theorem', 'math', ['k-form', 'binomial-dimension']),
-  c('manifold', '多様体', '地図の貼り合わせ。1 枚では足りない', 'definition', 'math', ['topology-basics', 'tangent-space']),
+  c('manifold', '多様体', '地図の貼り合わせ。1 枚では足りない', 'definition', 'math', ['topology-basics', 'tangent-space', 'smoothness-class']),
   c('atlas', 'アトラス', 'チャートの族と、滑らかな遷移関数', 'definition', 'math', ['manifold']),
   c('orientability', '向き付け可能性', '体積形式が大域的に取れるか。メビウスの帯', 'definition', 'math', ['manifold', 'orientation']),
-  c('partition-of-unity', '1 の分割', '局所でできることを大域へ持ち上げる', 'technique', 'math', ['manifold']),
+  c('partition-of-unity', '1 の分割', '局所でできることを大域へ持ち上げる', 'technique', 'math', ['manifold', 'smoothness-class']),
   c('integration-of-forms', '形式の積分', '$n$ 形式だけが積分できる。計量は要らない', 'definition', 'math', ['k-form', 'orientability', 'partition-of-unity', 'jacobian-from-wedge']),
   c('boundary', '境界と誘導される向き', '外向きを先頭に置く。$\\partial \\partial = \\emptyset$', 'definition', 'math', ['manifold', 'orientability']),
   c('stokes-theorem', '一般化された Stokes の定理', '$\\int_\\Omega d\\omega = \\int_{\\partial\\Omega} \\omega$', 'theorem', 'math', ['integration-of-forms', 'exterior-derivative', 'boundary']),
@@ -162,7 +162,7 @@ export const concepts: readonly Concept[] = [
   c('christoffel-symbol', 'Christoffel 記号', '接続の成分。テンソルではないので座標で消せる', 'definition', 'math', ['covariant-derivative']),
   c('levi-civita-connection', 'Levi-Civita 接続', '計量的かつ捩れなし。これで一意に決まる', 'theorem', 'math', ['connection', 'riemannian-metric']),
   c('normal-coordinates', '正規座標', '一点で $\\Gamma = 0$ にできる', 'theorem', 'math', ['levi-civita-connection']),
-  c('geodesic', '測地線', 'まっすぐと最短が一致する', 'definition', 'math', ['levi-civita-connection', 'arc-length']),
+  c('geodesic', '測地線', 'まっすぐと最短が一致する', 'definition', 'math', ['levi-civita-connection', 'arc-length', 'ode-existence']),
   c('exponential-map', '指数写像', '測地線で座標を張る', 'definition', 'math', ['geodesic', 'normal-coordinates']),
   c('geodesic-deviation', '測地線偏差', '近い測地線が離れる率。座標では消せない', 'theorem', 'math', ['geodesic', 'parallel-transport']),
   c('riemann-curvature', 'Riemann 曲率', '平行移動の経路依存性。テンソルになる', 'definition', 'math', ['parallel-transport', 'geodesic-deviation']),
@@ -302,7 +302,7 @@ export const concepts: readonly Concept[] = [
   //
   // 「観測量はエルミート作用素」という要請は、測定値が実数で確率が 1 に
   // 足りてほしいという要求をスペクトル定理に翻訳したもの。導出的な依存である。
-  c('hilbert-space', 'Hilbert 空間', '完備な内積空間。無限次元を扱う', 'definition', 'math', ['inner-product', 'topology-basics']),
+  c('hilbert-space', 'Hilbert 空間', '完備な内積空間。無限次元を扱う', 'definition', 'math', ['inner-product', 'completeness']),
   c('quantum-state', '量子状態', 'Hilbert 空間の単位ベクトル', 'definition', 'physics', ['hilbert-space']),
   c('observable', '観測量', '自己随伴作用素。実固有値と正規直交固有基底が要る', 'definition', 'physics', ['quantum-state', 'spectral-theorem']),
   c('born-rule', 'Born 則', '固有状態への射影の 2 乗が確率', 'definition', 'physics', ['observable', 'probability-space']),
@@ -310,6 +310,25 @@ export const concepts: readonly Concept[] = [
   c('composite-system', '合成系', '状態空間はテンソル積。分解できない状態が残る', 'definition', 'physics', ['quantum-state', 'tensor-product']),
   c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
   c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
+
+  // --- 解析 -------------------------------------------------------------
+  //
+  // mathlib の Mathlib.Geometry は外部依存の 76 本が Analysis に向いていた
+  // （Topology 39、LinearAlgebra 11）。手で書いたグラフが解析を軽く見ていた
+  // ので、ここを足す。滑らかさと収束の階層が、幾何のほぼ全体を支えている。
+  c('metric-space', '距離空間', '距離から位相を入れる。近さを数で測る', 'definition', 'math', ['topology-basics']),
+  c('completeness', '完備性', 'Cauchy 列が収束する。位相の性質ではない', 'definition', 'math', ['metric-space']),
+  c('uniform-convergence', '一様収束', '各点収束より強い。極限が連続性を保つ', 'definition', 'math', ['metric-space']),
+  c('banach-space', 'Banach 空間', '完備なノルム空間', 'definition', 'math', ['completeness', 'vector-space']),
+  c('banach-fixed-point', '縮小写像の原理', '完備なら不動点が一意に存在する', 'theorem', 'math', ['banach-space']),
+  c('function-space', '関数空間', '関数の集合をベクトル空間として扱う', 'definition', 'math', ['banach-space', 'uniform-convergence']),
+  c('lp-space', '$L^p$ 空間', '可測関数の空間。完備になる（Riesz--Fischer）', 'definition', 'math', ['function-space', 'lebesgue-integral']),
+  c('frechet-derivative', 'Fréchet 微分', '無限次元での最良の線形近似', 'definition', 'math', ['banach-space', 'multivariable-calculus']),
+  c('smoothness-class', '滑らかさの階層', '$C^0$、$C^k$、$C^\\infty$、解析的。どこまで微分できるか', 'definition', 'math', ['multivariable-calculus']),
+  c('inverse-function-theorem', '逆関数定理', '微分が可逆なら局所的に可逆。証明は縮小写像', 'theorem', 'math', ['banach-fixed-point', 'frechet-derivative']),
+  c('implicit-function-theorem', '陰関数定理', '逆関数定理の言い換え。部分多様体を作る道具', 'theorem', 'math', ['inverse-function-theorem']),
+  c('sard-theorem', 'Sard の定理', '臨界値は測度ゼロ。横断性の議論を支える', 'theorem', 'math', ['smoothness-class', 'measure']),
+  c('distribution-theory', '超関数', '微分できない対象を、試験関数との組で扱う', 'definition', 'math', ['function-space', 'dual-space']),
 
   // --- 群の表現論 -------------------------------------------------------
   c('group-action', '群作用', '群が集合に作用する。軌道と固定部分群', 'definition', 'math', ['group']),
@@ -356,7 +375,7 @@ export const concepts: readonly Concept[] = [
 
   // --- 制御理論（工学のうち論理で決まる部分） ----------------------------
   c('state-space-model', '状態空間表現', '$\\dot{x} = A x + B u$。線形写像で系を書く', 'definition', 'engineering', ['linear-map', 'ode-existence']),
-  c('matrix-exponential', '行列指数関数', '線形系の解。固有値が振る舞いを決める', 'technique', 'engineering', ['state-space-model', 'diagonalization']),
+  c('matrix-exponential', '行列指数関数', '線形系の解。固有値が振る舞いを決める', 'technique', 'engineering', ['state-space-model', 'diagonalization', 'banach-space']),
   c('controllability', '可制御性', '任意の状態へ有限時間で移せるか。階数条件', 'theorem', 'engineering', ['state-space-model']),
   c('observability', '可観測性', '出力から状態を復元できるか。可制御性の双対', 'theorem', 'engineering', ['controllability', 'dual-map']),
   c('lyapunov-stability', 'Lyapunov 安定性', '減っていく関数を一つ見つければ安定', 'theorem', 'engineering', ['matrix-exponential', 'quadratic-form']),

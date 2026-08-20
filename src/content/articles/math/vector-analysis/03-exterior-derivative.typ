@@ -10,6 +10,16 @@
   order: 3,
   tags: ("ベクトル解析",),
   summary: "外微分を一つ定義すると grad・div・rot がまとめて出る。二度当てると 0 になり、それが二つの恒等式の正体である。そして四つの積分定理は一本になる。仕上げに Maxwell 方程式が 4 本から 2 本になる。",
+  provides: (
+    "exterior-derivative",
+    "dd-zero",
+    "stokes-theorem",
+    "induced-orientation",
+  ),
+  requires: (
+    "one-form",
+    "wedge-product",
+  ),
 )
 
 #layer("L1 ＋ 一部 L2", metric: true)[$dif$ と Stokes に計量は要らない。三つの古典的定理として読む辞書と $star$ には要る]

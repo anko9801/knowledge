@@ -15,6 +15,7 @@
     "fonts": "sh scripts/subset-math-font.sh && sh scripts/subset-text-font.sh",
     "test": "node --test scripts/latex/*.test.mjs src/lib/*.test.ts",
     "notes": "node scripts/latex/to-typst.mjs",
+    "curriculum": "node scripts/curriculum.mjs",
     "postbuild": "pagefind --site dist"
   },
   "dependencies": {

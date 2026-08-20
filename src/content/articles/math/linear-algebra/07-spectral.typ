@@ -10,6 +10,17 @@
   order: 7,
   tags: ("線形代数",),
   summary: "一般の線形写像は対角化できない。ところが自己随伴なら必ずできる。効いているのは内積で、直交補空間が取れることが証明の全部である。慣性主軸も主応力も基準振動も量子力学の観測量も、この一つの定理から出る。",
+  provides: (
+    "self-adjoint",
+    "spectral-theorem",
+    "quadratic-form",
+    "sylvester-law",
+  ),
+  requires: (
+    "inner-product",
+    "adjoint",
+    "diagonalization",
+  ),
 )
 
 #layer("L0 ＋ 計量", metric: true)[自己随伴性は計量を使って定義される。この回は計量なしには成り立たない]

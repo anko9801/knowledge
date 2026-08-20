@@ -10,6 +10,13 @@
   order: 2,
   tags: ("ベクトル解析",),
   summary: "dx は無限に小さい数ではなく、ベクトルを入れると数を返す機械である。そう決めた瞬間に、線積分がパラメータに依らない理由も、重積分のヤコビアンも、勾配がベクトルでない理由も、まとめて出てくる。",
+  provides: (
+    "one-form",
+    "line-integral",
+    "wedge-product",
+    "jacobian-from-wedge",
+  ),
+  requires: ("grad-div-curl",),
 )
 
 #layer("L1 微分構造")[$dif x$ も線積分も楔積も、計量なしで作れる。要る場所（弧長、$nabla f$）では明示する]

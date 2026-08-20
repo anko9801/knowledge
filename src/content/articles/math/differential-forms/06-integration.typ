@@ -10,6 +10,19 @@
   order: 6,
   tags: ("微分形式",),
   summary: "n 形式の変換則は、ちょうど重積分のヤコビアンと同じ形をしている。だから n 形式は多様体の上で座標に依らず積分できる。関数は積分できない。この一点が、微分形式という道具の存在理由である。",
+  provides: (
+    "integration-of-forms",
+    "partition-of-unity",
+    "boundary",
+    "stokes-theorem",
+  ),
+  requires: (
+    "manifold",
+    "orientability",
+    "k-form",
+    "exterior-derivative",
+    "jacobian-from-wedge",
+  ),
 )
 
 #layer("L1 微分構造")[向き付けだけを使う。計量は最後まで出てこない]

@@ -10,6 +10,19 @@
   order: 3,
   tags: ("Riemann 幾何",),
   summary: "離れた点の接ベクトルを比べる方法は、多様体にも計量にも入っていない。外から決めるしかない。それが接続である。計量的で捩れがない、という二条件を課すと接続は一つに定まり、その成分が Christoffel 記号になる。",
+  provides: (
+    "connection",
+    "parallel-transport",
+    "covariant-derivative",
+    "christoffel-symbol",
+    "levi-civita-connection",
+    "normal-coordinates",
+  ),
+  requires: (
+    "tensor-field",
+    "partial-is-not-a-tensor",
+    "riemannian-metric",
+  ),
 )
 
 #layer("L2 ＋ 接続", metric: true)[計量に加えて「平行」を決める。ここが Riemann 幾何の中心]

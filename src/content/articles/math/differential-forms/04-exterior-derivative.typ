@@ -10,6 +10,19 @@
   order: 4,
   tags: ("微分形式",),
   summary: "四つの条件を課すと、次数を上げる微分は一つに決まる。天下りに見えた d の定義は、選択の余地が無かったということである。そして d は引き戻しと交換する。これが「座標に依らない」ことの正体になる。",
+  provides: (
+    "exterior-derivative",
+    "dd-zero",
+    "naturality-of-d",
+    "interior-product",
+    "lie-derivative",
+    "closed-vs-exact",
+  ),
+  requires: (
+    "k-form",
+    "wedge-product",
+    "pullback",
+  ),
 )
 
 #layer("L1 微分構造")[$dif$ に計量は要らない。この回で一度も $g$ を書かない]

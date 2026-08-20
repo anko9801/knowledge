@@ -10,6 +10,16 @@
   order: 4,
   tags: ("線形代数",),
   summary: "引数を入れ替える操作は対合なので、2 階のテンソルは対称と反対称に必ず分かれる。3 階以上では分かれきらない。そして反対称側の次元が二項係数になる。",
+  provides: (
+    "symmetric-antisymmetric-decomposition",
+    "alternating-form",
+    "wedge-product",
+    "binomial-dimension",
+  ),
+  requires: (
+    "multilinear-map",
+    "tensor-product",
+  ),
 )
 
 #layer("L0 ベクトル空間")[引数を入れ替えたときの振る舞いだけを見る。計量は不要]

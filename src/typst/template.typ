@@ -8,6 +8,11 @@
 ///
 /// field / series / order は解説記事だけが使う。ここが URL を決めるので、
 /// ファイルを別ディレクトリに移してもリンクは切れない。
+///
+/// provides / requires / uses は依存グラフの辺になる（src/lib/curriculum.ts）。
+/// requires は論理的な依存——それが無いと定義も証明も書けないもの。
+/// uses は記法として借りているだけで、別の書き方をすれば要らないもの。
+/// 「この順で教わるのが普通だから」という慣習は、辺として書かない。
 #let frontmatter(
   title: "",
   date: "",
@@ -17,6 +22,9 @@
   field: none,
   series: none,
   order: none,
+  provides: (),
+  requires: (),
+  uses: (),
 ) = [
   #metadata((
     title: title,
@@ -27,6 +35,9 @@
     field: field,
     series: series,
     order: order,
+    provides: provides,
+    requires: requires,
+    uses: uses,
   ))<fm>
 ]
 
@@ -44,6 +55,9 @@
   field: none,
   series: none,
   order: none,
+  provides: (),
+  requires: (),
+  uses: (),
   body,
 ) = {
   set text(lang: "ja")
@@ -58,6 +72,9 @@
     field: field,
     series: series,
     order: order,
+    provides: provides,
+    requires: requires,
+    uses: uses,
   )
 
   show: content => context {

@@ -10,6 +10,17 @@
   order: 3,
   tags: ("微分形式",),
   summary: "各点の交代形式を滑らかに並べたものが k 形式である。楔積も引き戻しも点ごとの線形代数でしかない。そして引き戻しは楔積と交換するので、k 形式の世界は写像に対してまるごと閉じている。",
+  provides: (
+    "k-form",
+    "wedge-product",
+    "form-basis",
+    "jacobian-from-wedge",
+  ),
+  requires: (
+    "one-form",
+    "alternating-form",
+    "pullback",
+  ),
 )
 
 #layer("L1 微分構造")[各点の線形代数を場に延ばすだけ。計量は要らない]

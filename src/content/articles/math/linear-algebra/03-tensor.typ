@@ -10,6 +10,17 @@
   order: 3,
   tags: ("線形代数",),
   summary: "「テンソルとは、こう変換するものである」という定義を見かける。定義に座標表示の振る舞いを使うのは順序が逆で、実際それは定義ではなく定理である。テンソルは多重線形写像であり、変換則はそれを基底で書いた結果にすぎない。",
+  provides: (
+    "multilinear-map",
+    "tensor-type",
+    "tensor-product",
+    "contraction",
+    "tensor-transformation-law",
+  ),
+  requires: (
+    "dual-space",
+    "dual-basis",
+  ),
 )
 
 #layer("L0 ベクトル空間")[$V$ と $V^*$ だけを材料にする。計量はまだ無い]

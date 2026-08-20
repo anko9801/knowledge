@@ -10,6 +10,22 @@
   order: 6,
   tags: ("線形代数",),
   summary: "内積を一つ選ぶと、V と V* が自然に同一視でき、長さと角度と体積が決まり、転置が意味を持つ。買えるものは多い。代わりに、選んだことを忘れるという代償を払う。",
+  provides: (
+    "inner-product",
+    "signature",
+    "musical-isomorphism",
+    "adjoint",
+    "orthogonal-group",
+    "volume-form",
+    "hodge-star",
+  ),
+  requires: (
+    "dual-space",
+    "natural-isomorphism",
+    "alternating-form",
+    "determinant",
+    "orientation",
+  ),
 )
 
 #layer("L0 ＋ 計量", metric: true)[ここで初めて計量を入れる。以降の話はすべてこの選択に依る]

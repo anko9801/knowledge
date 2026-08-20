@@ -10,6 +10,16 @@
   order: 2,
   tags: ("微分形式",),
   summary: "1 形式は写像でいつでも引き戻せるが、ベクトル場は一般に押し出せない。この非対称が、座標変換が破綻しない理由であり、部分多様体への制限が計量抜きでできる理由でもある。",
+  provides: (
+    "cotangent-space",
+    "one-form",
+    "pullback",
+    "pushforward",
+  ),
+  requires: (
+    "tangent-space",
+    "dual-space",
+  ),
 )
 
 #layer("L1 微分構造")[写像と微分だけ。計量は出てこない]

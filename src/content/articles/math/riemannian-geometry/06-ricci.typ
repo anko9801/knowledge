@@ -10,6 +10,19 @@
   order: 6,
   tags: ("Riemann 幾何",),
   summary: "曲率を縮約すると Ricci テンソルが出る。その意味は測地球の体積の変化率である。そして Bianchi 恒等式から、発散が恒等的にゼロになる組み合わせがただ一つ決まる。",
+  provides: (
+    "ricci-tensor",
+    "scalar-curvature",
+    "weyl-tensor",
+    "bianchi-identity",
+    "einstein-tensor",
+    "bonnet-myers",
+  ),
+  requires: (
+    "riemann-curvature",
+    "contraction",
+    "covariant-derivative",
+  ),
 )
 
 #layer("L2 ＋ 接続", metric: true)[前回の曲率を縮約し、微分の恒等式を一つ導く]

@@ -10,6 +10,16 @@
   order: 5,
   tags: ("微分形式",),
   summary: "球面には大域的な座標が張れない。だから座標を複数用意して貼り合わせる必要が出る。多様体の定義は、その貼り合わせ方の規約でしかない。そして貼り合わせ方によっては、向きが決まらないことがある。",
+  provides: (
+    "manifold",
+    "atlas",
+    "orientability",
+    "volume-form-existence",
+  ),
+  requires: (
+    "tangent-space",
+    "determinant",
+  ),
 )
 
 #layer("L1 微分構造")[座標の貼り合わせ方だけを決める。距離は入れない]

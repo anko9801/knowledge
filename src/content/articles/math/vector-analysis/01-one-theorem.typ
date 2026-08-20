@@ -10,6 +10,14 @@
   order: 1,
   tags: ("ベクトル解析",),
   summary: "grad・div・rot は三つの演算子ではなく、一つの微分の三つの顔である。三つの積分定理も一つ。三つに分裂して見えるのは、我々が 3 次元にいるからにすぎない。",
+  provides: (
+    "grad-div-curl",
+    "integral-theorems-r3",
+    "pseudovector",
+    "cross-product",
+    "form-degree-intuition",
+  ),
+  requires: ("multivariable-calculus",),
 )
 
 #layer("L1 ＋ L2 混在", metric: true)[舞台は $RR^3$。$times$ も擬ベクトルも計量と向きを暗黙に使っている]

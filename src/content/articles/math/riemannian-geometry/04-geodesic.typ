@@ -10,6 +10,16 @@
   order: 4,
   tags: ("Riemann 幾何",),
   summary: "測地線には二つの定義がある。自分自身に平行な曲線（まっすぐ）と、長さが停留する曲線（最短）。前者は接続、後者は計量だけを使う。Levi-Civita 接続のもとで、この二つが一致する。",
+  provides: (
+    "geodesic",
+    "exponential-map",
+    "geodesic-deviation",
+  ),
+  requires: (
+    "connection",
+    "covariant-derivative",
+    "arc-length",
+  ),
 )
 
 #layer("L2 ＋ 接続", metric: true)[前回の Levi-Civita 接続を使う]

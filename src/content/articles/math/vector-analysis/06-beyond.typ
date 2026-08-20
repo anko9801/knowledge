@@ -10,6 +10,15 @@
   order: 6,
   tags: ("ベクトル解析",),
   summary: "熱力学の状態空間には距離が無い。それでも δQ は 1 形式で、第二法則は「その 1 形式が積分因子を持つ」という主張である。計量を持たない場所こそ、d の独壇場になる。",
+  provides: (
+    "closed-vs-exact",
+    "frobenius-integrability",
+    "symplectic-form",
+  ),
+  requires: (
+    "exterior-derivative",
+    "wedge-product",
+  ),
 )
 
 #layer("L1 微分構造")[この回の主役は計量を持たない空間。$star$ は使えないが $dif$ は使える]

@@ -10,6 +10,15 @@
   order: 1,
   tags: ("線形代数",),
   summary: "同じ写像が、基底を替えるだけで違う行列になる。だから行列の性質のうち写像の性質なのは、基底を替えても動かないものだけである。この連載は、その「動かないもの」だけで線形代数を組み直す。",
+  provides: (
+    "linear-map",
+    "basis-choice",
+    "matrix-representation",
+    "change-of-basis",
+    "diagonalization",
+    "invariants-of-a-map",
+  ),
+  requires: ("vector-space",),
 )
 
 #layer("L0 ベクトル空間")[仮定するのはベクトル空間の構造だけ。長さも角度もまだ無い]

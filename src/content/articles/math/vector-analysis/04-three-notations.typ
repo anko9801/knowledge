@@ -10,6 +10,19 @@
   order: 4,
   tags: ("ベクトル解析",),
   summary: "∇ 記法、添字と ε_ijk、微分形式。三つは別の学問ではなく、同じ対象の三つの書き方である。ε_ijk の正体は体積形式であり、丸暗記させられた ε-δ 恒等式は ⋆⋆ = 1 の成分表示だった。",
+  provides: (
+    "index-notation",
+    "levi-civita-symbol",
+    "epsilon-delta-identity",
+  ),
+  requires: (
+    "exterior-derivative",
+    "grad-div-curl",
+  ),
+  uses: (
+    "hodge-star",
+    "volume-form",
+  ),
 )
 
 #layer("L1 ＋ L2 混在", metric: true)[三つとも $RR^3$ の直交直線座標を前提にしている。どこで計量を使ったかを本文で追う]

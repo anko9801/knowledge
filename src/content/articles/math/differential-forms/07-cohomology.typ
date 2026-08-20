@@ -10,6 +10,17 @@
   order: 7,
   tags: ("微分形式",),
   summary: "閉形式のうち完全でないものがどれだけあるかを数えると、それは空間の穴の数になる。微分方程式が解けるかどうかが位相で決まる、という主張である。局所ではすべて解けるので、残るのは貼り合わせ方だけになる。",
+  provides: (
+    "de-rham-cohomology",
+    "poincare-lemma",
+    "betti-numbers",
+    "mayer-vietoris",
+  ),
+  requires: (
+    "closed-vs-exact",
+    "stokes-theorem",
+    "integration-of-forms",
+  ),
 )
 
 #layer("L1 微分構造")[最後まで計量を使わない。それでも位相不変量が出る]

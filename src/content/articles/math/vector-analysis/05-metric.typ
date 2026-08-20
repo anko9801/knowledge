@@ -10,6 +10,15 @@
   order: 5,
   tags: ("ベクトル解析",),
   summary: "Hodge スターを定義すると、grad・div・rot が d と ⋆ の組み合わせとして書ける。すると曲線座標の公式集は覚えるものではなくなる。球座標の Laplacian にあの 1/r² が付く理由も、√g の一語で片付く。",
+  provides: (
+    "hodge-star",
+    "curvilinear-coordinates",
+    "laplacian",
+  ),
+  requires: (
+    "exterior-derivative",
+    "inner-product",
+  ),
 )
 
 #layer("L2 ＋ 計量", metric: true)[この回はすべて計量の上で動く。$star$ も長さも、計量なしには書けない]

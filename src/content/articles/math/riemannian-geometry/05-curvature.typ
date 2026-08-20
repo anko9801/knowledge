@@ -10,6 +10,16 @@
   order: 5,
   tags: ("Riemann 幾何",),
   summary: "平行移動は経路に依る。閉じた道を一周して戻ると、ベクトルが回っている。その回り方を測ったものが曲率で、これだけは座標変換で消せない。そして曲率が一定な空間は、三つしかない。",
+  provides: (
+    "riemann-curvature",
+    "sectional-curvature",
+    "space-forms",
+  ),
+  requires: (
+    "connection",
+    "parallel-transport",
+    "geodesic-deviation",
+  ),
 )
 
 #layer("L2 ＋ 接続", metric: true)[接続から曲率を作る。ここが Riemann 幾何の到達点]

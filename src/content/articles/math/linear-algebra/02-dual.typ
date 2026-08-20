@@ -10,6 +10,16 @@
   order: 2,
   tags: ("線形代数",),
   summary: "V と V* は同じ次元なので同型である。だがその同型を書くには基底を選ばねばならない。この「同型だが自然でない」という一点が、行と列の区別、上下の添字、勾配がベクトルでないことの、すべての正体である。",
+  provides: (
+    "dual-space",
+    "dual-basis",
+    "natural-isomorphism",
+    "dual-map",
+  ),
+  requires: (
+    "vector-space",
+    "basis-choice",
+  ),
 )
 
 #layer("L0 ベクトル空間")[まだ計量は入れない。ここが要点になる]

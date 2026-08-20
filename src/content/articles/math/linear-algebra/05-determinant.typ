@@ -10,6 +10,16 @@
   order: 5,
   tags: ("線形代数",),
   summary: "Λⁿ が 1 次元である、という一行から行列式が出る。基底を一度も選ばずに定義できるので、基底に依らないことを確かめる必要すらない。置換の和も余因子展開も、基底を入れたあとの計算法にすぎない。",
+  provides: (
+    "determinant",
+    "orientation",
+    "signed-volume",
+  ),
+  requires: (
+    "alternating-form",
+    "binomial-dimension",
+    "linear-map",
+  ),
 )
 
 #layer("L0 ベクトル空間")[$Lambda^n$ の次元だけを使う。長さも角度も出てこない]

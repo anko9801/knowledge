@@ -10,6 +10,16 @@
   order: 2,
   tags: ("Riemann 幾何",),
   summary: "テンソル解析の記法をここで用意する。そして一つの事実に出会う。テンソル場を偏微分しても、テンソルにならない。この破れ方が、次回に接続を導入する動機になる。",
+  provides: (
+    "tensor-field",
+    "index-raising-lowering",
+    "partial-is-not-a-tensor",
+  ),
+  requires: (
+    "riemannian-metric",
+    "tensor-type",
+    "tensor-transformation-law",
+  ),
 )
 
 #layer("L2 Riemann 多様体", metric: true)[計量で添字を上げ下げする。記法の準備が主]

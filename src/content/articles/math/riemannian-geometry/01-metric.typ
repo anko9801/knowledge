@@ -10,6 +10,22 @@
   order: 1,
   tags: ("Riemann 幾何",),
   summary: "同じ多様体に、いくらでも違う計量が入る。計量は測る道具であって、空間そのものではない。だから Riemann 計量は必ず存在するのに、Lorentz 計量には位相的な障害がある。",
+  provides: (
+    "riemannian-metric",
+    "arc-length",
+    "volume-element",
+    "isometry",
+    "killing-vector",
+  ),
+  requires: (
+    "manifold",
+    "inner-product",
+    "k-form",
+  ),
+  uses: (
+    "hodge-star",
+    "lie-derivative",
+  ),
 )
 
 #layer("L2 Riemann 多様体", metric: true)[ここから計量を使う。長さ・角度・体積・$star$ が戻る]

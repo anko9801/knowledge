@@ -22,6 +22,16 @@ const postSchema = z.object({
   tags: z.array(z.string()).default([]),
   summary: z.string().optional(),
   draft: z.boolean().default(false),
+  /**
+   * 依存グラフの辺（src/lib/curriculum.ts）。
+   *
+   * requires は論理的な依存、uses は記法として借りているだけのもの。
+   * 「この順で教わるのが普通」という慣習は書かない。慣習を辺に混ぜると、
+   * 最短経路が既存のカリキュラムをなぞるだけのものになる。
+   */
+  provides: z.array(z.string()).default([]),
+  requires: z.array(z.string()).default([]),
+  uses: z.array(z.string()).default([]),
 })
 
 const posts = defineCollection({

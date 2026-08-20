@@ -163,6 +163,41 @@ CI でもこれを持ち越すので、記事 1 本の修正で 3 分待たさ�
 `template.typ` が `lang: "ja"` の設定と `<fm>` ラベル付き `#metadata` を面倒みる。
 `draft: true` を渡すとビルド対象から外れる。
 
+## 依存グラフと読む順序
+
+記事の front matter に `provides` / `requires` / `uses` を書くと、依存グラフになる。
+目標の概念を指定すると、そこへ到達するのに必要な記事の最小集合と読む順序が出る。
+
+```sh
+npm run curriculum stats                 # グラフの実測値
+npm run curriculum concepts              # 概念と、それを provide する記事
+npm run curriculum holes                 # provider の無い概念（データの穴）
+npm run curriculum path stokes-theorem   # 読む順序
+npm run curriculum path --known k-form,manifold gauss-bonnet
+npm run curriculum path --notation index-notation
+npm run curriculum dump                  # グラフを JSON で
+```
+
+**辺は 2 種類しか持たない。**
+
+| | 意味 | 既定でたどるか |
+| --- | --- | --- |
+| `requires` | 論理的な依存。それが無いと定義も証明も書けない | たどる |
+| `uses` | 記法として借りているだけ。別の書き方をすれば要らない | たどらない |
+
+**「この順で教わるのが普通だから」という慣習は、辺として書かない。** 大学のシラバスから
+前提を吸い出すと集まるのはほとんど慣習で、遠回りの正体もそこにある。慣習を混ぜた時点で、
+最短経路は既存のカリキュラムをなぞるだけのものになる。慣習を持たないことが、この
+データの値打ちである。
+
+節点は記事、辺は概念を介して張る。同じ概念を複数の記事が `provides` しうるので、
+どの経路で到達するかに選択が残る（AND/OR グラフ）。選択は重み付き集合被覆になり厳密解は
+NP 困難なので、`src/lib/curriculum.ts` は貪欲法で解く。実データでは provider が 1 つしか
+ない概念がほとんどで、選択の余地はあまり無い。
+
+コストは記事の文字数（千文字を 1）。`stats` の `循環` が 0 でなければ `requires` の
+書き間違いなので、直すこと。`holes` に出るものは、まだ書いていない記事を指している。
+
 ## 講義ノート（../lecture-notes からの移行）
 
 LaTeX で書いていた講義ノート 44 本を Typst に変換し、`src/content/notes/` に置いた。

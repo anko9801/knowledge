@@ -69,6 +69,13 @@ export const series: readonly Series[] = [
     blurb:
       '素朴集合論の破綻から、順序数・基数・選択公理を経て、連続体仮説の独立性と記述集合論まで。全 12 回。',
   },
+  {
+    slug: 'vector-analysis',
+    field: 'math',
+    title: 'ベクトル解析',
+    blurb:
+      'grad・div・rot は一つの微分であり、三つの積分定理は一つの定理である。3 次元でしか成り立たない偶然を剥がして、微分形式まで。',
+  },
 ]
 
 export const findField = (slug: string): Field | undefined =>

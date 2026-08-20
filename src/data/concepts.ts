@@ -314,8 +314,27 @@ export const concepts: readonly Concept[] = [
   c('type-inference', '型推論', 'Hindley--Milner。単一化で型を復元する', 'technique', 'cs', ['polymorphism']),
   c('parametricity', 'パラメトリシティ', '型だけから定理が出る。自由定理', 'theorem', 'cs', ['polymorphism']),
   c('monad', 'モナド', '副作用を型に押し込む。合成の結合律だけが本体', 'definition', 'cs', ['algebraic-data-type', 'polymorphism']),
+  c('monad-transformer', 'モナド変換子', '作用を積み重ねる。N 個に対して N^2 個の実装が要る', 'technique', 'cs', ['monad']),
+  c('algebraic-effects', '代数的作用', '作用を操作と等式に分解する。再開できる型付き例外', 'definition', 'cs', ['monad-transformer', 'effect-typing']),
 
-  // --- 認知の制約（プログラムの構成への、唯一の外部入力） ----------------
+  // --- 意味論と圏論 -----------------------------------------------------
+  //
+  // λ 項に数学的な対象を割り当てようとすると、Sets では詰まる。D ≅ D^D を
+  // 満たす集合が一点しかないからである。そこを回避した二つの道が、そのまま
+  // 「型を付ける」と「集合をやめる」に対応する。歴史的な偶然ではなく、
+  // 同じ 1 つの障害への二つの応答である。
+  //
+  // 圏論は数学側にも要る（ホモロジー、代数幾何の講義ノートが待っている）が、
+  // ここでは Curry--Howard--Lambek まで通す最短の骨だけを置く。
+  c('domain-theory', 'ドメイン理論', '$D ≅ D^D$ を満たす対象を作る。底を持つ完備半順序と最小不動点。Scott 1969', 'definition', 'math', ['relation-order', 'lambda-calculus']),
+  c('denotational-semantics', '表示的意味論', 'プログラムに数学的対象を割り当てる。構文ではなく指す先で意味を決める', 'viewpoint', 'cs', ['domain-theory']),
+  c('category', '圏', '対象と射、恒等射と結合律。中身を見ずに関係だけで話す', 'definition', 'math'),
+  c('functor', '関手', '圏から圏への写像。恒等射と合成を保つ', 'definition', 'math', ['category']),
+  c('adjunction', '随伴', '$\\mathrm{Hom}(F A, B) ≅ \\mathrm{Hom}(A, G B)$。自由と忘却の対', 'definition', 'math', ['functor']),
+  c('cartesian-closed-category', 'デカルト閉圏', '終対象・積・指数対象を持つ。カリー化は積と冪の随伴', 'definition', 'math', ['adjunction']),
+  c('curry-howard-lambek', 'Curry--Howard--Lambek 対応', '型付き λ 計算＝直観主義論理＝デカルト閉圏。三つは同じもの', 'theorem', 'cs', ['cartesian-closed-category', 'curry-howard']),
+
+  // --- 認知の制約（プログラムの構成への外部入力、その 1） ----------------
   //
   // 実験結果であって定理ではない。requires は張らず、設計側からは empirical
   // でだけ参照する。既定の経路探索に出てこないのは正しい。「作業記憶は 4±1」
@@ -326,6 +345,22 @@ export const concepts: readonly Concept[] = [
   c('working-memory-limit', '作業記憶の限界', '同時に保持できるチャンクは 4±1。Miller の 7±2 から Cowan へ', 'viewpoint', 'cognition'),
   c('chunking', 'チャンク化', '熟達は記憶容量ではなく、まとまりの認識で決まる。Chase--Simon のチェス実験', 'viewpoint', 'cognition', ['working-memory-limit']),
   c('cognitive-load', '認知負荷', '課題本来の負荷と、表現のせいで増えた負荷を分ける。Sweller', 'viewpoint', 'cognition', ['working-memory-limit']),
+
+  // --- 経済の制約（外部入力、その 2） ------------------------------------
+  //
+  // 認知負荷で全部を説明しようとすると、ここが説明できずに潰れる。
+  // 「変更に強い」は頭の容量の話ではない。変更が何回来るか、来たとき何箇所
+  // 直すことになるか、という費用の話である。Winters「ソフトウェア工学とは
+  // 時間で積分したプログラミング」、Beck『Tidy First?』の第 3 部がここ。
+  //
+  // 面白いことに、入口（変更は来る、費用は割り引かれる）だけが経験的で、
+  // そこから先は論理で決まる。波及範囲は結合関係の推移閉包そのものである。
+  c('change-over-time', '時間で積分する', '書き捨てなら何でもよい。保守が要るとき初めて設計が費用になる', 'viewpoint', 'cs'),
+  c('coupling', '結合', '片方を変えるともう片方も変えねばならない関係。Beck の定義', 'definition', 'cs', ['relation-order'], ['change-over-time']),
+  c('change-propagation', '変更の波及', '直す箇所は結合関係の推移閉包。閉路があると全体が 1 つになる', 'theorem', 'cs', ['coupling']),
+  c('stable-dependency', '安定依存', '変わりやすいものが、変わりにくいものに依存する向きに揃える', 'viewpoint', 'cs', ['change-propagation', 'information-hiding']),
+  c('unidirectional-flow', '単方向フロー', '依存グラフの閉路を切る。TEA と Redux がしていること', 'technique', 'cs', ['change-propagation'], ['cognitive-load']),
+  c('optionality', 'オプション価値', '今払って、後で選べる状態を買う。割引現在価値で釣り合いを見る', 'viewpoint', 'cs', ['change-over-time'], ['essential-accidental']),
 
   // --- プログラムの構成 -------------------------------------------------
   //
@@ -342,12 +377,34 @@ export const concepts: readonly Concept[] = [
   c('structured-programming', '構造化プログラミング', '静的なテキスト位置から動的な進行状況を有限の座標で指せるようにする', 'viewpoint', 'cs', ['loop-invariant'], ['cognitive-load']),
   c('information-hiding', '情報隠蔽', 'モジュールは機能ではなく、隠す決定で切る。Parnas', 'viewpoint', 'cs', [], ['cognitive-load', 'chunking']),
   c('representation-independence', '表現独立性', '実装を替えても外から区別できない。情報隠蔽の定理版', 'theorem', 'cs', ['information-hiding', 'parametricity']),
-  c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser'], ['cognitive-load']),
+  c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
+  c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),
   c('effect-typing', '作用の型付け', '読む必要のある範囲を型で宣言する。モナドと作用系', 'technique', 'cs', ['monad', 'referential-transparency']),
   c('type-soundness', '型の健全性', '型が付けば実行時に詰まらない。progress と preservation', 'theorem', 'cs', ['simply-typed-lambda']),
   c('mechanized-checking', '検査の機械化', '人が頭で保っていた不変量を、機械に確かめさせる', 'viewpoint', 'cs', ['type-soundness', 'loop-invariant'], ['cognitive-load']),
   c('load-tradeoff', '負荷の配分', '負荷は消えず移るだけ。GC は実行時へ、所有権は記述へ', 'viewpoint', 'cs', ['mechanized-checking'], ['essential-accidental']),
   c('cyclomatic-complexity', '循環的複雑度', '制御フローグラフの独立閉路数。グラフの量であって、認知の量ではない', 'definition', 'cs', ['structured-programming', 'connectedness']),
+
+  // --- 関数型は三度導かれる ---------------------------------------------
+  //
+  // 認知負荷だけで関数型を説明しようとすると弱くなる。「純粋にすると楽」も
+  // 「純粋にすると辛い」も同じ理屈で言えてしまい、モナド変換子の N^2 問題や
+  // 遅延評価のスペースリークを事前に予測できないからである。
+  //
+  // 実際には三つの制約が独立に同じ設計へ着く。そこが関数型の強みで、
+  // 一本に還元すると、その強みの理由の方が消える。
+  //
+  //   人の制約   不変性なら、いま誰が指しているかを追わなくてよい
+  //   論理の制約 不正な状態を型で作れなくする。健全性とパラメトリシティ
+  //   機械の制約 共有可変状態が無ければ、データ競合も無い
+  //
+  // 経済の制約（変更の波及）は情報隠蔽と安定依存に着き、関数型に固有ではない。
+  // 純粋性でも代数的データ型でも直接には出てこない。そこは分けて置く。
+  c('higher-order-function', '高階関数', 'map と fold は、ループの型に名前を付けたもの。チャンク化の具体形', 'definition', 'cs', ['lambda-calculus'], ['chunking']),
+  c('mutable-state-as-goto', '可変状態は goto である', 'Backus 1978。構造化が制御フローで消したものを、データフローで消す', 'viewpoint', 'cs', ['structured-programming', 'referential-transparency'], ['cognitive-load']),
+  c('exhaustiveness-checking', '網羅性検査', '場合分けの漏れを機械が見る。直和型があって初めて成り立つ', 'technique', 'cs', ['algebraic-data-type', 'mechanized-checking']),
+  c('illegal-states-unrepresentable', '不正な状態を作れなくする', 'bool 3 つで 8 通りではなく、あり得る 4 通りだけを直和で書く', 'viewpoint', 'cs', ['exhaustiveness-checking', 'type-soundness']),
+  c('purity-and-concurrency', '純粋性と並行性', '共有可変状態が無ければ、データ競合も無い。認知ではなく機械の側の理由', 'theorem', 'cs', ['immutability', 'interleaving']),
 
   // --- 計算機の構成 -----------------------------------------------------
   //
@@ -572,8 +629,18 @@ export const goals: readonly Goal[] = [
   },
   {
     id: 'programs',
-    label: 'プログラムの設計が認知の制約から読める',
-    needs: ['representation-independence', 'referential-transparency', 'load-tradeoff'],
+    label: 'プログラムの設計が三つの制約から読める',
+    needs: ['representation-independence', 'referential-transparency', 'load-tradeoff', 'stable-dependency'],
+  },
+  {
+    id: 'functional',
+    label: '関数型が三つの制約から独立に導けると分かる',
+    needs: ['mutable-state-as-goto', 'illegal-states-unrepresentable', 'purity-and-concurrency'],
+  },
+  {
+    id: 'lambek',
+    label: '型と論理と圏が同じものだと読める',
+    needs: ['curry-howard-lambek', 'denotational-semantics'],
   },
   {
     id: 'architecture',

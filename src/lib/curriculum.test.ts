@@ -1,104 +1,118 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { danglingConcepts, findCycles, planFor, type Node } from './curriculum.ts'
+import {
+  backlog,
+  closure,
+  danglingConcepts,
+  drift,
+  findCycles,
+  planFor,
+  type Concept,
+  type Coverage,
+} from './curriculum.ts'
 
-const node = (id: string, provides: string[], requires: string[] = [], uses: string[] = []): Node =>
-  ({ id, title: id, cost: 1, provides, requires, uses })
+const c = (id: string, requires: string[] = []): Concept => ({
+  id,
+  label: id,
+  gist: '',
+  kind: 'definition',
+  field: 'math',
+  requires,
+})
 
-const sample: Node[] = [
-  node('a', ['vector-space']),
-  node('b', ['dual-space'], ['vector-space']),
-  node('c', ['tensor'], ['dual-space']),
-  node('d', ['wedge'], ['tensor'], ['index-notation']),
-  node('n', ['index-notation'], ['vector-space']),
+const graph: Concept[] = [
+  c('vector-space'),
+  c('dual-space', ['vector-space']),
+  c('tensor', ['dual-space']),
+  c('wedge', ['tensor']),
+  c('determinant', ['wedge']),
 ]
 
-test('目標の前提だけをたどる', () => {
-  const plan = planFor(sample, ['dual-space'])
-  assert.deepEqual(
-    plan.order.map((n) => n.id),
-    ['a', 'b'],
-  )
-  assert.equal(plan.cost, 2)
+const written: Coverage[] = [
+  { id: 'a/1', title: '記事 1', provides: ['vector-space', 'dual-space'] },
+  { id: 'a/2', title: '記事 2', provides: ['tensor'] },
+]
+
+test('目標から前提をすべて遡る', () => {
+  const { ids } = closure(graph, ['wedge'])
+  assert.deepEqual(ids.sort(), ['dual-space', 'tensor', 'vector-space', 'wedge'])
 })
 
 test('前提が先に来る', () => {
-  const plan = planFor(sample, ['wedge'])
+  const plan = planFor(graph, written, ['wedge'])
   assert.deepEqual(
-    plan.order.map((n) => n.id),
-    ['a', 'b', 'c', 'd'],
+    plan.steps.map((s) => s.concept.id),
+    ['vector-space', 'dual-space', 'tensor', 'wedge'],
   )
 })
 
-test('記法の依存は既定でたどらない', () => {
-  const plan = planFor(sample, ['wedge'])
-  assert.ok(!plan.order.some((n) => n.id === 'n'))
-  assert.deepEqual(plan.deferred, ['index-notation'])
-})
-
-test('includeNotation を立てると記法もたどる', () => {
-  const plan = planFor(sample, ['wedge'], { includeNotation: true })
-  assert.ok(plan.order.some((n) => n.id === 'n'))
-  assert.deepEqual(plan.deferred, [])
-})
-
-test('既知の概念は計画から外れる', () => {
-  const plan = planFor(sample, ['wedge'], { known: ['tensor'] })
+test('記事のある概念とない概念を分ける', () => {
+  const plan = planFor(graph, written, ['wedge'])
+  assert.equal(plan.covered, 3)
   assert.deepEqual(
-    plan.order.map((n) => n.id),
-    ['d'],
+    plan.missing.map((m) => m.id),
+    ['wedge'],
   )
 })
 
-test('provider の無い概念は missing に出る', () => {
-  const orphan = [node('x', ['goal'], ['nowhere'])]
-  const plan = planFor(orphan, ['goal'])
-  assert.deepEqual(plan.missing, ['nowhere'])
-  // 穴があっても、たどれるぶんは返す。
+test('記事が無くても計画は立つ（ここが要点）', () => {
+  // determinant はどの記事も扱っていないが、計画には現れる。
+  const plan = planFor(graph, [], ['determinant'])
+  assert.equal(plan.steps.length, 5)
+  assert.equal(plan.covered, 0)
+  assert.equal(plan.missing.length, 5)
+})
+
+test('既知の概念で閉包が止まる', () => {
+  // tensor を知っているなら、その先祖（dual-space, vector-space）は読む必要が無い。
+  const plan = planFor(graph, written, ['wedge'], { known: ['tensor'] })
   assert.deepEqual(
-    plan.order.map((n) => n.id),
-    ['x'],
+    plan.steps.map((s) => s.concept.id),
+    ['wedge'],
   )
 })
 
-test('目標そのものに provider が無ければ missing だけ返る', () => {
-  const plan = planFor(sample, ['quantum-field-theory'])
-  assert.deepEqual(plan.order, [])
-  assert.deepEqual(plan.missing, ['quantum-field-theory'])
+test('概念グラフに無い id は unknown に出る', () => {
+  const plan = planFor(graph, written, ['quantum-gravity'])
+  assert.deepEqual(plan.unknown, ['quantum-gravity'])
+  assert.deepEqual(plan.steps, [])
 })
 
-test('複数の目標をまとめて満たす', () => {
-  const plan = planFor(sample, ['dual-space', 'index-notation'])
-  assert.deepEqual(
-    plan.order.map((n) => n.id),
-    ['a', 'b', 'n'],
-  )
+test('執筆キューは、すぐ書けるものを先に出す', () => {
+  const queue = backlog(graph, written)
+  // wedge は前提（tensor）が記事になっているのですぐ書ける。
+  // determinant は前提（wedge）がまだ無いので後ろ。
+  assert.equal(queue[0].concept.id, 'wedge')
+  assert.equal(queue[0].ready, true)
+  assert.equal(queue[1].concept.id, 'determinant')
+  assert.equal(queue[1].ready, false)
 })
 
-test('provider が複数あるとき、コストの安いほうを選ぶ', () => {
-  const cheap: Node = { ...node('cheap', ['goal']), cost: 1 }
-  const heavy: Node = { ...node('heavy', ['goal', 'extra']), cost: 10 }
-  const plan = planFor([cheap, heavy], ['goal'])
-  assert.deepEqual(
-    plan.order.map((n) => n.id),
-    ['cheap'],
-  )
+test('下流の多い概念を優先する', () => {
+  const wide: Concept[] = [c('root'), c('x', ['root']), c('y', ['root']), c('z', ['root']), c('lonely')]
+  const queue = backlog(wide, [])
+  assert.equal(queue[0].concept.id, 'root')
+  assert.equal(queue[0].unlocks, 3)
+})
+
+test('記事が名乗る概念がグラフに無ければ drift に出る', () => {
+  const stray: Coverage[] = [{ id: 'a/9', title: '記事 9', provides: ['made-up'] }]
+  assert.deepEqual(drift(graph, stray), ['made-up'])
 })
 
 test('循環を見つける', () => {
-  const looped = [node('p', ['x'], ['y']), node('q', ['y'], ['x'])]
+  const looped = [c('p', ['q']), c('q', ['p'])]
   assert.equal(findCycles(looped).length > 0, true)
-  // 循環していても記事は落とさない。
-  const plan = planFor(looped, ['x'])
-  assert.equal(plan.order.length, 2)
+  // 循環していても概念は落とさない。
+  assert.equal(planFor(looped, [], ['p']).steps.length, 2)
 })
 
 test('循環が無ければ空', () => {
-  assert.deepEqual(findCycles(sample), [])
+  assert.deepEqual(findCycles(graph), [])
 })
 
-test('穴の一覧を出す', () => {
-  const withHole = [...sample, node('z', ['goal'], ['calculus'])]
-  assert.deepEqual(danglingConcepts(withHole), ['calculus'])
+test('定義されていない前提を検出する', () => {
+  const hole = [...graph, c('goal', ['calculus'])]
+  assert.deepEqual(danglingConcepts(hole), ['calculus'])
 })

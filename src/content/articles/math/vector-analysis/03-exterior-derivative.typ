@@ -14,7 +14,7 @@
     "exterior-derivative",
     "dd-zero",
     "stokes-theorem",
-    "induced-orientation",
+    "boundary",
   ),
   requires: (
     "one-form",

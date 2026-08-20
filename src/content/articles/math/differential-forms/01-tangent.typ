@@ -12,7 +12,6 @@
   summary: "ベクトルを矢印として定義すると、矢印を置くための外の空間が要る。曲がった空間の内側だけで接ベクトルを定義するには、別の言い方がいる。答えは「曲線の速度」か「方向微分」で、この二つは同じものである。",
   provides: (
     "tangent-space",
-    "tangent-vector",
     "vector-field",
     "lie-bracket",
   ),

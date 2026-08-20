@@ -14,7 +14,7 @@
     "self-adjoint",
     "spectral-theorem",
     "quadratic-form",
-    "sylvester-law",
+    "signature",
   ),
   requires: (
     "inner-product",

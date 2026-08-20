@@ -15,7 +15,6 @@
     "integral-theorems-r3",
     "pseudovector",
     "cross-product",
-    "form-degree-intuition",
   ),
   requires: ("multivariable-calculus",),
 )

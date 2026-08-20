@@ -1,24 +1,31 @@
 #!/usr/bin/env node
 /**
- * 記事の front matter から依存グラフを組み、目標から読む順序を逆算する。
+ * 概念グラフの上で執筆計画を立てる。
  *
- *   node scripts/curriculum.mjs stats                    グラフの実測値
- *   node scripts/curriculum.mjs holes                    provider の無い概念
- *   node scripts/curriculum.mjs concepts                 概念の一覧
- *   node scripts/curriculum.mjs path <concept>...        読む順序
- *   node scripts/curriculum.mjs path --known a,b <c>     既知を差し引く
- *   node scripts/curriculum.mjs path --notation <c>      記法の依存もたどる
- *   node scripts/curriculum.mjs dump                     グラフを JSON で出す
+ * 一次データは src/data/concepts.ts。記事はそこへの被覆でしかない。
+ * だから、まだ書いていない領域も同じグラフに乗る。
  *
- * front matter は typst を起動せず、`#show: post.with(...)` を直接読む。
- * 記事 1 本につき typst を 2 回起動するビルドと違い、ここは一瞬で終わる。
- * 形が崩れていれば黙って無視せず、その旨を出す。
+ *   node scripts/curriculum.mjs stats                グラフの実測値と被覆率
+ *   node scripts/curriculum.mjs goals                到達目標と、そこまでの残り
+ *   node scripts/curriculum.mjs plan <goal|concept>  依存順。記事の有無つき
+ *   node scripts/curriculum.mjs next [n]             次に書くべき記事
+ *   node scripts/curriculum.mjs gaps                 記事の無い概念だけ
+ *   node scripts/curriculum.mjs dump                 JSON
+ *
+ * 記事側の front matter は provides しか見ない。前提は概念グラフが持つ。
  */
 
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
-import { danglingConcepts, findCycles, planFor } from '../src/lib/curriculum.ts'
+import { concepts, goals } from '../src/data/concepts.ts'
+import {
+  backlog,
+  danglingConcepts,
+  drift,
+  findCycles,
+  planFor,
+} from '../src/lib/curriculum.ts'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const ARTICLES = join(ROOT, 'src/content/articles')
@@ -29,7 +36,6 @@ const walk = (dir) =>
     return statSync(path).isDirectory() ? walk(path) : path.endsWith('.typ') ? [path] : []
   })
 
-/** `name: ("a", "b",)` の中身を配列で返す。無ければ空配列。 */
 const readList = (src, name) => {
   const head = src.match(new RegExp(`\\n\\s*${name}:\\s*\\(`))
   if (!head) return []
@@ -49,109 +55,93 @@ const readScalar = (src, name) => {
   return m ? m[1].trim() : undefined
 }
 
-const load = () => {
-  const nodes = []
-  const skipped = []
-  for (const path of walk(ARTICLES)) {
+const articles = walk(ARTICLES)
+  .map((path) => {
     const src = readFileSync(path, 'utf8')
     const field = readScalar(src, 'field')
     const series = readScalar(src, 'series')
     const order = readScalar(src, 'order')
-    const title = readScalar(src, 'title')
-    if (!field || !series || !order) {
-      skipped.push(relative(ROOT, path))
-      continue
-    }
-    const provides = readList(src, 'provides')
-    const requires = readList(src, 'requires')
-    const uses = readList(src, 'uses')
-    nodes.push({
+    if (!field || !series || !order) return undefined
+    return {
       id: `${field}/${series}/${order}`,
-      title: title ?? path,
-      // 読む手間の目安。本文の長さをそのまま使う（千文字を 1 とする）。
-      cost: Math.max(1, Math.round(src.length / 1000)),
-      provides,
-      requires,
-      uses,
-      source: relative(ROOT, path),
-      annotated: provides.length > 0,
-    })
-  }
-  return { nodes: nodes.sort((a, b) => (a.id < b.id ? -1 : 1)), skipped }
-}
-
-const { nodes, skipped } = load()
-const annotated = nodes.filter((n) => n.annotated)
+      title: readScalar(src, 'title') ?? relative(ROOT, path),
+      provides: readList(src, 'provides'),
+    }
+  })
+  .filter((a) => a !== undefined && a.provides.length > 0)
+  .sort((a, b) => (a.id < b.id ? -1 : 1))
 
 const [command = 'stats', ...rest] = process.argv.slice(2)
 
-const parseOptions = (args) => {
-  const options = {}
-  const targets = []
-  for (let i = 0; i < args.length; i += 1) {
-    if (args[i] === '--known') {
-      options.known = (args[i + 1] ?? '').split(',').filter(Boolean)
-      i += 1
-    } else if (args[i] === '--notation') {
-      options.includeNotation = true
-    } else {
-      targets.push(args[i])
-    }
-  }
-  return { options, targets }
-}
+const mark = (step) => (step.article ? '✓' : '·')
 
-const show = (plan) => {
-  if (plan.order.length === 0 && plan.missing.length === 0) {
-    console.log('（読むものはありません）')
+const showPlan = (plan) => {
+  for (const step of plan.steps) {
+    const where = step.article ? `/${step.article.id}` : '— 未執筆'
+    console.log(`${mark(step)} ${step.concept.label.padEnd(28)} ${where}`)
+    if (!step.article) console.log(`  ${' '.repeat(29)}${step.concept.gist}`)
   }
-  plan.order.forEach((node, i) => {
-    console.log(`${String(i + 1).padStart(2)}. ${node.title}`)
-    console.log(`    /${node.id}  (${node.cost})`)
-  })
-  console.log(`\n合計 ${plan.order.length} 本 / コスト ${plan.cost}`)
-  if (plan.missing.length > 0) {
-    console.log(`\n穴（このサイトに記事が無い）: ${plan.missing.join(', ')}`)
-  }
-  if (plan.deferred.length > 0) {
-    console.log(`後回しにした記法: ${plan.deferred.join(', ')}`)
-  }
+  console.log(
+    `\n概念 ${plan.steps.length} / 記事あり ${plan.covered} / 未執筆 ${plan.missing.length}`,
+  )
+  if (plan.unknown.length > 0) console.log(`未定義の id: ${plan.unknown.join(', ')}`)
 }
 
 if (command === 'stats') {
-  const concepts = new Set(annotated.flatMap((n) => n.provides))
-  const hard = annotated.reduce((sum, n) => sum + n.requires.length, 0)
-  const soft = annotated.reduce((sum, n) => sum + n.uses.length, 0)
-  const cycles = findCycles(annotated)
-  console.log(`記事           ${nodes.length} 本（注釈済み ${annotated.length}）`)
-  console.log(`概念           ${concepts.size}`)
-  console.log(`論理の辺       ${hard}`)
-  console.log(`記法の辺       ${soft}`)
-  console.log(`穴             ${danglingConcepts(annotated).length}`)
+  const covered = new Set(articles.flatMap((a) => a.provides))
+  const inGraph = concepts.filter((c) => covered.has(c.id)).length
+  const cycles = findCycles(concepts)
+  const stray = drift(concepts, articles)
+  const dangling = danglingConcepts(concepts)
+  const edges = concepts.reduce((sum, c) => sum + c.requires.length, 0)
+  console.log(`概念           ${concepts.length}`)
+  console.log(`依存の辺       ${edges}`)
+  console.log(`記事           ${articles.length} 本`)
+  console.log(`被覆           ${inGraph} / ${concepts.length} 概念 (${Math.round((inGraph / concepts.length) * 100)}%)`)
+  console.log(`未執筆         ${concepts.length - inGraph}`)
+  console.log(`目標           ${goals.length}`)
   console.log(`循環           ${cycles.length}`)
-  if (cycles.length > 0) for (const cycle of cycles) console.log(`  ${cycle.join(' -> ')}`)
-  if (skipped.length > 0) console.log(`\nfront matter を読めなかった: ${skipped.length} 本`)
-} else if (command === 'holes') {
-  for (const concept of danglingConcepts(annotated)) console.log(concept)
-} else if (command === 'concepts') {
-  const index = new Map()
-  for (const node of annotated) {
-    for (const concept of node.provides) {
-      index.set(concept, [...(index.get(concept) ?? []), node.id])
-    }
+  for (const cycle of cycles) console.log(`  ${cycle.join(' -> ')}`)
+  if (dangling.length > 0) console.log(`未定義の前提   ${dangling.join(', ')}`)
+  if (stray.length > 0) console.log(`グラフに無い概念を記事が名乗っている: ${stray.join(', ')}`)
+} else if (command === 'goals') {
+  for (const goal of goals) {
+    const plan = planFor(concepts, articles, goal.needs)
+    const rest = plan.missing.length
+    console.log(
+      `${rest === 0 ? '達成' : `残り ${String(rest).padStart(2)} 本`}  ${goal.id.padEnd(20)} ${goal.label}`,
+    )
   }
-  for (const concept of [...index.keys()].sort()) {
-    console.log(`${concept.padEnd(38)} ${index.get(concept).join(', ')}`)
-  }
-} else if (command === 'path') {
-  const { options, targets } = parseOptions(rest)
-  if (targets.length === 0) {
-    console.error('目標の概念を指定してください。一覧は `concepts`。')
+} else if (command === 'plan') {
+  const [target] = rest
+  if (!target) {
+    console.error('目標の id か概念の id を指定してください。一覧は `goals`。')
     process.exit(1)
   }
-  show(planFor(annotated, targets, options))
+  const goal = goals.find((g) => g.id === target)
+  showPlan(planFor(concepts, articles, goal ? goal.needs : [target]))
+} else if (command === 'next') {
+  const limit = Number(rest[0] ?? 10)
+  const queue = backlog(concepts, articles)
+  console.log('すぐ書けるもの（前提がすべて記事になっている）\n')
+  let shown = 0
+  for (const item of queue) {
+    if (!item.ready) continue
+    if (shown >= limit) break
+    console.log(`  ${String(item.unlocks).padStart(3)} 下流  ${item.concept.label}`)
+    console.log(`            ${item.concept.gist}`)
+    shown += 1
+  }
+  const blocked = queue.filter((i) => !i.ready).length
+  console.log(`\n前提がまだ揃わないもの: ${blocked}`)
+} else if (command === 'gaps') {
+  for (const item of backlog(concepts, articles)) {
+    console.log(
+      `${item.ready ? '書ける' : '待ち  '} ${String(item.unlocks).padStart(3)} ${item.concept.id.padEnd(38)} ${item.concept.label}`,
+    )
+  }
 } else if (command === 'dump') {
-  console.log(JSON.stringify(annotated, null, 2))
+  console.log(JSON.stringify({ concepts, goals, articles }, null, 2))
 } else {
   console.error(`unknown command: ${command}`)
   process.exit(1)

@@ -163,40 +163,36 @@ CI でもこれを持ち越すので、記事 1 本の修正で 3 分待たさ�
 `template.typ` が `lang: "ja"` の設定と `<fm>` ラベル付き `#metadata` を面倒みる。
 `draft: true` を渡すとビルド対象から外れる。
 
-## 依存グラフと読む順序
+## 概念グラフと執筆計画
 
-記事の front matter に `provides` / `requires` / `uses` を書くと、依存グラフになる。
-目標の概念を指定すると、そこへ到達するのに必要な記事の最小集合と読む順序が出る。
+一次データは `src/data/concepts.ts` の**概念グラフ**である。記事があるかどうかとは
+無関係に「何を理解するには何が要るか」だけを書く。記事はそこへの被覆でしかない。
+
+**記事から生やしたグラフでは計画が立たない。** まだ書いていない領域がグラフに存在しない
+ので、「次に何を書くべきか」を問えない。だから概念を先に置く。被覆されていない概念が
+そのまま執筆キューになり、依存順に並ぶ。
 
 ```sh
-npm run curriculum stats                 # グラフの実測値
-npm run curriculum concepts              # 概念と、それを provide する記事
-npm run curriculum holes                 # provider の無い概念（データの穴）
-npm run curriculum path stokes-theorem   # 読む順序
-npm run curriculum path --known k-form,manifold gauss-bonnet
-npm run curriculum path --notation index-notation
-npm run curriculum dump                  # グラフを JSON で
+npm run curriculum stats            # 概念数、被覆率、循環、ずれ
+npm run curriculum goals            # 到達目標と、そこまでの残り本数
+npm run curriculum plan stokes      # 依存順。記事の有無つき
+npm run curriculum next 10          # 次に書くべき記事（下流の多い順）
+npm run curriculum gaps             # 記事の無い概念すべて
+npm run curriculum dump             # JSON
 ```
 
-**辺は 2 種類しか持たない。**
+記事側の front matter は `provides` だけを見る。前提は概念グラフが持つので、
+記事に書く必要がない。`requires` / `uses` も置けるが、いまは使っていない。
 
-| | 意味 | 既定でたどるか |
-| --- | --- | --- |
-| `requires` | 論理的な依存。それが無いと定義も証明も書けない | たどる |
-| `uses` | 記法として借りているだけ。別の書き方をすれば要らない | たどらない |
+**辺は論理的な依存だけ。**「この順で教わるのが普通だから」という慣習は書かない。
+シラバスから吸える前提はほとんど慣習で、遠回りの正体もそこにある。混ぜた時点で、
+最短経路が既存のカリキュラムをなぞるだけのものになる。
 
-**「この順で教わるのが普通だから」という慣習は、辺として書かない。** 大学のシラバスから
-前提を吸い出すと集まるのはほとんど慣習で、遠回りの正体もそこにある。慣習を混ぜた時点で、
-最短経路は既存のカリキュラムをなぞるだけのものになる。慣習を持たないことが、この
-データの値打ちである。
+`next` は「前提がすべて記事になっている」ものを先に出し、下流の概念数が多い順に並べる。
+前提が揃っていないものを書いても、読者が読めないからである。
 
-節点は記事、辺は概念を介して張る。同じ概念を複数の記事が `provides` しうるので、
-どの経路で到達するかに選択が残る（AND/OR グラフ）。選択は重み付き集合被覆になり厳密解は
-NP 困難なので、`src/lib/curriculum.ts` は貪欲法で解く。実データでは provider が 1 つしか
-ない概念がほとんどで、選択の余地はあまり無い。
-
-コストは記事の文字数（千文字を 1）。`stats` の `循環` が 0 でなければ `requires` の
-書き間違いなので、直すこと。`holes` に出るものは、まだ書いていない記事を指している。
+`stats` の `循環` は概念グラフの書き間違いを、
+`グラフに無い概念を記事が名乗っている` は語彙のずれを検出する。どちらも 0 に保つこと。
 
 ## 講義ノート（../lecture-notes からの移行）
 

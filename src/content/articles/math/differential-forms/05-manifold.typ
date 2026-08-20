@@ -14,7 +14,7 @@
     "manifold",
     "atlas",
     "orientability",
-    "volume-form-existence",
+    "orientability",
   ),
   requires: (
     "tangent-space",

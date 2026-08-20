@@ -1,228 +1,234 @@
 /**
- * 依存グラフと、目標から逆算した読む順序。
+ * 概念グラフの上での計画。
  *
- * 前提には少なくとも二種類ある。
+ * 一次データは概念（src/data/concepts.ts）である。記事はそこへの被覆でしかない。
+ * だから「まだ書いていない領域」も同じグラフの上に乗り、執筆計画が立つ。
+ * 記事から生やしたグラフでは、書いていない場所が存在しないので計画に使えない。
  *
- *   logical  その概念が無いと定義も証明も書けない。外せない
- *   notation その記法を借りているだけ。別の書き方をすれば要らない
- *
- * 大学のシラバスから吸い出せる「前提」はたいてい三つ目——教育的な慣習——で、
- * 遠回りの正体はそこにある。ここでは慣習を辺として持たない。
- * 持たないことが、このデータの値打ちになる。
- *
- * 節点は記事、辺は概念を介して張る。同じ概念を複数の記事が provide しうるので、
- * 「どの経路で到達するか」に選択が残る（AND/OR グラフ）。
+ * 辺は論理的な依存だけを持つ。「この順で教わるのが普通」という慣習は入れない。
  */
 
-/** 記事 1 本。front matter の provides / requires / uses から作る。 */
-export type Node = {
-  /** `math/linear-algebra/2` のような、記事を一意に指す文字列。 */
+export type Concept = {
+  readonly id: string
+  readonly label: string
+  readonly gist: string
+  readonly kind: string
+  readonly field: string
+  readonly requires: readonly string[]
+}
+
+/** 概念を被覆する記事。 */
+export type Coverage = {
   readonly id: string
   readonly title: string
-  /** 読む手間。既定は 1（本数を数える）。文字数などを入れてもよい。 */
-  readonly cost: number
-  /** この記事を読むと使えるようになる概念。 */
   readonly provides: readonly string[]
-  /** 論理的に要る概念。これが無いと本文が書けない。 */
-  readonly requires: readonly string[]
-  /** 記法として借りている概念。読まなくても筋は追える。 */
-  readonly uses: readonly string[]
+}
+
+export type Step = {
+  readonly concept: Concept
+  /** この概念を扱っている記事。無ければ執筆待ち。 */
+  readonly article?: Coverage
 }
 
 export type Plan = {
-  /** 読む順。前提が先に来る。 */
-  readonly order: readonly Node[]
-  readonly cost: number
-  /** 誰も provide していない概念。データの穴を表す。 */
-  readonly missing: readonly string[]
-  /** notation 辺を辿らなかったために外した概念。 */
-  readonly deferred: readonly string[]
+  /** 依存順。前提が先に来る。 */
+  readonly steps: readonly Step[]
+  /** 記事のある概念の数。 */
+  readonly covered: number
+  /** 記事の無い概念。これが執筆キューになる。 */
+  readonly missing: readonly Concept[]
+  /** 概念グラフに載っていない id。参照の書き間違い。 */
+  readonly unknown: readonly string[]
 }
 
-export type PlanOptions = {
-  /** 記法の依存も満たしにいく。既定は false（論理的な依存だけ辿る）。 */
-  readonly includeNotation?: boolean
-  /** すでに理解している概念。ここから先だけを計画する。 */
-  readonly known?: readonly string[]
-}
+const index = (concepts: readonly Concept[]): Map<string, Concept> =>
+  new Map(concepts.map((concept) => [concept.id, concept]))
 
-/** 概念 → それを provide する記事たち。 */
-const providerIndex = (nodes: readonly Node[]): Map<string, Node[]> => {
-  const index = new Map<string, Node[]>()
-  for (const node of nodes) {
-    for (const concept of node.provides) {
-      const list = index.get(concept)
-      if (list) list.push(node)
-      else index.set(concept, [node])
+const coverageIndex = (articles: readonly Coverage[]): Map<string, Coverage> => {
+  const map = new Map<string, Coverage>()
+  for (const article of articles) {
+    for (const id of article.provides) {
+      // 同じ概念を複数の記事が扱うときは、先に宣言されたほうを採る。
+      if (!map.has(id)) map.set(id, article)
     }
   }
-  return index
+  return map
 }
 
-const depsOf = (node: Node, includeNotation: boolean): readonly string[] =>
-  includeNotation ? [...node.requires, ...node.uses] : node.requires
-
 /**
- * 必要な記事を選ぶ。
+ * 目標から前提をすべて遡る。
  *
- * 概念を 1 つ増やすたびに、それを provide する記事の依存がさらに増える。
- * 増えなくなるまで回す（不動点）。
- *
- * 概念に provider が複数あるときは重み付き集合被覆になり、厳密解は NP 困難である。
- * ここは貪欲法で、1 記事あたり「新たに満たせる概念の数 / コスト」が最大のものを取る。
- * 実データでは provider が 1 つしかない概念がほとんどなので、たいてい選択の余地は無い。
+ * すでに知っている概念で打ち切る。そこから先を遡っても、読む必要が無いからである。
+ * 後から差し引くのでは、要らない祖先まで計画に混ざる。
  */
-const select = (
-  nodes: readonly Node[],
+export const closure = (
+  concepts: readonly Concept[],
   targets: readonly string[],
-  options: PlanOptions,
-): { chosen: Set<Node>; missing: Set<string>; deferred: Set<string> } => {
-  const includeNotation = options.includeNotation ?? false
-  const known = new Set(options.known ?? [])
-  const providers = providerIndex(nodes)
+  known: ReadonlySet<string> = new Set(),
+): { ids: string[]; unknown: string[] } => {
+  const byId = index(concepts)
+  const seen = new Set<string>()
+  const unknown = new Set<string>()
+  const stack = targets.filter((id) => !known.has(id))
 
-  const chosen = new Set<Node>()
-  const covered = new Set(known)
-  const missing = new Set<string>()
-  const deferred = new Set<string>()
-  const needed = new Set(targets.filter((c) => !known.has(c)))
-
-  for (;;) {
-    const open = [...needed].filter((c) => !covered.has(c) && !missing.has(c))
-    if (open.length === 0) break
-
-    // provider の無い概念は、これ以上たどれない。穴として記録して打ち切る。
-    const reachable = open.filter((c) => (providers.get(c)?.length ?? 0) > 0)
-    for (const concept of open) {
-      if (!reachable.includes(concept)) missing.add(concept)
+  while (stack.length > 0) {
+    const id = stack.pop() as string
+    if (seen.has(id) || unknown.has(id)) continue
+    const concept = byId.get(id)
+    if (concept === undefined) {
+      unknown.add(id)
+      continue
     }
-    if (reachable.length === 0) continue
-
-    const candidates = new Set<Node>()
-    for (const concept of reachable) {
-      for (const node of providers.get(concept) ?? []) candidates.add(node)
-    }
-
-    let best: Node | undefined
-    let bestScore = -Infinity
-    for (const node of candidates) {
-      if (chosen.has(node)) continue
-      const gain = node.provides.filter((c) => reachable.includes(c)).length
-      const score = gain / Math.max(node.cost, Number.EPSILON)
-      // 同点は id で決める。入力の並び順で結果が変わらないようにする。
-      if (score > bestScore || (score === bestScore && best !== undefined && node.id < best.id)) {
-        best = node
-        bestScore = score
-      }
-    }
-    if (best === undefined) break
-
-    chosen.add(best)
-    for (const concept of best.provides) covered.add(concept)
-    for (const concept of depsOf(best, includeNotation)) {
-      if (!covered.has(concept)) needed.add(concept)
-    }
-    if (!includeNotation) {
-      for (const concept of best.uses) {
-        if (!covered.has(concept)) deferred.add(concept)
-      }
-    }
+    seen.add(id)
+    stack.push(...concept.requires.filter((dep) => !known.has(dep)))
   }
 
-  for (const concept of covered) deferred.delete(concept)
-  return { chosen, missing, deferred }
+  return { ids: [...seen], unknown: [...unknown].sort() }
 }
 
-/**
- * 選んだ記事を読む順に並べる。
- *
- * 記事 A が provide する概念を記事 B が requires するなら、A が先。
- * 循環があれば、それは依存の書き間違いなので、残りを id 順に足して先へ進む
- * （黙って落とさない）。
- */
-const order = (chosen: readonly Node[], includeNotation: boolean): Node[] => {
-  const inPlan = new Map<string, Node>()
-  for (const node of chosen) {
-    for (const concept of node.provides) inPlan.set(concept, node)
-  }
-
-  const remaining = new Set(chosen)
-  const done = new Set<Node>()
-  const sorted: Node[] = []
+/** 依存順に並べる。循環していれば id 順で切って、落とさずに返す。 */
+const topological = (concepts: readonly Concept[], ids: readonly string[]): Concept[] => {
+  const byId = index(concepts)
+  const inScope = new Set(ids)
+  const remaining = new Set(ids)
+  const done = new Set<string>()
+  const sorted: Concept[] = []
 
   while (remaining.size > 0) {
     const ready = [...remaining]
-      .filter((node) =>
-        depsOf(node, includeNotation).every((c) => {
-          const provider = inPlan.get(c)
-          return provider === undefined || provider === node || done.has(provider)
-        }),
+      .filter((id) =>
+        (byId.get(id)?.requires ?? []).every((dep) => !inScope.has(dep) || done.has(dep)),
       )
-      .sort((a, b) => (a.id < b.id ? -1 : 1))
-
-    // 循環しているぶんは id 順で切る。順序は不正確になるが、記事は落とさない。
-    const batch = ready.length > 0 ? ready : [...remaining].sort((a, b) => (a.id < b.id ? -1 : 1))
-    for (const node of batch) {
-      sorted.push(node)
-      done.add(node)
-      remaining.delete(node)
+      .sort()
+    const batch = ready.length > 0 ? ready : [...remaining].sort()
+    for (const id of batch) {
+      const concept = byId.get(id)
+      if (concept) sorted.push(concept)
+      done.add(id)
+      remaining.delete(id)
     }
   }
 
   return sorted
 }
 
-/** 目標の概念に到達するための、最小の読む順序。 */
+/** 目標に到達するための、概念の依存順と、記事の有無。 */
 export const planFor = (
-  nodes: readonly Node[],
+  concepts: readonly Concept[],
+  articles: readonly Coverage[],
   targets: readonly string[],
-  options: PlanOptions = {},
+  options: { readonly known?: readonly string[] } = {},
 ): Plan => {
-  const { chosen, missing, deferred } = select(nodes, targets, options)
-  const list = order([...chosen], options.includeNotation ?? false)
+  const known = new Set(options.known ?? [])
+  const { ids, unknown } = closure(concepts, targets, known)
+  const covers = coverageIndex(articles)
+
+  const steps = topological(concepts, ids).map((concept) => ({
+    concept,
+    article: covers.get(concept.id),
+  }))
+
   return {
-    order: list,
-    cost: list.reduce((sum, node) => sum + node.cost, 0),
-    missing: [...missing].sort(),
-    deferred: [...deferred].sort(),
+    steps,
+    covered: steps.filter((step) => step.article !== undefined).length,
+    missing: steps.filter((step) => step.article === undefined).map((step) => step.concept),
+    unknown,
   }
 }
 
-/** 依存の循環。あれば front matter の書き間違いである。 */
-export const findCycles = (nodes: readonly Node[]): readonly (readonly string[])[] => {
-  const providers = providerIndex(nodes)
+/**
+ * 書く価値の順。
+ *
+ * ある概念を書くと、その下流にある概念がいくつ「前提が揃った」状態に近づくか。
+ * ここでは素朴に、その概念を（推移的に）必要とする概念の数を数える。
+ * 前提がまだ書かれていないものは、書いても読者が読めないので後ろへ回す。
+ */
+export type Leverage = {
+  readonly concept: Concept
+  /** これを必要とする概念の数（推移的）。 */
+  readonly unlocks: number
+  /** 前提がすべて記事になっているか。すぐ書けるか。 */
+  readonly ready: boolean
+}
+
+export const backlog = (
+  concepts: readonly Concept[],
+  articles: readonly Coverage[],
+): readonly Leverage[] => {
+  const covers = coverageIndex(articles)
+  const dependents = new Map<string, Set<string>>()
+  for (const concept of concepts) dependents.set(concept.id, new Set())
+
+  // 推移的な依存を、全概念について閉包を取って数える。概念数が小さいので素朴でよい。
+  for (const concept of concepts) {
+    const { ids } = closure(concepts, [concept.id])
+    for (const id of ids) {
+      if (id !== concept.id) dependents.get(id)?.add(concept.id)
+    }
+  }
+
+  return concepts
+    .filter((concept) => !covers.has(concept.id))
+    .map((concept) => ({
+      concept,
+      unlocks: dependents.get(concept.id)?.size ?? 0,
+      ready: concept.requires.every((dep) => covers.has(dep)),
+    }))
+    .sort((a, b) => {
+      if (a.ready !== b.ready) return a.ready ? -1 : 1
+      if (a.unlocks !== b.unlocks) return b.unlocks - a.unlocks
+      return a.concept.id < b.concept.id ? -1 : 1
+    })
+}
+
+/** 記事が名乗っているのに概念グラフに無いもの。データのずれを検出する。 */
+export const drift = (
+  concepts: readonly Concept[],
+  articles: readonly Coverage[],
+): readonly string[] => {
+  const byId = index(concepts)
+  const stray = new Set<string>()
+  for (const article of articles) {
+    for (const id of article.provides) {
+      if (!byId.has(id)) stray.add(id)
+    }
+  }
+  return [...stray].sort()
+}
+
+/** 依存の循環。あれば概念グラフの書き間違いである。 */
+export const findCycles = (concepts: readonly Concept[]): readonly (readonly string[])[] => {
+  const byId = index(concepts)
   const cycles: string[][] = []
   const state = new Map<string, 'visiting' | 'done'>()
 
-  const walk = (node: Node, stack: string[]): void => {
-    const mark = state.get(node.id)
+  const walk = (id: string, stack: string[]): void => {
+    const mark = state.get(id)
     if (mark === 'done') return
     if (mark === 'visiting') {
-      const start = stack.indexOf(node.id)
+      const start = stack.indexOf(id)
       cycles.push(stack.slice(start === -1 ? 0 : start))
       return
     }
-    state.set(node.id, 'visiting')
-    for (const concept of node.requires) {
-      for (const provider of providers.get(concept) ?? []) {
-        if (provider !== node) walk(provider, [...stack, node.id])
-      }
+    state.set(id, 'visiting')
+    for (const dep of byId.get(id)?.requires ?? []) {
+      if (byId.has(dep)) walk(dep, [...stack, id])
     }
-    state.set(node.id, 'done')
+    state.set(id, 'done')
   }
 
-  for (const node of [...nodes].sort((a, b) => (a.id < b.id ? -1 : 1))) walk(node, [])
+  for (const concept of [...concepts].sort((a, b) => (a.id < b.id ? -1 : 1))) walk(concept.id, [])
   return cycles
 }
 
-/** provider の無い概念。データの穴の一覧。 */
-export const danglingConcepts = (nodes: readonly Node[]): readonly string[] => {
-  const providers = providerIndex(nodes)
-  const wanted = new Set<string>()
-  for (const node of nodes) {
-    for (const concept of [...node.requires, ...node.uses]) {
-      if (!providers.has(concept)) wanted.add(concept)
+/** requires に挙がっているのに、概念として定義されていない id。 */
+export const danglingConcepts = (concepts: readonly Concept[]): readonly string[] => {
+  const byId = index(concepts)
+  const missing = new Set<string>()
+  for (const concept of concepts) {
+    for (const dep of concept.requires) {
+      if (!byId.has(dep)) missing.add(dep)
     }
   }
-  return [...wanted].sort()
+  return [...missing].sort()
 }

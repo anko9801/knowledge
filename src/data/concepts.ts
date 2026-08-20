@@ -377,8 +377,10 @@ export const concepts: readonly Concept[] = [
   c('change-over-time', '時間で積分する', '書き捨てなら何でもよい。保守が要るとき初めて設計が費用になる', 'viewpoint', 'cs'),
   c('coupling', '結合', '片方を変えるともう片方も変えねばならない関係。Beck の定義', 'definition', 'cs', ['relation-order'], ['change-over-time']),
   c('change-propagation', '変更の波及', '直す箇所は結合関係の推移閉包。閉路があると全体が 1 つになる', 'theorem', 'cs', ['coupling']),
-  c('stable-dependency', '安定依存', '変わりやすいものが、変わりにくいものに依存する向きに揃える', 'viewpoint', 'cs', ['change-propagation', 'information-hiding']),
-  c('unidirectional-flow', '単方向フロー', '依存グラフの閉路を切る。TEA と Redux がしていること', 'technique', 'cs', ['change-propagation'], ['cognitive-load']),
+  c('control-vs-dependency', '流れと依存は別', 'A が B を呼ぶことと、A が B に依存することは、独立に決められる', 'viewpoint', 'cs', ['coupling']),
+  c('dependency-inversion', '依存性逆転', 'インターフェースを呼ぶ側に置く。制御の向きはそのままで、依存だけ反せる', 'technique', 'cs', ['control-vs-dependency', 'information-hiding']),
+  c('stable-dependency', '安定依存', '変わりやすい側が、変わりにくい側に依存する。層の数ではなく二者の相対関係', 'viewpoint', 'cs', ['change-propagation', 'dependency-inversion']),
+  c('unidirectional-flow', '単方向フロー', '状態の更新経路から閉路を無くす。TEA と Redux。依存の向きとは別の話', 'technique', 'cs', ['control-vs-dependency'], ['cognitive-load']),
   c('optionality', 'オプション価値', '今払って、後で選べる状態を買う。割引現在価値で釣り合いを見る', 'viewpoint', 'cs', ['change-over-time'], ['essential-accidental']),
 
   // --- プログラムの構成 -------------------------------------------------

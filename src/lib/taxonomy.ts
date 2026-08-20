@@ -206,6 +206,18 @@ export const findField = (slug: string): Field | undefined =>
 export const findSeries = (field: string, slug: string): Series | undefined =>
   series.find((entry) => entry.field === field && entry.slug === slug)
 
+/**
+ * 連載の並び。宣言順がそのまま順位になる。
+ *
+ * 同じ概念を複数の連載が扱うとき（Stokes の定理はベクトル解析にも微分形式にも
+ * ある）、読者をどちらへ送るかの判断に使う。**素朴な扱いから一般的な扱いへ**
+ * 並べておくこと。宣言順を入れ替えると、記事ページの前提リンクの行き先が動く。
+ */
+export const seriesRank = (field: string, slug: string): number => {
+  const at = series.findIndex((entry) => entry.field === field && entry.slug === slug)
+  return at === -1 ? series.length : at
+}
+
 export const seriesOf = (field: string): readonly Series[] =>
   series.filter((entry) => entry.field === field)
 

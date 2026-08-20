@@ -4,12 +4,34 @@ import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../../layouts/BaseLayout.astro'
-import { findField, findSeries, type Field, type Series } from '../../../lib/taxonomy.ts'
+import { concepts } from '../../../data/concepts.ts'
+import { articleHref, articleKey, siteBase } from '../../../lib/article-url.ts'
+import { neighborsOf, type Article, type Link, type Neighbors } from '../../../lib/neighbors.ts'
+import {
+  findField,
+  findSeries,
+  seriesRank,
+  type Field,
+  type Series,
+} from '../../../lib/taxonomy.ts'
 
 type Entry = CollectionEntry<'articles'>
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getCollection('articles', ({ data }) => !data.draft)
+  const base = siteBase(import.meta.env.BASE_URL)
+
+  // 概念グラフに渡す被覆。連載の題名は taxonomy が持つので、ここで引いて添える。
+  const coverage: Article[] = articles.map((entry) => ({
+    key: articleKey(entry.data),
+    title: entry.data.title,
+    href: articleHref(base, entry.data),
+    series: findSeries(entry.data.field, entry.data.series)?.title ?? entry.data.series,
+    rank: seriesRank(entry.data.field, entry.data.series),
+    order: entry.data.order,
+    provides: entry.data.provides,
+  }))
+  const byKey = new Map(coverage.map((entry) => [entry.key, entry]))
 
   return articles.map((article) => {
     // 同じシリーズの記事を order 順に並べて、前後ナビと目次に使う。
@@ -21,6 +43,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
       .sort((a, b) => a.data.order - b.data.order)
 
     const index = siblings.findIndex((other) => other.id === article.id)
+    const prev = siblings[index - 1] ?? null
+    const next = siblings[index + 1] ?? null
 
     return {
       params: {
@@ -30,8 +54,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
       props: {
         article,
-        prev: siblings[index - 1] ?? null,
-        next: siblings[index + 1] ?? null,
+        prev,
+        next,
+        // 前後ナビにすぐ出るものは、概念グラフ側からは落とす。同じリンクが二度出るだけになる。
+        neighbors: neighborsOf(
+          concepts,
+          coverage,
+          byKey.get(articleKey(article.data)) as Article,
+          [prev, next].filter((entry) => entry !== null).map((entry) => articleKey(entry.data)),
+        ),
       },
     }
   })
@@ -41,23 +72,28 @@ type Props = {
   article: Entry
   prev: Entry | null
   next: Entry | null
+  neighbors: Neighbors
 }
 
-const { article, prev, next } = Astro.props
+const { article, prev, next, neighbors } = Astro.props
 // headings は typst-loader が本文から集めたもの。右の目次に出す。
 const { Content, headings } = await render(article)
 
 const field: Field | undefined = findField(article.data.field)
 const series: Series | undefined = findSeries(article.data.field, article.data.series)
 
-const href = (entry: Entry) =>
-  `${base}${entry.data.field}/${entry.data.series}/${entry.data.order}`
-
+const base = siteBase(import.meta.env.BASE_URL)
+const href = (entry: Entry) => articleHref(base, entry.data)
 const updated = article.data.date.toISOString().slice(0, 10)
 
-// GitHub Pages ではサイトがリポジトリ名の下に載る。
-// BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
+// 同じ連載なら「第 3 回」で通じる。連載をまたぐときだけ題名を足す。
+const here = series?.title ?? article.data.series
+const where = (link: Link) =>
+  link.article.series === here
+    ? `第 ${link.article.order} 回`
+    : `${link.article.series} 第 ${link.article.order} 回`
+
+const why = (link: Link) => link.concepts.map((concept) => concept.label).join('・')
 ---
 
 <BaseLayout
@@ -80,6 +116,31 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     <h1>{article.data.title}</h1>
     {article.data.summary && <p class="summary">{article.data.summary}</p>}
     <p class="meta"><time datetime={updated}>{updated}</time></p>
+
+    {
+      (neighbors.requires.length > 0 || neighbors.gaps.length > 0) && (
+        <nav class="prereq" aria-label="前提">
+          <span class="prereq-label">前提</span>
+          <ul>
+            {neighbors.requires.map((link) => (
+              <li>
+                {/* リンク文字だけ読み上げると「第 2 回」になるので、理由を名前に足す。 */}
+                <a href={link.article.href} aria-label={`${where(link)}（${why(link)}）`}>
+                  {where(link)}
+                </a>
+                <span class="why">{why(link)}</span>
+              </li>
+            ))}
+            {neighbors.gaps.map((gap) => (
+              <li class="gap">
+                <span>{gap.concept.label}</span>
+                <span class="why">未執筆</span>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
   </header>
 
   <article>
@@ -107,6 +168,23 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     }
   </nav>
 
+  {
+    neighbors.unlocks.length > 0 && (
+      <nav class="unlocks" aria-label="この回を前提にしている回">
+        <p class="unlocks-label">この回を前提にしている回</p>
+        <ul>
+          {neighbors.unlocks.map((link) => (
+            <li>
+              <a href={link.article.href} aria-label={`${where(link)}（${why(link)}）`}>
+                {where(link)}
+              </a>
+              <span class="why">{why(link)}</span>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
 </BaseLayout>
 
 <style>
@@ -142,6 +220,68 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     margin: 0.6rem 0 0;
     font-size: 0.85rem;
     color: var(--muted);
+  }
+
+  /* 前提と下流。辺は概念グラフから引いている（src/lib/neighbors.ts）。
+   * 本文の外側の情報なので、地の文より一段落とした灰で置く。
+   * すぐ下に .layer（その回が仮定した構造）が来るので、罫は引かない。 */
+  .prereq,
+  .unlocks {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .prereq {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.7rem;
+    align-items: baseline;
+    margin-top: 0.5rem;
+  }
+
+  .prereq-label,
+  .unlocks-label {
+    margin: 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .prereq ul,
+  .unlocks ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .prereq li,
+  .unlocks li {
+    display: flex;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+
+  .why::before {
+    content: '—';
+    margin-right: 0.35rem;
+    opacity: 0.5;
+  }
+
+  /* 記事がまだ無い前提。リンクにしないので、灰のまま添え字だけ添える。 */
+  .gap .why {
+    font-style: italic;
+  }
+
+  .unlocks {
+    margin-top: 2.5rem;
+  }
+
+  .unlocks ul {
+    margin-top: 0.3rem;
+    gap: 0 1.4rem;
   }
 
   .pager {

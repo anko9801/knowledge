@@ -9,6 +9,7 @@
   order: 12,
   tags: ("集合論",),
   summary: "閉集合に限れば連続体仮説は定理である。独立性は集合の複雑さのどこから始まるのか。決定性公理と大きな基数へ。",
+  provides: ("descriptive-set-theory",),
 )
 
 #let card(x) = $lr(|#x|)$

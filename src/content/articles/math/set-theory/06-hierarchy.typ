@@ -9,6 +9,10 @@
   order: 6,
   tags: ("集合論",),
   summary: "集合の宇宙を段階に分けて眺める。共終数、到達不能基数、そして CH が独立であるとはどういうことか。",
+  provides: (
+    "cumulative-hierarchy",
+    "relative-consistency",
+  ),
 )
 
 #let ON = $upright(sans("On"))$

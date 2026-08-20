@@ -9,6 +9,7 @@
   order: 11,
   tags: ("集合論",),
   summary: "強制関係を M の中で定義し、それが外から見た意味と一致することを証明する。第 9 回で省いた唯一の穴を埋める。",
+  provides: ("truth-lemma",),
 )
 
 #let val = math.op("val")

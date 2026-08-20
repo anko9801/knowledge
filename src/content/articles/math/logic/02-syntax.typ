@@ -9,6 +9,7 @@
   order: 2,
   tags: ("数理論理学",),
   summary: "記号列としての項と論理式。一意可読性が帰納法を支え、代入には落とし穴がある。",
+  provides: ("first-order-syntax",),
 )
 
 #let Fv = math.op("FV")

@@ -9,6 +9,10 @@
   order: 7,
   tags: ("数理論理学",),
   summary: "大きな構造の中に、同じ一階の性質を持つ小さな構造が住んでいる。集合論に返す借りの本体。",
+  provides: (
+    "lowenheim-skolem",
+    "elementary-substructure",
+  ),
 )
 
 #let Fv = math.op("FV")

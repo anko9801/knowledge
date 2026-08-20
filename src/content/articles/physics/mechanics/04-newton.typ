@@ -9,6 +9,12 @@
   order: 4,
   tags: ("解析力学",),
   summary: "作用の側から出発した形式が、Newton 力学を含んでいることを確かめる。d'Alembert の原理は導出ではなく、橋を架けるための仮定である。",
+  provides: (
+    "generalized-coordinates",
+    "dalembert-principle",
+    "hamiltonian",
+    "canonical-formalism",
+  ),
 )
 
 

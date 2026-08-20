@@ -9,6 +9,10 @@
   order: 6,
   tags: ("数理論理学",),
   summary: "有限個ずつ満たせるなら全部同時に満たせる。この一言から、自然数の外側にいる自然数が出てくる。",
+  provides: (
+    "compactness-theorem",
+    "nonstandard-model",
+  ),
 )
 
 = 有限で足りる

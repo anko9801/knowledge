@@ -9,6 +9,10 @@
   order: 3,
   tags: ("集合論",),
   summary: "整列順序に目盛りを打つ。von Neumann の妙案、超限再帰、そして Cantor 標準形まで。",
+  provides: (
+    "ordinal",
+    "transfinite-induction",
+  ),
 )
 
 #let pred = math.op("pred")

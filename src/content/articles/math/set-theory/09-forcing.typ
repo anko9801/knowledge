@@ -9,6 +9,7 @@
   order: 9,
   tags: ("集合論",),
   summary: "モデルに新しい集合を付け足す。有限の情報から生成的対象を作り、名前で新しい宇宙を組み上げる。",
+  provides: ("forcing",),
 )
 
 #let ON = $upright(sans("On"))$

@@ -9,6 +9,10 @@
   order: 5,
   tags: ("集合論",),
   summary: "無限個の箱から一つずつ選ぶ。Zorn の補題と整列可能定理が同じものである理由。",
+  provides: (
+    "axiom-of-choice",
+    "zorn-lemma",
+  ),
 )
 
 #let ON = $upright(sans("On"))$

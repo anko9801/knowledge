@@ -9,6 +9,11 @@
   order: 2,
   tags: ("解析力学",),
   summary: "座標に依らない・局所である・位置と速度で決まる。三つを認めると書ける形は積分ひとつしか残らない。作用は天下りではない。",
+  provides: (
+    "action-functional",
+    "variational-principle",
+    "euler-lagrange",
+  ),
 )
 
 

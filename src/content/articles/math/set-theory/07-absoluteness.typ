@@ -9,6 +9,10 @@
   order: 7,
   tags: ("集合論",),
   summary: "モデルの中から見た世界と外から見た世界はどこまで一致するか。強制法の舞台を整える回。",
+  provides: (
+    "absoluteness",
+    "countable-transitive-model",
+  ),
 )
 
 = 中の住人には何が見えているか

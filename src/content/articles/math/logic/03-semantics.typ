@@ -9,6 +9,10 @@
   order: 3,
   tags: ("数理論理学",),
   summary: "記号列に意味を与える。Tarski の再帰的定義と、それが集合論を借りているということ。",
+  provides: (
+    "structure-semantics",
+    "satisfaction",
+  ),
 )
 
 #let Fv = math.op("FV")

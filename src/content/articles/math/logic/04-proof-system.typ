@@ -9,6 +9,10 @@
   order: 4,
   tags: ("数理論理学",),
   summary: "証明を記号列の有限列として定義する。Hilbert 系、演繹定理、そして証明できることは正しい。",
+  provides: (
+    "proof-system",
+    "soundness",
+  ),
 )
 
 #let Fv = math.op("FV")

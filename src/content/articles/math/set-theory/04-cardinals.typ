@@ -9,6 +9,10 @@
   order: 4,
   tags: ("集合論",),
   summary: "無限の大きさを比べる。Cantor の対角線論法から基数算術、そして連続体仮説の入口まで。",
+  provides: (
+    "cardinal",
+    "cantor-theorem",
+  ),
 )
 
 #let otp = math.op("otp")

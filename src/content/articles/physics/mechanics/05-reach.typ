@@ -9,6 +9,10 @@
   order: 5,
   tags: ("解析力学",),
   summary: "同じ手続きが標準模型と一般相対論でも動く。作用の差は干渉縞として測れる。停留原理の根拠は量子力学にある。ただし作用も根源ではない。",
+  provides: (
+    "gauge-potential",
+    "aharonov-bohm",
+  ),
 )
 
 

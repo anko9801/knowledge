@@ -9,6 +9,10 @@
   order: 8,
   tags: ("数理論理学",),
   summary: "機械的手続きとは何かを定義する。停止問題は解けず、一階論理の妥当性も判定できない。",
+  provides: (
+    "computability",
+    "halting-problem",
+  ),
 )
 
 #let Fv = math.op("FV")

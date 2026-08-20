@@ -9,6 +9,10 @@
   order: 2,
   tags: ("集合論",),
   summary: "関数はグラフである、と言い切ってしまう流儀。整列順序の基本定理まで一気に。",
+  provides: (
+    "relation-order",
+    "well-order",
+  ),
 )
 
 #let dom = math.op("dom")

@@ -70,6 +70,13 @@ export const series: readonly Series[] = [
       '素朴集合論の破綻から、順序数・基数・選択公理を経て、連続体仮説の独立性と記述集合論まで。全 12 回。',
   },
   {
+    slug: 'foundations',
+    field: 'math',
+    title: '土台',
+    blurb:
+      '幾何の連載が前提にしているもの。ベクトル空間、多変数の微積分、位相。どれも「何を仮定すれば話が始まるか」だけを見る。全 3 回。',
+  },
+  {
     slug: 'linear-algebra',
     field: 'math',
     title: '線形代数',

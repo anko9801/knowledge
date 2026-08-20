@@ -9,6 +9,10 @@
   order: 10,
   tags: ("数理論理学",),
   summary: "「私は証明できない」と述べる文を作る。三つの限界定理を証明して、集合論への借りを返し終える。",
+  provides: (
+    "incompleteness-theorem",
+    "tarski-undefinability",
+  ),
 )
 
 #let Prov = math.op("Prov")

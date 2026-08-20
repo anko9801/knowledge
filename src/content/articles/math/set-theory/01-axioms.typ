@@ -9,6 +9,10 @@
   order: 1,
   tags: ("集合論",),
   summary: "素朴集合論はなぜ壊れたのか。ZF の公理は一つ一つ何を買っているのか。",
+  provides: (
+    "russell-paradox",
+    "zfc-axioms",
+  ),
 )
 
 = 集合とは何ですか、と聞かれると困る

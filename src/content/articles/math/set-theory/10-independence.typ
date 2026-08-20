@@ -9,6 +9,7 @@
   order: 10,
   tags: ("集合論",),
   summary: "実数を ℵ₂ 本足しても基数が壊れないことを示す。Δ-システム補題から ccc を経て、Cohen の定理へ。",
+  provides: ("continuum-hypothesis",),
 )
 
 #let ON = $upright(sans("On"))$

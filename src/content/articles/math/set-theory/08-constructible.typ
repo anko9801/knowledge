@@ -9,6 +9,7 @@
   order: 8,
   tags: ("集合論",),
   summary: "冪集合を「定義できるものだけ」に絞ると、選択公理も一般連続体仮説も成り立つ痩せた宇宙ができる。",
+  provides: ("constructible-universe",),
 )
 
 #let ON = $upright(sans("On"))$

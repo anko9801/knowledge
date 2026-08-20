@@ -9,6 +9,10 @@
   order: 3,
   tags: ("解析力学",),
   summary: "要請した対称性の不変量を数え上げると、書ける L が尽きる。自由粒子はそれだけで決まる。そして対称性は保存量を生む。",
+  provides: (
+    "lagrangian",
+    "noether-theorem",
+  ),
 )
 
 

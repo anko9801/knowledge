@@ -9,6 +9,10 @@
   order: 1,
   tags: ("数理論理学",),
   summary: "対象言語とメタ言語の区別。形式化は何のためにあり、なぜ循環しないのか。",
+  provides: (
+    "formalization",
+    "object-vs-metalanguage",
+  ),
 )
 
 = 証明について証明したい

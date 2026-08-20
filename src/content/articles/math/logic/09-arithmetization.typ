@@ -9,6 +9,10 @@
   order: 9,
   tags: ("数理論理学",),
   summary: "論理式を数に置き換え、算術の中で算術について語らせる。自己言及を作る道具が対角化補題である。",
+  provides: (
+    "godel-numbering",
+    "diagonal-lemma",
+  ),
 )
 
 #let Fv = math.op("FV")

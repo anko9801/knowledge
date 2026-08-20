@@ -9,6 +9,7 @@
   order: 5,
   tags: ("数理論理学",),
   summary: "矛盾が出ないなら、その公理を満たす世界が本当にある。Henkin の構成で、記号列からモデルを作る。",
+  provides: ("completeness-theorem",),
 )
 
 #let Fv = math.op("FV")

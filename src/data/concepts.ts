@@ -401,6 +401,7 @@ export const concepts: readonly Concept[] = [
   c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
   c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),
   c('effect-typing', '作用の型付け', '読む必要のある範囲を型で宣言する。モナドと作用系', 'technique', 'cs', ['monad', 'referential-transparency']),
+  c('minimal-reproduction', '最小再現', '不具合を系の一部だけで再現する。切り出せる大きさは結合が決める', 'technique', 'cs', ['referential-transparency', 'coupling'], ['feedback-delay']),
   c('type-soundness', '型の健全性', '型が付けば実行時に詰まらない。progress と preservation', 'theorem', 'cs', ['simply-typed-lambda'], ['error-proneness']),
   c('mechanized-checking', '検査の機械化', '人が頭で保っていた不変量を、機械に確かめさせる', 'viewpoint', 'cs', ['type-soundness', 'loop-invariant'], ['cognitive-load', 'feedback-delay']),
 

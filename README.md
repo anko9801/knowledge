@@ -6,7 +6,7 @@
 
 ## 連載
 
-- [数学](https://anko9801.github.io/knowledge/math) — 集合論 12 本、数理論理学 10 本、土台 6 本、群と表現 1 本、測度と確率 4 本、線形代数 7 本、ベクトル解析 6 本、微分形式 7 本、Riemann 幾何 7 本
+- [数学](https://anko9801.github.io/knowledge/math) — 集合論 12 本、数理論理学 10 本、土台 6 本、群と表現 2 本、測度と確率 4 本、線形代数 7 本、ベクトル解析 6 本、微分形式 8 本、Riemann 幾何 8 本
 - [物理](https://anko9801.github.io/knowledge/physics) — 解析力学 5 本
 
 幾何の連載は「仮定した構造」で分けてある。土台（ベクトル空間・微積分・位相）→

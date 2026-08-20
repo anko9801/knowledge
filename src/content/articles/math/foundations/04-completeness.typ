@@ -17,6 +17,7 @@
     "banach-space",
     "banach-fixed-point",
     "function-space",
+    "ode-existence",
   ),
 )
 

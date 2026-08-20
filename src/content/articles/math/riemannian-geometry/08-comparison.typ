@@ -1,0 +1,205 @@
+#import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": *
+#import "/src/typst/layer.typ": layer
+
+#show: post.with(
+  title: "曲率で形が決まってしまう",
+  date: "2026-08-21",
+  field: "math",
+  series: "riemannian-geometry",
+  order: 8,
+  tags: ("Riemann 幾何",),
+  summary: "曲率に符号の条件を課すだけで、多様体の大きさや位相が決まってしまう。正なら有界、負なら普遍被覆が R^n。どちらも測地線が離れる速さを比べる、という一つの手口から出る。",
+  provides: (
+    "cartan-hadamard",
+    "euler-characteristic",
+  ),
+)
+
+#layer("L2 ＋ 接続", metric: true)[計量と曲率を使う。局所の条件から大域の結論を出す]
+
+= 局所の条件が、大域を縛る
+
+#link("/math/riemannian-geometry/7")[前回]の Gauss--Bonnet は
+$ integral_M K = 2 pi chi(M) $
+という等式だった。曲率を全部足すと位相不変量になる。
+
+この回は、もっと弱い仮定——#strong[曲率の符号だけ]——から何が言えるかを見る。
+不等式の形になるが、結論は大域的である。
+
+そして手口は一つしかない。#strong[測地線が離れる速さを、既知の空間と比べる。]
+
+#link("/math/riemannian-geometry/4")[第 4 回]の測地線偏差の方程式
+$ frac(D^2 xi, dif tau^2) = R(dot(gamma), xi) dot(gamma) $
+を思い出す。曲率が大きいほど、$xi$ を $0$ へ引き戻す力が強い。
+これは二階の常微分方程式なので、比較定理が使える。
+
+= 正の曲率は、空間を閉じ込める
+
+#theorem("Bonnet--Myers")[
+  完備な $n$ 次元 Riemann 多様体で、すべての単位ベクトル $u$ について
+  $ upright("Ric")(u, u) >= (n-1) k > 0 $
+  が成り立つなら、$M$ はコンパクトで、直径は $pi \/ sqrt(k)$ 以下である。
+  さらに基本群は有限になる。
+]<thm:myers>
+
+#proof[
+  長さ $L > pi \/ sqrt(k)$ の測地線 $gamma$ があったとして矛盾を導く。
+
+  $gamma$ に沿って、$dot(gamma)$ に直交する平行な単位ベクトル場 $e_1, dots, e_(n-1)$ を取り、
+  $ V_i (t) := sin(pi t \/ L) thin e_i (t) $
+  という変分場を考える。端点で $0$ になるので、$gamma$ を固定端で変形する。
+
+  長さの二階変分を計算して $i$ について足すと
+  $ sum_i I(V_i, V_i) = integral_0^L [(n-1) (pi\/L)^2 cos^2 - sin^2 dot upright("Ric")(dot(gamma), dot(gamma))] thin dif t $
+  になる。仮定 $upright("Ric") >= (n-1)k$ と $L > pi\/sqrt(k)$ から、この和は負になる。
+
+  すると、ある $i$ について $I(V_i, V_i) < 0$、
+  つまり#strong[長さを縮める変形が存在する]。
+  $gamma$ が最短測地線なら矛盾である。
+
+  よって最短測地線の長さは $pi \/ sqrt(k)$ 以下で、直径が抑えられる。
+  完備なので Hopf--Rinow より有界閉集合はコンパクト、したがって $M$ はコンパクト。
+  普遍被覆も同じ仮定を満たすのでコンパクトになり、基本群は有限である。
+]
+
+#strong[「曲率が正の下界を持つ」だけで、空間の大きさが決まった。]
+球面 $S^n$（半径 $1\/sqrt(k)$）が等号の場合で、直径がちょうど $pi\/sqrt(k)$ になる。
+
+#remark[
+  仮定は Ricci についてで、断面曲率ではない。
+  Ricci は断面曲率の平均なので、こちらのほうが弱い仮定である。
+  証明で $i$ について足したのは、その平均を作るためだった。
+
+  そして#strong[完備性が要る]。開球体は正の曲率を持てるがコンパクトでない。
+  「途中で切れていない」ことを仮定しないと、大域の結論は出ない。
+]
+
+= 負の曲率は、空間を開く
+
+符号を逆にすると、正反対の結論が出る。
+
+#theorem("Cartan--Hadamard")[
+  完備で単連結、断面曲率が至るところ $K <= 0$ の $n$ 次元多様体は、
+  $RR^n$ と微分同相である。
+  一般に（単連結でなくても）普遍被覆が $RR^n$ と微分同相になる。
+]<thm:cartan-hadamard>
+
+#proof[
+  $K <= 0$ のとき、測地線偏差の方程式は
+  $ frac(D^2 xi, dif tau^2) = -K abs(xi) thin(dots) >= 0 $
+  の形になり、$abs(xi)$ は凸関数になる。したがって $xi$ は途中で $0$ に戻らない。
+
+  $0$ に戻らない、というのが要点である。
+  $exp_p$ の微分が退化するのは共役点があるときで、共役点とは
+  「$xi$ が両端で $0$ になる非自明な解がある」ことだった。
+  それが起きないので、$exp_p : T_p M arrow M$ は至るところ非退化である。
+
+  完備性から $exp_p$ は全射（Hopf--Rinow）、
+  単連結性と被覆空間の議論から単射になり、微分同相が従う。
+]
+
+#strong[負曲率では、測地線が離れる一方で二度と交わらない。]
+だから接空間をそのまま貼り付けることができ、$RR^n$ と同じ形になる。
+
+#example[三つの型を並べる][
+  #table(
+    columns: (auto, auto, 1fr),
+    [曲率], [測地線], [大域の形],
+    [$K > 0$], [近づいて交わる], [コンパクト。直径が有界（@thm:myers）],
+    [$K = 0$], [平行のまま], [平坦。$RR^n$ の商],
+    [$K < 0$], [指数的に離れる], [普遍被覆が $RR^n$（@thm:cartan-hadamard）],
+  )
+
+  #link("/math/riemannian-geometry/5")[第 5 回]の定曲率空間の分類
+  （$S^n$、$RR^n$、$H^n$）が、この表の各行に対応する。
+  定曲率でなくても、符号さえ揃っていれば同じ結論が出る、というのが比較定理の値打ちである。
+]
+
+#strong[$K <= 0$ ならホモトピー的に自明。]
+普遍被覆が $RR^n$ なので可縮で、高次ホモトピー群がすべて消える。
+負曲率多様体の情報は、すべて基本群に入っていることになる。
+
+= Euler 標数
+
+前回の Gauss--Bonnet で使った $chi$ を、ここで定義しておく。
+
+#definition[
+  #link("/math/differential-forms/7")[de Rham コホモロジー]の次元
+  $b_k := dim H^k_(upright("dR"))(M)$ を Betti 数といい、
+  $ chi(M) := sum_k (-1)^k b_k $
+  を#strong[Euler 標数]と呼ぶ。
+]<def:euler>
+
+交代和を取るのが要点である。各 $b_k$ は微分同相不変だが、
+交代和にすると計算がずっと楽になり、しかも組合せ的な量と一致する。
+
+#proposition[
+  多面体を三角形分割したとき
+  $ chi = V - E + F $
+  （頂点、辺、面の数）が @def:euler と一致する。
+]<prop:euler-combinatorial>
+
+$S^2$ なら $chi = 1 - 0 + 1 = 2$、そして正多面体でも $V - E + F = 2$。
+どんな分割をしても同じ値になる。
+
+#table(
+  columns: (auto, auto, 1fr),
+  [$M$], [$chi$], [Gauss--Bonnet],
+  [$S^2$], [$2$], [$integral K = 4 pi$],
+  [$T^2$], [$0$], [$integral K = 0$。平坦な計量が入る],
+  [種数 $g$ の曲面], [$2 - 2g$], [$g >= 2$ なら $integral K < 0$],
+)
+
+最後の行が効く。#strong[種数 $2$ 以上の曲面には、$K > 0$ の計量が入らない。]
+入れたら $integral K > 0$ になるが、Gauss--Bonnet は $2 pi (2 - 2g) < 0$ を要求する。
+
+これも「曲率が位相を縛る」の一例である。
+@thm:myers が「大きさ」を縛ったのに対し、こちらは「どんな計量が入るか」を縛っている。
+
+= 何が起きていたのか
+
+三つの定理を並べると、形が同じである。
+
+#table(
+  columns: (auto, 1fr),
+  [Bonnet--Myers], [Ricci に正の下界 $arrow.r$ コンパクトで直径有界],
+  [Cartan--Hadamard], [断面曲率が $<= 0$ $arrow.r$ 普遍被覆が $RR^n$],
+  [Gauss--Bonnet], [曲率の総和 $=$ 位相不変量],
+)
+
+どれも#strong[局所で測れる量（曲率）から、大域的な結論]を出している。
+そして手口は、測地線の離れ方を既知の空間と比べることだった。
+
+比較の相手が定曲率空間なので、
+#link("/math/riemannian-geometry/5")[第 5 回]の分類がここで効いている。
+$S^n$、$RR^n$、$H^n$ の三つしかないからこそ、比較の基準になる。
+
+#remark[
+  この方向を推し進めると、条件をさらに緩めた比較定理が並ぶ。
+  Rauch の比較定理、Toponogov の三角形比較、Bishop--Gromov の体積比較。
+
+  そして「$1\/4 < K <= 1$ なら $S^n$ と同相」という球面定理まで行く。
+  曲率の範囲を狭めるほど、位相が絞られる。
+
+  逆向きに、位相を固定して「入りうる最良の計量」を探す道もある。
+  #link("/math/riemannian-geometry/7")[前回]触れた Ricci flow がそれで、
+  Poincaré 予想はその方向で解かれた。
+]
+
+= まとめ
+
+#table(
+  columns: (auto, 1fr),
+  [比較の手口], [測地線偏差を、定曲率空間のそれと比べる],
+  [Bonnet--Myers], [$upright("Ric") >= (n-1)k > 0$ ならコンパクト、直径 $<= pi\/sqrt(k)$],
+  [Cartan--Hadamard], [$K <= 0$ なら普遍被覆が $RR^n$。可縮],
+  [Euler 標数], [$chi = sum (-1)^k b_k = V - E + F$],
+  [縛りの向き], [曲率 $arrow.r$ 大きさ、位相、入りうる計量],
+)
+
+Riemann 幾何の中心的な問いは、この形をしている。
+#strong[計量の局所的な条件から、多様体の大域的な形をどこまで決められるか。]
+
+連載を通して仮定を足してきたが、足した先で最初に出てくる結論が、
+「もう自由には形を選べない」という制約だったことになる。

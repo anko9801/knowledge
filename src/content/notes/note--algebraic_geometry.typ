@@ -128,7 +128,7 @@ I \( V \( J \) \) & = sqrt(J) $
 
 + 可算無限個の相違なる元 $c_1 \, dots.h \, c_n \, dots.h$ を取り出し
   $k \[ x \]$ のイデアル $I_j = \( x - c_j \)$ とすると
-  $union.big_j V \( I_j \) = { c_1 \, c_2 \, dots.h }$
+  $display(union.big_j V \( I_j \) = { c_1 \, c_2 \, dots.h })$
   である。一方、可算無限次数の多項式は存在しないので
   $ V \( I_(j_1) inter dots.h.c inter I_(j_n) \) & = V ((product_(i = 1)^n \( x - c_(j_i) \))) = { c_(j_1) \, dots.h \, c_(j_n) }\
   union.big_j V \( I_j \) & subset.neq V (inter.big_j I_j) = V (\( 0 \)) = bb(A)_k^1 $

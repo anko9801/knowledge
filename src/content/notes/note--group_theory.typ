@@ -62,7 +62,7 @@ bb(Z)^times & = { plus.minus 1 } $
 
 + $\( a times b \) times c = a times \( b times c \)$
 
-+ $e := 1$, $a^(- 1) := 1 / a$
++ $e := 1$, $display(a^(- 1) := 1 / a)$
 
 群というのはこのようなものです。
 

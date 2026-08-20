@@ -155,7 +155,7 @@ $L$ の真価は次の補題にある。名前のとおり、大きいものを�
   $M prec L_delta$ より、$M$ は $L_delta$ が満たす文をすべて満たす。
   とくに $L_delta$ の住人が「すべての集合はある $L_alpha$ に属する」と言っているので、
   $M$ の住人もそう言う。絶対性より、$M$ の住人の言う $L_alpha$ は本物の $L_alpha$ である。
-  よって $M subset.eq union.big_(alpha < beta) L_alpha = L_beta$ であり、逆向きの包含も同様に従う。
+  よって $display(M subset.eq union.big_(alpha < beta) L_alpha = L_beta)$ であり、逆向きの包含も同様に従う。
 ]
 
 証明の骨は「$L$ の作り方が絶対だから、中の住人も同じ $L$ を作る」という一言である。

@@ -60,8 +60,8 @@ $ (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 & = sin^2 ep
     table.header([偏光状態], [$epsilon$],),
     table.hline(),
     [直線偏光], [$0 \, pi$],
-    [円偏光(右回転)], [$- pi / 2$],
-    [円偏光(左回転)], [$+ pi / 2$],
+    [円偏光(右回転)], [$display(- pi / 2)$],
+    [円偏光(左回転)], [$display(+ pi / 2)$],
   )]
   , caption: [偏光状態]
   , kind: table
@@ -82,7 +82,7 @@ $psi$ と楕円の形と偏光の回転の向きを記述するパラメータ $
   を用いて次のように書ける。
   $ tan \| chi \| & = a_eta / a_xi #h(2em) (- pi / 4 lt.eq chi lt.eq pi / 4) $
   ただし $chi$ が正ならば右偏光、負ならば左偏光である。特に
-  $chi = plus.minus pi / 4$ が円偏光、$chi = 0$ が直線偏光である。
+  $display(chi = plus.minus pi / 4)$ が円偏光、$chi = 0$ が直線偏光である。
 ]
 == Stokes パラメータ
 <stokes-パラメータ>
@@ -132,7 +132,7 @@ $ bb(R)_(gt.eq 0) times S^2 tilde.equiv bb(R)^3 $
 #proof[
 $psi = pi$ のとき $psi = 0$ と比べて,
 軸の正の向きは逆であるが主軸の方向は同じなので偏光楕円の軌跡は等しく,
-同一視できる. また, $chi = plus.minus pi / 4$ のとき,
+同一視できる. また, $display(chi = plus.minus pi / 4)$ のとき,
 偏光楕円が円に縮退している為,
 楕円偏光の長軸の角度を変えても楕円偏光の軌跡は等しく, 同一視できる.
 これより偏光楕円において同一視できる関係を $tilde.op$ とおくと,
@@ -141,8 +141,8 @@ $ \( psi = 0 \, chi \) & tilde.op \( psi = pi \, chi \) & \( - pi / 4 lt.eq chi 
 \( psi \, chi = pi / 4 \) & tilde.op \( psi' \, chi = pi / 4 \) & \( 0 lt.eq psi \, psi' lt.eq pi \)\
 \( psi \, chi = - pi / 4 \) & tilde.op \( psi' \, chi = - pi / 4 \) & \( 0 lt.eq psi \, psi' lt.eq pi \) $
 これより $psi$ を球面の経度, $chi$ を球面の緯度と捉えると $tilde.op$
-による同値類は2次元球面 $S^2$ と同相になる. 例えば $chi = pi / 4$
-は北極, $chi = 0$ は赤道, $chi = - pi / 4$ は南極と対応する. また,
+による同値類は2次元球面 $S^2$ と同相になる. 例えば $display(chi = pi / 4)$
+は北極, $chi = 0$ は赤道, $display(chi = - pi / 4)$ は南極と対応する. また,
 $psi = 0 \, pi$ が Greenwich 子午線として同一視される.
 $ {\( psi \, chi \) : 0 lt.eq psi lt.eq pi and - pi / 4 lt.eq chi lt.eq pi / 4} \/ tilde.op med tilde.equiv S^2 $
 さらに電場の強度 $\| E \|^2$ のパラメータ空間は非負実数空間
@@ -433,16 +433,16 @@ T^(1 \/ 4 upright("波長板")) & = T^(upright("遅相子")) (pi / 2) = mat(deli
     align: (center,center,center,center,),
     table.header([偏光状態], [Jones ベクトル], [1/2波長板], [1/4波長板],),
     table.hline(),
-    [直線偏光], [$vec(1, 0)$], [$i vec(1, 0)$], [$e^(i pi / 4) vec(1, 0)$],
-    [直線偏光], [$vec(0, 1)$], [$- i vec(0, 1)$], [$e^(- i pi / 4) vec(0, 1)$],
+    [直線偏光], [$vec(1, 0)$], [$i vec(1, 0)$], [$display(e^(i pi / 4) vec(1, 0))$],
+    [直線偏光], [$vec(0, 1)$], [$- i vec(0, 1)$], [$display(e^(- i pi / 4) vec(0, 1))$],
     [直線偏光 ($+ 45$°
-    方向)], [$1 / sqrt(2) vec(1, 1)$], [$1 / sqrt(2) vec(1, - 1)$], [$frac(1 + i, 2) vec(1, - i)$],
+    方向)], [$display(1 / sqrt(2) vec(1, 1))$], [$display(1 / sqrt(2) vec(1, - 1))$], [$display(frac(1 + i, 2) vec(1, - i))$],
     [直線偏光 ($- 45$°
-    方向)], [$1 / sqrt(2) vec(1, - 1)$], [$1 / sqrt(2) vec(1, 1)$], [$frac(1 + i, 2) vec(1, - 1)$],
+    方向)], [$display(1 / sqrt(2) vec(1, - 1))$], [$display(1 / sqrt(2) vec(1, 1))$], [$display(frac(1 + i, 2) vec(1, - 1))$],
     [円偏光
-    (左回転)], [$1 / sqrt(2) vec(1, i)$], [$i / sqrt(2) vec(1, - i)$], [],
+    (左回転)], [$display(1 / sqrt(2) vec(1, i))$], [$display(i / sqrt(2) vec(1, - i))$], [],
     [円偏光
-    (右回転)], [$1 / sqrt(2) vec(1, - i)$], [$i / sqrt(2) vec(1, i)$], [],
+    (右回転)], [$display(1 / sqrt(2) vec(1, - i))$], [$display(i / sqrt(2) vec(1, i))$], [],
   )]
   , caption: [偏光状態]
   , kind: table
@@ -637,7 +637,7 @@ tilde(bold(A)) & = - c integral tilde(bold(E)) d t = frac(c, i omega) tilde(bold
 $ tilde(bold(B)) & = upright(bold(nabla)) times tilde(bold(A)) = frac(c, i omega) upright(bold(nabla)) times tilde(bold(E))\
  & = (plus.minus k f + frac(partial g, partial y) \, i k f - frac(partial g, partial x) \, plus.minus i frac(partial f, partial x) - frac(partial f, partial y)) e^(i \( k z - omega t \))\
  & tilde.op plus.minus k tilde(bold(E)) $ ただしオーダー
-$O \( \( frac(1, k L) \)^2 \)$ の項は無視する近似を用いた. \
+$display(O \( \( frac(1, k L) \)^2 \))$ の項は無視する近似を用いた. \
 プリント間違っていそう. \
 #strong[Q 21B-58.] 物理的な電場を $bold(E) = Re tilde(bold(E))$
 とおくと上で議論したことから

@@ -180,7 +180,7 @@ $ u_j & = A e^(i j k a) e^(- i omega t) $
 $ - M omega^2 & = - K \( 2 - e^(- i k a) - e^(i k a) \) = - 2 K \( 1 - cos k a \) = - 4 K sin^2 frac(k a, 2)\
 omega & = 2 sqrt(K / M) lr(|sin frac(k a, 2)|) $ $omega$ と $k$
 の関係は分散関係 (dispersion relation) と呼ぶ。 このとき $omega$ は周期
-$frac(2 pi, a)$ で振動する。 $ k & = 0 #h(2em) omega = 0\
+$display(frac(2 pi, a))$ で振動する。 $ k & = 0 #h(2em) omega = 0\
 k & = pi / a #h(2em) omega = 2 sqrt(K / M)\
 k & = frac(2 pi, a) #h(2em) omega = 0 $
 

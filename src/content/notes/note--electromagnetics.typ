@@ -195,7 +195,7 @@ bold(A) \( bold(r) \) & = frac(mu_0, 4 pi) integral_V frac(bold(j) \( bold(r)' \
 #proof[
 任意の電磁ポテンシャル $\( phi.alt \, bold(A) \)$
 に対してゲージ変換し
-$\( phi.alt - frac(partial chi, partial t) \, bold(A) + upright(bold(nabla)) chi \)$
+$display(\( phi.alt - frac(partial chi, partial t) \, bold(A) + upright(bold(nabla)) chi \))$
 がクーロンゲージを満たすような $chi$ の表式は次のようになる。
 $ nabla^2 chi & = - upright(bold(nabla)) dot.op bold(A) arrow.l.r.double chi \( bold(r) \, t \) = frac(1, 4 pi) integral_V frac(upright(bold(nabla))_(bold(r)') dot.op bold(A) \( bold(r)' \, t \), \| bold(r) - bold(r)' \|) thin upright(d) bold(r)' $
 これよりクーロンゲージは存在する。クーロンゲージにおいて静電磁場における
@@ -213,7 +213,7 @@ $ (1 / c^2 frac(partial^2, partial t^2) - nabla^2) phi.alt & = rho / epsilon_0\
 #proof[
 任意の電磁ポテンシャル $\( phi.alt \, bold(A) \)$
 に対してゲージ変換し
-$\( phi.alt - frac(partial chi, partial t) \, bold(A) + upright(bold(nabla)) chi \)$
+$display(\( phi.alt - frac(partial chi, partial t) \, bold(A) + upright(bold(nabla)) chi \))$
 がローレンツゲージを満たすような $chi$ の条件は次のようになる。
 $ (1 / c^2 frac(partial^2, partial t^2) - nabla^2) chi = 1 / c^2 frac(partial phi.alt, partial t) + upright(bold(nabla)) dot.op bold(A) $
 また Maxwell

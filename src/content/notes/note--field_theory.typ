@@ -82,8 +82,8 @@ $L \/ M$, $M \/ K$ が有限次拡大なら $L \/ K$
 $l = \[ L : M \]$, $m = \[ M : K \]$,
 ${ x_1 \, dots.h.c \, x_l }$ を $L$ の $M$ 上の基底,
 ${ y_1 \, dots.h.c \, y_m }$ を $M$ の $K$ 上の基底とする. \
-このとき $z in L$ なら $a_i in M$ があり, $z = sum_i a_i x_i$ となる.
-また $b_(i j) in K$ があり $z = sum_(i \, j) b_(i j) x_i y_j$ となる.
+このとき $z in L$ なら $a_i in M$ があり, $display(z = sum_i a_i x_i)$ となる.
+また $b_(i j) in K$ があり $display(z = sum_(i \, j) b_(i j) x_i y_j)$ となる.
 よって,
 $B = { x_i y_j divides i = 1 \, dots.h.c \, l \, j = 1 \, dots.h.c \, m }$
 は $K$ 加群として $L$ を生成する.

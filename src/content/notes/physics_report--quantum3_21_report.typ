@@ -970,15 +970,15 @@ Hilbert 空間において 2, 3 個の同一の Bose 粒子, Fermi 粒子の Hil
     [Bose], [$\|alpha⟩$], [1], [$\|alpha⟩$],
     [Bose], [$\|alpha⟩ \, \|beta⟩$], [1], [$\|alpha⟩ \, \|beta⟩$],
     [Bose], [$\|alpha⟩$], [2], [$\|alpha⟩ \|alpha⟩$],
-    [Bose], [$\|alpha⟩ \, \|beta⟩$], [2], [$\|alpha⟩ \|alpha⟩ \, \|beta⟩ \|beta⟩ \, 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ + \|beta⟩ \|alpha⟩ \)$],
+    [Bose], [$\|alpha⟩ \, \|beta⟩$], [2], [$display(\|alpha⟩ \|alpha⟩ \, \|beta⟩ \|beta⟩ \, 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ + \|beta⟩ \|alpha⟩ \))$],
     [Bose], [$\|alpha⟩$], [3], [$\|alpha⟩ \|alpha⟩ \|alpha⟩$],
     [Bose], [$\|alpha⟩ \, \|beta⟩$], [3], [#figure(
       align(center)[#table(
         columns: 1,
         align: (center,),
         [$\|alpha⟩ \|alpha⟩ \|alpha⟩ \, \|beta⟩ \|beta⟩ \|beta⟩$,],
-        [$1 / sqrt(3) \( \|alpha⟩ \|alpha⟩ \|beta⟩ + \|alpha⟩ \|beta⟩ \|alpha⟩ + \|beta⟩ \|alpha⟩ \|alpha⟩ \)$,],
-        [$1 / sqrt(3) \( \|alpha⟩ \|beta⟩ \|beta⟩ + \|beta⟩ \|alpha⟩ \|beta⟩ + \|beta⟩ \|beta⟩ \|alpha⟩ \)$],
+        [$display(1 / sqrt(3) \( \|alpha⟩ \|alpha⟩ \|beta⟩ + \|alpha⟩ \|beta⟩ \|alpha⟩ + \|beta⟩ \|alpha⟩ \|alpha⟩ \))$,],
+        [$display(1 / sqrt(3) \( \|alpha⟩ \|beta⟩ \|beta⟩ + \|beta⟩ \|alpha⟩ \|beta⟩ + \|beta⟩ \|beta⟩ \|alpha⟩ \))$],
       )]
       , caption: [Bose, Fermi 粒子系の基底]
       , kind: table
@@ -988,7 +988,7 @@ Hilbert 空間において 2, 3 個の同一の Bose 粒子, Fermi 粒子の Hil
     [Fermi], [$\|alpha⟩$], [1], [なし],
     [Fermi], [$\|alpha⟩ \, \|beta⟩$], [1], [なし],
     [Fermi], [$\|alpha⟩$], [2], [なし],
-    [Fermi], [$\|alpha⟩ \, \|beta⟩$], [2], [$1 / sqrt(2) \( \|alpha⟩ \|beta⟩ - \|beta⟩ \|alpha⟩ \)$],
+    [Fermi], [$\|alpha⟩ \, \|beta⟩$], [2], [$display(1 / sqrt(2) \( \|alpha⟩ \|beta⟩ - \|beta⟩ \|alpha⟩ \))$],
     [Fermi], [$\|alpha⟩$], [3], [なし],
     [Fermi], [$\|alpha⟩ \, \|beta⟩$], [3], [なし],
   )]
@@ -1078,7 +1078,7 @@ $ {hat(a)_i 1 / sqrt(N !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|ph
 i_mu = i) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_(mu - 1))⟩, \|phi.alt_(i_(mu + 1))⟩ dots.h.c \|phi.alt_(i_N)⟩)\
 hat(a)_i^dagger 1 / sqrt(N !) "per" mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N + 1 \) !) "per" mat(delim: "[", \|phi.alt_i⟩, \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) $
 その上で個数演算子 $hat(n)_i = hat(a)_i^dagger hat(a)$ と全粒子数演算子
-$hat(N) = sum_(i in I) hat(n)_i$ と定義する.
+$display(hat(N) = sum_(i in I) hat(n)_i)$ と定義する.
 ]
 ]
 #theorem("Q21-35")[
@@ -1244,7 +1244,7 @@ $ {hat(c)_i 1 / sqrt(N !) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.
 i_mu = i) \( - 1 \)^mu det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_(mu - 1))⟩, \|phi.alt_(i_(mu + 1))⟩ dots.h.c \|phi.alt_(i_N)⟩)\
 hat(c)_i^dagger 1 / sqrt(N !) det mat(delim: "[", \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) = 1 / sqrt(\( N + 1 \) !) det mat(delim: "[", \|phi.alt_i⟩, \|phi.alt_(i_1)⟩ dots.h.c \|phi.alt_(i_N)⟩) $
 その上で個数演算子 $hat(n)_i = hat(c)_i^dagger hat(c)$ と全粒子数演算子
-$hat(N) = sum_(i in I) hat(n)_i$ と定義する.
+$display(hat(N) = sum_(i in I) hat(n)_i)$ と定義する.
 ]
 ]
 #theorem("Q21-50")[
@@ -1405,7 +1405,7 @@ $ cal(H)_(upright(M . P .)) := cases(delim: "{", cal(H)_(B o s e) & \( B o s e \
 更に消滅演算子や行列式, 交換関係の統一的な表記を次のように定義する.
 $ hat(b)_i & = cases(delim: "{", hat(a)_i & \( B o s e \), hat(c)_i & \( F e r m i \)) \, quad det^(\( plus.minus \)) = cases(delim: "{", "per" & \( + \), det & \( - \)) \, quad \[ hat(A) \, hat(B) \]_minus.plus = cases(delim: "{", \[ hat(A) \, hat(B) \] & \( - \), { hat(A) \, hat(B) } & \( + \)) $
 その上で個数演算子 $hat(n)_i = hat(b)_i^dagger hat(b)_i$
-と全粒子数演算子 $hat(N) = sum_(i in I) hat(n)_i$ を定義する.
+と全粒子数演算子 $display(hat(N) = sum_(i in I) hat(n)_i)$ を定義する.
 ]
 ]
 今までの Bose, Fermi 粒子系の定義, 定理を統一的に表記する.
@@ -2187,7 +2187,7 @@ $ {{ Q \( bold(r) \, s_z \; t \) \, P \( bold(r)' \, s_(z') \; t \) }_(P o i s s
 
 + 古典論での Poisson 括弧 ${ dot.op \, dot.op }_(P o i s s o n)$
   を量子論での
-  $frac(1, i planck) \[ dot.op \, dot.op \]_minus.plus$
+  $display(frac(1, i planck) \[ dot.op \, dot.op \]_minus.plus)$
   に書き換える.
 ]
 ]

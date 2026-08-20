@@ -291,7 +291,7 @@ $ a_xi^2 & = a_1^2 cos^2 psi + a_2^2 sin^2 psi + 2 a_1 a_2 cos epsilon cos psi s
 a_eta^2 & = a_1^2 cos^2 psi + a_2^2 sin^2 psi - 2 a_1 a_2 cos epsilon cos psi sin psi $
 が求まる. \
 #strong[Q 21B-10.] 条件式 @psi-condition において
-$tan 2 psi = tan 2 (psi + pi / 2)$ より位相を $pi \/ 2$
+$display(tan 2 psi = tan 2 (psi + pi / 2))$ より位相を $pi \/ 2$
 ずらしたものも解となる. これより $psi$ が解ならば
 $psi \, psi + pi \/ 2 \, psi + pi \, psi + 3 pi \/ 2$ は解となる.
 これは楕円を $psi$ だけ回転させたときに $psi \, psi + pi$ と
@@ -366,7 +366,7 @@ sin epsilon < 0 & arrow.l.r.double upright("「楕円偏光は右偏光である
 まずパラメータ $chi in bb(R)$ は短軸 $a_eta$, 長軸 $a_xi$
 を用いて次のように定義される. $ tan \| chi \| := a_eta / a_xi $
 楕円の軸の長さを一意に決定させるには $\| chi \|$ の範囲は
-$0 lt.eq \| chi \| lt.eq pi / 4$ である必要がある. このとき, 式
+$display(0 lt.eq \| chi \| lt.eq pi / 4)$ である必要がある. このとき, 式
 @axiaeta-a1a2,  と $a_xi \, a_eta \, a_1 \, a_2 > 0$ より
 $ sin 2 \| chi \| & = 2 sin \| chi \| cos \| chi \| = 2 tan \| chi \| cos^2 \| chi \|\
  & = frac(2 tan \| chi \|, 1 + tan^2 \| chi \|)\
@@ -374,7 +374,7 @@ $ sin 2 \| chi \| & = 2 sin \| chi \| cos \| chi \| = 2 tan \| chi \| cos^2 \| c
  & = frac(2 a_1 a_2, a_1^2 + a_2^2) \| sin epsilon \| $ となる.
 この式を用いて $chi$ を次のように再定義する.
 $ sin 2 chi & := - frac(2 a_1 a_2, a_1^2 + a_2^2) sin epsilon $<chi-def>
-これは $chi$ の範囲が $- pi / 4 lt.eq chi lt.eq pi / 4$ を満たすとき,
+これは $chi$ の範囲が $display(- pi / 4 lt.eq chi lt.eq pi / 4)$ を満たすとき,
 元の定義の拡張となっている.
 $ sin 2 chi = frac(2 tan chi, 1 + tan^2 chi) = & - frac(2 a_1 a_2, a_1^2 + a_2^2) sin epsilon\
 = & plus.minus frac(2 a_1 a_2, a_1^2 + a_2^2) \| sin epsilon \| & \( sin epsilon lt.gt 0 \)\
@@ -384,7 +384,7 @@ arrow.r.double.long & tan \| chi \| = a_eta / a_xi $ また,
 次の対応が分かる.
 $ chi gt.lt 0 arrow.l.r.double tan chi gt.lt 0 arrow.l.r.double sin epsilon lt.gt 0 arrow.l.r.double {upright("「楕円偏光は右偏光である。」")\
 upright("「楕円偏光は左偏光である。」") $ これより
-$- pi / 4 lt.eq chi lt.eq pi / 4$ という範囲のとき,
+$display(- pi / 4 lt.eq chi lt.eq pi / 4)$ という範囲のとき,
 楕円偏光の形と偏光の回転の向きを一意に決定できる. \
 #strong[Q 21B-13.]
 この問題では楕円偏光の中でも円偏光はどのような条件の下で生じるのかを考える.
@@ -413,7 +413,7 @@ $ a_xi^2 - a_eta^2 & = frac(a_1^2 - a_2^2, cos 2 psi) $ $a_xi \, a_eta$
 $ upright(s g n) \( a_1 - a_2 \) = upright(s g n) \( cos 2 psi \) $<sgn-psi>
 \
 #strong[Q 21B-16.] 式 @psi-condition, @chi-def, @sgn-psi,
-$- pi / 4 lt.eq chi lt.eq pi / 4$ より次の事がわかる.
+$display(- pi / 4 lt.eq chi lt.eq pi / 4)$ より次の事がわかる.
 $ cos^22 chi & = 1 - sin^22 chi = 1 - (frac(2 a_1 a_2, a_1^2 + a_2^2) sin epsilon)^2\
  & = (frac(a_1^2 - a_2^2, a_1^2 + a_2^2))^2 (1 - (frac(2 a_1 a_2, a_1^2 - a_2^2) cos^2 epsilon)^2)\
  & = (frac(a_1^2 - a_2^2, a_1^2 + a_2^2))^2 (1 - tan^22 psi)\
@@ -485,7 +485,7 @@ $tilde(E)_i = a_i e^(upright(i) epsilon_i)$ によって結びついている.
   の値は一意に定まる。偏光楕円が円に縮退している場合は, パラメータ $psi$
   の値は定まらない(どの値でもかまわない).
 
-+ パラメータ $chi$ は $- pi / 4 lt.eq chi lt.eq pi / 4$の範囲の値を取る.
++ パラメータ $chi$ は $display(- pi / 4 lt.eq chi lt.eq pi / 4)$の範囲の値を取る.
   偏光楕円の短半径 $a_eta$ と長半径 $a_xi$ を用いて
   $tan \| chi \| = a_eta \/ a_xi$ と書ける. $chi$ が正ならば右偏光,
   負ならば左偏光である. 特に $chi = plus.minus pi \/ 4$ が円偏光,
@@ -493,7 +493,7 @@ $tilde(E)_i = a_i e^(upright(i) epsilon_i)$ によって結びついている.
 
 $psi = pi$ のとき $psi = 0$ と比べて,
 軸の正の向きは逆であるが主軸の方向は同じなので偏光楕円の軌跡は等しく,
-同一視できる. また, $chi = plus.minus pi / 4$ のとき,
+同一視できる. また, $display(chi = plus.minus pi / 4)$ のとき,
 偏光楕円が円に縮退している為,
 楕円偏光の長軸の角度を変えても楕円偏光の軌跡は等しく, 同一視できる.
 これより偏光楕円において同一視できる関係を $tilde.op$ とおくと,
@@ -502,8 +502,8 @@ $ \( psi = 0 \, chi \) & tilde.op \( psi = pi \, chi \) & \( - pi / 4 lt.eq chi 
 \( psi \, chi = pi / 4 \) & tilde.op \( psi' \, chi = pi / 4 \) & \( 0 lt.eq psi \, psi' lt.eq pi \)\
 \( psi \, chi = - pi / 4 \) & tilde.op \( psi' \, chi = - pi / 4 \) & \( 0 lt.eq psi \, psi' lt.eq pi \) $
 これより $psi$ を球面の経度, $chi$ を球面の緯度と捉えると $tilde.op$
-による同値類は2次元球面 $S^2$ と同相になる. 例えば $chi = pi / 4$
-は北極, $chi = 0$ は赤道, $chi = - pi / 4$ は南極と対応する. また,
+による同値類は2次元球面 $S^2$ と同相になる. 例えば $display(chi = pi / 4)$
+は北極, $chi = 0$ は赤道, $display(chi = - pi / 4)$ は南極と対応する. また,
 $psi = 0 \, pi$ が Greenwich 子午線として同一視される.
 $ {\( psi \, chi \) : 0 lt.eq psi lt.eq pi and - pi / 4 lt.eq chi lt.eq pi / 4} \/ tilde.op med tilde.equiv S^2 $
 さらに電場の強度 $\| E \|^2$ のパラメータ空間は非負実数空間
@@ -552,13 +552,13 @@ $ bold(S) = mat(delim: "[", s_0; s_1; s_2; s_3) = mat(delim: "[", s_0, s_1, s_2,
     [直線偏光(垂直)], [鉛直 $cal(P)$ 状態:
     LNP], [$mat(delim: "[", 1, - 1, 0, 0)^top$], [$mat(delim: "[", 0, 1)^top$],
     [直線偏光($+ 45$°)], [+45° の $cal(P)$ 状態:
-    L+45P], [$mat(delim: "[", 1, 0, 1, 0)^top$], [$1 / sqrt(2) mat(delim: "[", 1, 1)^top$],
+    L+45P], [$mat(delim: "[", 1, 0, 1, 0)^top$], [$display(1 / sqrt(2) mat(delim: "[", 1, 1)^top)$],
     [直線偏光($- 45$°)], [$- 45$° の $cal(P)$ 状態:
-    L-45P], [$mat(delim: "[", 1, 0, - 1, 0)^top$], [$1 / sqrt(2) mat(delim: "[", 1, - 1)^top$],
+    L-45P], [$mat(delim: "[", 1, 0, - 1, 0)^top$], [$display(1 / sqrt(2) mat(delim: "[", 1, - 1)^top)$],
     [円偏光(右回転)], [$cal(R)$ 状態:
-    RCP], [$mat(delim: "[", 1, 0, 0, 1)^top$], [$1 / sqrt(2) mat(delim: "[", 1, upright(i))^top$],
+    RCP], [$mat(delim: "[", 1, 0, 0, 1)^top$], [$display(1 / sqrt(2) mat(delim: "[", 1, upright(i))^top)$],
     [円偏光(左回転)], [$cal(L)$ 状態:
-    LCP], [$mat(delim: "[", 1, 0, 0, - 1)^top$], [$1 / sqrt(2) mat(delim: "[", 1, - upright(i))^top$],
+    LCP], [$mat(delim: "[", 1, 0, 0, - 1)^top$], [$display(1 / sqrt(2) mat(delim: "[", 1, - upright(i))^top)$],
   )]
   , caption: [重要な偏光状態の Stokes ベクトル]
   , kind: table
@@ -995,7 +995,7 @@ tilde(bold(A)) & = - c integral tilde(bold(E)) d t = frac(c, upright(i) omega) t
 $ tilde(bold(B)) & = bold(nabla) times tilde(bold(A)) = frac(c, upright(i) omega) bold(nabla) times tilde(bold(E))\
  & = (plus.minus k f + frac(partial g, partial y) \, i k f - frac(partial g, partial x) \, plus.minus upright(i) frac(partial f, partial x) - frac(partial f, partial y)) e^(upright(i) \( k z - omega t \))\
  & tilde.op plus.minus k tilde(bold(E)) $ ただしオーダー
-$O \( \( frac(1, k L) \)^2 \)$ の項は無視する近似を用いた. \
+$display(O \( \( frac(1, k L) \)^2 \))$ の項は無視する近似を用いた. \
 プリント間違っていそう. \
 #strong[Q 21B-58.] 物理的な電場を $bold(E) = Re tilde(bold(E))$
 とおくと上で議論したことから

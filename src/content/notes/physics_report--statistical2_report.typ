@@ -147,7 +147,7 @@ $ frac(upright(d), upright(d) z) (\( 1 - z^2 \) frac(upright(d) Theta, upright(d
 $Theta_(l m) \( theta \)$ は
 $ Theta_(l m) \( theta \) & = \( - 1 \)^(frac(m + \| m \|, 2)) sqrt((l + 1 / 2) frac(\( l - \| m \| \) !, \( l + \| m \| \) !)) P_l^(\| m \|) \( cos theta \) $
 と書ける。また $R_l \( r \)$ については
-$rho = sqrt(frac(m omega, planck)) r$ と無次元化すると
+$display(rho = sqrt(frac(m omega, planck)) r)$ と無次元化すると
 $  & frac(upright(d)^2, upright(d) r^2) R_l \( r \) + 2 / r frac(upright(d), upright(d) r) R_l \( r \) + frac(2 m, planck^2) (E - 1 / 2 m omega^2 r^2 - frac(l \( l + 1 \) planck^2, 2 m r^2)) R_l \( r \) = 0\
  & frac(upright(d)^2, upright(d) rho^2) R_l \( rho \) + 2 / rho frac(upright(d), upright(d) rho) R_l \( rho \) + (lambda + rho^2 - frac(l \( l + 1 \), rho^2)) R_l \( rho \) = 0 & (lambda = frac(2 E, planck omega)) $
 となる。$x = rho^2$ と変数変換すると
@@ -174,7 +174,7 @@ $ E & = lambda / 2 planck omega = (2 n + l + 3 / 2) planck omega $
 #block[
 エネルギー準位が $0$ と $epsilon$ からなり、それぞれ $m \, n$
 重に縮重する互いに独立な $N$ 個の系が温度 $T$
-の熱平衡状態にあるとする。このときの分配関数、エネルギーの期待値、比熱を求めよ。$a = n \/ m \, beta = frac(1, k_B T)$
+の熱平衡状態にあるとする。このときの分配関数、エネルギーの期待値、比熱を求めよ。$display(a = n \/ m \, beta = frac(1, k_B T))$
 とおく。
 
 ]
@@ -189,7 +189,7 @@ $a lt.double 1$ の場合と $a gt.double 1$
 の場合について比熱は次のような表式となる。
 $ frac(C \( T \), N k_B) & = (frac(epsilon, k_B T))^2 frac(a e^(- epsilon \/ k_B T), \( 1 + a e^(- epsilon \/ k_B T) \)^2)\
  & = cases(delim: "{", (frac(epsilon, k_B T))^2 a e^(- epsilon \/ k_B T) & \( a lt.double 1 \), (frac(epsilon, k_B T))^2 frac(1, a e^(- epsilon \/ k_B T)) & \( a gt.double 1 \)) $
-このとき $x = frac(k_B T, epsilon)$ とおくと
+このとき $display(x = frac(k_B T, epsilon))$ とおくと
 $ frac(partial, partial x) (frac(C \( T \), N k_B)) & = cases(delim: "{", e^(- 1 \/ x) / x^4 \( 1 - 2 x \) & \( a lt.double 1 \), e^(1 \/ x) / x^4 \( - 1 - 2 x \) & \( a gt.double 1 \)) $
 よりピークはそれぞれ $1 \/ 2$,
 なしとなる。これより次のようなグラフとなる。
@@ -256,7 +256,7 @@ $D \( omega \) thin upright(d) omega$ を求めよ。固体を各辺の長さが
 $omega = v_l \| bold(k) \|$ より次のように書ける。
 $ bold(k) & = pi / L \( n_x \, n_y \, n_z \) #h(2em) (0 lt.eq n_i lt.eq root(3, N))\
 frac(omega L, v pi) & = sqrt(n_x^2 + n_y^2 + n_z^2) $ これより状態の数
-$D \( omega \)$ は速度 $v$ に対して $frac(omega L, v pi)$
+$D \( omega \)$ は速度 $v$ に対して $display(frac(omega L, v pi))$
 を半径とする第一象限の表面積と近似できる。
 $ D \( omega \) & = 1 / 8 frac(4 pi, 3) (frac(omega L, v_l pi))^3 + 2 / 8 frac(4 pi, 3) (frac(omega L, v_t pi))^3\
  & = frac(omega^3 L^3, 6 pi^2) (1 / v_l^3 + 2 / v_t^3)\
@@ -475,7 +475,7 @@ $q = sqrt(2 m \( V_0 - E \)) \/ planck$ の満たす式を求めよ。
 さらに、$E lt.double V_0$ として、$b V_0$ を一定に保ったまま
 $b arrow.r 0 \, V_0 arrow.r oo$ の極限をとったとき ($a$
 ごとにデルタ関数的な斥力が存在することに対応する)
-$P equiv frac(m a, planck^2) b V_0$ として、上で求めた式から、
+$display(P equiv frac(m a, planck^2) b V_0)$ として、上で求めた式から、
 $p a$ と $k a$ の満たすべき式を求め、$P = 3 pi \/ 2$ のときに、$E$
 の値を $k$ を横軸として拡張ゾーン形式により ($0 lt.eq k a lt.eq 4 pi$
 を含む適当な範囲で) 図示せよ。
@@ -539,7 +539,7 @@ E \( bold(k) \) & = plus.minus t sqrt(\( 1 + eta + xi \) \( 1 + eta^(- 1) + xi^(
 
 #block[
 逆格子空間の点
-$bold(k) = y / a hat(bold(k))_y med (0 lt.eq y lt.eq frac(2 pi, sqrt(3)))$
+$display(bold(k) = y / a hat(bold(k))_y med (0 lt.eq y lt.eq frac(2 pi, sqrt(3))))$
 における 2 つのエネルギー固有値を求めることにより $bold(k)$ が原点
 $Gamma$ から対称性の高い点 $K'$ を経由してブリルアン・ゾーン境界 $M$
 に達するまでのバンド構造の概形を図示せよ。
@@ -552,7 +552,7 @@ bold(k) dot.op bold(a)_2 & = (0 \, y / a) dot.op (0 \, sqrt(3) a) = sqrt(3) y $
 これよりエネルギー固有値は次のようになる。
 $ E \( bold(k) \) & = plus.minus t sqrt(\( 1 + eta + xi \) \( 1 + eta^(- 1) + xi^(- 1) \)) #h(2em) (eta = e^(i sqrt(3) / 2 y) \, xi = e^(i sqrt(3) y))\
  & = plus.minus t sqrt(3 + 4 cos (sqrt(3) / 2 y) + 2 cos (sqrt(3) y)) $
-$bold(k) = y / a hat(bold(k))_y med (0 lt.eq y lt.eq frac(2 pi, sqrt(3)))$
+$display(bold(k) = y / a hat(bold(k))_y med (0 lt.eq y lt.eq frac(2 pi, sqrt(3))))$
 の具体値を代入すると次のようになる。
 $ E (0 hat(bold(k))_y) & = plus.minus 3 t & E (frac(pi, sqrt(3) a) hat(bold(k))_y) & = plus.minus t & E (frac(4 pi, 3 sqrt(3) a) hat(bold(k))_y) & = 0 & E (frac(2 pi, sqrt(3) a) hat(bold(k))_y) & = plus.minus 3 t $
 よってバンド構造の概形は次のようになる。
@@ -692,7 +692,7 @@ $Delta E$ の $l$ 依存性と、似たようなスピンの揃わない状況 (
 #proof[
 系全体でスピンの向きが揃った
 ($theta \( bold(r) \) = theta_0$) 状態 $Theta_0$ とスピンの向きが平面波
-$theta \( x \, y \) = frac(pi y, l)$ に従う状態 $Pi_y$ のエネルギーの差
+$display(theta \( x \, y \) = frac(pi y, l))$ に従う状態 $Pi_y$ のエネルギーの差
 $Delta E$ について
 $ Delta E & = (J / 2 integral_A thin upright(d) bold(r) (upright(bold(nabla)) frac(pi y, l))^2 + c o n s t .) - (J / 2 integral_A thin upright(d) bold(r) \( upright(bold(nabla)) theta_0 \)^2 + c o n s t .)\
  & = J / 2 integral_A pi^2 / l^2 thin upright(d) bold(r) = J / 2 pi^2 $

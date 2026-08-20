@@ -311,7 +311,7 @@ $Y_n$ とする. $\( a \, phi.alt \) in X_n$ で代表される $Y_n$ の元に�
 $ sum_(i_1 \, dots.h.c \, i_n in bb(N)) a \( i_1 \, dots.h.c \, i_n \) x_(phi.alt \( 1 \))^(i_1) dots.h.c x_(phi.alt \( n \))^(i_n) $
 と書く. これは代表元のとりかたによらず定まる. ${ Y_n }_n$
 は集合族となり, $n lt.eq m$ なら $Y_n subset.eq Y_m$ とみなせる.
-$A \[ x_i \]_(i in I) = union.big_n Y_n$ と定義すればよい.
+$display(A \[ x_i \]_(i in I) = union.big_n Y_n)$ と定義すればよい.
 $A \[ x_i \]_(i in I)$
 が集合として存在するときそれを無限変数多項式環という.
 ]

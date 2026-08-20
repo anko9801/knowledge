@@ -28,7 +28,7 @@ $bold(B)$ が次の条件を満たすとき、$X$ 上の加法族と呼ぶ。
 
 + $A in bold(B)$ ならば $A^c in bold(B)$
 
-+ $A_n in bold(B)$ ならば $union.big_(n = 1)^oo A_n in bold(B)$
++ $A_n in bold(B)$ ならば $display(union.big_(n = 1)^oo A_n in bold(B))$
 ]
 #definition("測度")[
 $bold(B)$ を $X$ 上の加法族とするとき

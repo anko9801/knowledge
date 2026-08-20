@@ -140,7 +140,7 @@ $ g_(alpha beta ; mu) & = g_(alpha beta \, mu) - g_(nu beta) Gamma_(med alpha mu
 $ g_(alpha beta \, mu) & = g_(nu beta) Gamma_(med alpha mu)^nu + g_(alpha nu) Gamma_(med mu beta)^nu\
 g_(mu alpha \, beta) & = g_(nu alpha) Gamma_(med mu beta)^nu + g_(mu nu) Gamma_(med beta alpha)^nu\
 g_(beta mu \, alpha) & = g_(nu mu) Gamma_(med beta alpha)^nu + g_(beta nu) Gamma_(med alpha mu)^nu $
-適切に足し引きして両辺に $1 / 2 g^(alpha nu)$ を掛けると
+適切に足し引きして両辺に $display(1 / 2 g^(alpha nu))$ を掛けると
 $ 2 g_(alpha nu) Gamma_(med beta mu)^nu & = g_(alpha beta \, mu) + g_(mu alpha \, beta) - g_(beta mu \, alpha)\
 Gamma_(med beta mu)^nu & = 1 / 2 g^(alpha nu) (g_(alpha beta \, mu) + g_(mu alpha \, beta) - g_(beta mu \, alpha)) $
 よりクリストッフェル記号を計量テンソルで表すことができる。

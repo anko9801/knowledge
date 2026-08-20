@@ -37,7 +37,7 @@ $ \( gamma^5 \)^dagger = gamma^5 & arrow.l.r.double alpha_0 in bb(R) \, alpha_1 
 ]
 
 #block[
-$gamma_plus.minus = frac(1 plus.minus gamma^5, 2)$ とするとき
+$display(gamma_plus.minus = frac(1 plus.minus gamma^5, 2))$ とするとき
 $\( gamma_(+) \)^a$, $\( gamma_(-) \)^b$,
 $\( gamma_(+) \)^a \( gamma_(-) \)^b$,
 $\( gamma_(-) \)^b \( gamma_(+) \)^a$ ($a \, b in bb(Z)_(> 0)$) を
@@ -224,7 +224,7 @@ $ hat(bold(L)) dot.op hat(bold(S)) cal(Y)_(j \, m)^plus.minus \( theta \, phi.al
  & = planck^2 / 2 ((l plus.minus 1 / 2) (l plus.minus 1 / 2 + 1) - l \( l + 1 \) - 3 / 4) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 / 2 (plus.minus (l + 1 / 2) - 1 / 2) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  $ より固有値は
-$frac(planck^2 l, 2) \, - frac(planck^2 \( l + 1 \), 2)$
+$display(frac(planck^2 l, 2) \, - frac(planck^2 \( l + 1 \), 2))$
 となる。
 ]
 
@@ -239,14 +239,14 @@ $hat(bold(J))^2$ を作用させると
 $ hat(bold(J))^2 cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = planck^2 j \( j + 1 \) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 (l plus.minus 1 / 2) ((l plus.minus 1 / 2) + 1) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 ((l plus.minus 1 / 2 + 1 / 2)^2 - 1 / 4) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) $
-より固有値は $l^2 - 1 / 4 \, \( l + 1 \)^2 - 1 / 4$ となる。
+より固有値は $display(l^2 - 1 / 4 \, \( l + 1 \)^2 - 1 / 4)$ となる。
 ]
 
 #block[
 パウリ行列 $bold(sigma)$ と位置ベクトル
 $bold(r) = r \( sin theta cos phi.alt \, sin theta sin phi.alt \, cos theta \)$
 に対して
-$bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$
+$display(bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \))$
 を計算し、スピノル球関数のみを用いて表せ。
 
 ]
@@ -280,7 +280,7 @@ $ bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt 
 = 水素原子における電子のエネルギー準位
 <水素原子における電子のエネルギー準位>
 #block[
-中心力ポテンシャル $V \( r \) = - frac(alpha planck c, r)$
+中心力ポテンシャル $display(V \( r \) = - frac(alpha planck c, r))$
 のもとでディラック方程式を解くことにより得られる水素原子中の電子のエネルギー準位を考える。
 
 主量子数 $n$ が与えられたとき、全角運動量 $j$ が取り得る値を答えよ。

@@ -344,7 +344,7 @@ $thin upright(d) sigma$ の積は遷移確率 $T_(i f)$ と終状態数 $N_f$
 $p_f = \| bold(p)_C \| = \| bold(p)_D \|$
 $ W & = sqrt(s) = E_A + E_B = E_C + E_D = sqrt(p_C^2 + m_C^2) + sqrt(p_D^2 + m_D^2)\
 bold(0) & = bold(p)_A + bold(p)_B = bold(p)_C + bold(p)_D $ Fermi
-の黄金律より終状態密度 $rho_f = frac(upright(d) N, upright(d) E)$
+の黄金律より終状態密度 $display(rho_f = frac(upright(d) N, upright(d) E))$
 不変振幅 $M_(i f) = ⟨f\| V \|i⟩$
 $ W & = frac(2 pi, planck) \| ⟨f\| V \|i⟩ \|^2 frac(upright(d) N, upright(d) E) = frac(2 pi, planck) \| M_(i f) \|^2 rho_f $
 $ T_(i f) & = \( 2 pi \)^4 delta^(\( 4 \)) \( p_A + p_B - p_C - p_D \) \| M_(i f) \|^2\

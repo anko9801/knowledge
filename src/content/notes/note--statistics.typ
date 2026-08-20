@@ -338,7 +338,7 @@ $  & x_0 = 1 / 2 beta_0 \( E_2 - E_1 \) = 1 / 2 frac(E_2 - E_1, k_B T_0)\
  & frac(k_B T_0, E_2 - E_1) = frac(1, 2 x_0) = 0.41677827980048 dots.h $
 
 低温、高温で比熱が 0 となる理由は比熱が
-$C = frac(upright(d) E, upright(d) T)$ であることより Q15-3, Q15-4
+$display(C = frac(upright(d) E, upright(d) T))$ であることより Q15-3, Q15-4
 よりエネルギーの確率が極限的に定数となることから比熱は 0
 となることが分かる。
 
@@ -433,7 +433,7 @@ C & = integral_0^oo thin upright(d) omega g \( omega \) c \( omega \) = 3 N k_B 
 
 + (低温での固体の比熱の精密な振る舞い) 温度 $T$ が $0$
   に近付くとき、固体の比熱 $C$ は $C prop T^3$
-  であり、$lim_(T arrow.r 0) C = 0$ となる。
+  であり、$display(lim_(T arrow.r 0) C = 0)$ となる。
 
 ]
 高温の漸近領域において比熱 $C$ は次のようになる。
@@ -713,9 +713,9 @@ $phi \( bold(r)_1 \, bold(r)_2 \) = alpha phi \( bold(r)_2 \, bold(r)_1 \)$
   $e^(- 2 beta epsilon_1) + e^(- 2 beta epsilon_2) + e^(- 2 beta epsilon_3) + e^(- beta \( epsilon_1 + epsilon_2 \)) + e^(- beta \( epsilon_2 + epsilon_3 \)) + e^(- beta \( epsilon_3 + epsilon_1 \))$
 
 - ボルツマン統計:
-  $frac(1, 2 !) \( e^(- 2 beta epsilon_1) + e^(- 2 beta epsilon_2) + e^(- 2 beta epsilon_3) \)$
+  $display(frac(1, 2 !) \( e^(- 2 beta epsilon_1) + e^(- 2 beta epsilon_2) + e^(- 2 beta epsilon_3) \))$
   \
-  $1 / 2 e^(- 2 beta epsilon_1) + 1 / 2 e^(- 2 beta epsilon_2) + 1 / 2 e^(- 2 beta epsilon_3) + e^(- beta \( epsilon_1 + epsilon_2 \)) + e^(- beta \( epsilon_2 + epsilon_3 \)) + e^(- beta \( epsilon_3 + epsilon_1 \))$
+  $display(1 / 2 e^(- 2 beta epsilon_1) + 1 / 2 e^(- 2 beta epsilon_2) + 1 / 2 e^(- 2 beta epsilon_3) + e^(- beta \( epsilon_1 + epsilon_2 \)) + e^(- beta \( epsilon_2 + epsilon_3 \)) + e^(- beta \( epsilon_3 + epsilon_1 \)))$
 
 $ N & = - (frac(partial J, partial mu))_T = 1 / beta (frac(partial ln Xi \( beta \, mu \), partial mu)) $
 

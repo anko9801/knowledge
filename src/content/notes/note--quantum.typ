@@ -132,7 +132,7 @@ $ integral \| Psi \( bold(r) \, t \) \|^2 thin upright(d) bold(r) & = integral P
  & = s^2 ⟨\( hat(r)_i - ⟨hat(r)_i⟩ \)^2⟩ + s planck delta_(i j) + ⟨\( hat(p)_j - ⟨hat(p)_j⟩ \)^2⟩\
  & = s^2 Delta r_i^2 + s planck delta_(i j) + Delta p_j^2\
  & = (s + frac(planck delta_(i j), 2 Delta r_i^2))^2 Delta r_i^2 - frac(planck^2 delta_(i j), 4 Delta r_i^2) + Delta p_j^2 gt.eq 0 $
-$s = - frac(planck delta_(i j), 2 Delta r_i^2)$
+$display(s = - frac(planck delta_(i j), 2 Delta r_i^2))$
 とすると位置と運動量における不確定性原理が求まる。
 $ Delta r_i Delta p_j gt.eq planck / 2 delta_(i j) $
 ]
@@ -296,20 +296,20 @@ E_n & = (n + 1 / 2) planck omega $
 ]
 #proof[
 $ hat(H) = frac(hat(p)^2, 2 m) + 1 / 2 m omega^2 x^2 $
-位置を無次元量 $xi = sqrt(frac(m omega, planck)) x$ に変換する。
+位置を無次元量 $display(xi = sqrt(frac(m omega, planck)) x)$ に変換する。
 $ hat(H) psi \( x \) & = (- frac(planck^2, 2 m) frac(upright(d)^2, upright(d) x^2) + 1 / 2 m omega^2 x^2) psi \( x \) = frac(planck omega, 2) (- frac(upright(d)^2, upright(d) xi^2) + xi^2) psi \( xi \) = E psi \( xi \) $
-またエネルギーも無次元量 $epsilon.alt = frac(2, planck omega) E$
+またエネルギーも無次元量 $display(epsilon.alt = frac(2, planck omega) E)$
 に変換すると $ psi'' + (epsilon.alt - xi^2) psi \( xi \) = 0 $
-となる。この解は $psi \( xi \) = X \( xi \) e^(plus.minus xi^2 / 2)$
+となる。この解は $display(psi \( xi \) = X \( xi \) e^(plus.minus xi^2 / 2))$
 と予測されるのでこれを微分方程式に代入とすると
 $ X'' plus.minus 2 xi X' + \( epsilon.alt plus.minus 1 \) X = 0 $
 よりこの微分方程式の解 $X \( xi \)$ はエルミート多項式の定数倍
 $c H_n \( xi \)$ となる。 ここで、Hermite 多項式 $H_n \( x \)$ は次の
 Rodrigues 公式により定義される。
 $ H_n \( x \) = \( - 1 \)^n e^(x^2) frac(upright(d)^n, upright(d) x^n) e^(- x^2) $
-このとき無限大で発散する $psi \( xi \) = X \( xi \) e^(xi^2 / 2)$
+このとき無限大で発散する $display(psi \( xi \) = X \( xi \) e^(xi^2 / 2))$
 は不適。 TODO: なぜ $+$ の場合を排除できるのかを明確に記す。 これより
-$psi_n \( xi \) = c H_n \( xi \) e^(- xi^2 / 2)$
+$display(psi_n \( xi \) = c H_n \( xi \) e^(- xi^2 / 2))$
 となる。規格化条件を考えると
 $ integral_(bb(R)) psi_m^(\*) psi_n thin upright(d) xi & = c^2 integral_(bb(R)) (H_m \( xi \) e^(- xi^2 / 2))^(\*) H_n \( xi \) e^(- xi^2 / 2) thin upright(d) xi\
  & = c^2 integral_(bb(R)) H_m \( xi \) H_n \( xi \) e^(- xi^2) thin upright(d) xi\
@@ -433,7 +433,7 @@ $R \( rho \) = rho^(\| mu \|)$ が適する。
 $  & rho^2 R'' + rho R' - mu^2 R = 0 & \( rho arrow.r 0 \)\
  & rho^2 s \( s - 1 \) rho^(s - 2) + rho s rho^(s - 1) - mu^2 rho^s = 0\
  & \( s^2 - mu^2 \) rho^s = 0 $ $rho arrow.r oo$ のとき
-$R = e^(- rho^2 / 2)$ が適する。
+$display(R = e^(- rho^2 / 2))$ が適する。
 $  & rho R'' + R' - rho^3 R = 0 & \( rho arrow.r oo \)\
  & rho \( - 1 + rho^2 \) e^(- rho^2 / 2) - rho e^(- rho^2 / 2) - rho^3 e^(- rho^2 / 2) = 0 $
 この結果を用いて微分方程式に代入するとそれらはラゲールの陪関数によって補完されることが分かる。
@@ -500,7 +500,7 @@ P_l^m \( z \) & = \( 1 - z^2 \)^(m / 2) frac(upright(d)^m P_l \( z \), upright(d
 P_l^(- m) \( z \) & = \( - 1 \)^m frac(\( l - \| m \| \) !, \( l + \| m \| \) !) P_l^m \( z \)\
 P_l \( z \) & = 1 / 2^l frac(upright(d)^l, upright(d) z^l) \( z^2 - 1 \)^l $
 と書ける。また $R_l \( r \)$ については
-$R_l \( r \) = frac(chi_l \( r \), r)$ とおくと
+$display(R_l \( r \) = frac(chi_l \( r \), r))$ とおくと
 $ - frac(planck^2, 2 mu r) frac(upright(d)^2, upright(d) r^2) chi_l \( r \) + (V \( r \) + frac(l \( l + 1 \) planck^2, 2 mu r^2)) chi_l \( r \) = E chi_l \( r \) $
 となり, 1 次元のシュレーディンガー方程式に帰着する。
 ]
@@ -515,7 +515,7 @@ $ R_l \( xi \) & = alpha j_l \( xi \) + beta n_l \( xi \) $
 ]
 #proof[
 動径方向のシュレーディンガー方程式について
-$k^2 = frac(2 mu E, planck^2)$, $xi = k r$ とすると
+$display(k^2 = frac(2 mu E, planck^2))$, $xi = k r$ とすると
 $  & frac(upright(d)^2, upright(d) r^2) R_l \( r \) + 2 / r frac(upright(d), upright(d) r) R_l \( r \) + (frac(2 mu E, planck^2) - frac(l \( l + 1 \), r^2)) R_l \( r \) = 0\
  & frac(upright(d)^2, upright(d) xi^2) R_l \( xi \) + 2 / xi frac(upright(d), upright(d) xi) R_l \( xi \) + (1 - frac(l \( l + 1 \), xi^2)) R_l \( xi \) = 0 $
 となり, 一般解は球ベッセル関数 $j_l \( xi \)$ と球ノイマン関数
@@ -554,7 +554,7 @@ E_(n 0) & = frac(planck^2, 2 mu) (frac(n pi, 2 L))^2 $ $n$
 が奇数のときは $r arrow.r 0$ で発散する。これより $n$
 が偶数のときに限る。
 $ R_(n 0) \( r \) & = 1 / r sqrt(2 / L) sin \( frac(n pi, 2 L) r \) #h(2em) \( n : "偶数" \) $
-$l eq.not 0$ のとき $k^2 = frac(2 mu E, planck^2)$, $xi = k r$
+$l eq.not 0$ のとき $display(k^2 = frac(2 mu E, planck^2))$, $xi = k r$
 とおくと $R_(n l) \( r \)$ について球ベッセル微分方程式となる。
 $ xi^2 frac(upright(d)^2 R_l, upright(d) xi^2) + 2 xi frac(upright(d) R_l, upright(d) xi) + \( xi^2 - l \( l + 1 \) \) R_l \( xi \) = 0 $
 これより境界条件 $xi_(n l)$ を定めて となる。 球ベッセル関数
@@ -574,7 +574,7 @@ E & = lambda / 2 planck omega = (2 n + l + 3 / 2) planck omega $
 ]
 #proof[
 $ frac(upright(d)^2, upright(d) r^2) R_l \( r \) + 2 / r frac(upright(d), upright(d) r) R_l \( r \) + frac(2 mu, planck^2) (E - 1 / 2 mu omega^2 r^2 - frac(l \( l + 1 \) planck^2, 2 mu r^2)) R_l \( r \) = 0 $
-まず $rho = sqrt(frac(mu omega, planck)) r$ と無次元化する。
+まず $display(rho = sqrt(frac(mu omega, planck)) r)$ と無次元化する。
 $ frac(upright(d)^2, upright(d) rho^2) R_l \( rho \) + 2 / rho frac(upright(d), upright(d) rho) R_l \( rho \) + (lambda + rho^2 - frac(l \( l + 1 \), rho^2)) R_l \( rho \) & = 0 & (lambda = frac(2 E, planck omega)) $
 となる。$x = rho^2$ と変数変換すると
 $  & x frac(upright(d)^2, upright(d) x^2) R_l \( x \) + 3 / 2 frac(upright(d), upright(d) x) R_l \( x \) + 1 / 4 (lambda + x - frac(l \( l + 1 \), x)) R_l \( x \) = 0 $
@@ -599,7 +599,7 @@ E_n & = - frac(e^2, 8 pi epsilon.alt_0 a_B) 1 / n^2 $
 #proof[
 $ frac(upright(d)^2, upright(d) r^2) R_l \( r \) + 2 / r frac(upright(d), upright(d) r) R_l \( r \) + frac(2 mu, planck^2) (E + frac(e^2, 4 pi epsilon.alt_0 r) - frac(l \( l + 1 \) planck^2, 2 mu r^2)) R_l \( r \) = 0 $
 まず $rho = alpha r$,
-$alpha = 2 sqrt(frac(2 mu \| E \|, planck^2))$ と無次元化する。
+$display(alpha = 2 sqrt(frac(2 mu \| E \|, planck^2)))$ と無次元化する。
 $ frac(upright(d)^2, upright(d) rho^2) R_l \( rho \) + 2 / rho frac(upright(d), upright(d) rho) R_l \( rho \) + (1 / 4 + lambda / rho - frac(l \( l + 1 \), rho^2)) R_l \( rho \) & = 0 & (lambda = frac(e^2, 8 pi epsilon.alt_0 E) sqrt(frac(2 mu \| E \|, planck^2))) $
 $rho arrow.r oo$, $rho arrow.r 0$ のときの漸近解はそれぞれ
 $e^(- rho \/ 2)$, $rho^l$ となるので
@@ -1064,7 +1064,7 @@ E_n^(\( 2 \)) & = sum_(m eq.not n) frac(lr(|⟨phi.alt_m^(\( 0 \))\| V \|phi.alt
 
 #proposition[
 1 次元調和振動子
-$hat(H)_0 = frac(hat(p)^2, 2 m) + 1 / 2 m omega^2 hat(x)^2$ に摂動
+$display(hat(H)_0 = frac(hat(p)^2, 2 m) + 1 / 2 m omega^2 hat(x)^2)$ に摂動
 $hat(V) = alpha hat(x)^2$ を加える。
 ]
 = 散乱

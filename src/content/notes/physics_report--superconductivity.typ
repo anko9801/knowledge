@@ -123,7 +123,7 @@ $G \( bold(K) \)$ の絶対値が大きくなる条件は次のようになる�
 $ bold(K) dot.op bold(a)_1 = 2 pi m_1 \, quad bold(K) dot.op bold(a)_2 = 2 pi m_2 \, quad bold(K) dot.op bold(a)_3 = 2 pi m_3 $
 これは逆格子ベクトルの定義と等しいから $bold(K) = bold(G)_m$ となる。
 これを Laue の条件という。 また
-$\| bold(K) \| = \| bold(G)_m \| = 2 \| bold(k) \| sin theta = frac(2 pi, d)$
+$display(\| bold(K) \| = \| bold(G)_m \| = 2 \| bold(k) \| sin theta = frac(2 pi, d))$
 とおくと Bragg 条件 $ 2 d sin theta = n lambda $ となる。
 
 他にも 3 次元結晶 ($a perp b perp c$) で Miller 指数

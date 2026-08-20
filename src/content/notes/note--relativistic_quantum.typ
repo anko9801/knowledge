@@ -20,7 +20,7 @@
 $ H & mapsto H - q phi.alt \( bold(r) \, t \)\
 bold(p) & mapsto bold(p) - q bold(A) \( bold(r) \, t \) $ 一様な磁場
 $bold(B)$ の場合, ベクトルポテンシャルは
-$bold(A) = 1 / 2 bold(B) times bold(r)$ (対称ゲージ)
+$display(bold(A) = 1 / 2 bold(B) times bold(r))$ (対称ゲージ)
 と置くことができるので
 $ frac(1, 2 m) \( bold(p) - q bold(A) \) = frac(bold(p)^2, 2 m) - frac(q, 2 m) bold(B) dot.op bold(L) + frac(q^2, 8 m) \( bold(B)^2 bold(r)^2 - \( bold(B) dot.op bold(r) \)^2 \) $
 $sigma_i sigma_j = delta_(i j) + i epsilon.alt_(i j k) sigma_k$
@@ -287,9 +287,9 @@ $ \[ hat(H) \, hat(L)^i \] & = \[ c bold(alpha) dot.op hat(bold(p)) + beta m c^2
  & = - i planck c epsilon^(i j k) alpha^j p^k - i planck frac(upright(d) V, upright(d) r) (bold(r) times bold(r) / r)_i\
  & = - i planck c epsilon^(i j k) alpha^j p^k $
 ]
-(2) $Sigma^i := - i / 2 sum_(j \, k) epsilon^(i j k) alpha^j alpha^k$
+(2) $display(Sigma^i := - i / 2 sum_(j \, k) epsilon^(i j k) alpha^j alpha^k)$
 とするとき、$hat(H)$ とスピン角運動量
-$hat(bold(S)) = planck / 2 bold(Sigma)$ との交換関係を求めよ。
+$display(hat(bold(S)) = planck / 2 bold(Sigma))$ との交換関係を求めよ。
 
 #proof[
 $ \[ hat(H) \, hat(S)^i \] & = [c bold(alpha) dot.op hat(bold(p)) + beta m c^2 + V \( r \) \, - frac(i planck, 4) epsilon^(i j k) alpha^j alpha^k]\
@@ -365,7 +365,7 @@ $ \( gamma^5 \)^dagger = gamma^5 & arrow.l.r.double alpha_0 in bb(R) \, alpha_1 
 となる。ここでは特に $gamma^5 = gamma^0 gamma^1$ とする。
 
 #block[
-$gamma_plus.minus = frac(1 plus.minus gamma^5, 2)$ とするとき
+$display(gamma_plus.minus = frac(1 plus.minus gamma^5, 2))$ とするとき
 $\( gamma_(+) \)^a$, $\( gamma_(-) \)^b$,
 $\( gamma_(+) \)^a \( gamma_(-) \)^b$,
 $\( gamma_(-) \)^b \( gamma_(+) \)^a$ ($a \, b in bb(Z)_(> 0)$) を
@@ -540,7 +540,7 @@ $ hat(bold(L)) dot.op hat(bold(S)) cal(Y)_(j \, m)^plus.minus \( theta \, phi.al
  & = planck^2 / 2 ((l plus.minus 1 / 2) (l plus.minus 1 / 2 + 1) - l \( l + 1 \) - 3 / 4) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 / 2 (plus.minus (l + 1 / 2) - 1 / 2) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  $ より固有値は
-$frac(planck^2 l, 2) \, - frac(planck^2 \( l + 1 \), 2)$
+$display(frac(planck^2 l, 2) \, - frac(planck^2 \( l + 1 \), 2))$
 となる。
 ]
 
@@ -555,14 +555,14 @@ $hat(bold(J))^2$ を作用させると
 $ hat(bold(J))^2 cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = planck^2 j \( j + 1 \) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 (l plus.minus 1 / 2) ((l plus.minus 1 / 2) + 1) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)\
  & = planck^2 ((l plus.minus 1 / 2 + 1 / 2)^2 - 1 / 4) cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) $
-より固有値は $l^2 - 1 / 4 \, \( l + 1 \)^2 - 1 / 4$ となる。
+より固有値は $display(l^2 - 1 / 4 \, \( l + 1 \)^2 - 1 / 4)$ となる。
 ]
 
 #block[
 パウリ行列 $bold(sigma)$ と位置ベクトル
 $bold(r) = r \( sin theta cos phi.alt \, sin theta sin phi.alt \, cos theta \)$
 に対して
-$bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \)$
+$display(bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \))$
 を計算し、スピノル球関数のみを用いて表せ。
 
 ]
@@ -596,7 +596,7 @@ $ bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt 
 = 水素原子における電子のエネルギー準位
 <水素原子における電子のエネルギー準位>
 #block[
-中心力ポテンシャル $V \( r \) = - frac(alpha planck c, r)$
+中心力ポテンシャル $display(V \( r \) = - frac(alpha planck c, r))$
 のもとでディラック方程式を解くことにより得られる水素原子中の電子のエネルギー準位を考える。
 
 主量子数 $n$ が与えられたとき、全角運動量 $j$ が取り得る値を答えよ。

@@ -64,7 +64,7 @@ Poisson
 
 == 電位係数と静電容量
 <電位係数と静電容量>
-無限遠点において電位を $0$ とし $k_0 = frac(1, 4 pi epsilon_0)$ とする。
+無限遠点において電位を $0$ とし $display(k_0 = frac(1, 4 pi epsilon_0))$ とする。
 
 #block[
 真空中に電荷 $q_j eq.not 0$ を持つ導体に関して、他の導体の電荷を $0$
@@ -444,7 +444,7 @@ $ bold(H) \( r \) & = frac(1, 2 pi r) (- mu_0 / mu I) hat(theta) $
 これより単位長当たりに導線に働く力は次のようになる。
 $ F & = mu_0 I H \( 2 a \) = frac(mu_0 I, 4 pi a) (- mu_0 / mu I) = - frac(mu_0^2 I^2, 4 pi mu a) $
 よって磁性体に対して反発する方向に単位長当たり
-$frac(mu_0^2 I^2, 4 pi mu a)$ だけ力が働く。
+$display(frac(mu_0^2 I^2, 4 pi mu a))$ だけ力が働く。
 ]
 
 #block[
@@ -453,5 +453,5 @@ $frac(mu_0^2 I^2, 4 pi mu a)$ だけ力が働く。
 ]
 #proof[
 磁性体に対して反発する方向に単位長当たり
-$frac(mu_1^2 I^2, 4 pi mu_2 a)$ だけ力が働く。
+$display(frac(mu_1^2 I^2, 4 pi mu_2 a))$ だけ力が働く。
 ]

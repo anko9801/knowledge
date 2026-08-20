@@ -310,7 +310,8 @@ $omega + 1$ のほうは、自然数を全部並べた#strong[後ろ]に一つ�
   たとえば (2) の加法の場合を書いておく。$beta < gamma$ とする。
   $gamma = beta^+$ なら $alpha + gamma = (alpha + beta)^+ > alpha + beta$。
   $gamma$ が極限なら $beta^+ < gamma$ なので
-  $alpha + gamma = sup_(delta < gamma) (alpha + delta) >= alpha + beta^+ > alpha + beta$ である。
+  $ alpha + gamma = sup_(delta < gamma) (alpha + delta) >= alpha + beta^+ > alpha + beta $
+  である。
   (3) が狭義でないことは、$1 < 2$ でありながら $1 + omega = 2 + omega = omega$ となることから分かる。
 ]
 

@@ -342,9 +342,16 @@ export const concepts: readonly Concept[] = [
   //
   // それでも節点として置くのは、Dijkstra 1968 も Parnas 1972 も Brooks 1986 も、
   // 一次資料が明示的に認知の言葉で書かれているためである。事後の解釈ではない。
+  //
+  // ここは 1 本ではなく 2 本ある。容量（同時に何個置けるか）と誤り（人は間違え、
+  // その間違いは遅く見つかるほど高くつく）は別の事実である。混ぜると、健全性の
+  // 動機を容量で説明することになって外れる。型を付ける理由は「忘れるから」では
+  // なく「間違えるから」で、実際、依存型は容量をはっきり食う方に倒れている。
   c('working-memory-limit', '作業記憶の限界', '同時に保持できるチャンクは 4±1。Miller の 7±2 から Cowan へ', 'viewpoint', 'cognition'),
   c('chunking', 'チャンク化', '熟達は記憶容量ではなく、まとまりの認識で決まる。Chase--Simon のチェス実験', 'viewpoint', 'cognition', ['working-memory-limit']),
   c('cognitive-load', '認知負荷', '課題本来の負荷と、表現のせいで増えた負荷を分ける。Sweller', 'viewpoint', 'cognition', ['working-memory-limit']),
+  c('error-proneness', '人は間違える', '容量とは別の事実。無限に覚えられても、誤りの率は 0 にならない', 'viewpoint', 'cognition'),
+  c('feedback-delay', '発覚の遅れ', '同じ誤りでも、遅く見つかるほど直す費用が上がる。認知と経済の継ぎ目', 'viewpoint', 'cognition', ['error-proneness']),
 
   // --- 経済の制約（外部入力、その 2） ------------------------------------
   //
@@ -380,8 +387,9 @@ export const concepts: readonly Concept[] = [
   c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
   c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),
   c('effect-typing', '作用の型付け', '読む必要のある範囲を型で宣言する。モナドと作用系', 'technique', 'cs', ['monad', 'referential-transparency']),
-  c('type-soundness', '型の健全性', '型が付けば実行時に詰まらない。progress と preservation', 'theorem', 'cs', ['simply-typed-lambda']),
-  c('mechanized-checking', '検査の機械化', '人が頭で保っていた不変量を、機械に確かめさせる', 'viewpoint', 'cs', ['type-soundness', 'loop-invariant'], ['cognitive-load']),
+  c('type-soundness', '型の健全性', '型が付けば実行時に詰まらない。progress と preservation', 'theorem', 'cs', ['simply-typed-lambda'], ['error-proneness']),
+  c('mechanized-checking', '検査の機械化', '人が頭で保っていた不変量を、機械に確かめさせる', 'viewpoint', 'cs', ['type-soundness', 'loop-invariant'], ['cognitive-load', 'feedback-delay']),
+  c('deliberate-unsoundness', '意図的な不健全性', 'Java の共変配列、TypeScript の any。直感に合う方を採ると穴が開く', 'viewpoint', 'cs', ['type-soundness'], ['cognitive-load']),
   c('load-tradeoff', '負荷の配分', '負荷は消えず移るだけ。GC は実行時へ、所有権は記述へ', 'viewpoint', 'cs', ['mechanized-checking'], ['essential-accidental']),
   c('cyclomatic-complexity', '循環的複雑度', '制御フローグラフの独立閉路数。グラフの量であって、認知の量ではない', 'definition', 'cs', ['structured-programming', 'connectedness']),
 
@@ -398,12 +406,16 @@ export const concepts: readonly Concept[] = [
   //   論理の制約 不正な状態を型で作れなくする。健全性とパラメトリシティ
   //   機械の制約 共有可変状態が無ければ、データ競合も無い
   //
+  // 論理の制約も「考えなくてよくなる」ので動機は認知側にある。ただし動機と
+  // 判定は別で、健全性が成り立つかどうかを認知負荷から決めることはできない。
+  // 逆を向く例があるので、そこは deliberate-unsoundness に置いてある。
+  //
   // 経済の制約（変更の波及）は情報隠蔽と安定依存に着き、関数型に固有ではない。
   // 純粋性でも代数的データ型でも直接には出てこない。そこは分けて置く。
   c('higher-order-function', '高階関数', 'map と fold は、ループの型に名前を付けたもの。チャンク化の具体形', 'definition', 'cs', ['lambda-calculus'], ['chunking']),
   c('mutable-state-as-goto', '可変状態は goto である', 'Backus 1978。構造化が制御フローで消したものを、データフローで消す', 'viewpoint', 'cs', ['structured-programming', 'referential-transparency'], ['cognitive-load']),
-  c('exhaustiveness-checking', '網羅性検査', '場合分けの漏れを機械が見る。直和型があって初めて成り立つ', 'technique', 'cs', ['algebraic-data-type', 'mechanized-checking']),
-  c('illegal-states-unrepresentable', '不正な状態を作れなくする', 'bool 3 つで 8 通りではなく、あり得る 4 通りだけを直和で書く', 'viewpoint', 'cs', ['exhaustiveness-checking', 'type-soundness']),
+  c('exhaustiveness-checking', '網羅性検査', '場合分けの漏れを機械が見る。直和型があって初めて成り立つ', 'technique', 'cs', ['algebraic-data-type', 'mechanized-checking'], ['feedback-delay']),
+  c('illegal-states-unrepresentable', '不正な状態を作れなくする', 'bool 3 つで 8 通りではなく、あり得る 4 通りだけを直和で書く', 'viewpoint', 'cs', ['exhaustiveness-checking', 'type-soundness'], ['error-proneness']),
   c('purity-and-concurrency', '純粋性と並行性', '共有可変状態が無ければ、データ競合も無い。認知ではなく機械の側の理由', 'theorem', 'cs', ['immutability', 'interleaving']),
 
   // --- 計算機の構成 -----------------------------------------------------

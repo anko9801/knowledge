@@ -113,6 +113,41 @@ body {
   }
 }
 
+/*
+ * 全角約物（）、。「」の左右アキを詰める。
+ *
+ * 全角括弧は 1em 幅で、片側半分が空白として glyph に埋まっている。
+ * 「文中（注）です」の（ の前と ）の後に半角ぶんの隙間が見えるのはこれ。
+ *
+ * 上の text-spacing-trim では詰まらない。文中を詰める値は trim-both と
+ * trim-all だが、2026 年 8 月現在どのブラウザにも実装が無い（Chrome に
+ * あるのは normal / space-all / space-first / trim-start の 4 つで、
+ * どれも効くのは行頭・行末と約物どうしの連続だけ）。
+ *
+ * そこで OpenType の palt（プロポーショナルメトリクス）で詰める。
+ * Noto Serif CJK JP・ヒラギノ明朝・游明朝はいずれも持っている。
+ * 持たないフォント（MS 明朝など）では黙って無視されるだけなので、
+ * 上の text-spacing-trim がそのまま保険として残る。
+ *
+ * 逆に palt が効いたフォントでは約物が常に詰まるため text-spacing-trim は
+ * 上書きされる。両方書いてあるのは、どちらが効くかがフォント任せだからで、
+ * 二重掛けではない。
+ *
+ * 等幅で組む場所は対象外にする。コードの桁が揃わなくなる。
+ */
+html {
+  font-feature-settings:
+    'palt' 1,
+    'kern' 1;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-feature-settings: normal;
+}
+
 @supports (word-break: auto-phrase) {
   h1,
   h2,

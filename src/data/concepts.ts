@@ -298,6 +298,55 @@ export const concepts: readonly Concept[] = [
   c('public-key-encryption', '公開鍵暗号', '鍵を配らずに暗号化する', 'definition', 'cs', ['semantic-security']),
   c('zero-knowledge', 'ゼロ知識証明', '正しさだけを伝え、他は何も伝えない', 'definition', 'cs', ['security-reduction', 'np-completeness']),
 
+  // --- 型と計算 ---------------------------------------------------------
+  //
+  // 関数型言語はここに落ちる。Haskell も OCaml も処理系という人工物なので
+  // 概念ではないが、その中身——評価戦略、型推論、代数的データ型——は
+  // λ 計算の定理そのものである。言語仕様ではなく定理の側を概念に採る。
+  c('lambda-calculus', 'λ 計算', '関数の適用と抽象だけで計算を書く', 'definition', 'cs', ['formalization']),
+  c('church-rosser', 'Church--Rosser の定理', '簡約の順序を変えても行き着く先は一つ', 'theorem', 'cs', ['lambda-calculus']),
+  c('evaluation-strategy', '評価戦略', '値呼びと名前呼び。答えは同じでも停止するかが違う', 'viewpoint', 'cs', ['church-rosser']),
+  c('simply-typed-lambda', '単純型付き λ 計算', '型を付けると停止性が保証される', 'definition', 'cs', ['lambda-calculus']),
+  c('strong-normalization', '強正規化', '型が付けば必ず停止する。だから万能ではなくなる', 'theorem', 'cs', ['simply-typed-lambda', 'halting-problem']),
+  c('curry-howard', 'Curry--Howard 対応', '型は命題、プログラムは証明', 'theorem', 'cs', ['simply-typed-lambda', 'proof-system']),
+  c('algebraic-data-type', '代数的データ型', '直和と直積。型は代数をなす', 'definition', 'cs', ['simply-typed-lambda']),
+  c('polymorphism', '多相', 'System F。型を引数に取る', 'definition', 'cs', ['simply-typed-lambda']),
+  c('type-inference', '型推論', 'Hindley--Milner。単一化で型を復元する', 'technique', 'cs', ['polymorphism']),
+  c('parametricity', 'パラメトリシティ', '型だけから定理が出る。自由定理', 'theorem', 'cs', ['polymorphism']),
+  c('monad', 'モナド', '副作用を型に押し込む。合成の結合律だけが本体', 'definition', 'cs', ['algebraic-data-type', 'polymorphism']),
+
+  // --- 計算機の構成 -----------------------------------------------------
+  //
+  // 「x86 の MOV がこう動く」は Intel がそう書いたからで、概念ではなく事例。
+  // 概念として載るのは「なぜその設計になるか」が言える部分だけである。
+  // 制約（速い記憶は高い、依存のある命令は重ねられない）を仮定に置けば、
+  // そこから先は論理で決まる。人工物そのものは本文の例に回す。
+  c('locality', '参照の局所性', 'プログラムは直前に触った場所の近くを触る。観測事実', 'viewpoint', 'cs'),
+  c('memory-hierarchy', 'メモリ階層', '局所性を仮定すると、平均アクセス時間は最上位のそれに近づく', 'theorem', 'cs', ['locality']),
+  c('amdahl-law', 'Amdahl の法則', '逐次部分が並列化の上限を決める。純粋な算術', 'theorem', 'cs'),
+  c('instruction-dependency', '命令間の依存', '実行順を縛るのはデータの依存だけ。依存グラフ', 'definition', 'cs', ['relation-order']),
+  c('pipelining', 'パイプライン', '依存が無ければ重ねられる。ハザードは依存の別名', 'technique', 'cs', ['instruction-dependency']),
+  c('branch-prediction', '分岐予測', '当てられる上限は分岐列のエントロピー', 'technique', 'cs', ['pipelining', 'entropy']),
+  c('ilp-limit', '命令レベル並列の限界', '依存グラフのクリティカルパスより速くならない', 'theorem', 'cs', ['pipelining', 'amdahl-law']),
+  c('floating-point', '浮動小数点', '実数を有限個で置き換える。丸めは相対誤差で抑えられ、桁落ちだけが抑えられない', 'definition', 'cs', ['completeness']),
+  c('cache-coherence', 'キャッシュ整合性', '同じ番地の複数のコピーが一つに見えること', 'definition', 'cs', ['memory-hierarchy', 'linearizability']),
+
+  // --- 並行と分散 -------------------------------------------------------
+  //
+  // OS もカーネルも人工物だが、「なぜプロセスを分けるのか」「並行の正しさとは
+  // 何か」は定理として言える。Linux は事例、相互排除と合意が概念である。
+  c('interleaving', 'インタリーブ', '並行実行とは、逐次実行の交錯の全体である', 'definition', 'cs', ['turing-machine']),
+  c('mutual-exclusion', '相互排除', '同時に入れない区間。共有メモリだけで作れる（Peterson）', 'theorem', 'cs', ['interleaving']),
+  c('deadlock', 'デッドロック', '待ちのグラフに閉路ができること。Coffman の四条件', 'theorem', 'cs', ['mutual-exclusion', 'relation-order']),
+  c('linearizability', '線形化可能性', '並行な履歴の正しさを、逐次の履歴に写せるかで定義する', 'definition', 'cs', ['interleaving']),
+  c('memory-model', 'メモリモデル', '書き込みがどの順で見えてよいか。逐次一貫性は高くつく', 'definition', 'cs', ['linearizability']),
+  c('consensus', '合意', '全員が同じ値を選ぶ。並行の難しさはここに集まる', 'definition', 'cs', ['linearizability']),
+  c('consensus-number', '合意数', 'Herlihy の階層。CAS は無限、読み書きだけでは 2 に届かない', 'theorem', 'cs', ['consensus', 'mutual-exclusion']),
+  c('flp-impossibility', 'FLP 不可能性', '非同期で 1 台落ちるなら、合意する手続きは存在しない', 'theorem', 'cs', ['consensus']),
+  c('process-isolation', 'プロセス分離', '互いに壊せないことを要請すると、アドレス空間を分けることになる', 'viewpoint', 'cs', ['interleaving']),
+  c('virtual-memory', '仮想記憶', '番地を写像にする。分離と多重化が同時に手に入る', 'technique', 'cs', ['process-isolation', 'memory-hierarchy']),
+  c('crash-consistency', 'クラッシュ整合性', 'いつ落ちても壊れないこと。ログは順序の保証で買う', 'technique', 'cs', ['linearizability']),
+
   // --- 量子力学（線形代数から論理的に決まる部分） -----------------------
   //
   // 「観測量はエルミート作用素」という要請は、測定値が実数で確率が 1 に
@@ -376,9 +425,7 @@ export const concepts: readonly Concept[] = [
   //
   // 「どの統語理論が正しいか」は経験的だが、
   // 「この文の意味をどう組み上げるか」は型付きλ計算で決まる。
-  c('lambda-calculus', 'λ 計算', '関数の適用と抽象だけで計算を書く', 'definition', 'cs', ['formalization']),
-  c('simply-typed-lambda', '単純型付き λ 計算', '型を付けると停止性が保証される', 'definition', 'cs', ['lambda-calculus']),
-  c('curry-howard', 'Curry--Howard 対応', '型は命題、プログラムは証明', 'theorem', 'cs', ['simply-typed-lambda', 'proof-system']),
+  // λ 計算そのものは「型と計算」に置いてある。ここは言語学側の辺だけ。
   c('compositionality', '合成性', '全体の意味は部分の意味と組み方で決まる', 'viewpoint', 'linguistics', ['simply-typed-lambda']),
   c('montague-semantics', 'モンタギュー意味論', '自然文を型付き λ 項に翻訳する', 'technique', 'linguistics', ['compositionality', 'structure-semantics']),
   c('generalized-quantifier', '一般化量化子', '「すべての」「ほとんどの」を集合の集合として扱う', 'definition', 'linguistics', ['montague-semantics']),
@@ -483,6 +530,21 @@ export const goals: readonly Goal[] = [
     id: 'crypto',
     label: '公開鍵暗号の安全性証明が読める',
     needs: ['public-key-encryption', 'zero-knowledge'],
+  },
+  {
+    id: 'types',
+    label: '型が命題であることが分かる',
+    needs: ['curry-howard', 'parametricity', 'type-inference'],
+  },
+  {
+    id: 'architecture',
+    label: '計算機の設計が制約から読める',
+    needs: ['ilp-limit', 'virtual-memory', 'cache-coherence'],
+  },
+  {
+    id: 'concurrency',
+    label: '並行の正しさが定義できる',
+    needs: ['flp-impossibility', 'consensus-number', 'memory-model'],
   },
   {
     id: 'quantum',

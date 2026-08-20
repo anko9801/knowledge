@@ -17,3 +17,6 @@ src/styles/typst-math.css
 
 .DS_Store
 *.log
+
+# Claude Code の作業用 worktree。セッションごとに作られる。
+.claude/worktrees/

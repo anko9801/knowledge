@@ -206,6 +206,7 @@ export const concepts: readonly Concept[] = [
   c('elementary-substructure', '初等部分構造', '同じ論理式を満たす部分構造', 'definition', 'math', ['satisfaction']),
   c('computability', '計算可能性', '手続きで答えが出るとは何か', 'definition', 'math', ['formalization']),
   c('halting-problem', '停止問題', '決定できない問題が存在する', 'theorem', 'math', ['computability']),
+  c('rice-theorem', 'Rice の定理', '非自明な意味的性質はすべて決定不能。停止問題の一般化', 'theorem', 'math', ['halting-problem']),
   c('godel-numbering', 'ゲーデル数化', '論理式と証明を自然数で符号化する', 'technique', 'math', ['first-order-syntax', 'computability']),
   c('diagonal-lemma', '対角化補題', '自分自身に言及する文が作れる', 'theorem', 'math', ['godel-numbering']),
   c('incompleteness-theorem', '不完全性定理', '無矛盾なら証明も反証もできない文がある', 'theorem', 'math', ['diagonal-lemma', 'proof-system']),
@@ -347,10 +348,18 @@ export const concepts: readonly Concept[] = [
   // その間違いは遅く見つかるほど高くつく）は別の事実である。混ぜると、健全性の
   // 動機を容量で説明することになって外れる。型を付ける理由は「忘れるから」では
   // なく「間違えるから」で、実際、依存型は容量をはっきり食う方に倒れている。
+  //
+  // 誤りの側を認知負荷理論に求めても出てこない。CLT は誤り率を負荷の**指標**
+  // として使うだけで、誤りをモデル化していない。誤りの分類は Reason と
+  // Rasmussen と Norman、検査器の取捨は Rice の定理の側にある。分けて置く。
   c('working-memory-limit', '作業記憶の限界', '同時に保持できるチャンクは 4±1。Miller の 7±2 から Cowan へ', 'viewpoint', 'cognition'),
   c('chunking', 'チャンク化', '熟達は記憶容量ではなく、まとまりの認識で決まる。Chase--Simon のチェス実験', 'viewpoint', 'cognition', ['working-memory-limit']),
   c('cognitive-load', '認知負荷', '課題本来の負荷と、表現のせいで増えた負荷を分ける。Sweller', 'viewpoint', 'cognition', ['working-memory-limit']),
+  c('element-interactivity', '要素間相互作用', 'CLT で唯一の量に近い概念。同時に噛み合う要素の数が本来の難しさを決める', 'definition', 'cognition', ['cognitive-load']),
+  c('expertise-reversal', '熟達逆転効果', '初心者を助ける支援が、熟練者には妨げになる。負荷は読み手に相対的', 'theorem', 'cognition', ['chunking', 'cognitive-load']),
+  c('simple-vs-easy', '単純と容易', 'Hickey。単純は要素間相互作用が少ないこと、容易は自分のスキーマに合うこと', 'viewpoint', 'cs', ['element-interactivity', 'expertise-reversal']),
   c('error-proneness', '人は間違える', '容量とは別の事実。無限に覚えられても、誤りの率は 0 にならない', 'viewpoint', 'cognition'),
+  c('error-taxonomy', '誤りの分類', 'Rasmussen の技能・規則・知識、Reason の slip と mistake。CLT の外にある', 'definition', 'cognition', ['error-proneness']),
   c('feedback-delay', '発覚の遅れ', '同じ誤りでも、遅く見つかるほど直す費用が上がる。認知と経済の継ぎ目', 'viewpoint', 'cognition', ['error-proneness']),
 
   // --- 経済の制約（外部入力、その 2） ------------------------------------
@@ -389,7 +398,20 @@ export const concepts: readonly Concept[] = [
   c('effect-typing', '作用の型付け', '読む必要のある範囲を型で宣言する。モナドと作用系', 'technique', 'cs', ['monad', 'referential-transparency']),
   c('type-soundness', '型の健全性', '型が付けば実行時に詰まらない。progress と preservation', 'theorem', 'cs', ['simply-typed-lambda'], ['error-proneness']),
   c('mechanized-checking', '検査の機械化', '人が頭で保っていた不変量を、機械に確かめさせる', 'viewpoint', 'cs', ['type-soundness', 'loop-invariant'], ['cognitive-load', 'feedback-delay']),
-  c('deliberate-unsoundness', '意図的な不健全性', 'Java の共変配列、TypeScript の any。直感に合う方を採ると穴が開く', 'viewpoint', 'cs', ['type-soundness'], ['cognitive-load']),
+
+  // 検査器の取捨は、心理ではなく決定可能性が決めている。
+  //
+  // 「落ちない」は非自明な意味的性質なので、Rice の定理から決定不能。だから
+  // 停止する検査器は必ず近似になり、どちらへ寄せるかしか選べない。健全性とは
+  // 偽陰性を 0 にする側を選ぶことで、その代償に「正しいのに通らない」が必ず残る。
+  // 妥協ではなく、曲線上のどこに立つかの選択である。
+  //
+  // 認知負荷はこの曲線のどこにも印を付けられない。だから動機にはなっても
+  // 判定には使えない、という線がここで定理として引ける。
+  c('checker-as-classifier', '検査器は分類器である', '通す・弾くの二値。偽陽性は「正しいのに通らない」、偽陰性は「落ちるのに通る」', 'viewpoint', 'cs', ['type-soundness', 'rice-theorem']),
+  c('soundness-completeness-tradeoff', '健全性と完全性は両立しない', '停止する検査器は必ずどちらかを捨てる。Rice の定理の系', 'theorem', 'cs', ['checker-as-classifier']),
+  c('deliberate-unsoundness', '意図的な不健全性', 'Java の共変配列、TypeScript の any。偽陽性を嫌って偽陰性を受け入れた点', 'viewpoint', 'cs', ['soundness-completeness-tradeoff'], ['cognitive-load']),
+  c('types-as-redundancy', '型は冗長性である', '同じことを項と型で二度書き、食い違いを検出する。符号との類比は比喩に留まる', 'viewpoint', 'cs', ['type-soundness'], ['error-taxonomy']),
   c('load-tradeoff', '負荷の配分', '負荷は消えず移るだけ。GC は実行時へ、所有権は記述へ', 'viewpoint', 'cs', ['mechanized-checking'], ['essential-accidental']),
   c('cyclomatic-complexity', '循環的複雑度', '制御フローグラフの独立閉路数。グラフの量であって、認知の量ではない', 'definition', 'cs', ['structured-programming', 'connectedness']),
 
@@ -648,6 +670,11 @@ export const goals: readonly Goal[] = [
     id: 'functional',
     label: '関数型が三つの制約から独立に導けると分かる',
     needs: ['mutable-state-as-goto', 'illegal-states-unrepresentable', 'purity-and-concurrency'],
+  },
+  {
+    id: 'checking',
+    label: '静的検査の限界が決定可能性から読める',
+    needs: ['soundness-completeness-tradeoff', 'deliberate-unsoundness'],
   },
   {
     id: 'lambek',

@@ -73,12 +73,13 @@ const articles = walk(ARTICLES)
 
 const [command = 'stats', ...rest] = process.argv.slice(2)
 
-const mark = (step) => (step.article ? '✓' : '·')
+const mark = (step) => (step.article ? '✓' : step.viaEmpirical ? '~' : '·')
 
 const showPlan = (plan) => {
   for (const step of plan.steps) {
     const where = step.article ? `/${step.article.id}` : '— 未執筆'
-    console.log(`${mark(step)} ${step.concept.label.padEnd(28)} ${where}`)
+    const tag = step.viaEmpirical ? '（経験的）' : ''
+    console.log(`${mark(step)} ${step.concept.label.padEnd(28)} ${where}${tag}`)
     if (!step.article) console.log(`  ${' '.repeat(29)}${step.concept.gist}`)
   }
   console.log(
@@ -113,13 +114,14 @@ if (command === 'stats') {
     )
   }
 } else if (command === 'plan') {
-  const [target] = rest
+  const includeEmpirical = rest.includes('--empirical')
+  const [target] = rest.filter((a) => a !== '--empirical')
   if (!target) {
     console.error('目標の id か概念の id を指定してください。一覧は `goals`。')
     process.exit(1)
   }
   const goal = goals.find((g) => g.id === target)
-  showPlan(planFor(concepts, articles, goal ? goal.needs : [target]))
+  showPlan(planFor(concepts, articles, goal ? goal.needs : [target], { includeEmpirical }))
 } else if (command === 'next') {
   const limit = Number(rest[0] ?? 10)
   const queue = backlog(concepts, articles)

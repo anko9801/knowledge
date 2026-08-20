@@ -29,8 +29,16 @@ export type Concept = {
   readonly gist: string
   readonly kind: ConceptKind
   readonly field: string
-  /** これを理解するのに要る概念。慣習は書かない。 */
+  /**
+   * 論理的な依存。定義に現れるか、証明が引用する。文献で確かめられる。
+   * 「この順で教わるのが普通」という慣習はここに書かない。
+   */
   readonly requires: readonly string[]
+  /**
+   * 経験的な依存。分野の慣行として必要だが、論理的必然ではない。
+   * requires と混ぜると最短経路が慣習で汚染されるので、別の辺にする。
+   */
+  readonly empirical?: readonly string[]
 }
 
 /** 到達したい地点。執筆計画はここから逆算する。 */
@@ -47,7 +55,8 @@ const c = (
   kind: ConceptKind,
   field: string,
   requires: readonly string[] = [],
-): Concept => ({ id, label, gist, kind, field, requires })
+  empirical: readonly string[] = [],
+): Concept => ({ id, label, gist, kind, field, requires, empirical })
 
 export const concepts: readonly Concept[] = [
   // --- 土台。まだ記事が無い ---------------------------------------------
@@ -301,6 +310,68 @@ export const concepts: readonly Concept[] = [
   c('composite-system', '合成系', '状態空間はテンソル積。分解できない状態が残る', 'definition', 'physics', ['quantum-state', 'tensor-product']),
   c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
   c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
+
+  // --- 群の表現論 -------------------------------------------------------
+  c('group-action', '群作用', '群が集合に作用する。軌道と固定部分群', 'definition', 'math', ['group']),
+  c('representation', '表現', '群を線形写像として実現する', 'definition', 'math', ['group-action', 'linear-map']),
+  c('irreducible-representation', '既約表現', 'それ以上分解できない表現', 'definition', 'math', ['representation', 'quotient-space']),
+  c('schur-lemma', 'Schur の補題', '既約表現の間の準同型は $0$ かスカラー倍', 'theorem', 'math', ['irreducible-representation']),
+  c('character-theory', '指標', '表現の跡。基底に依らないので分類に使える', 'definition', 'math', ['irreducible-representation', 'contraction']),
+  c('orthogonality-relations', '指標の直交関係', '既約指標が直交基底をなす', 'theorem', 'math', ['character-theory', 'schur-lemma', 'inner-product']),
+
+  // --- 分子対称性と選択則（化学のうち論理で決まる部分） ------------------
+  //
+  // 「この反応が起きる」は経験的だが、「この遷移は禁制である」は
+  // 群論から導かれる。分野ではなくサブ領域で切る例。
+  c('point-group', '点群', '分子を不変にする対称操作の群', 'definition', 'chemistry', ['group-action']),
+  c('symmetry-adapted-basis', '対称性に適合した基底', '既約表現ごとに軌道を分類する', 'technique', 'chemistry', ['point-group', 'irreducible-representation']),
+  c('molecular-orbital', '分子軌道', '原子軌道の線形結合。対称性が混ざり方を決める', 'definition', 'chemistry', ['symmetry-adapted-basis', 'observable']),
+  c('selection-rule', '選択則', '遷移積分が対称性から恒等的に $0$ になる条件', 'theorem', 'chemistry', ['symmetry-adapted-basis', 'orthogonality-relations']),
+  c('normal-modes', '基準振動', '振動を既約表現で分類する。赤外・Raman 活性', 'technique', 'chemistry', ['point-group', 'spectral-theorem']),
+
+  // --- 形式意味論（言語学のうち論理で決まる部分） ------------------------
+  //
+  // 「どの統語理論が正しいか」は経験的だが、
+  // 「この文の意味をどう組み上げるか」は型付きλ計算で決まる。
+  c('lambda-calculus', 'λ 計算', '関数の適用と抽象だけで計算を書く', 'definition', 'cs', ['formalization']),
+  c('simply-typed-lambda', '単純型付き λ 計算', '型を付けると停止性が保証される', 'definition', 'cs', ['lambda-calculus']),
+  c('curry-howard', 'Curry--Howard 対応', '型は命題、プログラムは証明', 'theorem', 'cs', ['simply-typed-lambda', 'proof-system']),
+  c('compositionality', '合成性', '全体の意味は部分の意味と組み方で決まる', 'viewpoint', 'linguistics', ['simply-typed-lambda']),
+  c('montague-semantics', 'モンタギュー意味論', '自然文を型付き λ 項に翻訳する', 'technique', 'linguistics', ['compositionality', 'structure-semantics']),
+  c('generalized-quantifier', '一般化量化子', '「すべての」「ほとんどの」を集合の集合として扱う', 'definition', 'linguistics', ['montague-semantics']),
+
+  // --- ミクロ経済の一般均衡（経済学のうち論理で決まる部分） --------------
+  //
+  // 「人はこう行動する」は経験的だが、公理を認めた後の導出は論理的。
+  // 均衡の存在は不動点定理そのものである。
+  c('preference-relation', '選好関係', '完備で推移的な二項関係', 'definition', 'economics', ['relation-order']),
+  c('utility-representation', '効用関数による表現', '選好を実数値関数で書けるための条件', 'theorem', 'economics', ['preference-relation', 'topology-basics']),
+  c('demand-function', '需要関数', '予算制約の下での効用最大化の解', 'definition', 'economics', ['utility-representation']),
+  c('brouwer-fixed-point', 'Brouwer の不動点定理', '球体の連続自己写像は不動点を持つ', 'theorem', 'math', ['topology-basics', 'homotopy']),
+  c('kakutani-fixed-point', '角谷の不動点定理', '集合値写像への拡張', 'theorem', 'math', ['brouwer-fixed-point']),
+  c('walras-equilibrium', '一般均衡の存在', '超過需要がゼロになる価格の存在', 'theorem', 'economics', ['demand-function', 'kakutani-fixed-point']),
+  c('first-welfare-theorem', '厚生経済学の第一定理', '競争均衡は Pareto 効率的', 'theorem', 'economics', ['walras-equilibrium']),
+  c('nash-equilibrium', 'Nash 均衡', '混合戦略なら必ず存在する', 'theorem', 'economics', ['kakutani-fixed-point', 'probability-space']),
+  c('arrow-impossibility', 'Arrow の不可能性定理', '望ましい条件を全部満たす集約は独裁だけ', 'theorem', 'economics', ['preference-relation']),
+
+  // --- 制御理論（工学のうち論理で決まる部分） ----------------------------
+  c('state-space-model', '状態空間表現', '$\\dot{x} = A x + B u$。線形写像で系を書く', 'definition', 'engineering', ['linear-map', 'ode-existence']),
+  c('matrix-exponential', '行列指数関数', '線形系の解。固有値が振る舞いを決める', 'technique', 'engineering', ['state-space-model', 'diagonalization']),
+  c('controllability', '可制御性', '任意の状態へ有限時間で移せるか。階数条件', 'theorem', 'engineering', ['state-space-model']),
+  c('observability', '可観測性', '出力から状態を復元できるか。可制御性の双対', 'theorem', 'engineering', ['controllability', 'dual-map']),
+  c('lyapunov-stability', 'Lyapunov 安定性', '減っていく関数を一つ見つければ安定', 'theorem', 'engineering', ['matrix-exponential', 'quadratic-form']),
+  c('lqr', '最適レギュレータ', '二次形式の評価関数を最小化する。Riccati 方程式', 'technique', 'engineering', ['lyapunov-stability', 'controllability']),
+  c('kalman-filter', 'Kalman フィルタ', '観測から状態を推定する。条件付き期待値の逐次計算', 'technique', 'engineering', ['observability', 'conditional-expectation']),
+
+  // --- 経験的な依存しか無い分野の例 -------------------------------------
+  //
+  // 論理では決まらないが、載せられることを示すために置く。
+  // requires は空で、empirical にだけ辺を張る。既定の経路探索には出てこない。
+  c('pharmacology', '薬理学', '薬が体でどう働くか', 'viewpoint', 'medicine', [], ['biochemistry', 'physiology']),
+  c('biochemistry', '生化学', '生体分子の反応', 'viewpoint', 'medicine', [], ['organic-chemistry']),
+  c('physiology', '生理学', '臓器と系の働き', 'viewpoint', 'medicine', [], ['anatomy']),
+  c('anatomy', '解剖学', '体の構造', 'viewpoint', 'medicine'),
+  c('organic-chemistry', '有機化学', '炭素化合物の反応。規則より事例が多い', 'viewpoint', 'chemistry', [], ['molecular-orbital']),
 ]
 
 /** 到達したい地点。ここから逆算して執筆計画を作る。 */
@@ -374,5 +445,25 @@ export const goals: readonly Goal[] = [
     id: 'quantum',
     label: '量子力学の公理が線形代数から読める',
     needs: ['born-rule', 'entanglement', 'uncertainty-relation'],
+  },
+  {
+    id: 'selection-rules',
+    label: '分子の選択則が群論から読める',
+    needs: ['selection-rule', 'normal-modes'],
+  },
+  {
+    id: 'formal-semantics',
+    label: '自然言語の意味を型で組み上げられる',
+    needs: ['montague-semantics', 'generalized-quantifier'],
+  },
+  {
+    id: 'general-equilibrium',
+    label: '一般均衡の存在と厚生定理が読める',
+    needs: ['first-welfare-theorem', 'arrow-impossibility'],
+  },
+  {
+    id: 'control',
+    label: '線形系の制御が読める',
+    needs: ['lqr', 'kalman-filter'],
   },
 ]

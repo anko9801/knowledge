@@ -12,13 +12,14 @@ import {
   type Coverage,
 } from './curriculum.ts'
 
-const c = (id: string, requires: string[] = []): Concept => ({
+const c = (id: string, requires: string[] = [], empirical: string[] = []): Concept => ({
   id,
   label: id,
   gist: '',
   kind: 'definition',
   field: 'math',
   requires,
+  empirical,
 })
 
 const graph: Concept[] = [
@@ -115,4 +116,59 @@ test('循環が無ければ空', () => {
 test('定義されていない前提を検出する', () => {
   const hole = [...graph, c('goal', ['calculus'])]
   assert.deepEqual(danglingConcepts(hole), ['calculus'])
+})
+
+// --- 経験的な辺 ---------------------------------------------------------
+// 論理的な依存と混ぜると、数学側の最短経路まで慣習で汚染される。
+// 既定ではたどらないこと、たどったときは印が付くことを確かめる。
+
+const clinical: Concept[] = [
+  c('anatomy'),
+  c('physiology', [], ['anatomy']),
+  c('pharmacology', [], ['physiology']),
+]
+
+test('経験的な辺は既定でたどらない', () => {
+  const plan = planFor(clinical, [], ['pharmacology'])
+  assert.deepEqual(
+    plan.steps.map((s) => s.concept.id),
+    ['pharmacology'],
+  )
+})
+
+test('明示すれば経験的な辺もたどる', () => {
+  const plan = planFor(clinical, [], ['pharmacology'], { includeEmpirical: true })
+  assert.deepEqual(
+    plan.steps.map((s) => s.concept.id),
+    ['anatomy', 'physiology', 'pharmacology'],
+  )
+})
+
+test('経験的にだけ入ってきた概念には印が付く', () => {
+  const plan = planFor(clinical, [], ['pharmacology'], { includeEmpirical: true })
+  const marked = plan.steps.filter((s) => s.viaEmpirical).map((s) => s.concept.id)
+  assert.deepEqual(marked.sort(), ['anatomy', 'physiology'])
+})
+
+test('経験的な辺は数学側の経路を汚染しない', () => {
+  // 経験的な前提を足しても、論理だけの計画は変わらない。
+  const mixed = [...graph, c('wedge-applied', ['wedge'], ['anatomy'])]
+  const before = planFor(graph, written, ['wedge']).steps.map((s) => s.concept.id)
+  const after = planFor(mixed, written, ['wedge']).steps.map((s) => s.concept.id)
+  assert.deepEqual(after, before)
+})
+
+test('論理と経験の両方で届く概念には、経験の印を付けない', () => {
+  const both = [c('base'), c('x', ['base'], []), c('y', ['base'], ['base'])]
+  const plan = planFor(both, [], ['x', 'y'], { includeEmpirical: true })
+  const base = plan.steps.find((s) => s.concept.id === 'base')
+  assert.equal(base?.viaEmpirical, false)
+})
+
+test('論理的な前提を持たない概念は empiricalOnly になる', () => {
+  const queue = backlog(clinical, [])
+  const pharm = queue.find((i) => i.concept.id === 'pharmacology')
+  assert.equal(pharm?.empiricalOnly, true)
+  const anat = queue.find((i) => i.concept.id === 'anatomy')
+  assert.equal(anat?.empiricalOnly, false)
 })

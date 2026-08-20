@@ -14,7 +14,19 @@ export type Concept = {
   readonly gist: string
   readonly kind: string
   readonly field: string
+  /**
+   * 論理的な依存。定義に現れるか、証明が引用する。
+   * 「そこに書いてある」ので検証できる。
+   */
   readonly requires: readonly string[]
+  /**
+   * 経験的な依存。分野の慣行として必要とされるが、論理的必然ではない。
+   *
+   * 医学や生物学の大半、工学の実務はここに入る。requires と混ぜると
+   * 数学側の最短経路まで慣習で汚染されるので、別の辺として持つ。
+   * 既定ではたどらない。
+   */
+  readonly empirical?: readonly string[]
 }
 
 /** 概念を被覆する記事。 */
@@ -28,7 +40,13 @@ export type Step = {
   readonly concept: Concept
   /** この概念を扱っている記事。無ければ執筆待ち。 */
   readonly article?: Coverage
+  /** 経験的な辺を辿って入ってきたか。論理的必然ではない。 */
+  readonly viaEmpirical?: boolean
 }
+
+/** 辿る辺を選ぶ。 */
+const depsOf = (concept: Concept, includeEmpirical: boolean): readonly string[] =>
+  includeEmpirical ? [...concept.requires, ...(concept.empirical ?? [])] : concept.requires
 
 export type Plan = {
   /** 依存順。前提が先に来る。 */
@@ -65,10 +83,12 @@ export const closure = (
   concepts: readonly Concept[],
   targets: readonly string[],
   known: ReadonlySet<string> = new Set(),
-): { ids: string[]; unknown: string[] } => {
+  includeEmpirical = false,
+): { ids: string[]; unknown: string[]; viaEmpirical: Set<string> } => {
   const byId = index(concepts)
   const seen = new Set<string>()
   const unknown = new Set<string>()
+  const viaEmpirical = new Set<string>()
   const stack = targets.filter((id) => !known.has(id))
 
   while (stack.length > 0) {
@@ -80,14 +100,33 @@ export const closure = (
       continue
     }
     seen.add(id)
-    stack.push(...concept.requires.filter((dep) => !known.has(dep)))
+    for (const dep of concept.requires) {
+      if (!known.has(dep)) stack.push(dep)
+    }
+    if (includeEmpirical) {
+      for (const dep of concept.empirical ?? []) {
+        if (known.has(dep)) continue
+        // 論理の辺でも入ってくるなら、そちらを優先して印は付けない。
+        if (!seen.has(dep)) viaEmpirical.add(dep)
+        stack.push(dep)
+      }
+    }
   }
 
-  return { ids: [...seen], unknown: [...unknown].sort() }
+  for (const id of viaEmpirical) {
+    const reachedLogically = [...seen].some((s) => byId.get(s)?.requires.includes(id))
+    if (reachedLogically) viaEmpirical.delete(id)
+  }
+
+  return { ids: [...seen], unknown: [...unknown].sort(), viaEmpirical }
 }
 
 /** 依存順に並べる。循環していれば id 順で切って、落とさずに返す。 */
-const topological = (concepts: readonly Concept[], ids: readonly string[]): Concept[] => {
+const topological = (
+  concepts: readonly Concept[],
+  ids: readonly string[],
+  includeEmpirical = false,
+): Concept[] => {
   const byId = index(concepts)
   const inScope = new Set(ids)
   const remaining = new Set(ids)
@@ -96,9 +135,11 @@ const topological = (concepts: readonly Concept[], ids: readonly string[]): Conc
 
   while (remaining.size > 0) {
     const ready = [...remaining]
-      .filter((id) =>
-        (byId.get(id)?.requires ?? []).every((dep) => !inScope.has(dep) || done.has(dep)),
-      )
+      .filter((id) => {
+        const concept = byId.get(id)
+        if (concept === undefined) return true
+        return depsOf(concept, includeEmpirical).every((dep) => !inScope.has(dep) || done.has(dep))
+      })
       .sort()
     const batch = ready.length > 0 ? ready : [...remaining].sort()
     for (const id of batch) {
@@ -117,15 +158,17 @@ export const planFor = (
   concepts: readonly Concept[],
   articles: readonly Coverage[],
   targets: readonly string[],
-  options: { readonly known?: readonly string[] } = {},
+  options: { readonly known?: readonly string[]; readonly includeEmpirical?: boolean } = {},
 ): Plan => {
   const known = new Set(options.known ?? [])
-  const { ids, unknown } = closure(concepts, targets, known)
+  const includeEmpirical = options.includeEmpirical ?? false
+  const { ids, unknown, viaEmpirical } = closure(concepts, targets, known, includeEmpirical)
   const covers = coverageIndex(articles)
 
-  const steps = topological(concepts, ids).map((concept) => ({
+  const steps = topological(concepts, ids, includeEmpirical).map((concept) => ({
     concept,
     article: covers.get(concept.id),
+    viaEmpirical: viaEmpirical.has(concept.id),
   }))
 
   return {
@@ -147,8 +190,10 @@ export type Leverage = {
   readonly concept: Concept
   /** これを必要とする概念の数（推移的）。 */
   readonly unlocks: number
-  /** 前提がすべて記事になっているか。すぐ書けるか。 */
+  /** 論理的な前提がすべて記事になっているか。すぐ書けるか。 */
   readonly ready: boolean
+  /** 論理的な前提を持たず、経験的な前提しか無い。分野の性質を示す。 */
+  readonly empiricalOnly: boolean
 }
 
 export const backlog = (
@@ -172,7 +217,9 @@ export const backlog = (
     .map((concept) => ({
       concept,
       unlocks: dependents.get(concept.id)?.size ?? 0,
+      // 経験的な前提は、揃っていなくても書き始められるものとして扱う。
       ready: concept.requires.every((dep) => covers.has(dep)),
+      empiricalOnly: concept.requires.length === 0 && (concept.empirical?.length ?? 0) > 0,
     }))
     .sort((a, b) => {
       if (a.ready !== b.ready) return a.ready ? -1 : 1

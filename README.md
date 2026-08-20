@@ -6,8 +6,8 @@
 
 ## 連載
 
-- [数学](https://anko9801.github.io/knowledge/math) — 集合論 12 本、数理論理学 10 本、土台 6 本、群と表現 2 本、測度と確率 4 本、線形代数 7 本、ベクトル解析 6 本、微分形式 8 本、Riemann 幾何 8 本
-- [物理](https://anko9801.github.io/knowledge/physics) — 解析力学 5 本
+- [数学](https://anko9801.github.io/knowledge/math) — 集合論 12 本、数理論理学 10 本、土台 6 本、群と表現 4 本、測度と確率 4 本、線形代数 7 本、ベクトル解析 6 本、微分形式 8 本、Riemann 幾何 8 本
+- [物理](https://anko9801.github.io/knowledge/physics) — 解析力学 5 本、量子力学 3 本
 - [計算機](https://anko9801.github.io/knowledge/cs) — 計算量理論・型と計算・情報理論・並行と分散・計算機の構成・暗号理論。構成だけ決めてあり、本文はこれから
 
 幾何の連載は「仮定した構造」で分けてある。土台（ベクトル空間・微積分・位相）→

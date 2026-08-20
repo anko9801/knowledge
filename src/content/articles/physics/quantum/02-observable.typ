@@ -1,0 +1,171 @@
+#import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": *
+#import "/src/typst/layer.typ": layer
+
+#show: post.with(
+  title: "エルミートである以外にない",
+  date: "2026-08-21",
+  field: "physics",
+  series: "quantum",
+  order: 2,
+  tags: ("量子力学",),
+  summary: "測定値が実数で、確率が足して 1 になってほしい。この二つを作用素の側に翻訳すると、スペクトル定理がそのまま答えになる。不確定性関係も、交換子から二行で出る。",
+  provides: (
+    "observable",
+    "born-rule",
+    "uncertainty-relation",
+  ),
+)
+
+#layer("L0 ＋ 計量", metric: true)[線形代数 第 7 回のスペクトル定理をそのまま使う]
+
+= 測定に何を要求するか
+
+#link("/physics/quantum/1")[前回]と同じ手口で進む。要求を先に置く。
+
+測定とは、状態を入れると数が返る操作である。要求は二つ。
+
++ #strong[返る数は実数である]
++ #strong[起こりうる結果の確率が、足して $1$ になる]
+
+これだけから、観測量が何であるかが決まる。
+
+= 固有値でなければならない
+
+まず、測定値の集合を決める。
+
+測定を繰り返して同じ結果が出る状態——#strong[その値が確定している状態]——があるはずである。
+そういう状態 $psi$ に対して、観測量 $hat(A)$ は「値 $a$ を返す」と決まっている。
+
+作用素の言葉に翻訳すると
+$ hat(A) psi = a psi $
+となる。#strong[確定した状態とは固有ベクトルで、確定した値とは固有値である。]
+
+そして要求 1 から、固有値は実数でなければならない。
+
+= 確率が足して 1 になる条件
+
+要求 2 を翻訳する。
+
+任意の状態 $psi$ を、確定した状態（固有ベクトル）の重ね合わせに分解したい。
+$ psi = sum_i c_i phi_i $
+そして $abs(c_i)^2$ を「値 $a_i$ が出る確率」と読む。
+
+足して $1$ になるためには、前回見たとおり $phi_i$ が#strong[正規直交基底]である必要がある。
+Pythagoras の定理が使えないと、$sum abs(c_i)^2 = norm(psi)^2$ が成り立たない。
+
+つまり要求はこうなる。
+
+#strong[固有値が実数で、固有ベクトルが正規直交基底をなす作用素であってほしい。]
+
+= スペクトル定理が答えを出す
+
+この条件を満たす作用素は何か。すでに答えを持っている。
+
+#link("/math/linear-algebra/7")[線形代数 第 7 回]のスペクトル定理は、
+#strong[自己随伴なら正規直交固有基底が取れ、固有値は実数]と言っていた。
+そして逆も成り立つ。正規直交固有基底を持ち固有値が実数なら、その作用素は自己随伴である。
+
+#definition[
+  $hat(A)^dagger = hat(A)$ を満たす作用素を#strong[観測量]と呼ぶ。
+]<def:observable>
+
+#strong[「観測量はエルミート作用素である」は、公理ではなく要求の翻訳だった。]
+測定値が実数で確率が足して $1$ になってほしい、という二つを線形代数に直すと、
+自己随伴性と同値になる。
+
+#theorem("Born 則")[
+  状態 $psi$ で観測量 $hat(A)$ を測ると、固有値 $a_i$ が確率
+  $ p_i = abs(chevron.l phi_i\, psi chevron.r)^2 $
+  で得られる。期待値は
+  $ chevron.l hat(A) chevron.r = chevron.l psi\, hat(A) psi chevron.r $
+]<thm:born>
+
+期待値の式は、上の確率から直接出る。
+$ sum_i a_i abs(c_i)^2 = chevron.l psi\, hat(A) psi chevron.r $
+#strong[「作用素で挟む」という計算の意味は、確率の重み付き平均である。]
+
+#remark[
+  無限次元では、固有ベクトルが Hilbert 空間の中に無いことがある。
+  位置作用素 $hat(x) psi = x psi$ には固有関数が無い（$delta$ 関数は $L^2$ に入らない）。
+  運動量も同様である。
+
+  正しくは、固有ベクトルの和ではなく#strong[射影値測度による積分]で書く。
+  $ hat(A) = integral lambda thin dif E_lambda $
+  これがスペクトル定理の無限次元版で、連続スペクトルを扱える。
+  #link("/math/linear-algebra/7")[線形代数 第 7 回]の注意で触れたとおりである。
+]
+
+= 同時に測れるか
+
+観測量が二つあるとき、両方を確定させられるか。
+
+両方が確定した状態とは、$hat(A)$ と $hat(B)$ の#strong[共通の固有ベクトル]である。
+共通の固有基底が取れるかどうかが問題になる。
+
+#theorem[
+  $hat(A)$ と $hat(B)$ が共通の固有基底を持つことと、$[hat(A), hat(B)] = 0$ は同値。
+]<thm:commuting>
+
+#proof[
+  共通固有基底があれば、その基底で両方が対角行列になり、対角行列は可換である。
+  逆は、$hat(A)$ の各固有空間が $hat(B)$ で不変になることを示し、
+  その中でスペクトル定理を使えばよい。
+]
+
+#strong[交換しない観測量は、同時に確定させられない。]
+これは「測定装置が邪魔をする」という話ではなく、
+#strong[そういう状態が存在しない]という線形代数の主張である。
+
+そして、どれだけ確定させられないかも定量的に出る。
+
+#theorem("不確定性関係")[
+  $ Delta A thin Delta B >= frac(1, 2) abs(chevron.l [hat(A)\, hat(B)] chevron.r) $
+  ここで $Delta A^2 = chevron.l (hat(A) - chevron.l hat(A) chevron.r)^2 chevron.r$。
+]<thm:uncertainty>
+
+#proof[
+  $hat(a) := hat(A) - chevron.l hat(A) chevron.r$、$hat(b)$ も同様に置く。
+  Cauchy--Schwarz の不等式から
+  $ Delta A^2 thin Delta B^2 = norm(hat(a) psi)^2 norm(hat(b) psi)^2
+    >= abs(chevron.l hat(a) psi\, hat(b) psi chevron.r)^2 $
+  右辺の内積を実部と虚部に分け、虚部が $chevron.l [hat(a), hat(b)] chevron.r \/ 2i$ に
+  等しいことを使うと主張が出る。
+]
+
+#strong[証明に物理は一つも入っていない。]
+Cauchy--Schwarz の不等式と、交換子の定義だけである。
+
+$[hat(x), hat(p)] = i planck$ を入れれば $Delta x thin Delta p >= planck \/ 2$ になる。
+#strong[不確定性関係の内容は、この交換関係のほうにある。]
+不等式そのものは、内積空間なら常に成り立つ恒等式に近い。
+
+#remark[
+  $[hat(x), hat(p)] = i planck$ がどこから来るかは、この連載の範囲を超える。
+  #link("/physics/mechanics/1")[解析力学]の Poisson 括弧を交換子に置き換える、
+  というのが正準量子化の手続きで、$planck$ はそこで入る比例定数である。
+
+  #link("/math/groups/1")[群と表現 第 1 回]の言葉で言えば、
+  $hat(x)$ と $hat(p)$ は Heisenberg 代数という Lie 代数の元で、
+  交換関係はその括弧である。
+]
+
+= まとめ
+
+#table(
+  columns: (auto, 1fr),
+  [測定値が実数], [固有値が実数],
+  [確率が足して $1$], [固有ベクトルが正規直交基底],
+  [両方を満たす作用素], [自己随伴。スペクトル定理より],
+  [Born 則], [射影の $2$ 乗。期待値は $chevron.l psi\, hat(A) psi chevron.r$],
+  [同時測定], [交換するかどうか。共通固有基底の有無],
+  [不確定性], [Cauchy--Schwarz。中身は交換関係のほうにある],
+)
+
+#strong[量子力学に固有の数学は、ここまで一つも出ていない。]
+使ったのは内積空間とスペクトル定理だけである。
+
+次回、系を二つに増やす。
+そこで初めて、古典では起こりえないことが出る。
+#link("/math/linear-algebra/3")[テンソル積に分解できない元がある]という、
+線形代数の事実がそのまま現れる。

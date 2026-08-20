@@ -62,6 +62,13 @@ export const series: readonly Series[] = [
       'Newton の運動方程式を書き換える。変分原理から Noether の定理、正準形式を経て、量子化の入口まで。',
   },
   {
+    slug: 'quantum',
+    field: 'physics',
+    title: '量子力学',
+    blurb:
+      '公理を天下りで受け取らない。測定値が実数で、確率が 1 に足りてほしい。その要求を線形代数に翻訳すると、Hilbert 空間も自己随伴作用素も Born 則も出てくる。全 3 回。',
+  },
+  {
     slug: 'set-theory',
     field: 'math',
     title: '集合論',
@@ -81,7 +88,7 @@ export const series: readonly Series[] = [
     field: 'math',
     title: '群と表現',
     blurb:
-      '対称性を測る道具としての群。連続な対称性は多様体になり、線形化すると括弧が残る。そして表現論は、群を行列として見る方法である。',
+      '対称性を測る道具としての群。連続な対称性は多様体になり、線形化すると括弧が残る。表現論を経て、各点に群を付けた束と、その曲率まで。全 4 回。',
   },
   {
     slug: 'measure',

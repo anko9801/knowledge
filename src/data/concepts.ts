@@ -236,6 +236,71 @@ export const concepts: readonly Concept[] = [
   c('canonical-formalism', '正準形式', '相空間の上の流れとして運動を書く', 'viewpoint', 'physics', ['hamiltonian', 'symplectic-form']),
   c('gauge-potential', 'ゲージポテンシャル', '$A_\\mu$。観測量は $F$ だが理論を決めるのは $A$', 'definition', 'physics', ['lagrangian', 'one-form']),
   c('aharonov-bohm', 'Aharonov--Bohm 効果', '力が無いのに位相がずれる。作用の差が測れる', 'theorem', 'physics', ['gauge-potential', 'de-rham-cohomology']),
+
+  // --- 測度と確率 -------------------------------------------------------
+  //
+  // 依存が定義的に決まる。確率変数の定義に可測性が現れ、
+  // 大数の法則の証明が測度の収束定理を引用する。
+  c('sigma-algebra', '$\\sigma$ 加法族', '測れる集合の族。可算合併で閉じる', 'definition', 'math', ['zfc-axioms']),
+  c('measure', '測度', '$\\sigma$ 加法族の上の可算加法的な非負関数', 'definition', 'math', ['sigma-algebra']),
+  c('lebesgue-integral', 'Lebesgue 積分', '単関数で近似して積分を定義する', 'definition', 'math', ['measure']),
+  c('convergence-theorems', '収束定理', '単調収束・優収束。極限と積分を交換する', 'theorem', 'math', ['lebesgue-integral']),
+  c('probability-space', '確率空間', '全測度が 1 の測度空間', 'definition', 'math', ['measure']),
+  c('random-variable', '確率変数', '可測関数。値ではなく写像である', 'definition', 'math', ['probability-space']),
+  c('expectation', '期待値', '確率測度による積分', 'definition', 'math', ['random-variable', 'lebesgue-integral']),
+  c('independence-probabilistic', '独立性', '同時分布が積に分かれる', 'definition', 'math', ['random-variable']),
+  c('law-of-large-numbers', '大数の法則', '標本平均が期待値に収束する', 'theorem', 'math', ['expectation', 'independence-probabilistic', 'convergence-theorems']),
+  c('characteristic-function', '特性関数', 'Fourier 変換。分布を一意に決める', 'definition', 'math', ['expectation']),
+  c('central-limit-theorem', '中心極限定理', '和の分布が正規分布に近づく', 'theorem', 'math', ['characteristic-function', 'law-of-large-numbers']),
+  c('conditional-expectation', '条件付き期待値', '部分 $\\sigma$ 加法族への射影', 'definition', 'math', ['expectation', 'sigma-algebra']),
+  c('martingale', 'マルチンゲール', '条件付き期待値が現在値に等しい過程', 'definition', 'math', ['conditional-expectation']),
+
+  // --- 情報理論 ---------------------------------------------------------
+  //
+  // Shannon の符号化定理は確率論から導かれる。経験則ではない。
+  c('entropy', 'Shannon エントロピー', '$-\\sum p \\log p$。不確かさの量', 'definition', 'cs', ['expectation']),
+  c('kl-divergence', 'KL 情報量', '二つの分布の隔たり。非負性は Jensen から', 'definition', 'cs', ['entropy']),
+  c('mutual-information', '相互情報量', '片方を知ると他方の不確かさがどれだけ減るか', 'definition', 'cs', ['entropy', 'independence-probabilistic']),
+  c('aep', '漸近等分割性', '典型列の個数が $2^{n H}$ に集中する', 'theorem', 'cs', ['entropy', 'law-of-large-numbers']),
+  c('source-coding-theorem', '情報源符号化定理', '圧縮の限界はエントロピー', 'theorem', 'cs', ['aep']),
+  c('channel-capacity', '通信路容量', '相互情報量の最大値', 'definition', 'cs', ['mutual-information']),
+  c('channel-coding-theorem', '通信路符号化定理', '容量以下なら誤り率を任意に小さくできる', 'theorem', 'cs', ['channel-capacity', 'aep']),
+
+  // --- 計算量理論 -------------------------------------------------------
+  //
+  // 依存が「還元」として明示される分野。A ≤ₚ B は requires そのもの。
+  c('turing-machine', 'Turing 機械', '計算の形式的な定義', 'definition', 'cs', ['computability']),
+  c('complexity-class', '計算量クラス', '資源で問題を分類する。P、NP、PSPACE', 'definition', 'cs', ['turing-machine']),
+  c('polynomial-reduction', '多項式時間帰着', '$A \\le_p B$。B が解ければ A も解ける', 'definition', 'cs', ['complexity-class']),
+  c('np-completeness', 'NP 完全性', 'NP の中で最も難しい問題', 'definition', 'cs', ['polynomial-reduction']),
+  c('cook-levin', 'Cook--Levin の定理', 'SAT は NP 完全。還元の連鎖の出発点', 'theorem', 'cs', ['np-completeness']),
+  c('karp-reductions', 'Karp の 21 問題', 'SAT からの還元で NP 完全性が伝播する', 'theorem', 'cs', ['cook-levin']),
+  c('time-hierarchy', '時間階層定理', '時間を増やせば解ける問題が増える。対角化', 'theorem', 'cs', ['complexity-class', 'diagonal-lemma']),
+  c('space-complexity', '空間計算量', 'PSPACE、Savitch の定理', 'definition', 'cs', ['complexity-class']),
+  c('randomized-complexity', '確率的計算量', 'BPP。乱択を許すとどうなるか', 'definition', 'cs', ['complexity-class', 'probability-space']),
+
+  // --- 暗号理論 ---------------------------------------------------------
+  //
+  // 安全性が「帰着」で定義される。依存が定理の主張に明示的に書かれている。
+  c('one-way-function', '一方向性関数', '計算は易しく反転は難しい', 'definition', 'cs', ['complexity-class']),
+  c('hardness-assumption', '計算量的仮定', 'DDH、RSA、格子問題。安全性の土台', 'definition', 'cs', ['one-way-function']),
+  c('security-reduction', '安全性の帰着', '「仮定が破れないなら安全」の形で証明する', 'viewpoint', 'cs', ['hardness-assumption', 'polynomial-reduction']),
+  c('semantic-security', '意味的安全性', '暗号文から平文の情報が漏れない', 'definition', 'cs', ['security-reduction', 'randomized-complexity']),
+  c('public-key-encryption', '公開鍵暗号', '鍵を配らずに暗号化する', 'definition', 'cs', ['semantic-security']),
+  c('zero-knowledge', 'ゼロ知識証明', '正しさだけを伝え、他は何も伝えない', 'definition', 'cs', ['security-reduction', 'np-completeness']),
+
+  // --- 量子力学（線形代数から論理的に決まる部分） -----------------------
+  //
+  // 「観測量はエルミート作用素」という要請は、測定値が実数で確率が 1 に
+  // 足りてほしいという要求をスペクトル定理に翻訳したもの。導出的な依存である。
+  c('hilbert-space', 'Hilbert 空間', '完備な内積空間。無限次元を扱う', 'definition', 'math', ['inner-product', 'topology-basics']),
+  c('quantum-state', '量子状態', 'Hilbert 空間の単位ベクトル', 'definition', 'physics', ['hilbert-space']),
+  c('observable', '観測量', '自己随伴作用素。実固有値と正規直交固有基底が要る', 'definition', 'physics', ['quantum-state', 'spectral-theorem']),
+  c('born-rule', 'Born 則', '固有状態への射影の 2 乗が確率', 'definition', 'physics', ['observable', 'probability-space']),
+  c('uncertainty-relation', '不確定性関係', '交換しない観測量は同時に確定しない', 'theorem', 'physics', ['observable', 'lie-bracket']),
+  c('composite-system', '合成系', '状態空間はテンソル積。分解できない状態が残る', 'definition', 'physics', ['quantum-state', 'tensor-product']),
+  c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
+  c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
 ]
 
 /** 到達したい地点。ここから逆算して執筆計画を作る。 */
@@ -284,5 +349,30 @@ export const goals: readonly Goal[] = [
     id: 'ab-effect',
     label: 'Aharonov--Bohm 効果が幾何として読める',
     needs: ['aharonov-bohm'],
+  },
+  {
+    id: 'clt',
+    label: '中心極限定理が測度論から読める',
+    needs: ['central-limit-theorem'],
+  },
+  {
+    id: 'shannon',
+    label: 'Shannon の符号化定理が読める',
+    needs: ['source-coding-theorem', 'channel-coding-theorem'],
+  },
+  {
+    id: 'np-complete',
+    label: 'NP 完全性が読める',
+    needs: ['karp-reductions', 'time-hierarchy'],
+  },
+  {
+    id: 'crypto',
+    label: '公開鍵暗号の安全性証明が読める',
+    needs: ['public-key-encryption', 'zero-knowledge'],
+  },
+  {
+    id: 'quantum',
+    label: '量子力学の公理が線形代数から読める',
+    needs: ['born-rule', 'entanglement', 'uncertainty-relation'],
   },
 ]

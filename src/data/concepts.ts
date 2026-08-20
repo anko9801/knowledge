@@ -315,6 +315,40 @@ export const concepts: readonly Concept[] = [
   c('parametricity', 'パラメトリシティ', '型だけから定理が出る。自由定理', 'theorem', 'cs', ['polymorphism']),
   c('monad', 'モナド', '副作用を型に押し込む。合成の結合律だけが本体', 'definition', 'cs', ['algebraic-data-type', 'polymorphism']),
 
+  // --- 認知の制約（プログラムの構成への、唯一の外部入力） ----------------
+  //
+  // 実験結果であって定理ではない。requires は張らず、設計側からは empirical
+  // でだけ参照する。既定の経路探索に出てこないのは正しい。「作業記憶は 4±1」
+  // から「goto をやめろ」は導けないからである。
+  //
+  // それでも節点として置くのは、Dijkstra 1968 も Parnas 1972 も Brooks 1986 も、
+  // 一次資料が明示的に認知の言葉で書かれているためである。事後の解釈ではない。
+  c('working-memory-limit', '作業記憶の限界', '同時に保持できるチャンクは 4±1。Miller の 7±2 から Cowan へ', 'viewpoint', 'cognition'),
+  c('chunking', 'チャンク化', '熟達は記憶容量ではなく、まとまりの認識で決まる。Chase--Simon のチェス実験', 'viewpoint', 'cognition', ['working-memory-limit']),
+  c('cognitive-load', '認知負荷', '課題本来の負荷と、表現のせいで増えた負荷を分ける。Sweller', 'viewpoint', 'cognition', ['working-memory-limit']),
+
+  // --- プログラムの構成 -------------------------------------------------
+  //
+  // 「計算機の構成」の対。あちらは機械の制約から設計が決まり、こちらは
+  // 人の制約から決まる。どちらも人工物（x86、Haskell）ではなく制約で切る。
+  //
+  // 認知は動機であって、中身は論理である。goto をやめる根拠は美学ではなく
+  // 「進行状況を有限の座標で書けるか」で、Hoare 論理に落ちる。情報隠蔽は
+  // 表現独立性に、参照透過性は Church--Rosser に、型検査は健全性定理に落ちる。
+  // だから requires は論理側だけに張り、認知へは empirical で繋ぐ。
+  c('essential-accidental', '本質的複雑性と偶有的複雑性', 'Brooks。減らせるのは後者だけで、銀の弾丸が無い理由もそこ', 'viewpoint', 'cs', [], ['cognitive-load']),
+  c('hoare-logic', 'Hoare 論理', '事前条件と事後条件でプログラムの意味を書く', 'definition', 'cs', ['proof-system']),
+  c('loop-invariant', 'ループ不変条件', '繰り返しの意味を 1 本の命題に畳む。頭をリセットしてよい点', 'technique', 'cs', ['hoare-logic']),
+  c('structured-programming', '構造化プログラミング', '静的なテキスト位置から動的な進行状況を有限の座標で指せるようにする', 'viewpoint', 'cs', ['loop-invariant'], ['cognitive-load']),
+  c('information-hiding', '情報隠蔽', 'モジュールは機能ではなく、隠す決定で切る。Parnas', 'viewpoint', 'cs', [], ['cognitive-load', 'chunking']),
+  c('representation-independence', '表現独立性', '実装を替えても外から区別できない。情報隠蔽の定理版', 'theorem', 'cs', ['information-hiding', 'parametricity']),
+  c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser'], ['cognitive-load']),
+  c('effect-typing', '作用の型付け', '読む必要のある範囲を型で宣言する。モナドと作用系', 'technique', 'cs', ['monad', 'referential-transparency']),
+  c('type-soundness', '型の健全性', '型が付けば実行時に詰まらない。progress と preservation', 'theorem', 'cs', ['simply-typed-lambda']),
+  c('mechanized-checking', '検査の機械化', '人が頭で保っていた不変量を、機械に確かめさせる', 'viewpoint', 'cs', ['type-soundness', 'loop-invariant'], ['cognitive-load']),
+  c('load-tradeoff', '負荷の配分', '負荷は消えず移るだけ。GC は実行時へ、所有権は記述へ', 'viewpoint', 'cs', ['mechanized-checking'], ['essential-accidental']),
+  c('cyclomatic-complexity', '循環的複雑度', '制御フローグラフの独立閉路数。グラフの量であって、認知の量ではない', 'definition', 'cs', ['structured-programming', 'connectedness']),
+
   // --- 計算機の構成 -----------------------------------------------------
   //
   // 「x86 の MOV がこう動く」は Intel がそう書いたからで、概念ではなく事例。
@@ -535,6 +569,11 @@ export const goals: readonly Goal[] = [
     id: 'types',
     label: '型が命題であることが分かる',
     needs: ['curry-howard', 'parametricity', 'type-inference'],
+  },
+  {
+    id: 'programs',
+    label: 'プログラムの設計が認知の制約から読める',
+    needs: ['representation-independence', 'referential-transparency', 'load-tradeoff'],
   },
   {
     id: 'architecture',

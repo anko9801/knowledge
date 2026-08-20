@@ -27,6 +27,7 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 | --- | --- |
 | `flake.nix` | typst 0.15 を unstable から取る devShell |
 | `src/typst/template.typ` | `target()` で HTML / PDF を分岐する共有テンプレート |
+| `src/typst/diagram.typ` | 図。HTML には `html.frame()` で SVG、PDF には `figure` |
 | `src/lib/typst-cli.ts` | `typst compile` / `typst eval` の薄いラッパ |
 | `src/lib/typst-html.ts` | 出力文書を body / head / lang に切り分ける |
 | `src/lib/headings.ts` | 見出しに id を振り、目次用の一覧を取り出す |
@@ -275,7 +276,45 @@ viewport 1000px のとき）。参照ではなく**本文の段に合わせる**
 繰り返しなので **gzip 後は 3〜6%**（実測、最大 0.5 KB）に収まる。全 70 ページで
 328 か所。共有する仕組み（`popover` 属性など）に替えるほどの差ではない。
 
-## 記事の書き方
+## 図
+
+言葉だけより、言葉と図の両方があるほうが強い。とくに位相・微分形式・Riemann 幾何は、
+包含関係や刻み方の図が一枚あるかどうかで理解が変わる。
+
+```typst
+#import "/src/typst/diagram.typ": diagram, ink, ink-thin, ink-wash
+
+#diagram(caption: [説明], 中身)
+```
+
+**`place` は HTML export で黙って落ちる。**`html.frame()` で囲まないと本文に何も
+残らない（穴の 15）。`diagram` が `target()` で分けて、HTML には SVG、PDF には
+`figure` を出す。番号は振らない——主張の通し番号（定義 3 の次が定理 4）を乱すため。
+
+### 色は黒とその透明度だけ
+
+`html.frame()` は**色を SVG に焼き込む**。地の色を書くとダークモードで消える。
+そこで図は黒だけで描き、`global.css` が属性セレクタで `currentColor` に差し替える。
+
+| Typst | SVG | 用途 |
+| --- | --- | --- |
+| `ink` | `#000000` | 主線。グラフ、軸 |
+| `ink-thin` | `#00000066` | 補助線。刻み目 |
+| `ink-wash` | `#0000001f` | 面。強調した帯 |
+
+Typst は透明度を `stroke-opacity` ではなく**8 桁の色に畳んで**出すので、濃さごとに
+セレクタが要る。濃さを増やすときは `global.css` の側も足すこと。足さないとその線
+だけ黒のまま残り、ダークモードで消える。
+
+### 大きさ
+
+図の中の文字は**グリフのパスになる**。本文と同じ「テキストのまま読める」性質は
+そこだけ失われるし、字数に比例して重くなる。だから**ラベルは図の中に置かず、
+`caption` に出す**。測度と確率 第 2 回の図（2 面、折れ線・刻み目・帯・逆像）で
+3.8 KB に収まっているのは、文字を一つも焼いていないからである。
+
+いまは 1 枚だけ。本文で多用すると「重い」に戻るので、**その回の主題が図でしか
+言えないとき**に限る。
 
 ```typst
 #import "/src/typst/template.typ": post
@@ -589,6 +628,11 @@ getComputedStyle(document.querySelector('math')).fontFamily
 たまに踏む。回避の show rule を書くか upstream にパッチを送る。`target()` だけは
 0.15 からフラグ無しで使えるので、PDF ビルド側では `TYPST_FEATURES` を立てなくていい。
 
-HTML に写像できない精密レイアウト（`place`、回転、視覚配置目的の `grid`）は SVG 島
-として埋め込まれる。図や cetz のプロットには適材適所だが、本文で多用すると「重い」に
-戻るので、本文はフローに乗る書き方に寄せる。
+**15. `place` は SVG 島にならない。黙って落ちる**
+
+HTML に写像できない精密レイアウト（`place`、回転）が自動で SVG として埋め込まれる、
+というのは誤りだった。0.15.1 の実出力は `warning: place was ignored during HTML
+export` を出し、**本文には何も残らない**。警告を読まなければ、図が消えたことに
+気づけない。
+
+図を出すには `html.frame()` で明示的に囲む。詳細は下の「図」を参照。

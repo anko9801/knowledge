@@ -612,6 +612,12 @@ svg {
  * --diagram-ink を上書きすれば図の線色を自由に変えられる。既定は本文色。
  *   article { --diagram-ink: #7a4b2a }        記事全体
  *   figure.accent { --diagram-ink: crimson }  図ごと */
+/* 図の色は SVG に焼き込まれる（html.frame）。地の色を指定するとダークモードで
+ * 消えるので、図は黒とその透明度だけで描き、ここで currentColor に差し替える。
+ *
+ * Typst は透明度を stroke-opacity ではなく 8 桁の色に畳んで出す
+ * （black.transparentize(60%) → #00000066）ので、濃さごとに拾う。
+ * src/typst/diagram.typ の三つと対になっている。増やすならこちらも足すこと。 */
 svg [stroke='#000000'] {
   stroke: var(--diagram-ink, currentColor);
 }
@@ -620,10 +626,37 @@ svg [fill='#000000'] {
   fill: var(--diagram-ink, currentColor);
 }
 
+svg [stroke='#00000066'] {
+  stroke: var(--diagram-ink, currentColor);
+  stroke-opacity: 0.4;
+}
+
+svg [fill='#0000001f'] {
+  fill: var(--diagram-ink, currentColor);
+  fill-opacity: 0.12;
+}
+
 /* 図は本文と同じ流れに置くが、狭い画面でも切れないようにする。 */
 article svg {
   display: block;
+  max-width: 100%;
   margin: 2rem auto;
+}
+
+.diagram {
+  margin: 2.4rem 0;
+}
+
+.diagram > svg {
+  margin: 0 auto;
+}
+
+.diagram > figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--muted);
+  text-align: center;
 }
 
 hr {

@@ -1,6 +1,7 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
 #import "/src/typst/layer.typ": layer
+#import "/src/typst/diagram.typ": diagram, ink, ink-thin, ink-wash
 
 #show: post.with(
   title: "値域を刻む",
@@ -40,6 +41,77 @@ $ sum_j y_j thin mu({x : y_j <= f(x) < y_(j+1)}) $
 
 「値が同じくらいの点をまとめてから測る」という順序である。
 そして「まとめた集合が測れるか」を保証するのが、前回の $sigma$ 加法族だった。
+
+#let W = 108pt
+#let H = 66pt
+#let f = ((0.0, 0.15), (0.18, 0.55), (0.34, 0.38), (0.52, 0.82), (0.70, 0.62), (0.86, 0.92), (1.0, 0.70))
+#let px(t) = W * t
+#let py(v) = H - H * v
+
+#let frame = {
+  place(line(start: (0pt, H), end: (W + 6pt, H), stroke: 0.5pt + ink))
+  place(line(start: (0pt, -5pt), end: (0pt, H), stroke: 0.5pt + ink))
+}
+
+#let graph = place(
+  curve(
+    stroke: 0.9pt + ink,
+    curve.move((px(f.at(0).at(0)), py(f.at(0).at(1)))),
+    ..f.slice(1).map(p => curve.line((px(p.at(0)), py(p.at(1))))),
+  ),
+)
+
+// 折れ線 f を x で評価する。刻み目をグラフまで届かせるために要る。
+#let at(x) = {
+  let y = f.last().at(1)
+  for i in range(f.len() - 1) {
+    let (x0, y0) = f.at(i)
+    let (x1, y1) = f.at(i + 1)
+    if x >= x0 and x <= x1 {
+      y = y0 + (y1 - y0) * (x - x0) / (x1 - x0)
+    }
+  }
+  y
+}
+
+#let riemann = box(width: W + 10pt, height: H + 8pt, {
+  frame
+  for i in range(1, 8) {
+    let t = i / 8
+    place(line(start: (px(t), H), end: (px(t), py(at(t))), stroke: 0.5pt + ink-thin))
+  }
+  graph
+})
+
+// 値の帯 [0.50, 0.65] の逆像。折れ線 f から手で解いた三区間で、
+// 「値でまとめると x 側はばらける」ことがこの図の言いたいことである。
+#let band = (0.50, 0.65)
+#let preimage = ((0.158, 0.227), (0.389, 0.451), (0.673, 0.716))
+
+#let lebesgue = box(width: W + 10pt, height: H + 8pt, {
+  frame
+  place(
+    dy: py(band.at(1)),
+    rect(width: W, height: py(band.at(0)) - py(band.at(1)), fill: ink-wash, stroke: none),
+  )
+  for v in band {
+    place(line(start: (0pt, py(v)), end: (W, py(v)), stroke: 0.5pt + ink-thin))
+  }
+  graph
+  // 逆像は x 軸の上に、太い線分として落とす。
+  for (a, b) in preimage {
+    place(line(start: (px(a), H), end: (px(b), H), stroke: 2.2pt + ink))
+  }
+})
+
+#diagram(
+  caption: [
+    左は定義域を刻む。右は値域を刻み、値が帯に入る $x$ を集める。
+    集めた集合は#strong[三つの区間にばらける]。
+    これが「測れる集合」を先に決めておく理由である。
+  ],
+  grid(columns: (auto, 16pt, auto), riemann, [], lebesgue),
+)
 
 差が出る例を先に見る。
 

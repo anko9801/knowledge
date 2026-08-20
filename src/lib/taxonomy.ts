@@ -77,6 +77,13 @@ export const series: readonly Series[] = [
       '幾何の連載が前提にしているもの。代数構造、ベクトル空間、微分、位相、完備性、滑らかさ。どれも「何を仮定すれば話が始まるか」だけを見る。全 6 回。',
   },
   {
+    slug: 'measure',
+    field: 'math',
+    title: '測度と確率',
+    blurb:
+      '「測れる」を先に決めてから測る。Lebesgue 積分、確率空間、そして大数の法則と中心極限定理まで。確率論は測度論の言い換えである。全 4 回。',
+  },
+  {
     slug: 'linear-algebra',
     field: 'math',
     title: '線形代数',

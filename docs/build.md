@@ -443,7 +443,17 @@ Astro 5 は引用符を残していたが、7（Vite 8）は外す。上げた�
 getComputedStyle(document.querySelector('math')).fontFamily
 ```
 
-**13. HTML export は experimental**
+**13. `overline` は MathML export で黙って落ちる**
+
+`$overline(X)$` はバーが出力されず、`$X$` と区別が付かなくなる。警告は出るが
+`typst compile` は成功するので、警告を読まないと気づけない。標本平均のような
+「バーで区別する」記法は、別の記号に置き換えること。`macron` も同様に落ちる。
+
+同じ理由で、アクセント類は出力を確認してから使う。`hat` と `dot` は通る
+（loader が合成用文字を間隔付き文字に置換している。`typst-html.ts` の
+`useSpacingAccents`）。
+
+**14. HTML export は experimental**
 
 `--features html` が要る。公式に production 非推奨で、未対応要素や show rule の穴を
 たまに踏む。回避の show rule を書くか upstream にパッチを送る。`target()` だけは

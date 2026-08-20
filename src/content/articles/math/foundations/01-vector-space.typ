@@ -187,6 +187,7 @@ $dim (V \/ W) = dim V - dim W$ が成り立つ。
   [長さと角度], [内積を足す。#link("/math/linear-algebra/6")[線形代数 第 6 回]],
   [極限と連続], [位相を足す。#link("/math/foundations/3")[第 3 回]],
   [微分], [線形近似として定義する。#link("/math/foundations/2")[次回]],
+  [スカラーの正体], [体とは何か。#link("/math/foundations/6")[第 6 回]],
 )
 
 次回は微分を扱う。

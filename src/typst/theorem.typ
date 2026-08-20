@@ -8,26 +8,32 @@
 //
 // 番号は種類をまたいだ通し番号にする（kind をすべて "statement" で揃える）。
 // 「定義 3 の次が定理 4」になるので、本文で番号だけ見ても指す先が一意に決まる。
+//
+// ただし#strong[番号を振るのは、参照される種類だけ]にする。注意と例と問は
+// 振らない。番号は @label で指すためにあるのに、この 3 つは一度も指されない
+// （実測で 注意 120・例 119・問 13 に対し、参照 0 件）。通し番号に混ぜると
+// 「定義 1 の次が定義 4」になり、2 と 3 が抜けたように見えるだけ損をする。
 
 #let _kind = "statement"
 
 /// 主張の枠をひとつ組む。variant は CSS のクラス名と紙面の見た目に効く。
-#let _statement(variant, supplement, title, body) = figure(
+/// numbered: false のものは番号を消費しないので、定義と定理の連番が途切れない。
+#let _statement(variant, supplement, title, body, numbered) = figure(
   kind: _kind,
   supplement: supplement,
-  numbering: "1",
+  numbering: if numbered { "1" } else { none },
   caption: none,
   // figure の中身に variant と題名を持たせて、show rule 側で取り出す。
   metadata((variant: variant, title: title, body: body)),
 )
 
 /// `#theorem[...]` と `#theorem("Cantor")[...]` の両方を受ける。
-#let _make(variant, supplement) = (..args) => {
+#let _make(variant, supplement, numbered: true) = (..args) => {
   let pos = args.pos()
   if pos.len() == 1 {
-    _statement(variant, supplement, none, pos.at(0))
+    _statement(variant, supplement, none, pos.at(0), numbered)
   } else if pos.len() == 2 {
-    _statement(variant, supplement, pos.at(0), pos.at(1))
+    _statement(variant, supplement, pos.at(0), pos.at(1), numbered)
   } else {
     panic("主張は 本文 だけ、または (題名, 本文) を取ります")
   }
@@ -37,23 +43,26 @@
 ///
 /// 読んで分かった感覚は、取り出せることとほとんど相関しない。取り出そうとした
 /// 瞬間に定着するので、答えを見る前に一度考える機会を作る。採点も記録もしない。
-/// 番号はほかの主張と同じ通し番号なので、`@check:foo` で参照できる。
+/// その場で読んで終わるものなので、番号は振らない。
 #let check(question, answer) = figure(
   kind: _kind,
   supplement: [問],
-  numbering: "1",
+  numbering: none,
   caption: none,
   metadata((variant: "check", title: none, body: question, answer: answer)),
 )
 
+// 参照される側。通し番号を振る。
 #let axiom = _make("axiom", [公理])
 #let definition = _make("definition", [定義])
 #let theorem = _make("theorem", [定理])
 #let lemma = _make("lemma", [補題])
 #let proposition = _make("proposition", [命題])
 #let corollary = _make("corollary", [系])
-#let example = _make("example", [例])
-#let remark = _make("remark", [注意])
+
+// 添えるだけの側。番号は振らない。
+#let example = _make("example", [例], numbered: false)
+#let remark = _make("remark", [注意], numbered: false)
 
 /// 証明。終わりの □ まで込みで 1 つの塊にする。
 #let proof(body) = context {
@@ -82,12 +91,13 @@
     let title = value.title
     let body = value.body
     let answer = value.at("answer", default: none)
-    let number = it.counter.display(it.numbering)
 
     let head = {
       it.supplement
-      [ ]
-      number
+      if it.numbering != none {
+        [ ]
+        it.counter.display(it.numbering)
+      }
       if title != none [ (#title)]
     }
 

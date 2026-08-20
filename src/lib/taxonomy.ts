@@ -44,6 +44,16 @@ export const fields: readonly Field[] = [
     title: '計算機',
     blurb: '人工物ではなく、それを決めた制約で切る。x86 も Linux も概念ではなく事例である。',
   },
+  {
+    slug: 'chemistry',
+    title: '化学',
+    blurb: '経験則が本体の分野だが、対称性から決まる部分だけは論理で閉じる。そこだけを扱う。',
+  },
+  {
+    slug: 'linguistics',
+    title: '言語',
+    blurb: 'どの文法理論が正しいかは経験的だが、意味をどう組み上げるかは型で決まる。',
+  },
 ]
 
 export const series: readonly Series[] = [
@@ -166,6 +176,20 @@ export const series: readonly Series[] = [
     title: '暗号理論',
     blurb:
       '「安全である」を帰着の言葉で定義する。一方向性関数から意味的安全性、公開鍵暗号、ゼロ知識証明まで。計算量理論が前提。全 6 回。',
+  },
+  {
+    slug: 'symmetry',
+    field: 'chemistry',
+    title: '分子の対称性',
+    blurb:
+      '化学の大半は経験則だが、「この遷移は起きない」だけは群論から出る。点群、既約表現による分類、そして選択則まで。全 2 回。',
+  },
+  {
+    slug: 'semantics',
+    field: 'linguistics',
+    title: '形式意味論',
+    blurb:
+      '文の意味を、部分の意味と組み方から計算する。型付き λ 計算で書くと、「すべての」のような語も関数として扱える。全 2 回。',
   },
 ]
 

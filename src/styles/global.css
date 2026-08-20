@@ -355,6 +355,48 @@ blockquote {
   color: var(--muted);
 }
 
+/* 想起の問い。
+ *
+ * 読んで分かった感覚は、取り出せることとほとんど相関しない。定着するのは
+ * 取り出そうとした瞬間なので、答えを畳んで置き、開く前に一度考えさせる。
+ *
+ * 採点も記録もしない。連続記録や達成率と同じで、急かす仕掛けは置かない。
+ * 読み飛ばしても本文の筋は通る（答えは本文に書いてある）。 */
+.statement-check {
+  border-left-color: var(--rule);
+  border-left-style: dashed;
+}
+
+.statement-check .statement-head {
+  color: var(--muted);
+}
+
+.check-answer {
+  margin-top: 0.8rem;
+  font-size: 0.95em;
+}
+
+/* 開く前に考える余地を作る。ここだけは「読み進む」より弱い誘い方にする。 */
+.check-answer > summary {
+  cursor: pointer;
+  width: fit-content;
+  color: var(--muted);
+  text-decoration: underline dotted;
+  text-underline-offset: 0.25em;
+}
+
+.check-answer > summary:hover {
+  color: var(--accent);
+}
+
+.check-answer[open] > summary {
+  margin-bottom: 0.5rem;
+}
+
+.check-answer > :last-child {
+  margin-bottom: 0;
+}
+
 /* 証明は主張より弱い罫にして、主張 → 証明の流れが見えるようにする。 */
 .proof {
   margin: 1.8rem 0 2.2rem;

@@ -33,6 +33,19 @@
   }
 }
 
+/// 想起の問い。答えは畳んで置く。
+///
+/// 読んで分かった感覚は、取り出せることとほとんど相関しない。取り出そうとした
+/// 瞬間に定着するので、答えを見る前に一度考える機会を作る。採点も記録もしない。
+/// 番号はほかの主張と同じ通し番号なので、`@check:foo` で参照できる。
+#let check(question, answer) = figure(
+  kind: _kind,
+  supplement: [問],
+  numbering: "1",
+  caption: none,
+  metadata((variant: "check", title: none, body: question, answer: answer)),
+)
+
 #let axiom = _make("axiom", [公理])
 #let definition = _make("definition", [定義])
 #let theorem = _make("theorem", [定理])
@@ -63,7 +76,12 @@
 /// 主張の figure をどう描くかを決める show rule。テンプレート側から適用する。
 #let statement-rules(body) = {
   show figure.where(kind: _kind): it => context {
-    let (variant, title, body) = it.body.value
+    // 分割代入だと check の answer で鍵の数が合わなくなるので、名前で取る。
+    let value = it.body.value
+    let variant = value.variant
+    let title = value.title
+    let body = value.body
+    let answer = value.at("answer", default: none)
     let number = it.counter.display(it.numbering)
 
     let head = {
@@ -77,7 +95,28 @@
       html.elem("div", attrs: (class: "statement statement-" + variant), {
         html.elem("p", attrs: (class: "statement-head"), head)
         body
+        // details なので JS が要らない。CSS が落ちても、開いた状態で読める。
+        if answer != none {
+          html.elem("details", attrs: (class: "check-answer"), {
+            html.elem("summary", [答え])
+            answer
+          })
+        }
       })
+    } else if answer != none {
+      block(
+        width: 100%,
+        inset: (left: 0.9em, y: 0.5em),
+        stroke: (left: 1.5pt + luma(160)),
+        {
+          text(weight: "bold", head)
+          parbreak()
+          body
+          parbreak()
+          text(weight: "bold")[答え．]
+          answer
+        },
+      )
     } else {
       block(
         width: 100%,

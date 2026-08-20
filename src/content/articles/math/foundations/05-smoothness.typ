@@ -12,6 +12,10 @@
   summary: "「滑らか」には階層がある。C^k と C^∞ と解析的は、どれも別物である。多様体の定義に現れる「滑らか」がどれを指すのか、そしてなぜ C^∞ を選ぶのかを決める。",
   provides: (
     "smoothness-class",
+    "power-series",
+    "analytic-function",
+    "identity-theorem",
+    "bump-function",
     "frechet-derivative",
     "inverse-function-theorem",
     "implicit-function-theorem",
@@ -56,6 +60,45 @@ $ C^0 supset C^1 supset dots.c supset C^infinity supset C^omega $
 
 三つ目が、後で決定的に効く。
 
+= 解析的とは何か
+
+$C^omega$ だけは、他と毛色が違う。微分の回数ではなく、級数で書けるかを問うている。
+そこを詰めておく。
+
+#definition[
+  $sum_n a_n (x - a)^n$ の形の級数を#strong[べき級数]と呼ぶ。
+  $ R := 1 \/ limsup_n abs(a_n)^(1\/n) $
+  を#strong[収束半径]といい、$abs(x - a) < R$ で絶対収束、$> R$ で発散する。
+]<def:power-series>
+
+$abs(x - a) <= r < R$ の範囲では#strong[一様収束]するので、
+#link("/math/foundations/4")[前回]の結果から極限が連続になり、
+さらに項別に微分・積分してよい。
+#strong[べき級数は、無限和なのに有限和のように扱える。]
+
+#definition[
+  各点の近傍で、$f$ が自身の Taylor 級数に一致するとき、$f$ を#strong[解析的]といい
+  $f in C^omega$ と書く。
+]<def:analytic>
+
+$C^infinity$ であることは、Taylor 級数が#strong[書ける]ことしか保証しない。
+その級数が収束するか、収束先が $f$ かは、別の問題である。
+上の例の三つ目——$e^(-1\/x)$——は、書けるが一致しない例だった。
+
+#theorem("一致の定理")[
+  連結な領域上の解析関数 $f, g$ が、ある一点の近傍で一致すれば、領域全体で一致する。
+]<thm:identity>
+
+#proof[
+  $f - g$ のすべての導関数が消える点の集合を考える。
+  この集合は、導関数の連続性から閉集合であり、
+  解析性から（その点の近傍で級数が恒等的に $0$ なので）開集合でもある。
+  領域が連結なので、空でなければ全体に一致する。
+]
+
+#strong[解析関数は、一点の近傍の情報だけで全体が決まってしまう。]
+局所を決めると大域が決まる、という意味で#strong[硬い]。
+
 = なぜ $C^infinity$ を選ぶのか
 
 多様体の「滑らか」は $C^infinity$ を指す。理由は二つある。
@@ -71,6 +114,7 @@ $C^infinity$ なら何回微分しても $C^infinity$ のままで、数が消�
 #theorem[
   任意の開集合 $U$ と、その中のコンパクト集合 $K$ に対し、
   $K$ の上で $1$、$U$ の外で $0$ になる $C^infinity$ 関数が存在する。
+  これを#strong[山形関数]と呼ぶ。
 ]<thm:bump>
 
 #proof[
@@ -80,8 +124,9 @@ $C^infinity$ なら何回微分しても $C^infinity$ のままで、数が消�
 ]
 
 #strong[$C^omega$ ではこれができない。]
-解析関数は一点の近傍で決まれば全体が決まってしまう（一致の定理）ので、
-「ある領域の外でだけ $0$」という関数が作れない。
+@thm:identity より、解析関数がある開集合の上で恒等的に $0$ なら、
+連結な領域全体で $0$ になってしまう。
+「ここでは $0$、あそこでは $1$」という関数は、解析的でありえない。
 
 だから $C^infinity$ を選ぶ。
 #link("/math/differential-forms/6")[微分形式 第 6 回]の 1 の分割も、

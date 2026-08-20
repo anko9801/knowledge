@@ -25,10 +25,11 @@
 /*
  * 本文の欧文。scripts/subset-text-font.sh が生成する。
  *
- * 数式が STIX Two Math なのに地の文の欧文が和文フォントの欧文グリフだと、
+ * 数式が Latin Modern Math なのに地の文の欧文が和文フォントの欧文グリフだと、
  * 骨格も太さも揃わず、数式だけが浮いて見える。Gödel や Löwenheim のような
  * 固有名詞が頻出するので、この不一致は目立つ。
- * STIX Two Text は数式フォントと同じ設計なので、並べても違和感が出ない。
+ * Latin Modern Roman は数式フォントと同じ Computer Modern 系なので、
+ * 並べても違和感が出ない。書体の選定は 0d6845b を参照。
  *
  * 和文はこのフォントに CJK が無いぶん、自動で下の明朝に落ちる。
  */
@@ -196,6 +197,24 @@ a {
 
 math {
   font-family: MathSubset, math;
+}
+
+/* 括弧の外側の空きを詰める。印は typst-loader が付ける（typst-html.ts の markFences）。
+ *
+ * Latin Modern Math の括弧はグリフの外側に内側の倍ほどの空きを持ち、伸縮すると
+ * 外側だけがさらに広がる。( の左空きは通常 0.101em、分数を囲むサイズで 0.156em、
+ * 最大の変種で 0.277em。内側は 0.06em 前後のまま動かない。
+ *
+ * MathML の lspace / rspace は 0 になっているので、これはグリフの送り幅である。
+ * 負のマージンで引き戻すほかない。値は ( の外側を内側と揃える量に取った。
+ * 天井・床（⌈⌋）は外側が 0.174em あるので、これでもまだ少し空く。
+ */
+math .fence-open {
+  margin-inline-start: -0.045em;
+}
+
+math .fence-close {
+  margin-inline-end: -0.045em;
 }
 
 /* 長い別行立て数式が狭い画面で溢れるのを、切らずに横スクロールで逃がす。

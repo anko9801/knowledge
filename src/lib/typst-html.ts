@@ -142,3 +142,35 @@ const OPERAND_END =
 
 export const repairBinaryOperators = (html: string): string =>
   html.replace(OPERAND_END, (_, close, space, operator) => `${close}${space}<mo>${operator}</mo>`)
+
+/**
+ * 括弧の外側に付く空きを詰められるよう、印を付ける。
+ *
+ * Latin Modern Math の括弧は、グリフの外側に内側の倍ほどの空きを持つ
+ * （( は左 0.101em / 右 0.057em、] は右 0.114em / 左 0.022em）。伸縮すると
+ * 外側だけがさらに広がり、分数を囲むサイズでは左 0.156em、いちばん大きい
+ * 変種では 0.277em に達する。ディスプレイの分数が増えると、括弧の外だけが
+ * 空いて式が締まらない。
+ *
+ * MathML の側は正しい。Typst は括弧を必ず自前の <mrow> に包むので form は
+ * prefix / postfix と推論され、辞書上の lspace / rspace は 0 になっている。
+ * 空いているのはグリフの送り幅なので、CSS の負のマージンで引き戻すしかない。
+ *
+ * 詰め幅は global.css が持つ。ここは open / close を見分けて印を付けるだけ。
+ * 左右対称な { } | は触らない。詰めると内側まで痩せる。
+ */
+const FENCE_OPEN = '([⟨⟦⌈⌊'
+const FENCE_CLOSE = ')]⟩⟧⌉⌋'
+
+export const markFences = (html: string): string =>
+  html.replace(/<mo\b([^>]*)>([^<])<\/mo>/g, (whole, attributes: string, body: string) => {
+    if (attributes.includes('class=')) return whole
+
+    const side = FENCE_OPEN.includes(body)
+      ? 'open'
+      : FENCE_CLOSE.includes(body)
+        ? 'close'
+        : null
+
+    return side === null ? whole : `<mo${attributes} class="fence-${side}">${body}</mo>`
+  })

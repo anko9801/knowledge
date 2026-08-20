@@ -9,6 +9,7 @@ import { mapWithLimit } from './pool.ts'
 import { collectHeadings } from './headings.ts'
 import {
   extractStyles,
+  markFences,
   repairBinaryOperators,
   rewriteInternalLinks,
   splitDocument,
@@ -169,7 +170,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     })
 
     // アクセントの置換は全記事に効かせる。合成用のままだと <mover> の点がずれる。
-    const accented = repairBinaryOperators(useSpacingAccents(body))
+    const accented = markFences(repairBinaryOperators(useSpacingAccents(body)))
     const numbered = numberEquations ? wrapBlockEquations(accented) : accented
 
     // 本文の #link("/math/…") はサイトのルート起点で書かれている。

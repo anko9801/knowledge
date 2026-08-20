@@ -57,7 +57,8 @@ $epsilon$ は変換の「量」である。平行移動なら移動距離、回�
   $partial \/ partial epsilon$ と $dif \/ dif t$ が交換するからである）。
 
   ここで、解に沿っては Euler--Lagrange 方程式
-  $partial L \/ partial q^k = frac(dif, dif t)(partial L \/ partial dot(q)^k)$ が成り立つ。代入すると
+  $ frac(partial L, partial q^k) = frac(dif, dif t) (frac(partial L, partial dot(q)^k)) $
+  が成り立つ。代入すると
   $ 0 = sum_k (frac(dif, dif t)(frac(partial L, partial dot(q)^k)) X^k
       + frac(partial L, partial dot(q)^k) dot(X)^k)
     = frac(dif, dif t) (sum_k frac(partial L, partial dot(q)^k) X^k) $
@@ -81,11 +82,14 @@ $epsilon$ は変換の「量」である。平行移動なら移動距離、回�
 = 三つの保存則
 
 具体的な変換を入れてみる。以下、$N$ 個の質点の系を直交座標で書き、
-$L = sum_i frac(1,2) m_i abs(dot(bold(r))_i)^2 - U(bold(r)_1, dots, bold(r)_N)$ とする。
+
+$ L = sum_i frac(1,2) m_i abs(dot(bold(r))_i)^2 - U(bold(r)_1, dots, bold(r)_N) $
+とする。
 
 #corollary("運動量保存")[
   $U$ が全体の平行移動で変わらないなら、全運動量
-  $bold(P) := sum_i m_i dot(bold(r))_i$ は保存する。
+  $ bold(P) := sum_i m_i dot(bold(r))_i $
+  は保存する。
 ]<cor:momentum>
 
 #proof[
@@ -97,7 +101,8 @@ $L = sum_i frac(1,2) m_i abs(dot(bold(r))_i)^2 - U(bold(r)_1, dots, bold(r)_N)$ 
 
 #corollary("角運動量保存")[
   $U$ が全体の回転で変わらないなら、全角運動量
-  $bold(L) := sum_i m_i bold(r)_i times dot(bold(r))_i$ は保存する。
+  $ bold(L) := sum_i m_i bold(r)_i times dot(bold(r))_i $
+  は保存する。
 ]<cor:angular-momentum>
 
 #proof[
@@ -135,9 +140,11 @@ $L = sum_i frac(1,2) m_i abs(dot(bold(r))_i)^2 - U(bold(r)_1, dots, bold(r)_N)$ 
 ]<prop:energy-is-T-plus-U>
 
 #proof[
-  仮定より $bold(v)_i = sum_k (partial bold(r)_i \/ partial q^k) dot(q)^k$ なので、
-  $T$ は $dot(q)$ の二次同次式である。すなわち $T = sum_(j k) a_(j k)(q) dot(q)^j dot(q)^k$ の形で、
-  Euler の同次関数定理より
+  仮定より
+  $ bold(v)_i = sum_k frac(partial bold(r)_i, partial q^k) dot(q)^k $
+  なので、$T$ は $dot(q)$ の二次同次式である。すなわち
+  $ T = sum_(j k) a_(j k)(q) dot(q)^j dot(q)^k $
+  の形で、Euler の同次関数定理より
   $ sum_k frac(partial T, partial dot(q)^k) dot(q)^k = 2 T $
   が成り立つ。$partial U \/ partial dot(q)^k = 0$ だから
   $ E = 2 T - (T - U) = T + U $
@@ -185,8 +192,9 @@ $L$ の形そのものを絞り込む。#link("/physics/mechanics/1")[第 1 回]
   $bold(v) = dif bold(r) \/ dif t$ の係数が定数でなければならない。
   すなわち $partial L \/ partial v^2$ は $v^2$ に依らない定数である。よって
   $ L = a v^2 $
-  の形に決まる（定数項は全微分として捨ててよい）。$a =: m \/ 2$ と書けば、
-  $L = frac(1,2) m v^2$ という見慣れた形になる。
+  の形に決まる（定数項は全微分として捨ててよい）。$a =: m \/ 2$ と書けば
+  $ L = frac(1,2) m v^2 $
+  という見慣れた形になる。
 ]
 
 この議論の来歴は Landau と Lifshitz の教科書で、力学を対称性から組み立てる筋書きの出発点になっている。

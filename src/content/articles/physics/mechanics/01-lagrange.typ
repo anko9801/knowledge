@@ -40,7 +40,7 @@ Newton 力学では力 $bold(F)$ を与えることだった。解析力学で�
   [$L(q, dot(q), t)$],
   [#strong[ラグランジアン]。位置 $q$ と速度 $dot(q)$ を入れると数を 1 つ返す関数。
    この関数 1 本が理論のすべてを決める],
-  [$S = integral L thin dif t$],
+  [$display(S = integral L thin dif t)$],
   [#strong[作用]。$L$ を運動の始めから終わりまで積んだ数。
    ありうる運動 1 本につき、値が 1 つ決まる],
 )
@@ -48,7 +48,9 @@ Newton 力学では力 $bold(F)$ を与えることだった。解析力学で�
 Newton 力学の言葉に直せば、$L$ は「運動エネルギー引くポテンシャル」に当たる。
 単振り子なら
 $ L = frac(1, 2) m ell^2 dot(theta)^2 + m g ell cos theta $
-であり、これを後半で作る公式に入れると、見慣れた $dot.double(theta) = -(g \/ ell) sin theta$ が出る。
+であり、これを後半で作る公式に入れると、見慣れた
+$ dot.double(theta) = -(g \/ ell) sin theta $
+が出る。
 $L$ とはその程度のもの、と思って先へ進んでよい。
 
 == 答えを一行で書く
@@ -331,8 +333,11 @@ $ S = integral cal(L) thin dif^4 x $
 対称性を課して理論を絞るという手続きが、$H$ の側では回らないわけである。
 
 #strong[二つ、そもそも作れないことがある。]
-$H$ を作るには $p_k = partial L \/ partial dot(q)^k$ を $dot(q)$ について解かねばならない。
-解けるのは $partial^2 L \/ partial dot(q)^j partial dot(q)^k$ が退化していないときだけである。
+$H$ を作るには
+$ p_k = frac(partial L, partial dot(q)^k) $
+を $dot(q)$ について解かねばならない。解けるのは
+$ frac(partial^2 L, partial dot(q)^j partial dot(q)^k) $
+が退化していないときだけである。
 そして#strong[ゲージ理論はまさに退化する]。電磁場では $A_0$ に共役な運動量が恒等的に $0$ になり、
 $dot(A)_0$ を $p$ で書き直せない。そのままでは正準形式へ移れず、
 拘束付きの手続き（Dirac の拘束系）を追加することになる。
@@ -466,7 +471,7 @@ $ S = integral_(t_1)^(t_2) L thin dif t $
 $L$ が手に入った時点で運動方程式は書けてしまうので、
 「なぜさらに時間で積むのか」という問いが残る。
 その答え——座標にも時間の刻み方にも依らない形で法則を書こうとすると
-$integral L thin dif t$ の形しか残らない——は#link("/physics/mechanics/2")[第 2 回]で扱う。
+$display(integral L thin dif t)$ の形しか残らない——は#link("/physics/mechanics/2")[第 2 回]で扱う。
 
 = 一般化座標
 
@@ -546,8 +551,10 @@ $integral L thin dif t$ の形しか残らない——は#link("/physics/mechani
 ]
 
 #theorem("Lagrange の運動方程式")[
-  運動エネルギーを $T := sum_i frac(1, 2) m_i abs(bold(v)_i)^2$、
-  一般化力を $Q_k := sum_i bold(F)_i dot frac(partial bold(r)_i, partial q^k)$ とすると
+  運動エネルギーと一般化力を
+  $ T := sum_i frac(1, 2) m_i abs(bold(v)_i)^2, quad
+    Q_k := sum_i bold(F)_i dot frac(partial bold(r)_i, partial q^k) $
+  と定めると
   $ frac(dif, dif t) (frac(partial T, partial dot(q)^k)) - frac(partial T, partial q^k) = Q_k
     quad (k = 1, dots, n) $
   が成り立つ。さらに $bold(F)_i$ がポテンシャル $U(q, t)$ から導かれるなら、
@@ -568,7 +575,9 @@ $integral L thin dif t$ の形しか残らない——は#link("/physics/mechani
   $ = frac(dif, dif t) (sum_i m_i bold(v)_i dot frac(partial bold(v)_i, partial dot(q)^k))
       - sum_i m_i bold(v)_i dot frac(partial bold(v)_i, partial q^k)
     = frac(dif, dif t) (frac(partial T, partial dot(q)^k)) - frac(partial T, partial q^k) $
-  となる。最後の等号は $T = sum_i frac(1,2) m_i bold(v)_i dot bold(v)_i$ を微分しただけである。
+  となる。最後の等号は
+  $ T = sum_i frac(1,2) m_i bold(v)_i dot bold(v)_i $
+  を微分しただけである。
   これで前半が示された。
 
   後半。$Q_k = - partial U \/ partial q^k$ であり、$U$ は $dot(q)$ を含まないので
@@ -597,7 +606,9 @@ $integral L thin dif t$ の形しか残らない——は#link("/physics/mechani
 #example("単振り子")[
   一般化座標を $theta$ 一つに取ると
   $ L = frac(1, 2) m ell^2 dot(theta)^2 + m g ell cos theta $
-  であり、@thm:lagrange から $dot.double(theta) = -(g \/ ell) sin theta$ を得る。
+  であり、@thm:lagrange から
+  $ dot.double(theta) = -(g \/ ell) sin theta $
+  を得る。
   糸の張力は一度も登場しない。知りたければ、あとで $bold(r)$ に戻って計算すればよい。
 
   ……という計算の軽さが、冒頭で「弱い」と言った売り文句である。

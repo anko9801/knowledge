@@ -1,0 +1,195 @@
+#import "/src/typst/template.typ": post
+#import "/src/typst/theorem.typ": *
+#import "/src/typst/layer.typ": layer
+
+#show: post.with(
+  title: "遠心力の正体は Γ である",
+  date: "2026-08-20",
+  field: "math",
+  series: "riemannian-geometry",
+  order: 3,
+  tags: ("Riemann 幾何",),
+  summary: "離れた点の接ベクトルを比べる方法を、外から決める。それが接続である。計量的で捩れがない、という二条件を課すと接続は一つに定まり、その成分が Christoffel 記号になる。極座標の遠心力と Coriolis 力は、平坦な空間の Γ にほかならない。",
+)
+
+#layer("L2 ＋ 接続", metric: true)[計量に加えて「平行」を決める。ここが Riemann 幾何の中心]
+
+= 比べる方法を、外から決める
+
+前回の困難はこうだった。
+$T_p$ と $T_q$ は別のベクトル空間なので、
+離れた 2 点のベクトルを比べる方法が無い。
+
+無いなら、決めればよい。
+#strong[決め方は一つではない。だから接続は付加構造である。]
+
+#definition[
+  #strong[接続]（共変微分）とは、ベクトル場の組に対しベクトル場を返す操作
+  $nabla_X Y$ であって、次を満たすものをいう。
+
+  + $nabla_(f X + g Y) Z = f nabla_X Z + g nabla_Y Z$（$X$ について関数線形）
+  + $nabla_X (Y + Z) = nabla_X Y + nabla_X Z$
+  + $nabla_X (f Y) = X(f) thin Y + f nabla_X Y$（Leibniz 則）
+]<def:connection>
+
+条件 1 と 3 が非対称なことに注意してほしい。
+$X$ については関数を通り抜けるが、$Y$ については微分が落ちてくる。
+これは「$X$ は微分する方向を指定するだけ、$Y$ は微分される対象」という役割の違いである。
+
+座標で書くと
+$ nabla_(partial_j) partial_i =: Gamma^k{}_(j i) thin partial_k $
+で定まる $Gamma$ が接続を決める。成分では
+$ nabla_j X^i = partial_j X^i + Gamma^i{}_(j k) X^k $
+となり、前回の予告どおりの形になる。
+
+#proposition[
+  $Gamma$ はテンソルではない。座標変換で
+  $ Gamma'^i{}_(j k) = frac(partial x'^i, partial x^a) frac(partial x^b, partial x'^j)
+      frac(partial x^c, partial x'^k) Gamma^a{}_(b c)
+    + frac(partial x'^i, partial x^a) frac(partial^2 x^a, partial x'^j partial x'^k) $
+  と変わる。
+]<prop:gamma>
+
+第二項が余分である。そしてこれは、前回 $partial_j X^i$ に現れた余分な項と
+ちょうど同じ形をしている。だから足すと打ち消し合い、$nabla_j X^i$ はテンソルになる。
+
+#strong[テンソルでないもの二つを足して、テンソルを作る。]
+これが共変微分の仕掛けである。
+
+= 平行移動
+
+@def:connection を、幾何の言葉に直しておく。
+
+#definition[
+  曲線 $gamma$ に沿ってベクトル場 $V$ が
+  $ nabla_(dot(gamma)) V = 0 $
+  を満たすとき、$V$ は $gamma$ に沿って#strong[平行移動]されているという。
+]<def:parallel>
+
+これは常微分方程式なので、初期ベクトルを与えれば一意に解ける。
+つまり#strong[曲線を一本決めれば、$T_p$ から $T_q$ への対応が定まる]。
+
+決まらないのは、曲線に依らずに定まるかどうかである。
+別の曲線を通ると、別のベクトルが返ってくる。
+そのズレが#link("/math/riemannian-geometry/5")[曲率]になる。
+
+= 計量から接続を決める
+
+@def:connection には自由度が多すぎる。二つの条件で絞る。
+
+#definition[
+  + #strong[計量的]（$nabla g = 0$）。平行移動で長さと角度が変わらない
+  + #strong[捩れがない]（$nabla_X Y - nabla_Y X = [X, Y]$）。成分では $Gamma^k{}_(i j) = Gamma^k{}_(j i)$
+]<def:levi-civita-conditions>
+
+条件 1 は自然である。長さを測る道具が計量なのに、
+平行移動で長さが変わったら「平行」と呼ぶ意味がない。
+
+条件 2 は分かりにくいので、幾何的な意味を書いておく。
+$X$ 方向に少し進んでから $Y$ 方向に少し進むのと、逆順に進むのとで、
+着く点が違ってよい——それが $[X, Y]$ である。
+捩れとは、この差以上の「ねじれ」があるかどうかを測る。
+条件 2 は、余計なねじれを入れないという要請である。
+
+#theorem("Riemann 幾何の基本定理")[
+  @def:levi-civita-conditions の二条件を満たす接続はただ一つ存在する。
+  これを#strong[Levi-Civita 接続]と呼び、その成分は
+  $ Gamma^k{}_(i j) = frac(1, 2) g^(k l)
+    (partial_i g_(j l) + partial_j g_(i l) - partial_l g_(i j)) $
+  で与えられる。
+]<thm:levi-civita>
+
+#proof[
+  計量的であることを、添字を入れ替えて三通りに書く。
+  $ partial_i g_(j k) = Gamma^l{}_(i j) g_(l k) + Gamma^l{}_(i k) g_(j l) $
+  同じ式を $(j, k, i)$ と $(k, i, j)$ の順で書き、
+  最初の二つを足して三つ目を引く。
+  捩れがないので $Gamma$ の下 2 本が対称になり、多くの項が相殺して
+  $ 2 Gamma^l{}_(i j) g_(l k) = partial_i g_(j k) + partial_j g_(i k) - partial_k g_(i j) $
+  が残る。$g^(k l)$ を掛ければ主張の式になる。
+  この過程で $Gamma$ が完全に決まったので、一意性も同時に示された。
+]
+
+計量を与えると接続が決まり、接続が決まると「まっすぐ」が決まる。
+#strong[Riemann 幾何が計量だけで組み立つのは、@thm:levi-civita のおかげ]である。
+
+= 遠心力と Coriolis 力
+
+@thm:levi-civita を、いちばん身近な例で計算する。
+
+#example[平面の極座標][
+  $g = dif r^2 + r^2 dif theta^2$ なので $g_(r r) = 1$、$g_(theta theta) = r^2$、
+  非対角成分は $0$ である。@thm:levi-civita に入れると、$0$ でないのは
+  $ Gamma^r{}_(theta theta) = -r, quad
+    Gamma^theta{}_(r theta) = Gamma^theta{}_(theta r) = frac(1, r) $
+  の三つだけである。
+
+  これを使って加速度——速度の共変微分——を書くと
+  $ a^r = dot.double(r) - r dot(theta)^2, quad
+    a^theta = dot.double(theta) + frac(2, r) dot(r) dot(theta) $
+  になる。
+]
+
+見覚えのある式である。
+#link("/physics/mechanics/1")[解析力学 第 1 回]で、
+極座標の運動方程式に現れる項として書いたものと同じである。
+
+$ m(dot.double(r) - r dot(theta)^2) = F_r, quad
+  m(r dot.double(theta) + 2 dot(r) dot(theta)) = F_theta $
+
+そこで立てた問いは「遠心力や Coriolis 力は物理なのか、座標の都合なのか」だった。
+答えが出た。
+
+#strong[$Gamma$ である。座標の都合である。]
+
+平面は平坦なので、デカルト座標では $Gamma = 0$ になり、これらの項は消える。
+消せるということが、物理でないことの証明になっている。
+
+#strong[そして $Gamma$ はテンソルではない。だから座標を選べば $0$ にできる。]
+@prop:gamma の第二項が、まさにその自由度である。
+
+== 消せないものが残る
+
+ここから一般相対論の核心が出る。
+
+$Gamma$ が座標変換で消せるなら、重力も消せることになる。
+実際、自由落下する観測者から見れば重力は消える。等価原理である。
+
+#theorem[
+  任意の点 $p$ に対し、$p$ で $Gamma^k{}_(i j)(p) = 0$ かつ
+  $g_(i j)(p) = delta_(i j)$（あるいは $eta_(i j)$）となる座標が存在する。
+]<thm:normal>
+
+これを#strong[正規座標]と呼ぶ。証明は @prop:gamma の第二項を使って
+$Gamma$ を打ち消す座標変換を構成すればよい。
+局所慣性系のことである。
+
+だが、消せるのは#strong[一点で、一階微分まで]である。
+$partial Gamma$ の組み合わせのうち、どんな座標変換でも消えない部分が残る。
+それが曲率で、#link("/math/riemannian-geometry/5")[第 5 回]の主題になる。
+
+#strong[潮汐力が消せないのは、これが理由である。]
+自由落下するエレベーターの中で重力は消えるが、
+エレベーターが十分大きければ、床と天井で落下方向が違うことに気づいてしまう。
+消えたのは $Gamma$ であって、曲率ではない。
+
+= どこまでが構造か
+
+三つの層を、いま一度並べておく。
+
+#table(
+  columns: (auto, auto, 1fr),
+  [構造], [決めるもの], [座標で消せるか],
+  [多様体], [微分できること], [—],
+  [計量 $g$], [長さ・角度・体積], [一点でなら $delta$ にできる],
+  [接続 $Gamma$], [平行・まっすぐ], [#strong[一点でなら $0$ にできる]],
+  [曲率 $R$], [平行移動の経路依存性], [#strong[消せない]],
+)
+
+消せるかどうかが、物理かどうかの判定になっている。
+#link("/physics/mechanics/1")[解析力学 第 1 回]で
+「どこまでが物理でどこからが記述の都合か」と書いた問いに、
+この表が答えを与えている。
+
+次回、$Gamma = 0$ が定める「まっすぐな経路」——測地線——を扱う。
+そして、それが長さの停留する経路と一致することを見る。

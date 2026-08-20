@@ -1,5 +1,6 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
+#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "三つの定理は一つである",
@@ -10,6 +11,8 @@
   tags: ("ベクトル解析",),
   summary: "grad・div・rot は三つの演算子ではなく、一つの微分の三つの顔である。三つの積分定理も一つ。三つに分裂して見えるのは、我々が 3 次元にいるからにすぎない。",
 )
+
+#layer("L1 ＋ L2 混在", metric: true)[舞台は $RR^3$。$times$ も擬ベクトルも計量と向きを暗黙に使っている]
 
 = 覚えることが多すぎる
 
@@ -252,7 +255,7 @@ $dif compose dif = 0$ の逆向きも、よく使う形で知られている。
     $2 pi$ で、$0$ にならない。$bold(A) = nabla f$ と書けないのである。
     ここに現れる「$0$ にならないぶん」が Aharonov--Bohm 効果で観測される位相であり、
     磁束が閉じ込められた領域の外側で電子の干渉縞を動かす
-    （#link("/physics/mechanics/1")[解析力学 第 1 回]で扱った）。
+    （#link("/physics/mechanics/5")[解析力学 第 5 回]で扱った）。
 
   + 原点を除いた空間で、磁気単極子の場
     $ bold(B) = g frac(hat(bold(r)), r^2) $

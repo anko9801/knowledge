@@ -70,11 +70,32 @@ export const series: readonly Series[] = [
       '素朴集合論の破綻から、順序数・基数・選択公理を経て、連続体仮説の独立性と記述集合論まで。全 12 回。',
   },
   {
+    slug: 'linear-algebra',
+    field: 'math',
+    title: '線形代数',
+    blurb:
+      '基底を選ぶのをやめると、何が本当の構造だったかが見える。双対空間、テンソル、行列式は体積であること、そして内積を入れる代償。全 7 回。',
+  },
+  {
     slug: 'vector-analysis',
     field: 'math',
     title: 'ベクトル解析',
     blurb:
-      'grad・div・rot は一つの微分であり、三つの積分定理は一つの定理である。3 次元でしか成り立たない偶然を剥がして、微分形式まで。',
+      'grad・div・rot は一つの微分であり、三つの積分定理は一つの定理である。3 次元でしか成り立たない偶然を剥がして、微分形式まで。全 6 回。',
+  },
+  {
+    slug: 'differential-forms',
+    field: 'math',
+    title: '微分形式',
+    blurb:
+      '計量を使わずに微分と積分を作る。接ベクトルの定義から多様体、一般化された Stokes の定理、そして穴を数えるところまで。全 7 回。',
+  },
+  {
+    slug: 'riemannian-geometry',
+    field: 'math',
+    title: 'Riemann 幾何',
+    blurb:
+      '計量を入れる。テンソル解析の記法はここで出る。なぜ偏微分では足りないのか、接続・測地線・曲率まで。全 7 回。',
   },
 ]
 

@@ -408,6 +408,10 @@ export const concepts: readonly Concept[] = [
   // だから価値がばらつきとともに上がり、読みの当たる領域では損になる。
   // 「常に試してから作れ」が成り立たない理由が、ここから出る。
   c('discovery-as-option', '試作は選択肢を買う', '作る前の試作は、モノではなく作らない選択肢を買っている。不確かさが大きいほど得', 'viewpoint', 'cs', ['optionality'], ['feedback-delay']),
+  // 「試作するか」を 1 つの判断にすると、Cagan の 4 分割が消える。潰す
+  // リスクは価値・使い勝手・実現可能性・事業成立で、確かめ方も別々。
+  // 分布が違うので、まとめて値付けすると確実な側にも費用を払うことになる。
+  c('four-risks', '潰すリスクは四つある', '欲しがるか、使えるか、作れるか、事業として成り立つか。分布も確かめ方も別', 'viewpoint', 'cs', ['discovery-as-option']),
 
   // --- プログラムの構成 -------------------------------------------------
   //
@@ -443,6 +447,16 @@ export const concepts: readonly Concept[] = [
   c('learning-asymmetry', '学習の非対称', 'まとまりが作れれば 2 回目以降が安くなる。作れなければ毎回同じだけかかる', 'theorem', 'cs', ['chunking', 'deep-module', 'expected-change-cost']),
   c('first-read-only', '実験は一回目しか測らない', '知らない人に断片を一度見せる形なので、n=1 の差しか出ない', 'viewpoint', 'cs', ['learning-asymmetry', 'absolute-vs-relative-prediction']),
   c('program-death', 'プログラムの死', '理論を持つ人が全員いなくなること。動き続けるが、意味のある変更はできない', 'viewpoint', 'cs', ['theory-building']),
+  // 負債が帳簿に出ないのは、対応する資産も出ていないからである。広木は
+  // 見える／見えない × プラス／マイナスの 4 象限を引き、技術的負債を
+  // 「見えない × マイナス」に置いたうえで、それはシステムの複雑性の増加
+  // そのものではなく、エンジニアと経営者の間の認識の差だと書いている。
+  // 複雑性の話に読み替えると、この「差」が消える。
+  c('invisible-asset', '見えない資産', '負債が帳簿に出ないのは、対応する資産（理論）も出ないから。差だけが問題になる', 'viewpoint', 'cs', ['theory-building'], ['change-over-time']),
+  // 抱えられる量を超えたときの手は、人を足すことでも諦めることでもなく、
+  // 扱う領域の数を絞って超過分を別の組へ移すこと。Skelton らの経験則は
+  // 単純な領域なら 2〜3、複雑な領域なら 1 つ、混ぜない。
+  c('domain-count-limit', '扱う領域の数を絞る', '抱えられる量は行数では測れない。数えるのは領域の数で、超えた分は別の組へ移す', 'viewpoint', 'cs', ['relocation-not-reduction', 'invisible-asset']),
 
   // --- 理論が渡る条件 ---------------------------------------------------
   //
@@ -458,6 +472,14 @@ export const concepts: readonly Concept[] = [
   c('observed-is-product', '観測できるのは積だけ', '報告数 = 発生数 × 報告率。1 本の式に未知数が 2 つあるので、分けられない', 'theorem', 'cs', ['error-proneness']),
   c('reporting-cost', '報告の費用', '報告する側が損をするなら報告率が下がる。安全な組と黙る組は同じ数字を出す', 'viewpoint', 'cs', ['observed-is-product'], ['feedback-delay']),
   c('theory-transfer', '理論は問いでしか渡らない', '文書は予期できた問いにしか答えていない。残りは問える場でしか渡らない', 'viewpoint', 'cs', ['theory-building'], ['reporting-cost']),
+  // 報告率を上げ下げする仕組みは、行動分析の「きっかけ→行動→みかえり」に
+  // 落ちる。報告は行動なので、直後に何が起きるかで頻度が決まる。
+  //
+  // ここで止めると「罰しなければよい」になるが、石井は次の層を置いている。
+  // 言語行動は体験の前に判断できるので、実際に罰された人がいなくても
+  // 報告率は下がる。「うちは罰していない」が反証にならない理由がここ。
+  c('behavior-consequence', '行動はみかえりで決まる', 'きっかけ→行動→みかえり。報告も行動なので、直後に何が起きるかで頻度が変わる', 'viewpoint', 'cognition', ['error-proneness']),
+  c('rule-governed-behavior', '体験の前に、言葉で決まる', '罰を受けた人がいなくても、報告しないほうがよいと言葉で判断できれば報告は減る', 'viewpoint', 'cognition', ['behavior-consequence']),
   c('metric-suppresses-detection', '指標が検出を抑える', '気づく側を強くすると報告数は必ず増える。報告数で管理すると、気づく仕組みが削られる', 'viewpoint', 'cs', ['observed-is-product', 'poka-yoke']),
 
   // --- 減らすとは何か ---------------------------------------------------

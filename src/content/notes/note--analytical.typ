@@ -167,7 +167,6 @@ $p_i \( delta q_i - dot(q)_i delta t \) + L delta t$
 ]
 == 正準変換
 <正準変換>
-= 
 <section>
 == 解析力学の復習：点正準変換
 <解析力学の復習点正準変換>

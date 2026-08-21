@@ -66,3 +66,10 @@ test('目次は深さで切り、1 つしか無ければ出さない', () => {
   deepStrictEqual(tocHeadings(headings, 4).map((heading) => heading.slug), ['a', 'b', 'c'])
   deepStrictEqual(tocHeadings([{ depth: 2, slug: 'a', text: 'a' }]), [])
 })
+
+test('文字の無い見出しは目次にも載せず、リンクも付けない', () => {
+  const { html, headings } = collectHeadings('<h2></h2><h2>公理</h2>')
+
+  strictEqual(headings.length, 1)
+  ok(!html.includes('href="#section"'))
+})

@@ -26,7 +26,10 @@ const sortedPosts = [...posts].sort((a, b) => b.data.date.getTime() - a.data.dat
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
-<BaseLayout title="knowledge">
+<BaseLayout
+  title="knowledge"
+  description="数学と物理のノート。集合論・数理論理学・解析力学の連載と、学生時代の講義ノート 44 本。数式は画像ではなく MathML なので、選択もコピーもページ内検索もできる。"
+>
   <h1>knowledge</h1>
   <p class="lead">
     数学と物理を、定義の気持ちから順に解説していきます。数式は MathML なので、

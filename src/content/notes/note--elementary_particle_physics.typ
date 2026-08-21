@@ -386,7 +386,6 @@ $ Delta E dot.op Delta t tilde.op Gamma dot.op tau = planck $
 $ tau tilde.op 10^(- 8) \[ s e c \] \( "弱い相互作用" \)\
 tau tilde.op 10^(- 23) \[ s e c \] \( "強い相互作用" \) $
 
-== 
 <section>
 $ e^(+) e^(-) arrow.r Q macron(Q) arrow.r h a d r o n s $ 1/s 共鳴ピーク
 定数倍

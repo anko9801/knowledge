@@ -93,6 +93,12 @@ export const collectHeadings = (html: string): HeadingResult => {
 
   const rewritten = html.replace(HEADING, (whole, level: string, attributes: string, body: string) => {
     const text = textOf(body)
+
+    // 文字の無い見出しには手を出さない。id を振っても指す先が見えないし、
+    // 目次に載せると本文の無いリンクになって読み上げが行き止まりになる。
+    // 変換した講義ノートに `= ` だけの行が残っていて、実際にそうなっていた。
+    if (text === '') return whole
+
     const existing = attributes.match(ID)
     const slug = existing ? existing[1] : unique(slugify(text), used)
 

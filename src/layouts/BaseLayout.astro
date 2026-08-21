@@ -11,6 +11,8 @@ import '../styles/layout.css'
 import mathFont from '../fonts/math.woff2?url'
 import textRegularFont from '../fonts/text-regular.woff2?url'
 
+import favicon from '../favicon.svg?url'
+
 import type { MarkdownHeading } from 'astro'
 
 import Sidebar from '../components/Sidebar.astro'
@@ -51,6 +53,10 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* 明示しないとブラウザが /favicon.ico を取りに行き、404 がコンソールに残る。
+        public/favicon.ico も置いてあるのは、この link を見ない取得元のため。 */}
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <link rel="icon" sizes="32x32" href={`${base}favicon.ico`} />
     <title>{title === siteName ? title : `${title} - ${siteName}`}</title>
     {description && <meta name="description" content={description} />}
     {/* 本文の欧文と数式は最初の画面に必ず出るので、両方とも先読みする。

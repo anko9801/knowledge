@@ -227,7 +227,6 @@ $ E_(bold(k) \, s) = (n_(bold(k) \, s) + 1 / 2) planck omega_(bold(k) \, s) $
 
 = 固体の熱的性質
 <固体の熱的性質>
-== 
 <section>
 = 自由電子
 <自由電子>

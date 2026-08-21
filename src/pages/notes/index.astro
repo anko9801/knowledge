@@ -35,7 +35,10 @@ const groups = [...byGroup.entries()].map(([group, items]) => ({
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
-<BaseLayout title="講義ノート">
+<BaseLayout
+  title="講義ノート"
+  description="学生時代に LaTeX で書いた数学と物理の講義ノート 44 本。Typst へ機械変換したままなので、組版が崩れているものや書きかけのものが混じる。"
+>
   <h1>講義ノート（素材）</h1>
 
   <p class="lead">

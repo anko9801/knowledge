@@ -375,13 +375,20 @@ export const concepts: readonly Concept[] = [
   // 面白いことに、入口（変更は来る、費用は割り引かれる）だけが経験的で、
   // そこから先は論理で決まる。波及範囲は結合関係の推移閉包そのものである。
   c('change-over-time', '時間で積分する', '書き捨てなら何でもよい。保守が要るとき初めて設計が費用になる', 'viewpoint', 'cs'),
-  c('coupling', '結合', '片方を変えるともう片方も変えねばならない関係。Beck の定義', 'definition', 'cs', ['relation-order'], ['change-over-time']),
+  c('coupling', '結合', 'ある変更に対して、片方を変えるともう片方も変えねばならない関係。変更ごとに決まる', 'definition', 'cs', ['relation-order'], ['change-over-time']),
   c('change-propagation', '変更の波及', '直す箇所は結合関係の推移閉包。閉路があると全体が 1 つになる', 'theorem', 'cs', ['coupling']),
+  c('constantine-equivalence', 'Constantine の等式', 'ソフトウェアの費用は変更の費用に、それは大きな変更に、それは結合にほぼ等しい', 'viewpoint', 'cs', ['change-propagation']),
+  c('decoupling-cost', '分離にも費用がある', '結合を減らす側にも費用の坂がある。どちらへ振り切っても高くつく', 'viewpoint', 'cs', ['constantine-equivalence']),
   c('control-vs-dependency', '流れと依存は別', 'A が B を呼ぶことと、A が B に依存することは、独立に決められる', 'viewpoint', 'cs', ['coupling']),
   c('dependency-inversion', '依存性逆転', 'インターフェースを呼ぶ側に置く。制御の向きはそのままで、依存だけ反せる', 'technique', 'cs', ['control-vs-dependency', 'information-hiding']),
   c('stable-dependency', '安定依存', '変わりやすい側が、変わりにくい側に依存する。層の数ではなく二者の相対関係', 'viewpoint', 'cs', ['change-propagation', 'dependency-inversion']),
   c('unidirectional-flow', '単方向フロー', '状態の更新経路から閉路を無くす。TEA と Redux。依存の向きとは別の話', 'technique', 'cs', ['control-vs-dependency'], ['cognitive-load']),
-  c('optionality', 'オプション価値', '今払って、後で選べる状態を買う。割引現在価値で釣り合いを見る', 'viewpoint', 'cs', ['change-over-time'], ['essential-accidental']),
+  // 経済の側は 1 本ではなく、逆を向く 2 本である。ここを 1 本に潰すと
+  // 『Tidy First?』の題名に付いた疑問符が消える。Beck の答えは
+  // 「Tidy first? Yes. Also no.」で、決着していないことが中身だった。
+  c('discounting', '割引', '今日の 1 ドルは明日の 1 ドルより価値がある。早く稼ぎ、遅く払え', 'viewpoint', 'cs', ['change-over-time']),
+  c('optionality', 'オプション価値', '不確かならモノより選択肢。先に払って、後で選べる状態を買え', 'viewpoint', 'cs', ['change-over-time'], ['essential-accidental']),
+  c('tidying-timing', '整頓は先か後か', '割引は後回しを、オプション価値は前倒しを支持する。費用の比較でしか決まらない', 'viewpoint', 'cs', ['discounting', 'optionality', 'decoupling-cost']),
 
   // --- プログラムの構成 -------------------------------------------------
   //
@@ -444,7 +451,7 @@ export const concepts: readonly Concept[] = [
   // 決定不能性（Rice、停止問題）はここに入らない。定理だからである。数学を
   // 仮定に含めた時点で出てくるので、外から与える必要がない。並べて数えたのが
   // 誤りだった。ただし効かないわけではなく、働き方が違う。下の二つに分ける。
-  c('expected-change-cost', '手間の総量', '読む時間も、逃した欠陥の修正も、計算資源も、最後は同じ物差しで測れる', 'viewpoint', 'cs', ['optionality', 'feedback-delay']),
+  c('expected-change-cost', '手間の総量', '読む時間も、逃した欠陥の修正も、計算資源も、最後は同じ物差しで測れる', 'viewpoint', 'cs', ['tidying-timing', 'feedback-delay']),
   c('irreducible-inputs', '外から与えるもの', '機械・人・時間の三つ。どれも他の二つからは出てこない', 'viewpoint', 'cs', ['expected-change-cost']),
   c('feasibility-vs-cost', '高くつくとできないは別', '機械と人と時間は釣り合いの問題、決定不能性は可否の問題。混ぜると判断を誤る', 'viewpoint', 'cs', ['irreducible-inputs', 'soundness-completeness-tradeoff']),
   c('binding-constraint', '効いている制約', '制約が 1 本しか効かない場所に判断は無い。逆を向いた二本があるときだけ要る', 'viewpoint', 'cs', ['feasibility-vs-cost', 'load-tradeoff']),

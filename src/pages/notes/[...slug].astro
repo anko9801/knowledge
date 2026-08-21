@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import CodeCopy from '../../components/CodeCopy.astro'
 import { excerpt } from '../../lib/excerpt.ts'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -49,6 +50,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
   <article>
     <Content />
   </article>
+  <CodeCopy />
 </BaseLayout>
 
 <style>

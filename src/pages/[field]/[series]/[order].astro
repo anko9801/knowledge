@@ -6,6 +6,7 @@ import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../../layouts/BaseLayout.astro'
+import CodeCopy from '../../../components/CodeCopy.astro'
 import { concepts } from '../../../data/concepts.ts'
 import { articleHref, articleKey, siteBase } from '../../../lib/article-url.ts'
 import {
@@ -199,6 +200,7 @@ const why = (link: Link) => link.concepts.map((concept) => concept.label).join('
   <article>
     <Fragment set:html={body} />
   </article>
+  <CodeCopy />
 
   <nav class="pager">
     {

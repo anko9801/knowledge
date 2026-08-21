@@ -2,6 +2,7 @@
 import type { MarkdownHeading } from 'astro'
 
 import BaseLayout from './BaseLayout.astro'
+import CodeCopy from '../components/CodeCopy.astro'
 
 type Props = {
   title: string
@@ -30,6 +31,7 @@ const formatted = date.toISOString().slice(0, 10)
   <article>
     <slot />
   </article>
+  <CodeCopy />
 </BaseLayout>
 
 <style>

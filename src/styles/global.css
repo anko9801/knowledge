@@ -701,12 +701,60 @@ blockquote {
 
 /* 出どころは枠の外、余白の側に置く。図の caption と同じ扱いで、
  * 中身から一段引いた注記にする。囲みの中に帯として敷くと、
- * 空の横棒がコードと同じ重さで並んで、塊が二段に割れて見える。 */
+ * 空の横棒がコードと同じ重さで並んで、塊が二段に割れて見える。
+ *
+ * 右端はコピーのボタン（CodeCopy.astro が生やす）。出どころを持たない塊は
+ * この行がボタンだけになるので、左が空でも高さが変わらないようにしておく。 */
 .code-file {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 1.3em;
   margin-bottom: 0.4rem;
   color: var(--muted);
   font-size: 0.75em;
   letter-spacing: 0.04em;
+}
+
+/* 本文と同じ地の上に置く。枠も背景も持たせない——並んだ塊ごとに
+ * ボタンが立つと、コードより先にそちらへ目が行く。 */
+.code-copy {
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  /* 文字数が変わっても左端が動かないように、幅を取っておく。 */
+  min-width: 6em;
+  text-align: right;
+}
+
+.code-copy:hover,
+.code-copy.is-done {
+  color: var(--accent);
+}
+
+/* 触れる装置では常に出す。hover が無いので、隠すと押せなくなる。 */
+@media (hover: hover) {
+  .code-copy {
+    opacity: 0;
+  }
+
+  .code:hover .code-copy,
+  .code-copy:focus-visible,
+  .code-copy.is-done {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .code-copy {
+      transition: opacity 120ms ease;
+    }
+  }
 }
 
 .code-file code {

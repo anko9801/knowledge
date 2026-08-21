@@ -1,0 +1,70 @@
+---
+// コードを 1 手で持ち出せるようにする。
+//
+// ボタンは JS で生やす。理由は二つある。JS が落ちた環境に「押しても何も
+// 起きないボタン」が残らないことと、クリップボードに触れないブラウザで
+// 最初から出ないこと。無くても選択してコピーできるので、本文は読める。
+//
+// 置き場所は出どころの行の右端。地を敷いた枠の中に入れると、コードの上に
+// 物が重なって桁が読みにくくなる。出どころを持たない塊には、この行だけを作る。
+---
+
+<script>
+  const LABEL = 'コピー'
+  const DONE = 'コピーした'
+  const FAILED = '押せなかった'
+
+  // 触れない環境では、そもそも出さない。
+  if (navigator.clipboard) {
+    // 参照に添えた中身（.peek-body）は本文の複製なので対象から外す。
+    // ここに足すと、同じコードにボタンが二つ出る。
+    for (const pre of document.querySelectorAll('article pre')) {
+      if (pre.closest('.peek-body')) continue
+
+      // #code(...) を通っていない塊は枠を持たない。ここで同じ形に揃える。
+      let block = pre.closest('.code')
+      if (!block) {
+        block = document.createElement('div')
+        block.className = 'code'
+        pre.replaceWith(block)
+        block.append(pre)
+      }
+
+      let row = block.querySelector('.code-file')
+      if (!row) {
+        row = document.createElement('div')
+        row.className = 'code-file'
+        block.prepend(row)
+      }
+
+      const button = document.createElement('button')
+      button.type = 'button'
+      button.className = 'code-copy'
+      button.textContent = LABEL
+
+      // window. を通すと戻り値が number になる。素の setTimeout は
+      // @types/node が入っているぶん NodeJS.Timeout に解決される。
+      let timer = 0
+      button.addEventListener('click', async () => {
+        // <pre> の textContent は元の改行と桁をそのまま返す。
+        // innerText は折り返しの都合で改行が増えることがある。
+        try {
+          await navigator.clipboard.writeText(pre.textContent)
+        } catch {
+          button.textContent = FAILED
+          return
+        }
+
+        button.textContent = DONE
+        button.classList.add('is-done')
+        window.clearTimeout(timer)
+        timer = window.setTimeout(() => {
+          button.textContent = LABEL
+          button.classList.remove('is-done')
+        }, 1400)
+      })
+
+      row.append(button)
+    }
+  }
+</script>

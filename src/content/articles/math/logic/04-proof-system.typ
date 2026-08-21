@@ -71,6 +71,29 @@ A1 と A2 という二つの公理を、$psi$ の取り方を工夫して三度�
   導出が存在するとき $Gamma tack.r phi.alt$ と書く。
 ]<def:derivation>
 
+#example[導出とは、こういう列である][
+  @def:derivation の言う「有限列」を、$phi.alt arrow.r phi.alt$ で実際に書き下す。
+
+  #table(
+    columns: (auto, 1fr, auto),
+    [$1$], [$(phi.alt arrow.r ((phi.alt arrow.r phi.alt) arrow.r phi.alt)) arrow.r
+            ((phi.alt arrow.r (phi.alt arrow.r phi.alt)) arrow.r (phi.alt arrow.r phi.alt))$],
+           [A2],
+    [$2$], [$phi.alt arrow.r ((phi.alt arrow.r phi.alt) arrow.r phi.alt)$], [A1],
+    [$3$], [$(phi.alt arrow.r (phi.alt arrow.r phi.alt)) arrow.r (phi.alt arrow.r phi.alt)$],
+           [$1, 2$ に MP],
+    [$4$], [$phi.alt arrow.r (phi.alt arrow.r phi.alt)$], [A1],
+    [$5$], [$phi.alt arrow.r phi.alt$], [$3, 4$ に MP],
+  )
+
+  各行に付いている右端が、@def:derivation の三つの場合のどれかを指している。
+  #strong[論理公理か、$Gamma$ の元か、前の二つに MP か。]それ以外は無い。
+
+  だから導出の正しさは#strong[見れば機械的に確かめられる]。
+  意味を一切参照しないのはこのためで、
+  この性質がそのまま #link("/math/logic/9")[第 9 回]で算術に写る。
+]
+
 A1--A3 が命題論理の部分、A4--A5 が量化子、A6--A7 が等号を担当している。
 公理を全称閉包込みで取っておくと、一般化の規則を別に立てなくて済むので、
 以後の議論が楽になる。

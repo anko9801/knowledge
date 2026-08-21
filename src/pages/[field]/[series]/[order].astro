@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content'
 import { attachPagePeeks, type Page } from '../../../lib/page-peek.ts'
+import { statementsByAnchor } from '../../../lib/peek.ts'
 import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
@@ -48,6 +49,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
     summary: entry.data.summary,
   }))
 
+  // 錨（<def:measure> 由来）から主張の中身を引ける索引。記事をまたいで添えるのに使う。
+  // 全記事ぶんを 1 度だけ組み、同じものを各ページへ渡す（ビルド中の参照渡し）。
+  const statements = new Map<string, string>()
+  for (const entry of articles) {
+    const where = articleHref(base, entry.data)
+    for (const [anchor, inner] of statementsByAnchor(entry.rendered?.html ?? '')) {
+      statements.set(`${where}#${anchor}`, inner)
+    }
+  }
+
   // 「読めるようになったか」の判定材料。読者の端末で読了記録と突き合わせる。
   const needs = prerequisites(concepts, coverage)
   const pathsOf = (key: string) =>
@@ -94,6 +105,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         needs,
         // 自分自身へのリンクに自分の要約を添えても仕方がない。
         pages: pages.filter((page) => page.href !== articleHref(base, article.data)),
+        statements,
       },
     }
   })
@@ -108,15 +120,17 @@ type Props = {
   needs: Record<string, readonly string[]>
   /** 記事をまたぐリンクに添える中身。 */
   pages: readonly Page[]
+  /** 「記事の href + #錨」から主張の中身へ。 */
+  statements: ReadonlyMap<string, string>
 }
 
-const { article, prev, next, neighbors, needs, pages } = Astro.props
+const { article, prev, next, neighbors, needs, pages, statements } = Astro.props
 // headings は typst-loader が本文から集めたもの。右の目次に出す。
 const { headings } = await render(article)
 
 // 本文は loader が組んだ HTML をそのまま持っている。記事をまたぐリンクに中身を
 // 添えるには全記事の情報が要るので、1 本ずつ処理する loader ではなくここで足す。
-const body = attachPagePeeks(article.rendered?.html ?? '', pages)
+const body = attachPagePeeks(article.rendered?.html ?? '', pages, statements)
 
 const field: Field | undefined = findField(article.data.field)
 const series: Series | undefined = findSeries(article.data.field, article.data.series)

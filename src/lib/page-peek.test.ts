@@ -40,7 +40,7 @@ test('知らない行き先は素通しする', () => {
   strictEqual(attachPagePeeks(html, pages), html)
 })
 
-test('fragment 付きのリンクには触らない（主張を指しているため）', () => {
+test('ページ内の参照には触らない（peek.ts が済ませている）', () => {
   const html = '<a href="#loc-3">定義 3</a>'
   strictEqual(attachPagePeeks(html, pages), html)
 })
@@ -72,6 +72,35 @@ test('伏せた塊が複数あっても、順番どおりに戻る', () => {
   ok(out.includes('中身 2'))
   strictEqual(out.indexOf('中身 1') < out.indexOf('中身 2'), true)
   ok(out.includes('数理論理学 第 3 回'))
+})
+
+const statements = new Map([
+  ['/k/math/foundations/4#def-completeness', '<span class="peek-p">Cauchy 列が収束する</span>'],
+])
+
+test('錨を付けたリンクには、記事ではなく主張が添う', () => {
+  const html = '<a href="/k/math/foundations/4#def-completeness">完備性</a>'
+  const out = attachPagePeeks(html, pages, statements)
+
+  ok(out.includes('Cauchy 列が収束する'))
+  // どの回の主張かは添える。記事の要約のほうは出さない。
+  ok(out.includes('土台 第 4 回'))
+  strictEqual(out.includes('完備性とは何か。'), false)
+})
+
+test('錨が索引に無ければ素通しする（消さない）', () => {
+  const html = '<a href="/k/math/foundations/4#def-nothing">x</a>'
+  strictEqual(attachPagePeeks(html, pages, statements), html)
+})
+
+test('同じ記事でも、錨の有無で添えるものが変わる', () => {
+  const html =
+    '<a href="/k/math/foundations/4">土台 第 4 回</a>' +
+    '<a href="/k/math/foundations/4#def-completeness">完備性</a>'
+  const out = attachPagePeeks(html, pages, statements)
+
+  ok(out.includes('完備性とは何か。')) // 記事のほう
+  ok(out.includes('Cauchy 列が収束する')) // 主張のほう
 })
 
 test('行き先が無ければ何も変わらない', () => {

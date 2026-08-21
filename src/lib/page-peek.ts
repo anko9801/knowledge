@@ -60,27 +60,53 @@ const unveil = (text: string, parts: readonly string[]): string => {
   return text.replace(new RegExp(HIDDEN, 'g'), () => parts[index++] as string)
 }
 
-export const attachPagePeeks = (html: string, pages: readonly Page[]): string => {
+const wrap = (href: string, label: string, inner: string, extra = ''): string =>
+  `<span class="peek"><a href="${href}" class="peek-link">${label}</a>` +
+  `<span class="peek-body peek-page${extra}" aria-hidden="true">${inner}</span></span>`
+
+/**
+ * `pages` は記事の一覧、`statements` は「`記事の href` + `#錨`」から主張の中身へ。
+ *
+ * 錨を付けて書いた（`#link("/math/foundations/4#def-completeness")`）リンクには
+ * **主張のほう**が添う。付けなければ記事のほうが添う。書き換えは 1 本ずつでよく、
+ * 全部を直すまで待つ必要がない。
+ */
+export const attachPagePeeks = (
+  html: string,
+  pages: readonly Page[],
+  statements: ReadonlyMap<string, string> = new Map(),
+): string => {
   const byHref = new Map(pages.map((page) => [key(page.href), page]))
   if (byHref.size === 0) return html
 
   const { text, parts } = veil(html)
 
   const linked = text.replace(
-    /<a href="([^"#]+)">([\s\S]*?)<\/a>/g,
+    /<a href="([^"]+)">([\s\S]*?)<\/a>/g,
     (whole, href: string, label: string) => {
-      const page = byHref.get(key(href))
+      const [path, anchor] = href.split('#')
+      // ページ内の参照（#loc-5）は peek.ts が済ませている。
+      if (path === undefined || path === '') return whole
+
+      const page = byHref.get(key(path))
       if (page === undefined) return whole
 
-      const summary = page.summary
-        ? `<span class="peek-p">${escape(page.summary)}</span>`
-        : ''
+      if (anchor !== undefined) {
+        const statement = statements.get(`${key(path)}#${anchor}`)
+        if (statement === undefined) return whole
+        return wrap(
+          href,
+          label,
+          `<span class="peek-p peek-from">${escape(page.where)}</span>${statement}`,
+        )
+      }
 
-      return (
-        `<span class="peek"><a href="${href}" class="peek-link">${label}</a>` +
-        `<span class="peek-body peek-page" aria-hidden="true">` +
+      const summary = page.summary ? `<span class="peek-p">${escape(page.summary)}</span>` : ''
+      return wrap(
+        href,
+        label,
         `<span class="peek-p"><strong>${escape(page.where)}</strong>` +
-        `　${escape(page.title)}</span>${summary}</span></span>`
+          `　${escape(page.title)}</span>${summary}`,
       )
     },
   )

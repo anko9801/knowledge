@@ -78,6 +78,28 @@ const asPeek = (block: string): string =>
       .replace(/<details\b[\s\S]*?<\/details>/g, ''),
   )
 
+/**
+ * ラベル由来の錨から、その主張の中身を引く。
+ *
+ * 記事をまたいで主張を添えるのに使う（`page-peek.ts`）。錨は `theorem.typ` が
+ * `<def:measure>` から出す `<span id="def-measure">` で、Typst の `loc-N` と違って
+ * **位置に依らない**。だから別のページから安全に指せる。
+ */
+export const statementsByAnchor = (html: string): ReadonlyMap<string, string> => {
+  // ページ内から参照されている主張には Typst が id="loc-N" を挿す。
+  // それを見込まないと、**参照されているものだけ索引から落ちる**（拾えるのが
+  // 誰も指していない主張だけになり、いちばん要るものが無い）。
+  const opening =
+    /<div(?: id="[^"]*")? class="statement\b[^"]*"><p class="statement-head"><span id="([^"]+)"/g
+  const found = new Map<string, string>()
+
+  for (let m = opening.exec(html); m !== null; m = opening.exec(html)) {
+    found.set(m[1] as string, asPeek(html.slice(m.index, blockEnd(html, m.index))))
+  }
+
+  return found
+}
+
 /** 参照される主張を id で引けるようにする。 */
 const collect = (html: string): ReadonlyMap<string, Statement> => {
   const opening = /<div id="([^"]+)" class="statement\b/g

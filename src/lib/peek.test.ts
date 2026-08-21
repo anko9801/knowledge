@@ -1,7 +1,7 @@
 import { ok, strictEqual } from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { attachPeeks } from './peek.ts'
+import { attachPeeks, statementsByAnchor } from './peek.ts'
 
 const statement = (id: string, body: string) =>
   `<div id="${id}" class="statement statement-definition">` +
@@ -78,6 +78,25 @@ test('入れ子の div があっても千切れない', () => {
         '<span class="peek-p">主張</span><span class="peek-div proof">証明</span></span>',
     ),
   )
+})
+
+test('錨の索引は、参照されている主張も落とさない', () => {
+  // 参照されている主張には Typst が id="loc-N" を挿す。ここを見込まないと、
+  // 誰も指していない主張だけが索引に残る。
+  const html =
+    '<div id="loc-1" class="statement statement-definition">' +
+    '<p class="statement-head"><span id="def-topology" class="anchor"></span>定義 1</p>' +
+    '<p>開集合の族</p></div>' +
+    '<div class="statement statement-theorem">' +
+    '<p class="statement-head"><span id="thm-compact" class="anchor"></span>定理 2</p>' +
+    '<p>有界閉</p></div>'
+  const found = statementsByAnchor(html)
+
+  strictEqual(found.size, 2)
+  ok(found.get('def-topology')?.includes('開集合の族'))
+  ok(found.get('thm-compact')?.includes('有界閉'))
+  // 添える中身から id は落ちている。
+  strictEqual(found.get('def-topology')?.includes('id='), false)
 })
 
 test('参照が無ければ何も変わらない', () => {

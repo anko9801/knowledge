@@ -54,7 +54,7 @@ $RR$ の部分集合に「長さ」を割り当てたい。要求は三つだけ
   を満たすとき、$cal(F)$ を#strong[$sigma$ 加法族]と呼び、その元を#strong[可測集合]という。
 ]<def:sigma-algebra>
 
-#link("/math/foundations/3")[位相]の定義とよく似ているが、二か所違う。
+#link("/math/foundations/3#def-topology")[位相]の定義とよく似ているが、二か所違う。
 
 #table(
   columns: (auto, auto, 1fr),
@@ -177,7 +177,7 @@ $sum_n 2^(n-1) \/ 3^n = 1$ になり、残りに長さが無い。
 測度論が#strong[零集合の違いを見ない]からである。
 二つの関数が零集合の上でだけ違うなら、積分は同じ値になる。
 この鈍感さが、後で $L^p$ 空間を完備にする
-（#link("/math/foundations/4")[土台 第 4 回]の意味で）。
+（#link("/math/foundations/4#def-complete")[土台 第 4 回]の意味で）。
 
 #check[
   「可算ならば零集合」は可算加法性から出る。逆は成り立たず、Cantor 集合が反例だが、

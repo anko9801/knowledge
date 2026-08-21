@@ -124,10 +124,14 @@
 
     if target() == "html" {
       html.elem("div", attrs: (class: "statement statement-" + variant), {
-        if anchor != none {
-          html.elem("span", attrs: (id: anchor, class: "anchor"), [])
-        }
-        html.elem("p", attrs: (class: "statement-head"), head)
+        // 錨は見出しの中に入れる。独立して置くと Typst が <p> で包むので、
+        // 空の段落が主張の先頭に増え、上に余白が入る。
+        html.elem("p", attrs: (class: "statement-head"), {
+          if anchor != none {
+            html.elem("span", attrs: (id: anchor, class: "anchor"), [])
+          }
+          head
+        })
         body
         // details なので JS が要らない。CSS が落ちても、開いた状態で読める。
         if answer != none {

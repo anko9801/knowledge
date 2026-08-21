@@ -10,7 +10,7 @@
 - [物理](https://anko9801.github.io/knowledge/physics) — 解析力学 5 本、量子力学 3 本
 - [化学](https://anko9801.github.io/knowledge/chemistry) — 分子の対称性 2 本
 - [言語](https://anko9801.github.io/knowledge/linguistics) — 形式意味論 2 本
-- [計算機](https://anko9801.github.io/knowledge/cs) — 計算量理論 3 本、情報理論 3 本、プログラムの構成 2 本、型と計算 2 本。並行と分散・計算機の構成・暗号理論は構成だけ
+- [計算機](https://anko9801.github.io/knowledge/cs) — 計算量理論 3 本、情報理論 3 本、プログラムの構成 2 本。型と計算・並行と分散・計算機の構成・暗号理論は構成だけ
 
 幾何の連載は「仮定した構造」で分けてある。土台（ベクトル空間・微積分・位相）→
 線形代数（1 点）→ ベクトル解析（$\mathbb{R}^3$、入口）→ 微分形式（計量なし）→

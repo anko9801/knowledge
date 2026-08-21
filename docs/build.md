@@ -41,6 +41,7 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 | `src/lib/page-peek.ts` | 記事をまたぐリンクに、行き先の記事の中身を添える |
 | `src/lib/neighbors.ts` | 概念グラフから、その回の前提と下流を引く（純関数） |
 | `src/lib/concept-page.ts` | 概念の索引を組む。語で来た読者を記事へ送る（純関数） |
+| `src/lib/typst-in-markdown.ts` | .md に漏れた Typst 記法を見つける（`npm test` が実ファイルに当てる） |
 | `src/lib/nav.ts` | サイドバーの素材を Content Collection から集める |
 | `src/lib/nav-scope.ts` | 今いる文脈に合わせて、出す範囲を絞る（純関数） |
 | `src/lib/typst-loader.ts` | Astro Content Loader（digest でキャッシュ、`.typ` を watch） |
@@ -275,7 +276,7 @@ ES = −0.20 と符号が反転する。
 
 - 悪い ── ダーツの謎 → 零集合で解決 → 「この読み替えが今回のすべてである」
 - よい ── ダーツの謎 → 零集合で解決 → **同じ読み替えが、最後には
-  「$sigma$ 加法族が、どこまで知っているかを表す」まで行く**
+  「σ 加法族が、どこまで知っているかを表す」まで行く**
 
 読者は「確率 $0$ なのに起きる」を知りたくて来て、
 条件付き期待値が直交射影であることを持って帰る。これが飛躍である。

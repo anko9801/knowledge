@@ -447,6 +447,19 @@ export const concepts: readonly Concept[] = [
   c('safeguard-complexity', '安全装置が事故を作る', '検査を足せば足した分だけ系が複雑になり、新しい故障の経路が生まれる', 'viewpoint', 'cs', ['requisite-variety', 'change-propagation']),
   c('relocation-not-reduction', '減らすのではなく移す', '減ったように見えるとき、たいていどこかへ移っている。まず移り先を見る', 'viewpoint', 'cs', ['safeguard-complexity', 'load-tradeoff']),
   c('truncated-maxim', '条件の落ちた格言', '格言は条件付きで、伝わる途中で条件が落ちる。伝わる形と正しい形が違う', 'viewpoint', 'cs', ['reader-model'], ['worse-is-better']),
+
+  // --- 何を根拠に決めるか -----------------------------------------------
+  //
+  // 効果が小さくて条件に強く左右されるなら、条件が合っている情報の方が強い。
+  // だから自分の場所の測定が、他所の統合分析より上に来る。直観に反するが、
+  // 統合分析の効果量が小さいことと出版の偏りを見れば、そうなる。
+  //
+  // 手順は Fielding の方法を採る。良さを主張するのではなく、制約を一本ずつ
+  // 足して、その都度どの代償を払うかを名指す。採らない選択もできる形にする。
+  c('evidence-hierarchy', '根拠の強さの順序', '定理、自分の場所の測定、統合分析、一次資料の条件、経験談の順に強い', 'viewpoint', 'cs', ['truncated-maxim', 'soundness-completeness-tradeoff']),
+  c('local-measurement', '自分の場所で測る', '触る頻度も波及も発覚までの時間も履歴から出る。他所の平均より自分の分布', 'technique', 'cs', ['evidence-hierarchy', 'complexity-weighting', 'change-propagation']),
+  c('constraint-derivation', '制約と代償で書く', '良さを主張せず、制約を一本ずつ足して代償を名指す。採らない選択も残る', 'technique', 'cs', ['evidence-hierarchy', 'feasibility-vs-cost']),
+  c('moved-conditions', '動いた条件', '記憶の格差、並列化、近似の質、読み手の構成。同じ計算をやり直すと答えが変わる', 'viewpoint', 'cs', ['constraint-derivation', 'relocation-not-reduction', 'purity-and-concurrency']),
   c('representation-independence', '表現独立性', '実装を替えても外から区別できない。情報隠蔽の定理版', 'theorem', 'cs', ['information-hiding', 'parametricity']),
   c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
   c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),

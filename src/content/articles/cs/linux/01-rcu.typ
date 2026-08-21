@@ -1,5 +1,6 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
+#import "/src/typst/code.typ": code
 
 #show: post.with(
   title: "そのロックは、誰にも知らせない",
@@ -20,49 +21,49 @@
 
 = 展開しても、共有される語に何も書かない
 
-`rcu_read_lock()` を展開する。`include/linux/rcupdate.h` から始めて、
-非プリエンプトの構成では二段で底に着く。
+`rcu_read_lock()` を展開する。非プリエンプトの構成では、三段で底に着く。
 
-```c
-/* include/linux/rcupdate.h */
+#code("include/linux/rcupdate.h")[```c
 static inline void __rcu_read_lock(void)
 {
 	preempt_disable();
 }
+```]
 
-/* include/linux/preempt.h, CONFIG_PREEMPT_COUNT が無いとき */
+#code("include/linux/preempt.h — CONFIG_PREEMPT_COUNT が無いとき")[```c
 #define preempt_disable()			barrier()
+```]
 
-/* include/linux/compiler.h */
+#code("include/linux/compiler.h")[```c
 # define barrier() __asm__ __volatile__("": : :"memory")
-```
+```]
 
 いちばん下は空のアセンブリで、`"memory"` はコンパイラへの指示である。
 #strong[機械語が一つも出ない。]
 
 普通に配られている x86 のカーネルはプリエンプト可能なので、こちらではない。
-そちらの実装は `kernel/rcu/tree_plugin.h` にある。
+そちらの実装はこうなっている。
 
-```c
+#code("kernel/rcu/tree_plugin.h")[```c
 static void rcu_preempt_read_enter(void)
 {
 	WRITE_ONCE(current->rcu_read_lock_nesting,
 		   READ_ONCE(current->rcu_read_lock_nesting) + 1);
 }
-```
+```]
 
 自分の `task_struct` の中の整数を $1$ 増やす。原子操作ではない。
 バリアも張らない。#strong[他の CPU が読む語には、どちらの構成でも触らない。]
 
 同じヘッダの、`rcu_read_lock()` の定義のすぐ下に、こう書いてある。
 
-```c
+#code("include/linux/rcupdate.h")[```c
 /*
  * So where is rcu_write_lock()?  It does not exist, as there is no
  * way for writers to lock out RCU readers.  This is a feature, not
  * a bug -- this property is what provides RCU's performance benefits.
  */
-```
+```]
 
 書く側が読み手を締め出す手段は無い、と本人が書いている。
 
@@ -73,33 +74,34 @@ static void rcu_preempt_read_enter(void)
 
 = 消す側が、消しきらない
 
-先に、消す側のコードを見たほうが早い。
-`include/linux/list.h` の普通の削除と、`include/linux/rculist.h` の削除を並べる。
+先に、消す側のコードを見たほうが早い。普通の削除と、こちらの削除を並べる。
 
-```c
+#code("include/linux/list.h")[```c
 static inline void list_del(struct list_head *entry)
 {
 	__list_del_entry(entry);
 	entry->next = LIST_POISON1;
 	entry->prev = LIST_POISON2;
 }
+```]
 
+#code("include/linux/rculist.h")[```c
 static inline void list_del_rcu(struct list_head *entry)
 {
 	__list_del_entry(entry);
 	entry->prev = LIST_POISON2;
 }
-```
+```]
 
 差は $1$ 行である。#strong[前を潰して、次を潰していない。]
 
 書き忘れではない。`list_del_rcu` の直上のコメントが、
 潰さないことのほうを説明している。
 
-```
+#code("include/linux/rculist.h")[```
  * In particular, it means that we can not poison the forward
  * pointers that may still be used for walking the list.
-```
+```]
 
 つまり、消された要素は#strong[消された後も次を指したままにされている]。
 リストから外れたのに、そこから先へ歩ける。
@@ -129,16 +131,16 @@ static inline void list_del_rcu(struct list_head *entry)
 $0$ になったら解放する。
 
 これが使えない理由は、性能の話に見えて、実は共有の話である。
-`Documentation/filesystems/path-lookup.rst` に、そのままの言葉で書いてある。
+木の中の文書に、そのままの言葉で書いてある。
 
-```
+#code("Documentation/filesystems/path-lookup.rst")[```
 Even when using locks that permit multiple concurrent readers, the
 simple act of updating the count of the number of current readers can
 impose an unwanted cost.  So the goal when reading a shared data
 structure that no other process is changing is to avoid writing
 anything to memory at all.  Take no locks, increment no counts, leave
 no footprints.
-```
+```]
 
 数える対象が共有されているほど、数える行為そのものが詰まる。
 `/usr/bin/ls` を開くだけで根の項目を通るので、
@@ -160,14 +162,13 @@ no footprints.
 ]<ax:no-sleep>
 
 @ax:no-sleep を守る代わりに、読み手は前節の費用を免除されている。
-そして記録の側は、驚くほど雑でよい。
-`kernel/rcu/tree_plugin.h` の、非プリエンプト版の注釈である。
+そして記録の側は、驚くほど雑でよい。非プリエンプト版の注釈である。
 
-```
+#code("kernel/rcu/tree_plugin.h")[```
  * Note a quiescent state for PREEMPTION=n.  Because we do not need to know
  * how many quiescent states passed, just if there was at least one since
  * the start of the grace period, this just sets a flag.
-```
+```]
 
 #strong[何回通ったかは要らない。一度でも通ったかどうかだけでよい。]
 だから記録は旗 $1$ 本で済む。
@@ -217,50 +218,49 @@ no footprints.
 
 ここまでで、冒頭の異常は閉じた。ここから先が、この仕組みの本当の形である。
 
-さきほどの `path-lookup.rst` は、名前の探索を
+さきほどの文書は、名前の探索を
 `rcu_read_lock()` を握ったまま行う方式について、こう続けている。
 
-```
+#code("Documentation/filesystems/path-lookup.rst")[```
 The particular guarantee it provides is that the key data structures -
 dentries, inodes, super_blocks, and mounts - will not be freed while
 the lock is held.  They might be unlinked or invalidated in one way or
 another, but the memory will not be repurposed so values in various
 fields will still be meaningful.  This is the only guarantee that RCU
 provides; everything else is done using seqlocks.
-```
+```]
 
 ここまで読んで、これが「壊れたものを見せない仕組み」だと思っていたなら、
 そこは直したほうがいい。#strong[言っているのは、番地が別の物に再利用されないことだけである。]
 外されているかもしれない。無効になっているかもしれない。
 中身は、読んでいる最中に変わりうる。
 
-だから値の一貫性は、別の仕掛けで買う。
-`fs/dcache.c` の探索関数は、名前からしてそう名乗っている。
+だから値の一貫性は、別の仕掛けで買う。探索関数は、名前からしてそう名乗っている。
 
-```c
+#code("fs/dcache.c")[```c
 /**
  * __d_lookup_rcu - search for a dentry (racy, store-free)
  */
-```
+```]
 
 中では、名前を比べる前後で版番号を確かめて、ずれていたらやり直す。
 
-```c
+#code("fs/dcache.c")[```c
 	/* we want a consistent (name,len) pair */
 	if (read_seqcount_retry(&dentry->d_seq, seq)) {
 		cpu_relax();
 		goto seqretry;
 	}
-```
+```]
 
 同じ注釈が、この確認を段ごとに噛み合わせることまで書いている。
 
-```
+#code("fs/dcache.c")[```
  * Alternatively, __d_lookup_rcu may be called again to look up the child of
  * the returned dentry, so long as its parent's seqlock is checked after the
  * child is looked up. Thus, an interlocking stepping of sequence lock checks
  * is formed, giving integrity down the path walk.
-```
+```]
 
 #theorem[
   ロックを外すと、正しさは一つの機構では買えなくなる。
@@ -305,9 +305,9 @@ provides; everything else is done using seqlocks.
 代償を並べる。どれも、上で買ったものの裏側である。
 
 #strong[眠れない（@ax:no-sleep）。]
-眠れる版もある。`kernel/rcu/srcutree.c` の読み取り側は、こうなっている。
+眠れる版もある。その読み取り側は、こうなっている。
 
-```c
+#code("kernel/rcu/srcutree.c")[```c
 int __srcu_read_lock(struct srcu_struct *ssp)
 {
 	struct srcu_ctr __percpu *scp = READ_ONCE(ssp->srcu_ctrp);
@@ -316,7 +316,7 @@ int __srcu_read_lock(struct srcu_struct *ssp)
 	smp_mb(); /* B */  /* Avoid leaking the critical section. */
 	return __srcu_ptr_to_ctr(ssp, scp);
 }
-```
+```]
 
 数えている。バリアも張っている。
 #strong[眠る自由を買った瞬間に、読む側が払い始める]——

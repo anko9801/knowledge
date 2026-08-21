@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto'
 
 import { compileHtml, evalMetadata, typstVersion } from './typst-cli.ts'
 import { mapWithLimit } from './pool.ts'
+import { mapCodeColors } from './code.ts'
 import { collectHeadings } from './headings.ts'
 import { attachPeeks } from './peek.ts'
 import {
@@ -182,8 +183,17 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     // 見出しに id を振る前でよい。添えるのは主張だけで、見出しは対象外。
     const peeked = attachPeeks(linked)
 
+    // 強調の色は Typst がインラインで焼き込む。クラスへ移して CSS に任せる。
+    const { html: recolored, unmapped } = mapCodeColors(peeked)
+    if (unmapped.length > 0) {
+      logger.warn(
+        `${id}: コードの色 ${unmapped.join(', ')} に対応がありません。` +
+          'src/lib/code.ts の TOKEN_CLASS と global.css に足してください。',
+      )
+    }
+
     // 見出しの id はここで振る。Typst は出さないので、目次のリンク先が無い。
-    const { html: rendered, headings } = collectHeadings(peeked)
+    const { html: rendered, headings } = collectHeadings(recolored)
 
     store.set({
       id,

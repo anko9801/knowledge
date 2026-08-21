@@ -80,6 +80,8 @@
   --muted: #6b6b66;
   --rule: #e2e2dd;
   --accent: #7a4b2a;
+  /* コードの地。紙より一段だけ沈める。差が大きいと本文より前に出る。 */
+  --code-paper: #f6f5f1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,6 +91,7 @@
     --muted: #96948d;
     --rule: #33333a;
     --accent: #d8a06a;
+    --code-paper: #1e1e22;
   }
 }
 
@@ -654,18 +657,93 @@ blockquote {
   clear: both;
 }
 
+/* --- コード ----------------------------------------------------------------
+ *
+ * 既定の raw は、丸い枠の中に赤・青・緑・紫が同時に出る。紙と墨と差し色 1 本で
+ * 組んである本文の中では、そこだけ別のサイトに見える。
+ *
+ * 直し方は二つある。色を配色の内側に畳むことと、枠を本文の段に揃えること。
+ * 色は src/lib/code.ts がクラスへ移してあるので、ここで意味ごとに決める。
+ *
+ * 引用元は #code("path")[…]（src/typst/code.typ）が縁に出す。コードの中に
+ * コメントとして書かない——貼り付けたときに嘘の行が混ざるため。
+ */
+
+.code {
+  margin: 1.8rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  /* 角丸から中身がはみ出さないように。横スクロールは pre の側で受ける。 */
+  overflow: hidden;
+  background: var(--code-paper);
+}
+
+/* 出どころ。左上に小さく置く。右側は空けたままにして、行を混まないようにする。 */
+.code-file {
+  padding: 0.5rem 1.1rem 0.45rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.78em;
+  letter-spacing: 0.02em;
+}
+
+.code-file code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.code pre {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
 pre {
   overflow-x: auto;
-  padding: 0.9rem 1.1rem;
+  padding: 1rem 1.1rem;
   border: 1px solid var(--rule);
-  border-radius: 4px;
-  line-height: 1.6;
+  border-radius: 6px;
+  background: var(--code-paper);
+  line-height: 1.65;
+  /* 和文の約物詰めはコードでは邪魔になる。等幅の桁を崩さない。 */
+  text-spacing-trim: normal;
 }
 
 code,
 pre {
   font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
   font-size: 0.9em;
+}
+
+/* 本文中の `foo` には地を敷かない。和文の約物詰めと段落の行送りを、
+ * 内側の余白が押し広げてしまう。等幅に変わるだけで十分に見分けが付く。 */
+
+/* 強調は 2 色に畳む。墨と差し色だけで、意味の区別は太さと濃さで付ける。
+ * 色数を増やすと、コードの塊が本文より強く見えて視線が先に取られる。
+ * クラスは src/lib/code.ts の TOKEN_CLASS と対になっている。 */
+.tok-comment {
+  color: var(--muted);
+}
+
+.tok-keyword {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.tok-fn {
+  color: var(--ink);
+}
+
+.tok-string,
+.tok-num {
+  color: var(--accent);
+}
+
+/* 括弧や演算子。数式の約物と同じ扱いで、字面から一段引く。 */
+.tok-punct {
+  color: var(--muted);
 }
 
 table {

@@ -431,6 +431,8 @@ export const concepts: readonly Concept[] = [
   c('conceptual-integrity', '概念の一貫性', '寄せ集めより一組の考えで貫く。担い手を一人か少数の頭に置く', 'viewpoint', 'cs', ['essential-accidental']),
   c('coherence-in-interface', '一貫性を界面に置く', '繋ぎ方の規約に一貫性を持たせる。結合を消すのではなく一種類に揃える', 'viewpoint', 'cs', ['conceptual-integrity', 'coupling']),
   c('theory-building', 'プログラムは理論である', '成果物はコードではなく、書き手が持つ理論。コードは書き下せた部分だけ', 'viewpoint', 'cs', ['implicit-coupling'], ['chunking']),
+  c('learning-asymmetry', '学習の非対称', 'まとまりが作れれば 2 回目以降が安くなる。作れなければ毎回同じだけかかる', 'theorem', 'cs', ['chunking', 'deep-module', 'expected-change-cost']),
+  c('first-read-only', '実験は一回目しか測らない', '知らない人に断片を一度見せる形なので、n=1 の差しか出ない', 'viewpoint', 'cs', ['learning-asymmetry', 'absolute-vs-relative-prediction']),
   c('program-death', 'プログラムの死', '理論を持つ人が全員いなくなること。動き続けるが、意味のある変更はできない', 'viewpoint', 'cs', ['theory-building']),
 
   // --- 減らすとは何か ---------------------------------------------------

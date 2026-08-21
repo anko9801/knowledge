@@ -10,6 +10,8 @@
   tags: ("ベクトル解析",),
   summary: "dx は無限に小さい数ではなく、ベクトルを入れると数を返す機械である。そう決めた瞬間に、線積分がパラメータに依らない理由も、重積分のヤコビアンも、勾配がベクトルでない理由も、まとめて出てくる。",
   provides: (
+    "tangent-space",
+    "cotangent-space",
     "one-form",
     "line-integral",
     "wedge-product",

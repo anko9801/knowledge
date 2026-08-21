@@ -12,8 +12,9 @@
   provides: (
     "exterior-derivative",
     "dd-zero",
-    "stokes-theorem",
-    "boundary",
+    "integration-in-rn",
+    "boundary-in-rn",
+    "stokes-in-rn",
   ),
   requires: (
     "one-form",

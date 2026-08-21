@@ -695,40 +695,54 @@ blockquote {
  * コメントとして書かない——貼り付けたときに嘘の行が混ざるため。
  */
 
+/* コードの塊は「窓」として組む。
+ *
+ * 出どころは窓の名前なのでタイトルバーに入れ、コピーはそこの右端に置く。
+ * 帯を上に載せる形は前に一度やって捨てているが、あのときは地の色と同じ帯を
+ * 敷いたので、中身の無い横棒が並んで塊が二段に割れて見えていた。
+ * 差し色で塗り切ると、帯が名前を持った縁として立つ。 */
 .code {
   margin: 1.9rem 0;
+  /* 罫ではなく塗りで囲う。帯と枠が地続きの一枚になり、参照元の筐体と同じ
+   * 厚みが出る。罫で引くと、上だけ帯・横は線という継ぎ目のある形になる。 */
+  padding: 0 4px 4px;
+  border-radius: 8px;
+  background: var(--accent);
 }
 
-/* 出どころは枠の外、余白の側に置く。図の caption と同じ扱いで、
- * 中身から一段引いた注記にする。囲みの中に帯として敷くと、
- * 空の横棒がコードと同じ重さで並んで、塊が二段に割れて見える。
+/* タイトルバー。出どころは左、押せるものは右。
  *
- * 右端はコピーのボタン（CodeCopy.astro が生やす）。出どころを持たない塊は
- * この行がボタンだけになるので、左が空でも高さが変わらないようにしておく。 */
+ * 名前は大文字にしない。参照元がそうしているのは KAGUYA.EXE が飾りだから
+ * だが、こちらは実在する路である。include/linux は INCLUDE/LINUX ではない。
+ * 字間と太さだけ借りる。 */
 .code-file {
   display: flex;
-  /* 囲ったボタンが並ぶので、ベースラインではなく中心で揃える。 */
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 1.7rem;
-  margin-bottom: 0.4rem;
-  color: var(--muted);
-  font-size: 0.75em;
-  letter-spacing: 0.04em;
+  padding: 0.32rem 0.3rem 0.34rem 0.55rem;
+  color: var(--paper);
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
 .code-file code {
   padding: 0;
   background: none;
+  color: inherit;
   font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
 }
 
-/* 枠線は引かない。地を一段沈めるだけで塊として立つ。
- * 線と地を両方置くと、地が薄いぶん線だけが目に入って、
- * 中身の無い箱に見える。 */
-pre,
-pre.shiki {
+/* 窓の中。筐体は .code が持つので、こちらは中身の板として少しだけ角を丸める。 */
+.code pre {
+  margin: 0;
+  border-radius: 4px;
+}
+
+pre {
   margin: 1.9rem 0;
   overflow-x: auto;
   padding: 0.9rem 1.15rem;
@@ -740,10 +754,6 @@ pre.shiki {
   text-spacing-trim: normal;
 }
 
-.code pre {
-  margin: 0;
-}
-
 code,
 pre {
   font-family: MonoSubset, ui-monospace, 'SFMono-Regular', monospace;
@@ -753,28 +763,30 @@ pre {
 /* 本文中の `foo` には地を敷かない。和文の約物詰めと段落の行送りを、
  * 内側の余白が押し広げてしまう。等幅に変わるだけで十分に見分けが付く。 */
 
-/* 囲って、押せるものだと分かる形にする。引き出しのボタン（layout.css の
- * .drawer-button）と同じ作りにしてある。このサイトの押しボタンはこの二つだけ
- * なので、別々の顔をしていると片方が飾りに見える。 */
+/* 帯に載る押しボタン。参照元の ✕ と最大化と同じ扱いで、
+ * 地は持たず、線だけを紙の色で引く。 */
 .code-copy {
   flex: none;
   /* 三つの図を同じ枡に重ねる。入れ替えても枠の大きさが動かない。 */
   display: grid;
   place-items: center;
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.45rem;
+  height: 1.25rem;
   padding: 0;
-  border: 1px solid var(--rule);
-  border-radius: 5px;
-  background: var(--paper);
-  color: var(--muted);
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: var(--paper);
   cursor: pointer;
 }
 
 .code-copy:hover,
-.code-copy:not([data-state='idle']) {
-  color: var(--accent);
+.code-copy:focus-visible {
+  background: color-mix(in srgb, var(--paper) 22%, transparent);
 }
+
+/* 押した手応えは、色ではなく図の入れ替えで返す。帯の上では、
+ * 差し色に変えても地と同系で沈むだけになる。 */
 
 /* 二枚重ねの図をチェックへ差し替えると、絵が瞬間的に入れ替わったように
  * 見える。透明度だけで重ねても、二つが同じ場所で薄く重なる瞬間があって
@@ -802,8 +814,8 @@ pre {
  * 外なので、この手当てが要るのはこちらだけである。 */
 .code-copy-icon svg {
   display: block;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   margin: 0;
 }
 

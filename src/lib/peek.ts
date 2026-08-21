@@ -6,7 +6,8 @@
  * 定義を思い出すたびに往復が入り、作業記憶がそこに食われる（分割注意）。
  *
  * そこで参照点に、指す先の中身をそのまま添える。ホバーと :focus-visible で
- * 開くので **JS は要らない**。触るだけの端末では従来どおりリンクとして飛ぶ。
+ * 開くので **JS は要らない**。触るだけの端末には、その代わりに取っ手を置く
+ * （`peekMark`）。
  *
  * 中身は参照のたびに複製される。生の HTML は 1 ページ 25〜38% 増えるが、
  * 同じ塊の繰り返しなので gzip 後は 3〜6%（実測、最大 0.5 KB）に収まる。
@@ -114,6 +115,34 @@ const collect = (html: string): ReadonlyMap<string, Statement> => {
 }
 
 /**
+ * 参照ひとつ分を組む。
+ *
+ * ホバーできる端末には、これで足りていた。触るだけの端末には届いていない。
+ * 押す = リンクをたどる、なので開いた瞬間に画面が変わり、添えた中身を読む機会が
+ * 無い。読者の大半がそちらにいる。
+ *
+ * そこで参照の後ろに小さな取っ手を置き、checkbox で開く。**JS は増やさない**
+ * （骨格の開閉と同じ手）。ホバーできる端末では取っ手を出さないので、
+ * あちらの見た目と手数は変わらない（`global.css`）。
+ *
+ * リンクは**そのまま残す**。取っ手が増えるだけなので、読み上げにも、
+ * 主張まで飛ぶ従来の道にも影響しない。
+ */
+export const peekMark = (
+  toggle: string,
+  href: string,
+  label: string,
+  body: string,
+  bodyClass = '',
+): string =>
+  `<span class="peek">` +
+  `<input type="checkbox" id="${toggle}" class="peek-toggle" tabindex="-1" aria-hidden="true">` +
+  `<a href="${href}" class="peek-link">${label}</a>` +
+  `<label for="${toggle}" class="peek-tap" aria-hidden="true"></label>` +
+  `<span class="peek-body${bodyClass}" aria-hidden="true">${body}</span>` +
+  `</span>`
+
+/**
  * 参照に、指す先の中身を添える。
  *
  * 主張を指していない参照（式番号や見出し）はそのまま通す。添えても
@@ -123,6 +152,8 @@ export const attachPeeks = (html: string): string => {
   const statements = collect(html)
   if (statements.size === 0) return html
 
+  let nth = 0
+
   // 置換文字列は走査し直されないので、添えた中身の中のリンクは素のまま残る。
   return html.replace(
     /<a href="#([^"]+)">([\s\S]*?)<\/a>/g,
@@ -130,10 +161,10 @@ export const attachPeeks = (html: string): string => {
       const target = statements.get(id)
       if (target === undefined) return whole
 
-      return (
-        `<span class="peek"><a href="#${id}" class="peek-link">${label}</a>` +
-        `<span class="peek-body" aria-hidden="true">${target.inner}</span></span>`
-      )
+      nth += 1
+      // 錨ではなく通し番号にする。同じ主張が何度も参照されるので、
+      // 錨から作ると id が重複して、取っ手がどれも最初の一つを開く。
+      return peekMark(`pk${nth}`, `#${id}`, label, target.inner)
     },
   )
 }

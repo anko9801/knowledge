@@ -364,8 +364,9 @@ blockquote {
  * 中身を添えるのは `src/lib/peek.ts`（ビルド時）。ここは出し入れだけで、
  * JS は使わない。
  *
- * ホバーできる端末に限る。触るだけの端末では、押す = リンクをたどるなので、
- * 開いた瞬間に画面が変わって読めない。そこは従来どおり飛ばせばよい。 */
+ * 出し方は端末で分ける。ホバーできる端末は浮かせたパネル、触るだけの端末は
+ * 参照の後ろの取っ手で、その場に開く。触る側で押す = リンクをたどるなので、
+ * リンクに開く役目を兼ねさせると、開いた瞬間に画面が変わって読めない。 */
 /* 添えてあることを示す。実線の下線（普通のリンク）とは別の合図にする。 */
 .peek-link {
   text-decoration: underline dotted;
@@ -374,6 +375,86 @@ blockquote {
 
 .peek-body {
   display: none;
+}
+
+/* 取っ手の状態だけを持つ。見せるのは label のほう。 */
+.peek-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.peek-tap {
+  display: none;
+}
+
+/* 触るだけの端末。ホバーできる端末の否定にしてあるので、両方は当たらない。 */
+@media not all and (hover: hover) and (pointer: fine) {
+  /* リンクは残したまま、開く役目だけを別の的に持たせる。
+   * 上下の負の余白は行の高さを変えずに的を広げるためで、押せる範囲は
+   * padding のぶん（約 44px 角）になる。 */
+  .peek-tap {
+    display: inline-block;
+    margin: -0.6em 0;
+    padding: 0.6em 0.5em;
+    color: var(--accent);
+    font-size: 0.75em;
+    line-height: 1;
+    vertical-align: baseline;
+    cursor: pointer;
+  }
+
+  .peek-tap::before {
+    content: '▾';
+  }
+
+  .peek-toggle:checked ~ .peek-tap::before {
+    content: '▴';
+  }
+
+  /* 浮かせない。その場に開いて、下を押し下げる。
+   * 浮かせると本文を覆うので、開いた分だけ読んでいた行が隠れる。 */
+  .peek-toggle:checked ~ .peek-body {
+    display: block;
+    margin: 0.6rem 0;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    border-radius: 2px;
+    background: var(--paper);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    text-indent: 0;
+  }
+
+  .peek-toggle:checked ~ .peek-body .peek-p,
+  .peek-toggle:checked ~ .peek-body .peek-div,
+  .peek-toggle:checked ~ .peek-body .peek-ol,
+  .peek-toggle:checked ~ .peek-body .peek-ul {
+    display: block;
+    margin: 0.6rem 0;
+  }
+
+  .peek-toggle:checked ~ .peek-body > :first-child {
+    margin-top: 0;
+  }
+
+  .peek-toggle:checked ~ .peek-body > :last-child {
+    margin-bottom: 0;
+  }
+
+  .peek-toggle:checked ~ .peek-body .statement-head,
+  .peek-toggle:checked ~ .peek-body .statement-head + .peek-p {
+    display: inline;
+    margin: 0;
+  }
+
+  .peek-toggle:checked ~ .peek-body .peek-li {
+    display: list-item;
+    margin-left: 1.5em;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -478,9 +559,12 @@ blockquote {
   }
 }
 
-/* 紙には添えない。参照は番号で引ける。 */
+/* 紙には添えない。参照は番号で引ける。
+ * 取っ手も消す。紙の上では押せないし、開いた状態で刷られても困る。 */
 @media print {
-  .peek-body {
+  .peek-body,
+  .peek-toggle:checked ~ .peek-body,
+  .peek-tap {
     display: none;
   }
 }

@@ -17,6 +17,8 @@
  * 出る。そこは別の判断になる。
  */
 
+import { peekMark } from './peek.ts'
+
 /** 添えられる記事。 */
 export type Page = {
   /** リンクの href とそのまま突き合わせる。 */
@@ -60,9 +62,10 @@ const unveil = (text: string, parts: readonly string[]): string => {
   return text.replace(new RegExp(HIDDEN, 'g'), () => parts[index++] as string)
 }
 
-const wrap = (href: string, label: string, inner: string, extra = ''): string =>
-  `<span class="peek"><a href="${href}" class="peek-link">${label}</a>` +
-  `<span class="peek-body peek-page${extra}" aria-hidden="true">${inner}</span></span>`
+// 取っ手の id は peek.ts の `pk` と別にする。同じページに両方出るので、
+// 揃えると触る端末で別の参照が開く。
+const wrap = (nth: number, href: string, label: string, inner: string, extra = ''): string =>
+  peekMark(`pp${nth}`, href, label, inner, ` peek-page${extra}`)
 
 /**
  * `pages` は記事の一覧、`statements` は「`記事の href` + `#錨`」から主張の中身へ。
@@ -81,6 +84,8 @@ export const attachPagePeeks = (
 
   const { text, parts } = veil(html)
 
+  let nth = 0
+
   const linked = text.replace(
     /<a href="([^"]+)">([\s\S]*?)<\/a>/g,
     (whole, href: string, label: string) => {
@@ -94,7 +99,9 @@ export const attachPagePeeks = (
       if (anchor !== undefined) {
         const statement = statements.get(`${key(path)}#${anchor}`)
         if (statement === undefined) return whole
+        nth += 1
         return wrap(
+          nth,
           href,
           label,
           `<span class="peek-p peek-from">${escape(page.where)}</span>${statement}`,
@@ -102,7 +109,9 @@ export const attachPagePeeks = (
       }
 
       const summary = page.summary ? `<span class="peek-p">${escape(page.summary)}</span>` : ''
+      nth += 1
       return wrap(
+        nth,
         href,
         label,
         `<span class="peek-p"><strong>${escape(page.where)}</strong>` +

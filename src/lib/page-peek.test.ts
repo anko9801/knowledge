@@ -103,6 +103,22 @@ test('同じ記事でも、錨の有無で添えるものが変わる', () => {
   ok(out.includes('Cauchy 列が収束する')) // 主張のほう
 })
 
+test('取っ手の id が、peek.ts のものとぶつからない', () => {
+  // 同じページに両方出る。揃えると、触る端末で別の参照が開く。
+  const html =
+    '<p><span class="peek">' +
+    '<input type="checkbox" id="pk1" class="peek-toggle" tabindex="-1" aria-hidden="true">' +
+    '<a href="#loc-1" class="peek-link">定義 2</a>' +
+    '<label for="pk1" class="peek-tap" aria-hidden="true"></label>' +
+    '<span class="peek-body" aria-hidden="true"><span class="peek-p">中身</span></span></span>' +
+    'と<a href="/k/math/logic/3">論理</a></p>'
+  const out = attachPagePeeks(html, pages)
+
+  ok(out.includes('id="pk1"'))
+  ok(out.includes('id="pp1"'))
+  strictEqual(out.split('class="peek-toggle"').length - 1, 2)
+})
+
 test('行き先が無ければ何も変わらない', () => {
   const html = '<a href="/k/math/foundations/4">x</a>'
   strictEqual(attachPagePeeks(html, []), html)

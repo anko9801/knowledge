@@ -99,6 +99,29 @@ test('錨の索引は、参照されている主張も落とさない', () => {
   strictEqual(found.get('def-topology')?.includes('id='), false)
 })
 
+test('触る端末用の取っ手が付き、リンクは残る', () => {
+  const html = `${statement('loc-1', '可算合併で閉じる族')}<p><a href="#loc-1">定義 2</a>より</p>`
+  const out = attachPeeks(html)
+
+  // 開く役目は label が持つ。リンクは主張へ飛ぶ道として残す
+  // （読み上げと、ホバーできる端末の従来の手数を変えないため）。
+  ok(out.includes('<input type="checkbox" id="pk1" class="peek-toggle"'))
+  ok(out.includes('<label for="pk1" class="peek-tap"'))
+  ok(out.includes('<a href="#loc-1" class="peek-link">定義 2</a>'))
+})
+
+test('同じ主張を二度指しても、取っ手は別になる', () => {
+  const html =
+    `${statement('loc-1', '可算合併で閉じる族')}` +
+    '<p><a href="#loc-1">定義 2</a>と<a href="#loc-1">定義 2</a></p>'
+  const out = attachPeeks(html)
+
+  // 錨から id を作ると重複し、どちらを押しても最初の一つが開く。
+  ok(out.includes('id="pk1"'))
+  ok(out.includes('id="pk2"'))
+  strictEqual(out.split('class="peek-toggle"').length - 1, 2)
+})
+
 test('参照が無ければ何も変わらない', () => {
   const html = statement('loc-1', 'x')
   strictEqual(attachPeeks(html), html)

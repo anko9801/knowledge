@@ -9,6 +9,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 import ConceptLabel from '../../../components/ConceptLabel.astro'
 import CodeCopy from '../../../components/CodeCopy.astro'
 import { concepts } from '../../../data/concepts.ts'
+import { plainMath } from '../../../lib/concept-typst.ts'
 import { articleHref, articleKey, siteBase } from '../../../lib/article-url.ts'
 import {
   neighborsOf,
@@ -148,7 +149,8 @@ const where = (link: Link) =>
     ? `第 ${link.article.order} 回`
     : `${link.article.series} 第 ${link.article.order} 回`
 
-const why = (link: Link) => link.concepts.map((concept) => concept.label).join('・')
+// 読み上げと title に使う。表示は ConceptLabel が MathML を出す。
+const why = (link: Link) => link.concepts.map((concept) => plainMath(concept.label)).join('・')
 
 // 題名は異常を出す形にしてあるので、何を学ぶ回なのかが題名から読めない。
 // 連載の一覧を眺めている読者と、検索から来た読者は、そこで判断できずに止まる。
@@ -186,7 +188,7 @@ const coversRest = neighbors.covers.length - covers.length
           {covers.map((concept, i) => (
             <>
               {i > 0 && <span class="sep" aria-hidden="true">・</span>}
-              <a href={`${base}concepts/${concept.id}`} title={concept.gist}>
+              <a href={`${base}concepts/${concept.id}`} title={plainMath(concept.gist)}>
                 <ConceptLabel label={concept.label} />
               </a>
             </>
@@ -215,7 +217,7 @@ const coversRest = neighbors.covers.length - covers.length
             ))}
             {neighbors.gaps.map((gap) => (
               <li class="gap">
-                <span>{gap.concept.label}</span>
+                <span><ConceptLabel label={gap.concept.label} /></span>
                 <span class="why">未執筆</span>
               </li>
             ))}

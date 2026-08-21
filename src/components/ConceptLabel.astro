@@ -1,36 +1,32 @@
 ---
 /**
- * 概念の名前を出す。`^` と `_` を上付き・下付きに起こす。
+ * 概念の名前と説明を出す。数式は Typst が組んだ MathML をそのまま置く。
  *
- * 名前は HTML に出るので LaTeX を書けない（数式を組む経路は Typst 側にしかない）。
- * そこで冪と添字を `_` と `^` で書く約束にしてある。素通しすると `L^p 空間` と
- * 見えるので、表示のときだけ起こす。割るのは `src/lib/sup-sub.ts`（純関数、テストあり）。
+ * `concepts.ts` は TypeScript なので、以前は Typst の外にあった。だから数式が
+ * 書けず、`H^*_dR` という書き方を決めて表示のときに肩へ乗せていた。
+ * 組版の engine が二つある状態で、`H^*` は組めても分数や積分は組めない。
+ *
+ * いまは `$...$` をそのまま書ける。全部を 1 枚の文書へ並べて 1 度だけ compile し、
+ * 出てきた MathML を引き戻している（`concept-math.ts`）。記事と同じ font、同じ組版。
+ *
+ * 数式を含まない名前は Typst を通していないので、素の文字列のまま出す。
  */
-import { supSub } from '../lib/sup-sub.ts'
+import { concepts } from '../data/concepts.ts'
+import { conceptMath } from '../lib/concept-math.ts'
 
 type Props = { label: string }
 
 const { label } = Astro.props
-const parts = supSub(label)
+
+// 概念の文字列は全部ここに集めて、1 回で組む。key は文字列そのもので足りる
+// （同じ説明が二つあっても、組み上がりは同じ）。
+const pieces = concepts.flatMap((concept) => [
+  { key: concept.label, text: concept.label },
+  { key: concept.gist, text: concept.gist },
+])
+
+const typeset = await conceptMath(pieces)
+const html = typeset.get(label)
 ---
 
-{
-  parts.map((part) =>
-    part.kind === 'sup' ? (
-      <sup>{part.text}</sup>
-    ) : part.kind === 'sub' ? (
-      <sub>{part.text}</sub>
-    ) : (
-      <Fragment>{part.text}</Fragment>
-    ),
-  )
-}
-
-<style>
-  /* 行の高さを動かさない。名前が並ぶ場所で行間がばらつくのを防ぐ。 */
-  sup,
-  sub {
-    font-size: 0.75em;
-    line-height: 0;
-  }
-</style>
+{html === undefined ? label : <Fragment set:html={html} />}

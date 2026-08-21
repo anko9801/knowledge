@@ -6,6 +6,7 @@ import ConceptLabel from '../../components/ConceptLabel.astro'
 import { concepts } from '../../data/concepts.ts'
 import { articleHref, siteBase } from '../../lib/article-url.ts'
 import { conceptPages } from '../../lib/concept-page.ts'
+import { plainMath } from '../../lib/concept-typst.ts'
 import { fields, findSeries } from '../../lib/taxonomy.ts'
 
 const articles = await getCollection('articles', ({ data }) => !data.draft)
@@ -32,7 +33,10 @@ const groups = fields
     field,
     items: pages
       .filter((page) => page.concept.field === field.slug)
-      .sort((a, b) => a.concept.label.localeCompare(b.concept.label, 'ja')),
+      // 生の文字列で並べると、$ で始まるものが先頭へ固まる。
+      .sort((a, b) =>
+        plainMath(a.concept.label).localeCompare(plainMath(b.concept.label), 'ja'),
+      ),
   }))
   .filter((group) => group.items.length > 0)
 

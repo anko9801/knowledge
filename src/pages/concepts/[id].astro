@@ -7,6 +7,7 @@ import ConceptLabel from '../../components/ConceptLabel.astro'
 import { concepts } from '../../data/concepts.ts'
 import { articleHref, siteBase } from '../../lib/article-url.ts'
 import { conceptPages, type ConceptPage, type Neighbor } from '../../lib/concept-page.ts'
+import { plainMath } from '../../lib/concept-typst.ts'
 import { findField, findSeries } from '../../lib/taxonomy.ts'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -53,7 +54,7 @@ const link = (neighbor: Neighbor) =>
   neighbor.href === undefined ? undefined : `${base}concepts/${neighbor.concept.id}`
 ---
 
-<BaseLayout title={concept.label} description={concept.gist} searchable>
+<BaseLayout title={plainMath(concept.label)} description={plainMath(concept.gist)} searchable>
   <nav class="crumbs">
     <a href={base}>knowledge</a>
     <span aria-hidden="true">/</span>
@@ -87,9 +88,9 @@ const link = (neighbor: Neighbor) =>
             {items.map((neighbor) => (
               <li>
                 {link(neighbor) ? (
-                  <a href={link(neighbor)}>{neighbor.concept.label}</a>
+                  <a href={link(neighbor)}><ConceptLabel label={neighbor.concept.label} /></a>
                 ) : (
-                  <span class="unwritten">{neighbor.concept.label}</span>
+                  <span class="unwritten"><ConceptLabel label={neighbor.concept.label} /></span>
                 )}
                 <span class="why"><ConceptLabel label={neighbor.concept.gist} /></span>
               </li>

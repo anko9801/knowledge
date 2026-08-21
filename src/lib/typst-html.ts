@@ -98,12 +98,21 @@ export const useSpacingAccents = (html: string): string =>
  * <math> 自身には疑似要素が効かない（MathML の描画規則）ため、外側が要る。
  *
  * ラベル（id）は数式に付いているので、ラッパーではなく元の要素に残す。
+ *
+ * **番号を出すのは、指されている式だけにする。** 実測すると別行立て数式は
+ * 3136 個あって、id を持つ——つまりどこかから参照されている——のは 77 個だった。
+ * 残り 3059 個に振られていた番号は、何も指しておらず体裁を足すだけになる
+ * （図の番号を振らないのも、想起の問いに番号を振らないのも同じ理由）。
+ *
+ * カウンタのほうは全部の式で進める。飛ばすと「式 5」が 5 番目の式を指さなくなる。
  */
 export const wrapBlockEquations = (html: string): string =>
   html.replace(
     /<math\b([^>]*\bdisplay="block"[^>]*)>([\s\S]*?)<\/math>/g,
-    (_, attributes, body) =>
-      `<div class="equation"><math${attributes}>${body}</math></div>`,
+    (_, attributes: string, body: string) => {
+      const tagged = / id="/.test(attributes) ? ' equation-tagged' : ''
+      return `<div class="equation${tagged}"><math${attributes}>${body}</math></div>`
+    },
   )
 
 /**

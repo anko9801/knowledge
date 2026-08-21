@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import ConceptLabel from '../../components/ConceptLabel.astro'
 import { concepts } from '../../data/concepts.ts'
 import { fields, seriesOf, type Field, type Series } from '../../lib/taxonomy.ts'
 
@@ -60,7 +61,12 @@ const coversOf = (provides: readonly string[]) => {
                 </a>
                 {coversOf(article.data.provides).shown.length > 0 && (
                   <p class="covers">
-                    {coversOf(article.data.provides).shown.join('・')}
+                    {coversOf(article.data.provides).shown.map((label, i) => (
+                      <>
+                        {i > 0 && '・'}
+                        <ConceptLabel label={label} />
+                      </>
+                    ))}
                     {coversOf(article.data.provides).rest > 0 &&
                       ` ほか ${coversOf(article.data.provides).rest}`}
                   </p>

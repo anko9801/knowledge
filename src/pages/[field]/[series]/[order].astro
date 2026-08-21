@@ -6,6 +6,7 @@ import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../../layouts/BaseLayout.astro'
+import ConceptLabel from '../../../components/ConceptLabel.astro'
 import CodeCopy from '../../../components/CodeCopy.astro'
 import { concepts } from '../../../data/concepts.ts'
 import { articleHref, articleKey, siteBase } from '../../../lib/article-url.ts'
@@ -186,7 +187,7 @@ const coversRest = neighbors.covers.length - covers.length
             <>
               {i > 0 && <span class="sep" aria-hidden="true">・</span>}
               <a href={`${base}concepts/${concept.id}`} title={concept.gist}>
-                {concept.label}
+                <ConceptLabel label={concept.label} />
               </a>
             </>
           ))}

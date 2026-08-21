@@ -296,7 +296,12 @@ article {
   margin: 0;
 }
 
-.equation::after {
+/* 番号を出すのは、指されている式だけ。
+ *
+ * 全部に振ると 3136 個のうち 3059 個が何も指さない番号になる。参照されない採番は
+ * 体裁を足すだけなので、図にも想起の問いにも振っていない。式だけ例外にしない。
+ * どの式に出すかは `typst-html.ts` が id の有無で決める。 */
+.equation-tagged::after {
   content: '(' counter(equation) ')';
   grid-column: 3;
   justify-self: end;

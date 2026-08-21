@@ -1,0 +1,36 @@
+---
+/**
+ * 概念の名前を出す。`^` と `_` を上付き・下付きに起こす。
+ *
+ * 名前は HTML に出るので LaTeX を書けない（数式を組む経路は Typst 側にしかない）。
+ * そこで冪と添字を `_` と `^` で書く約束にしてある。素通しすると `L^p 空間` と
+ * 見えるので、表示のときだけ起こす。割るのは `src/lib/sup-sub.ts`（純関数、テストあり）。
+ */
+import { supSub } from '../lib/sup-sub.ts'
+
+type Props = { label: string }
+
+const { label } = Astro.props
+const parts = supSub(label)
+---
+
+{
+  parts.map((part) =>
+    part.kind === 'sup' ? (
+      <sup>{part.text}</sup>
+    ) : part.kind === 'sub' ? (
+      <sub>{part.text}</sub>
+    ) : (
+      <Fragment>{part.text}</Fragment>
+    ),
+  )
+}
+
+<style>
+  /* 行の高さを動かさない。名前が並ぶ場所で行間がばらつくのを防ぐ。 */
+  sup,
+  sub {
+    font-size: 0.75em;
+    line-height: 0;
+  }
+</style>

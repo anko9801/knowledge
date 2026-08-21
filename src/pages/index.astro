@@ -28,12 +28,15 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 
 <BaseLayout
   title="knowledge"
-  description="数学と物理のノート。集合論・数理論理学・解析力学の連載と、学生時代の講義ノート 44 本。数式は画像ではなく MathML なので、選択もコピーもページ内検索もできる。"
+  description="定義がなぜその形なのかを追うノート。数学・物理・計算機・化学・言語の連載と、学生時代の講義ノート 44 本。数式は画像ではなく MathML なので、選択もコピーもページ内検索もできる。"
 >
   <h1>knowledge</h1>
   <p class="lead">
-    数学と物理を、定義の気持ちから順に解説していきます。数式は MathML なので、
-    画像ではなく文字として選択もコピーも検索もできます。
+    <strong>定義がなぜその形なのか</strong>を追います。結論より、そこへ至る条件のほうを書く。
+    各回は前提を明記してあるので、途中から読めます。
+  </p>
+  <p class="lead sub">
+    数式は MathML なので、画像ではなく文字として選択もコピーもページ内検索もできます。
   </p>
 
   <ul class="grid">
@@ -97,7 +100,12 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 
 <style>
   .lead {
+    margin-bottom: 0.6rem;
+  }
+
+  .lead.sub {
     color: var(--muted);
+    font-size: 0.92rem;
     margin-bottom: 2.5rem;
   }
 
@@ -110,10 +118,18 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     gap: 1.5rem;
   }
 
+  /* 連載名の行数が分野ごとに違うので、枠の高さが揃わない。
+   * 中身を縦に積んで、連載名だけを下端へ寄せる。 */
   .grid li {
+    display: flex;
+    flex-direction: column;
     padding: 1.1rem 1.2rem;
     border: 1px solid var(--rule);
     border-radius: 4px;
+  }
+
+  .grid .series {
+    margin-top: auto;
   }
 
   .grid a {
@@ -142,7 +158,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
   }
 
   .grid .series {
-    margin: 0.4rem 0 0;
+    margin-bottom: 0;
+    padding-top: 0.5rem;
     font-size: 0.8rem;
     color: var(--muted);
   }

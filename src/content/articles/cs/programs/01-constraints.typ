@@ -39,6 +39,7 @@
     "checker-as-classifier",
     "soundness-completeness-tradeoff",
     "type-soundness",
+    "deliberate-unsoundness",
     "prevent-vs-recover",
     "safeguard-complexity",
     "requisite-variety",
@@ -777,6 +778,35 @@ $1$ 回目に取り出した取り決めの方である。
   #strong[同じ言語が $8$ 年をおいて逆の選択をしている。]
 ]
 
+穴を開ける理由は、もう一つある。
+
+#example[まだ型が付いていないものと、同居する][
+  TypeScript の `any` は、どんな型とも行き来できる。
+  入れるのも出すのも通るので、そこを経由すれば検査が丸ごと抜ける。
+
+  ```ts
+  const parsed: any = JSON.parse(text)
+  const n: number = parsed.count   // 検査は通る。実行時に undefined でも通る
+  ```
+
+  Java の共変配列と違って、こちらは#strong[書けないから開けた]のではない。
+  型の付いていない JavaScript の資産の上に、少しずつ型を足していくのが目的で、
+  そのためには#strong[まだ型を付けていない部分]を通す口が要る。
+
+  だから代償の払い方も違う。共変配列の穴は言語の隅にあって避けようがないが、
+  `any` は書いた場所に残る。禁じる設定（`noImplicitAny`）が別に用意されていて、
+  #strong[穴を残すかどうかを利用者が選べる]。
+]
+
+#proposition[
+  健全でない体系が使われるのは、設計の失敗とは限らない。
+  @thm:tradeoff のどこに立つかを選んだ結果である。
+]<prop:deliberate-unsoundness>
+
+見分けるのは#strong[代償をどこへ置いたか]である。
+穴を言語の側に固定すれば利用者は選べず、書いた場所に残せば選べる。
+下の @thm:relocation で問うことになる「どこへ移ったか」が、そのまま判定になる。
+
 == 防ぐか、直すか
 
 
@@ -1057,6 +1087,7 @@ Gabriel が $1989$ 年に並べた二つの設計流儀は、挙げる価値が�
   [ポカよけ（新郷）], [@def:two-devices の前者],
   [異常があれば止めろ（自働化）], [@def:two-devices の後者],
   [健全な型体系], [@cor:soundness],
+  [any を許す型体系], [@prop:deliberate-unsoundness。穴を利用者が選べるかを見る],
   [契約による設計（Meyer）], [@thm:tradeoff の別の位置。偽陽性を $0$ にして実行時へ],
   [仕様を機械に確かめさせる（TLA+）], [@thm:tradeoff の健全側の端],
   [落ちるに任せろ（Erlang）], [@cor:let-it-crash。隔離と冗長性が条件],

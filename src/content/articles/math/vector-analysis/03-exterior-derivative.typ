@@ -146,6 +146,19 @@ $ beta = B_x thin dif y and dif z + B_y thin dif z and dif x + B_z thin dif x an
   前半より各項が $0$。
 ]
 
+#example[実際に打ち消し合うところを見る][
+  $f = x y$ とする。$dif f = y thin dif x + x thin dif y$。
+  もう一度当てると
+  $ dif (dif f) = dif y and dif x + dif x and dif y $
+  で、$dif y and dif x = - dif x and dif y$ だから#strong[相殺する]。
+
+  打ち消したのは、$partial^2 f \/ partial x partial y$ と
+  $partial^2 f \/ partial y partial x$ が#strong[どちらも $1$ で等しい]からである。
+  もし偏微分の順序で値が変わる関数なら、消えない。
+
+  @thm:dd は結局、#strong[偏微分が交換すること]を楔積の反対称性で受けているだけである。
+]
+
 これで、講義で覚えさせられた二つの恒等式が同時に片付く。
 
 #corollary[

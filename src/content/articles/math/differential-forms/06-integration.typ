@@ -37,6 +37,22 @@ $ integral f thin dif x^1 dots.c dif x^n != integral f thin dif u^1 dots.c dif u
 $RR^n$ で気にせずに済んでいたのは、標準の座標を使い続けていたからである。
 どの座標も対等な多様体の上では、この式に意味がない。
 
+#example[極座標に移すと、何が起きるか][
+  平面で $f equiv 1$ とし、単位円板で積分する。
+
+  直交座標なら $integral dif x thin dif y = pi$ である。
+  そのまま $x = r cos theta$、$y = r sin theta$ と置いて
+  $integral dif r thin dif theta$ を計算すると $2 pi$ になり、#strong[合わない]。
+
+  合わせるには $r$ を掛けなければならない。この $r$ がヤコビアンで、
+  $ dif x and dif y = r thin dif r and dif theta $
+  である。#strong[$2$ 形式として書けば、$r$ は自動的に付いてくる。]
+
+  関数として $f$ だけを運ぶと $r$ が落ちる。
+  微積分で「置換積分ではヤコビアンを忘れるな」と注意されるのは、
+  #strong[運ぶべきものが関数ではなく形式だから]である。
+]
+
 いっぽう $n$ 形式は積分できる。理由は一行で言える。
 
 #strong[$n$ 形式の変換則が、ちょうどヤコビアンと同じ形をしているからである。]

@@ -7,6 +7,7 @@
 
 import { getCollection } from 'astro:content'
 
+import { concepts } from '../data/concepts.ts'
 import { fields, seriesOf, startSeries } from './taxonomy.ts'
 import { scopeNav, type NavBlock, type NavData, type NavEntry, type NavGroup } from './nav-scope.ts'
 
@@ -68,6 +69,9 @@ const gatherData = async (): Promise<NavData> => {
     notes: groupNotes(notes),
     notesHref: withBase('notes'),
     notesNote: `${notes.length} 本`,
+    conceptsHref: withBase('concepts'),
+    // 記事のある概念だけが索引に並ぶ（src/lib/concept-page.ts）。
+    conceptsNote: `${new Set(articles.flatMap((a) => a.data.provides)).size} 語`,
     start:
       start && start.entries.length > 0
         ? { href: start.entries[0].href, label: `${start.title} 第 1 回`, note: '入口' }

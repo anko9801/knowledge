@@ -1,0 +1,202 @@
+---
+import { getCollection } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { concepts } from '../../data/concepts.ts'
+import { articleHref, siteBase } from '../../lib/article-url.ts'
+import { conceptPages, type ConceptPage, type Neighbor } from '../../lib/concept-page.ts'
+import { findField, findSeries } from '../../lib/taxonomy.ts'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articles = await getCollection('articles', ({ data }) => !data.draft)
+  const base = siteBase(import.meta.env.BASE_URL)
+
+  // 概念 id から記事へ。同じ概念を複数が扱うときは、先に宣言されたほうを採る
+  // （`curriculum.ts` と同じ約束）。
+  const homes = new Map<string, { href: string; where: string; title: string }>()
+  for (const entry of articles) {
+    const series = findSeries(entry.data.field, entry.data.series)?.title ?? entry.data.series
+    for (const id of entry.data.provides) {
+      if (homes.has(id)) continue
+      homes.set(id, {
+        href: articleHref(base, entry.data),
+        where: `${series} 第 ${entry.data.order} 回`,
+        title: entry.data.title,
+      })
+    }
+  }
+
+  return conceptPages(concepts, homes).map((page) => ({
+    params: { id: page.concept.id },
+    props: { page },
+  }))
+}
+
+type Props = { page: ConceptPage }
+
+const { page } = Astro.props
+const { concept, home, requires, usedBy } = page
+
+const base = siteBase(import.meta.env.BASE_URL)
+const field = findField(concept.field)
+
+const KIND: Record<string, string> = {
+  definition: '定義',
+  theorem: '定理',
+  technique: '技法',
+  viewpoint: '見方',
+}
+
+const link = (neighbor: Neighbor) =>
+  neighbor.href === undefined ? undefined : `${base}concepts/${neighbor.concept.id}`
+---
+
+<BaseLayout title={concept.label} description={concept.gist} searchable>
+  <nav class="crumbs">
+    <a href={base}>knowledge</a>
+    <span aria-hidden="true">/</span>
+    <a href={`${base}concepts`}>概念</a>
+    <span aria-hidden="true">/</span>
+    <span>{field?.title ?? concept.field}</span>
+  </nav>
+
+  <header class="head">
+    <p class="kind">{KIND[concept.kind] ?? concept.kind}</p>
+    <h1>{concept.label}</h1>
+    <p class="gist">{concept.gist}</p>
+  </header>
+
+  <p class="home">
+    <a href={home.href}>{home.where}</a>
+    <span class="title">{home.title}</span>
+  </p>
+
+  {
+    [
+      { label: 'これを読むのに要るもの', items: requires, empty: '無い。ここから始められる。' },
+      { label: 'これを使うもの', items: usedBy, empty: 'いまのところ無い。' },
+    ].map(({ label, items, empty }) => (
+      <section class="side">
+        <h2>{label}</h2>
+        {items.length === 0 ? (
+          <p class="empty">{empty}</p>
+        ) : (
+          <ul>
+            {items.map((neighbor) => (
+              <li>
+                {link(neighbor) ? (
+                  <a href={link(neighbor)}>{neighbor.concept.label}</a>
+                ) : (
+                  <span class="unwritten">{neighbor.concept.label}</span>
+                )}
+                <span class="why">{neighbor.concept.gist}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))
+  }
+
+  <p class="note">
+    ここは索引で、解説は記事のほうにある。辺は<strong>論理的な依存</strong>だけで、
+    「この順で教わるのが普通だから」という慣習は入れていない。
+  </p>
+</BaseLayout>
+
+<style>
+  .crumbs {
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .head {
+    margin-bottom: 2rem;
+  }
+
+  .kind {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+
+  .head h1 {
+    margin-top: 0.2rem;
+  }
+
+  .gist {
+    margin: 0.6rem 0 0;
+    color: var(--muted);
+  }
+
+  /* どこで読めるか。ここがこのページのいちばんの用事なので、目立たせる。 */
+  .home {
+    margin: 0 0 2.5rem;
+    padding: 0.9rem 1.1rem;
+    border-left: 2px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 5%, transparent);
+  }
+
+  .home a {
+    font-weight: 700;
+  }
+
+  .home .title {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .side {
+    margin-top: 2rem;
+  }
+
+  .side h2 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .side ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .side li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.6rem;
+    align-items: baseline;
+    margin-bottom: 0.35rem;
+    font-size: 0.92rem;
+  }
+
+  /* 記事の無い概念。リンクにはしない。行き先が無いものを押させない。 */
+  .unwritten {
+    color: var(--muted);
+  }
+
+  .why {
+    flex: 1 1 16rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .empty,
+  .note {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .note {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+</style>

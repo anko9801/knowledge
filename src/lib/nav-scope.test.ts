@@ -46,6 +46,8 @@ const data: NavData = {
     { title: 'レポート', entries: [{ href: '/k/notes/debye', label: 'デバイ模型' }] },
   ],
   notesHref: '/k/notes',
+  conceptsHref: '/k/concepts',
+  conceptsNote: '274 語',
   notesNote: '44 本',
   start: { href: '/k/math/set-theory/1', label: '集合論 第 1 回', note: '入口' },
 }
@@ -100,12 +102,15 @@ test('ほかの分野は 1 行のリンクだけになる', () => {
   strictEqual(links?.kind, 'links')
 })
 
-test('講義ノート 44 本は連載を読んでいる間は 1 行に留まる', () => {
+test('概念の索引と講義ノートは、連載を読んでいる間は 1 行ずつに留まる', () => {
   const blocks = scopeNav(data, '/k/math/set-theory/3')
   const notes = flat(blocks).find((section) => section.key === 'notes')
 
   strictEqual(notes?.kind, 'links')
-  deepStrictEqual(notes?.entries, [{ href: '/k/notes', label: '講義ノート', note: '44 本' }])
+  deepStrictEqual(notes?.entries, [
+    { href: '/k/concepts', label: '概念から引く', note: '274 語' },
+    { href: '/k/notes', label: '講義ノート', note: '44 本' },
+  ])
 })
 
 test('ノートを読んでいるときは、その群だけが開く', () => {

@@ -56,6 +56,9 @@ export type NavData = {
   readonly notes: readonly NavGroup[]
   readonly notesHref: string
   readonly notesNote: string
+  /** 概念から引く索引。語で来た読者の入口。 */
+  readonly conceptsHref: string
+  readonly conceptsNote: string
   /** 何も読んでいない人に見せる入口。連載の第 1 回。 */
   readonly start?: NavEntry
 }
@@ -157,7 +160,10 @@ const tail = (data: NavData, options: { readonly notes?: boolean; readonly posts
     sections.push({
       key: 'notes',
       kind: 'links',
-      entries: [{ href: data.notesHref, label: '講義ノート', note: data.notesNote }],
+      entries: [
+        { href: data.conceptsHref, label: '概念から引く', note: data.conceptsNote },
+        { href: data.notesHref, label: '講義ノート', note: data.notesNote },
+      ],
     })
   }
 

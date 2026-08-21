@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { concepts } from '../../data/concepts.ts'
+import { articleHref, siteBase } from '../../lib/article-url.ts'
+import { conceptPages } from '../../lib/concept-page.ts'
+import { fields, findSeries } from '../../lib/taxonomy.ts'
+
+const articles = await getCollection('articles', ({ data }) => !data.draft)
+const base = siteBase(import.meta.env.BASE_URL)
+
+const homes = new Map<string, { href: string; where: string; title: string }>()
+for (const entry of articles) {
+  const series = findSeries(entry.data.field, entry.data.series)?.title ?? entry.data.series
+  for (const id of entry.data.provides) {
+    if (homes.has(id)) continue
+    homes.set(id, {
+      href: articleHref(base, entry.data),
+      where: `${series} 第 ${entry.data.order} 回`,
+      title: entry.data.title,
+    })
+  }
+}
+
+const pages = conceptPages(concepts, homes)
+
+// 分野ごとに、名前順で並べる。記事のある概念だけが並ぶ。
+const groups = fields
+  .map((field) => ({
+    field,
+    items: pages
+      .filter((page) => page.concept.field === field.slug)
+      .sort((a, b) => a.concept.label.localeCompare(b.concept.label, 'ja')),
+  }))
+  .filter((group) => group.items.length > 0)
+
+const covered = pages.length
+const total = concepts.length
+---
+
+<BaseLayout
+  title="概念から引く"
+  description="記事は連載として並んでいるが、検索は語で来る。語から、その語が住んでいる回へ送る索引。"
+  searchable
+>
+  <h1>概念から引く</h1>
+  <p class="lead">
+    記事は連載として順に並んでいるが、検索から来る読者は<strong>語で来る</strong>。
+    語から、その語を扱っている回へ送るための索引である。
+    解説は記事のほうにあり、ここには置かない。
+  </p>
+  <p class="count">
+    記事のある概念 {covered} / 全 {total}。書いていないものは、ここには出さない。
+  </p>
+
+  {
+    groups.map(({ field, items }) => (
+      <section class="group">
+        <h2>
+          {field.title}
+          <span class="n">{items.length}</span>
+        </h2>
+        <ul>
+          {items.map((page) => (
+            <li>
+              <a href={`${base}concepts/${page.concept.id}`}>{page.concept.label}</a>
+              <span class="gist">{page.concept.gist}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .lead {
+    color: var(--muted);
+  }
+
+  .count {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .group {
+    margin-top: 2.5rem;
+  }
+
+  .group h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .n {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .group ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .group li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.7rem;
+    align-items: baseline;
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+  }
+
+  .gist {
+    flex: 1 1 18rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>

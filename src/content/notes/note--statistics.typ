@@ -111,7 +111,7 @@ $ S \( E_A \, E_B \) & = k_B log W \( E_A \, E_B \)\
  & = k_B log W_A \( E_A \) + k_B log W_B \( E_B \)\
  & = S_A \( E_A \) + S_B \( E_B \) $
 となる。このとき熱平衡状態とはエントロピーが最大の状態であるから
-\$\\diff\*{S}{E\_A} = 0\$ となるエネルギー $E_A \, E_B$ を考えると
+$ dif S \/ dif E_A = 0 $ となるエネルギー $E_A \, E_B$ を考えると
 $ frac(upright(d) S \( E_A \, E_B \), upright(d) E_A) & = frac(upright(d) S_A \( E_A \), upright(d) E_A) + frac(upright(d) S_A \( E_B \), upright(d) E_A) = frac(upright(d) S_A \( E_A \), upright(d) E_A) - frac(upright(d) S_A \( E_B \), upright(d) E_B) = 0\
 arrow.l.r.double frac(upright(d) S_A \( E_A \), upright(d) E_A) & = frac(upright(d) S_A \( E_B \), upright(d) E_B) $
 よりエントロピーのエネルギー微分を温度の逆数 $1 \/ T$

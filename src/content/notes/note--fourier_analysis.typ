@@ -63,12 +63,12 @@ integral_(- pi)^pi sin \( n x \) thin upright(d) x & = cases(delim: "{", [- frac
  & = 0 $
 ] 
 
-#definition("$2\\pi$ の周期をもつ関数のフーリエ級数")[
+#definition("2π の周期をもつ関数のフーリエ級数")[
 $ f \( x \) & tilde.op a_0 / 2 + sum_(n = 1)^oo \( a_n cos \( n x \) + b_n sin \( n x \) \)\
 a_n & := 1 / pi integral_(- pi)^pi f \( x \) cos \( n x \) thin upright(d) x\
 b_n & := 1 / pi integral_(- pi)^pi f \( x \) sin \( n x \) thin upright(d) x $
 ]
-#definition("$2\\pi$ の周期をもつ関数の複素フーリエ級数")[
+#definition("2π の周期をもつ関数の複素フーリエ級数")[
 $ f \( x \) & = sum_(n = - oo)^oo c_n e^(i n x)\
 c_n & := frac(1, 2 pi) integral_(- pi)^pi f \( x \) e^(- i n x) thin upright(d) x $
 ]

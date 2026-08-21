@@ -80,6 +80,32 @@
 #let example = _make("example", [例])
 #let remark = _make("remark", [注意])
 
+/// 変換できなかった図。元の LaTeX を畳んで置く。
+///
+/// tikz と Feynman 図は Typst へ写せない（`repair-typst.mjs`）。落としてしまうと
+/// 本文が「上の図より」と言いながら何も無い状態になるので、元のソースを残してある。
+///
+/// ただし**素で置くと 20 行の `\feynmandiagram` が本文の途中に居座る**。
+/// 読者にとっては雑音でしかないので畳む。取りに行きたい人だけが開く形は、
+/// 想起の問いと同じ（`docs/reader.md`「手助けはすべて任意にする」）。
+///
+/// `<details>` なので JS は要らない。紙面では開いた状態で並ぶ。
+#let unconverted(tex) = context {
+  let label = [図は変換できていません（元の LaTeX）]
+
+  if target() == "html" {
+    html.elem("details", attrs: (class: "unconverted"), {
+      html.elem("summary", label)
+      raw(tex, lang: "latex", block: true)
+    })
+  } else {
+    block(inset: (left: 0.9em), stroke: (left: 2pt + luma(80%)), {
+      text(size: 0.85em, fill: luma(45%), label)
+      raw(tex, lang: "latex", block: true)
+    })
+  }
+}
+
 /// 証明。終わりの □ まで込みで 1 つの塊にする。
 #let proof(body) = context {
   if target() == "html" {

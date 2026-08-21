@@ -203,7 +203,7 @@ $psi compose phi.alt$ は準同型である。同型も同様。
 
 #proposition[
 $phi.alt : A arrow.r B$ が環の準同型ならば, 単射
-$arrow.l.r.double$ \$\\mathop{\\mathrm{Ker}}{\\phi} = \\Bab{0}\$
+$arrow.l.r.double$ $upright("Ker") phi = {0}$
 ]
 #proof[
 ($arrow.r.double.long$) $phi.alt$

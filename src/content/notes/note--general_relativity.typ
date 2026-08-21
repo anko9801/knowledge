@@ -118,7 +118,7 @@ $ g^(alpha beta) & = g_(alpha beta)^(- 1)\
 g_(alpha beta) & = g_(beta alpha)\
 g_(mu nu) & = Lambda_(med mu)^alpha Lambda_(med nu)^beta g_(alpha beta) $
 ベクトル $bold(A) = A^alpha bold(e)_alpha$ を基底で微分
-\$\\nabla\_\\beta\\bm{A}= \\difsp{\\bm{A}}{x^\\beta} = A^\\alpha\_{\\ ;\\beta}\\bm{e}\_\\alpha\$
+$ nabla_beta bold(A) = frac(partial bold(A), partial x^beta) = A^alpha{}_(\;beta) bold(e)_alpha $
 について
 $ A_(med ; beta)^alpha bold(e)_alpha & = frac(partial, partial x^beta) \( A^alpha bold(e)_alpha \) = frac(partial A^alpha, partial x^beta) bold(e)_alpha + A^alpha frac(partial bold(e)_alpha, partial x^beta) = A_(med \, beta)^alpha bold(e)_alpha + A^alpha Gamma_(med alpha beta)^mu bold(e)_mu $
 より

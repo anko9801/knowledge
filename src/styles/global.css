@@ -593,6 +593,26 @@ blockquote {
   }
 }
 
+/* 変換できなかった図。元の LaTeX を畳んで置く。
+ *
+ * 落とすと本文が「上の図より」と言いながら何も無い状態になるので残してある。
+ * だが素で置くと 20 行の tikz が本文の途中に居座るので、開く人にだけ開く。 */
+.unconverted {
+  margin: 1.2rem 0;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--rule);
+  font-size: 0.9rem;
+}
+
+.unconverted > summary {
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.unconverted > summary::marker {
+  color: var(--rule);
+}
+
 /* 紙には添えない。参照は番号で引ける。
  * 取っ手も消す。紙の上では押せないし、開いた状態で刷られても困る。 */
 @media print {

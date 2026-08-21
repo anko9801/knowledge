@@ -1,5 +1,5 @@
 #import "/src/typst/template.typ": post
-#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem, unconverted
 #import "/src/typst/image.typ": web-image
 
 #show: post.with(
@@ -195,13 +195,7 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
 ] <table:guage>
 == ファインマン・ダイアグラム
 <ファインマンダイアグラム>
-エネルギー損失 陽子全体 パウリの排他律 弱い相互作用 #block(inset: (left: 0.9em), stroke: (left: 2pt + luma(80%)))[
-  #text(size: 0.85em, fill: luma(45%))[図は変換できていません（元の LaTeX）]
-  #raw("\\begin{aligned}\n     & K^0(d\\bar{s}) \\to \\pi^+(u\\bar{d}) + \\pi^-(d\\bar{u})   &\n     & \\quad K^+(u\\bar{s}) \\to \\mu^+ + \\nu_\\mu               &\n     & \\quad \\pi^+(u\\bar d) \\to \\mu^+ + \\nu_\\mu\n  \\\\\n     & \\feynmandiagram [layered layout, horizontal=a to b] {\n  c -- [anti fermion] f2 [particle=\\(\\bar d\\)],\n  c -- [fermion] f3 [particle=\\(u\\)],\n  b -- [boson, edge label\\'=\\(W^+\\)] c,\n  a [particle=\\(\\bar s\\)] -- [anti fermion] b -- [anti fermion] f1 [particle=\\(\\bar u\\)],\n  }; &\n     & \\feynmandiagram [horizontal=a to b] {\n  i1 [particle=\\(u\\)] -- [fermion] a -- [fermion] i2 [particle=\\(\\bar s\\)],\n  a -- [photon, edge label=\\(W^+\\)] b,\n  f1 [particle=\\(\\mu^{+}\\)] -- [fermion] b -- [fermion] f2 [particle=\\(\\nu_\\mu\\)],\n  }; &\n     & \\feynmandiagram [horizontal=a to b] {\n  i1 [particle=\\(u\\)] -- [fermion] a -- [fermion] i2 [particle=\\(\\bar d\\)],\n  a -- [photon, edge label=\\(W^+\\)] b,\n  f1 [particle=\\(\\mu^{+}\\)] -- [fermion] b -- [fermion] f2 [particle=\\(\\nu_\\mu\\)],\n  };\n\\end{aligned}", lang: "latex", block: true)
-] #block(inset: (left: 0.9em), stroke: (left: 2pt + luma(80%)))[
-  #text(size: 0.85em, fill: luma(45%))[図は変換できていません（元の LaTeX）]
-  #raw("\\begin{aligned}\n     & K^0(d\\bar{s}) \\to \\pi^+(u\\bar{d}) + \\pi^-(d\\bar{u})   &\n     & \\quad n \\to p + e^- + \\bar{\\nu_e}\n  \\\\\n     & \\feynmandiagram [layered layout, horizontal=a to b] {\n  a [particle=\\(\\mu^{-}\\)] -- [fermion] b -- [fermion] f1 [particle=\\(\\nu_{\\mu}\\)],\n  b -- [boson, edge label\\'=\\(W^{-}\\)] c,\n  c -- [anti fermion] f2 [particle=\\(\\overline{\\nu}_{e}\\)],\n  c -- [fermion] f3 [particle=\\(e^{-}\\)],\n  }; &\n     & \\feynmandiagram [layered layout, horizontal=a to b] {\n  a [particle=\\(d\\)] -- [fermion] b -- [fermion] f1 [particle=\\(u\\)],\n  b -- [boson, edge label\\'=\\(W^{-}\\)] c,\n  c -- [anti fermion] f2 [particle=\\(\\overline{\\nu}_{e}\\)],\n  c -- [fermion] f3 [particle=\\(e^{-}\\)],\n  };\n\\end{aligned}", lang: "latex", block: true)
-] $ e^(-) e^(+) arrow.r mu^(-) mu^(+) $
+エネルギー損失 陽子全体 パウリの排他律 弱い相互作用 #unconverted("\\begin{aligned}\n     & K^0(d\\bar{s}) \\to \\pi^+(u\\bar{d}) + \\pi^-(d\\bar{u})   &\n     & \\quad K^+(u\\bar{s}) \\to \\mu^+ + \\nu_\\mu               &\n     & \\quad \\pi^+(u\\bar d) \\to \\mu^+ + \\nu_\\mu\n  \\\\\n     & \\feynmandiagram [layered layout, horizontal=a to b] {\n  c -- [anti fermion] f2 [particle=\\(\\bar d\\)],\n  c -- [fermion] f3 [particle=\\(u\\)],\n  b -- [boson, edge label\\'=\\(W^+\\)] c,\n  a [particle=\\(\\bar s\\)] -- [anti fermion] b -- [anti fermion] f1 [particle=\\(\\bar u\\)],\n  }; &\n     & \\feynmandiagram [horizontal=a to b] {\n  i1 [particle=\\(u\\)] -- [fermion] a -- [fermion] i2 [particle=\\(\\bar s\\)],\n  a -- [photon, edge label=\\(W^+\\)] b,\n  f1 [particle=\\(\\mu^{+}\\)] -- [fermion] b -- [fermion] f2 [particle=\\(\\nu_\\mu\\)],\n  }; &\n     & \\feynmandiagram [horizontal=a to b] {\n  i1 [particle=\\(u\\)] -- [fermion] a -- [fermion] i2 [particle=\\(\\bar d\\)],\n  a -- [photon, edge label=\\(W^+\\)] b,\n  f1 [particle=\\(\\mu^{+}\\)] -- [fermion] b -- [fermion] f2 [particle=\\(\\nu_\\mu\\)],\n  };\n\\end{aligned}") #unconverted("\\begin{aligned}\n     & K^0(d\\bar{s}) \\to \\pi^+(u\\bar{d}) + \\pi^-(d\\bar{u})   &\n     & \\quad n \\to p + e^- + \\bar{\\nu_e}\n  \\\\\n     & \\feynmandiagram [layered layout, horizontal=a to b] {\n  a [particle=\\(\\mu^{-}\\)] -- [fermion] b -- [fermion] f1 [particle=\\(\\nu_{\\mu}\\)],\n  b -- [boson, edge label\\'=\\(W^{-}\\)] c,\n  c -- [anti fermion] f2 [particle=\\(\\overline{\\nu}_{e}\\)],\n  c -- [fermion] f3 [particle=\\(e^{-}\\)],\n  }; &\n     & \\feynmandiagram [layered layout, horizontal=a to b] {\n  a [particle=\\(d\\)] -- [fermion] b -- [fermion] f1 [particle=\\(u\\)],\n  b -- [boson, edge label\\'=\\(W^{-}\\)] c,\n  c -- [anti fermion] f2 [particle=\\(\\overline{\\nu}_{e}\\)],\n  c -- [fermion] f3 [particle=\\(e^{-}\\)],\n  };\n\\end{aligned}") $ e^(-) e^(+) arrow.r mu^(-) mu^(+) $
 
 #block[
 ;
@@ -209,10 +203,7 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
 ]
 #block[
 ]
-#block(inset: (left: 0.9em), stroke: (left: 2pt + luma(80%)))[
-  #text(size: 0.85em, fill: luma(45%))[図は変換できていません（元の LaTeX）]
-  #raw("\\feynmandiagram [inline=(d.base), horizontal=d to b] {\n  a -- [fermion] b -- [fermion] c,\n  b -- [boson] d [particle=\\(\\gamma\\)],\n  };\n  = i g_{e} \\gamma^{\\mu}", lang: "latex", block: true)
-]
+#unconverted("\\feynmandiagram [inline=(d.base), horizontal=d to b] {\n  a -- [fermion] b -- [fermion] c,\n  b -- [boson] d [particle=\\(\\gamma\\)],\n  };\n  = i g_{e} \\gamma^{\\mu}")
 
 弱い相互作用 FCNC バーテックス（頂点）
 

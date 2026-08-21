@@ -337,12 +337,9 @@ export const wrapUnconvertedTex = (source) => {
       .replace(/\r/g, '')
       .trim()
 
-    return [
-      '#block(inset: (left: 0.9em), stroke: (left: 2pt + luma(80%)))[',
-      '  #text(size: 0.85em, fill: luma(45%))[図は変換できていません（元の LaTeX）]',
-      `  #raw(${JSON.stringify(tex)}, lang: "latex", block: true)`,
-      ']',
-    ].join('\n')
+    // 素で置くと 20 行の \feynmandiagram が本文の途中に居座る。
+    // theorem.typ の #unconverted が畳んで、取りに行った人にだけ開く。
+    return `#unconverted(${JSON.stringify(tex)})`
   })
 
   return { text, wrapped }

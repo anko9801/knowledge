@@ -74,7 +74,7 @@ const titleOf = (source, fallback) => {
 
 /** 既存の .typ 経路に載せるための front matter を付ける。 */
 const withFrontMatter = (body, { title, group, source }) => `#import "/src/typst/template.typ": post
-#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem, unconverted
 #import "/src/typst/image.typ": web-image
 
 #show: post.with(

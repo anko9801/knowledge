@@ -249,7 +249,7 @@ $x$ の部分集合でもあるとき $x$ が推移的であると呼ぶ。
 ]
 
 #theorem[
-\$\\lnot\\exists z\\forall x(x\\text!{は順序数}\\to x\\in z)\$
+$ not exists z forall x (x upright("は順序数") arrow.r.double x in z) $
 ]
 #proof[
 仮に任意の順序数を含む集合 $z$ があるとすると, 集合
@@ -268,7 +268,8 @@ $⟨A \, R⟩$ が整列順序であれば,
 となる。
 ]
 #proof[
-定理(ref)(3)より唯一性はわかる。\$B = \\{a\\in A:\\exists x(x\\text!{は順序数} \\land x\\cong\\left\\langle \\mathrm{pred}(A, a, R)\\right\\rangle )\\}\$
+定理(ref)(3)より唯一性はわかる。
+$ B = { a in A : exists x (x upright("は順序数") and x tilde.equiv ⟨upright("pred")(A, a, R)⟩) } $
 とおくと, 置換公理より
 $ forall a in B exists ! x \( x tilde.equiv ⟨upright(p r e d) \( A \, a \, R \)⟩ \)\
 C colon.eq { x : exists a in B { x tilde.equiv ⟨upright(p r e d) \( A \, a \, R \)⟩ } } $

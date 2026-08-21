@@ -1,7 +1,7 @@
 import { deepStrictEqual, strictEqual } from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { neighborsOf, type Article, type Concept } from './neighbors.ts'
+import { neighborsOf, prerequisites, type Article, type Concept } from './neighbors.ts'
 
 const concept = (id: string, requires: readonly string[] = []): Concept => ({
   id,
@@ -119,6 +119,21 @@ test('手前に家が一つも無ければ、先の連載へ送る', () => {
     neighborsOf(graph, [general, reader], reader).requires.map((link) => link.article.key),
     ['math/forms/6'],
   )
+})
+
+test('prerequisites は判定用なので、前後ナビと重なるものも落とさない', () => {
+  const map = prerequisites(concepts, articles)
+
+  // 第 2 回の前提は第 1 回。表示側では前ナビと重なるので落ちるが、判定では要る。
+  deepStrictEqual(map.get('math/measure/2'), ['math/measure/1'])
+  deepStrictEqual(map.get('math/measure/1'), ['math/set-theory/1'])
+  deepStrictEqual(map.get('math/set-theory/1'), [])
+})
+
+test('prerequisites は全記事を引ける', () => {
+  const map = prerequisites(concepts, articles)
+  strictEqual(map.size, articles.length)
+  for (const article of articles) strictEqual(Array.isArray(map.get(article.key)), true)
 })
 
 test('前提が無ければ空で返る', () => {

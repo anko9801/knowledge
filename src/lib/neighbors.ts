@@ -116,6 +116,27 @@ const foldByArticle = (
 }
 
 /**
+ * 記事ごとに、前提を供給している記事を引く。
+ *
+ * 「その回を読める状態か」の判定に使う。読者が読んだ記事（端末の localStorage）と
+ * 突き合わせて、前提が全部揃った回を「読めるようになった」と出す。
+ *
+ * `neighborsOf` の `requires` と同じ辺だが、あちらは表示用に前後ナビと重なるものを
+ * 落とす。こちらは判定用なので**一つも落とさない**。落とすと、前の回を読んでいない
+ * 人にも前提が揃って見えてしまう。
+ */
+export const prerequisites = (
+  concepts: readonly Concept[],
+  articles: readonly Article[],
+): ReadonlyMap<string, readonly string[]> =>
+  new Map(
+    articles.map((article) => [
+      article.key,
+      neighborsOf(concepts, articles, article).requires.map((link) => link.article.key),
+    ]),
+  )
+
+/**
  * ある記事の前後を引く。
  *
  * `exclude` に挙げた記事は落とす。連載の前後ナビにすぐ上で出しているものを

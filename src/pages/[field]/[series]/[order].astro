@@ -6,7 +6,13 @@ import type { GetStaticPaths } from 'astro'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 import { concepts } from '../../../data/concepts.ts'
 import { articleHref, articleKey, siteBase } from '../../../lib/article-url.ts'
-import { neighborsOf, type Article, type Link, type Neighbors } from '../../../lib/neighbors.ts'
+import {
+  neighborsOf,
+  prerequisites,
+  type Article,
+  type Link,
+  type Neighbors,
+} from '../../../lib/neighbors.ts'
 import {
   findField,
   findSeries,
@@ -33,6 +39,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }))
   const byKey = new Map(coverage.map((entry) => [entry.key, entry]))
 
+  // 「読めるようになったか」の判定材料。読者の端末で読了記録と突き合わせる。
+  const needs = prerequisites(concepts, coverage)
+  const pathsOf = (key: string) =>
+    (needs.get(key) ?? []).map((dep) => byKey.get(dep)?.href).filter((href) => href !== undefined)
+
   return articles.map((article) => {
     // 同じシリーズの記事を order 順に並べて、前後ナビと目次に使う。
     const siblings = articles
@@ -46,6 +57,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const prev = siblings[index - 1] ?? null
     const next = siblings[index + 1] ?? null
 
+    // 前後ナビにすぐ出るものは、概念グラフ側からは落とす。同じリンクが二度出るだけになる。
+    const neighbors = neighborsOf(
+      concepts,
+      coverage,
+      byKey.get(articleKey(article.data)) as Article,
+      [prev, next].filter((entry) => entry !== null).map((entry) => articleKey(entry.data)),
+    )
+
+    // 下流の回それぞれについて、その回の前提となる記事の URL。読者の端末で
+    // 読了記録と突き合わせて「前提が揃った」かどうかを見る。
+    const needs = Object.fromEntries(
+      neighbors.unlocks.map((link) => [link.article.key, pathsOf(link.article.key)]),
+    )
+
     return {
       params: {
         field: article.data.field,
@@ -56,13 +81,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
         article,
         prev,
         next,
-        // 前後ナビにすぐ出るものは、概念グラフ側からは落とす。同じリンクが二度出るだけになる。
-        neighbors: neighborsOf(
-          concepts,
-          coverage,
-          byKey.get(articleKey(article.data)) as Article,
-          [prev, next].filter((entry) => entry !== null).map((entry) => articleKey(entry.data)),
-        ),
+        neighbors,
+        needs,
       },
     }
   })
@@ -73,9 +93,11 @@ type Props = {
   prev: Entry | null
   next: Entry | null
   neighbors: Neighbors
+  /** 下流の回ごとの、前提となる記事の URL。 */
+  needs: Record<string, readonly string[]>
 }
 
-const { article, prev, next, neighbors } = Astro.props
+const { article, prev, next, neighbors, needs } = Astro.props
 // headings は typst-loader が本文から集めたもの。右の目次に出す。
 const { Content, headings } = await render(article)
 
@@ -171,10 +193,13 @@ const why = (link: Link) => link.concepts.map((concept) => concept.label).join('
   {
     neighbors.unlocks.length > 0 && (
       <nav class="unlocks" aria-label="この回を前提にしている回">
-        <p class="unlocks-label">この回を前提にしている回</p>
+        {/* 読了記録があると、前提の揃った回に印が付いて見出しが変わる（下の script）。 */}
+        <p class="unlocks-label" data-ready-label="ここまでで、次が読めるようになった">
+          この回を前提にしている回
+        </p>
         <ul>
           {neighbors.unlocks.map((link) => (
-            <li>
+            <li data-needs={(needs[link.article.key] ?? []).join(' ')} data-self={link.article.href}>
               <a href={link.article.href} aria-label={`${where(link)}（${why(link)}）`}>
                 {where(link)}
               </a>
@@ -185,6 +210,54 @@ const why = (link: Link) => link.concepts.map((concept) => concept.label).join('
       </nav>
     )
   }
+
+  <script>
+    // 前提が揃った回に印を付ける。
+    //
+    // 動機がいちばん動くのは「できるようになった」という手応えで、点数や達成率では
+    // ない（報酬は内発的動機を掘り崩すが、能力についての手応えは持ち上げる）。
+    // 読むほど前提が埋まって読める回が増えるので、これは実際に単調に増える。
+    //
+    // 数えない。何本読んだか、何 % 進んだかは出さない。出せるのは「いま何が読めるか」
+    // だけで、それは借金の一覧ではなく行き先の一覧である。
+    //
+    // 記録は Sidebar.astro と同じ localStorage。無ければ静的な一覧のままになる。
+    const READ = 'knowledge:read'
+    const trim = (path: string): string => path.replace(/\.html$/, '').replace(/\/+$/, '')
+
+    let read: Set<string>
+    try {
+      const stored: unknown = JSON.parse(localStorage.getItem(READ) ?? 'null')
+      read = new Set(Array.isArray(stored) ? (stored as string[]) : [])
+    } catch {
+      read = new Set()
+    }
+
+    // このページは Sidebar 側で記録に入るが、順番に依らないようにここでも足す。
+    read.add(trim(location.pathname))
+
+    // 読んだ記事が 1 本も無い人に「読めるようになった」は出さない。
+    // 初回の読者には、ただの下流の一覧のままでよい。
+    if (read.size > 1) {
+      const items = document.querySelectorAll<HTMLLIElement>('.unlocks li[data-needs]')
+      let ready = 0
+
+      for (const item of items) {
+        const self = trim(item.dataset.self ?? '')
+        // すでに読んだ回を「読めるようになった」と言っても仕方がない。
+        if (read.has(self)) continue
+
+        const needs = (item.dataset.needs ?? '').split(' ').filter(Boolean).map(trim)
+        if (needs.length === 0 || !needs.every((path) => read.has(path))) continue
+
+        item.classList.add('ready')
+        ready += 1
+      }
+
+      const label = document.querySelector<HTMLElement>('.unlocks-label')
+      if (ready > 0 && label?.dataset.readyLabel) label.textContent = label.dataset.readyLabel
+    }
+  </script>
 </BaseLayout>
 
 <style>
@@ -282,6 +355,22 @@ const why = (link: Link) => link.concepts.map((concept) => concept.label).join('
   .unlocks ul {
     margin-top: 0.3rem;
     gap: 0 1.4rem;
+  }
+
+  /* 前提が揃った回。祝わない、数えない、急かさない。
+   * 行き先がひとつ増えたことを、印ひとつで静かに返すだけにする。 */
+  .unlocks li.ready {
+    order: -1;
+  }
+
+  .unlocks li.ready > a {
+    color: var(--accent);
+  }
+
+  .unlocks li.ready::before {
+    content: '→';
+    color: var(--accent);
+    opacity: 0.7;
   }
 
   .pager {

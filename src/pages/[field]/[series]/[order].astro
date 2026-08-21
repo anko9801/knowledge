@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content'
+import { attachPagePeeks, type Page } from '../../../lib/page-peek.ts'
 import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
@@ -38,6 +39,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
     provides: entry.data.provides,
   }))
   const byKey = new Map(coverage.map((entry) => [entry.key, entry]))
+
+  // 記事をまたぐリンクに添える中身。指しているのが記事なので、添えるのも記事の側になる。
+  const pages: Page[] = articles.map((entry) => ({
+    href: articleHref(base, entry.data),
+    where: `${findSeries(entry.data.field, entry.data.series)?.title ?? entry.data.series} 第 ${entry.data.order} 回`,
+    title: entry.data.title,
+    summary: entry.data.summary,
+  }))
 
   // 「読めるようになったか」の判定材料。読者の端末で読了記録と突き合わせる。
   const needs = prerequisites(concepts, coverage)
@@ -83,6 +92,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
         next,
         neighbors,
         needs,
+        // 自分自身へのリンクに自分の要約を添えても仕方がない。
+        pages: pages.filter((page) => page.href !== articleHref(base, article.data)),
       },
     }
   })
@@ -95,11 +106,17 @@ type Props = {
   neighbors: Neighbors
   /** 下流の回ごとの、前提となる記事の URL。 */
   needs: Record<string, readonly string[]>
+  /** 記事をまたぐリンクに添える中身。 */
+  pages: readonly Page[]
 }
 
-const { article, prev, next, neighbors, needs } = Astro.props
+const { article, prev, next, neighbors, needs, pages } = Astro.props
 // headings は typst-loader が本文から集めたもの。右の目次に出す。
-const { Content, headings } = await render(article)
+const { headings } = await render(article)
+
+// 本文は loader が組んだ HTML をそのまま持っている。記事をまたぐリンクに中身を
+// 添えるには全記事の情報が要るので、1 本ずつ処理する loader ではなくここで足す。
+const body = attachPagePeeks(article.rendered?.html ?? '', pages)
 
 const field: Field | undefined = findField(article.data.field)
 const series: Series | undefined = findSeries(article.data.field, article.data.series)
@@ -166,7 +183,7 @@ const why = (link: Link) => link.concepts.map((concept) => concept.label).join('
   </header>
 
   <article>
-    <Content />
+    <Fragment set:html={body} />
   </article>
 
   <nav class="pager">

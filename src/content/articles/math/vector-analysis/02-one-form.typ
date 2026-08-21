@@ -13,6 +13,7 @@
     "one-form",
     "line-integral",
     "wedge-product",
+    "k-form",
     "jacobian-from-wedge",
   ),
   requires: ("grad-div-curl",),

@@ -104,6 +104,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
         article,
         prev,
         next,
+        // 連載の長さ。最後の回で「ここまで」と言うのに要る。
+        total: siblings.length,
         neighbors,
         needs,
         // 自分自身へのリンクに自分の要約を添えても仕方がない。
@@ -118,6 +120,8 @@ type Props = {
   article: Entry
   prev: Entry | null
   next: Entry | null
+  /** その連載の回数。 */
+  total: number
   neighbors: Neighbors
   /** 下流の回ごとの、前提となる記事の URL。 */
   needs: Record<string, readonly string[]>
@@ -127,7 +131,7 @@ type Props = {
   statements: ReadonlyMap<string, string>
 }
 
-const { article, prev, next, neighbors, needs, pages, statements } = Astro.props
+const { article, prev, next, total, neighbors, needs, pages, statements } = Astro.props
 // headings は typst-loader が本文から集めたもの。右の目次に出す。
 const { headings } = await render(article)
 
@@ -251,11 +255,15 @@ const coversRest = neighbors.covers.length - covers.length
       )
     }
     {
-      next && (
+      next ? (
         <a class="next" href={href(next)}>
           <span class="dir">第 {next.data.order} 回 →</span>
           <span class="label">{next.data.title}</span>
         </a>
+      ) : (
+        /* 連載の最後。前へ進む先（下の「読めるようになった回」）はあるのに、
+           終わったことだけが分からなかった。祝わず、数えず、一行で言う。 */
+        <p class="end">{`${here}はここまで。全 ${total} 回`}</p>
       )
     }
   </nav>
@@ -507,6 +515,14 @@ const coversRest = neighbors.covers.length - covers.length
   .pager .label {
     text-decoration: underline;
     text-underline-offset: 0.2em;
+  }
+
+  /* 連載の終わり。印も演出も足さない。 */
+  .pager .end {
+    margin: 0 0 0 auto;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--muted);
   }
 
 </style>

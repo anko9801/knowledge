@@ -148,6 +148,16 @@ const where = (link: Link) =>
     : `${link.article.series} 第 ${link.article.order} 回`
 
 const why = (link: Link) => link.concepts.map((concept) => concept.label).join('・')
+
+// 題名は異常を出す形にしてあるので、何を学ぶ回なのかが題名から読めない。
+// 連載の一覧を眺めている読者と、検索から来た読者は、そこで判断できずに止まる。
+// 概念の名前は provides として既にあるので、表に出すだけでよい。
+//
+// 全部は出さない。多い回で 32 個あり、並べると題名より長い塊になって、
+// かえって何の回か分からなくなる。残りは数だけ言って、概念の索引へ送る。
+const COVERS_SHOWN = 6
+const covers = neighbors.covers.slice(0, COVERS_SHOWN)
+const coversRest = neighbors.covers.length - covers.length
 ---
 
 <BaseLayout
@@ -168,6 +178,23 @@ const why = (link: Link) => link.concepts.map((concept) => concept.label).join('
   <header class="head">
     <p class="order">第 {article.data.order} 回</p>
     <h1>{article.data.title}</h1>
+
+    {
+      covers.length > 0 && (
+        <p class="covers">
+          {covers.map((concept, i) => (
+            <>
+              {i > 0 && <span class="sep" aria-hidden="true">・</span>}
+              <a href={`${base}concepts/${concept.id}`} title={concept.gist}>
+                {concept.label}
+              </a>
+            </>
+          ))}
+          {coversRest > 0 && <span class="rest">ほか {coversRest}</span>}
+        </p>
+      )
+    }
+
     {article.data.summary && <p class="summary">{article.data.summary}</p>}
     <p class="meta"><time datetime={updated}>{updated}</time></p>
 
@@ -315,6 +342,33 @@ const why = (link: Link) => link.concepts.map((concept) => concept.label).join('
 
   .head h1 {
     margin-top: 0.2rem;
+  }
+
+  /* この回で扱う概念。題名の真下に置く。
+   *
+   * 題名は異常を出す形なので、何を学ぶ回かがそこから読めない。読む前にいちばん
+   * 知りたいのはそれなので、要約より先に出す。押すと概念の索引へ行ける。 */
+  .covers {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .covers a {
+    color: var(--ink);
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+  }
+
+  .covers .sep {
+    margin: 0 0.15rem;
+    opacity: 0.45;
+  }
+
+  .covers .rest {
+    margin-left: 0.5rem;
+    opacity: 0.7;
   }
 
   .head .summary {

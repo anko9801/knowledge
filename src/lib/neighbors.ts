@@ -53,6 +53,14 @@ export type Neighbors = {
   readonly gaps: readonly Gap[]
   /** この回を前提にしている回。記事があるものだけ。 */
   readonly unlocks: readonly Link[]
+  /**
+   * この回で扱う概念。宣言順のまま。
+   *
+   * 題名は異常を出す形にしてあるので、**何を学ぶ回なのかが題名から読めない**。
+   * 連載の一覧を眺めている読者と、検索から来た読者は、そこで判断できずに詰まる。
+   * 概念の名前は `provides` として既にあるので、表に出すだけで足りる。
+   */
+  readonly covers: readonly Concept[]
 }
 
 const indexConcepts = (concepts: readonly Concept[]): ReadonlyMap<string, Concept> =>
@@ -172,6 +180,9 @@ export const neighborsOf = (
   const drop = (link: Link) => !skip.has(link.article.key)
 
   return {
+    covers: self.provides
+      .map((id) => byId.get(id))
+      .filter((concept): concept is Concept => concept !== undefined),
     requires: foldByArticle(required, byId, covers, self).filter(drop),
     gaps: required
       .filter((id) => !covers.has(id))

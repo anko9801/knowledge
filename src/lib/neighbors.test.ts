@@ -51,6 +51,24 @@ test('前提は直接の requires だけを見る', () => {
   deepStrictEqual(labels(requires), ['zfc'])
 })
 
+test('その回で扱う概念を、宣言順のまま返す', () => {
+  // 題名は異常を出す形なので、何を学ぶ回かが題名から読めない。そこを埋める。
+  const { covers } = neighborsOf(concepts, articles, first)
+  deepStrictEqual(
+    covers.map((c) => c.id),
+    ['sigma-algebra', 'measure'],
+  )
+})
+
+test('グラフに無い概念を名乗っていても、扱う概念は落ちるだけ', () => {
+  const stray = article(9, ['measure', 'not-in-graph'])
+  const { covers } = neighborsOf(concepts, [...articles, stray], stray)
+  deepStrictEqual(
+    covers.map((c) => c.id),
+    ['measure'],
+  )
+})
+
 test('自分が供給する概念は前提にも下流にも出ない', () => {
   // sigma-algebra は measure の前提だが、同じ回で片が付いている。
   const { requires, unlocks } = neighborsOf(concepts, articles, first)

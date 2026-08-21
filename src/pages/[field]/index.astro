@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { concepts } from '../../data/concepts.ts'
 import { fields, seriesOf, type Field, type Series } from '../../lib/taxonomy.ts'
 
 export const getStaticPaths: GetStaticPaths = async () =>
@@ -26,6 +27,16 @@ const groups = seriesOf(field.slug).map((series: Series) => ({
 // GitHub Pages ではサイトがリポジトリ名の下に載る。
 // BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
+
+// 一覧では題名と要約しか出ていなかった。題名は異常を出す形なので、
+// **何を扱う回かが一覧から読めない**。要約は文章なので、拾い読みには向かない。
+// 概念の名前を並べれば、探している語がある回を目で拾える。
+const labels = new Map(concepts.map((concept) => [concept.id, concept.label]))
+const COVERS_SHOWN = 5
+const coversOf = (provides: readonly string[]) => {
+  const named = provides.map((id) => labels.get(id)).filter((label) => label !== undefined)
+  return { shown: named.slice(0, COVERS_SHOWN), rest: Math.max(0, named.length - COVERS_SHOWN) }
+}
 ---
 
 <BaseLayout title={field.title} description={field.blurb}>
@@ -47,6 +58,13 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
                 <a href={`${base}${field.slug}/${series.slug}/${article.data.order}`}>
                   {article.data.title}
                 </a>
+                {coversOf(article.data.provides).shown.length > 0 && (
+                  <p class="covers">
+                    {coversOf(article.data.provides).shown.join('・')}
+                    {coversOf(article.data.provides).rest > 0 &&
+                      ` ほか ${coversOf(article.data.provides).rest}`}
+                  </p>
+                )}
                 {article.data.summary && <p class="summary">{article.data.summary}</p>}
               </li>
             ))}
@@ -85,6 +103,18 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 
   .articles a {
     font-size: 1.05rem;
+  }
+
+  /* 何を扱う回か。題名の真下、要約より先に置く。
+   *
+   * 要約は文章なので拾い読みに向かない。探している語があるかどうかは、
+   * 名前が並んでいれば目で拾える。 */
+  .covers {
+    margin: 0.15rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--ink);
+    opacity: 0.72;
   }
 
   .summary {

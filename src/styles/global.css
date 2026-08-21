@@ -721,6 +721,10 @@ blockquote {
  * ボタンが立つと、コードより先にそちらへ目が行く。 */
 .code-copy {
   flex: none;
+  /* 三つの字を同じ枡に重ねる。幅は最長のもので決まるので、
+   * 押して字が変わってもボタンの縁が動かない。 */
+  display: inline-grid;
+  justify-items: end;
   padding: 0;
   border: 0;
   background: none;
@@ -728,13 +732,42 @@ blockquote {
   font: inherit;
   letter-spacing: inherit;
   cursor: pointer;
-  /* 文字数が変わっても左端が動かないように、幅を取っておく。 */
-  min-width: 6em;
-  text-align: right;
+}
+
+/* 「コピー」→「コピーした」を差し替えると、字が瞬間的に入れ替わったように
+ * 見える。透明度だけで重ねても、二つが同じ場所で薄く重なる瞬間があって
+ * 滲む。引っ込む側を縮めて暈すと、重なりが「奥へ引いた字」と「手前へ出た字」
+ * に分かれて混ざらない。引き出しのボタン（layout.css の .drawer-icon）が
+ * 同じ扱いで、数値も揃えてある。三つ目が出たら共通化すること。 */
+.code-copy-label {
+  grid-area: 1 / 1;
+  opacity: 0;
+  scale: 0.72;
+  filter: blur(2px);
+}
+
+.code-copy-label.is-shown {
+  opacity: 1;
+  scale: 1;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .code-copy-label {
+    transition:
+      opacity 150ms ease,
+      scale 190ms cubic-bezier(0.32, 0.72, 0, 1),
+      filter 150ms ease;
+  }
+
+  /* 出る側を少し遅く始める。同時だと、入れ替わりの中間で両方が薄くなる。 */
+  .code-copy-label.is-shown {
+    transition-delay: 40ms;
+  }
 }
 
 .code-copy:hover,
-.code-copy.is-done {
+.code-copy:not([data-state='idle']) {
   color: var(--accent);
 }
 
@@ -746,7 +779,8 @@ blockquote {
 
   .code:hover .code-copy,
   .code-copy:focus-visible,
-  .code-copy.is-done {
+  /* 押した直後は、離れても手応えが見えるまで出しておく。 */
+  .code-copy:not([data-state='idle']) {
     opacity: 1;
   }
 

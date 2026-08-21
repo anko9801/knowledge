@@ -7,12 +7,17 @@
 //
 // 置き場所は出どころの行の右端。地を敷いた枠の中に入れると、コードの上に
 // 物が重なって桁が読みにくくなる。出どころを持たない塊には、この行だけを作る。
+//
+// 押した後の字は差し替えではなく重ねて入れ替える。理由は global.css の
+// .code-copy-label に書いた（引き出しのボタンと同じ扱い）。
 ---
 
 <script>
-  const LABEL = 'コピー'
-  const DONE = 'コピーした'
-  const FAILED = '押せなかった'
+  const STATES = [
+    ['idle', 'コピー'],
+    ['done', 'コピーした'],
+    ['failed', '押せなかった'],
+  ]
 
   // 触れない環境では、そもそも出さない。
   if (navigator.clipboard) {
@@ -40,7 +45,28 @@
       const button = document.createElement('button')
       button.type = 'button'
       button.className = 'code-copy'
-      button.textContent = LABEL
+
+      // 三つとも枡に置いておく。幅が最長のもので決まるので、
+      // 字が変わってもボタンの縁が動かない。
+      const labels = new Map()
+      for (const [state, text] of STATES) {
+        const label = document.createElement('span')
+        label.className = 'code-copy-label'
+        // 重ねてあるぶん、読み上げには三つ全部が繋がって渡ってしまう。
+        // 名前はボタン自身の aria-label で持つ。
+        label.setAttribute('aria-hidden', 'true')
+        label.textContent = text
+        labels.set(state, label)
+        button.append(label)
+      }
+
+      const show = (state: string) => {
+        for (const [key, label] of labels) label.classList.toggle('is-shown', key === state)
+        // 色と、hover の外でも出したままにするかは状態で決める（global.css）。
+        button.dataset.state = state
+        button.setAttribute('aria-label', labels.get(state).textContent)
+      }
+      show('idle')
 
       // window. を通すと戻り値が number になる。素の setTimeout は
       // @types/node が入っているぶん NodeJS.Timeout に解決される。
@@ -51,17 +77,13 @@
         try {
           await navigator.clipboard.writeText(pre.textContent)
         } catch {
-          button.textContent = FAILED
+          show('failed')
           return
         }
 
-        button.textContent = DONE
-        button.classList.add('is-done')
+        show('done')
         window.clearTimeout(timer)
-        timer = window.setTimeout(() => {
-          button.textContent = LABEL
-          button.classList.remove('is-done')
-        }, 1400)
+        timer = window.setTimeout(() => show('idle'), 1400)
       })
 
       row.append(button)

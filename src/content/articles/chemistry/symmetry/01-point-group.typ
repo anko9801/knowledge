@@ -110,7 +110,7 @@
 ]<def:sab>
 
 分解の仕方は、指標を数えるだけで決まる。
-#link("/math/groups/2")[前回]の重複度の公式
+#link("/math/groups/2")[群と表現 第 2 回]の重複度の公式
 $ m_i = frac(1, abs(G)) sum_(g in G) chi_i (g)^* thin chi(g) $
 に、指標表の値を入れればよい。
 

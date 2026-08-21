@@ -3,7 +3,13 @@ import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { test } from 'node:test'
 
-import { brokenLinks, internalHrefs, isKnown, type Known } from './internal-links.ts'
+import {
+  brokenLinks,
+  internalHrefs,
+  isKnown,
+  misplacedNeighbours,
+  type Known,
+} from './internal-links.ts'
 
 const known: Known = {
   articles: new Set(['math/measure/1', 'cs/complexity/1']),
@@ -35,6 +41,27 @@ test('判定できない形は通す', () => {
   // 止めるのは分かるものだけにする。検査そのものが邪魔になっては困る。
   strictEqual(isKnown('/notes/note--set_theory', known), true)
   strictEqual(isKnown('/a/b/c/d', known), true)
+})
+
+test('「前回」が同じ連載の一つ前を指していれば通す', () => {
+  const ok = [
+    { path: 'a', key: 'math/measure/3', text: '#link("/math/measure/2")[前回]' },
+    { path: 'b', key: 'math/measure/3', text: '#link("/math/measure/4")[次回]' },
+    { path: 'c', key: 'math/measure/3', text: '#link("/math/measure/1")[前々回]' },
+    { path: 'd', key: 'math/measure/3', text: '#link("/math/measure/2#def-x")[前回]' },
+  ]
+  deepStrictEqual(misplacedNeighbours(ok), [])
+})
+
+test('ほかの連載に「前回」と書いていたら止める', () => {
+  // 書いている側は直前に読み返した回のつもりでも、読者には別の連載である。
+  const bad = [{ path: 'x', key: 'chemistry/symmetry/1', text: '#link("/math/groups/2")[前回]' }]
+  deepStrictEqual(misplacedNeighbours(bad), [{ source: 'x', href: '/math/groups/2' }])
+})
+
+test('番号が隣でなければ止める', () => {
+  const bad = [{ path: 'y', key: 'math/measure/3', text: '#link("/math/measure/1")[前回]' }]
+  strictEqual(misplacedNeighbours(bad).length, 1)
 })
 
 // --- 実ファイルに当てる。ここが本番 ---
@@ -70,4 +97,19 @@ test('本文のサイト内リンクが、全部実在する回を指してい�
   )
 
   strictEqual(broken.map((b) => `${b.source} -> ${b.href}`).join('\n'), '')
+})
+
+test('本文の「前回」「次回」が、同じ連載の隣を指している', () => {
+  const misplaced = misplacedNeighbours(
+    typFiles('src/content/articles').map((path) => {
+      const [, , , field, series, file] = path.split('/')
+      return {
+        path,
+        key: `${field}/${series}/${Number.parseInt(file as string, 10)}`,
+        text: readFileSync(path, 'utf8'),
+      }
+    }),
+  )
+
+  strictEqual(misplaced.map((b) => `${b.source} -> ${b.href}`).join('\n'), '')
 })

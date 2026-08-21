@@ -51,6 +51,51 @@ export const isKnown = (href: string, known: Known): boolean => {
   return true
 }
 
+/**
+ * 「前回」「次回」と書いたリンクが、同じ連載の隣を指しているか。
+ *
+ * 別の連載へのリンクに「前回」と書いてしまうことがある。書いている側は
+ * 直前に読み返した回のつもりでも、読者にとっては**まったく違う連載**である
+ * （実測 1 件。分子の対称性 第 1 回から、群と表現 第 2 回へ「前回」と張っていた）。
+ *
+ * 「前回、〜」で始めない、という規則とは別の話。あちらは書き出しの位置の話で、
+ * こちらは指し先が合っているかの話。
+ */
+export type Neighbour = {
+  readonly path: string
+  /** `cs/programs/1` の形。 */
+  readonly key: string
+  readonly text: string
+}
+
+const WORDS: readonly (readonly [string, number])[] = [
+  ['前々回', -2],
+  ['前回', -1],
+  ['次回', 1],
+]
+
+export const misplacedNeighbours = (sources: readonly Neighbour[]): readonly Broken[] =>
+  sources.flatMap((source) => {
+    const [field, series, order] = source.key.split('/')
+    const self = Number.parseInt(order as string, 10)
+
+    return [...source.text.matchAll(/#link\("(\/[^"#]+)[^"]*"\)\[(前々回|前回|次回)\]/g)].flatMap(
+      (m) => {
+        const href = m[1] as string
+        const word = m[2] as string
+        const step = WORDS.find(([w]) => w === word)?.[1] as number
+        const parts = href.replace(/^\/+|\/+$/g, '').split('/')
+
+        if (parts.length !== 3) return [{ source: source.path, href }]
+        if (parts[0] !== field || parts[1] !== series) return [{ source: source.path, href }]
+        if (Number.parseInt(parts[2] as string, 10) !== self + step) {
+          return [{ source: source.path, href }]
+        }
+        return []
+      },
+    )
+  })
+
 export const brokenLinks = (
   sources: readonly { readonly path: string; readonly text: string }[],
   known: Known,

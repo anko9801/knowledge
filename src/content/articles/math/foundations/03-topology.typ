@@ -152,7 +152,7 @@ Hausdorff でない空間では、一つの点列が二つの極限を持ちう�
     片方の原点へ収束する列が、もう片方へも収束してしまう
   + #strong[第二可算を外す。] 非可算個の直線を並べた空間は、
     局所的に $RR$ と同じだが大きすぎて、
-    #link("/math/differential-forms/6")[1 の分割]が作れない
+    #link("/math/differential-forms/6#def-partition")[1 の分割]が作れない
 ]
 
 どちらも「局所的には $RR^n$」を満たすのに、多様体として扱うと困る。

@@ -109,7 +109,7 @@ $"GL"(k)$ より小さい群に制限できることがある。
 #example[枠束][
   $M$ の各点で、接空間の基底（枠）を全部集めると $"GL"(n)$ 主束になる。
   自然表現を取れば接束が、その双対を取れば余接束が、
-  #link("/math/linear-algebra/4")[交代形式]の表現を取れば $Lambda^k T^* M$ が出る。
+  #link("/math/linear-algebra/4#def-alternating")[交代形式]の表現を取れば $Lambda^k T^* M$ が出る。
 
   #strong[微分形式の全体が、一つの主束から表現ごとに生成されていた]ことになる。
 ]

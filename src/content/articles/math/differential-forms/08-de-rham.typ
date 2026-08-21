@@ -70,7 +70,7 @@ $partial partial = 0$ は「境界の境界は無い」で、
   は同型である。
 ]<thm:de-rham>
 
-写像が well-defined であることは、#link("/math/differential-forms/6")[Stokes の定理]から出る。
+写像が well-defined であることは、#link("/math/differential-forms/6#thm-stokes")[Stokes の定理]から出る。
 $omega$ を完全形式 $dif eta$ にずらすと
 $ integral_c dif eta = integral_(partial c) eta = 0 quad (partial c = 0) $
 となり、$c$ を境界 $partial b$ にずらすと

@@ -54,8 +54,8 @@
 ]
 
 最後の対称群は、後で二か所に効く。
-#link("/math/linear-algebra/5")[行列式]の定義に現れる置換の和と、
-#link("/math/linear-algebra/4")[交代形式]の符号である。
+#link("/math/linear-algebra/5#def-det")[行列式]の定義に現れる置換の和と、
+#link("/math/linear-algebra/4#def-alternating")[交代形式]の符号である。
 
 #definition[
   置換を互換（$2$ つを入れ替える操作）の積に書いたとき、その個数の偶奇は

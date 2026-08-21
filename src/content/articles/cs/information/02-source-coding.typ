@@ -49,7 +49,7 @@ $ EE[-log p(X)] = -sum_x p(x) log p(x) = H(X) $
 ]<thm:aep>
 
 #proof[
-  1 は#link("/math/measure/4")[大数の法則]そのものである。
+  1 は#link("/math/measure/4#thm-wlln")[大数の法則]そのものである。
 
   2 は、典型集合の各元が $p(x^n) >= 2^(-n(H+epsilon))$ を満たすことから。
   確率の総和が $1$ 以下なので、個数は $2^(n(H+epsilon))$ 以下。
@@ -133,7 +133,7 @@ $H < 1$ なら $2^(n H) \/ 2^n arrow 0$ である。
 
 #strong[確率論の定理が、そのまま工学の限界になった。]
 「圧縮の限界」という操作的な問いが、
-#link("/math/measure/4")[大数の法則]の言い換えだったことになる。
+#link("/math/measure/4#thm-wlln")[大数の法則]の言い換えだったことになる。
 
 #link("/cs/information/3")[次回]、雑音のある通信路を扱う。
 そこでも道具は同じで、典型的な列を数えるだけで容量が出る。

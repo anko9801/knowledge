@@ -153,7 +153,7 @@ $D^2 f_bold(a)$ は $RR^n times RR^n arrow RR^m$ の双線形写像になり、
 
 $RR^n$ の重積分は、直方体を並べて足す。
 座標を替えると、直方体が平行体に歪む。その体積比が
-#link("/math/linear-algebra/5")[行列式]なので
+#link("/math/linear-algebra/5#def-det")[行列式]なので
 
 #theorem("変数変換")[
   $ integral_(phi(U)) f(bold(y)) thin dif bold(y)

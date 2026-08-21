@@ -130,18 +130,18 @@ $ upright("tr")(P^(-1) A P) = upright("tr")(A P P^(-1)) = upright("tr")(A) $
 
 #table(
   columns: (auto, 1fr),
-  [#link("/math/linear-algebra/2")[双対空間]],
+  [#link("/math/linear-algebra/2#def-dual")[双対空間]],
   [$V$ と $V^*$ は同じ次元だが、同一視するには選択が要る。行ベクトルと列ベクトルを
    区別する理由],
   [#link("/math/linear-algebra/3")[テンソル]],
   [多重線形写像。「変換則で定義する」と言われるものの正体],
   [#link("/math/linear-algebra/4")[対称と反対称]],
   [引数の入れ替えで分類する。$Lambda^k$ の次元が $binom(n, k)$ であること],
-  [#link("/math/linear-algebra/5")[行列式]],
+  [#link("/math/linear-algebra/5#def-det")[行列式]],
   [$Lambda^n$ が 1 次元だから $det$ が定まる。行列式は体積である],
   [#link("/math/linear-algebra/6")[内積]],
   [ここで初めて計量を入れる。何が買えて、何を失うか],
-  [#link("/math/linear-algebra/7")[スペクトル定理]],
+  [#link("/math/linear-algebra/7#thm-spectral")[スペクトル定理]],
   [一般には対角化できないのに、対称なら必ずできる。その理由は内積にある],
 )
 

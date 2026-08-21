@@ -118,7 +118,7 @@ $rho_A$ が混合になったぶん、情報が失われたように見える。
 ]<def:von-neumann>
 
 $rho$ を対角化すれば、固有値を確率と見た Shannon エントロピーになる
-（#link("/math/linear-algebra/7")[スペクトル定理]が効いている）。
+（#link("/math/linear-algebra/7#thm-spectral")[スペクトル定理]が効いている）。
 
 上の $#ket($Phi$)$ では $S(rho_A) = log 2 = 1$ ビットで、これが最大値である。
 #strong[$1$ ビットの情報が、$A$ でも $B$ でもなく「間」にある。]

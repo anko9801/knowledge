@@ -1,5 +1,6 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
+#import "/src/typst/diagram.typ": diagram, ink, ink-thin, ink-wash
 
 #show: post.with(
   title: "穴を数える",
@@ -38,6 +39,44 @@ $3$ 次元のベクトル解析の言葉に直すと、見覚えのある問い�
 どちらも「たいてい書けるが、書けないことがある」。
 そして書けるかどうかは、$bold(A)$ や $bold(B)$ の性質ではなく、
 #strong[定義域の形]で決まる。原点を抜いただけで答えが変わる。
+
+#let R = 40pt
+#let dot(cx, cy, r) = place(dx: cx - r, dy: cy - r, circle(radius: r, fill: ink, stroke: none))
+
+// 左：穴が無い。輪はどこへでも縮められる
+#let filled = box(width: 2 * R + 6pt, height: 2 * R + 6pt, {
+  place(dx: 3pt, dy: 3pt, circle(radius: R, fill: ink-wash, stroke: 0.6pt + ink))
+  for (k, s) in ((0, 0.62), (1, 0.40), (2, 0.20), (3, 0.06)) {
+    place(
+      dx: 3pt + R - R * s,
+      dy: 3pt + R - R * s,
+      circle(radius: R * s, fill: none, stroke: 0.5pt + (if k == 0 { ink } else { ink-thin })),
+    )
+  }
+})
+
+// 右：原点が抜けている。輪を縮めると穴に引っかかる
+#let punctured = box(width: 2 * R + 6pt, height: 2 * R + 6pt, {
+  place(dx: 3pt, dy: 3pt, circle(radius: R, fill: ink-wash, stroke: 0.6pt + ink))
+  for (k, s) in ((0, 0.62), (1, 0.40), (2, 0.22)) {
+    place(
+      dx: 3pt + R - R * s,
+      dy: 3pt + R - R * s,
+      circle(radius: R * s, fill: none, stroke: 0.5pt + (if k == 0 { ink } else { ink-thin })),
+    )
+  }
+  // 抜いた 1 点。ここで縮められなくなる
+  place(dx: 3pt + R - 5pt, dy: 3pt + R - 5pt, circle(radius: 5pt, fill: white, stroke: 0.6pt + ink))
+})
+
+#diagram(
+  caption: [
+    同じ $1$ 形式でも、住んでいる場所で答えが変わる。左では輪を一点まで縮められるので、
+    閉じていれば必ず完全になる。右は原点が抜けているので、原点をまたぐ輪が縮まらない。
+    #strong[縮まらない輪の数]が、そのまま解けない度合いになる。
+  ],
+  grid(columns: (auto, 20pt, auto), filled, [], punctured),
+)
 
 この回は、その「書けなさ」を#strong[数える]。
 そして数えた結果が、滑らかさを一切覚えていない——連続変形で不変な——量になる。

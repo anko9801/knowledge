@@ -707,88 +707,15 @@ blockquote {
  * この行がボタンだけになるので、左が空でも高さが変わらないようにしておく。 */
 .code-file {
   display: flex;
-  align-items: baseline;
+  /* 囲ったボタンが並ぶので、ベースラインではなく中心で揃える。 */
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 1.3em;
+  min-height: 1.7rem;
   margin-bottom: 0.4rem;
   color: var(--muted);
   font-size: 0.75em;
   letter-spacing: 0.04em;
-}
-
-/* 本文と同じ地の上に置く。枠も背景も持たせない——並んだ塊ごとに
- * ボタンが立つと、コードより先にそちらへ目が行く。 */
-.code-copy {
-  flex: none;
-  /* 三つの字を同じ枡に重ねる。幅は最長のもので決まるので、
-   * 押して字が変わってもボタンの縁が動かない。 */
-  display: inline-grid;
-  justify-items: end;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--muted);
-  font: inherit;
-  letter-spacing: inherit;
-  cursor: pointer;
-}
-
-/* 「コピー」→「コピーした」を差し替えると、字が瞬間的に入れ替わったように
- * 見える。透明度だけで重ねても、二つが同じ場所で薄く重なる瞬間があって
- * 滲む。引っ込む側を縮めて暈すと、重なりが「奥へ引いた字」と「手前へ出た字」
- * に分かれて混ざらない。引き出しのボタン（layout.css の .drawer-icon）が
- * 同じ扱いで、数値も揃えてある。三つ目が出たら共通化すること。 */
-.code-copy-label {
-  grid-area: 1 / 1;
-  opacity: 0;
-  scale: 0.72;
-  filter: blur(2px);
-}
-
-.code-copy-label.is-shown {
-  opacity: 1;
-  scale: 1;
-  filter: blur(0);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .code-copy-label {
-    transition:
-      opacity 150ms ease,
-      scale 190ms cubic-bezier(0.32, 0.72, 0, 1),
-      filter 150ms ease;
-  }
-
-  /* 出る側を少し遅く始める。同時だと、入れ替わりの中間で両方が薄くなる。 */
-  .code-copy-label.is-shown {
-    transition-delay: 40ms;
-  }
-}
-
-.code-copy:hover,
-.code-copy:not([data-state='idle']) {
-  color: var(--accent);
-}
-
-/* 触れる装置では常に出す。hover が無いので、隠すと押せなくなる。 */
-@media (hover: hover) {
-  .code-copy {
-    opacity: 0;
-  }
-
-  .code:hover .code-copy,
-  .code-copy:focus-visible,
-  /* 押した直後は、離れても手応えが見えるまで出しておく。 */
-  .code-copy:not([data-state='idle']) {
-    opacity: 1;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .code-copy {
-      transition: opacity 120ms ease;
-    }
-  }
 }
 
 .code-file code {
@@ -824,6 +751,74 @@ pre {
 
 /* 本文中の `foo` には地を敷かない。和文の約物詰めと段落の行送りを、
  * 内側の余白が押し広げてしまう。等幅に変わるだけで十分に見分けが付く。 */
+
+/* 囲って、押せるものだと分かる形にする。引き出しのボタン（layout.css の
+ * .drawer-button）と同じ作りにしてある。このサイトの押しボタンはこの二つだけ
+ * なので、別々の顔をしていると片方が飾りに見える。 */
+.code-copy {
+  flex: none;
+  /* 三つの図を同じ枡に重ねる。入れ替えても枠の大きさが動かない。 */
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: var(--paper);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.code-copy:hover,
+.code-copy:not([data-state='idle']) {
+  color: var(--accent);
+}
+
+/* 二枚重ねの図をチェックへ差し替えると、絵が瞬間的に入れ替わったように
+ * 見える。透明度だけで重ねても、二つが同じ場所で薄く重なる瞬間があって
+ * 滲む。引っ込む側を縮めて暈すと、重なりが「奥へ引いた図」と「手前へ出た図」
+ * に分かれて混ざらない。layout.css の .drawer-icon と数値を揃えてある。
+ * 三つ目が出たら共通化すること。 */
+.code-copy-icon {
+  grid-area: 1 / 1;
+  opacity: 0;
+  scale: 0.72;
+  filter: blur(2px);
+}
+
+.code-copy-icon.is-shown {
+  opacity: 1;
+  scale: 1;
+  filter: blur(0);
+}
+
+/* 本文の図に効かせている規則を、ここでは全部外す。
+ *
+ * この図は article の中にあるので `article svg { margin: 2rem auto }` を拾い、
+ * 上下に 34px ずつ足されて枠から溢れていた（実測 34 + 15 + 34 = 83px）。
+ * `svg { height: auto }` も同じ理由で効かせない。引き出しのボタンは article の
+ * 外なので、この手当てが要るのはこちらだけである。 */
+.code-copy-icon svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .code-copy-icon {
+    transition:
+      opacity 150ms ease,
+      scale 190ms cubic-bezier(0.32, 0.72, 0, 1),
+      filter 150ms ease;
+  }
+
+  /* 出る側を少し遅く始める。同時だと、入れ替わりの中間で両方が薄くなる。 */
+  .code-copy-icon.is-shown {
+    transition-delay: 40ms;
+  }
+}
 
 /* 強調は 2 色に畳む。墨と差し色だけで、意味の区別は太さと濃さで付ける。
  * 色数を増やすと、コードの塊が本文より強く見えて視線が先に取られる。

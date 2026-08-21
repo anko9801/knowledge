@@ -8,16 +8,38 @@
 // 置き場所は出どころの行の右端。地を敷いた枠の中に入れると、コードの上に
 // 物が重なって桁が読みにくくなる。出どころを持たない塊には、この行だけを作る。
 //
-// 押した後の字は差し替えではなく重ねて入れ替える。理由は global.css の
-// .code-copy-label に書いた（引き出しのボタンと同じ扱い）。
+// 図は文字で描かない。記号の字（U+1F4CB など）は自前で配っている欧文の
+// サブセットに入っていないので環境のフォントへ落ち、太さも大きさも
+// ベースラインも機械任せになる。線は currentColor で引く。
+//
+// 押した後は重ねて入れ替える。理由は global.css の .code-copy-icon に書いた
+// （引き出しのボタンと同じ扱い）。
 ---
 
 <script>
-  const STATES = [
-    ['idle', 'コピー'],
-    ['done', 'コピーした'],
-    ['failed', '押せなかった'],
-  ]
+  // viewBox は 20。引き出しのボタン（BaseLayout.astro）と揃えてある。
+  const ICONS = {
+    // 二枚の紙が重なった形。手前（左下）は閉じた角丸、
+    // 奥（右上）は手前に隠れていない側だけを描く。
+    idle:
+      '<rect x="3.5" y="7.5" width="9" height="9" rx="2"/>' +
+      '<path d="M7.5 7.5V5.5A2 2 0 0 1 9.5 3.5h5A2 2 0 0 1 16.5 5.5v5A2 2 0 0 1 14.5 12.5h-2"/>',
+    done: '<path d="M4.5 10.5l3.75 3.75L15.5 6.5"/>',
+    failed: '<path d="M6.5 6.5l7 7M13.5 6.5l-7 7"/>',
+  }
+
+  type State = keyof typeof ICONS
+
+  const NAMES: Record<State, string> = {
+    idle: 'コピー',
+    done: 'コピーした',
+    failed: '押せなかった',
+  }
+
+  const icon = (shape: string) =>
+    `<svg viewBox="0 0 20 20" width="15" height="15" focusable="false" aria-hidden="true">` +
+    `<g fill="none" stroke="currentColor" stroke-width="1.4" ` +
+    `stroke-linecap="round" stroke-linejoin="round">${shape}</g></svg>`
 
   // 触れない環境では、そもそも出さない。
   if (navigator.clipboard) {
@@ -46,25 +68,23 @@
       button.type = 'button'
       button.className = 'code-copy'
 
-      // 三つとも枡に置いておく。幅が最長のもので決まるので、
-      // 字が変わってもボタンの縁が動かない。
-      const labels = new Map()
-      for (const [state, text] of STATES) {
-        const label = document.createElement('span')
-        label.className = 'code-copy-label'
-        // 重ねてあるぶん、読み上げには三つ全部が繋がって渡ってしまう。
-        // 名前はボタン自身の aria-label で持つ。
-        label.setAttribute('aria-hidden', 'true')
-        label.textContent = text
-        labels.set(state, label)
-        button.append(label)
+      // 三つとも枡に重ねておく。入れ替えても枠の大きさが動かない。
+      const icons = new Map<State, HTMLElement>()
+      for (const [state, shape] of Object.entries(ICONS) as [State, string][]) {
+        const slot = document.createElement('span')
+        slot.className = 'code-copy-icon'
+        slot.innerHTML = icon(shape)
+        icons.set(state, slot)
+        button.append(slot)
       }
 
-      const show = (state: string) => {
-        for (const [key, label] of labels) label.classList.toggle('is-shown', key === state)
-        // 色と、hover の外でも出したままにするかは状態で決める（global.css）。
+      const show = (state: State) => {
+        for (const [key, slot] of icons) slot.classList.toggle('is-shown', key === state)
+        // 色は状態で決める（global.css）。
         button.dataset.state = state
-        button.setAttribute('aria-label', labels.get(state).textContent)
+        // 図には名前が無いので、ボタン自身が持つ。
+        button.setAttribute('aria-label', NAMES[state])
+        button.title = NAMES[state]
       }
       show('idle')
 

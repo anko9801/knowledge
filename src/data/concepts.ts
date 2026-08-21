@@ -404,6 +404,10 @@ export const concepts: readonly Concept[] = [
   c('unknown-unknowns', '何を知らないか分からない', 'どこを直せばよいか分からず、直しても足りたか分からない。三症状で最も厄介', 'viewpoint', 'cs', ['implicit-coupling']),
   c('complexity-weighting', '触る場所だけが効く', '複雑さは触る時間の割合で重み付く。見ない場所へ隔離すれば無くしたのとほぼ同じ', 'viewpoint', 'cs', ['change-over-time']),
   c('tidying-timing', '整頓は先か後か', '割引は後回しを、オプション価値は前倒しを支持する。費用の比較でしか決まらない', 'viewpoint', 'cs', ['discounting', 'optionality', 'decoupling-cost']),
+  // 作る前の試作は、モノを買っているのではなく「作らない選択肢」を買っている。
+  // だから価値がばらつきとともに上がり、読みの当たる領域では損になる。
+  // 「常に試してから作れ」が成り立たない理由が、ここから出る。
+  c('discovery-as-option', '試作は選択肢を買う', '作る前の試作は、モノではなく作らない選択肢を買っている。不確かさが大きいほど得', 'viewpoint', 'cs', ['optionality'], ['feedback-delay']),
 
   // --- プログラムの構成 -------------------------------------------------
   //

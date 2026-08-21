@@ -8,13 +8,14 @@
   series: "types",
   order: 2,
   tags: ("型と計算",),
-  summary: "入出力を入れると等式で推論できなくなる。作用を型に押し込むと救えるが、要求を書き下すと出てくるのは三つの法則だけである。それがモナドだった。そして積み重ねると壊れるので、分解する先まで追う。",
+  summary: "なぜモナドなのか。関数はいくらでもあるのに、この形が選ばれる理由がある。繋げてほしいとしか要求していないのに、書き下すと圏の定義になって自由度が残らない。そして弱い構造との差は、前の結果で次の作用が変わるかどうかだった。",
   provides: (
     "monad",
     "effect-typing",
     "referential-transparency",
     "monad-transformer",
     "algebraic-effects",
+    "applicative-vs-monad",
   ),
 )
 
@@ -45,7 +46,7 @@
 
 だが入出力の無いプログラムには用がない。#strong[どうにかして両立させたい。]
 
-= 要求を書き下す
+= 繋ぎたい、しか要求していない
 
 作用を型の中に押し込むことにする。
 「$a$ を返すが、その過程で作用がある」を $T a$ と書く。
@@ -55,52 +56,147 @@ $upright("read")$ そのものは#strong[ただの値]になる。読む「手�
 読む行為ではない。だから置き換えてよい。上の例の二つは、
 #strong[違う記述]なので違って当たり前になる。
 
-問題は、これを繋げるかどうかである。要求を三つ書き下す。
+さて、要求は#strong[一つしかない]。
+
+純粋な関数 $a arrow b$ は合成できる。だからプログラムが書ける。
+作用が入ると関数は $a arrow T b$ の形になる。
+#strong[この形どうしが繋がらなければ、一段しか書けない。]
 
 #definition[
-  型構成子 $T$ が次を満たすことを要求する。
+  次の二つを要求する。
 
   #table(
     columns: (auto, 1fr),
-    [作用の無い計算を作れる], [$upright("pure") : a arrow T a$],
-    [結果を次へ渡せる], [$upright("bind") : T a arrow (a arrow T b) arrow T b$],
+    [繋げる], [$f : a arrow T b$ と $g : b arrow T c$ から $f >=> g : a arrow T c$],
+    [何もしない繋ぎ手がある], [$upright("pure") : a arrow T a$],
   )
 
-  そして繋ぎ方が素直であること。
+  そして繋ぎ方が結合的で、$upright("pure")$ が単位元であること。
 ]<def:requirements>
 
-「素直」を書き下すと、こうなる。
+#theorem[
+  @def:requirements は、#strong[$a arrow T b$ の形の関数が圏をなす]と言っているのと同じである。
+  したがって、要求から残る自由度は#strong[単位元と結合律の二つだけ]である。
+]<thm:kleisli>
 
-#definition[
-  $upright("pure")$ と $upright("bind")$ が次の三つを満たすとき、$T$ を#strong[モナド]という。
-
-  #table(
-    columns: (auto, 1fr),
-    [左単位], [$upright("bind") (upright("pure") space a) space f = f space a$],
-    [右単位], [$upright("bind") space m space upright("pure") = m$],
-    [結合], [$upright("bind") (upright("bind") space m space f) space g
-              = upright("bind") space m space (lambda x. upright("bind") (f space x) space g)$],
-  )
-]<def:monad>
-
-#strong[三つとも「余計なことをするな」と言っているだけ]である。
-作用の無い計算を挟んでも何も起きない、が上二つ。
-繋ぐ順のまとめ方を変えても結果が同じ、が三つ目。
-
-#remark[
-  三つ目が読みにくいのは、$upright("bind")$ が非対称な形をしているからである。
-  繋ぐ操作を対称に書き直すと、見た目が変わる。
-  $ (f >=> g) space x := upright("bind") (f space x) space g $
-  として $a arrow T b$ の形の関数どうしを繋ぐことにすると、三つの法則は
-  $ upright("pure") >=> f = f, quad
-    f >=> upright("pure") = f, quad
-    (f >=> g) >=> h = f >=> (g >=> h) $
-  になる。#strong[単位元があって、結合的である。]それだけである。
+#proof[
+  対象を型、$a$ から $b$ への射を $a arrow T b$ の形の関数とする。
+  合成が $>=>$、恒等射が $upright("pure")$ である。
+  圏の公理は結合律と単位律だけなので、@def:requirements とそのまま一致する。
 ]
 
-#strong[モナドの定義は、要求から出てくる。]
-「作用を値にして、繋げるようにしたい」と言った時点で、
-残る自由度が単位元と結合律しか無い。
+#strong[ここが答えである。]
+なぜこの構造なのかと言えば、#strong[繋げてほしいとしか言っていない]からである。
+繋がることと、何もしない繋ぎ手があること。それを書き下すと圏の定義になり、
+圏の公理は二つしかない。#strong[選ぶ余地が残っていない。]
+
+#definition[
+  この $>=>$ と $upright("pure")$ を持つ $T$ を#strong[モナド]という。
+
+  実装では、次の形に持ち替えることが多い。
+  $ upright("bind") : T a arrow (a arrow T b) arrow T b $
+  $>=>$ とは相互に定義できるので、同じものである。
+]<def:monad>
+
+#remark[
+  法則を $upright("bind")$ の形で書くと読みにくい。
+  $ upright("bind") (upright("bind") space m space f) space g
+    = upright("bind") space m space (lambda x. upright("bind") (f space x) space g) $
+  これが結合律である。$>=>$ で書けば
+  $ (f >=> g) >=> h = f >=> (g >=> h) $
+  になる。#strong[非対称な形にしたせいで読みにくくなっているだけ]で、
+  中身は結合律そのものである。
+]
+
+= もっと弱いものでは、なぜ足りないか
+
+繋げればよいなら、もっと弱い構造でもよさそうに見える。
+実際、弱いものが二つあって、どちらも使われている。並べると位置が分かる。
+
+#table(
+  columns: (auto, auto, 1fr),
+  [], [持っている操作], [何ができるか],
+  [関手], [$(a arrow b) arrow T a arrow T b$], [作用のある値に、純粋な関数を当てる],
+  [適用可能関手], [$T (a arrow b) arrow T a arrow T b$], [作用を並べて、結果をまとめる],
+  [モナド], [$a arrow T b$ を繋ぐ], [#strong[前の結果を見て、次に何をするか決める]],
+)
+
+#proposition[
+  関手では、作用を二つ繋げない。
+]<prop:functor-weak>
+
+#proof[
+  持っているのは $(a arrow b) arrow T a arrow T b$ だけである。
+  $a arrow T b$ を当てると $T (T b)$ になり、
+  #strong[外側の $T$ を潰す手立てが無い]。
+]
+
+#proposition[
+  適用可能関手では、#strong[後の作用が前の結果に依存できない]。
+]<prop:applicative-weak>
+
+#proof[
+  $T (a arrow b) arrow T a arrow T b$ の左側は $T (a arrow b)$ である。
+  関数は $T$ の#strong[中]にあるが、返す型は $b$ であって $T b$ ではない。
+
+  つまり#strong[関数は新しい作用を作れない]。
+  作用は左右にあらかじめ置かれた分だけで、
+  どちらの中身にも依存せずに決まっている。
+]
+
+#example[分岐が書けるかどうか][
+  一行読んで、内容が `"y"` なら書き込み、そうでなければ何もしない。
+
+  モナドなら書ける。$upright("read")$ の結果を受けた関数が、
+  #strong[$T$ を返す]ので、そこで別の作用を選べる。
+
+  適用可能関手では書けない。書き込む作用も、何もしない作用も、
+  #strong[読む前に両方置いておくしかない]。
+  条件で選ぶには、結果を見てから作用を決める必要がある。
+]
+
+#strong[これが「なぜモナドか」の答えである。]
+繋げるだけなら弱い構造で足りる。
+#strong[前の結果によって次の作用が変わる]ものを書きたければ、
+返す型に $T$ が入っている必要があり、その時点で @def:requirements になる。
+
+= 弱い方が良いこともある
+
+@prop:applicative-weak は弱点に見えるが、#strong[裏返すと情報である]。
+
+#proposition[
+  適用可能関手で書かれた計算は、#strong[実行前に作用の形が分かる]。
+]<prop:static-shape>
+
+#proof[
+  @prop:applicative-weak より、どの作用が起きるかは中身に依存しない。
+  よって実行せずに読み取れる。
+]
+
+#corollary[
+  独立した作用を#strong[まとめて実行できる]。
+  問い合わせを束ねる、並べて走らせる、事前に解析する、といったことが可能になる。
+]<cor:batch>
+
+モナドではこれができない。
+#strong[二つ目の要求は、一つ目の結果が返るまで分からない]からである。
+
+#check[
+  作用を扱うとき、いつモナドを使い、いつ適用可能関手で止めるべきか。
+][
+  #strong[依存が要るかどうかで決まる。]
+
+  前の結果を見て次の作用を選ぶ必要があるなら、モナドしかない。
+  @prop:applicative-weak より、弱い方では書けない。
+
+  依存が要らないなら、弱い方を選ぶ。
+  @cor:batch の恩恵が付いてくるからで、
+  #strong[できることを減らすと、機械にできることが増える]。
+
+  これは#link("/cs/programs/1")[プログラムの構成]の言い方でいえば、
+  書ける範囲と機械が使える情報の取引である。
+  強い構造を既定にすると、この取引が常に一方に倒れる。
+]
 
 = 何が表せるか
 

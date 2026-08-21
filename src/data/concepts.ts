@@ -322,6 +322,7 @@ export const concepts: readonly Concept[] = [
   c('type-inference', '型推論', 'Hindley--Milner。単一化で型を復元する', 'technique', 'cs', ['polymorphism']),
   c('parametricity', 'パラメトリシティ', '型だけから定理が出る。自由定理', 'theorem', 'cs', ['polymorphism']),
   c('monad', 'モナド', '副作用を型に押し込む。合成の結合律だけが本体', 'definition', 'cs', ['algebraic-data-type', 'polymorphism']),
+  c('applicative-vs-monad', '依存できるかどうか', '後の作用が前の結果に依るならモナド、依らないなら弱い方。弱いと形が先に分かる', 'theorem', 'cs', ['monad']),
   c('monad-transformer', 'モナド変換子', '作用を積み重ねる。N 個に対して N^2 個の実装が要る', 'technique', 'cs', ['monad']),
   c('algebraic-effects', '代数的作用', '作用を操作と等式に分解する。再開できる型付き例外', 'definition', 'cs', ['monad-transformer', 'effect-typing']),
 

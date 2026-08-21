@@ -409,6 +409,22 @@ export const concepts: readonly Concept[] = [
   c('structured-programming', '構造化プログラミング', '静的なテキスト位置から動的な進行状況を有限の座標で指せるようにする', 'viewpoint', 'cs', ['loop-invariant'], ['cognitive-load']),
   c('information-hiding', '情報隠蔽', 'モジュールは機能ではなく、隠す決定で切る。Parnas', 'viewpoint', 'cs', [], ['cognitive-load', 'chunking']),
   c('deep-module', '深いモジュール', '狭い口で大きな中身を隠す。口を覚える費用より隠した量が大きいかで測る', 'viewpoint', 'cs', ['information-hiding'], ['chunking']),
+
+  // --- 美学が割れる場所 -------------------------------------------------
+  //
+  // 達人どうしが正面から食い違うのは、好みの差ではなく、置いている仮定の差
+  // である。剥がすと四つしかない。読み手を誰と想定するか、先をどれだけ読める
+  // と思うか、誤りを防ぐか直すか、一貫性を心に置くか界面に置くか。
+  //
+  // どれも上の制約と矛盾しない。同じ制約の下で、仮定が違えば逆の作法が出る。
+  c('reader-model', '想定読み手', '読みやすさは読み手を指定しないと決まらない。熟達者はまとまりが大きい', 'viewpoint', 'cs', ['expertise-reversal', 'chunking']),
+  c('worse-is-better', '単純さを先に置く', '単純・正しさ・一貫性・網羅性の順序を入れ替える。複雑さをどちらへ押すか', 'viewpoint', 'cs', ['optionality', 'load-tradeoff']),
+  c('poka-yoke', 'ポカよけ', '起こせなくするか、必ず気づくか。誤りの責任を人から仕組みへ移す', 'viewpoint', 'cs', ['error-proneness', 'feedback-delay']),
+  c('prevent-vs-recover', '防ぐか直すか', '冗長性と隔離があるなら、直す側が安くなる。無ければ成り立たない', 'viewpoint', 'cs', ['poka-yoke', 'illegal-states-unrepresentable', 'interleaving']),
+  c('conceptual-integrity', '概念の一貫性', '寄せ集めより一組の考えで貫く。担い手を一人か少数の頭に置く', 'viewpoint', 'cs', ['essential-accidental']),
+  c('coherence-in-interface', '一貫性を界面に置く', '繋ぎ方の規約に一貫性を持たせる。結合を消すのではなく一種類に揃える', 'viewpoint', 'cs', ['conceptual-integrity', 'coupling']),
+  c('theory-building', 'プログラムは理論である', '成果物はコードではなく、書き手が持つ理論。コードは書き下せた部分だけ', 'viewpoint', 'cs', ['implicit-coupling'], ['chunking']),
+  c('program-death', 'プログラムの死', '理論を持つ人が全員いなくなること。動き続けるが、意味のある変更はできない', 'viewpoint', 'cs', ['theory-building']),
   c('representation-independence', '表現独立性', '実装を替えても外から区別できない。情報隠蔽の定理版', 'theorem', 'cs', ['information-hiding', 'parametricity']),
   c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
   c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),

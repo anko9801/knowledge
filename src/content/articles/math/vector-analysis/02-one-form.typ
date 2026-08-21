@@ -1,5 +1,6 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
+#import "/src/typst/diagram.typ": diagram, ink, ink-thin, ink-wash
 
 #show: post.with(
   title: "dx は微小量ではない",
@@ -122,6 +123,37 @@ $omega = 3 dif x$ なら、線は $x$ 方向に密に並ぶ。$omega = dif x$ �
 $dif f$ の絵は、そのまま $f$ の等高線である。
 勾配が大きい場所では線が混み、平らな場所では線が疎になる。
 「勾配が急」とは、線が混んでいることだった。
+
+#let W = 96pt
+#let H = 66pt
+
+// 同じ矢印。始点と終点を揃えておく。
+#let arrow = {
+  place(line(start: (8pt, H - 10pt), end: (W - 10pt, 12pt), stroke: 0.9pt + ink))
+  place(line(start: (W - 10pt, 12pt), end: (W - 21pt, 15pt), stroke: 0.9pt + ink))
+  place(line(start: (W - 10pt, 12pt), end: (W - 15pt, 24pt), stroke: 0.9pt + ink))
+}
+
+// 等高線の束。gap を変えると混み具合が変わる。
+#let sheets(gap) = {
+  let x = gap
+  while x < W {
+    place(dx: x, line(angle: 74deg, length: H, stroke: 0.5pt + ink-thin))
+    x += gap
+  }
+}
+
+#let sparse = box(width: W, height: H, { sheets(30pt); arrow })
+#let dense = box(width: W, height: H, { sheets(10pt); arrow })
+
+#diagram(
+  caption: [
+    左が $dif x$、右が $3 dif x$。#strong[矢印は同じ]で、変わったのは線の混み具合だけである。
+    横切る本数——つまり $omega(bold(v))$ の値——は右が左の $3$ 倍になる。
+    $1$ 形式の「大きさ」は矢印の長さではなく、この混み具合のほうである。
+  ],
+  grid(columns: (auto, 22pt, auto), sparse, [], dense),
+)
 
 この絵は後で効いてくるので、覚えておいてほしい。
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "雑音があっても誤らずに送れる",
@@ -15,8 +14,6 @@
     "channel-coding-theorem",
   ),
 )
-
-#layer("L0 確率")[前回と同じ道具。典型集合を数える]
 
 = 誤りは避けられないはずだった
 

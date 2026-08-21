@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "スペクトル定理",
@@ -22,8 +21,6 @@
     "diagonalization",
   ),
 )
-
-#layer("L0 ＋ 計量", metric: true)[自己随伴性は計量を使って定義される。この回は計量なしには成り立たない]
 
 = 対角化できないほうが普通である
 

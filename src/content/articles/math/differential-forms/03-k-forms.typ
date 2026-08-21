@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "k 形式",
@@ -22,8 +21,6 @@
     "pullback",
   ),
 )
-
-#layer("L1 微分構造")[各点の線形代数を場に延ばすだけ。計量は要らない]
 
 = 点ごとの線形代数を、場にする
 

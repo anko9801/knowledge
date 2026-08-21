@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "ほとんどの列は、同じくらい珍しい",
@@ -15,8 +14,6 @@
     "source-coding-theorem",
   ),
 )
-
-#layer("L0 確率")[大数の法則をそのまま使う]
 
 = 長い列を並べてみる
 

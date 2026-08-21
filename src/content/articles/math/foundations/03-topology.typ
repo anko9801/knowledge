@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "近さを、距離なしで言う",
@@ -18,8 +17,6 @@
     "connectedness",
   ),
 )
-
-#layer("L1 位相")[距離を捨てて開集合だけを残す。長さは最後まで出てこない]
 
 = ε-δ から距離を抜く
 

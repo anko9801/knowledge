@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "曲率を全部足すと、形が消える",
@@ -21,8 +20,6 @@
     "de-rham-cohomology",
   ),
 )
-
-#layer("L2 ＋ 接続", metric: true)[計量で積分し、答えが計量に依らないことを見る]
 
 = 計量で積分したのに、計量が消える
 

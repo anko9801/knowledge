@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "一つの微分、一つの定理",
@@ -21,8 +20,6 @@
     "wedge-product",
   ),
 )
-
-#layer("L1 ＋ 一部 L2", metric: true)[$dif$ と Stokes に計量は要らない。三つの古典的定理として読む辞書と $star$ には要る]
 
 = 残っている操作
 

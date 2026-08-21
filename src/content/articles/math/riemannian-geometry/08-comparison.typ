@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "曲率で形が決まってしまう",
@@ -15,8 +14,6 @@
     "euler-characteristic",
   ),
 )
-
-#layer("L2 ＋ 接続", metric: true)[計量と曲率を使う。局所の条件から大域の結論を出す]
 
 = 局所の条件が、大域を縛る
 

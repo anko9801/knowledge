@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "計量を入れる",
@@ -20,8 +19,6 @@
     "inner-product",
   ),
 )
-
-#layer("L2 ＋ 計量", metric: true)[この回はすべて計量の上で動く。$star$ も長さも、計量なしには書けない]
 
 = 公式集を覚えたくない
 

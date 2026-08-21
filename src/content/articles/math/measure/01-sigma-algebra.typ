@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "測れないものがある",
@@ -15,8 +14,6 @@
     "measure",
   ),
 )
-
-#layer("L0 集合と可算操作")[位相も距離も使わない。可算な合併と補集合だけ]
 
 = 全部は測れない
 

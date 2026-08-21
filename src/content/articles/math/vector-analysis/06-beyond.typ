@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "3 次元の外へ",
@@ -20,8 +19,6 @@
     "wedge-product",
   ),
 )
-
-#layer("L1 微分構造")[この回の主役は計量を持たない空間。$star$ は使えないが $dif$ は使える]
 
 = どこで壊れるのか
 

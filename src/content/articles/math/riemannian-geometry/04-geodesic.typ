@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "まっすぐと最短は、別の定義である",
@@ -21,8 +20,6 @@
     "arc-length",
   ),
 )
-
-#layer("L2 ＋ 接続", metric: true)[前回の Levi-Civita 接続を使う]
 
 = 二つの「まっすぐ」
 

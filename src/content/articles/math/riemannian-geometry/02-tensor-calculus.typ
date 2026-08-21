@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "偏微分はテンソルにならない",
@@ -21,8 +20,6 @@
     "tensor-transformation-law",
   ),
 )
-
-#layer("L2 Riemann 多様体", metric: true)[計量で添字を上げ下げする。記法の準備が主]
 
 = なぜ添字に戻るのか
 

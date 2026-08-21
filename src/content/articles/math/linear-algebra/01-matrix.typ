@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "行列は写像ではない",
@@ -20,8 +19,6 @@
   ),
   requires: ("vector-space",),
 )
-
-#layer("L0 ベクトル空間")[仮定するのはベクトル空間の構造だけ。長さも角度もまだ無い]
 
 = 行列とは何か、を習わない
 

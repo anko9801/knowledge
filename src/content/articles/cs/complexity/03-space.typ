@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "空間は使い回せる",
@@ -16,8 +15,6 @@
     "randomized-complexity",
   ),
 )
-
-#layer("L0 形式体系")[前回の帰着をそのまま使う]
 
 = 時間と空間の非対称
 

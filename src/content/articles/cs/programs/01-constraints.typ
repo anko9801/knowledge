@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "そう書けと言われる理由は、三つしかない",
@@ -27,8 +26,6 @@
     "stable-dependency",
   ),
 )
-
-#layer("L0 制約から設計へ")[定理は使うが、証明はよその連載に置いてある]
 
 = 作法が多すぎる
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "なぜ正規分布ばかり出るのか",
@@ -17,8 +16,6 @@
     "martingale",
   ),
 )
-
-#layer("L0 測度")[前回までの道具だけを使う。新しい仮定は無い]
 
 #check[
   前回の想起。今回は「独立なら分散が足し算になる」から始める。

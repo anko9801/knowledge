@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "群を行列として見る",
@@ -18,8 +17,6 @@
     "orthogonality-relations",
   ),
 )
-
-#layer("L0 群 ＋ 線形代数")[作用を線形にする。多様体の構造は使わない]
 
 = 作用を線形にする
 

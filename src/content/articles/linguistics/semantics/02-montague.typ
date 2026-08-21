@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "「すべての」は関数である",
@@ -16,8 +15,6 @@
     "generalized-quantifier",
   ),
 )
-
-#layer("L0 型付き λ 計算")[前回の道具に、意味の割り当てを足す]
 
 = 合成性を要求する
 

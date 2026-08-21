@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "不確かさの量は一つしかない",
@@ -16,8 +15,6 @@
     "mutual-information",
   ),
 )
-
-#layer("L0 確率")[測度と確率の連載が前提。新しい仮定は置かない]
 
 = 不確かさを測りたい
 

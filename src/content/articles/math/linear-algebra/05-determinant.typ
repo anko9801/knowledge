@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "行列式は体積である",
@@ -21,8 +20,6 @@
     "linear-map",
   ),
 )
-
-#layer("L0 ベクトル空間")[$Lambda^n$ の次元だけを使う。長さも角度も出てこない]
 
 = 定義がおかしい
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "内積を入れる",
@@ -27,8 +26,6 @@
     "orientation",
   ),
 )
-
-#layer("L0 ＋ 計量", metric: true)[ここで初めて計量を入れる。以降の話はすべてこの選択に依る]
 
 = 五回ぶん、内積なしで来た
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "双対空間",
@@ -21,8 +20,6 @@
     "basis-choice",
   ),
 )
-
-#layer("L0 ベクトル空間")[まだ計量は入れない。ここが要点になる]
 
 = 転置すれば同じではないのか
 

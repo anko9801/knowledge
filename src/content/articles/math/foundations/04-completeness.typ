@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "穴が空いていないこと",
@@ -20,8 +19,6 @@
     "ode-existence",
   ),
 )
-
-#layer("L1 位相 ＋ 距離", metric: true)[距離を入れる。位相だけでは言えないことを扱う]
 
 = 位相では言えなかったこと
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "連続な対称性は多様体になる",
@@ -16,8 +15,6 @@
     "group-action",
   ),
 )
-
-#layer("L1 多様体 ＋ 群")[前者は微分構造、後者は演算。計量は使わない]
 
 = 二つの構造が同じ場所に乗る
 

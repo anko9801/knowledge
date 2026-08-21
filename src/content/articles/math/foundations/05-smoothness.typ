@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "どこまで微分できるか",
@@ -21,8 +20,6 @@
     "implicit-function-theorem",
   ),
 )
-
-#layer("L1 ＋ 距離", metric: true)[前回の縮小写像の原理を使う]
 
 = 「滑らか」と書いてある場所
 

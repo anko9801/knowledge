@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "公理は要求の翻訳である",
@@ -15,8 +14,6 @@
     "quantum-state",
   ),
 )
-
-#layer("L0 ＋ 計量", metric: true)[内積が要る。無限次元なので完備性も要る]
 
 = 公理を天下りで受け取らない
 

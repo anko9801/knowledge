@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "微分方程式の解の個数が、穴の数である",
@@ -16,8 +15,6 @@
     "hodge-theory",
   ),
 )
-
-#layer("L1、最後だけ L2", metric: true)[de Rham の定理までは計量なし。Hodge 理論で入れる]
 
 = 穴を数える方法は、二つある
 

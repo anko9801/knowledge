@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "分子の形を群で書く",
@@ -16,8 +15,6 @@
     "molecular-orbital",
   ),
 )
-
-#layer("L0 群 ＋ 線形代数")[経験的な化学は使わない。対称操作だけから出ることを扱う]
 
 = 化学のどこが論理で閉じるか
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 #import "/src/typst/diagram.typ": diagram, ink, ink-thin, ink-wash
 
 #show: post.with(
@@ -17,8 +16,6 @@
     "lp-space",
   ),
 )
-
-#layer("L0 測度")[前回の測度の上で積分を定義する。位相は使わない]
 
 #check[
   前回の想起。Vitali の議論は三つの要求——区間の長さは $b-a$、平行移動で不変、

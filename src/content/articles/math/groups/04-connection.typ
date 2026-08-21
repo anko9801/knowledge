@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "曲がりを積むと整数が出る",
@@ -15,8 +14,6 @@
     "characteristic-class",
   ),
 )
-
-#layer("L1 ＋ 接続")[計量は使わない。接続だけを足す]
 
 = 同じ困難が、また出る
 

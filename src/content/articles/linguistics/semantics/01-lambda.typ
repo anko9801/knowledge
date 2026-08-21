@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "意味を計算する道具を用意する",
@@ -16,8 +15,6 @@
     "curry-howard",
   ),
 )
-
-#layer("L0 形式体系")[記号の操作規則だけ。意味論はまだ入れない]
 
 = 部分から組み上げたい
 

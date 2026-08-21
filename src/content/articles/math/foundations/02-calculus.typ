@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "微分とは最良の線形近似である",
@@ -15,8 +14,6 @@
     "landau-notation",
   ),
 )
-
-#layer("L0 ベクトル空間")[線形写像だけで微分を定義する。長さは収束を言うときだけ使う]
 
 = 傾きのままでは、多変数へ行けない
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "平行を、外から決める",
@@ -24,8 +23,6 @@
     "riemannian-metric",
   ),
 )
-
-#layer("L2 ＋ 接続", metric: true)[計量に加えて「平行」を決める。ここが Riemann 幾何の中心]
 
 = 比べる方法を、外から決める
 

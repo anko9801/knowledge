@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "Ricci と Bianchi",
@@ -24,8 +23,6 @@
     "covariant-derivative",
   ),
 )
-
-#layer("L2 ＋ 接続", metric: true)[前回の曲率を縮約し、微分の恒等式を一つ導く]
 
 = 20 個は多すぎる
 

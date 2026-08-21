@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "計量は空間の性質ではない",
@@ -27,8 +26,6 @@
     "lie-derivative",
   ),
 )
-
-#layer("L2 Riemann 多様体", metric: true)[ここから計量を使う。長さ・角度・体積・$star$ が戻る]
 
 = 何が足りなかったか
 

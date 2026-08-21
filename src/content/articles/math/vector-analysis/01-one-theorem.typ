@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "三つの定理は一つである",
@@ -18,8 +17,6 @@
   ),
   requires: ("multivariable-calculus",),
 )
-
-#layer("L1 ＋ L2 混在", metric: true)[舞台は $RR^3$。$times$ も擬ベクトルも計量と向きを暗黙に使っている]
 
 = 覚えることが多すぎる
 

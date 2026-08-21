@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 // Dirac 記法。Typst の数式に ket / bra は無いので、ここで作る。
 #let ket(x) = $lr(| #x chevron.r)$
@@ -19,8 +18,6 @@
     "entanglement",
   ),
 )
-
-#layer("L0 ＋ 計量", metric: true)[線形代数 第 3 回のテンソル積を、そのまま使う]
 
 = 系を二つにする
 

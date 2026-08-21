@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "足せて伸ばせる、それだけ",
@@ -15,8 +14,6 @@
     "quotient-space",
   ),
 )
-
-#layer("L0 ベクトル空間")[仮定するのは足し算とスカラー倍だけ。長さも角度も入れない]
 
 = 矢印から離れる
 

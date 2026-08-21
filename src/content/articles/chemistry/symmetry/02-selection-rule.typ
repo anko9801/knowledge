@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "積分がゼロだと、計算せずに分かる",
@@ -15,8 +14,6 @@
     "normal-modes",
   ),
 )
-
-#layer("L0 群 ＋ 線形代数")[前回の点群と既約分解だけを使う]
 
 = ゼロかどうかだけなら分かる
 

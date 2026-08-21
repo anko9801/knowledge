@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "引き戻せるのは、どちらか一方だけ",
@@ -21,8 +20,6 @@
     "dual-space",
   ),
 )
-
-#layer("L1 微分構造")[写像と微分だけ。計量は出てこない]
 
 = 座標変換はなぜ必ずうまくいくのか
 

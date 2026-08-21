@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "難しさを比べる",
@@ -16,8 +15,6 @@
     "cook-levin",
   ),
 )
-
-#layer("L0 形式体系")[前回のクラスの上で、問題どうしを比べる]
 
 = 難しさを移す
 

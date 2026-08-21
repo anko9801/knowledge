@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "穴を数える",
@@ -22,8 +21,6 @@
     "integration-of-forms",
   ),
 )
-
-#layer("L1 微分構造")[最後まで計量を使わない。それでも位相不変量が出る]
 
 = 解けたり解けなかったりする
 

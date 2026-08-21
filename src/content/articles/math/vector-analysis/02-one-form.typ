@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "dx は微小量ではない",
@@ -18,8 +17,6 @@
   ),
   requires: ("grad-div-curl",),
 )
-
-#layer("L1 微分構造")[$dif x$ も線積分も楔積も、計量なしで作れる。要る場所（弧長、$nabla f$）では明示する]
 
 = 説明されない記号
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "各点に空間を貼り付ける",
@@ -15,8 +14,6 @@
     "principal-bundle",
   ),
 )
-
-#layer("L1 微分構造")[貼り合わせ方だけを見る。計量も接続もまだ入れない]
 
 = 接束を一般化する
 

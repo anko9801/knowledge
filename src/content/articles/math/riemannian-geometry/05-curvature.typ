@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "一周して戻ると、向きが変わっている",
@@ -21,8 +20,6 @@
     "geodesic-deviation",
   ),
 )
-
-#layer("L2 ＋ 接続", metric: true)[接続から曲率を作る。ここが Riemann 幾何の到達点]
 
 = 経路に依る
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "解けるかの次に、現実的に解けるか",
@@ -16,8 +15,6 @@
     "time-hierarchy",
   ),
 )
-
-#layer("L0 形式体系")[数理論理学 第 8 回の直接の続き。新しい仮定は無い]
 
 = 終わるだけでは足りない
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "三つの記法は同じことを言っている",
@@ -24,8 +23,6 @@
     "volume-form",
   ),
 )
-
-#layer("L1 ＋ L2 混在", metric: true)[三つとも $RR^3$ の直交直線座標を前提にしている。どこで計量を使ったかを本文で追う]
 
 = 習ったものと違う、という疑い
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "積分に距離は要らない",
@@ -24,8 +23,6 @@
     "jacobian-from-wedge",
   ),
 )
-
-#layer("L1 微分構造")[向き付けだけを使う。計量は最後まで出てこない]
 
 = 関数は積分できない
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "地図は一枚では足りない",
@@ -21,8 +20,6 @@
     "determinant",
   ),
 )
-
-#layer("L1 微分構造")[座標の貼り合わせ方だけを決める。距離は入れない]
 
 = 四回、定義せずに使ってきた
 

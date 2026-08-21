@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "テンソル",
@@ -22,8 +21,6 @@
     "dual-basis",
   ),
 )
-
-#layer("L0 ベクトル空間")[$V$ と $V^*$ だけを材料にする。計量はまだ無い]
 
 = 変換則で定義する、という流儀
 

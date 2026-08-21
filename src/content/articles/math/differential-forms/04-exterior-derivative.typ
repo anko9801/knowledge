@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "外微分は一つしかない",
@@ -24,8 +23,6 @@
     "pullback",
   ),
 )
-
-#layer("L1 微分構造")[$dif$ に計量は要らない。この回で一度も $g$ を書かない]
 
 = 定義を選ぶのではなく、追い詰める
 

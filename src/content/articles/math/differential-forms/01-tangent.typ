@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "球面の上に矢印は置けない",
@@ -17,8 +16,6 @@
   ),
   requires: ("multivariable-calculus",),
 )
-
-#layer("L1 微分構造")[長さも角度も使わない。滑らかに微分できる、という以上のことを仮定しない]
 
 = 矢印は、外がないと置けない
 

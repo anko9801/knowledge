@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "対称と反対称",
@@ -21,8 +20,6 @@
     "tensor-product",
   ),
 )
-
-#layer("L0 ベクトル空間")[引数を入れ替えたときの振る舞いだけを見る。計量は不要]
 
 = 引数を入れ替えてみる
 

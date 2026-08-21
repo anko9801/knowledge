@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "割り算ができるかどうか",
@@ -20,8 +19,6 @@
     "symmetric-group",
   ),
 )
-
-#layer("L0 代数構造")[演算だけを仮定する。位相も距離も入れない]
 
 = スカラーは何でもよいのか
 

@@ -1,6 +1,5 @@
 #import "/src/typst/template.typ": post
 #import "/src/typst/theorem.typ": *
-#import "/src/typst/layer.typ": layer
 
 #show: post.with(
   title: "エルミートである以外にない",
@@ -16,8 +15,6 @@
     "uncertainty-relation",
   ),
 )
-
-#layer("L0 ＋ 計量", metric: true)[線形代数 第 7 回のスペクトル定理をそのまま使う]
 
 = 測定に何を要求するか
 

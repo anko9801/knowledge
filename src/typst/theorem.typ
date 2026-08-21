@@ -39,15 +39,31 @@
 /// 一度考える機会を作る。もう一つの狙いは読者の較正で、一度答えてみると
 /// 自分の理解度の見積もりが当たるようになる（docs/build.md「想起の問い」）。
 ///
-/// 採点も記録もしない。番号はほかの主張と同じ通し番号なので `@check:foo` で
-/// 参照できる。問いは軽くしない——説明を組ませる形のほうが転移する。
-#let check(question, answer) = figure(
-  kind: _kind,
-  supplement: [問],
-  numbering: "1",
-  caption: none,
-  metadata((variant: "check", title: none, body: question, answer: answer)),
-)
+/// 採点も記録もしない。問いは軽くしない——説明を組ませる形のほうが転移する。
+///
+/// 番号は振らない。参照されないものに番号を振ると、ドリルの体裁になるうえ、
+/// 定義と定理の通し番号に穴が空いたように見えるだけ損をする。
+///
+///   #check[問い][答え]                      見出しは「問」
+///   #check("前回のふりかえり")[問い][答え]     見出しは題名のほう
+#let check(..args) = {
+  let pos = args.pos()
+  let (title, question, answer) = if pos.len() == 3 {
+    (pos.at(0), pos.at(1), pos.at(2))
+  } else if pos.len() == 2 {
+    (none, pos.at(0), pos.at(1))
+  } else {
+    panic("check は (問い, 答え) か (題名, 問い, 答え) を取ります")
+  }
+
+  figure(
+    kind: _kind,
+    supplement: [問],
+    numbering: none,
+    caption: none,
+    metadata((variant: "check", title: title, body: question, answer: answer)),
+  )
+}
 
 #let axiom = _make("axiom", [公理])
 #let definition = _make("definition", [定義])
@@ -85,12 +101,15 @@
     let title = value.title
     let body = value.body
     let answer = value.at("answer", default: none)
-    let number = it.counter.display(it.numbering)
 
-    let head = {
+    // 番号を持たないもの（想起の問い）は、題名があればそれだけを見出しにする。
+    // 「問 1」のような採番は、参照されないかぎりドリルの体裁を足すだけになる。
+    let head = if it.numbering == none {
+      if title != none { title } else { it.supplement }
+    } else {
       it.supplement
       [ ]
-      number
+      it.counter.display(it.numbering)
       if title != none [ (#title)]
     }
 

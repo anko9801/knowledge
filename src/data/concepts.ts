@@ -586,6 +586,11 @@ export const concepts: readonly Concept[] = [
   c('process-isolation', 'プロセス分離', '互いに壊せないことを要請すると、アドレス空間を分けることになる', 'viewpoint', 'cs', ['interleaving']),
   c('virtual-memory', '仮想記憶', '番地を写像にする。分離と多重化が同時に手に入る', 'technique', 'cs', ['process-isolation', 'memory-hierarchy']),
   c('crash-consistency', 'クラッシュ整合性', 'いつ落ちても壊れないこと。ログは順序の保証で買う', 'technique', 'cs', ['linearizability']),
+  c('read-copy-update', '読む側が何も書かない更新', '更新を差し替えと片付けに割ると、読む側は共有される語に一切書かずに済む', 'technique', 'cs', ['immutability', 'mutual-exclusion']),
+  c('quiescent-state', '静穏状態', '読み取り区間の中に居ないことが確実な点。居るかを聞かずに、居ないほうを見る', 'definition', 'cs', ['read-copy-update']),
+  c('grace-period', '猶予期間', '全 CPU が一度ずつ静穏状態を通れば、古い参照を持つ者はいない。何度通ったかは要らない', 'theorem', 'cs', ['quiescent-state']),
+  c('guarantee-splitting', '保証を割る', 'ロックを外すと正しさを一つの機構では買えなくなる。番地の生存と値の一貫性が別々になる', 'viewpoint', 'cs', ['grace-period', 'linearizability']),
+  c('optimistic-fallback', '楽観と落ち先', '速い経路を試し、駄目だと分かった時点で確実な経路へ落ちる。落ち先が無い楽観は使えない', 'technique', 'cs', ['guarantee-splitting']),
 
   // --- 量子力学（線形代数から論理的に決まる部分） -----------------------
   //

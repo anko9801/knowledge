@@ -25,7 +25,7 @@
 /*
  * 本文の欧文。scripts/subset-text-font.sh が生成する。
  *
- * 数式が Latin Modern Math なのに地の文の欧文が和文フォントの欧文グリフだと、
+ * 数式が New Computer Modern Math なのに地の文の欧文が和文フォントの欧文グリフだと、
  * 骨格も太さも揃わず、数式だけが浮いて見える。Gödel や Löwenheim のような
  * 固有名詞が頻出するので、この不一致は目立つ。
  * Latin Modern Roman は数式フォントと同じ Computer Modern 系なので、

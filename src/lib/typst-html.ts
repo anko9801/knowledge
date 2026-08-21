@@ -147,7 +147,7 @@ export const repairBinaryOperators = (html: string): string =>
  * 伸ばす必要のない括弧の伸縮を止める。
  *
  * Chrome の MathML では、伸縮する括弧の送り幅が中身に関係なく
- * 最大の異体字のものになる。Latin Modern Math の ( なら 0.875em で、
+ * 最大の異体字のものになる。Computer Modern 系の ( なら 0.875em で、
  * 実際に描かれる 0.389em の 2.25 倍。差の 0.486em が前後に散って、
  * S(q) の括弧の周りに 0.32em ずつの空きができる。maxsize では止まらない。
  * 元フォントでもサブセットでも同じなので、サブセットの副作用ではない。

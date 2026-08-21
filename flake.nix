@@ -26,9 +26,14 @@
           # サブセット元のフォント。システムの fc-list に頼ると環境ごとに
           # 結果が変わるので、ここで固定する。
           #
-          # Latin Modern は LaTeX が既定で使う Computer Modern。元の講義ノートが
-          # LaTeX で組まれていたので、字形を揃えると見え方が変わらない。
-          mathFont = "${pkgs.lmmath}/share/fonts/opentype/latinmodern-math.otf";
+          # Computer Modern。元の講義ノートが LaTeX で組まれていたので、
+          # 字形を揃えると見え方が変わらない。
+          #
+          # 数式は Latin Modern Math ではなく、その後継の New Computer Modern。
+          # 骨格は同じだが、黒板文字（ℝ ℕ ℤ）が違う。Latin Modern のそれは
+          # 全画が二重線になる中抜きで、セリフも無く、周りの字と揃わない。
+          # NewCM は伝統的な CM の \mathbb を持つ。他の字形は見分けが付かない。
+          mathFont = "${pkgs.newcomputermodern}/share/fonts/opentype/public/NewCMMath-Regular.otf";
           textFontDir = "${pkgs.lmodern}/share/fonts/opentype/public/lm";
         in
         {

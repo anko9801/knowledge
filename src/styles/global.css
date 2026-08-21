@@ -23,9 +23,33 @@
 }
 
 /*
+ * 黒板文字（ℝ ℕ ℤ）だけ New Computer Modern から借りる。
+ * scripts/subset-mathbb-font.sh が生成する。
+ *
+ * Latin Modern の \mathbb は全画が二重線になる中抜きで、セリフも無い。
+ * 周りの Computer Modern と骨格が揃わず、そこだけ針金のように浮く。
+ *
+ * ここでは unicode-range を書く。上の MathSubset で書かないのとは事情が逆で、
+ * 「この範囲だけ別の書体を当てる」ことが目的だからである。範囲は
+ * subset スクリプトの --unicodes と一致させること。片方だけ広げると、
+ * 広げたぶんが本体フォントに落ちて字形が混ざる。
+ *
+ * 二重線の英字は 2 つのブロックに分かれている。Letterlike Symbols 側に
+ * ℂ ℍ ℕ ℙ ℚ ℝ ℤ があり、残りが Mathematical Alphanumeric Symbols 側にある。
+ */
+@font-face {
+  font-family: MathBB;
+  src: url('../fonts/mathbb.woff2') format('woff2');
+  unicode-range:
+    U+2102, U+210D, U+2115, U+2119, U+211A, U+211D, U+2124, U+213C-2140,
+    U+1D538-1D56B, U+1D7D8-1D7E1;
+  font-display: swap;
+}
+
+/*
  * 本文の欧文。scripts/subset-text-font.sh が生成する。
  *
- * 数式が New Computer Modern Math なのに地の文の欧文が和文フォントの欧文グリフだと、
+ * 数式が Latin Modern Math なのに地の文の欧文が和文フォントの欧文グリフだと、
  * 骨格も太さも揃わず、数式だけが浮いて見える。Gödel や Löwenheim のような
  * 固有名詞が頻出するので、この不一致は目立つ。
  * Latin Modern Roman は数式フォントと同じ Computer Modern 系なので、
@@ -196,7 +220,8 @@ a {
  */
 
 math {
-  font-family: MathSubset, math;
+  /* MathBB は unicode-range で黒板文字だけを引き受ける。先に並べる。 */
+  font-family: MathBB, MathSubset, math;
 }
 
 /* 長い別行立て数式が狭い画面で溢れるのを、切らずに横スクロールで逃がす。

@@ -26,14 +26,18 @@
           # サブセット元のフォント。システムの fc-list に頼ると環境ごとに
           # 結果が変わるので、ここで固定する。
           #
-          # Computer Modern。元の講義ノートが LaTeX で組まれていたので、
-          # 字形を揃えると見え方が変わらない。
+          # Latin Modern は LaTeX が既定で使う Computer Modern。元の講義ノートが
+          # LaTeX で組まれていたので、字形を揃えると見え方が変わらない。
+          mathFont = "${pkgs.lmmath}/share/fonts/opentype/latinmodern-math.otf";
+
+          # 黒板文字だけは New Computer Modern から借りる。Latin Modern の
+          # \mathbb は全画が二重線になる中抜きで、セリフも無く、周りの字と
+          # 揃わない。NewCM は伝統的な CM のそれを持つ。
           #
-          # 数式は Latin Modern Math ではなく、その後継の New Computer Modern。
-          # 骨格は同じだが、黒板文字（ℝ ℕ ℤ）が違う。Latin Modern のそれは
-          # 全画が二重線になる中抜きで、セリフも無く、周りの字と揃わない。
-          # NewCM は伝統的な CM の \mathbb を持つ。他の字形は見分けが付かない。
-          mathFont = "${pkgs.newcomputermodern}/share/fonts/opentype/public/NewCMMath-Regular.otf";
+          # 数式フォントごと NewCM に替えると、pyftsubset が MATH テーブルを
+          # 削り切れずに大きい異体字を落とす（∫ が 2.30em から 1.10em になり、
+          # 根号の蓋・分数の位置・cases の波括弧も崩れる）。だから字だけ借りる。
+          mathbbFont = "${pkgs.newcomputermodern}/share/fonts/opentype/public/NewCMMath-Regular.otf";
           textFontDir = "${pkgs.lmodern}/share/fonts/opentype/public/lm";
         in
         {
@@ -55,6 +59,7 @@
 
             # scripts/subset-math-font.sh と subset-text-font.sh が読む。
             MATH_FONT = mathFont;
+            MATHBB_FONT = mathbbFont;
             TEXT_FONT_DIR = textFontDir;
 
             shellHook = ''

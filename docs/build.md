@@ -53,7 +53,7 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 ## 使い方
 
 ```sh
-nix develop                 # typst 0.15.1 / node 24 / fonttools / New Computer Modern / pandoc
+nix develop                 # typst 0.15.1 / node 24 / fonttools / Latin Modern / pandoc
 npm install
 npm run fonts               # public/fonts/math.woff2 を生成（初回のみ）
 npm run dev                 # prebuild で typst-math.css も生成される
@@ -66,7 +66,7 @@ devShell の外で回すときは、typst 0.15 の場所とサブセット元フ
 
 ```sh
 TYPST_BIN=/path/to/typst-0.15.1/bin/typst npm run build
-MATH_FONT=/path/to/NewCMMath-Regular.otf npm run fonts
+MATH_FONT=/path/to/latinmodern-math.otf npm run fonts
 ```
 
 Astro を通さず組版だけ見たいときは typst 単体でよい。live-reload の HTTP サーバが立つ
@@ -852,7 +852,7 @@ body だけ抜き出す構成では必ず落ちる。かといってページ毎
 
 Typst は `<mi>E</mi>` ではなく U+1D438 (𝐸) のような Mathematical Alphanumeric
 Symbols を**実コードポイントとして**出力する。このブロックを持たない本文フォントでは
-豆腐になる。`npm run fonts` が以下の範囲でサブセットする（New Computer Modern Math で 212KB）。
+豆腐になる。`npm run fonts` が以下の範囲でサブセットする（Latin Modern Math で 183KB）。
 元フォントは `flake.nix` が `MATH_FONT` で渡すので、`fc-list` の結果に依存しない。
 `ssty` / `dtls` は Typst の CSS が参照するので必ず残すこと。MATH テーブルが落ちると
 組版の寸法が全部狂うため、スクリプトが生成後に MATH と主要コードポイントを検査する。

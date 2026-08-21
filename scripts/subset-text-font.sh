@@ -1,11 +1,11 @@
 #!/bin/sh
 # 本文の欧文フォントをサブセットして public/fonts/text-{regular,bold}.woff2 を作る。
 #
-# 数式は New Computer Modern Math で組んでいるのに、地の文の欧文が和文フォント（明朝）の
+# 数式は Latin Modern Math で組んでいるのに、地の文の欧文が和文フォント（明朝）の
 # 欧文グリフだと、太さも骨格も揃わない。Gödel や Löwenheim のような固有名詞が
 # 本文に頻出するので、ここが揃っていないと数式だけ浮いて見える。
 #
-# Latin Modern Roman は New Computer Modern Math と同じ Computer Modern 系なので、
+# Latin Modern Roman は Latin Modern Math と同じ Computer Modern 系なので、
 # 並べると馴染む。和文は CJK グリフを持たないぶん自動でフォールバックする。
 set -eu
 

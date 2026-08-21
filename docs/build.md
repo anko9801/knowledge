@@ -38,6 +38,7 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 | `src/lib/typst-html.ts` | 出力文書を body / head / lang に切り分ける |
 | `src/lib/headings.ts` | 見出しに id を振り、目次用の一覧を取り出す |
 | `src/lib/peek.ts` | 参照点に、指す先の主張を添える（飛ばずに読めるように） |
+| `src/lib/shiki.ts` | コードの強調を Shiki で組み直す（ビルド時。明暗の二枚を焼く） |
 | `src/lib/page-peek.ts` | 記事をまたぐリンクに、行き先の記事の中身を添える |
 | `src/lib/neighbors.ts` | 概念グラフから、その回の前提と下流を引く（純関数） |
 | `src/lib/concept-page.ts` | 概念の索引を組む。語で来た読者を記事へ送る（純関数） |

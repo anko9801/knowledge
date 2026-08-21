@@ -727,7 +727,8 @@ blockquote {
 /* 枠線は引かない。地を一段沈めるだけで塊として立つ。
  * 線と地を両方置くと、地が薄いぶん線だけが目に入って、
  * 中身の無い箱に見える。 */
-pre {
+pre,
+pre.shiki {
   margin: 1.9rem 0;
   overflow-x: auto;
   padding: 0.9rem 1.15rem;
@@ -820,31 +821,29 @@ pre {
   }
 }
 
-/* 強調は 2 色に畳む。墨と差し色だけで、意味の区別は太さと濃さで付ける。
- * 色数を増やすと、コードの塊が本文より強く見えて視線が先に取られる。
- * クラスは src/lib/code.ts の TOKEN_CLASS と対になっている。 */
-.tok-comment {
-  color: var(--muted);
+/* 強調は Shiki が付ける（src/lib/shiki.ts、ビルド時）。
+ *
+ * 各 span には `--shiki-light` と `--shiki-dark` のふたつだけが載っている。
+ * どちらを使うかをここで決めるので、JS は要らないし、
+ * prefers-color-scheme が変わればその場で追随する。
+ *
+ * 地の色は使わない。Shiki のテーマが持つ地（白／黒）を敷くと、
+ * 紙の上にコードだけ別の紙が乗ったように浮く。--code-paper を通す。 */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
 }
 
-.tok-keyword {
-  color: var(--ink);
-  font-weight: 600;
+@media (prefers-color-scheme: dark) {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark);
+  }
 }
 
-.tok-fn {
-  color: var(--ink);
-}
-
-.tok-string,
-.tok-num {
-  color: var(--accent);
-}
-
-/* 括弧や演算子。数式の約物と同じ扱いで、字面から一段引く。 */
-.tok-punct {
-  color: var(--muted);
-}
+/* Shiki は 1 行を span で包むが、span の間に改行も残す。
+ * `.line { display: block }` を足すと、改行のぶんと合わせて二重に折れて
+ * 行間が倍になる。包みは素のインラインのままにしておくこと。 */
 
 table {
   width: 100%;

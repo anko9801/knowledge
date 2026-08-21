@@ -6,9 +6,9 @@ import { createHash } from 'node:crypto'
 
 import { compileHtml, evalMetadata, typstVersion } from './typst-cli.ts'
 import { mapWithLimit } from './pool.ts'
-import { mapCodeColors } from './code.ts'
 import { collectHeadings } from './headings.ts'
 import { attachPeeks } from './peek.ts'
+import { highlightCode } from './shiki.ts'
 import {
   extractStyles,
   freezeShortFences,
@@ -183,13 +183,10 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     // 見出しに id を振る前でよい。添えるのは主張だけで、見出しは対象外。
     const peeked = attachPeeks(linked)
 
-    // 強調の色は Typst がインラインで焼き込む。クラスへ移して CSS に任せる。
-    const { html: recolored, unmapped } = mapCodeColors(peeked)
-    if (unmapped.length > 0) {
-      logger.warn(
-        `${id}: コードの色 ${unmapped.join(', ')} に対応がありません。` +
-          'src/lib/code.ts の TOKEN_CLASS と global.css に足してください。',
-      )
+    // 強調は Typst の粗いものを捨てて、Shiki で組み直す（ビルド時。JS は増えない）。
+    const { html: recolored, unknown } = await highlightCode(peeked)
+    if (unknown.length > 0) {
+      logger.warn(`${id}: ${unknown.join(', ')} の文法が Shiki に無いので素通しします。`)
     }
 
     // 見出しの id はここで振る。Typst は出さないので、目次のリンク先が無い。

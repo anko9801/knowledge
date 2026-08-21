@@ -15,7 +15,7 @@ const DEPENDS_ON = [
   'src/lib/typst-html.ts',
   'src/lib/headings.ts',
   'src/lib/peek.ts',
-  'src/lib/code.ts',
+  'src/lib/shiki.ts',
 ] as const
 
 /**

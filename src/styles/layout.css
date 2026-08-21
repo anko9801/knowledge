@@ -202,6 +202,45 @@
     outline-offset: 1px;
   }
 
+  /* 開閉で字が入れ替わる。二つとも同じ枡に置いて、片方だけ見せる。
+   *
+   * 透明度だけで入れ替えると、二つが同じ場所で薄く重なる瞬間があり、
+   * 字が滲んだように見える。引っ込む側を縮めて暈すと、重なりが
+   * 「奥へ引いた字」と「手前へ出た字」に分かれて、混ざらなくなる。 */
+  .drawer-icon {
+    grid-area: 1 / 1;
+    line-height: 1;
+  }
+
+  .drawer-icon-close,
+  .drawer-switch:checked ~ .drawer-button .drawer-icon-open {
+    opacity: 0;
+    scale: 0.72;
+    filter: blur(2px);
+  }
+
+  .drawer-icon-open,
+  .drawer-switch:checked ~ .drawer-button .drawer-icon-close {
+    opacity: 1;
+    scale: 1;
+    filter: blur(0);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* 出る側を少し遅く始める。同時だと、入れ替わりの中間で両方が薄くなる。 */
+    .drawer-icon {
+      transition:
+        opacity 150ms ease,
+        scale 190ms cubic-bezier(0.32, 0.72, 0, 1),
+        filter 150ms ease;
+    }
+
+    .drawer-icon-open,
+    .drawer-switch:checked ~ .drawer-button .drawer-icon-close {
+      transition-delay: 40ms;
+    }
+  }
+
   /* 引き出しの外側を触ったら閉じる。 */
   .drawer-switch:checked ~ .drawer-scrim {
     display: block;

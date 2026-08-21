@@ -71,7 +71,12 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
       {/* 引き出しの開閉。狭い画面でだけ姿を現す。順序に意味があり、
           checked の兄弟セレクタで .rail と .drawer-scrim を動かす。 */}
       <input class="drawer-switch" id="drawer" type="checkbox" aria-label="サイト内の案内を開閉" />
-      <label class="drawer-button" for="drawer" aria-hidden="true">☰</label>
+      {/* 二つの字を同じ枡に重ねて置き、checked で入れ替える。
+          開いているときに ☰ のままだと、押した先が分からない。 */}
+      <label class="drawer-button" for="drawer" aria-hidden="true">
+        <span class="drawer-icon drawer-icon-open">☰</span>
+        <span class="drawer-icon drawer-icon-close">✕</span>
+      </label>
       <label class="drawer-scrim" for="drawer" aria-hidden="true"></label>
 
       <div class="rail">

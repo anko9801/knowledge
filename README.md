@@ -120,3 +120,5 @@ npm run curriculum next             # 次に書くべき記事（下流の多い
 以上、読者が自分で取りに行く形にしておくのが安全である。
 
 ビルドの詳細は [docs/build.md](docs/build.md)。
+連載の構成をどう決めたか、まだ決めていないことは
+[docs/decisions.md](docs/decisions.md)。

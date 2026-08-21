@@ -112,6 +112,21 @@ $ frac(delta Q, T) = dif S $
 このような $1 \/ T$ を#strong[積分因子]と呼ぶ。
 そして「積分因子が存在するか」は、$1$ 形式についての純粋に幾何的な問いである。
 
+#example[掛けると完全になる、を手で確かめる][
+  $omega = y thin dif x$ を考える。完全でない。
+  $dif omega = dif y and dif x != 0$ で、完全なら $dif dif f = 0$ のはずだからである。
+
+  ところが $1\/y$ を掛けると
+  $ frac(omega, y) = dif x $
+  で、$f = x$ の完全形式になった。#strong[同じ $1$ 形式が、係数一つで性質を変える。]
+
+  @thm:frobenius を当ててみる。
+  $ omega and dif omega = (y thin dif x) and (dif y and dif x) = 0 $
+  $dif x$ が二度出るので消える。条件を満たしているので積分因子があるはずで、実際あった。
+
+  $delta Q$ に $1\/T$ を掛けると $dif S$ になるのも、これと同じ形をしている。
+]
+
 #theorem("Frobenius")[
   $1$ 形式 $omega$（$omega != 0$）が局所的に積分因子を持つ、すなわち
   $omega = lambda thin dif f$ と書けるための必要十分条件は

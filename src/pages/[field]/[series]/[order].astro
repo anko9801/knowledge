@@ -226,12 +226,22 @@ const coversRest = neighbors.covers.length - covers.length
                 <span class="why">{why(link)}</span>
               </li>
             ))}
-            {neighbors.gaps.map((gap) => (
+            {/* 記事の無い前提。穴の場所は隠さないが、1 件ずつ「— 未執筆」を
+                付けて並べると、長い回では前提だけで 4 行を占める（実測 5 件）。
+                リンクにならないので、まとめて 1 行に畳む。 */}
+            {neighbors.gaps.length > 0 && (
               <li class="gap">
-                <span><ConceptLabel label={gap.concept.label} /></span>
                 <span class="why">未執筆</span>
+                <span>
+                  {neighbors.gaps.map((gap, i) => (
+                    <>
+                      {i > 0 && '・'}
+                      <ConceptLabel label={gap.concept.label} />
+                    </>
+                  ))}
+                </span>
               </li>
-            ))}
+            )}
           </ul>
         </nav>
       )
@@ -457,8 +467,15 @@ const coversRest = neighbors.covers.length - covers.length
   }
 
   /* 記事がまだ無い前提。リンクにしないので、灰のまま添え字だけ添える。 */
+  /* 未執筆の前提。1 行に畳んであるので、印は先頭に一つだけ。 */
   .gap .why {
     font-style: italic;
+    /* 狭い画面で「未執 / 筆」と割れる。印なので割らせない。 */
+    white-space: nowrap;
+  }
+
+  .gap .why::before {
+    content: none;
   }
 
   .unlocks {

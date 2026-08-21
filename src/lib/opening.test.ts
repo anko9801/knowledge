@@ -42,6 +42,22 @@ test('記事が、続きものの段取りから始まっていない', () => {
   strictEqual(staged.join('\n'), '', `書き出しが段取りになっている:\n${staged.join('\n')}`)
 })
 
+test('Markdown の強調が、.typ に漏れていない', () => {
+  // Typst の強調は `*text*` か `#strong[text]`。`**text**` と書くと
+  // **空の強調が二つ**に読まれて、囲んだはずの文字が地の文に落ちる。
+  // typst は warning を出すが `compile` は成功するので、読まないと気づけない。
+  const leaked = typFiles(ARTICLES)
+    .concat(typFiles('src/content/notes'))
+    .flatMap((path) => {
+      const lines = readFileSync(path, 'utf8').split('\n')
+      return lines.flatMap((line, i) =>
+        /\*\*[^*\n]+\*\*/.test(line) ? [`${path}:${i + 1}  ${line.trim().slice(0, 60)}`] : [],
+      )
+    })
+
+  strictEqual(leaked.join('\n'), '')
+})
+
 test('記事に、見出しが一つはある', () => {
   const headless = typFiles(ARTICLES).filter(
     (path) => firstLine(readFileSync(path, 'utf8')) === undefined,

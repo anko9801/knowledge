@@ -212,6 +212,15 @@
     line-height: 1;
   }
 
+  /* インライン要素のままだと、ベースラインの下の隙間ぶん枡が高くなる。
+     大きさもここで決める。global.css の `svg { height: auto }` は
+     本文の図のための規則なので、こちらには効かせない。 */
+  .drawer-icon svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+
   .drawer-icon-close,
   .drawer-switch:checked ~ .drawer-button .drawer-icon-open {
     opacity: 0;

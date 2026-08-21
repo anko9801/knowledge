@@ -30,9 +30,49 @@ test('記号が無ければ 1 つの断片で返る', () => {
   deepStrictEqual(supSub('σ 加法族'), [{ kind: 'text', text: 'σ 加法族' }])
 })
 
-test('前が英数字でなければ触らない', () => {
+test('前が空白か和文なら触らない', () => {
   // 単独の ^ で壊れないこと。約物のあとに来ることはない約束だが、保険。
   deepStrictEqual(supSub('^p'), [{ kind: 'text', text: '^p' }])
+  deepStrictEqual(supSub('穴 ^k'), [{ kind: 'text', text: '穴 ^k' }])
+  deepStrictEqual(supSub('穴^k'), [{ kind: 'text', text: '穴^k' }])
+})
+
+test('上付きのあとに下付きが続く形が割れる', () => {
+  // 概念の説明に実際に出てくる。H^*_dR、x^i_1、δ^i_j。
+  deepStrictEqual(supSub('H^*_dR'), [
+    { kind: 'text', text: 'H' },
+    { kind: 'sup', text: '*' },
+    { kind: 'sub', text: 'dR' },
+  ])
+})
+
+test('記号のあとでも肩に乗る', () => {
+  // ∂_t、∫_Ω、∇^μ、≤_p、(f g)^k。数えるより和文でないことで判定する。
+  for (const [input, head, kind, body] of [
+    ['∂_t', '∂', 'sub', 't'],
+    ['∫_∂Ω', '∫', 'sub', '∂Ω'],
+    ['∇^μ', '∇', 'sup', 'μ'],
+    ['≤_p', '≤', 'sub', 'p'],
+    [')^k', ')', 'sup', 'k'],
+  ] as const) {
+    deepStrictEqual(
+      supSub(input),
+      [
+        { kind: 'text', text: head },
+        { kind, text: body },
+      ],
+      input,
+    )
+  }
+})
+
+test('肩に乗らない文字で止まる', () => {
+  // 「C^∞、解析的」の読点や、「2^X|」の縦棒で切れること。
+  deepStrictEqual(supSub('C^∞、解析的'), [
+    { kind: 'text', text: 'C' },
+    { kind: 'sup', text: '∞' },
+    { kind: 'text', text: '、解析的' },
+  ])
 })
 
 test('1 つのラベルに複数あっても割れる', () => {

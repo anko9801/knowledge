@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import ConceptLabel from '../../components/ConceptLabel.astro'
 import { concepts } from '../../data/concepts.ts'
 import { articleHref, siteBase } from '../../lib/article-url.ts'
 import { conceptPages } from '../../lib/concept-page.ts'
@@ -64,8 +65,11 @@ const total = concepts.length
         <ul>
           {items.map((page) => (
             <li>
-              <a href={`${base}concepts/${page.concept.id}`}>{page.concept.label}</a>
-              <span class="gist">{page.concept.gist}</span>
+              <a href={`${base}concepts/${page.concept.id}`}><ConceptLabel label={page.concept.label} /></a>
+              <span class="gist"><ConceptLabel label={page.concept.gist} /></span>
+              {/* どの回に住んでいるか。名前順に並んでいるので、これが無いと
+                  「語は見つかったが、どこを読めばいいのか」で止まる。 */}
+              <a class="home" href={page.home.href}>{page.home.where}</a>
             </li>
           ))}
         </ul>
@@ -116,8 +120,18 @@ const total = concepts.length
   }
 
   .gist {
-    flex: 1 1 18rem;
+    flex: 1 1 14rem;
     font-size: 0.85rem;
     color: var(--muted);
+  }
+
+  /* 行き先。目で追う縦線になるよう右端で揃える。
+   * 狭いときは折り返して左へ落ちるので、幅は決め打ちしない。 */
+  .home {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+    text-decoration-color: var(--rule);
   }
 </style>

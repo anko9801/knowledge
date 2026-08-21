@@ -65,7 +65,7 @@ const link = (neighbor: Neighbor) =>
   <header class="head">
     <p class="kind">{KIND[concept.kind] ?? concept.kind}</p>
     <h1><ConceptLabel label={concept.label} /></h1>
-    <p class="gist">{concept.gist}</p>
+    <p class="gist"><ConceptLabel label={concept.gist} /></p>
   </header>
 
   <p class="home">
@@ -91,7 +91,7 @@ const link = (neighbor: Neighbor) =>
                 ) : (
                   <span class="unwritten">{neighbor.concept.label}</span>
                 )}
-                <span class="why">{neighbor.concept.gist}</span>
+                <span class="why"><ConceptLabel label={neighbor.concept.gist} /></span>
               </li>
             ))}
           </ul>

@@ -362,6 +362,8 @@ export const concepts: readonly Concept[] = [
   // Rasmussen と Norman、検査器の取捨は Rice の定理の側にある。分けて置く。
   c('working-memory-limit', '作業記憶の限界', '同時に保持できるチャンクは 4±1。Miller の 7±2 から Cowan へ', 'viewpoint', 'cognition'),
   c('chunking', 'チャンク化', '熟達は記憶容量ではなく、まとまりの認識で決まる。Chase--Simon のチェス実験', 'viewpoint', 'cognition', ['working-memory-limit']),
+  c('nesting-depth', '分岐は条件の倍を数えさせる', '深さ d では、成り立つ条件 d 個と開いている区画 d 個を保持する', 'theorem', 'cs', ['working-memory-limit']),
+  c('early-return', '先に閉じて戻る', '区画を開かずに条件だけを足す。保持する個数が半分になる代わりに、命題が残り全体へ効き続ける', 'viewpoint', 'cs', ['nesting-depth']),
   c('cognitive-load', '認知負荷', '課題本来の負荷と、表現のせいで増えた負荷を分ける。Sweller', 'viewpoint', 'cognition', ['working-memory-limit']),
   c('element-interactivity', '要素間相互作用', 'CLT で唯一の量に近い概念。同時に噛み合う要素の数が本来の難しさを決める', 'definition', 'cognition', ['cognitive-load']),
   c('expertise-reversal', '熟達逆転効果', '初心者を助ける支援が、熟練者には妨げになる。負荷は読み手に相対的', 'theorem', 'cognition', ['chunking', 'cognitive-load']),
@@ -396,6 +398,8 @@ export const concepts: readonly Concept[] = [
   // 「Tidy first? Yes. Also no.」で、決着していないことが中身だった。
   c('discounting', '割引', '今日の 1 ドルは明日の 1 ドルより価値がある。早く稼ぎ、遅く払え', 'viewpoint', 'cs', ['change-over-time']),
   c('optionality', 'オプション価値', '不確かならモノより選択肢。先読みが外れるほど分離の価値が上がる', 'viewpoint', 'cs', ['change-over-time'], ['essential-accidental']),
+  c('duplication-is-coupling', '重複は結合', '同じ判断が二箇所にあると、その判断を変える変更に関して結合する。消すのは字面ではなく関係', 'theorem', 'cs', ['coupling']),
+  c('false-duplication', '偶然の一致', '一方だけが変わる変更があるなら結合していない。寄せると無かった関係を作る', 'viewpoint', 'cs', ['duplication-is-coupling']),
   c('implicit-coupling', '暗黙の結合', '型にも呼び出しにも現れない結合。書式の前提、列名の仮定、実行順序', 'viewpoint', 'cs', ['coupling']),
   c('unknown-unknowns', '何を知らないか分からない', 'どこを直せばよいか分からず、直しても足りたか分からない。三症状で最も厄介', 'viewpoint', 'cs', ['implicit-coupling']),
   c('complexity-weighting', '触る場所だけが効く', '複雑さは触る時間の割合で重み付く。見ない場所へ隔離すれば無くしたのとほぼ同じ', 'viewpoint', 'cs', ['change-over-time']),

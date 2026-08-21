@@ -460,6 +460,21 @@ export const concepts: readonly Concept[] = [
   c('local-measurement', '自分の場所で測る', '触る頻度も波及も発覚までの時間も履歴から出る。他所の平均より自分の分布', 'technique', 'cs', ['evidence-hierarchy', 'complexity-weighting', 'change-propagation']),
   c('constraint-derivation', '制約と代償で書く', '良さを主張せず、制約を一本ずつ足して代償を名指す。採らない選択も残る', 'technique', 'cs', ['evidence-hierarchy', 'feasibility-vs-cost']),
   c('moved-conditions', '動いた条件', '記憶の格差、並列化、近似の質、読み手の構成。同じ計算をやり直すと答えが変わる', 'viewpoint', 'cs', ['constraint-derivation', 'relocation-not-reduction', 'purity-and-concurrency']),
+
+  // --- 測られている数 ---------------------------------------------------
+  //
+  // 仮定として使ってきた認知の制約には、実際に測られた数がある。入れると
+  // いくつかの通説が数の上で成り立たなくなる。
+  //
+  // ばらつきが大きいので、絶対値の予測には使えない。比較には使える。同じ
+  // 定数を両案に入れれば相殺するからで、Halstead が死んで KLM が生きた差が
+  // そこにあった。どちらが速いかは言えて、何秒速いかは言えない。
+  c('chunk-capacity-in-bits', 'チャンクの中身に上限は無い', '記憶範囲は個数で決まり情報量では決まらない。二進なら 9、英単語なら 5', 'theorem', 'cognition', ['working-memory-limit', 'chunking']),
+  c('code-entropy', 'コードのエントロピー', '記号あたり 3〜4 ビット。英語の半分以下で、局所文脈 3〜4 記号で飽和する', 'definition', 'cs', ['entropy', 'chunk-capacity-in-bits']),
+  c('comprehension-time-share', '読む時間の割合', '理解に 58〜70 パーセント、編集に 5 パーセント。上級者ほど理解が小さい', 'definition', 'cs', ['local-measurement']),
+  c('resumption-lag', '中断からの復帰', '編集開始まで 10〜15 分。実験室で測る再開の遅れ 20 秒とは別の量', 'definition', 'cs', ['working-memory-limit', 'comprehension-time-share']),
+  c('expertise-is-not-speed', '熟達は速さではない', '注視の回数で差が出て、1 回の長さでは出ない。見ない場所が決まること', 'viewpoint', 'cs', ['chunk-capacity-in-bits', 'expertise-reversal']),
+  c('absolute-vs-relative-prediction', '比較には使え、予測には使うな', 'ばらつきが値と同程度ある。両案に同じ定数を入れれば相殺する', 'viewpoint', 'cs', ['evidence-hierarchy', 'code-entropy', 'expertise-is-not-speed']),
   c('representation-independence', '表現独立性', '実装を替えても外から区別できない。情報隠蔽の定理版', 'theorem', 'cs', ['information-hiding', 'parametricity']),
   c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
   c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),

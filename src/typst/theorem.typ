@@ -151,8 +151,15 @@
     // 一つ足すと全部ずれる。外から張ったリンクやブックマークが、黙って
     // 別の主張を指すようになる。`<def:measure>` と書いた側は動かないので、
     // そちらを錨にする。ページ内の `@` 参照は Typst の id のままでよい。
+    //
+    // ただし**コロンを含むラベルのときだけ**にする。`<def:measure>` は `:` が
+    // id に使いにくいので Typst が `loc-N` を振り、錨のほうが唯一の名前になる。
+    // 講義ノート由来の `<hilbert-corespondence>` はそのまま id になるので、
+    // 同じものを二度置くと **1 ページに同じ id が二つ**並び、
+    // どちらへ飛ぶかがブラウザ任せになる（実測 2 ページ、4 件）。
     let tag = it.at("label", default: none)
-    let anchor = if tag == none { none } else { str(tag).replace(":", "-") }
+    let named = tag != none and str(tag).contains(":")
+    let anchor = if named { str(tag).replace(":", "-") } else { none }
 
     if target() == "html" {
       html.elem("div", attrs: (class: "statement statement-" + variant), {

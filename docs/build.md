@@ -1133,13 +1133,57 @@ getComputedStyle(document.querySelector('math')).fontFamily
 （loader が合成用文字を間隔付き文字に置換している。`typst-html.ts` の
 `useSpacingAccents`）。
 
-**14. HTML export は experimental**
+**14. `@ラベル` はファイルをまたげない**
+
+`@thm:foo` は同じ `.typ` の中しか解決しない。別の回の定理を指すと
+`label does not exist in the document` でビルドが止まる。**連載を書くと必ず踏む。**
+
+回避は `#link("/math/…")[第 N 回]` ＋ 平文。「@thm:levi-civita の公式」ではなく
+「前回の Christoffel 記号の公式」と書く。番号での参照は諦めることになるが、
+そもそも読者は別ページの「定理 4」を見に行けないので、実害は少ない。
+
+**15. 存在しない記号・関数**
+
+LaTeX や他の Typst 版の記憶で書くと落ちる。よく踏んだもの。
+
+| 書きたいもの | 誤 | 正 |
+| --- | --- | --- |
+| ⊗ / ⊕ | `times.circle` / `plus.circle` | `times.o` / `plus.o` |
+| ∖ | `setminus` | `without` |
+| ℝ | `mathbb(R)` | `RR` |
+| 広い空白 | `qquad` | `quad quad` |
+| tr | `tr` | `upright("tr")` |
+| ket / bra | `ket(psi)` | 無い。記事の先頭で `#let ket(x) = $lr(\| #x chevron.r)$` |
+
+**16. `abs()` の中のカンマは引数区切りになる**
+
+`abs(chevron.l a, b chevron.r)` は `unexpected argument` で落ちる。
+`abs()` は 1 引数の関数なので、カンマで切られる。`\,` でエスケープする。
+
+```typst
+$ abs(chevron.l phi_i\, psi chevron.r)^2 $
+```
+
+`norm()` も同じ。`[hat(A), hat(B)]` のような括弧の中のカンマも、
+`abs()` に包むなら逃がすこと。
+
+**17. 記事は 1 本ずつコンパイルして確かめる**
+
+`npm run build` はキャッシュが効くので、いま書いたファイルのエラーを見落とす。
+
+```sh
+typst compile --format html --features html --root . <file> /dev/null
+```
+
+**警告も読む。** 13 番のように、コンパイルは成功して意味だけ壊れるものがある。
+
+**18. HTML export は experimental**
 
 `--features html` が要る。公式に production 非推奨で、未対応要素や show rule の穴を
 たまに踏む。回避の show rule を書くか upstream にパッチを送る。`target()` だけは
 0.15 からフラグ無しで使えるので、PDF ビルド側では `TYPST_FEATURES` を立てなくていい。
 
-**15. `place` は SVG 島にならない。黙って落ちる**
+**19. `place` は SVG 島にならない。黙って落ちる**
 
 HTML に写像できない精密レイアウト（`place`、回転）が自動で SVG として埋め込まれる、
 というのは誤りだった。0.15.1 の実出力は `warning: place was ignored during HTML

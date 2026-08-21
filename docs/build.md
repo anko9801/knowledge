@@ -48,6 +48,8 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 | `src/styles/global.css` | 見た目。和文組版の progressive enhancement もここ |
 | `scripts/emit-math-css.mjs` | MathML 用 stylesheet を 1 度だけ回収 |
 | `scripts/subset-math-font.sh` | 数学フォントを woff2 にサブセット |
+| `scripts/subset-text-font.sh` | 本文の欧文（Latin Modern Roman） |
+| `scripts/subset-mono-font.sh` | コードの等幅（Latin Modern Mono Light） |
 | `scripts/subset-mathbb-font.sh` | 黒板文字だけ別書体から切り出す |
 | `scripts/latex/preprocess.mjs` | LaTeX の区切り記号マクロを素の LaTeX に均す |
 | `scripts/latex/repair-typst.mjs` | pandoc 出力を Typst 0.15 が通る形に直す |

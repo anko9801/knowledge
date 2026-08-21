@@ -73,6 +73,32 @@
   font-display: swap;
 }
 
+/*
+ * コードの等幅。scripts/subset-mono-font.sh が生成する。
+ *
+ * ui-monospace は環境によって DejaVu Sans Mono などに落ちる。Computer Modern
+ * とは骨格も太さも無関係なので、コードの塊だけが別のサイトから貼られたように
+ * 浮く。本文の行に出る inline の `foo` では、もっと目立つ。
+ *
+ * Latin Modern Mono は本文と数式の両方と同じ系統。Light を採るのは、
+ * こちらにだけ本物の bold があるためで、合成させると字が潰れる。
+ */
+@font-face {
+  font-family: MonoSubset;
+  src: url('../fonts/mono-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: MonoSubset;
+  src: url('../fonts/mono-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --measure: 34rem;
   --ink: #1a1a1a;
@@ -81,7 +107,7 @@
   --rule: #e2e2dd;
   --accent: #7a4b2a;
   /* コードの地。紙より一段だけ沈める。差が大きいと本文より前に出る。 */
-  --code-paper: #f6f5f1;
+  --code-paper: #f1f0ea;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -91,7 +117,7 @@
     --muted: #96948d;
     --rule: #33333a;
     --accent: #d8a06a;
-    --code-paper: #1e1e22;
+    --code-paper: #202027;
   }
 }
 
@@ -670,21 +696,17 @@ blockquote {
  */
 
 .code {
-  margin: 1.8rem 0;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  /* 角丸から中身がはみ出さないように。横スクロールは pre の側で受ける。 */
-  overflow: hidden;
-  background: var(--code-paper);
+  margin: 1.9rem 0;
 }
 
-/* 出どころ。左上に小さく置く。右側は空けたままにして、行を混まないようにする。 */
+/* 出どころは枠の外、余白の側に置く。図の caption と同じ扱いで、
+ * 中身から一段引いた注記にする。囲みの中に帯として敷くと、
+ * 空の横棒がコードと同じ重さで並んで、塊が二段に割れて見える。 */
 .code-file {
-  padding: 0.5rem 1.1rem 0.45rem;
-  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.4rem;
   color: var(--muted);
-  font-size: 0.78em;
-  letter-spacing: 0.02em;
+  font-size: 0.75em;
+  letter-spacing: 0.04em;
 }
 
 .code-file code {
@@ -693,28 +715,29 @@ blockquote {
   font-size: inherit;
 }
 
-.code pre {
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-  background: none;
-}
-
+/* 枠線は引かない。地を一段沈めるだけで塊として立つ。
+ * 線と地を両方置くと、地が薄いぶん線だけが目に入って、
+ * 中身の無い箱に見える。 */
 pre {
+  margin: 1.9rem 0;
   overflow-x: auto;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
+  padding: 0.9rem 1.15rem;
+  border-radius: 3px;
   background: var(--code-paper);
-  line-height: 1.65;
+  /* コードは 1 行が 1 単位なので、本文の 1.9 では散らばって見える。 */
+  line-height: 1.55;
   /* 和文の約物詰めはコードでは邪魔になる。等幅の桁を崩さない。 */
   text-spacing-trim: normal;
 }
 
+.code pre {
+  margin: 0;
+}
+
 code,
 pre {
-  font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
-  font-size: 0.9em;
+  font-family: MonoSubset, ui-monospace, 'SFMono-Regular', monospace;
+  font-size: 0.88em;
 }
 
 /* 本文中の `foo` には地を敷かない。和文の約物詰めと段落の行送りを、

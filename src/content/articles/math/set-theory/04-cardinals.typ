@@ -108,6 +108,19 @@ $C$ は $f, g$ から一意に決まる集合として書けている。
 「$cal(P)(A)$ のほうが真に大きい」という有益な結論が出ているところだ。
 同じ論法が、置かれる文脈次第で災難にも道具にもなる。
 
+#example[同じ大きさに見えないものが、同じ大きさになる][
+  #table(
+    columns: (auto, 1fr),
+    [$bb(N) approx 2 bb(N)$], [$n mapsto 2n$。#strong[半分に減らしても減らない]],
+    [$bb(N) approx bb(Z)$], [$0, 1, -1, 2, -2, dots$ と並べ直す],
+    [$bb(N) approx bb(N) times bb(N)$], [$⟨n, m⟩ mapsto 2^n (2m+1) - 1$],
+    [$(0,1) approx bb(R)$], [$x mapsto tan(pi (x - 1\/2))$。#strong[有界な区間と直線全体]],
+  )
+
+  真部分集合と全体が対等になる。これは有限集合では起こらない。
+  #strong[起こることを、無限であることの定義に採る流儀もある]（Dedekind）。
+]
+
 これで無限の大きさは一つではないことが分かった。
 $bb(N) prec cal(P)(bb(N)) prec cal(P)(cal(P)(bb(N))) prec dots$ と、いくらでも大きくなる。
 
@@ -253,6 +266,19 @@ $aleph_(alpha+1)$ は $aleph_alpha$ の次に大きい基数である。
     kappa^lambda := card({}^B A) $
   ここで ${}^B A$ は $B$ から $A$ への関数全体である。
 ]<def:card-arith>
+
+#example[足しても掛けても増えない][
+  #table(
+    columns: (auto, 1fr),
+    [$aleph_0 + 1 = aleph_0$], [$bb(N)$ に一点足しても、番号を一つずらせば同じ],
+    [$aleph_0 + aleph_0 = aleph_0$], [偶数と奇数に分けて番号を振り直す],
+    [$aleph_0 dot aleph_0 = aleph_0$], [上の $bb(N) times bb(N) approx bb(N)$],
+    [$2^(aleph_0) > aleph_0$], [@thm:cantor。#strong[冪だけが増える]],
+  )
+
+  #strong[増えるのは冪を取ったときだけ]である。
+  和と積は @thm:hessenberg で潰れる。
+]
 
 順序数の算術と記号が同じなので、初学者は必ず混乱する。私も混乱した。
 $omega + 1 != omega$ だが $aleph_0 + 1 = aleph_0$ である。

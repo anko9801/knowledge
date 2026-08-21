@@ -425,6 +425,21 @@ export const concepts: readonly Concept[] = [
   c('coherence-in-interface', '一貫性を界面に置く', '繋ぎ方の規約に一貫性を持たせる。結合を消すのではなく一種類に揃える', 'viewpoint', 'cs', ['conceptual-integrity', 'coupling']),
   c('theory-building', 'プログラムは理論である', '成果物はコードではなく、書き手が持つ理論。コードは書き下せた部分だけ', 'viewpoint', 'cs', ['implicit-coupling'], ['chunking']),
   c('program-death', 'プログラムの死', '理論を持つ人が全員いなくなること。動き続けるが、意味のある変更はできない', 'viewpoint', 'cs', ['theory-building']),
+
+  // --- 減らすとは何か ---------------------------------------------------
+  //
+  // どの流儀も「減らせ」と言い、何を数えるかだけが違う。そして力のある流儀ほど
+  // 個数を数えない。単純さは絡まりの少なさで、深いモジュールは中身が大きい。
+  // 分けすぎは口の数だけ増やして、隠せる量を増やさない。
+  //
+  // そして減らすには床がある。相手の多様さは、こちらの多様さでしか吸収できない。
+  // 検査を足せば、足した分だけ系が複雑になる。だから減っているように見えるとき、
+  // たいていどこかへ移っている。負荷の配分の一般形がここに来る。
+  c('simplicity-is-not-fewness', '単純さは個数ではない', '撚り合わさっていないこと。一つしか無いこととは違う', 'viewpoint', 'cs', ['deep-module', 'chunking']),
+  c('requisite-variety', '必要多様性', '相手の多様さは、こちらの多様さでしか吸収できない。減らすには床がある', 'theorem', 'cs', ['simplicity-is-not-fewness']),
+  c('safeguard-complexity', '安全装置が事故を作る', '検査を足せば足した分だけ系が複雑になり、新しい故障の経路が生まれる', 'viewpoint', 'cs', ['requisite-variety', 'change-propagation']),
+  c('relocation-not-reduction', '減らすのではなく移す', '減ったように見えるとき、たいていどこかへ移っている。まず移り先を見る', 'viewpoint', 'cs', ['safeguard-complexity', 'load-tradeoff']),
+  c('truncated-maxim', '条件の落ちた格言', '格言は条件付きで、伝わる途中で条件が落ちる。伝わる形と正しい形が違う', 'viewpoint', 'cs', ['reader-model'], ['worse-is-better']),
   c('representation-independence', '表現独立性', '実装を替えても外から区別できない。情報隠蔽の定理版', 'theorem', 'cs', ['information-hiding', 'parametricity']),
   c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
   c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),

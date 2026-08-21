@@ -66,6 +66,12 @@
 }
 
 #let axiom = _make("axiom", [公理])
+/// 選べない前提。公理と分けてある。
+///
+/// 公理は選ぶもので、別のものを選べば別の理論になる。こちらは選べない。
+/// 測って確かめられるし、外れていれば導いたものが崩れる。同じ枠で書くと、
+/// 「選んだのだから正しい」に見えてしまうので、名前を変えている。
+#let given = _make("given", [前提])
 #let definition = _make("definition", [定義])
 #let theorem = _make("theorem", [定理])
 #let lemma = _make("lemma", [補題])

@@ -333,6 +333,17 @@ blockquote {
   color: var(--accent);
 }
 
+/* 前提は選んだものではなく外から与えられたものなので、罫を太くして区別する。
+   同じ見た目にすると「約束事だから正しい」に見えてしまう。 */
+.statement-given {
+  border-left-width: 3px;
+  border-left-color: var(--accent);
+}
+
+.statement-given .statement-head {
+  color: var(--accent);
+}
+
 /* 例と注意は本文の補足なので、いちばん弱い罫にする。 */
 .statement-example,
 .statement-remark {

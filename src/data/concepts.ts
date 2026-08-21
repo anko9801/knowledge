@@ -525,7 +525,7 @@ export const concepts: readonly Concept[] = [
   // 仮定に含めた時点で出てくるので、外から与える必要がない。並べて数えたのが
   // 誤りだった。ただし効かないわけではなく、働き方が違う。下の二つに分ける。
   c('expected-change-cost', '手間の総量', '読む時間も、逃した欠陥の修正も、計算資源も、最後は同じ物差しで測れる', 'viewpoint', 'cs', ['tidying-timing', 'feedback-delay']),
-  c('irreducible-inputs', '外から与えるもの', '機械・人・時間の三つ。どれも他の二つからは出てこない', 'viewpoint', 'cs', ['expected-change-cost']),
+  c('irreducible-inputs', '動かせない前提', '機械・保持・誤り・変更の四つ。選んだものではないので、測って確かめられる', 'viewpoint', 'cs', ['expected-change-cost']),
   c('feasibility-vs-cost', '高くつくとできないは別', '機械と人と時間は釣り合いの問題、決定不能性は可否の問題。混ぜると判断を誤る', 'viewpoint', 'cs', ['irreducible-inputs', 'soundness-completeness-tradeoff']),
   c('binding-constraint', '効いている制約', '制約が 1 本しか効かない場所に判断は無い。逆を向いた二本があるときだけ要る', 'viewpoint', 'cs', ['feasibility-vs-cost', 'load-tradeoff']),
 

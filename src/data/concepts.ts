@@ -387,7 +387,10 @@ export const concepts: readonly Concept[] = [
   // 『Tidy First?』の題名に付いた疑問符が消える。Beck の答えは
   // 「Tidy first? Yes. Also no.」で、決着していないことが中身だった。
   c('discounting', '割引', '今日の 1 ドルは明日の 1 ドルより価値がある。早く稼ぎ、遅く払え', 'viewpoint', 'cs', ['change-over-time']),
-  c('optionality', 'オプション価値', '不確かならモノより選択肢。先に払って、後で選べる状態を買え', 'viewpoint', 'cs', ['change-over-time'], ['essential-accidental']),
+  c('optionality', 'オプション価値', '不確かならモノより選択肢。先読みが外れるほど分離の価値が上がる', 'viewpoint', 'cs', ['change-over-time'], ['essential-accidental']),
+  c('implicit-coupling', '暗黙の結合', '型にも呼び出しにも現れない結合。書式の前提、列名の仮定、実行順序', 'viewpoint', 'cs', ['coupling']),
+  c('unknown-unknowns', '何を知らないか分からない', 'どこを直せばよいか分からず、直しても足りたか分からない。三症状で最も厄介', 'viewpoint', 'cs', ['implicit-coupling']),
+  c('complexity-weighting', '触る場所だけが効く', '複雑さは触る時間の割合で重み付く。見ない場所へ隔離すれば無くしたのとほぼ同じ', 'viewpoint', 'cs', ['change-over-time']),
   c('tidying-timing', '整頓は先か後か', '割引は後回しを、オプション価値は前倒しを支持する。費用の比較でしか決まらない', 'viewpoint', 'cs', ['discounting', 'optionality', 'decoupling-cost']),
 
   // --- プログラムの構成 -------------------------------------------------
@@ -399,11 +402,13 @@ export const concepts: readonly Concept[] = [
   // 「進行状況を有限の座標で書けるか」で、Hoare 論理に落ちる。情報隠蔽は
   // 表現独立性に、参照透過性は Church--Rosser に、型検査は健全性定理に落ちる。
   // だから requires は論理側だけに張り、認知へは empirical で繋ぐ。
-  c('essential-accidental', '本質的複雑性と偶有的複雑性', 'Brooks。減らせるのは後者だけで、銀の弾丸が無い理由もそこ', 'viewpoint', 'cs', [], ['cognitive-load']),
+  c('essential-accidental', '本質的複雑性と偶有的複雑性', 'Brooks。減らせるのは後者だけ。ただし残りの何割が本質かは決着していない', 'viewpoint', 'cs', [], ['cognitive-load']),
+  c('essential-state', '本質的な状態', '本質的なのは入力だけで、導出できる状態は偶有的。Tar Pit の判定基準', 'viewpoint', 'cs', ['essential-accidental', 'immutability']),
   c('hoare-logic', 'Hoare 論理', '事前条件と事後条件でプログラムの意味を書く', 'definition', 'cs', ['proof-system']),
   c('loop-invariant', 'ループ不変条件', '繰り返しの意味を 1 本の命題に畳む。頭をリセットしてよい点', 'technique', 'cs', ['hoare-logic']),
   c('structured-programming', '構造化プログラミング', '静的なテキスト位置から動的な進行状況を有限の座標で指せるようにする', 'viewpoint', 'cs', ['loop-invariant'], ['cognitive-load']),
   c('information-hiding', '情報隠蔽', 'モジュールは機能ではなく、隠す決定で切る。Parnas', 'viewpoint', 'cs', [], ['cognitive-load', 'chunking']),
+  c('deep-module', '深いモジュール', '狭い口で大きな中身を隠す。口を覚える費用より隠した量が大きいかで測る', 'viewpoint', 'cs', ['information-hiding'], ['chunking']),
   c('representation-independence', '表現独立性', '実装を替えても外から区別できない。情報隠蔽の定理版', 'theorem', 'cs', ['information-hiding', 'parametricity']),
   c('immutability', '不変性', '値が書き換わらないなら、いま誰が指しているかを追わなくてよい', 'viewpoint', 'cs', [], ['cognitive-load']),
   c('referential-transparency', '参照透過性', '式を値で置き換えてよい。等式で推論できる', 'viewpoint', 'cs', ['church-rosser', 'immutability'], ['cognitive-load']),

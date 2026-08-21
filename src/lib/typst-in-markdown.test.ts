@@ -42,7 +42,13 @@ test('1 行に複数あっても 1 件にまとめる', () => {
 })
 
 // 実ファイルに当てる。ここが本番で、上は仕掛けの確認でしかない。
-for (const path of ['README.md', 'docs/build.md', 'CLAUDE.md']) {
+for (const path of [
+  'README.md',
+  'docs/build.md',
+  'docs/reader.md',
+  'docs/decisions.md',
+  'CLAUDE.md',
+]) {
   test(`${path} に Typst 記法が混ざっていない`, () => {
     const found = typstInMarkdown(readFileSync(path, 'utf8'))
     const report = found.map((f) => `  ${path}:${f.line}  ${f.text.slice(0, 70)}`).join('\n')

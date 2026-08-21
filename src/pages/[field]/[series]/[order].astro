@@ -199,7 +199,14 @@ const coversRest = neighbors.covers.length - covers.length
     }
 
     {article.data.summary && <p class="summary">{article.data.summary}</p>}
-    <p class="meta"><time datetime={updated}>{updated}</time></p>
+    <p class="meta">
+      <time datetime={updated}>{updated}</time>
+      {/* 同じ .typ から出た紙面。組版は template.typ の paged 側が持っている。
+          画面で読む以外の読み方——印刷する、書き込む、手元に置く——への口。 */}
+      <a class="pdf" href={`${base}${article.data.field}/${article.data.series}/${article.data.order}.pdf`}>
+        PDF
+      </a>
+    </p>
 
     {
       (neighbors.requires.length > 0 || neighbors.gaps.length > 0) && (
@@ -380,9 +387,17 @@ const coversRest = neighbors.covers.length - covers.length
   }
 
   .meta {
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
     margin: 0.6rem 0 0;
     font-size: 0.85rem;
     color: var(--muted);
+  }
+
+  .pdf {
+    color: var(--muted);
+    text-decoration-color: var(--rule);
   }
 
   /* 前提と下流。辺は概念グラフから引いている（src/lib/neighbors.ts）。

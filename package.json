@@ -16,7 +16,7 @@
     "test": "node --test scripts/latex/*.test.mjs src/lib/*.test.ts",
     "notes": "node scripts/latex/to-typst.mjs",
     "curriculum": "node scripts/curriculum.mjs",
-    "postbuild": "pagefind --site dist"
+    "postbuild": "node scripts/emit-pdf.mjs && pagefind --site dist"
   },
   "dependencies": {
     "astro": "^7.2.3"

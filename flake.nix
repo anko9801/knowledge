@@ -39,6 +39,14 @@
           # 根号の蓋・分数の位置・cases の波括弧も崩れる）。だから字だけ借りる。
           mathbbFont = "${pkgs.newcomputermodern}/share/fonts/opentype/public/NewCMMath-Regular.otf";
           textFontDir = "${pkgs.lmodern}/share/fonts/opentype/public/lm";
+
+          # PDF の本文フォント。template.typ の paged 側が Noto Serif CJK JP を指す。
+          # system の fc-list に任せると、CI では和文が豆腐になったまま 86 本の
+          # PDF が出てしまう。typst に --font-path で明示的に渡す。
+          pdfFontDir = pkgs.symlinkJoin {
+            name = "knowledge-pdf-fonts";
+            paths = [ pkgs.noto-fonts-cjk-serif pkgs.noto-fonts ];
+          };
         in
         {
           default = pkgs.mkShell {
@@ -61,6 +69,9 @@
             MATH_FONT = mathFont;
             MATHBB_FONT = mathbbFont;
             TEXT_FONT_DIR = textFontDir;
+
+            # scripts/emit-pdf.mjs が typst へ渡す。
+            PDF_FONT_PATH = "${pdfFontDir}/share/fonts";
 
             shellHook = ''
               echo "typst   $(typst --version | cut -d' ' -f2)"

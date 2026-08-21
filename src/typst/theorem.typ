@@ -113,8 +113,20 @@
       if title != none [ (#title)]
     }
 
+    // ラベルから、位置に依らない錨を出す。
+    //
+    // Typst が振る id は `loc-1`、`loc-2` と**出てきた順**なので、上に主張を
+    // 一つ足すと全部ずれる。外から張ったリンクやブックマークが、黙って
+    // 別の主張を指すようになる。`<def:measure>` と書いた側は動かないので、
+    // そちらを錨にする。ページ内の `@` 参照は Typst の id のままでよい。
+    let tag = it.at("label", default: none)
+    let anchor = if tag == none { none } else { str(tag).replace(":", "-") }
+
     if target() == "html" {
       html.elem("div", attrs: (class: "statement statement-" + variant), {
+        if anchor != none {
+          html.elem("span", attrs: (id: anchor, class: "anchor"), [])
+        }
         html.elem("p", attrs: (class: "statement-head"), head)
         body
         // details なので JS が要らない。CSS が落ちても、開いた状態で読める。

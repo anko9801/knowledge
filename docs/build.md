@@ -598,6 +598,27 @@ viewport 1000px のとき）。参照ではなく**本文の段に合わせる**
 `check` の中身には `<details>` が入っている。素通しすると、参照にホバーしただけで
 答えが見える。`peek.ts` が `<details>` を落としている。
 
+### 主張の錨は、位置に依らせない
+
+Typst が主張に振る id は `loc-1`、`loc-2` と**出てきた順**である。上に定理を一つ
+足すと、その下が全部ずれる。ページ内の `@` 参照は同じビルドで辻褄が合うので
+問題ないが、**外から張ったリンクは黙って別の主張を指すようになる。**
+
+そこで `<def:measure>` と書いたラベルのほうから、位置に依らない錨を別に出す
+（`theorem.typ`、`it.at("label", default: none)` で取れる。`it.label` は
+「figure does not have field」で落ちる）。
+
+```html
+<div class="statement statement-definition">
+  <span id="def-measure" class="anchor"></span>
+  ...
+```
+
+`:` は URL と CSS で扱いにくいので `-` に均す。全体で 827 個。
+`peek.ts` が複製から id を落とすので、重複は出ない（実測 0 件）。
+
+Typst の `loc-N` はそのまま残してある。ページ内の `@` 参照はそちらを使う。
+
 ### 記事をまたぐときは、記事のほうを添える
 
 `peek.ts` が添えられるのは**同じ記事の中の主張**だけである。`@def:measure` は

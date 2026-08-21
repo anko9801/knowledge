@@ -43,6 +43,7 @@
     "prevent-vs-recover",
     "safeguard-complexity",
     "requisite-variety",
+    "immutability",
     "relocation-not-reduction",
     "binding-constraint",
     "feasibility-vs-cost",
@@ -989,13 +990,37 @@ Gabriel が $1989$ 年に並べた二つの設計流儀は、挙げる価値が�
 手元で一度動かすスクリプトは @g:change が効かないので、たいてい $1$ 本しか立たない。
 #strong[悩ましく感じるときは、二本立っている。]
 
+#proposition[
+  値が書き換わらないなら、その値を指している箇所どうしは、
+  書き換えという変更に関して結合しない。
+]<prop:immutability>
+
+#proof[
+  ある箇所が値を書き換えると、同じ値を指している箇所の見えるものが変わる。
+  直さねばならないので、@def:coupling の意味で結合している。
+  書き換えが起きないなら、この変更自体が無い。
+]
+
+@prop:immutability が、可変な状態を減らせという作法の中身である。
+効くのは @g:capacity の側で、#strong[いま誰が指しているかを保持しなくてよくなる]。
+指している箇所の個数は、@thm:enlarge が数えている個数にそのまま乗っていた。
+
 #example[同じ方向を向くこともある][
   可変な状態を減らす理由は、いま二本から出る。
-  @g:capacity（誰が指しているかを追わなくてよい）と、
+  @g:capacity（@prop:immutability）と、
   @g:machine（単体の速さが頭打ちなので並べる。共有された可変状態は待ち合わせを生む）。
 
   逆を向いていないので @thm:single より#strong[判断が要らない]。
   かつて読みやすさと速さの取引だった場所が、取引でなくなっている。
+]
+
+#remark[
+  無料ではない。書き換えないなら、変えた値は#strong[作り直す]ことになる。
+  割り当てと複製が増えるので、@thm:relocation のとおり実行時へ移っている。
+
+  移した先が耐えられるかは、作り直す大きさで決まる。
+  小さい値なら安く、大きな構造なら共有できる形（永続データ構造）が要る。
+  #strong[「不変にしろ」を無条件の作法として受け取ると、ここが見えない。]
 ]
 
 @cor:binding を踏まえると、設計の書き方が決まる。
@@ -1094,6 +1119,7 @@ Gabriel が $1989$ 年に並べた二つの設計流儀は、挙げる価値が�
   [誤差予算・混沌工学（SRE、Netflix）], [@thm:choice の右辺を実測に置き換える],
   [安全装置が事故を作る（Perrow）], [@prop:safeguard],
   [状態を消せ], [導出できる状態だけ消せる],
+  [可変な状態を減らせ], [@prop:immutability。作り直す費用が実行時へ移る],
   [分けておけば後で選べる], [@thm:relocation。値打ちは先の読めなさで決まる],
   [単純さ対正しさの順番（Gabriel）], [@cor:weights。移し先が内側か利用者か],
   [一人の頭に収めろ（Brooks、Wirth）], [@thm:coherence の頭側],

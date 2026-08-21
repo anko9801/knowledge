@@ -18,7 +18,7 @@ if [ -z "$SRC" ] || [ ! -f "$SRC" ]; then
   exit 1
 fi
 
-OUT=public/fonts/mathbb.woff2
+OUT="$(dirname "$0")/../src/fonts/mathbb.woff2"
 
 # 二重線の英大文字・小文字・数字は 2 つのブロックに分かれている。
 # Letterlike Symbols 側（ℂ ℍ ℕ ℙ ℚ ℝ ℤ と ℼ ℽ ℾ ℿ ⅀）に穴が空いていて、

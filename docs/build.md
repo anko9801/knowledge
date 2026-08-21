@@ -46,6 +46,7 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 | `src/styles/global.css` | 見た目。和文組版の progressive enhancement もここ |
 | `scripts/emit-math-css.mjs` | MathML 用 stylesheet を 1 度だけ回収 |
 | `scripts/subset-math-font.sh` | 数学フォントを woff2 にサブセット |
+| `scripts/subset-mathbb-font.sh` | 黒板文字だけ別書体から切り出す |
 | `scripts/latex/preprocess.mjs` | LaTeX の区切り記号マクロを素の LaTeX に均す |
 | `scripts/latex/repair-typst.mjs` | pandoc 出力を Typst 0.15 が通る形に直す |
 | `scripts/latex/to-typst.mjs` | .tex を一括変換して `src/content/notes` に置く |
@@ -55,7 +56,7 @@ front matter を HTML から復元しない、というのが構成の要。メ�
 ```sh
 nix develop                 # typst 0.15.1 / node 24 / fonttools / Latin Modern / pandoc
 npm install
-npm run fonts               # public/fonts/math.woff2 を生成（初回のみ）
+npm run fonts               # src/fonts/*.woff2 を生成（初回のみ）
 npm run dev                 # prebuild で typst-math.css も生成される
 npm run build
 npm run check               # astro check（型）
@@ -870,6 +871,21 @@ Symbols を**実コードポイントとして**出力する。このブロッ�
 ```
 U+0370-03FF ギリシャ / U+2100-214F 文字様記号 / U+2190-21FF 矢印
 U+2200-22FF 演算子   / U+27E6-27FF 括弧       / U+1D400-1D7FF 数式用英数字
+```
+
+**3.5. フォントを `public/` に置くとキャッシュが割れない**
+
+`public/` の中身は名前のまま配られる。`_astro/` の CSS や JS には内容ハッシュが
+付くのに、フォントだけ `/fonts/math.woff2` の固定名になっていた。中身を差し替えても
+ブラウザは古いものを出し続ける。実際、数式フォントを入れ替えたときに読み手の側で
+古い字形が残った。
+
+`src/fonts/` に置いて Vite に処理させる。CSS の `url()` は自動で指紋付きに解決され、
+`<link rel="preload">` は `?url` で取り込んだ値を使う。
+
+```astro
+import mathFont from '../fonts/math.woff2?url'
+<link rel="preload" href={mathFont} as="font" type="font/woff2" crossorigin />
 ```
 
 **4. 別行立て数式の CSS は `display: block math`**

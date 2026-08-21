@@ -1,5 +1,5 @@
 #!/bin/sh
-# 数学フォントをサブセットして public/fonts/math.woff2 を作る。
+# 数学フォントをサブセットして src/fonts/math.woff2 を作る。
 #
 # Typst は数式のイタリックを <mi>E</mi> ではなく U+1D438 のような
 # Mathematical Alphanumeric Symbols の実コードポイントで出力する。
@@ -10,7 +10,7 @@
 # シェルの外で走らせたときだけ、既知のパスと fc-list を順に探す。
 set -eu
 
-OUT_DIR="$(dirname "$0")/../public/fonts"
+OUT_DIR="$(dirname "$0")/../src/fonts"
 OUT="$OUT_DIR/math.woff2"
 
 SRC="${MATH_FONT:-}"
@@ -88,4 +88,4 @@ if missing:
     sys.exit(f"必須のコードポイントが欠けています: {', '.join(missing)}")
 PY
 
-echo "生成: public/fonts/math.woff2 ($(wc -c <"$OUT") bytes) <- $(basename "$SRC")"
+echo "生成: src/fonts/math.woff2 ($(wc -c <"$OUT") bytes) <- $(basename "$SRC")"

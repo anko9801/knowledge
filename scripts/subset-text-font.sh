@@ -1,5 +1,5 @@
 #!/bin/sh
-# 本文の欧文フォントをサブセットして public/fonts/text-{regular,bold}.woff2 を作る。
+# 本文の欧文フォントをサブセットして src/fonts/text-{regular,bold}.woff2 を作る。
 #
 # 数式は Latin Modern Math で組んでいるのに、地の文の欧文が和文フォント（明朝）の
 # 欧文グリフだと、太さも骨格も揃わない。Gödel や Löwenheim のような固有名詞が
@@ -9,7 +9,7 @@
 # 並べると馴染む。和文は CJK グリフを持たないぶん自動でフォールバックする。
 set -eu
 
-OUT_DIR="$(dirname "$0")/../public/fonts"
+OUT_DIR="$(dirname "$0")/../src/fonts"
 
 # 数式フォントと同じディレクトリに置かれている想定。MATH_FONT から辿る。
 SRC_DIR="${TEXT_FONT_DIR:-}"
@@ -45,7 +45,7 @@ subset() {
     --flavor=woff2 \
     --output-file="$out"
 
-  echo "生成: public/fonts/$2 ($(wc -c <"$out") bytes) <- $1"
+  echo "生成: src/fonts/$2 ($(wc -c <"$out") bytes) <- $1"
 }
 
 # 10pt 用の光学サイズを使う。本文の大きさに合わせた字幅になっている。

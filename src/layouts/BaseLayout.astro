@@ -5,6 +5,12 @@ import '../styles/typst-math.css'
 import '../styles/global.css'
 import '../styles/layout.css'
 
+// フォントは src/ に置いて Vite に指紋を付けさせる。public/ 直置きだと
+// 名前が固定になり、中身を差し替えても古いものがキャッシュから出続ける。
+// 実際、数式フォントを入れ替えたときに読み手側で古い字形が残った。
+import mathFont from '../fonts/math.woff2?url'
+import textRegularFont from '../fonts/text-regular.woff2?url'
+
 import type { MarkdownHeading } from 'astro'
 
 import Sidebar from '../components/Sidebar.astro'
@@ -49,8 +55,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     {description && <meta name="description" content={description} />}
     {/* 本文の欧文と数式は最初の画面に必ず出るので、両方とも先読みする。
         太字は出現頻度が低いので、必要になってから取りに行かせる。 */}
-    <link rel="preload" href={`${base}fonts/text-regular.woff2`} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={`${base}fonts/math.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={textRegularFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={mathFont} as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip" href="#main">本文へ</a>

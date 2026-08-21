@@ -30,11 +30,14 @@ const PANDOC = process.env.PANDOC_BIN ?? 'pandoc'
 const MAGICK = process.env.MAGICK_BIN ?? 'magick'
 
 /**
- * 図版の最大幅。本文の読み幅が 48rem（約 800px）なので、
- * 高精細ディスプレイを考えても 1600px あれば足りる。
- * 元は 3000〜3700px あり、そのままだと 1 枚で数 MB になる。
+ * 図版の最大幅。本文の読み幅は --measure = 34rem（約 580px）なので、
+ * 2 倍の高精細ディスプレイでも 1200px あれば足りる。
+ * 元の .tex には 3000〜3700px のものがあり、1 枚で数 MB になる。
+ *
+ * 長らく 1600px にしていたが、画面に出ない画素を配っていた。
+ * 1200px に落として画像全体が 6.3MB から 4.3MB になった。
  */
-const MAX_IMAGE_WIDTH = 1600
+const MAX_IMAGE_WIDTH = 1200
 const TYPST = process.env.TYPST_BIN ?? 'typst'
 
 const SKIP = new Set(['preamble.tex', 'template.tex'])

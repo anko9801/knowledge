@@ -587,34 +587,6 @@ export const concepts: readonly Concept[] = [
   c('virtual-memory', '仮想記憶', '番地を写像にする。分離と多重化が同時に手に入る', 'technique', 'cs', ['process-isolation', 'memory-hierarchy']),
   c('crash-consistency', 'クラッシュ整合性', 'いつ落ちても壊れないこと。ログは順序の保証で買う', 'technique', 'cs', ['linearizability']),
 
-  // --- 保護境界と、その向こうに置くもの -------------------------------
-  //
-  // ここも Linux 自体は事例である。概念として載るのは「入口を固定しないと
-  // 保護にならない」「境界を越えるには定数を払う」のように、CPU が特権を
-  // 分けていることだけから出る部分に限る。
-  c('privilege-modes', '特権モード', 'CPU は複数の実行モードを持ち、低い側では実行できない命令と触れない番地がある', 'definition', 'cs', ['process-isolation']),
-  c('fixed-entry-points', '入口の固定', 'モードを上げる側は行き先を選べない。保護はこの一点に乗っている', 'theorem', 'cs', ['privilege-modes']),
-  c('borrowed-context', '呼び手の文脈で走る', '特権側は自分の実行主体を持たない。入口を通った側の足で走り、戻る', 'viewpoint', 'cs', ['fixed-entry-points']),
-  c('boundary-crossing-cost', '境界を越える費用', '保護境界は 1 往復ごとに定数を取る。設計を決めるのは境界の数', 'theorem', 'cs', ['fixed-entry-points', 'memory-hierarchy']),
-  c('deferred-work', '仕事を後ろへ回す', '入口で全部やると次の入口を取りこぼす。受け取りと処理を切り離す', 'technique', 'cs', ['borrowed-context']),
-
-  c('proportional-share', '比例配分', '重みに比例して配る理想。実機は 1 個ずつしか走らせられないので必ずずれる', 'definition', 'cs', ['interleaving']),
-  c('lag-bound', '配分誤差の限界', 'EEVDF のずれは量子ひとつぶんで抑えられる。重みにも仕事の数にも依らない', 'theorem', 'cs', ['proportional-share']),
-  c('read-copy-update', '読む側を待たせない更新', '更新を差し替えと片付けに割ると、読む側に排他が要らなくなる', 'technique', 'cs', ['immutability', 'mutual-exclusion']),
-  c('quiescent-state', '静穏状態', '読み取り区間の中に居ないことが確実な点。居ないことを、聞かずに知る', 'definition', 'cs', ['read-copy-update']),
-  c('grace-period', '猶予期間', '全員が一度ずつ静穏状態を通れば、古い参照を持つ者はいない', 'theorem', 'cs', ['quiescent-state']),
-
-  c('sparse-page-table', '疎な写像表', '写像を素直に持つと表が空間を食い尽くす。階層にして使う枝だけ持つ', 'theorem', 'cs', ['virtual-memory']),
-  c('fault-as-notification', '不在を通知として使う', '写像が引けないことを失敗ではなく合図に読む。遅延読み込みも複製も同じ機構', 'viewpoint', 'cs', ['sparse-page-table', 'fixed-entry-points']),
-  c('fragmentation-bound', '断片化の下界', 'どんなオンライン割り当ても、最悪では log の倍数だけ余分を要る（Robson）', 'theorem', 'cs'),
-  c('page-cache', 'ページキャッシュ', '空きページは何もしないので、読んだものを捨てずに置く。空きが少ないのは正常', 'technique', 'cs', ['virtual-memory', 'locality']),
-  c('lru-approximation', 'LRU の近似', '参照はハードウェアが行うので順序を正確には持てない。参照ビットで近似する', 'technique', 'cs', ['page-cache', 'locality']),
-  c('reclaim-is-the-problem', '難しいのは回収', '全部使うのが正常なら、足りないのは常態である。本体は割り当てではなく回収', 'viewpoint', 'cs', ['page-cache', 'lru-approximation']),
-  c('overcommit', '予約と使用を分ける', '約束は破れる。破ったときの後始末を、どこかで誰かが引き受ける', 'viewpoint', 'cs', ['fault-as-notification', 'reclaim-is-the-problem']),
-
-  c('registration-over-call', '呼び先は登録で決まる', '関数ポインタの表で多態を作ると、呼び先は型ではなく登録で決まる。静的には追えない', 'technique', 'cs', ['information-hiding']),
-  c('tracing-vs-observation', '追跡と観測', '静的に追えない距離まで動的観測は届く。ただし通らなかった道は見せない', 'viewpoint', 'cs', ['registration-over-call']),
-
   // --- 量子力学（線形代数から論理的に決まる部分） -----------------------
   //
   // 「観測量はエルミート作用素」という要請は、測定値が実数で確率が 1 に

@@ -103,6 +103,26 @@ PDF は同じソースからそのまま出る。
 typst compile src/content/posts/foo.typ --root . foo.pdf
 ```
 
+### PDF も配る
+
+**`postbuild` が記事 86 本を PDF にして `dist` へ置く**（`scripts/emit-pdf.mjs`）。
+URL は HTML と揃えてあり、`/math/measure/2.html` の隣に `/math/measure/2.pdf` が出る。
+記事の日付の横に導線がある。
+
+紙面の組み方は `template.typ` の `paged` 側が持っている。A4、柱、通し番号。
+想起の問いは答えを開いた形で並ぶ（`<details>` が畳めないので）。
+
+| | |
+| --- | --- |
+| 費用 | 1 本 0.2 秒、86 本で数秒。`dist` が 27M → 47M |
+| 並列 | CPU 数 − 1 まで。typst の起動が支配的なので、並べるだけで縮む |
+| 失敗 | 1 本落ちても止めない。HTML は読めるので、記録だけ残して先へ進む |
+
+**和文フォントを `fc-list` に任せない。** CI には Noto Serif CJK が無いので、
+任せると和文が豆腐のまま 86 本が出る。**PDF なので開くまで気づけない。**
+`flake.nix` が `PDF_FONT_PATH` を渡し、`emit-pdf.mjs` が `--font-path` で
+typst へ食わせる。HTML 側のフォントとは経路が別なので、片方だけ直しても直らない。
+
 ## 依存の版
 
 | | 版 | 備考 |

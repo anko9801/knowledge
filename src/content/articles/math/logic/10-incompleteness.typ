@@ -170,9 +170,11 @@ Gödel 文は「私は証明できない」だった。では「私は無矛盾�
 #proof[
   骨格を述べる。鍵は、証明可能性述語が次の三条件（導出可能性条件）を満たすことである。
 
-  + $T tack.r sigma quad => quad T tack.r Prov_T (⟦sigma⟧)$
-  + $T tack.r Prov_T (⟦sigma arrow.r tau⟧) arrow.r (Prov_T (⟦sigma⟧) arrow.r Prov_T (⟦tau⟧))$
-  + $T tack.r Prov_T (⟦sigma⟧) arrow.r Prov_T (⟦Prov_T (⟦sigma⟧)⟧)$
+  + $ T tack.r sigma quad => quad T tack.r Prov_T (⟦sigma⟧) $
+  + $ T tack.r Prov_T (⟦sigma arrow.r tau⟧) \
+      quad arrow.r (Prov_T (⟦sigma⟧) arrow.r Prov_T (⟦tau⟧)) $
+  + $ T tack.r Prov_T (⟦sigma⟧) \
+      quad arrow.r Prov_T (⟦Prov_T (⟦sigma⟧)⟧) $
 
   1 は第 9 回で見た。2 は modus ponens の形式化で、証明の連結が算術で書けることから従う。
   3 が最も手間のかかるところで、$Sigma_1$ 文の証明可能性を $T$ の内部で再現する

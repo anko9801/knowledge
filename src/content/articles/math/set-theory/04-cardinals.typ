@@ -224,7 +224,9 @@ Cantor の定理から $cal(P)(A)$ は $A$ より大きいので、基数はい�
 ]<thm:hartogs>
 
 #proof[
-  $W := \{⟨X, R⟩ : X subset.eq A and R subset.eq X times X and ⟨X, R⟩ upright("は整列順序")\}$ とおく。
+  $ W := \{⟨X, R⟩ : X subset.eq A and R subset.eq X times X
+      and ⟨X, R⟩ upright("は整列順序")\} $
+  とおく。
   これは $cal(P)(A) times cal(P)(A times A)$ からの分出なので集合である。
   各 $⟨X, R⟩ in W$ にその順序型 $otp(X, R)$ を対応させると、
   置換公理よりその像 $H$ は順序数の集合になる。

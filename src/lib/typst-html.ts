@@ -136,7 +136,7 @@ export const wrapTables = (html: string): string =>
   html.replace(
     /<table\b([^>]*)>([\s\S]*?)<\/table>/g,
     (_, attributes: string, body: string) =>
-      `<div class="table-scroll" tabindex="0" role="group" aria-label="表"><table${attributes}>${body}</table></div>`,
+      `<div class="table-scroll scroll-hint" tabindex="0" role="group" aria-label="表"><table${attributes}>${body}</table></div>`,
   )
 
 /**

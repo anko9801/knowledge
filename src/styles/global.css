@@ -277,6 +277,20 @@ math[display='block'] {
   padding-block: 0.2rem;
 }
 
+/* 転がせることを端の影で示す。規則は .scroll-hint と同じで、
+   MathML には class を足せないので属性セレクタで当てる。 */
+math[display='block'] {
+  background:
+    linear-gradient(to right, var(--paper) 60%, transparent) left center / 2.4rem 100% no-repeat
+      local,
+    linear-gradient(to left, var(--paper) 60%, transparent) right center / 2.4rem 100% no-repeat
+      local,
+    radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 18%, transparent),
+      transparent) left center / 0.9rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--ink) 18%, transparent),
+      transparent) right center / 0.9rem 100% no-repeat scroll;
+}
+
 /* 別行立て数式の通し番号。
  *
  * Typst の HTML export は式番号を出さないので、参照の「式 1」に対応する番号が
@@ -893,6 +907,27 @@ pre {
 /* Shiki は 1 行を span で包むが、span の間に改行も残す。
  * `.line { display: block }` を足すと、改行のぶんと合わせて二重に折れて
  * 行間が倍になる。包みは素のインラインのままにしておくこと。 */
+
+/* 転がせる箱の端に影を置く。
+ *
+ * 転がせること自体は見えないので、狭い画面では**切れた表や式が、そこで終わって
+ * いるように見える。** 端に影があれば続きがあると分かる。
+ *
+ * JS は使わない。地の色（background-attachment: local）を先に敷いて、
+ * その下に影（scroll）を置く。転がしていないあいだは地が影を覆い、
+ * 転がすと地だけが一緒に動いて影が出る。
+ */
+.scroll-hint {
+  background:
+    linear-gradient(to right, var(--paper) 60%, transparent) left center / 2.4rem 100% no-repeat
+      local,
+    linear-gradient(to left, var(--paper) 60%, transparent) right center / 2.4rem 100% no-repeat
+      local,
+    radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 18%, transparent),
+      transparent) left center / 0.9rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--ink) 18%, transparent),
+      transparent) right center / 0.9rem 100% no-repeat scroll;
+}
 
 /* 表は箱の中で転がす。ページごと横に動かすと、本文を読むあいだじゅうずれる。
    箱は tabindex を持つので、外枠を出す条件は :focus-visible のほうに寄せる。 */

@@ -151,9 +151,9 @@ Hilbert 系で証明を書くのが苦しい理由の半分は、
   $Gamma tack.r phi.alt arrow.r psi_i$ が出る。
 
   $psi_i = phi.alt$ のとき。$Gamma tack.r phi.alt arrow.r phi.alt$ を示せばよい。
-  A1 の $phi.alt arrow.r ((phi.alt arrow.r phi.alt) arrow.r phi.alt)$ と
-  A2 の $(phi.alt arrow.r ((phi.alt arrow.r phi.alt) arrow.r phi.alt)) arrow.r
-  ((phi.alt arrow.r (phi.alt arrow.r phi.alt)) arrow.r (phi.alt arrow.r phi.alt))$、
+  A1 の $phi.alt arrow.r ((phi.alt arrow.r phi.alt) arrow.r phi.alt)$ と、A2 の
+  $ (phi.alt arrow.r ((phi.alt arrow.r phi.alt) arrow.r phi.alt)) \
+    quad arrow.r ((phi.alt arrow.r (phi.alt arrow.r phi.alt)) arrow.r (phi.alt arrow.r phi.alt)) $
   それに A1 の $phi.alt arrow.r (phi.alt arrow.r phi.alt)$ を組み合わせればよい。
 
   $psi_i$ が $psi_j$ と $psi_j arrow.r psi_i$ から modus ponens で得られたとき。

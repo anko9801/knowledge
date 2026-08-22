@@ -203,7 +203,9 @@ const coversRest = neighbors.covers.length - covers.length
     }
 
     {article.data.summary && <p class="summary">{article.data.summary}</p>}
-    <p class="meta">
+    {/* 日付と PDF への口は読み物ではない。索引に入れると抜粋が
+        「2026-08-21PDF」から始まる（実測 10 / 11 ページ）。 */}
+    <p class="meta" data-pagefind-ignore>
       <time datetime={updated}>{updated}</time>
       {/* 同じ .typ から出た紙面。組版は template.typ の paged 側が持っている。
           画面で読む以外の読み方——印刷する、書き込む、手元に置く——への口。 */}

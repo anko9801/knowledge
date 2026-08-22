@@ -338,6 +338,13 @@ const blocks = await buildNav(here)
     background: color-mix(in srgb, var(--accent) 8%, transparent);
   }
 
+  /* 今いる行だけ地が沈むので、そこに残る灰色は 4.4:1 まで落ちる（実測）。
+     行ごと accent に寄せる。番号も注記も「ここにいる」の一部である。 */
+  li a[aria-current='page'] .order,
+  li a[aria-current='page'] .note {
+    color: inherit;
+  }
+
   /* 読んだ記事。JS がある端末でだけ付く。控えめに、数えず、急かさず。 */
   li a:global(.read) .label::after {
     content: '✓';

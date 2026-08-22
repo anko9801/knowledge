@@ -13,6 +13,10 @@
 import { readdir, readFile, stat, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
+// node は .ts をそのまま読める（型注釈を剥がすだけ）。連載の題名は
+// taxonomy が持っているので、ここで綴りを二重に持たない。
+import { findSeries } from '../src/lib/taxonomy.ts'
+
 const OUT = 'dist'
 const ARTICLES = 'src/content/articles'
 const SITE = (process.env.SITE_URL ?? 'https://anko9801.github.io').replace(/\/$/, '')
@@ -54,6 +58,11 @@ for (const path of await typFiles(ARTICLES)) {
     date,
     summary: field(source, 'summary') ?? '',
     url: `${SITE}${BASE}/${dir}/${series}/${order}.html`,
+    // 題名は異常を出す形なので、何の回かが読めない。購読側で分けられるように
+    // 連載を category で渡す。term は機械が、label は人が読む。
+    series,
+    seriesTitle: findSeries(dir, series)?.title ?? series,
+    order,
   })
 }
 
@@ -72,7 +81,8 @@ const body = recent
       `    <link href="${entry.url}"/>`,
       `    <id>${entry.url}</id>`,
       `    <updated>${entry.date}T00:00:00Z</updated>`,
-      `    <summary>${escape(entry.summary)}</summary>`,
+      `    <category term="${escape(entry.series)}" label="${escape(entry.seriesTitle)}"/>`,
+      `    <summary>${escape(entry.seriesTitle)} 第 ${entry.order} 回。${escape(entry.summary)}</summary>`,
       '  </entry>',
     ].join('\n'),
   )
@@ -87,6 +97,10 @@ await writeFile(
     `  <link rel="self" href="${SITE}${BASE}/feed.xml"/>\n` +
     `  <id>${SITE}${BASE}/</id>\n` +
     `  <updated>${updated}</updated>\n` +
+    // Atom は feed か entry のどちらかに author を要求する（RFC 4287 4.1.1）。
+    // 無いと購読側が作者不明として扱い、検証にもかからない。
+    `  <author><name>anko</name></author>\n` +
+    `  <subtitle>定義がなぜその形なのかを追うノート。</subtitle>\n` +
     `${body}\n</feed>\n`,
 )
 

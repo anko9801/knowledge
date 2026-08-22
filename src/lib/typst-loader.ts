@@ -17,6 +17,7 @@ import {
   splitDocument,
   useSpacingAccents,
   wrapBlockEquations,
+  wrapTables,
 } from './typst-html.ts'
 
 export type TypstLoaderOptions = {
@@ -173,7 +174,7 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
 
     // アクセントの置換は全記事に効かせる。合成用のままだと <mover> の点がずれる。
     const accented = freezeShortFences(repairBinaryOperators(useSpacingAccents(body)))
-    const numbered = numberEquations ? wrapBlockEquations(accented) : accented
+    const numbered = wrapTables(numberEquations ? wrapBlockEquations(accented) : accented)
 
     // 本文の #link("/math/…") はサイトのルート起点で書かれている。
     // base はビルド設定なので本文には焼き込まず、ここで補う。

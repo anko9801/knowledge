@@ -148,7 +148,7 @@ $forall x med (x = x)$ も $forall x med not (x = x)$ も、
 
 #definition[
   論理式 $phi.alt$ の#strong[自由変数]の集合 $Fv(phi.alt)$ を次のように定める。
-  $ Fv(t_1 = t_2) & := (t_1 upright(" と ") t_2 upright(" に現れる変数)")\
+  $ Fv(t_1 = t_2) & := (t_1 upright(" と ") t_2 upright(" に現れる変数"))\
     Fv(not phi.alt) & := Fv(phi.alt) \
     Fv(phi.alt and psi) & := Fv(phi.alt) union Fv(psi) \
     Fv(forall x med phi.alt) & := Fv(phi.alt) without \{x\} $

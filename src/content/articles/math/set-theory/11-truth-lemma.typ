@@ -110,7 +110,7 @@ $p ⊩^* tau_1 in tau_2$ の定義に現れるのは $pi in dom tau_2$ との等
     p ⊩^* not phi.alt quad & <==> quad forall q <= p med (not (q ⊩^* phi.alt)) \
     p ⊩^* exists x med phi.alt(x) quad & <==> quad
       \{ q <= p : exists sigma in M^(bb(P)) med (q ⊩^* phi.alt(sigma)) \}
-      upright(" が ") p upright(" の下で稠密) ") $
+      upright(" が ") p upright(" の下で稠密") $
   ここで $M^(bb(P))$ は $M$ に属する $bb(P)$-名前の全体である。
   $or$、$=>$、$forall$ はこれらから定義する。
 ]<def:forces-logical>

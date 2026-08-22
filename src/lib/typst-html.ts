@@ -116,6 +116,30 @@ export const wrapBlockEquations = (html: string): string =>
   )
 
 /**
+ * 表を、横に転がせる箱へ入れる。
+ *
+ * 講義ノートの表は列が 7〜8 本ある。狭い画面では収まらず、`width: 100%` を
+ * 指定していても **min-content より細くはならない**ので、ページごと横に伸びる。
+ * 素粒子物理のノートを 390px で測ると 443px あった。ページが横に動くと、
+ * 本文を読むあいだじゅう左右にずれる。
+ *
+ * 別行立て数式で同じことを `overflow-x: auto` でやっているが、
+ * `<table>` に直接かけると表の整形文脈が壊れる（`display: block` になる）ので、
+ * 外側に箱が要る。
+ *
+ * 箱は `tabindex="0"` を持つ。転がせる領域はキーボードでも転がせないと、
+ * マウスもタッチも使わない人には右端が読めない。名前を付けるのは、
+ * 名前の無い立ち寄り先を作らないため。`region` ではなく `group` にするのは、
+ * 44 個の表がぜんぶ landmark 一覧に並ぶのを避けるためである。
+ */
+export const wrapTables = (html: string): string =>
+  html.replace(
+    /<table\b([^>]*)>([\s\S]*?)<\/table>/g,
+    (_, attributes: string, body: string) =>
+      `<div class="table-scroll" tabindex="0" role="group" aria-label="表"><table${attributes}>${body}</table></div>`,
+  )
+
+/**
  * 本文に書かれたサイト内リンクへ base を前置きする。
  *
  * 記事は `#link("/math/set-theory/6")` のようにサイトのルート起点で書く。

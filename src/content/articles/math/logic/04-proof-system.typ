@@ -52,7 +52,7 @@ A1 と A2 という二つの公理を、$psi$ の取り方を工夫して三度�
       ((phi.alt arrow.r psi) arrow.r (phi.alt arrow.r chi)) \
     upright("A3") quad & (not psi arrow.r not phi.alt) arrow.r (phi.alt arrow.r psi) \
     upright("A4") quad & forall x med phi.alt arrow.r phi.alt [t \/ x]
-      quad (t upright(" は自由に代入可能)") \
+      quad (t upright(" は自由に代入可能")) \
     upright("A5") quad & forall x med (phi.alt arrow.r psi) arrow.r
       (phi.alt arrow.r forall x med psi) quad (x in.not Fv(phi.alt)) \
     upright("A6") quad & x = x \

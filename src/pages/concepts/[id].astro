@@ -54,7 +54,7 @@ const link = (neighbor: Neighbor) =>
   neighbor.href === undefined ? undefined : `${base}concepts/${neighbor.concept.id}`
 ---
 
-<BaseLayout title={plainMath(concept.label)} description={plainMath(concept.gist)} searchable>
+<BaseLayout title={plainMath(concept.label)} description={plainMath(concept.gist)} searchable kind="概念">
   <nav class="crumbs">
     <a href={base}>knowledge</a>
     <span aria-hidden="true">/</span>

@@ -37,7 +37,7 @@ const description =
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
-<BaseLayout title={note.data.title} description={description} headings={headings} wide searchable>
+<BaseLayout title={note.data.title} description={description} headings={headings} wide searchable kind="ノート">
   <header class="note-header">
     <p class="back"><a href={`${base}notes`}>← 講義ノート一覧</a></p>
     <h1>{note.data.title}</h1>

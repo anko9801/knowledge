@@ -26,6 +26,14 @@ type Props = {
   wide?: boolean
   /** 全文検索の索引に入れる。読み物のページだけに付ける。 */
   searchable?: boolean
+  /**
+   * 検索結果に出す、そのページの種類。
+   *
+   * 索引の 445 ページのうち 300 以上が概念の 1 段落の頁で、題名と抜粋だけでは
+   * 本文の記事と見分けが付かない。読み終わるまでの長さが 10 倍違うので、
+   * どちらへ行くかは押す前に決めたい。
+   */
+  kind?: string
   /** そのページの見出し。渡すと右の柱に目次が出る。 */
   headings?: readonly MarkdownHeading[]
 }
@@ -37,7 +45,7 @@ type Props = {
 // なお <!doctype html> と <html> の間に式（{/* ... */} を含む）を挟むと、
 // Astro が文書をフラグメントとみなして html/head/body を出力しなくなる。
 // 説明はテンプレートではなくここに書く。
-const { title, description, wide = false, searchable = false, headings = [] } = Astro.props
+const { title, description, wide = false, searchable = false, kind, headings = [] } = Astro.props
 const siteName = 'knowledge'
 
 // 見出しが 2 つ以上あるページだけ 3 段組にする。無ければ本文が右まで使う。
@@ -136,7 +144,12 @@ const shareTitle = title === siteName ? siteName : `${title} - ${siteName}`
         <Sidebar />
       </div>
 
-      <main id="main" class:list={['content', { wide }]} data-pagefind-body={searchable || undefined}>
+      <main
+        id="main"
+        class:list={['content', { wide }]}
+        data-pagefind-body={searchable || undefined}
+        data-pagefind-meta={kind ? `kind:${kind}` : undefined}
+      >
         <slot />
       </main>
 

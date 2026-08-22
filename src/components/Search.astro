@@ -5,8 +5,11 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 ---
 
 <div class="search">
-  <label class="visually-hidden" for="search-input">ノートを検索</label>
-  <input id="search-input" type="search" placeholder="ノートを検索" autocomplete="off" />
+  <label class="visually-hidden" for="search-input">サイト内を検索</label>
+  <input id="search-input" type="search" placeholder="検索" autocomplete="off" />
+  {/* 結果は入力の下に開くだけなので、見ていない人には何も起きていない。
+      何件出たかだけを読み上げに渡す。中身は下の連結を辿れば読める。 */}
+  <p id="search-status" class="visually-hidden" role="status" aria-live="polite"></p>
   <div id="search-results" class="results" hidden></div>
 </div>
 
@@ -14,6 +17,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
   // 索引は最初の入力まで読み込まない。開いただけの人に負荷をかけない。
   const input = document.getElementById('search-input')
   const results = document.getElementById('search-results')
+  const status = document.getElementById('search-status')
 
   let pagefind = null
   let seq = 0
@@ -31,18 +35,42 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
       (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
     )
 
-  const render = (items) => {
-    results.hidden = items.length === 0
+  const close = () => {
+    results.hidden = true
+    results.innerHTML = ''
+    status.textContent = ''
+  }
+
+  const render = (items, total) => {
+    results.hidden = false
+
+    // 何も出ないときに黙って閉じると、読み込み中なのか、綴りが違うのか、
+    // 壊れているのかが分からない。空振りだと言うほうが短い。
+    if (items.length === 0) {
+      results.innerHTML = '<p class="hit-empty">見つからなかった</p>'
+      status.textContent = '見つからなかった'
+      return
+    }
+
+    status.textContent = `${total} 件`
+
     // excerpt は pagefind が <mark> を付けて返すのでそのまま使う。
     // 題名は自前で組み立てるため、こちらだけ escape する。
-    results.innerHTML = items
+    const hits = items
       .map(
         (item) =>
           `<a class="hit" href="${escape(item.url)}">` +
           `<span class="hit-title">${escape(item.meta?.title ?? '')}</span>` +
+          (item.meta?.kind ? `<span class="hit-kind">${escape(item.meta.kind)}</span>` : '') +
           `<span class="hit-excerpt">${item.excerpt}</span></a>`,
       )
       .join('')
+
+    // 8 件で切っている。切ったことを言わないと、これで全部だと読める。
+    const rest =
+      total > items.length ? `<p class="hit-rest">ほか ${total - items.length} 件</p>` : ''
+
+    results.innerHTML = hits + rest
   }
 
   input.addEventListener('input', async () => {
@@ -50,8 +78,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     const mine = ++seq
 
     if (query.length < 2) {
-      results.hidden = true
-      results.innerHTML = ''
+      close()
       return
     }
 
@@ -60,7 +87,17 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     const items = await Promise.all(search.results.slice(0, 8).map((r) => r.data()))
 
     // 入力が速いと結果が前後する。最後の問い合わせだけ描く。
-    if (mine === seq) render(items)
+    if (mine === seq) render(items, search.results.length)
+  })
+
+  // 開いた蓋を閉じる道。Escape で閉じ、外を押しても閉じる。
+  // 結果は柱の上に重ねてあるので、閉じられないと下の案内が押せなくなる。
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') close()
+  })
+
+  document.addEventListener('click', (event) => {
+    if (!results.hidden && !event.target.closest('.search')) close()
   })
 </script>
 
@@ -129,6 +166,25 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     margin-top: 0.15rem;
     font-size: 0.85rem;
     color: var(--muted);
+  }
+
+  .results :global(.hit-kind) {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .results :global(.hit-empty),
+  .results :global(.hit-rest) {
+    margin: 0;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .results :global(.hit-rest) {
+    border-top: 1px solid var(--rule);
   }
 
   .results :global(mark) {

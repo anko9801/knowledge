@@ -456,7 +456,7 @@ export const concepts: readonly Concept[] = [
   // 抱えられる量を超えたときの手は、人を足すことでも諦めることでもなく、
   // 扱う領域の数を絞って超過分を別の組へ移すこと。Skelton らの経験則は
   // 単純な領域なら 2〜3、複雑な領域なら 1 つ、混ぜない。
-  c('domain-count-limit', '扱う領域の数を絞る', '抱えられる量は行数では測れない。数えるのは領域の数で、超えた分は別の組へ移す', 'viewpoint', 'cs', ['relocation-not-reduction', 'invisible-asset']),
+  c('domain-count-limit', '数えるなら、行数ではなく領域の数', '抱えられる量は行数では測れない。領域の数のほうが当たる。ただし目安の値は経験則', 'viewpoint', 'cs', ['relocation-not-reduction', 'invisible-asset']),
 
   // --- 理論が渡る条件 ---------------------------------------------------
   //
@@ -469,7 +469,7 @@ export const concepts: readonly Concept[] = [
   //
   // 「報告しやすい場を作れ」を経験則として置くと、ここが出てこない。効くのは
   // 場の良し悪しではなく、指標が積であることのほうである。
-  c('observed-is-product', '観測できるのは積だけ', '報告数 = 発生数 × 報告率。1 本の式に未知数が 2 つあるので、分けられない', 'theorem', 'cs', ['error-proneness']),
+  c('observed-is-product', '報告の数は、二つのことで決まる', '起きた数と、上げた割合。見えるのは掛かった結果だけなので、どちらの差かは決まらない', 'viewpoint', 'cs', ['error-proneness']),
   c('reporting-cost', '報告の費用', '報告する側が損をするなら報告率が下がる。安全な組と黙る組は同じ数字を出す', 'viewpoint', 'cs', ['observed-is-product'], ['feedback-delay']),
   c('theory-transfer', '理論は問いでしか渡らない', '文書は予期できた問いにしか答えていない。残りは問える場でしか渡らない', 'viewpoint', 'cs', ['theory-building'], ['reporting-cost']),
   // 報告率を上げ下げする仕組みは、行動分析の「きっかけ→行動→みかえり」に

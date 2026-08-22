@@ -12,22 +12,22 @@
 #let _kind = "statement"
 
 /// 主張の枠をひとつ組む。variant は CSS のクラス名と紙面の見た目に効く。
-#let _statement(variant, supplement, title, body) = figure(
+#let _statement(variant, supplement, numbering, title, body) = figure(
   kind: _kind,
   supplement: supplement,
-  numbering: "1",
+  numbering: numbering,
   caption: none,
   // figure の中身に variant と題名を持たせて、show rule 側で取り出す。
   metadata((variant: variant, title: title, body: body)),
 )
 
 /// `#theorem[...]` と `#theorem("Cantor")[...]` の両方を受ける。
-#let _make(variant, supplement) = (..args) => {
+#let _make(variant, supplement, numbering: "1") = (..args) => {
   let pos = args.pos()
   if pos.len() == 1 {
-    _statement(variant, supplement, none, pos.at(0))
+    _statement(variant, supplement, numbering, none, pos.at(0))
   } else if pos.len() == 2 {
-    _statement(variant, supplement, pos.at(0), pos.at(1))
+    _statement(variant, supplement, numbering, pos.at(0), pos.at(1))
   } else {
     panic("主張は 本文 だけ、または (題名, 本文) を取ります")
   }
@@ -77,8 +77,13 @@
 #let lemma = _make("lemma", [補題])
 #let proposition = _make("proposition", [命題])
 #let corollary = _make("corollary", [系])
-#let example = _make("example", [例])
-#let remark = _make("remark", [注意])
+/// 例と注意には番号を振らない。
+///
+/// 312 個あるが、`@ex:` も `@rem:` も本文に一つも無い。誰も指さない番号は、
+/// 「例 5」と書かれた側が指す先を探しに戻る手間だけを作る。
+/// 定義と定理の番号は指されるので残す（`docs/build.md`「参照されない採番」）。
+#let example = _make("example", [例], numbering: none)
+#let remark = _make("remark", [注意], numbering: none)
 
 /// 変換できなかった図。元の LaTeX を畳んで置く。
 ///
@@ -134,14 +139,18 @@
     let body = value.body
     let answer = value.at("answer", default: none)
 
-    // 番号を持たないもの（想起の問い）は、題名があればそれだけを見出しにする。
     // 「問 1」のような採番は、参照されないかぎりドリルの体裁を足すだけになる。
-    let head = if it.numbering == none {
-      if title != none { title } else { it.supplement }
+    //
+    // 想起の問いだけは、題名があれば種別も落とす。「問 (前回のふりかえり)」と
+    // 書く用事が無い。例と注意は種別を残す——例なのか注意なのかは読む前に要る。
+    let head = if it.numbering == none and variant == "check" and title != none {
+      title
     } else {
       it.supplement
-      [ ]
-      it.counter.display(it.numbering)
+      if it.numbering != none {
+        [ ]
+        it.counter.display(it.numbering)
+      }
       if title != none [ (#title)]
     }
 

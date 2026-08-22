@@ -1,5 +1,4 @@
 ---
-import { idHint, noteLabels } from '../../lib/note-label.ts'
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
@@ -16,20 +15,24 @@ for (const note of written) {
   byGroup.set(group, [...list, note])
 }
 
-// 同じタイトルのノートが複数ある（統計力学が 3 本など）。
-// 見分けが付かないと選べないので、重複するものにだけ手掛かりを添える。
-// 群（ノート / レポート）が違えば見出しで分かれるので、そこには添えない。
-// 判断は note-label.ts（純関数、テストあり）。
-const hints = noteLabels(
-  notes.map((note) => ({
-    id: note.id,
-    title: note.data.title,
-    group: note.data.tags[0] ?? 'ノート',
-  })),
-)
+// 同じ題名のノートが複数ある（統計力学が 3 本）。ここでは字数を添えるので、
+// それで見分けが付く。柱の案内には字数の場所が無いので、あちらは
+// note-label.ts が元ファイル名を添える。
+/**
+ * その 1 本にどれだけ書いてあるか。
+ *
+ * 題名だけ並べると、**5 万字のノートと中身の無いノートが同じ顔で並ぶ。**
+ * 実際 4 本は変換で中身が落ちて題名しか残っていない。
+ * 押してから空白に出会うより、押す前に分かるほうがよい。
+ */
+const size = (note: (typeof notes)[number]): number =>
+  (note.rendered?.html ?? '').replace(/<[^>]+>/g, '').replace(/[\s\u200b]+/g, '').length
 
-const label = (note: (typeof notes)[number]) =>
-  hints.get(note.id) === note.data.title ? null : idHint(note.id)
+const bulk = (note: (typeof notes)[number]): string => {
+  const n = size(note)
+  if (n < 40) return '中身なし'
+  return `${Math.round(n / 100) * 100}`.replace(/\B(?=(\d{3})+$)/g, ',') + ' 字'
+}
 
 const groups = [...byGroup.entries()].map(([group, items]) => ({
   group,
@@ -60,8 +63,14 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
         <ul class="notes">
           {items.map((note) => (
             <li>
-              <a href={`${base}notes/${note.id}`}>{note.data.title}</a>
-              {label(note) && <span class="src">{label(note)}</span>}
+              {/* 中身の無いものは連結にしない。押しても空白しか出ない。
+                  概念の索引で、記事の無い語を連結にしないのと同じ。 */}
+              {size(note) < 40 ? (
+                <span class="empty">{note.data.title}</span>
+              ) : (
+                <a href={`${base}notes/${note.id}`}>{note.data.title}</a>
+              )}
+              <span class="bulk">{bulk(note)}</span>
             </li>
           ))}
         </ul>
@@ -90,7 +99,11 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     break-inside: avoid;
   }
 
-  .src {
+  .empty {
+    color: var(--muted);
+  }
+
+  .bulk {
     margin-left: 0.5rem;
     font-size: 0.75rem;
     color: var(--muted);

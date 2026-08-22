@@ -8,7 +8,6 @@
 import { noteLabels } from './note-label.ts'
 import { getCollection } from 'astro:content'
 
-import { concepts } from '../data/concepts.ts'
 import { fields, seriesOf, startSeries } from './taxonomy.ts'
 import { scopeNav, type NavBlock, type NavData, type NavEntry, type NavGroup } from './nav-scope.ts'
 

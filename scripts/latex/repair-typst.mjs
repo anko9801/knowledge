@@ -329,7 +329,7 @@ const preferLinks = (source, extraReferenceable = new Set()) => {
 export const wrapUnconvertedTex = (source) => {
   let wrapped = 0
 
-  const text = source.replace(/\\\$\\\$([\s\S]*?)\\\$\\\$/g, (whole, body) => {
+  const text = source.replace(/\\\$\\\$([\s\S]*?)\\\$\\\$/g, (_whole, body) => {
     wrapped += 1
 
     const tex = body

@@ -220,7 +220,7 @@ const wrapMathInText = (group) =>
 
 export const stripReferencesInMath = (source) => {
   let stripped = 0
-  const text = source.replace(MATH_ENVIRONMENTS, (whole, env, body) => {
+  const text = source.replace(MATH_ENVIRONMENTS, (_whole, env, body) => {
     const parked = []
     const guarded = body.replace(TEXT_GROUP, (group) => {
       parked.push(wrapMathInText(group))

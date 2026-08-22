@@ -117,6 +117,38 @@ test('記事に、見出しが一つはある', () => {
   strictEqual(headless.join('\n'), '')
 })
 
+test('HTML export で意味の変わる書き方が、本文に残っていない', () => {
+  // どれも typst は warning しか出さない。compile は通るので、
+  // ビルドを見ているだけでは気づけない。実測でこうなっていた。
+  //
+  //   scale     101 か所。大きくした括弧が**丸ごと消える**。
+  //             \[ ... \] が外れて、和のかかる範囲が変わって見える
+  //   overline   20 か所。上線が消えて**別の量になる**。
+  //             反ニュートリノがニュートリノに、共役 z̄ が z に
+  //
+  // 直し方は scale を外す、overline を accent(x, macron) にする。
+  const DROPPED: readonly (readonly [RegExp, string])[] = [
+    [/#scale\(/, 'scale は中身ごと落ちる。外すこと'],
+    [/(?<![A-Za-z-])overline\(/, 'overline は線が落ちる。accent(x, macron) にすること'],
+  ]
+
+  const found = typFiles(ARTICLES)
+    .concat(typFiles('src/content/notes'))
+    .flatMap((path) => {
+      // 元の LaTeX を畳んだ中は変換の対象ではない。
+      const source = readFileSync(path, 'utf8').replace(/#unconverted\("(?:[^"\\]|\\.)*"\)/g, '')
+      return source
+        .split('\n')
+        .flatMap((line, i) =>
+          DROPPED.flatMap(([pattern, why]) =>
+            pattern.test(line) ? [`${path}:${i + 1}  ${why}`] : [],
+          ),
+        )
+    })
+
+  strictEqual(found.join('\n'), '')
+})
+
 test('align が、本文に残っていない', () => {
   // align は HTML export で**中身ごと**消える。typst は警告を出すが compile は
   // 成功するので、ビルドを通しただけでは気づけない。

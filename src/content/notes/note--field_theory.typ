@@ -129,8 +129,8 @@ $L supset M supset K$ を中間体とする. $alpha$ が $K$ 上分離的なら 
 上でも分離的である.
 ]
 #proof[
-$alpha in overline(K)$ の $K$ 上の最小多項式
-$f \( x \)$ が分離多項式であり, $overline(K) = overline(M)$ かつ $M$
+$alpha in accent(K, macron)$ の $K$ 上の最小多項式
+$f \( x \)$ が分離多項式であり, $accent(K, macron) = accent(M, macron)$ かつ $M$
 上の最小多項式は $f \( x \)$ を割り切るから分離多項式となり, $M$
 上でも分離的である.
 ]
@@ -139,7 +139,7 @@ $f \( x \)$ が分離多項式であり, $overline(K) = overline(M)$ かつ $M$
 $f \( x \) in K \[ x \]$ を $K$
 上既約な多項式とする. このとき以下は互いに同値である.
 
-+ $f \( x \)$ は $overline(K)$ 上で重根を持つ
++ $f \( x \)$ は $accent(K, macron)$ 上で重根を持つ
 
 + $f' \( x \) = 0$
 

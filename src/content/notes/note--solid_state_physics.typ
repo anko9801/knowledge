@@ -49,9 +49,9 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
 
 - 鏡映 $m$: $\( x \, y \, z \) mapsto \( - x \, y \, z \)$
 
-- 反転 $overline(1)$: $\( x \, y \, z \) mapsto \( - x \, - y \, - z \)$
+- 反転 $accent(1, macron)$: $\( x \, y \, z \) mapsto \( - x \, - y \, - z \)$
 
-- 回反 $overline(4)$: 90° 回転し上下反転して一致する。
+- 回反 $accent(4, macron)$: 90° 回転し上下反転して一致する。
 
 #block[
 #figure(
@@ -227,7 +227,6 @@ $ E_(bold(k) \, s) = (n_(bold(k) \, s) + 1 / 2) planck omega_(bold(k) \, s) $
 
 = 固体の熱的性質
 <固体の熱的性質>
-<section>
 = 自由電子
 <自由電子>
 == Nearly free electron model

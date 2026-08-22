@@ -452,7 +452,7 @@ $e^(i lambda hat(B)) bold(A) e^(- i lambda hat(B))$
 について考える。これを $lambda$ について展開すると
 $ e^(i lambda hat(B)) bold(A) e^(- i lambda hat(B)) & = sum_(n = 0)^oo frac(lambda^n, n !) [frac(upright(d)^n, upright(d) lambda^n) e^(i lambda hat(B)) bold(A) e^(i lambda hat(B))]_(lambda = 0)\
  & = sum_(n = 0)^oo frac(lambda^n, n !) [frac(upright(d)^(n - 1), upright(d) lambda^(n - 1)) e^(i lambda hat(B)) i \[ hat(B) \, bold(A) \] e^(i lambda hat(B))]_(lambda = 0)\
- & = sum_(n = 0)^oo frac(lambda^n, n !) #scale(x: 180%, y: 180%)[\[] e^(i lambda hat(B)) i^n underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, bold(A) \] \] dots.h \] e^(i lambda hat(B)) #scale(x: 180%, y: 180%)[\]]_(lambda = 0)\
+ & = sum_(n = 0)^oo frac(lambda^n, n !) \[ e^(i lambda hat(B)) i^n underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, bold(A) \] \] dots.h \] e^(i lambda hat(B)) \]_(lambda = 0)\
  & = sum_(n = 0)^oo frac(\( i lambda \)^n, n !) underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, bold(A) \] \] dots.h \] $
 よって $lambda = 1$ を代入することで示せる。
 $ e^(i hat(B)) bold(A) e^(- i hat(B)) & = sum_(n = 0)^oo frac(i^n, n !) underbrace(\[ hat(B) \, dots.h \[ hat(B) \, \[ hat(B), n) \, bold(A) \] \] dots.h \] $
@@ -575,20 +575,20 @@ sin theta e^(i phi.alt) Y_l^m \( theta \, phi.alt \) & = - sqrt(frac(\( l + m + 
 sin theta e^(- i phi.alt) Y_l^m \( theta \, phi.alt \) & = sqrt(frac(\( l - m + 1 \) \( l - m + 2 \), \( 2 l + 1 \) \( 2 l + 3 \))) Y_(l + 1)^(m - 1) \( theta \, phi.alt \) + sqrt(frac(\( l + m \) \( l + m - 1 \), \( 2 l + 1 \) \( 2 l - 1 \))) Y_(l - 1)^(m - 1) \( theta \, phi.alt \) $
 次のように計算できる。
 $ 3 bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = 1 / sqrt(2 l + 1) &  & mat(delim: "(", cos theta, sin theta e^(- i phi.alt); sin theta e^(i phi.alt), - cos theta) vec(sqrt(l + 1 / 2 plus.minus m) Y_l^(m - 1 \/ 2) \( theta \, phi.alt \), plus.minus sqrt(l + 1 / 2 minus.plus m) Y_l^(m + 1 \/ 2) \( theta \, phi.alt \), )_(j = l plus.minus 1 \/ 2)\
- & = 1 / sqrt(2 l + 1) &  & #scale(x: 300%, y: 300%)[\(] sqrt(l + 1 / 2 plus.minus m) cos theta Y_l^(m - 1 \/ 2) \( theta \, phi.alt \) plus.minus sqrt(l + 1 / 2 minus.plus m) sin theta e^(- i phi.alt) Y_l^(m + 1 \/ 2) \( theta \, phi.alt \)\
- &  &  & \, sqrt(l + 1 / 2 plus.minus m) sin theta e^(i phi.alt) Y_l^(m - 1 \/ 2) \( theta \, phi.alt \) minus.plus sqrt(l + 1 / 2 minus.plus m) cos theta Y_l^(m + 1 \/ 2) \( theta \, phi.alt \) #scale(x: 300%, y: 300%)[\)]_(j = l plus.minus 1 \/ 2)\
- & = 1 / sqrt(2 l + 1) &  & #scale(x: 300%, y: 300%)[\(] sqrt(l + 1 / 2 plus.minus m) sqrt(frac(\( l + m + 1 / 2 \) \( l - m + 3 / 2 \), \( 2 l + 1 \) \( 2 l + 3 \))) Y_(l + 1)^(m - 1 \/ 2) \( theta \, phi.alt \)\
+ & = 1 / sqrt(2 l + 1) &  & \( sqrt(l + 1 / 2 plus.minus m) cos theta Y_l^(m - 1 \/ 2) \( theta \, phi.alt \) plus.minus sqrt(l + 1 / 2 minus.plus m) sin theta e^(- i phi.alt) Y_l^(m + 1 \/ 2) \( theta \, phi.alt \)\
+ &  &  & \, sqrt(l + 1 / 2 plus.minus m) sin theta e^(i phi.alt) Y_l^(m - 1 \/ 2) \( theta \, phi.alt \) minus.plus sqrt(l + 1 / 2 minus.plus m) cos theta Y_l^(m + 1 \/ 2) \( theta \, phi.alt \) \)_(j = l plus.minus 1 \/ 2)\
+ & = 1 / sqrt(2 l + 1) &  & \( sqrt(l + 1 / 2 plus.minus m) sqrt(frac(\( l + m + 1 / 2 \) \( l - m + 3 / 2 \), \( 2 l + 1 \) \( 2 l + 3 \))) Y_(l + 1)^(m - 1 \/ 2) \( theta \, phi.alt \)\
  &  &  & + sqrt(l + 1 / 2 plus.minus m) sqrt(frac(\( l + m - 1 / 2 \) \( l - m + 1 / 2 \), \( 2 l + 1 \) \( 2 l - 1 \))) Y_(l - 1)^(m - 1 \/ 2) \( theta \, phi.alt \)\
  &  &  & plus.minus sqrt(l + 1 / 2 minus.plus m) sqrt(frac(\( l - m + 1 / 2 \) \( l - m + 3 / 2 \), \( 2 l + 1 \) \( 2 l + 3 \))) Y_(l + 1)^(m - 1 \/ 2) \( theta \, phi.alt \)\
  &  &  & plus.minus sqrt(l + 1 / 2 minus.plus m) sqrt(frac(\( l + m + 1 / 2 \) \( l + m - 1 / 2 \), \( 2 l + 1 \) \( 2 l - 1 \))) Y_(l - 1)^(m - 1 \/ 2) \( theta \, phi.alt \)\
  &  &  & \, - sqrt(l + 1 / 2 plus.minus m) sqrt(frac(\( l + m + 1 / 2 \) \( l + m + 3 / 2 \), \( 2 l + 1 \) \( 2 l + 3 \))) Y_(l + 1)^(m + 1 \/ 2) \( theta \, phi.alt \)\
  &  &  & + sqrt(l + 1 / 2 plus.minus m) sqrt(frac(\( l - m + 1 / 2 \) \( l - m - 1 / 2 \), \( 2 l + 1 \) \( 2 l - 1 \))) Y_(l - 1)^(m + 1 \/ 2) \( theta \, phi.alt \)\
  &  &  & minus.plus sqrt(l + 1 / 2 minus.plus m) sqrt(frac(\( l + m + 3 / 2 \) \( l - m + 1 / 2 \), \( 2 l + 1 \) \( 2 l + 3 \))) Y_(l + 1)^(m + 1 \/ 2) \( theta \, phi.alt \)\
- &  &  & minus.plus sqrt(l + 1 / 2 minus.plus m) sqrt(frac(\( l + m + 1 / 2 \) \( l - m - 1 / 2 \), \( 2 l + 1 \) \( 2 l - 1 \))) Y_(l - 1)^(m + 1 \/ 2) \( theta \, phi.alt \) #scale(x: 300%, y: 300%)[\)]_(j = l plus.minus 1 \/ 2)\
- & = 1 / sqrt(2 l + 1) &  & #scale(x: 300%, y: 300%)[\(] \( 2 l + 1 \) sqrt(frac(l minus.plus m + 1 / 2 plus.minus 1, \( 2 l + 1 \) \( 2 l + 1 plus.minus 2 \))) Y_(l plus.minus 1)^(m - 1 \/ 2) \( theta \, phi.alt \)\
- &  &  & \, minus.plus \( 2 l + 1 \) sqrt(frac(l plus.minus m + 1 / 2 plus.minus 1, \( 2 l + 1 \) \( 2 l + 1 plus.minus 2 \))) Y_(l plus.minus 1)^(m + 1 \/ 2) \( theta \, phi.alt \) #scale(x: 300%, y: 300%)[\)]_(j = l plus.minus 1 \/ 2)\
- & = 1 / sqrt(2 j + 1 plus.minus 1) &  & #scale(x: 300%, y: 300%)[\(] sqrt(j + 1 / 2 minus.plus (m - 1 / 2)) Y_(j plus.minus 1 \/ 2)^(m - 1 \/ 2) \( theta \, phi.alt \)\
- &  &  & \, minus.plus sqrt(j + 1 / 2 plus.minus (m + 1 / 2)) Y_(j plus.minus 1 \/ 2)^(m + 1 \/ 2) \( theta \, phi.alt \) #scale(x: 300%, y: 300%)[\)] = cal(Y)_(j \, m)^minus.plus \( theta \, phi.alt \) $
+ &  &  & minus.plus sqrt(l + 1 / 2 minus.plus m) sqrt(frac(\( l + m + 1 / 2 \) \( l - m - 1 / 2 \), \( 2 l + 1 \) \( 2 l - 1 \))) Y_(l - 1)^(m + 1 \/ 2) \( theta \, phi.alt \) \)_(j = l plus.minus 1 \/ 2)\
+ & = 1 / sqrt(2 l + 1) &  & \( \( 2 l + 1 \) sqrt(frac(l minus.plus m + 1 / 2 plus.minus 1, \( 2 l + 1 \) \( 2 l + 1 plus.minus 2 \))) Y_(l plus.minus 1)^(m - 1 \/ 2) \( theta \, phi.alt \)\
+ &  &  & \, minus.plus \( 2 l + 1 \) sqrt(frac(l plus.minus m + 1 / 2 plus.minus 1, \( 2 l + 1 \) \( 2 l + 1 plus.minus 2 \))) Y_(l plus.minus 1)^(m + 1 \/ 2) \( theta \, phi.alt \) \)_(j = l plus.minus 1 \/ 2)\
+ & = 1 / sqrt(2 j + 1 plus.minus 1) &  & \( sqrt(j + 1 / 2 minus.plus (m - 1 / 2)) Y_(j plus.minus 1 \/ 2)^(m - 1 \/ 2) \( theta \, phi.alt \)\
+ &  &  & \, minus.plus sqrt(j + 1 / 2 plus.minus (m + 1 / 2)) Y_(j plus.minus 1 \/ 2)^(m + 1 \/ 2) \( theta \, phi.alt \) \) = cal(Y)_(j \, m)^minus.plus \( theta \, phi.alt \) $
 よって次の式となる。
 $ bold(sigma) dot.op bold(r) / r cal(Y)_(j \, m)^plus.minus \( theta \, phi.alt \) & = cal(Y)_(j \, m)^minus.plus \( theta \, phi.alt \) $
 ]

@@ -68,7 +68,7 @@ $ f \( bold(v) \) & = n (frac(m, 2 pi k_B T))^(3 \/ 2) exp (- frac(m v^2 \/ 2, k
 $ integral f \( bold(v) \; t \) thin upright(d) bold(v) & = frac(n, \( 2 v_t^2 pi \)^(3 \/ 2)) integral exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = n $
 より任意の物理量 $Q \( bold(v) \)$
 の全速度空間の平均値は次のようになる。
-$ chevron.l Q \( bold(v) \) chevron.r = integral Q \( bold(v) \) f \( bold(v) \; t \) thin upright(d) bold(v) #scale(x: 240%, y: 240%)[\/] integral f \( bold(v) \; t \) thin upright(d) bold(v) = 1 / n integral Q \( bold(v) \) f \( bold(v) \; t \) thin upright(d) bold(v) $
+$ chevron.l Q \( bold(v) \) chevron.r = integral Q \( bold(v) \) f \( bold(v) \; t \) thin upright(d) bold(v) \/ integral f \( bold(v) \; t \) thin upright(d) bold(v) = 1 / n integral Q \( bold(v) \) f \( bold(v) \; t \) thin upright(d) bold(v) $
 $thin upright(d) bold(v) = 4 pi v^2 thin upright(d) v$
 $ chevron.l 1 chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = 1\
 chevron.l q bold(v) chevron.r & = frac(1, \( 2 v_t^2 pi \)^(3 \/ 2)) integral q bold(v) exp (- frac(v^2, 2 v_t^2)) thin upright(d) bold(v) = bold(0)\

@@ -337,7 +337,7 @@ $ nabla^2 bold(E) & = nabla^2 integral_(bb(R)^3) thin upright(d) bold(k) bold(E)
 #theorem("電磁波のエネルギー")[
 電磁波のエネルギー密度と Poynting ベクトル
 $ chevron.l u_(e m) chevron.r & = 1 / 2 epsilon_0 \| bold(E)_0 \|^2\
-chevron.l bold(S) chevron.r & = overline(epsilon) c hat(bold(k)) $
+chevron.l bold(S) chevron.r & = accent(epsilon, macron) c hat(bold(k)) $
 ]
 #proof[
 $ Re bold(E) & = bold(E)_0 cos \( bold(k) dot.op bold(r) - omega t \)\

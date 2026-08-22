@@ -201,6 +201,88 @@ const unwrapAlignedTables = (source) => {
   }
 }
 
+/**
+ * `#scale(x: 240%, y: 240%)[\[]` から scale を外す。
+ *
+ * **scale も HTML export で中身ごと落ちる。**pandoc は LaTeX の `\left[` を
+ * 拡大した括弧として写すので、外れると和や積のかかる範囲が変わって見える。
+ * 実測で 101 か所。括弧の大きさはブラウザが決めるので、そもそも要らない。
+ */
+const unwrapScaledDelimiters = (source) => {
+  const OPEN = /#scale\(x: \d+%, y: \d+%\)\[/g
+  let out = ''
+  let i = 0
+
+  for (;;) {
+    OPEN.lastIndex = i
+    const m = OPEN.exec(source)
+    if (m === null) return out + source.slice(i)
+
+    const lb = m.index + m[0].length - 1
+    const rb = matchBracket(source, lb)
+    if (rb < 0) {
+      out += source.slice(i, m.index + m[0].length)
+      i = m.index + m[0].length
+      continue
+    }
+
+    out += source.slice(i, m.index) + source.slice(lb + 1, rb)
+    i = rb + 1
+  }
+}
+
+/**
+ * `overline(x)` を `accent(x, macron)` にする。
+ *
+ * **overline は MathML export で線だけが落ちる。**中身は残るので気づきにくいが、
+ * 反ニュートリノがニュートリノに、共役 z̄ が z になる。式の意味が変わる。
+ * 実測で 20 か所。`accent(x, macron)` は `<mover accent="true">` を出す。
+ */
+const useMacron = (source) => {
+  let out = ''
+  let i = 0
+
+  for (;;) {
+    const j = source.indexOf('overline(', i)
+    if (j < 0) return out + source.slice(i)
+
+    // `\overline` のような別語の一部なら触らない。
+    if (j > 0 && /[A-Za-z\\]/.test(source[j - 1])) {
+      out += source.slice(i, j + 9)
+      i = j + 9
+      continue
+    }
+
+    const lp = j + 8
+    const rp = matchParen(source, lp)
+    if (rp < 0) {
+      out += source.slice(i, lp + 1)
+      i = lp + 1
+      continue
+    }
+
+    out += `${source.slice(i, j)}accent(${source.slice(lp + 1, rp)}, macron)`
+    i = rp + 1
+  }
+}
+
+/** source[i] の `[` に対応する `]` の位置。`\[` は文字なので飛ばす。見つからなければ -1。 */
+const matchBracket = (source, i) => {
+  let depth = 0
+
+  for (; i < source.length; i += 1) {
+    const c = source[i]
+    if (c === '\\') i += 1
+    else if (c === '[') depth += 1
+    else if (c === ']') {
+      depth -= 1
+      if (depth === 0) return i
+    }
+  }
+
+  return -1
+}
+
 /** source[i] の `(` に対応する `)` の位置。文字列リテラルは飛ばす。見つからなければ -1。 */
 const matchParen = (source, i) => {
   let depth = 0
@@ -540,8 +622,12 @@ export const repairTypst = (source, { group, available }) => {
     (text, [pattern, to]) => text.replace(pattern, to),
     symbols,
   )
-  const cleaned = unwrapAlignedTables(
-    dropEmptyTitles(stripQedResidue(escapeArgumentSemicolons(stripStrayNone(delimiters)))),
+  const cleaned = useMacron(
+    unwrapScaledDelimiters(
+      unwrapAlignedTables(
+        dropEmptyTitles(stripQedResidue(escapeArgumentSemicolons(stripStrayNone(delimiters)))),
+      ),
+    ),
   )
   const japanese = groupJapaneseInMath(cleaned)
   const images = rewriteImages(japanese.text, group, available)

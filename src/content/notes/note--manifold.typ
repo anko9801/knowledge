@@ -31,7 +31,6 @@ f : & A & arrow.r & B\
 $bb(R)^n$ の点 $p$ における接空間 $T_p \( bb(R)^n \) \, T_p bb(R)^n$
 の元を接ベクトルという。
 
-<section>
 #definition("線形写像")[
 $ L \( u + v \) & = L \( u \) + L \( v \)\
 L \( r v \) & = r L \( v \) $

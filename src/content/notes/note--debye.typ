@@ -199,14 +199,14 @@ $ tilde(B)_(j \, j') & := frac(1, N + 1) sum_(i = 0)^N (cos (frac(pi, N + 1) \( 
 
 (xi) さらに $tilde(B)_(j \, j')$ は次のように計算できる.
 $ tilde(B)_(j \, j') & = frac(1, N + 1) sum_(i = 0)^N (cos (pi frac(j + j', N + 1) (i + 1 / 2)) + cos (pi frac(j - j', N + 1) (i + 1 / 2)))\
- & med = frac(1, N + 1) sum_(i = 0)^N #scale(x: 240%, y: 240%)[\[] & quad cos (pi / 2 frac(j + j', N + 1)) cos (pi frac(j + j', N + 1) i)\
+ & med = frac(1, N + 1) sum_(i = 0)^N \[ & quad cos (pi / 2 frac(j + j', N + 1)) cos (pi frac(j + j', N + 1) i)\
  & - sin (pi / 2 frac(j + j', N + 1)) sin (pi frac(j + j', N + 1) i)\
  & + cos (pi / 2 frac(j - j', N + 1)) cos (pi frac(j - j', N + 1) i)\
- & - sin (pi / 2 frac(j - j', N + 1)) sin (pi frac(j - j', N + 1) i) #scale(x: 240%, y: 240%)[\]]\
- & med = frac(1, N + 1) #scale(x: 240%, y: 240%)[\[] & quad cos (pi / 2 frac(j + j', N + 1)) (1 + F (pi frac(j + j', N + 1)))\
+ & - sin (pi / 2 frac(j - j', N + 1)) sin (pi frac(j - j', N + 1) i) \]\
+ & med = frac(1, N + 1) \[ & quad cos (pi / 2 frac(j + j', N + 1)) (1 + F (pi frac(j + j', N + 1)))\
  & - sin (pi / 2 frac(j + j', N + 1)) G (pi frac(j + j', N + 1))\
  & + cos (pi / 2 frac(j - j', N + 1)) (1 + F (pi frac(j - j', N + 1)))\
- & - sin (pi / 2 frac(j - j', N + 1)) G (pi frac(j - j', N + 1)) #scale(x: 240%, y: 240%)[\]] . $
+ & - sin (pi / 2 frac(j - j', N + 1)) G (pi frac(j - j', N + 1)) \] . $
 
 (xii) まず $tilde(B)_(j \, j')$ について $j = j'$ の場合を考える.
 $ tilde(B)_(j \, j') & = tilde(B)_(j \, j)\
@@ -214,26 +214,26 @@ $ tilde(B)_(j \, j') & = tilde(B)_(j \, j)\
  & = 1 + frac(1, N + 1) (cos (frac(1, N + 1) j pi) (1 + frac(cos (j pi) sin (frac(N, N + 1) j pi), sin (frac(1, N + 1) j pi))) - sin (frac(1, N + 1) j pi) frac(sin (j pi) sin (frac(N, N + 1) j pi), sin (frac(1, N + 1) j pi)))\
  & = 1 + frac(1, N + 1) (cos (frac(1, N + 1) j pi) + (cos (frac(1, N + 1) j pi) cos (j pi) - sin (frac(1, N + 1) j pi) sin (j pi)) frac(sin (frac(N, N + 1) j pi), sin (frac(1, N + 1) j pi)))\
  & = 1 + frac(1, N + 1) (cos (frac(1, N + 1) j pi) + cos (frac(N + 2, N + 1) j pi) frac(sin (frac(N, N + 1) j pi), sin (frac(1, N + 1) j pi)))\
- & = 1 + frac(1, N + 1) (cos (frac(1, N + 1) j pi) sin (frac(1, N + 1) j pi) + cos (frac(N + 2, N + 1) j pi) sin (frac(N, N + 1) j pi)) #scale(x: 240%, y: 240%)[\/] sin (frac(1, N + 1) j pi)\
- & = 1 + frac(1, N + 1) (1 / 2 sin (frac(2, N + 1) j pi) + 1 / 2 sin (- frac(2, N + 1) j pi)) #scale(x: 240%, y: 240%)[\/] sin (frac(1, N + 1) j pi)\
+ & = 1 + frac(1, N + 1) (cos (frac(1, N + 1) j pi) sin (frac(1, N + 1) j pi) + cos (frac(N + 2, N + 1) j pi) sin (frac(N, N + 1) j pi)) \/ sin (frac(1, N + 1) j pi)\
+ & = 1 + frac(1, N + 1) (1 / 2 sin (frac(2, N + 1) j pi) + 1 / 2 sin (- frac(2, N + 1) j pi)) \/ sin (frac(1, N + 1) j pi)\
  & = 1 . $
 
 (xiii) 次に $tilde(B)_(j \, j')$ について $j eq.not j'$ の場合を考える.
 $ tilde(B)_(j \, j') & = tilde(B)_(j \, j')\
- & med = frac(1, N + 1) #scale(x: 240%, y: 240%)[\[] & quad cos (pi / 2 frac(j + j', N + 1)) (1 + F (pi frac(j + j', N + 1)))\
+ & med = frac(1, N + 1) \[ & quad cos (pi / 2 frac(j + j', N + 1)) (1 + F (pi frac(j + j', N + 1)))\
  & - sin (pi / 2 frac(j + j', N + 1)) G (pi frac(j + j', N + 1))\
  & + cos (pi / 2 frac(j - j', N + 1)) (1 + F (pi frac(j - j', N + 1)))\
- & - sin (pi / 2 frac(j - j', N + 1)) G (pi frac(j - j', N + 1)) #scale(x: 240%, y: 240%)[\]]\
- & med = frac(1, N + 1) #scale(x: 300%, y: 300%)[\[] & quad cos (pi / 2 frac(j + j', N + 1)) (1 + frac(cos (1 / 2 \( j + j' \) pi) sin (frac(N, 2 \( N + 1 \)) \( j + j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j + j' \) pi)))\
+ & - sin (pi / 2 frac(j - j', N + 1)) G (pi frac(j - j', N + 1)) \]\
+ & med = frac(1, N + 1) \[ & quad cos (pi / 2 frac(j + j', N + 1)) (1 + frac(cos (1 / 2 \( j + j' \) pi) sin (frac(N, 2 \( N + 1 \)) \( j + j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j + j' \) pi)))\
  & - sin (pi / 2 frac(j + j', N + 1)) frac(sin (1 / 2 \( j + j' \) pi) sin (frac(N, 2 \( N + 1 \)) \( j + j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j + j' \) pi))\
  & + cos (pi / 2 frac(j - j', N + 1)) (1 + frac(cos (1 / 2 \( j - j' \) pi) sin (frac(N, 2 \( N + 1 \)) \( j - j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j - j' \) pi)))\
- & - sin (pi / 2 frac(j - j', N + 1)) frac(sin (1 / 2 \( j - j' \) pi) sin (frac(N, 2 \( N + 1 \)) \( j - j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j - j' \) pi)) #scale(x: 300%, y: 300%)[\]]\
- & med = frac(1, N + 1) #scale(x: 300%, y: 300%)[\[] & quad cos (pi / 2 frac(j + j', N + 1)) + (cos (pi / 2 frac(j + j', N + 1)) cos (frac(j + j', 2) pi) - sin (pi / 2 frac(j + j', N + 1)) sin (frac(j + j', 2) pi)) frac(sin (frac(N \( j + j' \), 2 \( N + 1 \)) pi), sin (frac(j + j', 2 \( N + 1 \)) pi))\
- & + cos (pi / 2 frac(j - j', N + 1)) + (cos (pi / 2 frac(j - j', N + 1)) cos (frac(j - j', 2) pi) - sin (pi / 2 frac(j - j', N + 1)) sin (frac(j - j', 2) pi)) frac(sin (frac(N \( j - j' \), 2 \( N + 1 \)) pi), sin (frac(j - j', 2 \( N + 1 \)) pi)) #scale(x: 300%, y: 300%)[\]]\
- & med = frac(1, N + 1) #scale(x: 300%, y: 300%)[\[] & quad cos (pi / 2 frac(j + j', N + 1)) + cos (frac(N + 2, 2 \( N + 1 \)) \( j + j' \) pi) frac(sin (frac(N, 2 \( N + 1 \)) \( j + j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j + j' \) pi))\
- & + cos (pi / 2 frac(j - j', N + 1)) + cos (frac(N + 2, 2 \( N + 1 \)) \( j - j' \) pi) frac(sin (frac(N, 2 \( N + 1 \)) \( j - j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j - j' \) pi)) #scale(x: 300%, y: 300%)[\]]\
- & med = frac(1, N + 1) #scale(x: 300%, y: 300%)[\[] & quad 1 / 2 (sin (frac(j + j', N + 1) pi) + sin (\( j + j' \) pi) + sin (- frac(j + j', N + 1) pi)) #scale(x: 240%, y: 240%)[\/] sin (frac(1, 2 \( N + 1 \)) \( j + j' \) pi)\
- & + 1 / 2 (sin (frac(j - j', N + 1) pi) + sin (\( j - j' \) pi) + sin (- frac(j - j', N + 1) pi)) #scale(x: 240%, y: 240%)[\/] sin (frac(1, 2 \( N + 1 \)) \( j - j' \) pi) #scale(x: 240%, y: 240%)[\]]\
+ & - sin (pi / 2 frac(j - j', N + 1)) frac(sin (1 / 2 \( j - j' \) pi) sin (frac(N, 2 \( N + 1 \)) \( j - j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j - j' \) pi)) \]\
+ & med = frac(1, N + 1) \[ & quad cos (pi / 2 frac(j + j', N + 1)) + (cos (pi / 2 frac(j + j', N + 1)) cos (frac(j + j', 2) pi) - sin (pi / 2 frac(j + j', N + 1)) sin (frac(j + j', 2) pi)) frac(sin (frac(N \( j + j' \), 2 \( N + 1 \)) pi), sin (frac(j + j', 2 \( N + 1 \)) pi))\
+ & + cos (pi / 2 frac(j - j', N + 1)) + (cos (pi / 2 frac(j - j', N + 1)) cos (frac(j - j', 2) pi) - sin (pi / 2 frac(j - j', N + 1)) sin (frac(j - j', 2) pi)) frac(sin (frac(N \( j - j' \), 2 \( N + 1 \)) pi), sin (frac(j - j', 2 \( N + 1 \)) pi)) \]\
+ & med = frac(1, N + 1) \[ & quad cos (pi / 2 frac(j + j', N + 1)) + cos (frac(N + 2, 2 \( N + 1 \)) \( j + j' \) pi) frac(sin (frac(N, 2 \( N + 1 \)) \( j + j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j + j' \) pi))\
+ & + cos (pi / 2 frac(j - j', N + 1)) + cos (frac(N + 2, 2 \( N + 1 \)) \( j - j' \) pi) frac(sin (frac(N, 2 \( N + 1 \)) \( j - j' \) pi), sin (frac(1, 2 \( N + 1 \)) \( j - j' \) pi)) \]\
+ & med = frac(1, N + 1) \[ & quad 1 / 2 (sin (frac(j + j', N + 1) pi) + sin (\( j + j' \) pi) + sin (- frac(j + j', N + 1) pi)) \/ sin (frac(1, 2 \( N + 1 \)) \( j + j' \) pi)\
+ & + 1 / 2 (sin (frac(j - j', N + 1) pi) + sin (\( j - j' \) pi) + sin (- frac(j - j', N + 1) pi)) \/ sin (frac(1, 2 \( N + 1 \)) \( j - j' \) pi) \]\
  & = 0 . $ よって (xii), (xiii) の考察から次の式が成り立つ.
 $ tilde(B)_(j \, j') = delta_(j \, j') . $
 

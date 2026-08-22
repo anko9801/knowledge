@@ -206,11 +206,11 @@ tilde(phi) : med & bb(A)^1 quad & arrow.r quad & bb(A)^2\
 iota : med & bb(A)^2 quad & arrow.r quad & C\
  & \( a^2 \, a^3 \) quad & mapsto quad & \( a^2 \, a^3 \) $
 $ 3 phi^(\#) : med & k \[ C \] = k \[ x \, y \] \/ \( y^2 - x^3 \) quad & arrow.r quad & k \[ bb(A)^1 \] = k \[ t \]\
- & overline(f \( x \, y \)) = f \( x \, y \) med mod med \( y^2 - x^3 \) quad & mapsto quad & f \( t^2 \, t^3 \)\
+ & accent(f \( x \, y \), macron) = f \( x \, y \) med mod med \( y^2 - x^3 \) quad & mapsto quad & f \( t^2 \, t^3 \)\
 tilde(phi)^(\#) : med & k \[ bb(A)^2 \] = k \[ x \, y \] quad & arrow.r quad & k \[ bb(A)^1 \] = k \[ t \]\
  & f \( x \, y \) quad & mapsto quad & f \( t^2 \, t^3 \)\
 iota^(\#) : med & k \[ bb(A)^2 \] = k \[ x \, y \] quad & arrow.r quad & k \[ C \] = k \[ x \, y \] \/ \( y^2 - x^3 \)\
- & f \( x \, y \) quad & mapsto quad & overline(f \( x \, y \)) $
+ & f \( x \, y \) quad & mapsto quad & accent(f \( x \, y \), macron) $
 #unconverted("\\begin{tikzcd}\n      \\mathbb{A}^1 \\arrow[r,\"\\tilde{\\varphi}\"]\\arrow[dr,\"\\varphi\"] & C \\arrow[d,\"\\iota\"] \\\\\n      & \\mathbb{A}^2\n    \\end{tikzcd}\n    \\qquad\n    \\begin{tikzcd}\n      k[\\mathbb{A}^1] & k[C] \\arrow[l,\"\\tilde{\\varphi}^\\#\"] \\\\\n      & k[\\mathbb{A}^2] \\arrow[u,\"\\iota^\\#\"]\\arrow[ul,\"\\varphi^\\#\"]\n    \\end{tikzcd}") ここで $phi$ は全単射であるが $phi^(\#)$ は $t$
 の一次式は得られないことから全射ではない。
 ]
@@ -222,7 +222,7 @@ $ 3 psi : med & E quad & arrow.r quad & D\
 tilde(psi) : med & bb(A)^2 quad & arrow.r quad & bb(A)^3\
  & \( a \, b \) quad & mapsto quad & \( a \, b \, a^2 \) $
 $ 3 psi^(\#) : med & k \[ D \] = k \[ x_1 \, x_2 \, x_3 \] \/ I quad & arrow.r quad & k \[ E \] = k \[ x \, y \] \/ J\
- & overline(g \( x_1 \, x_2 \, x_3 \)) quad & mapsto quad & overline(g \( x \, y \, x^2 \))\
+ & accent(g \( x_1 \, x_2 \, x_3 \), macron) quad & mapsto quad & accent(g \( x \, y \, x^2 \), macron)\
 tilde(psi)^(\#) : med & k \[ bb(A)^3 \] = k \[ x_1 \, x_2 \, x_3 \] quad & arrow.r quad & k \[ bb(A)^2 \] = k \[ x \, y \]\
  & g \( x_1 \, x_2 \, x_3 \) quad & mapsto quad & g \( x \, y \, x^2 \) $
 ]

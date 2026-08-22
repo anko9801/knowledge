@@ -519,14 +519,14 @@ $alpha$ 崩壊 鉛より原子番号の大きな放射性同位体でのみ起�
     [$alpha$
     崩壊], [$\( A \, Z \) arrow.r \( A - 4 \, Z - 2 \) +^4 upright(H e)$], [],
     [$beta^(-)$
-    崩壊], [$\( A \, Z \) arrow.r \( A \, Z + 1 \) + e^(-) + overline(nu)_e$], [$M \( A \, Z \) > M \( A \, Z + 1 \)$],
+    崩壊], [$\( A \, Z \) arrow.r \( A \, Z + 1 \) + e^(-) + accent(nu, macron)_e$], [$M \( A \, Z \) > M \( A \, Z + 1 \)$],
     [$beta^(+)$
     崩壊], [$\( A \, Z \) arrow.r \( A \, Z - 1 \) + e^(+) + nu_e$], [$M \( A \, Z \) > M \( A \, Z - 1 \) + 2 m_e$],
     [電子捕獲], [$\( A \, Z \) + e^(-) arrow.r \( A \, Z - 1 \) + nu_e$
     \+ 特性 X 線
     ($epsilon$)], [$M \( A \, Z \) > M \( A \, Z - 1 \) + epsilon$],
     [二重 $beta^(-)$
-    崩壊], [$\( A \, Z \) arrow.r \( A \, Z + 2 \) + 2 e^(-) + 2 overline(nu)_e$], [],
+    崩壊], [$\( A \, Z \) arrow.r \( A \, Z + 2 \) + 2 e^(-) + 2 accent(nu, macron)_e$], [],
     [二重 $beta^(+)$
     崩壊], [$\( A \, Z \) arrow.r \( A \, Z - 2 \) + 2 e^(+) + 2 nu_e$], [],
     [二重電子捕獲], [$\( A \, Z \) + 2 e^(-) arrow.r \( A \, Z - 2 \) + 2 nu_e$], [],
@@ -538,15 +538,15 @@ $alpha$ 崩壊 鉛より原子番号の大きな放射性同位体でのみ起�
 ] <table:kernel>
 電子捕獲は電子軌道 (主に K$alpha$ などの K 殻)
 の電子と原子核の陽子が反応し, エネルギー $epsilon$ の特性 X 線を伴って
-$ n & arrow.r p + e^(-) + overline(nu)_e\
+$ n & arrow.r p + e^(-) + accent(nu, macron)_e\
 p & arrow.r n + e^(+) + nu_e\
 p + e^(-) & arrow.r n + nu_e $
 
 #lost-figure[核反応]
 
 ニュートリノを伴わない二重 $beta$ 崩壊 ($0 nu 2 beta$)
-があるならニュートリノはディラック粒子 ($nu eq.not overline(nu)$)
-ではなくマヨラナ粒子 ($nu = overline(nu)$) であることがわかる。
+があるならニュートリノはディラック粒子 ($nu eq.not accent(nu, macron)$)
+ではなくマヨラナ粒子 ($nu = accent(nu, macron)$) であることがわかる。
 ⼆重ベータ崩壊はニュートリノがマヨラナ粒子であるか判定する唯⼀の⽅法で
 ^48, ^76, ^124 でよく探索されている。 二重電子捕獲もあり ^78, ^124, ^130
 に観測例があるがニュートリノレスはまだ。
@@ -589,7 +589,7 @@ $ ""^8 upright(B e) arrow.r 2^4 upright(H e)\
     [-1 s], [0.7
     MeV], [$n + nu_e arrow.l.r p + e^(-)$], [$p : n approx 7 : 1$
     に固定],
-    [], [], [$p + overline(nu)_e arrow.l.r n + e^(+)$], [],
+    [], [], [$p + accent(nu, macron)_e arrow.l.r n + e^(+)$], [],
     [0.1 s], [0.1
     MeV], [$n + p arrow.l.r d + gamma \( 2.23 M e V \)$], [平衡状態終了後
     $d$ 増加],

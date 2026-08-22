@@ -54,17 +54,17 @@ $ z_1 = z_2 & arrow.l.r.double z_1 - z_2 = 0 arrow.l.r.double \( x_1 - x_2 \) + 
 複素数 $z = x + i y$ の絶対値 (absolute
 value)、共役複素数 (complex conjugate) をそれぞれ次のように定義する。
 $ \| z \| & = sqrt(x^2 + y^2)\
-overline(z) & = x - i y $
+accent(z, macron) & = x - i y $
 ]
 #proposition[
 複素数 $z \, z_1 \, z_2 in bb(C)$
-に対して次の式が成り立つ。 $  & \| z \|^2 = z overline(z)\
+に対して次の式が成り立つ。 $  & \| z \|^2 = z accent(z, macron)\
  & lr(||) z_1 \| - \| z_2 \| \| lt.eq \| z_1 + z_2 \| lt.eq \| z_1 \| + \| z_2 \| $
 ]
 #proof[
 最初の式については $z = x + i y$
 と置くと次のように表される。
-$ \| z \|^2 = x^2 + y^2 = \( x + i y \) \( x - i y \) = z overline(z) $
+$ \| z \|^2 = x^2 + y^2 = \( x + i y \) \( x - i y \) = z accent(z, macron) $
 次に第二式の各項についてそれぞれを二乗した値を比較する。
 $ (\| z_1 \| - \| z_2 \|)^2 & = (sqrt(x_1^2 + y_1^2) - sqrt(x_2^2 + y_2^2))^2 = x_1^2 + y_1^2 + x_2^2 + y_2^2 - 2 sqrt(\( x_1^2 + y_1^2 \) \( x_2^2 + y_2^2 \))\
 \| z_1 + z_2 \|^2 & = \( x_1 + x_2 \)^2 + \( y_1 + y_2 \)^2 = x_1^2 + x_2^2 + y_1^2 + y_2^2 + 2 \( x_1 x_2 + y_1 y_2 \)\

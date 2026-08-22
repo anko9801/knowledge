@@ -13,8 +13,6 @@
 // 参照がラベル名のまま本文に出る。
 #set math.equation(numbering: "(1)")
 
-<table:data_type>
-
 #block[
 #figure(
   table(
@@ -1965,9 +1963,9 @@ K eq.not L) delta \( I \, K \) delta \( J \, L \) \| 1 \, dots.h \, N \) $
 #block[
 #theorem("Q21-94(i)(ii)(v)(vi)(xiii)(xvii)(xxi)(xxv)(xxvi)(xxvii)(xxviii)")[
 Schrödinger 方程式は次のように書き換えられる.
-$ i planck frac(partial, partial t) Psi \( 1 \, dots.h \, N \; t \) & = #scale(x: 300%, y: 300%)[\(] sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
+$ i planck frac(partial, partial t) Psi \( 1 \, dots.h \, N \; t \) & = \( sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
 1 lt.eq J lt.eq N\
-I eq.not J) V \( I \, J \) #scale(x: 300%, y: 300%)[\)] Psi \( 1 \, dots.h \, N \; t \) $
+I eq.not J) V \( I \, J \) \) Psi \( 1 \, dots.h \, N \; t \) $
 ]
 
 ]
@@ -1990,16 +1988,16 @@ K' eq.not L') delta \( I \, K' \) delta \( J \, L' \) \( 1 \, dots.h \, N \| 1' 
  & + 1 / 2 sum_(I \, J) V \( I \, J \) sum_(1' lt.eq K' lt.eq N'\
 1' lt.eq L' lt.eq N'\
 K' eq.not L') delta \( I \, K' \) delta \( J \, L' \) delta \( 1 \, 1' \) dots.h.c delta \( N \, N' \)\
- & = #scale(x: 300%, y: 300%)[\(] sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
+ & = \( sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
 1 lt.eq J lt.eq N\
-I eq.not J) V \( I \, J \) #scale(x: 300%, y: 300%)[\)] delta \( 1 \, 1' \) dots.h.c delta \( N \, N' \) $
+I eq.not J) V \( I \, J \) \) delta \( 1 \, 1' \) dots.h.c delta \( N \, N' \) $
 よって題意となる式が示される.
-$ i planck frac(partial, partial t) Psi \( 1 \, dots.h \, N \; t \) & = sum_(1' \, dots.h \, N') #scale(x: 300%, y: 300%)[\(] sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
+$ i planck frac(partial, partial t) Psi \( 1 \, dots.h \, N \; t \) & = sum_(1' \, dots.h \, N') \( sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
 1 lt.eq J lt.eq N\
-I eq.not J) V \( I \, J \) #scale(x: 300%, y: 300%)[\)] delta \( 1 \, 1' \) dots.h.c delta \( N \, N' \) Psi \( 1' \, dots.h \, N' \; t \)\
- & = #scale(x: 300%, y: 300%)[\(] sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
+I eq.not J) V \( I \, J \) \) delta \( 1 \, 1' \) dots.h.c delta \( N \, N' \) Psi \( 1' \, dots.h \, N' \; t \)\
+ & = \( sum_(I = 1)^N [- frac(planck^2, 2 m) Delta_I + V \( I \)] + 1 / 2 sum_(1 lt.eq I lt.eq N\
 1 lt.eq J lt.eq N\
-I eq.not J) V \( I \, J \) #scale(x: 300%, y: 300%)[\)] Psi \( 1 \, dots.h \, N \; t \) $
+I eq.not J) V \( I \, J \) \) Psi \( 1 \, dots.h \, N \; t \) $
 ]
 
 = Heisenberg 表示での場の演算子の運動方程式
@@ -2030,8 +2028,8 @@ $ i planck frac(partial, partial t) hat(phi.alt) \( 0 \) & = [hat(phi.alt) \( 0 
  & = [- frac(planck^2, 2 m) Delta_0 + V \( 0 \)] hat(phi.alt) \( 0 \) + 1 / 2 sum_1 V \( 0 \, 1 \) \( 2 hat(rho) \( 1 \) hat(phi.alt) \( 0 \) + delta \( 0 \, 1 \) hat(phi.alt) \( 0 \) \)\
  & = (- frac(planck^2, 2 m) Delta_0 + V \( 0 \) + sum_1 hat(phi.alt)^dagger \( 1 \) V \( 0 \, 1 \) hat(phi.alt) \( 1 \)) hat(phi.alt) \( 0 \) $
 省略せずに記述すると次のようになる.
-$ i planck frac(partial, partial t) hat(phi.alt) \( bold(r)_0 \, s_(z 0) \; t \) & = sum_(s_(z 0') = - s)^s #scale(x: 180%, y: 180%)[\(] - frac(planck^2, 2 m) delta_(s_(z 0) s_(z 0')) Delta_(bold(r)_0) + V_(s_(z 0) s_(z 0')) \( bold(r)_0 \)\
- & + sum_(s_(z 1) = - s)^s sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_1 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \; t \) V_(s_(z 0) s_(z 1) s_(z 0') s_(z 1')) \( bold(r)_0 \, bold(r)_1 \) hat(phi.alt) \( bold(r)_1 \, s_(z 1') \; t \) #scale(x: 180%, y: 180%)[\)] hat(phi.alt) \( bold(r)_0 \, s_(z 0') \; t \) $
+$ i planck frac(partial, partial t) hat(phi.alt) \( bold(r)_0 \, s_(z 0) \; t \) & = sum_(s_(z 0') = - s)^s \( - frac(planck^2, 2 m) delta_(s_(z 0) s_(z 0')) Delta_(bold(r)_0) + V_(s_(z 0) s_(z 0')) \( bold(r)_0 \)\
+ & + sum_(s_(z 1) = - s)^s sum_(s_(z 1') = - s)^s integral thin upright(d) bold(r)_1 hat(phi.alt)^dagger \( bold(r)_1 \, s_(z 1) \; t \) V_(s_(z 0) s_(z 1) s_(z 0') s_(z 1')) \( bold(r)_0 \, bold(r)_1 \) hat(phi.alt) \( bold(r)_1 \, s_(z 1') \; t \) \) hat(phi.alt) \( bold(r)_0 \, s_(z 0') \; t \) $
 ]
 
 = 第二量子化 - 場の正準量子化の手続き
@@ -2065,8 +2063,8 @@ $ i planck frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \) & = - frac
 これより第一項を展開し, 代入すると
 $ frac(partial rho \( bold(r) \, t \), partial t) & = frac(partial, partial t) sum_(s_z = - s)^s phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \)\
  & = sum_(s_z = - s)^s (frac(partial, partial t) phi.alt^(\*) \( bold(r) \, s_z \; t \) phi.alt \( bold(r) \, s_z \; t \) + phi.alt^(\*) \( bold(r) \, s_z \; t \) frac(partial, partial t) phi.alt \( bold(r) \, s_z \; t \))\
- & = sum_(s_z = - s)^s #scale(x: 300%, y: 300%)[\(] (frac(planck, 2 m i) Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) - frac(1, i planck) sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_(z') \; t \) V_(s_(z') s_z) \( bold(r) \)) phi.alt \( bold(r) \, s_z \; t \)\
- & + phi.alt^(\*) \( bold(r) \, s_z \; t \) (- frac(planck, 2 m i) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + frac(1, i planck) sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)) #scale(x: 300%, y: 300%)[\)]\
+ & = sum_(s_z = - s)^s \( (frac(planck, 2 m i) Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) - frac(1, i planck) sum_(s_(z') = - s)^s phi.alt^(\*) \( bold(r) \, s_(z') \; t \) V_(s_(z') s_z) \( bold(r) \)) phi.alt \( bold(r) \, s_z \; t \)\
+ & + phi.alt^(\*) \( bold(r) \, s_z \; t \) (- frac(planck, 2 m i) Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) + frac(1, i planck) sum_(s_(z') = - s)^s V_(s_z s_(z')) \( bold(r) \) phi.alt \( bold(r) \, s_(z') \; t \)) \)\
  & = frac(planck, 2 m i) sum_(s_z = - s)^s {\( Delta_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) \) phi.alt \( bold(r) \, s_z \; t \) - phi.alt^(\*) \( bold(r) \, s_z \; t \) \( Delta_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) \)} $
 となり, 第二項については
 $ nabla_(bold(r)) dot.op bold(j) \( bold(r) \, t \) & = nabla_(bold(r)) dot.op (frac(planck, 2 m i) sum_(s_z = - s)^s { phi.alt^(\*) \( bold(r) \, s_z \; t \) \( nabla_(bold(r)) phi.alt \( bold(r) \, s_z \; t \) \) - \( nabla_(bold(r)) phi.alt^(\*) \( bold(r) \, s_z \; t \) \) phi.alt \( bold(r) \, s_z \; t \) })\

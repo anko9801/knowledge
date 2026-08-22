@@ -59,7 +59,12 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
   {
     recent.length > 0 && (
       <section>
-        <h2>最近書いたもの</h2>
+        <h2>
+          最近書いたもの
+          {/* 再訪の手段。ここに来た人にしか見えないので、head の
+              rel="alternate" と両方置く。 */}
+          <a class="feed" href={`${base}feed.xml`}>フィード</a>
+        </h2>
         <ul class="recent">
           {recent.map((article) => (
             <li>
@@ -101,6 +106,20 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
 <style>
   .lead {
     margin-bottom: 0.6rem;
+  }
+
+  /* 見出しの右へ小さく。押す人は少ないので、探している人にだけ見える大きさで。 */
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+
+  .feed {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration-color: var(--rule);
   }
 
   .lead.sub {

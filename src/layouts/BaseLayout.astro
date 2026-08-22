@@ -84,6 +84,9 @@ const shareTitle = title === siteName ? siteName : `${title} - ${siteName}`
     {canonical && <meta property="og:url" content={canonical} />}
     {/* 画像を持たないので summary。large_image にすると空欄が大きく出る。 */}
     <meta name="twitter:card" content="summary" />
+
+    {/* 再訪の手段。入口の「最近書いたもの」は、来た人にしか見えない。 */}
+    <link rel="alternate" type="application/atom+xml" title="knowledge" href={`${base}feed.xml`} />
     {/* 本文の欧文と数式は最初の画面に必ず出るので、両方とも先読みする。
         太字は出現頻度が低いので、必要になってから取りに行かせる。 */}
     <link rel="preload" href={textRegularFont} as="font" type="font/woff2" crossorigin />

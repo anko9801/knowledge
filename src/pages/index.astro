@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { fields, seriesOf } from '../lib/taxonomy.ts'
+import { fields, findSeries, seriesOf } from '../lib/taxonomy.ts'
 
 const articles = await getCollection('articles', ({ data }) => !data.draft)
 const posts = await getCollection('posts', ({ data }) => !data.draft)
@@ -68,9 +68,17 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
         <ul class="recent">
           {recent.map((article) => (
             <li>
-              <a href={`${base}${article.data.field}/${article.data.series}/${article.data.order}`}>
-                {article.data.title}
-              </a>
+              {/* 題名は異常を出す形にしてあるので、何の回かが題名から読めない。
+                  連載名と回数を添える。日付だけでは、押す前に決められない。 */}
+              <span class="what">
+                <a href={`${base}${article.data.field}/${article.data.series}/${article.data.order}`}>
+                  {article.data.title}
+                </a>
+                <span class="where">
+                  {findSeries(article.data.field, article.data.series)?.title ?? article.data.series}
+                  {` 第 ${article.data.order} 回`}
+                </span>
+              </span>
               <time datetime={article.data.date.toISOString().slice(0, 10)}>
                 {article.data.date.toISOString().slice(0, 10)}
               </time>
@@ -201,6 +209,16 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     font-size: 0.8rem;
     color: var(--muted);
     white-space: nowrap;
+  }
+
+  .recent .what {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recent .where {
+    font-size: 0.8rem;
+    color: var(--muted);
   }
 
   .raw {

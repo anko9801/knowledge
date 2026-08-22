@@ -139,7 +139,11 @@ const blocks = await buildNav(here)
     save(READ, [...read].slice(-300))
 
     const title = article.querySelector('h1')?.textContent?.trim()
-    if (title) save(LAST, { path: here, title })
+    // 保存するのは実際の pathname で、trim したほうではない。
+    // trim は突き合わせ用に .html を落としたもので、そのまま href にすると
+    // 拡張子の無い URL になる。GitHub Pages は .html を補うが、
+    // 素の静的配信では 404 になる（実測）。
+    if (title) save(LAST, { path: location.pathname, title })
   }
 
   for (const link of document.querySelectorAll<HTMLAnchorElement>('.sidebar a[href]')) {

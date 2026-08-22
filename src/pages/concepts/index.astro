@@ -60,10 +60,25 @@ const total = concepts.length
     記事のある概念 {covered} / 全 {total}。書いていないものは、ここには出さない。
   </p>
 
+  {/* 310 語が名前順に並ぶので、下のほうの分野へは延々と転がすことになる。
+      柱の目次はこのページには出ない（見出しを渡していない）ので、ここに置く。 */}
+  <nav class="jump" aria-label="分野へ飛ぶ">
+    {
+      groups.map(({ field, items }) => (
+        <span class="item">
+          {/* 数は連結の外に出す。押す対象ではないし、中に入れると
+              下線が継承で降りてきて切れない（flex の子は inline-block にならない）。 */}
+          <a href={`#${field.slug}`}>{field.title}</a>
+          <span class="n">{items.length}</span>
+        </span>
+      ))
+    }
+  </nav>
+
   {
     groups.map(({ field, items }) => (
       <section class="group">
-        <h2>
+        <h2 id={field.slug}>
           {field.title}
           <span class="n">{items.length}</span>
         </h2>
@@ -91,6 +106,23 @@ const total = concepts.length
   .count {
     font-size: 0.85rem;
     color: var(--muted);
+  }
+
+  /* 分野への近道。数は右に小さく添えて、どこが厚いかも見えるようにする。 */
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 1.2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.9rem;
+  }
+
+  .jump .item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
   }
 
   .group {

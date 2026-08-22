@@ -912,6 +912,14 @@ figure {
   margin: 2rem 0;
 }
 
+/* 変換で失われた図。説明だけがあって中身が無い枠は、読者に見落としを疑わせる。
+   本文と同じ調子で置くと今度は本文に見えるので、一段落とす。 */
+.lost-figure {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 img,
 svg {
   max-width: 100%;

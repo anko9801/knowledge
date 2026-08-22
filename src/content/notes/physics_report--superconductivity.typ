@@ -72,7 +72,7 @@ $ 1 \/ 2 upright(Y)_2 upright(O)_3 + 2 upright(B a C O)_3 + 3 upright(C u O) arr
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([物質], [分子量], [モル数], [重さ],),
@@ -82,7 +82,7 @@ $ 1 \/ 2 upright(Y)_2 upright(O)_3 + 2 upright(B a C O)_3 + 3 upright(C u O) arr
     [], [79.55], [$16.08 times 10^(- 3)$ mol], [1.279 g],
     [1/2\_2\_3 + 2\_3 + 3], [746.24], [$5.36 times 10^(- 3)$
     mol], [4.000 g],
-  )]
+  )
   , caption: [混合比率]
   , kind: table
   )
@@ -137,7 +137,7 @@ $ sin theta & = 1 / 2 sqrt((lambda / a)^2 h^2 + (lambda / b)^2 k^2 + (lambda / c
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([物質], [a 軸 (Å)], [b 軸 (Å)], [c 軸 (Å)],),
@@ -146,7 +146,7 @@ $ sin theta & = 1 / 2 sqrt((lambda / a)^2 h^2 + (lambda / b)^2 k^2 + (lambda / c
     [\_2\_5], [7.132], [12.181], [5.658],
     [], [4.684], [3.425], [5.129],
     [\_2\_3], [10.605], [10.605], [10.605],
-  )]
+  )
   , caption: [アニールで得られうる物質の結晶構造]
   , kind: table
   )
@@ -253,7 +253,7 @@ X 線回折装置を用いて回折による角度に対する強度は図 @fig:
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 6,
     align: (center,center,center,center,center,center,),
     table.header([角度
@@ -290,7 +290,7 @@ X 線回折装置を用いて回折による角度に対する強度は図 @fig:
     [58.9°], [39], [$\[ 2 med 1 med 3 \]$
     (58.74°)], [$\[ 4 med 3 med 1 \]$ (58.84°)], [$\[ 3 med 0 med 0 \]$
     (59.14°)], [$\[ 1 med 3 med 6 \]$ (59.05°)],
-  )]
+  )
   , caption: [Miller 指数]
   , kind: table
   )

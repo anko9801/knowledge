@@ -19,14 +19,14 @@
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([種類], [質量], [電荷], [力],),
     table.hline(),
     [陽イオン], [$M approx 1800 m$], [$Z_sigma e$], [],
     [電子], [$m = 511$ keV], [$- e$], [],
-  )]
+  )
   , caption: []
   , kind: table
   )

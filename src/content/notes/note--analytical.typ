@@ -58,7 +58,7 @@ $ m frac(upright(d)^2 bold(r), upright(d) t^2) = - nabla U $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 3,
     align: (center,center,center,),
     table.header([保存力], [ポテンシャルエネルギー], [],),
@@ -67,7 +67,7 @@ $ m frac(upright(d)^2 bold(r), upright(d) t^2) = - nabla U $
     [重力 (global)], [$display(- G frac(M m, r))$], [],
     [バネの力], [$display(1 / 2 k x^2)$], [],
     [電磁気力], [$- q phi.alt \( bold(r) \, t \) + q dot(bold(r)) dot.op bold(A) \( bold(r) \, t \)$], [],
-  )]
+  )
   , caption: [ポテンシャルエネルギーの表式]
   , kind: table
   )

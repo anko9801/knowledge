@@ -1,5 +1,5 @@
 #import "/src/typst/template.typ": post
-#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, lost-figure, proof, proposition, remark, theorem
 #import "/src/typst/image.typ": web-image
 
 #show: post.with(
@@ -122,7 +122,7 @@ E & = (2 n + l + 3 / 2) planck omega $ これより $N = 2 n + l$
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 7,
     align: (center,center,center,center,center,center,center,),
     table.header([表示], [$N$], [$n$], [$l$], [$m$], [縮退度], [殻],),
@@ -133,7 +133,7 @@ E & = (2 n + l + 3 / 2) planck omega $ これより $N = 2 n + l$
     [2s], [2], [1], [0], [0], [2], [3(20)],
     [1f], [3], [0], [3], [$- 3 \, - 2 \, - 1 \, 0 \, 1 \, 2 \, 3$], [14], [4(40)],
     [2d], [3], [1], [1], [$- 1 \, 0 \, 1$], [6], [4(40)],
-  )]
+  )
   , caption: [調和振動子系の縮退度]
   , kind: table
   )
@@ -175,7 +175,7 @@ $ V \( r \) = - V_0 + underbrace(1 / 2 m omega^2 r^2, "調和振動" ⼦) + unde
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 5,
     align: (center,center,center,center,center,),
     table.header([$\( n \, l \, j^pi \)$], [表示], [縮退度], [パリティ], [核
@@ -192,7 +192,7 @@ $ V \( r \) = - V_0 + underbrace(1 / 2 m omega^2 r^2, "調和振動" ⼦) + unde
     [$\( 0 \, 3 \, 5 \/ 2 \)$], [$1 f_(5 \/ 2)$], [6], [$-$], [5 (50)],
     [$\( 1 \, 1 \, 1 \/ 2 \)$], [$2 p_(1 \/ 2)$], [2], [$-$], [5 (50)],
     [$\( 0 \, 4 \, 9 \/ 2 \)$], [$1 g_(9 \/ 2)$], [10], [$+$], [5 (50)],
-  )]
+  )
   , caption: [魔法数]
   , kind: table
   )
@@ -281,7 +281,7 @@ $pi^plus.minus$ は弱い相互作⽤ ニュートリノ レプトン数保存 $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 6,
     align: (center,center,center,center,center,center,),
     table.header([], [スピン・パリティ], [電荷], [質量], [崩壊寿命], [崩壊様式],),
@@ -292,7 +292,7 @@ $pi^plus.minus$ は弱い相互作⽤ ニュートリノ レプトン数保存 $
     MeV/c#super[2];], [$2.60 times 10^(- 8)$ s], [^-^- +\_],
     [$pi^0$], [$0^(-)$], [$0$], [$135$
     MeV/c#super[2];], [$0.8 times 10^(- 16)$ s], [^0$arrow.r 2 gamma$],
-  )]
+  )
   , caption: [$pi$ 中間子の種類]
   , kind: table
   )
@@ -319,7 +319,7 @@ frac(g^2, h c) = 0.3 $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 5,
     align: (center,center,center,center,center,),
     table.header([力], [重力], [電磁気力], [弱い力], [強い力],),
@@ -329,7 +329,7 @@ frac(g^2, h c) = 0.3 $
     [力の大きさ], [～$10^(- 38)$], [～$10^(- 2)$], [～$10^(- 5)$], [～$1$],
     [仮想粒子], [重力子], [光子], [W, Z ボソン], [グルーオン (中間子)],
     [具体例], [地球-月や銀河系], [原子核-電子間], [$beta$ 崩壊], [核力],
-  )]
+  )
   , caption: [自然界の 4 つの力]
   , kind: table
   )
@@ -337,11 +337,7 @@ frac(g^2, h c) = 0.3 $
 ] <table:force>
 荷電交換が起こる確率は 1/2
 
-#figure([],
-  caption: [
-    陽⼦-中性⼦後⽅散乱
-  ]
-)
+#lost-figure[陽⼦-中性⼦後⽅散乱]
 
 低エネルギーのp+p,p+n散乱から散乱の位相差
 も到達距離(ポテンシャルの形）や引⼒か斥⼒かを評価できる。
@@ -424,7 +420,7 @@ https:\/\/people.physics.anu.edu.au/~ecs103/chart3d/
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (center,left,),
     table.header([崩壊], [条件],),
@@ -436,7 +432,7 @@ https:\/\/people.physics.anu.edu.au/~ecs103/chart3d/
     [不安定核], [束縛核の内、$alpha$ 崩壊, 電子捕獲, 弱い相互作用
     ($beta$ 崩壊) などの核崩壊では不安定],
     [二重魔法数核], [陽子数と中性子数が魔法数の核種。当初安定と考えられていたが不安定核が見つかってきた為理論のベンチマークとなっている。],
-  )]
+  )
   , caption: [核反応]
   , kind: table
   )
@@ -515,7 +511,7 @@ $alpha$ 崩壊 鉛より原子番号の大きな放射性同位体でのみ起�
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 3,
     align: (center,center,center,),
     table.header([崩壊], [反応式], [条件],),
@@ -534,7 +530,7 @@ $alpha$ 崩壊 鉛より原子番号の大きな放射性同位体でのみ起�
     [二重 $beta^(+)$
     崩壊], [$\( A \, Z \) arrow.r \( A \, Z - 2 \) + 2 e^(+) + 2 nu_e$], [],
     [二重電子捕獲], [$\( A \, Z \) + 2 e^(-) arrow.r \( A \, Z - 2 \) + 2 nu_e$], [],
-  )]
+  )
   , caption: [核反応]
   , kind: table
   )
@@ -546,11 +542,7 @@ $ n & arrow.r p + e^(-) + overline(nu)_e\
 p & arrow.r n + e^(+) + nu_e\
 p + e^(-) & arrow.r n + nu_e $
 
-#figure([],
-  caption: [
-    核反応
-  ]
-)
+#lost-figure[核反応]
 
 ニュートリノを伴わない二重 $beta$ 崩壊 ($0 nu 2 beta$)
 があるならニュートリノはディラック粒子 ($nu eq.not overline(nu)$)
@@ -588,7 +580,7 @@ $ ""^8 upright(B e) arrow.r 2^4 upright(H e)\
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([宇宙開闢からの時間], [温度], [反応式], [終了後],),
@@ -609,7 +601,7 @@ $ ""^8 upright(B e) arrow.r 2^4 upright(H e)\
     少量生成],
     [その後], [], [$""^7 upright(B e) + e^(-) arrow.r^7 upright(L i) + nu_e$], [],
     [], [], [$t arrow.r^3 upright(H e) + e^(-) + nu_e$], [],
-  )]
+  )
   , caption: [Big Bang Nucleosynthesis (BBN)]
   , kind: table
   )
@@ -635,7 +627,7 @@ $ ""^68 upright(N i) + n & arrow.r^69 upright(N i) + gamma\
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 5,
     align: (center,center,center,center,center,),
     table.header([段階], [反応式], [時間スケール], [温度 ($T times 10^9$
@@ -657,7 +649,7 @@ $ ""^68 upright(N i) + n & arrow.r^69 upright(N i) + gamma\
     [コア崩壊], [], [seconds], [8.1], [$3 times 10^9$],
     [コア跳ね返り], [], [milliseconds], [34.8], [$3 times 10^14 tilde.op rho_0$],
     [爆発的燃焼], [], [0.1-10 s], [1.2-7.0], [],
-  )]
+  )
   , caption: [$25 M_(s u n)$ の星の時系列]
   , kind: table
   )

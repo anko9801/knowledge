@@ -140,9 +140,10 @@ const blocks = await buildNav(here)
 
     const title = article.querySelector('h1')?.textContent?.trim()
     // 保存するのは実際の pathname で、trim したほうではない。
-    // trim は突き合わせ用に .html を落としたもので、そのまま href にすると
-    // 拡張子の無い URL になる。GitHub Pages は .html を補うが、
-    // 素の静的配信では 404 になる（実測）。
+    // trim は突き合わせ用に .html を落とした形なので、href に使うと
+    // 読者が来たのとは別の URL を作ることになる。
+    // 実際 /…/2.html で来た人に /…/2 を返しており、素の静的配信では 404 だった。
+    // いま開けている URL をそのまま返すなら、返した先も必ず開ける。
     if (title) save(LAST, { path: location.pathname, title })
   }
 

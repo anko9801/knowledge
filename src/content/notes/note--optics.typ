@@ -54,7 +54,7 @@ $epsilon$ だけ位相が進んでいる。」といえる。位相差 $delta$
 $ (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 & = sin^2 epsilon $
 ]
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (center,center,),
     table.header([偏光状態], [$epsilon$],),
@@ -62,7 +62,7 @@ $ (E_1 / a_1)^2 + (E_2 / a_2)^2 - 2 cos epsilon E_1 / a_1 E_2 / a_2 & = sin^2 ep
     [直線偏光], [$0 \, pi$],
     [円偏光(右回転)], [$display(- pi / 2)$],
     [円偏光(左回転)], [$display(+ pi / 2)$],
-  )]
+  )
   , caption: [偏光状態]
   , kind: table
   )
@@ -201,7 +201,7 @@ $ cal(bold(E)) \( bold(r) \, t \) = vec(cal(E)_1 \( bold(r) \, t \), cal(E)_2 \(
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([偏光状態], [呼び名], [Stokesベクトル
@@ -219,7 +219,7 @@ $ cal(bold(E)) \( bold(r) \, t \) = vec(cal(E)_1 \( bold(r) \, t \), cal(E)_2 \(
     RCP], [$mat(delim: "(", 1, 0, 0, 1)^top$], [$1 / sqrt(2) mat(delim: "(", 1, i)^top$],
     [円偏光(左回転)], [$cal(L)$ 状態:
     LCP], [$mat(delim: "(", 1, 0, 0, - 1)^top$], [$1 / sqrt(2) mat(delim: "(", 1, - i)^top$],
-  )]
+  )
   , caption: [重要な偏光状態の Stokes ベクトル]
   , kind: table
   )
@@ -428,7 +428,7 @@ T^(1 \/ 4 upright("波長板")) & = T^(upright("遅相子")) (pi / 2) = mat(deli
 ]
 #proposition[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([偏光状態], [Jones ベクトル], [1/2波長板], [1/4波長板],),
@@ -443,7 +443,7 @@ T^(1 \/ 4 upright("波長板")) & = T^(upright("遅相子")) (pi / 2) = mat(deli
     (左回転)], [$display(1 / sqrt(2) vec(1, i))$], [$display(i / sqrt(2) vec(1, - i))$], [],
     [円偏光
     (右回転)], [$display(1 / sqrt(2) vec(1, - i))$], [$display(i / sqrt(2) vec(1, i))$], [],
-  )]
+  )
   , caption: [偏光状態]
   , kind: table
   )

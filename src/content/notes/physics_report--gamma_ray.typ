@@ -1,5 +1,5 @@
 #import "/src/typst/template.typ": post
-#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, proof, proposition, remark, theorem
+#import "/src/typst/theorem.typ": axiom, corollary, definition, example, lemma, lost-figure, proof, proposition, remark, theorem
 #import "/src/typst/image.typ": web-image
 
 #show: post.with(
@@ -100,7 +100,7 @@ mu^plus.minus & arrow.r e^plus.minus + nu_e + nu_mu $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 3,
     align: (center,center,center,),
     table.header([性質], [光電子増倍管], [MPPC],),
@@ -111,7 +111,7 @@ mu^plus.minus & arrow.r e^plus.minus + nu_e + nu_mu $
     [小型化], [難しい], [可能 ($3 m m times 3 m m$)],
     [大型化], [可能 (ex. カミオカンデ)], [高価],
     [特性], [磁場、衝撃に弱い], [],
-  )]
+  )
   , caption: [光電子増倍管と MPPC の比較]
   , kind: table
   )
@@ -146,7 +146,7 @@ h^(+) & arrow.r h^(+) + \( e^(-) \, h^(+) \) $ また MPPC
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (center,left,),
     table.header([構成部品], [説明],),
@@ -155,7 +155,7 @@ h^(+) & arrow.r h^(+) + \( e^(-) \, h^(+) \) $ また MPPC
     [Dielectric], [ポリエチレンやテフロンなどの絶縁体],
     [Screen], [同心円筒上に取り囲む外部導体],
     [Sheath], [プラスチックのシールド],
-  )]
+  )
   , caption: [同軸ケーブルの構成]
   , kind: table
   )
@@ -196,7 +196,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 3,
     align: (center,left,left,),
     table.header([実験装置], [機器名], [説明],),
@@ -213,7 +213,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
     [コインシデンス], [\-], [複数の入力がすべて上がっているときに出力される回路。],
     [AD コンバータ], [CP 1114A], [アナログからデジタルへ変換する。],
     [スケーラー], [], [],
-  )]
+  )
   , caption: [実験装置の機器名]
   , kind: table
   )
@@ -292,7 +292,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (center,center,),
     table.header([終端抵抗値], [パルス波の強度],),
@@ -301,7 +301,7 @@ p-テルフェニルも用いる。 MPPC については $3 m m times 3 m m$ の
     [50 Ω], [100 mV],
     [100 Ω], [130 mV],
     [$oo$ Ω], [200 mV],
-  )]
+  )
   , caption: [終端抵抗に対するパルス波の強さ]
   , kind: table
   )
@@ -453,7 +453,7 @@ $ r & = V_r / V_0 = frac(Z_L - Z_0, Z_L + Z_0) = cases(delim: "{", - 0.96 & \( 1
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 3,
     align: (center,left,left,),
     table.header([線源], [観測されたピーク (keV)], [理論的な光電ピーク
@@ -463,7 +463,7 @@ $ r & = V_r / V_0 = frac(Z_L - Z_0, Z_L + Z_0) = cases(delim: "{", - 0.96 & \( 1
     [Cs], [157.9, 419.3, 637.5], [662],
     [Na], [162.7, 303.9, 528.4, 1034, 1306, 1385], [1274],
     [Ba], [119.4, 279.8, 334.3], [80, 303, 356],
-  )]
+  )
   , caption: [ガンマ線のピーク位置]
   , kind: table
   )
@@ -549,11 +549,7 @@ $n$ 型半導体と $p$ 型半導体の空乏層の位置 $x_n \, x_p$
 を次のように定義する。 これより空乏層の厚さ $D$ は $D = x_p - x_n$
 と書ける。
 
-#figure([],
-  caption: [
-    半導体中の電気密度
-  ]
-)
+#lost-figure[半導体中の電気密度]
 <fig:kubosou-rho>
 
 これよりポアソン方程式を解くことで電位は次のようになる。
@@ -566,11 +562,7 @@ $ D & = sqrt(frac(2 epsilon \( rho_n + rho_p \), rho_n rho_p) V_0) $
 空乏層内の電場は $E \( x \) = - nabla phi.alt$ と表せるから計算すると図
 @fig:kubosou-E のようなグラフとなる。
 
-#figure([],
-  caption: [
-    空乏層内の電場
-  ]
-)
+#lost-figure[空乏層内の電場]
 <fig:kubosou-E>
 
 $ E \( 0 \) & = frac(rho_n x_n, epsilon) = - frac(rho_n rho_p, epsilon \( rho_n + rho_p \)) D = - sqrt(frac(2 rho_n rho_p, epsilon \( rho_n + rho_p \)) V_0) $

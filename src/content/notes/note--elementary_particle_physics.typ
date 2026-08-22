@@ -31,7 +31,7 @@ c & approx 3 times 10^8 m \/ s $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,left,left,left,),
     [クォーク], [アップ $u$], [チャーム $c$], [トップ $t$],
@@ -42,7 +42,7 @@ c & approx 3 times 10^8 m \/ s $
     [ゲージボソン], [光子 $gamma$], [グルーオン $g$], [$W$ ボソン $Z$
     ボソン],
     [], [ヒッグス粒子 $H$], [], [],
-  )]
+  )
   , caption: [素粒子]
   , kind: table
   )
@@ -70,7 +70,7 @@ c & approx 3 times 10^8 m \/ s $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,left,left,left,),
     table.header([], [電荷], [質量], [平均寿命],),
@@ -81,7 +81,7 @@ c & approx 3 times 10^8 m \/ s $
     [$e$], [$- 1$], [$0.511$ MeV], [安定],
     [$mu$], [$- 1$], [$106$ MeV], [$2.2$ ~s],
     [$tau$], [$- 1$], [$1777$ MeV], [$2.9 times 10^(- 13)$ s],
-  )]
+  )
   , caption: [レプトン]
   , kind: table
   )
@@ -106,7 +106,7 @@ $- 1 \/ 3$ バリオン $+ 1$
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 6,
     align: (center,right,center,center,center,center,),
     table.header([], [質量], [$Q$], [$I_3$], [$S$], [$B$],),
@@ -118,7 +118,7 @@ $- 1 \/ 3$ バリオン $+ 1$
     MeV], [$- 1 \/ 3$], [$0$], [$- 1$], [$+ 1 \/ 3$],
     [$t$], [$173.5$ GeV], [$+ 2 \/ 3$], [$0$], [$0$], [$+ 1 \/ 3$],
     [$b$], [$4.2$ GeV], [$- 1 \/ 3$], [$0$], [$0$], [$+ 1 \/ 3$],
-  )]
+  )
   , caption: [クォーク]
   , kind: table
   )
@@ -134,7 +134,7 @@ $- 1 \/ 3$ バリオン $+ 1$
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 6,
     align: (center,center,center,center,center,center,),
     table.header([], [$macron(d)$], [$macron(u)$], [$macron(s)$], [$macron(c)$], [$macron(b)$],),
@@ -148,7 +148,7 @@ $- 1 \/ 3$ バリオン $+ 1$
     (3097)], [$B_c^(+)$],
     [$b$], [$macron(B^0)$], [$B^(-)$], [$macron(B_s^0)$], [$B_c^(-)$], [$Upsilon$
     (9460)],
-  )]
+  )
   , caption: [メソンとその質量 (スピン 0, 1)]
   , kind: table
   )
@@ -159,7 +159,7 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 6,
     align: (center,center,center,center,center,left,),
     table.header([$S = 1 \/ 2$], [構成], [$I_3$], [$S$], [質量], [備考],),
@@ -167,7 +167,7 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
     [$p$], [$u u d$], [$+ 1 \/ 2$], [$0$], [$938.3$ MeV], [安定],
     [$n$], [$u d d$], [$- 1 \/ 2$], [$0$], [$939.6$
     MeV], [$n arrow.r p + e^(-) + macron(nu_e)$],
-  )]
+  )
   , caption: [バリオン]
   , kind: table
   )
@@ -177,7 +177,7 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
 <ゲージボソン>
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 6,
     align: (center,center,center,center,center,center,),
     table.header([], [強さ], [媒介粒子], [スピン], [質量], [理論],),
@@ -187,7 +187,7 @@ $eta^0 \, eta^(0') = c_1 \( u macron(u) + d macron(d) \) + c_2 \( s macron(s) \)
     [弱い相互作用], [$10^(- 5)$], [$W plus.minus \, Z 0$], [1], [100
     GeV], [GWS],
     [重力相互作用], [$10^(- 38)$], [重力子], [2], [0], [一般相対論],
-  )]
+  )
   , caption: [ゲージボソン]
   , kind: table
   )
@@ -266,7 +266,7 @@ $ Delta E = frac(4 pi, 3) frac(alpha beta^3, R) (E / m)^4 planck c $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 5,
     align: (center,center,center,center,left,),
     table.header([粒子], [電荷], [飛跡検出], [物質中では], [備考],),
@@ -278,7 +278,7 @@ $ Delta E = frac(4 pi, 3) frac(alpha beta^3, R) (E / m)^4 planck c $
     [$mu$], [荷電], [可能], [透過力が強い], [],
     [$pi^plus.minus \, K^pi \, p$], [荷電], [可能], [ハドロンシャワー], [],
     [ニュートリノ], [$0$], [不可], [なし], [],
-  )]
+  )
   , caption: [観測する粒子]
   , kind: table
   )

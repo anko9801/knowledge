@@ -32,7 +32,7 @@
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 3,
     align: (center,center,left,),
     table.header([A], [B], [組合せ],),
@@ -51,7 +51,7 @@
     個], [$zws_4 H_5 times zws_8 H_1 = zws_8 C_5 times zws_8 C_1 = 448$],
     [6 個], [0
     個], [$zws_4 H_6 times zws_8 H_0 = zws_9 C_6 times zws_7 C_0 = 84$],
-  )]
+  )
   , caption: [組合せ]
   , kind: table
   )

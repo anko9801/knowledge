@@ -55,7 +55,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 5,
     align: (center,center,center,center,center,),
     table.header([結晶], [格子条件], [単純], [面心], [対称性],),
@@ -64,7 +64,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
     [直方晶], [$a eq.not b \, theta = 90$°], [直方格子], [面心直方格子], [$C_2 \, m$],
     [斜方晶], [$a eq.not b \, theta eq.not 90$°], [斜方格子], [], [$C_2$],
     [六方晶], [$theta = 60$°], [六方格子], [], [$C_6$],
-  )]
+  )
   , caption: [2 次元 Bravie 格子]
   , kind: table
   )
@@ -72,7 +72,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
 ] <table:2D-Bravie>
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 6,
     align: (center,center,center,center,center,center,),
     table.header([結晶系], [格子条件], [単純], [体心], [面心], [底心],),
@@ -91,7 +91,7 @@ $ bold(R)_n & = sum_(i = 1)^n n_i bold(a)_i #h(2em) \( n_i in bb(Z) \) $
     $gamma = 120$°], [単純六方晶], [], [], [],
     [三斜晶], [$a eq.not b eq.not c$,
     $alpha eq.not beta eq.not gamma$], [単純三斜晶], [], [], [],
-  )]
+  )
   , caption: [3 次元 Bravie 格子]
   , kind: table
   )

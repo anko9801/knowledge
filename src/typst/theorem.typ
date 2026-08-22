@@ -111,6 +111,30 @@
   }
 }
 
+/// 元の図が残っていない図版。
+///
+/// 変換で落ちた図のうち、元の LaTeX すら手元に無いものがある（tikz を
+/// 中間で捨てた回）。`#figure([], caption: [...])` のまま置くと、
+/// **説明だけがあって中身が無い**枠が並ぶ。読者は何かを見落としたと思う。
+///
+/// 中身が無いことを書いておけば、探しに戻らずに済む。
+/// 元の LaTeX が残っているなら `#unconverted` のほうを使う。
+/// context は figure の中に入れる。外に出すと figure ではなく context に
+/// ラベルが付き、@fig:… が「cannot reference context」で落ちる。
+#let lost-figure(caption) = figure(
+  context {
+    let note = [（図は変換の途中で失われています）]
+
+    if target() == "html" {
+      // text() の色も大きさも HTML export では落ちるので、印を付けて CSS に渡す。
+      html.elem("p", attrs: (class: "lost-figure"), note)
+    } else {
+      text(fill: luma(45%), size: 0.85em, note)
+    }
+  },
+  caption: caption,
+)
+
 /// 証明。終わりの □ まで込みで 1 つの塊にする。
 #let proof(body) = context {
   if target() == "html" {

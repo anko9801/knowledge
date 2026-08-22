@@ -123,7 +123,7 @@ $ E & = frac(8 pi h nu^3, c^3) frac(1, exp (frac(h nu, k_B T)) - 1) $
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (center,center,),
     table.header([Ne ランプのピーク], [Ne の輝線スペクトルの波長],),
@@ -131,7 +131,7 @@ $ E & = frac(8 pi h nu^3, c^3) frac(1, exp (frac(h nu, k_B T)) - 1) $
     [627.8798 ch], [630.479 nm],
     [630.6506 ch], [633.442 nm],
     [635.3986 ch], [638.299 nm],
-  )]
+  )
   , caption: [スペクトル]
   , kind: table
   )
@@ -265,7 +265,7 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 3,
     align: (center,left,left,),
     table.header([対象の光], [スペクトル], [時間波形],),
@@ -277,7 +277,7 @@ $3 N - 6 = 3 times 65 - 6 = 189$ であり, 振動モードも約 190 個とな�
     後に発光],
     [色素レーザー], [600 nm のピーク], [フラッシュランプが閾値を超えて
     1~s 後に発光],
-  )]
+  )
   , caption: [色素レーザーに関する光のスペクトルと時間波形について]
   , kind: table
   )

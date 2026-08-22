@@ -116,3 +116,27 @@ test('記事に、見出しが一つはある', () => {
 
   strictEqual(headless.join('\n'), '')
 })
+
+test('align が、本文に残っていない', () => {
+  // align は HTML export で**中身ごと**消える。typst は警告を出すが compile は
+  // 成功するので、ビルドを通しただけでは気づけない。
+  //
+  // 実際 align(center)[#table(...)] が 41 か所あり、講義ノートの表 44 個のうち
+  // 40 個が「説明だけがあって中身が無い figure」になっていた。
+  // 中央寄せは CSS の仕事なので、Typst 側で書く必要がそもそも無い。
+  //
+  // place も同じく落ちるが、こちらは html.frame() で囲む形が確立している
+  // （`docs/build.md`）ので、ここでは見ない。
+  const dropped = typFiles(ARTICLES)
+    .concat(typFiles('src/content/notes'))
+    .flatMap((path) => {
+      const lines = readFileSync(path, 'utf8').split('\n')
+      return lines.flatMap((line, i) =>
+        /(?<![A-Za-z-])align\(/.test(line)
+          ? [`${path}:${i + 1}  ${line.trim().slice(0, 60)}`]
+          : [],
+      )
+    })
+
+  strictEqual(dropped.join('\n'), '')
+})

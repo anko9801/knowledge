@@ -17,7 +17,7 @@
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (left,left,),
     table.header([問題番号], [正誤],),
@@ -61,7 +61,7 @@
     [Q21-37.], [(i) (ii) (iii) (iv) (v) (vi) (vii)],
     [Q21-38.], [(i) (ii)],
     [Q21-39.], [(i) (ii) (iii) (iv)],
-  )]
+  )
   , caption: [正誤表]
   , kind: table
   )
@@ -71,7 +71,7 @@
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (left,left,),
     table.header([問題番号], [正誤],),
@@ -115,7 +115,7 @@
     [Q21-72.], [(i) (ii) (iii)],
     [Q21-73.], [(i) (ii) (iii)],
     [Q21-74.], [(i) (ii)],
-  )]
+  )
   , caption: [正誤表]
   , kind: table
   )
@@ -125,7 +125,7 @@
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (left,left,),
     table.header([問題番号], [正誤],),
@@ -165,7 +165,7 @@
     [Q21-101.], [(i) (ii) (iii) (iv)],
     [Q21-102.], [(i) (ii) (iii) (iv) (v) (vi) (vii) (viii) (ix) (x) (xi)
     (xii)],
-  )]
+  )
   , caption: [正誤表]
   , kind: table
   )
@@ -960,7 +960,7 @@ Hilbert 空間において 2, 3 個の同一の Bose 粒子, Fermi 粒子の Hil
 空間は次のようになる.
 
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([Bose, Fermi], [$cal(H)_(s i n g l e)$
@@ -973,13 +973,13 @@ Hilbert 空間において 2, 3 個の同一の Bose 粒子, Fermi 粒子の Hil
     [Bose], [$\|alpha⟩ \, \|beta⟩$], [2], [$display(\|alpha⟩ \|alpha⟩ \, \|beta⟩ \|beta⟩ \, 1 / sqrt(2) \( \|alpha⟩ \|beta⟩ + \|beta⟩ \|alpha⟩ \))$],
     [Bose], [$\|alpha⟩$], [3], [$\|alpha⟩ \|alpha⟩ \|alpha⟩$],
     [Bose], [$\|alpha⟩ \, \|beta⟩$], [3], [#figure(
-      align(center)[#table(
+      table(
         columns: 1,
         align: (center,),
         [$\|alpha⟩ \|alpha⟩ \|alpha⟩ \, \|beta⟩ \|beta⟩ \|beta⟩$,],
         [$display(1 / sqrt(3) \( \|alpha⟩ \|alpha⟩ \|beta⟩ + \|alpha⟩ \|beta⟩ \|alpha⟩ + \|beta⟩ \|alpha⟩ \|alpha⟩ \))$,],
         [$display(1 / sqrt(3) \( \|alpha⟩ \|beta⟩ \|beta⟩ + \|beta⟩ \|alpha⟩ \|beta⟩ + \|beta⟩ \|beta⟩ \|alpha⟩ \))$],
-      )]
+      )
       , caption: [Bose, Fermi 粒子系の基底]
       , kind: table
       )
@@ -991,7 +991,7 @@ Hilbert 空間において 2, 3 個の同一の Bose 粒子, Fermi 粒子の Hil
     [Fermi], [$\|alpha⟩ \, \|beta⟩$], [2], [$display(1 / sqrt(2) \( \|alpha⟩ \|beta⟩ - \|beta⟩ \|alpha⟩ \))$],
     [Fermi], [$\|alpha⟩$], [3], [なし],
     [Fermi], [$\|alpha⟩ \, \|beta⟩$], [3], [なし],
-  )]
+  )
   , caption: [Bose, Fermi 粒子系の基底]
   , kind: table
   )

@@ -541,7 +541,7 @@ $ bold(S) = mat(delim: "[", s_0; s_1; s_2; s_3) = mat(delim: "[", s_0, s_1, s_2,
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 4,
     align: (center,center,center,center,),
     table.header([偏光状態], [呼び名], [Stokesベクトル
@@ -559,7 +559,7 @@ $ bold(S) = mat(delim: "[", s_0; s_1; s_2; s_3) = mat(delim: "[", s_0, s_1, s_2,
     RCP], [$mat(delim: "[", 1, 0, 0, 1)^top$], [$display(1 / sqrt(2) mat(delim: "[", 1, upright(i))^top)$],
     [円偏光(左回転)], [$cal(L)$ 状態:
     LCP], [$mat(delim: "[", 1, 0, 0, - 1)^top$], [$display(1 / sqrt(2) mat(delim: "[", 1, - upright(i))^top)$],
-  )]
+  )
   , caption: [重要な偏光状態の Stokes ベクトル]
   , kind: table
   )

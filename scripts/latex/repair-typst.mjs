@@ -168,6 +168,63 @@ const dropEmptyTitles = (source) =>
 const stripStrayNone = (source) => source.replace(/;\s*#none\s*\)/g, ')')
 
 /**
+ * `align(center)[#table(...)]` から align を外す。
+ *
+ * **align は HTML export で中身ごと落ちる。** typst は警告を出すが compile は
+ * 成功するので、表が消えて figure の caption だけが残る。
+ * 実測で 41 か所あり、講義ノートの表 44 個のうち 40 個がこの形で消えていた。
+ *
+ * 中央寄せは CSS の仕事なので、そもそも Typst 側に要らない。
+ * 見張りは `src/lib/opening.test.ts`。
+ */
+const unwrapAlignedTables = (source) => {
+  const OPEN = 'align(center)[#table('
+  let out = ''
+  let i = 0
+
+  for (;;) {
+    const j = source.indexOf(OPEN, i)
+    if (j < 0) return out + source.slice(i)
+
+    out += source.slice(i, j)
+    const lp = j + OPEN.length - 1
+    const rp = matchParen(source, lp)
+    // 閉じが `]` でなければ触らない。読めない形を壊すより残すほうがまし。
+    if (rp < 0 || source[rp + 1] !== ']') {
+      out += source.slice(j, j + OPEN.length)
+      i = j + OPEN.length
+      continue
+    }
+
+    out += `table${source.slice(lp, rp + 1)}`
+    i = rp + 2
+  }
+}
+
+/** source[i] の `(` に対応する `)` の位置。文字列リテラルは飛ばす。見つからなければ -1。 */
+const matchParen = (source, i) => {
+  let depth = 0
+  let inString = false
+
+  for (; i < source.length; i += 1) {
+    const c = source[i]
+    if (inString) {
+      if (c === '\\') i += 1
+      else if (c === '"') inString = false
+      continue
+    }
+    if (c === '"') inString = true
+    else if (c === '(') depth += 1
+    else if (c === ')') {
+      depth -= 1
+      if (depth === 0) return i
+    }
+  }
+
+  return -1
+}
+
+/**
  * 画像参照をサイト側に配置した実体へ向ける。
  *
  * 実体が無い参照は元リポジトリの時点で壊れている。ビルドを止めても直らないので、
@@ -483,8 +540,8 @@ export const repairTypst = (source, { group, available }) => {
     (text, [pattern, to]) => text.replace(pattern, to),
     symbols,
   )
-  const cleaned = dropEmptyTitles(
-    stripQedResidue(escapeArgumentSemicolons(stripStrayNone(delimiters))),
+  const cleaned = unwrapAlignedTables(
+    dropEmptyTitles(stripQedResidue(escapeArgumentSemicolons(stripStrayNone(delimiters)))),
   )
   const japanese = groupJapaneseInMath(cleaned)
   const images = rewriteImages(japanese.text, group, available)

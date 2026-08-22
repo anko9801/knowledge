@@ -17,7 +17,7 @@
 
 #block[
 #figure(
-  align(center)[#table(
+  table(
     columns: 2,
     align: (left,left,),
     table.header([問題番号], [正誤],),
@@ -58,7 +58,7 @@
     [Q17A-11.], [o],
     [Q17A-12.], [(i) o (ii) o],
     [Q17A-13.], [o],
-  )]
+  )
   , caption: [正誤表]
   , kind: table
   )

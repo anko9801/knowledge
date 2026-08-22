@@ -298,6 +298,13 @@ docs の数を直すときは、まずそれを走らせること。
 #diagram(caption: [説明], 中身)
 ```
 
+**`align` も HTML export で中身ごと落ちる。**警告は出るが `compile` は成功するので、
+ビルドを通しただけでは気づけない。講義ノートに `align(center)[#table(...)]` が
+41 か所あり、**表 44 個のうち 40 個が「説明だけがあって中身が無い figure」**に
+なっていた。中央寄せは CSS の仕事なので、Typst 側に書く必要がそもそも無い。
+変換側で外し（`repair-typst.mjs` の `unwrapAlignedTables`）、
+`opening.test.ts` で戻らないようにしてある。
+
 **`place` は HTML export で黙って落ちる。**`html.frame()` で囲まないと本文に何も
 残らない（穴の 15）。`diagram` が `target()` で分けて、HTML には SVG、PDF には
 `figure` を出す。番号は振らない——主張の通し番号（定義 3 の次が定理 4）を乱すため。

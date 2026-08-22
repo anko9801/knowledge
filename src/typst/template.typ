@@ -82,6 +82,9 @@
       set page(paper: "a4", margin: 2.4cm, numbering: "1")
       set text(font: ("Noto Serif CJK JP", "Noto Serif"), size: 10.5pt)
       set par(justify: true, leading: 0.9em)
+      // 図の説明は既定で中央寄せになる。1 行なら収まるが、3 行あると
+      // 行ごとに始まりが違う塊になって読みにくい。左に揃える。
+      show figure.caption: it => align(left, it)
 
       align(center)[
         #text(size: 17pt, weight: "bold")[#title]

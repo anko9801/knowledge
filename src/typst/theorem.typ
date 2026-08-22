@@ -214,6 +214,10 @@
         }
       })
     } else if answer != none {
+      // figure は既定で中央寄せになる。show rule で中身を差し替えても
+      // その寄せは効いたままで、**紙面では主張の中の段落が全部中央に寄る**
+      // （PDF を見るまで気づけない。画面側は CSS が持つので無事だった）。
+      set align(left)
       block(
         width: 100%,
         inset: (left: 0.9em, y: 0.5em),
@@ -228,6 +232,7 @@
         },
       )
     } else {
+      set align(left)
       block(
         width: 100%,
         inset: (left: 0.9em, y: 0.5em),

@@ -109,6 +109,25 @@ $ theta^i = h_i thin dif u^i quad (upright("和を取らない")) $
 $ upright("vol") = theta^1 and theta^2 and theta^3 = h_1 h_2 h_3 thin dif u^1 and dif u^2 and dif u^3 $
 になる。この $h_1 h_2 h_3$ が $sqrt(g)$ である。
 
+#check[
+  Laplacian はデカルト座標では三つの二階微分の和で、完全に対称である。
+  球座標にすると $1 \/ r^2$ や $sin theta$ が付く。
+  座標は名前の付け替えでしかないはずである。
+  #strong[それなのに形が変わるのはなぜか。]
+][
+  #strong[変わったのは演算子ではなく、体積の測り方である。]
+
+  @thm:operators より $nabla^2 = star dif star dif$ で、$dif$ には計量が要らない。
+  変わりうるのは $star$ のほうしかない。
+
+  そして $star$ は体積形式を使う。上の $upright("vol") = h_1 h_2 h_3 thin dif u^1 and dif u^2 and dif u^3$ が
+  それで、$h_1 h_2 h_3$ が座標ごとに違う。球座標なら $r^2 sin theta$ である。
+  #strong[公式集に出てくる $1 \/ r^2$ と $sin theta$ は、全部ここから来ている。]
+
+  だから覚えるものは一つしかない。スケール因子を書き下せば、
+  @thm:curvilinear が残りを出す。円筒座標も、楕円座標も、同じ一本から出る。
+]
+
 #theorem[
   直交曲線座標で
   $ (nabla f)_i = frac(1, h_i) frac(partial f, partial u^i) $

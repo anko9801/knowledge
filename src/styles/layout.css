@@ -175,8 +175,9 @@
     top: 0.8rem;
     left: 0.8rem;
     z-index: 22;
-    width: 2.6rem;
-    height: 2.4rem;
+    /* 触る的。44px を割ると押し損ねが増える（実測 44.2 x 40.8 だった）。 */
+    width: 2.75rem;
+    height: 2.75rem;
     margin: 0;
     opacity: 0;
     cursor: pointer;
@@ -189,8 +190,9 @@
     top: 0.8rem;
     left: 0.8rem;
     z-index: 21;
-    width: 2.6rem;
-    height: 2.4rem;
+    /* 触る的。44px を割ると押し損ねが増える（実測 44.2 x 40.8 だった）。 */
+    width: 2.75rem;
+    height: 2.75rem;
     background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 4px;

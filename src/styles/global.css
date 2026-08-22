@@ -183,9 +183,21 @@ body {
  * ページの h1 はレイアウト側が front matter の title から出す。
  */
 
-/* 目次から飛んだ見出しが画面の上端に貼り付かないようにする。 */
-:is(h2, h3, h4, h5, h6)[id] {
+/* 目次から飛んだ見出しが画面の上端に貼り付かないようにする。
+   主張の錨（<span id="def-measure">）も外から指されるので、同じ扱いにする。 */
+:is(h2, h3, h4, h5, h6)[id],
+.statement .anchor {
   scroll-margin-top: 1.5rem;
+}
+
+/* 狭い画面では案内の開閉ボタンが左上に貼り付いている。占めるのは上から
+   0.8rem〜3.55rem なので、1.5rem では飛んだ先がボタンの下に潜る。
+   実測で題名の 1 文字目が隠れた。 */
+@media (max-width: 56rem) {
+  :is(h2, h3, h4, h5, h6)[id],
+  .statement .anchor {
+    scroll-margin-top: 4.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -16,6 +16,7 @@
     "test": "node --test scripts/latex/*.test.mjs src/lib/*.test.ts",
     "notes": "node scripts/latex/to-typst.mjs",
     "curriculum": "node scripts/curriculum.mjs",
+    "measure": "node scripts/measure.mjs",
     "postbuild": "node scripts/emit-pdf.mjs && pagefind --site dist && node scripts/emit-sitemap.mjs && node scripts/emit-feed.mjs"
   },
   "dependencies": {

@@ -21,7 +21,7 @@ test('添えた中身にブロック要素は残らない', () => {
   const html =
     '<div id="loc-1" class="statement statement-definition"><p>族が</p>' +
     '<ol><li>補集合</li><li>可算合併</li></ol></div><p><a href="#loc-1">定義 2</a>より</p>'
-  const peek = attachPeeks(html).split('<span class="peek-body" aria-hidden="true">')[1] as string
+  const peek = attachPeeks(html).split('<span class="peek-body" aria-hidden="true" data-pagefind-ignore>')[1] as string
   const body = peek.slice(0, peek.indexOf('</span></span>'))
 
   // <p> の中に <p> や <ol> を差し込むと、パーサが外側の <p> をそこで閉じる。
@@ -74,7 +74,7 @@ test('入れ子の div があっても千切れない', () => {
 
   ok(
     out.includes(
-      '<span class="peek-body" aria-hidden="true">' +
+      '<span class="peek-body" aria-hidden="true" data-pagefind-ignore>' +
         '<span class="peek-p">主張</span><span class="peek-div proof">証明</span></span>',
     ),
   )

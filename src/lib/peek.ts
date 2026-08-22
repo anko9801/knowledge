@@ -139,7 +139,11 @@ export const peekMark = (
   `<input type="checkbox" id="${toggle}" class="peek-toggle" tabindex="-1" aria-hidden="true">` +
   `<a href="${href}" class="peek-link">${label}</a>` +
   `<label for="${toggle}" class="peek-tap" aria-hidden="true"></label>` +
-  `<span class="peek-body${bodyClass}" aria-hidden="true">${body}</span>` +
+  // aria-hidden は読み上げに、data-pagefind-ignore は検索に、同じことを言う。
+  // 同じ主張がページ内で 5 回参照されると、索引にも 5 回入って重みが狂う
+  // （実測で索引の 19% が複製だった）。実体は同じページにあるので、
+  // 落としても引けなくなるものは無い。
+  `<span class="peek-body${bodyClass}" aria-hidden="true" data-pagefind-ignore>${body}</span>` +
   `</span>`
 
 /**

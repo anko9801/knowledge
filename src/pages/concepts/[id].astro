@@ -55,7 +55,7 @@ const link = (neighbor: Neighbor) =>
 ---
 
 <BaseLayout title={plainMath(concept.label)} description={plainMath(concept.gist)} searchable kind="概念">
-  <nav class="crumbs">
+  <nav class="crumbs" data-pagefind-ignore>
     <a href={base}>knowledge</a>
     <span aria-hidden="true">/</span>
     <a href={`${base}concepts`}>概念</a>
@@ -80,9 +80,9 @@ const link = (neighbor: Neighbor) =>
       { label: 'これを使うもの', items: usedBy, empty: 'いまのところ無い。' },
     ].map(({ label, items, empty }) => (
       <section class="side">
-        <h2>{label}</h2>
+        <h2 data-pagefind-ignore>{label}</h2>
         {items.length === 0 ? (
-          <p class="empty">{empty}</p>
+          <p class="empty" data-pagefind-ignore>{empty}</p>
         ) : (
           <ul>
             {items.map((neighbor) => (
@@ -101,7 +101,9 @@ const link = (neighbor: Neighbor) =>
     ))
   }
 
-  <p class="note">
+  {/* 310 ページに同じ一文が入っている。索引に入れると「索引」「依存」「慣習」で
+      概念の頁が 310 件まとめて釣れる。読者に見せるのはよいが、引く手がかりではない。 */}
+  <p class="note" data-pagefind-ignore>
     ここは索引で、解説は記事のほうにある。辺は<strong>論理的な依存</strong>だけで、
     「この順で教わるのが普通だから」という慣習は入れていない。
   </p>

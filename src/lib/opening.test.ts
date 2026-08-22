@@ -58,6 +58,34 @@ test('Markdown の強調が、.typ に漏れていない', () => {
   strictEqual(leaked.join('\n'), '')
 })
 
+test('変換の傷が、講義ノートに残っていない', () => {
+  // pandoc 経由の変換で二つ残る。生の LaTeX 命令と、行き先を失った (ref)。
+  // どちらも読者にそのまま見えるが、typst は何も言わない。
+  //
+  // 図の LaTeX は #unconverted(...) の中に畳んであるので、そこは外して数える。
+  const scars = typFiles('src/content/notes').flatMap((path) => {
+    const source = readFileSync(path, 'utf8').replace(/#unconverted\("(?:[^"\\]|\\.)*"\)/g, '')
+    const found = [
+      ...[...source.matchAll(/\\\\[a-zA-Z]+/g)].map((m) => m[0]),
+      ...[...source.matchAll(/\(ref\)/g)].map((m) => m[0]),
+    ]
+    return found.length > 0 ? [`${path}: ${[...new Set(found)].slice(0, 5).join(' ')}`] : []
+  })
+
+  strictEqual(scars.join('\n'), '')
+})
+
+test('講義ノートの題名が、ファイル名のままになっていない', () => {
+  // .tex から題名を拾えないと、変換器はファイル名を入れる。
+  // 一覧に condenced_matter_physics と並ぶ。
+  const untitled = typFiles('src/content/notes').flatMap((path) => {
+    const title = /title: "([^"]*)"/.exec(readFileSync(path, 'utf8'))?.[1] ?? ''
+    return /[぀-ヿ一-鿿]/.test(title) ? [] : [`${path}: ${title}`]
+  })
+
+  strictEqual(untitled.join('\n'), '')
+})
+
 test('記事に、見出しが一つはある', () => {
   const headless = typFiles(ARTICLES).filter(
     (path) => firstLine(readFileSync(path, 'utf8')) === undefined,

@@ -46,6 +46,21 @@ const toc = tocHeadings(headings)
 // GitHub Pages ではサイトがリポジトリ名の下に載る。
 // BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
+
+// このページの正式な URL。
+//
+// 同じ中身が複数の URL で読める（末尾スラッシュの有無、index.html の有無）。
+// 検索側がどれを正とするかを毎回推測することになるので、こちらで決めておく。
+//
+// Astro.site は astro.config.mjs の site。開発サーバでは undefined になりうる。
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined
+
+// 共有されたときに何が出るか。
+//
+// 読者の多くは誰かが貼ったリンクから来る。og: が無いと、貼った先には
+// URL がそのまま出る。題名も要約も届かない。画像は持っていないので付けない
+// （持っていない画像を作るより、題名と要約が正しく出るほうが効く）。
+const shareTitle = title === siteName ? siteName : `${title} - ${siteName}`
 ---
 
 <!doctype html>
@@ -59,6 +74,16 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/')
     <link rel="icon" sizes="32x32" href={`${base}favicon.ico`} />
     <title>{title === siteName ? title : `${title} - ${siteName}`}</title>
     {description && <meta name="description" content={description} />}
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta property="og:type" content={title === siteName ? 'website' : 'article'} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content={shareTitle} />
+    {description && <meta property="og:description" content={description} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    {/* 画像を持たないので summary。large_image にすると空欄が大きく出る。 */}
+    <meta name="twitter:card" content="summary" />
     {/* 本文の欧文と数式は最初の画面に必ず出るので、両方とも先読みする。
         太字は出現頻度が低いので、必要になってから取りに行かせる。 */}
     <link rel="preload" href={textRegularFont} as="font" type="font/woff2" crossorigin />

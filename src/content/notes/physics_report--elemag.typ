@@ -3,7 +3,7 @@
 #import "/src/typst/image.typ": web-image
 
 #show: post.with(
-  title: "elemag",
+  title: "電磁波の偏光",
   date: "2026-08-18",
   tags: ("レポート",),
   summary: "physics_report/elemag.tex から変換",

@@ -3,7 +3,7 @@
 #import "/src/typst/image.typ": web-image
 
 #show: post.with(
-  title: "condenced_matter_physics",
+  title: "物性物理学",
   date: "2026-08-18",
   tags: ("ノート",),
   summary: "note/condenced_matter_physics.tex から変換",

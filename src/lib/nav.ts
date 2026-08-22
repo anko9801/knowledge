@@ -5,6 +5,7 @@
  * 「今この人に何を見せるか」の判断は nav-scope.ts が持つ（純関数なのでテストできる）。
  */
 
+import { noteLabels } from './note-label.ts'
 import { getCollection } from 'astro:content'
 
 import { concepts } from '../data/concepts.ts'
@@ -84,20 +85,24 @@ type NoteEntry = Awaited<ReturnType<typeof getCollection<'notes'>>>[number]
 /** タグの 1 つ目が「ノート」か「レポート」。to-typst.mjs が付ける。 */
 const groupNotes = (notes: readonly NoteEntry[]): readonly NavGroup[] => {
   // 同じ題名のノートが複数ある（統計力学が 3 本など）。見分けが付かないと選べないので、
-  // 重複するものだけ元ファイル名を添える。/notes の一覧と同じ扱い。
-  const titles = new Map<string, number>()
-  for (const note of notes) {
-    titles.set(note.data.title, (titles.get(note.data.title) ?? 0) + 1)
-  }
+  // 重複するものにだけ手掛かりを添える。判断は note-label.ts（純関数、テストあり）。
+  const labels = noteLabels(
+    notes.map((note) => ({
+      id: note.id,
+      title: note.data.title,
+      group: note.data.tags[0] ?? 'ノート',
+    })),
+  )
 
   const groups = new Map<string, NavEntry[]>()
   for (const note of [...notes].sort((a, b) => a.data.title.localeCompare(b.data.title, 'ja'))) {
     const group = note.data.tags[0] ?? 'ノート'
     const entries = groups.get(group) ?? []
-    const label =
-      (titles.get(note.data.title) ?? 0) > 1 ? `${note.data.title}（${note.id}）` : note.data.title
 
-    groups.set(group, [...entries, { href: withBase(`notes/${note.id}`), label }])
+    groups.set(group, [
+      ...entries,
+      { href: withBase(`notes/${note.id}`), label: labels.get(note.id) ?? note.data.title },
+    ])
   }
 
   return [...groups.entries()].map(([title, entries]) => ({ title, entries }))

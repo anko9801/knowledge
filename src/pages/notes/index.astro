@@ -1,4 +1,5 @@
 ---
+import { idHint, noteLabels } from '../../lib/note-label.ts'
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
@@ -16,14 +17,19 @@ for (const note of written) {
 }
 
 // 同じタイトルのノートが複数ある（統計力学が 3 本など）。
-// 見分けが付かないと選べないので、重複するものだけ元ファイル名を添える。
-const titleCounts = new Map<string, number>()
-for (const note of notes) {
-  titleCounts.set(note.data.title, (titleCounts.get(note.data.title) ?? 0) + 1)
-}
+// 見分けが付かないと選べないので、重複するものにだけ手掛かりを添える。
+// 群（ノート / レポート）が違えば見出しで分かれるので、そこには添えない。
+// 判断は note-label.ts（純関数、テストあり）。
+const hints = noteLabels(
+  notes.map((note) => ({
+    id: note.id,
+    title: note.data.title,
+    group: note.data.tags[0] ?? 'ノート',
+  })),
+)
 
 const label = (note: (typeof notes)[number]) =>
-  (titleCounts.get(note.data.title) ?? 0) > 1 ? note.id : null
+  hints.get(note.id) === note.data.title ? null : idHint(note.id)
 
 const groups = [...byGroup.entries()].map(([group, items]) => ({
   group,

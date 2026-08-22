@@ -58,6 +58,29 @@ test('Markdown の強調が、.typ に漏れていない', () => {
   strictEqual(leaked.join('\n'), '')
 })
 
+test('桁区切りが、波括弧のまま出ていない', () => {
+  // LaTeX の `3{,}148` は MathML export で波括弧が消えず、画面に
+  // `3{,}148` と見える。素の `$3,148$` もカンマが演算子になって
+  // `3, 148` と間隔が入る。正しいのは `$3","148$`。
+  //
+  // どちらも typst は何も言わず、PDF 側では正しく見えるので、
+  // HTML を開かないと気づけない。実際 02-numbers.typ で配信されていた。
+  const separators = typFiles(ARTICLES)
+    .concat(typFiles('src/content/notes'))
+    .flatMap((path) => {
+      const lines = readFileSync(path, 'utf8').split('\n')
+      return lines.flatMap((line, i) =>
+        // 桁区切りの形だけを見る。3 桁が続かないカンマは binom(4,2) や
+        // mat(0,1;1,0) や (x,y) の引数区切りなので、拾ってはいけない。
+        /\d\{,\}\d|\$[^$\n]*\d,\d{3}(?!\d)[^$\n]*\$/.test(line)
+          ? [`${path}:${i + 1}  ${line.trim().slice(0, 60)}`]
+          : [],
+      )
+    })
+
+  strictEqual(separators.join('\n'), '')
+})
+
 test('変換の傷が、講義ノートに残っていない', () => {
   // pandoc 経由の変換で二つ残る。生の LaTeX 命令と、行き先を失った (ref)。
   // どちらも読者にそのまま見えるが、typst は何も言わない。

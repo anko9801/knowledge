@@ -47,6 +47,8 @@ for (const path of [
   'docs/build.md',
   'docs/reader.md',
   'docs/decisions.md',
+  // 記事の書き方を置く場所。実例に数式が混ざるので、いちばん漏れやすい。
+  'docs/writing.md',
   'CLAUDE.md',
 ]) {
   test(`${path} に Typst 記法が混ざっていない`, () => {

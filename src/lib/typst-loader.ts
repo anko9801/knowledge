@@ -8,6 +8,8 @@ import { compileHtml, evalMetadata, typstVersion } from './typst-cli.ts'
 import { mapWithLimit } from './pool.ts'
 import { collectHeadings } from './headings.ts'
 import { attachPeeks } from './peek.ts'
+import { attachTerms } from './term.ts'
+import { concepts } from '../data/concepts.ts'
 import { highlightCode } from './shiki.ts'
 import {
   extractStyles,
@@ -72,6 +74,9 @@ const listTypstFiles = async (dir: string): Promise<readonly string[]> => {
  */
 const entryId = (dirRoot: string, file: string): string =>
   relative(dirRoot, file).split(sep).join('/').replace(/\.typ$/, '')
+
+/** `#term[…]` の引き先。概念グラフから、添えるのに要る三つだけを抜く。 */
+const TERMS = concepts.map(({ id, label, gist }) => ({ id, label, gist }))
 
 const digest = (input: string): string =>
   createHash('sha256').update(input).digest('hex').slice(0, 16)
@@ -184,8 +189,20 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
     // 見出しに id を振る前でよい。添えるのは主張だけで、見出しは対象外。
     const peeked = attachPeeks(linked)
 
+    // 本文の用語に、概念のひとことと索引への道を付ける。
+    // TERMS は id / label / gist だけを抜いたもの（下の定数）。
+    // peek のあとに置く。主張が複製されたぶんの用語にも、別々の取っ手が要る。
+    const { html: termed, unknown: unknownTerms } = attachTerms(peeked, TERMS, base)
+    if (unknownTerms.length > 0) {
+      const names = unknownTerms.map((t) => t.id ?? t.text).join(', ')
+      throw new Error(
+        `${id}: #term[…] の ${names} が概念グラフに無い。` +
+          `src/data/concepts.ts の名前と揃えるか、id を渡すこと。`,
+      )
+    }
+
     // 強調は Typst の粗いものを捨てて、Shiki で組み直す（ビルド時。JS は増えない）。
-    const { html: recolored, unknown } = await highlightCode(peeked)
+    const { html: recolored, unknown } = await highlightCode(termed)
     if (unknown.length > 0) {
       logger.warn(`${id}: ${unknown.join(', ')} の文法が Shiki に無いので素通しします。`)
     }

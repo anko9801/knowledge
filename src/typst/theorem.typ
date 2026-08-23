@@ -248,3 +248,43 @@
 
   body
 }
+
+/// 概念の索引につなぐ語。押すとその概念のページへ行き、
+/// ホバー（触る端末では取っ手）でひとことの説明がその場に出る。
+///
+/// **どこに付けるかは書き手が決める。** 機械で拾おうとすると
+/// 「体」が全体・物体に、「束」が接束・収束に、「向き」が日常語に当たって
+/// 全部誤爆する。1 本あたり数語で足りる（実測で、初出だけに絞ると中央値 6）。
+///
+/// 中身が概念の名前と同じなら、それだけでよい。
+///
+///   #term[多様体]
+///
+/// 語形が違うときや、名前に数式が入っているときは id を渡す。
+///
+///   #term("manifold")[多様体の上]
+///
+/// 名前も id も `src/data/concepts.ts` に無ければ、ビルドが止まる。
+#let term(..args) = {
+  let pos = args.pos()
+  let (id, body) = if pos.len() == 2 {
+    (pos.at(0), pos.at(1))
+  } else if pos.len() == 1 {
+    (none, pos.at(0))
+  } else {
+    panic("term は 語 だけ、または (概念 id, 語) を取ります")
+  }
+
+  context {
+    if target() == "html" {
+      html.elem(
+        "span",
+        attrs: if id == none { (class: "term") } else { (class: "term", "data-id": id) },
+        body,
+      )
+    } else {
+      // 紙面に索引は無い。印だけ残す。
+      underline(offset: 2pt, stroke: (thickness: 0.4pt, dash: "dotted"), body)
+    }
+  }
+}

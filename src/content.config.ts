@@ -15,6 +15,9 @@ const DEPENDS_ON = [
   'src/lib/typst-html.ts',
   'src/lib/headings.ts',
   'src/lib/peek.ts',
+  'src/lib/term.ts',
+  // 用語に添える中身は概念グラフから来る。gist を直したら組み直す。
+  'src/data/concepts.ts',
   'src/lib/shiki.ts',
 ] as const
 

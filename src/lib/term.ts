@@ -91,3 +91,122 @@ export const attachTerms = (
 
   return { html: out, unknown }
 }
+
+/* ------------------------------------------------------------------ *
+ * 自動で拾うほう
+ * ------------------------------------------------------------------ */
+
+/**
+ * 手で置くと、書くたびに「どの語に付けたか」を思い出す作業が要る。
+ * それが毎回では続かないので、拾えるものは拾う。
+ *
+ * 測ったうえでの線引きが三つある。
+ *
+ * - **3 字以上だけ。** 2 字以下の概念が 26 件あって、「体」は全体・物体に、
+ *   「束」は接束・収束・束縛に、「向き」は日常語に当たる。ここは `#term` で手動
+ * - **長い名前から当てる。** 他の名前の一部になっている名前が 58 件ある
+ *   （「線形写像」⊂「多重線形写像」、「接空間」⊂「余接空間」）。短いほうから
+ *   当てると、内側だけが切り取られて別の概念に化ける
+ * - **分野は見ない。** 分野をまたぐ当たりが 67 件あるが、中身を見ると全部正しい。
+ *   cs の記事に出る「大数の法則」は math の概念で、それがこのサイトの主題である
+ *
+ * 1 本につき初出だけに絞ると、実測で 1 本あたり 6.2 語になる。
+ */
+
+/** 中を触らない場所。数式・コード・既にリンクになっているところ・見出し。 */
+const GUARDED =
+  /<math\b[\s\S]*?<\/math>|<(code|pre|a|h[1-6])\b[\s\S]*?<\/\1>|<span class="peek"[\s\S]*?<\/span><\/span>|<span class="term"[\s\S]*?<\/span>/g
+
+// 本文に出てこない制御文字を目印にする。エスケープで書く（見えない文字を置かない）。
+const MASK = '\u0002'
+
+export type Linked = {
+  readonly html: string
+  /** 実際に印を付けた概念 id。出た順。 */
+  readonly linked: readonly string[]
+}
+
+/**
+ * 同じ語で別の概念を指してしまうもの。自動では拾わない。
+ *
+ * 名前の重複は 0 件なので、概念どうしがぶつかることは無い。ぶつかるのは
+ * **概念になっていないほうの意味**である。実際に配ってしまった三つを挙げる。
+ *
+ * - `parallel-transport`（平行移動）── 測度と集合論では Vitali の
+ *   「平行移動しても長さは変わらない」で、Riemann 幾何の平行移動ではない
+ * - `independence-probabilistic`（独立性）── 集合論と論理では $upright("CH")$ の独立性、
+ *   線形代数では一次独立。確率的独立はそのうちの一つでしかない
+ * - `diagonalization`（対角化）── 計算量と論理では対角線論法を指していて、
+ *   行列の対角化ではない
+ *
+ * **足すのは、誤爆を見つけたときだけにする。** 予防で足すと、
+ * 正しく拾えたはずのものが黙って消える。指したいところには `#term` を置けばよい。
+ */
+const AMBIGUOUS: ReadonlySet<string> = new Set([
+  'parallel-transport',
+  'independence-probabilistic',
+  'diagonalization',
+])
+
+/** 差し込んだ印の置き場。番号で戻す。 */
+const SLOT = (n: number): string => `\u0003${n}\u0003`
+
+export const linkTerms = (
+  html: string,
+  terms: readonly Term[],
+  options: { readonly base?: string; readonly exclude?: ReadonlySet<string> } = {},
+): Linked => {
+  const { base = '', exclude = new Set<string>() } = options
+  const root = base.replace(/\/+$/, '')
+
+  // 触らない場所を伏せる。伏せたまま探し、最後に戻す。
+  const held: string[] = []
+  let out = html.replace(GUARDED, (whole) => {
+    held.push(whole)
+    return MASK
+  })
+
+  // 長い名前から当てる。短いほうを先にすると「多重線形写像」の内側が切り取られる。
+  const targets = terms
+    .filter(
+      (t) =>
+        !exclude.has(t.id) &&
+        !AMBIGUOUS.has(t.id) &&
+        !t.label.includes('$') &&
+        [...t.label].length >= 3,
+    )
+    .sort((a, b) => b.label.length - a.label.length)
+
+  const marks: string[] = []
+  const linked: string[] = []
+
+  for (const t of targets) {
+    const at = out.indexOf(t.label)
+    if (at < 0) continue
+
+    // タグの中（属性値）に当たっていたら見送る。
+    if (out.lastIndexOf('<', at) > out.lastIndexOf('>', at)) continue
+
+    // 差し込んだ印そのものを、あとから来る短い名前が食う。
+    // 中身を置かずに番号だけ入れて、最後に戻す。
+    const mark = peekMark(
+      `ta${marks.length + 1}`,
+      `${root}/concepts/${t.id}`,
+      t.label,
+      `<span class="peek-p"><strong>${escape(t.label)}</strong></span>` +
+        `<span class="peek-p">${escape(t.gist)}</span>`,
+      ' peek-term',
+    )
+    out = out.slice(0, at) + SLOT(marks.length) + out.slice(at + t.label.length)
+    marks.push(mark)
+    linked.push(t.id)
+  }
+
+  // 印を戻してから、伏せた場所を戻す。伏せたぶんの並びは崩れていない。
+  const withMarks = out.replace(/\u0003(\d+)\u0003/g, (_, n: string) => marks[Number(n)] as string)
+  let index = 0
+  return {
+    html: withMarks.replace(new RegExp(MASK, 'g'), () => held[index++] as string),
+    linked,
+  }
+}

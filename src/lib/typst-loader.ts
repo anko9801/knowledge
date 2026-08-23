@@ -8,7 +8,7 @@ import { compileHtml, evalMetadata, typstVersion } from './typst-cli.ts'
 import { mapWithLimit } from './pool.ts'
 import { collectHeadings } from './headings.ts'
 import { attachPeeks } from './peek.ts'
-import { attachTerms } from './term.ts'
+import { attachTerms, linkTerms } from './term.ts'
 import { concepts } from '../data/concepts.ts'
 import { highlightCode } from './shiki.ts'
 import {
@@ -201,8 +201,19 @@ export const typstLoader = (options: TypstLoaderOptions): Loader => {
       )
     }
 
+    // 残りは自動で拾う。手で置くと、書くたびに「どの語に付けたか」を思い出す作業が
+    // 要る。手で置いたぶんは上で印になっていて、こちらは触らない。
+    // その記事が provides している概念は外す。自分が説明している当の概念に
+    // 注釈を付けても、読者には何も足さない。
+    // parseData の戻りは schema の形を持たないので、ここで絞る。
+    const provides = (raw as { provides?: unknown }).provides
+    const { html: autoLinked } = linkTerms(termed, TERMS, {
+      base,
+      exclude: new Set(Array.isArray(provides) ? provides.filter((x) => typeof x === 'string') : []),
+    })
+
     // 強調は Typst の粗いものを捨てて、Shiki で組み直す（ビルド時。JS は増えない）。
-    const { html: recolored, unknown } = await highlightCode(termed)
+    const { html: recolored, unknown } = await highlightCode(autoLinked)
     if (unknown.length > 0) {
       logger.warn(`${id}: ${unknown.join(', ')} の文法が Shiki に無いので素通しします。`)
     }

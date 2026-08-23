@@ -7,8 +7,17 @@ const statement = (id: string, body: string) =>
   `<div id="${id}" class="statement statement-definition">` +
   `<p class="statement-head">定義 2</p><p>${body}</p></div>`
 
+/**
+ * 本体と参照を引き離す。
+ *
+ * `NEAR`（本文 100 字）以内の参照には添えないので、添える側を試すテストは
+ * 隔たりを作ってからでないと何も起きない。タグは数えないため、
+ * 本文のほうを 100 字より長くしてある。
+ */
+const apart = '<p>間にある本文。</p>'.repeat(30)
+
 test('参照に、指す先の中身が添う', () => {
-  const html = `${statement('loc-1', '可算合併で閉じる族')}<p><a href="#loc-1">定義 2</a>より</p>`
+  const html = `${statement('loc-1', '可算合併で閉じる族')}${apart}<p><a href="#loc-1">定義 2</a>より</p>`
   const out = attachPeeks(html)
 
   ok(out.includes('<span class="peek">'))
@@ -20,7 +29,7 @@ test('参照に、指す先の中身が添う', () => {
 test('添えた中身にブロック要素は残らない', () => {
   const html =
     '<div id="loc-1" class="statement statement-definition"><p>族が</p>' +
-    '<ol><li>補集合</li><li>可算合併</li></ol></div><p><a href="#loc-1">定義 2</a>より</p>'
+    `<ol><li>補集合</li><li>可算合併</li></ol></div>${apart}<p><a href="#loc-1">定義 2</a>より</p>`
   const peek = attachPeeks(html).split('<span class="peek-body" aria-hidden="true" data-pagefind-ignore>')[1] as string
   const body = peek.slice(0, peek.indexOf('</span></span>'))
 
@@ -33,7 +42,7 @@ test('添えた中身にブロック要素は残らない', () => {
 test('複製した数式は式番号の counter を持たない', () => {
   const html =
     '<div id="loc-1" class="statement statement-theorem"><p>主張</p>' +
-    '<div class="equation"><math display="block"></math></div></div><a href="#loc-1">定理 1</a>'
+    `<div class="equation"><math display="block"></math></div></div>${apart}<a href="#loc-1">定理 1</a>`
   const out = attachPeeks(html)
 
   // .equation は counter-increment を持つ。複製すると本文の式番号がずれる。
@@ -42,7 +51,7 @@ test('複製した数式は式番号の counter を持たない', () => {
 })
 
 test('添えた中身から id が落ちる', () => {
-  const html = `${statement('loc-1', 'x')}<a href="#loc-1">定義 2</a>`
+  const html = `${statement('loc-1', 'x')}${apart}<a href="#loc-1">定義 2</a>`
   const out = attachPeeks(html)
 
   // 文書に残る id は本体の 1 つだけ。複製が同じ id を名乗るとリンク先が定まらない。
@@ -53,7 +62,7 @@ test('答えは添えない（想起の問いを参照したとき）', () => {
   const html =
     '<div id="loc-9" class="statement statement-check"><p class="statement-head">問 4</p>' +
     '<p>なぜ可算か</p><details class="check-answer"><summary>答え</summary>' +
-    '<p>一点集合から作れてしまう</p></details></div><a href="#loc-9">問 4</a>'
+    `<p>一点集合から作れてしまう</p></details></div>${apart}<a href="#loc-9">問 4</a>`
   const out = attachPeeks(html)
 
   ok(out.includes('<span class="peek">'))
@@ -66,10 +75,41 @@ test('主張を指していない参照はそのまま通る', () => {
   strictEqual(attachPeeks(html), html)
 })
 
+test('すぐそこを指している参照には添えない', () => {
+  // 「@def:matrix を読むと、行列の掛け算があの定義である理由も出てくる」の形。
+  // 読んだばかりのものを複製しても、減らす往復が無い。
+  const html = `${statement('loc-1', '可算合併で閉じる族')}<p><a href="#loc-1">定義 2</a>を読むと</p>`
+  strictEqual(attachPeeks(html), html)
+})
+
+test('間に数式があっても、隔たりは本文で測る', () => {
+  // MathML は画面では 1 個の記号でも、生の HTML は数千文字になる。
+  // 長さで測ると、数式を一つ挟んだだけで「遠い」に化ける。
+  const math = `<div class="equation"><math display="block">${'<mi>x</mi><mo>+</mo>'.repeat(200)}</math></div>`
+  const html = `${statement('loc-1', '可算合併で閉じる族')}${math}<p><a href="#loc-1">定義 2</a>より</p>`
+
+  strictEqual(attachPeeks(html), html)
+})
+
+test('隔たりは、本体の中を数えない', () => {
+  // 長い定理のすぐ下から指したときに、本体が長いというだけで添わってしまわないこと。
+  const long = `<div id="loc-1" class="statement statement-theorem"><p>${'主張。'.repeat(200)}</p></div>`
+  strictEqual(attachPeeks(`${long}<p><a href="#loc-1">定理 1</a>より</p>`), `${long}<p><a href="#loc-1">定理 1</a>より</p>`)
+})
+
+test('前を指す参照も、隔たりで測る', () => {
+  // 「次の定理」を先に名指しする形。本体より手前なので、開始位置から測る。
+  const near = `<p><a href="#loc-1">定理 1</a>を示す</p>${statement('loc-1', '主張')}`
+  strictEqual(attachPeeks(near), near)
+
+  const far = `<p><a href="#loc-1">定理 1</a>を示す</p>${apart}${statement('loc-1', '主張')}`
+  ok(attachPeeks(far).includes('<span class="peek">'))
+})
+
 test('入れ子の div があっても千切れない', () => {
   const html =
     '<div id="loc-1" class="statement statement-theorem"><p>主張</p>' +
-    '<div class="proof">証明</div></div><a href="#loc-1">定理 1</a>'
+    `<div class="proof">証明</div></div>${apart}<a href="#loc-1">定理 1</a>`
   const out = attachPeeks(html)
 
   ok(
@@ -100,7 +140,7 @@ test('錨の索引は、参照されている主張も落とさない', () => {
 })
 
 test('触る端末用の取っ手が付き、リンクは残る', () => {
-  const html = `${statement('loc-1', '可算合併で閉じる族')}<p><a href="#loc-1">定義 2</a>より</p>`
+  const html = `${statement('loc-1', '可算合併で閉じる族')}${apart}<p><a href="#loc-1">定義 2</a>より</p>`
   const out = attachPeeks(html)
 
   // 開く役目は label が持つ。リンクは主張へ飛ぶ道として残す
@@ -112,7 +152,7 @@ test('触る端末用の取っ手が付き、リンクは残る', () => {
 
 test('同じ主張を二度指しても、取っ手は別になる', () => {
   const html =
-    `${statement('loc-1', '可算合併で閉じる族')}` +
+    `${statement('loc-1', '可算合併で閉じる族')}${apart}` +
     '<p><a href="#loc-1">定義 2</a>と<a href="#loc-1">定義 2</a></p>'
   const out = attachPeeks(html)
 

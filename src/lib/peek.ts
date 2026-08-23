@@ -17,7 +17,27 @@
 type Statement = {
   readonly id: string
   readonly inner: string
+  /** 本体の置かれている範囲。参照との隔たりを測るのに使う。 */
+  readonly start: number
+  readonly end: number
 }
+
+/**
+ * これより近い参照には添えない（本文の文字数で測る）。
+ *
+ * 添える理由は往復コスト（分割注意）なので、**すぐそこにあるものには理由が無い**。
+ * 613 件の参照のうち 61 件は、直前の主張をその場で受けているだけだった。
+ *
+ *   @def:matrix を読むと、行列の掛け算があの定義である理由も出てくる  ← 2 行上
+ *
+ * **HTML の文字数では測れない。** MathML は画面では小さいのに生の HTML では
+ * 巨大なので、数式を一つ挟んだだけで「遠い」と誤判定する。実測でも
+ * `.typ` の 14 行差が 74 文字、5 行差が 407 文字と、順序が入れ替わっていた。
+ *
+ * 本文だけで測ると分離する。100 字で切ると、直後を受けている 61 件のうち 54 件が
+ * 落ちる。残る 7 件は間に段落が挟まっているので、添えてよい側である。
+ */
+const NEAR = 100
 
 /**
  * `<div ...>` の開始位置から、対応する `</div>` の直後までを返す。
@@ -107,12 +127,39 @@ const collect = (html: string): ReadonlyMap<string, Statement> => {
   const found = new Map<string, Statement>()
 
   for (let m = opening.exec(html); m !== null; m = opening.exec(html)) {
-    const block = html.slice(m.index, blockEnd(html, m.index))
-    found.set(m[1] as string, { id: m[1] as string, inner: asPeek(block) })
+    const end = blockEnd(html, m.index)
+    found.set(m[1] as string, {
+      id: m[1] as string,
+      inner: asPeek(html.slice(m.index, end)),
+      start: m.index,
+      end,
+    })
   }
 
   return found
 }
+
+/**
+ * 読者から見た隔たり。**タグと数式を落として、本文だけを数える。**
+ *
+ * `<math>` は中身ごと落とす。画面では 1 個の記号でも、MathML の生の長さは
+ * 数千文字になりうるので、数えると隔たりが実際の何倍にも見える。
+ */
+const readingLength = (fragment: string): number =>
+  fragment
+    .replace(/<math\b[\s\S]*?<\/math>/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, '').length
+
+/**
+ * 参照と本体の隔たり。本体の中は数えないので、長い定理でも公平に測れる。
+ *
+ * 前方参照（「次の定理」）もありうるので、本体より手前なら開始位置から測る。
+ */
+const gapTo = (html: string, at: number, target: Statement): number =>
+  at > target.end
+    ? readingLength(html.slice(target.end, at))
+    : readingLength(html.slice(at, target.start))
 
 /**
  * 参照ひとつ分を組む。
@@ -149,8 +196,12 @@ export const peekMark = (
 /**
  * 参照に、指す先の中身を添える。
  *
- * 主張を指していない参照（式番号や見出し）はそのまま通す。添えても
- * 「式 3」が「式 3」に見えるだけで、往復の手間が減らないからである。
+ * 添えないものが二つある。
+ *
+ * - **主張を指していない参照**（式番号や見出し）。添えても「式 3」が「式 3」に
+ *   見えるだけで、往復の手間が減らない
+ * - **すぐそこを指している参照**（`NEAR` 以内）。読んだばかりのものを複製しても、
+ *   減らす往復が無い
  */
 export const attachPeeks = (html: string): string => {
   const statements = collect(html)
@@ -161,9 +212,10 @@ export const attachPeeks = (html: string): string => {
   // 置換文字列は走査し直されないので、添えた中身の中のリンクは素のまま残る。
   return html.replace(
     /<a href="#([^"]+)">([\s\S]*?)<\/a>/g,
-    (whole, id: string, label: string) => {
+    (whole, id: string, label: string, at: number) => {
       const target = statements.get(id)
       if (target === undefined) return whole
+      if (gapTo(html, at, target) < NEAR) return whole
 
       nth += 1
       // 錨ではなく通し番号にする。同じ主張が何度も参照されるので、

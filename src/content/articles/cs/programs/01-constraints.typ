@@ -7,7 +7,7 @@
   field: "cs",
   series: "programs",
   order: 1,
-  tags: ("プログラムの構成",),
+  tags: ("ソフトウェア工学",),
   summary: "goto を避けろ、型を付けろ、依存の向きを揃えろ。作法の一覧に見えるが、外から与えられて動かせないものは四つしかない。それを先に置いて、そこから全部導く。導けなかったものは作法ではなく好みである。",
   provides: (
     "irreducible-inputs",

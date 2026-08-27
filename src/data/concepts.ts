@@ -368,7 +368,7 @@ export const concepts: readonly Concept[] = [
   c('element-interactivity', '要素間相互作用', 'CLT で唯一の量に近い概念。同時に噛み合う要素の数が本来の難しさを決める', 'definition', 'cognition', ['cognitive-load']),
   c('expertise-reversal', '熟達逆転効果', '初心者を助ける支援が、熟練者には妨げになる。負荷は読み手に相対的', 'theorem', 'cognition', ['chunking', 'cognitive-load']),
   c('simple-vs-easy', '単純と容易', 'Hickey。単純は要素間相互作用が少ないこと、容易は自分のスキーマに合うこと', 'viewpoint', 'cs', ['element-interactivity', 'expertise-reversal']),
-  c('error-proneness', '人は間違える', '容量とは別の事実。無限に覚えられても、誤りの率は 0 にならない', 'viewpoint', 'cognition'),
+  c('error-proneness', '誤りは混じる', '容量とは別の事実。すべて覚えていられても、混入する率は 0 にならない', 'viewpoint', 'cognition'),
   c('error-taxonomy', '誤りの分類', 'Rasmussen の技能・規則・知識、Reason の slip と mistake。CLT の外にある', 'definition', 'cognition', ['error-proneness']),
   c('feedback-delay', '発覚の遅れ', '同じ誤りでも、遅く見つかるほど直す費用が上がる。認知と経済の継ぎ目', 'viewpoint', 'cognition', ['error-proneness']),
 

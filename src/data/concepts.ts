@@ -757,6 +757,17 @@ export const concepts: readonly Concept[] = [
   c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
   c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
 
+  // --- 一般相対論 -------------------------------------------------------
+  //
+  // Riemann 幾何 8 本が既にあり、einstein-tensor も bianchi-identity も
+  // /math/riemannian-geometry/6 に入っている。2026-08-20 に「数学の記事を
+  // 物理のために書かない」と決めて Einstein 方程式を Riemann 6 から外したので、
+  // その行き先がここになる。物理側は幾何を道具として使うだけでよい。
+  c('equivalence-principle', '等価原理', '落ちている間は何も感じない。加速する座標へ移れば、その一点で重力は消える', 'viewpoint', 'physics', ['multivariable-calculus']),
+  c('gravity-is-not-a-force', '重力は物体の性質ではない', 'すべての物体が同じ落ち方をするなら、それは物体ではなく場所について言っている', 'viewpoint', 'physics', ['equivalence-principle']),
+  c('local-inertial-frame', '局所慣性系', '一点では消せる。正規座標がその表現で、消せるのは一点だけだと定理が言う', 'definition', 'physics', ['gravity-is-not-a-force', 'normal-coordinates']),
+  c('tidal-force-is-curvature', '消えない残りが曲率である', '離れた二点の落ち方の差は、座標では消せない。それが測地線偏差そのもの', 'theorem', 'physics', ['local-inertial-frame', 'geodesic-deviation']),
+
   // --- 特殊相対論 -------------------------------------------------------
   //
   // 場の量子論が最初の一行で要求する。あちらの「粒子＝既約表現」も

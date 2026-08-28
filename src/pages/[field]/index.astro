@@ -17,13 +17,21 @@ const { field } = Astro.props
 const articles = await getCollection('articles', ({ data }) => !data.draft)
 
 // シリーズごとに、order の順で並べたものを用意する。
-// 定義だけあって記事のないシリーズは「準備中」として残す（何を書く気なのかは見せる）。
-const groups = seriesOf(field.slug).map((series: Series) => ({
-  series,
-  items: articles
-    .filter((article) => article.data.field === field.slug && article.data.series === series.slug)
-    .sort((a, b) => a.data.order - b.data.order),
-}))
+//
+// **記事のあるものだけ出す。** 扱う主題は書いたかどうかと無関係に全部
+// `taxonomy.ts` に立ててあるので、ここに全部並べると「準備中」が 20 枚を超える。
+// 初回訪問は 47 秒しかないので、そこに空の枠を積むと何も無いサイトに見える。
+// これから何を書く気なのかは `/map` に置いて、下から辿れるようにした。
+const groups = seriesOf(field.slug)
+  .map((series: Series) => ({
+    series,
+    items: articles
+      .filter((article) => article.data.field === field.slug && article.data.series === series.slug)
+      .sort((a, b) => a.data.order - b.data.order),
+  }))
+  .filter(({ items }) => items.length > 0)
+
+const planned = seriesOf(field.slug).length - groups.length
 
 // GitHub Pages ではサイトがリポジトリ名の下に載る。
 // BASE_URL は末尾スラッシュの有無が環境で揺れるので、ここで揃える。
@@ -50,11 +58,8 @@ const coversOf = (provides: readonly string[]) => {
         <h2>{series.title}</h2>
         <p class="blurb">{series.blurb}</p>
 
-        {items.length === 0 ? (
-          <p class="empty">準備中</p>
-        ) : (
-          <ol class="articles">
-            {items.map((article) => (
+        <ol class="articles">
+          {items.map((article) => (
               <li value={article.data.order}>
                 <a href={`${base}${field.slug}/${series.slug}/${article.data.order}`}>
                   {article.data.title}
@@ -71,16 +76,24 @@ const coversOf = (provides: readonly string[]) => {
                       ` ほか ${coversOf(article.data.provides).rest}`}
                   </p>
                 )}
-                {article.data.summary && <p class="summary">{article.data.summary}</p>}
-              </li>
-            ))}
-          </ol>
-        )}
+              {article.data.summary && <p class="summary">{article.data.summary}</p>}
+            </li>
+          ))}
+        </ol>
       </section>
     ))
   }
 
   {groups.length === 0 && <p class="empty">この分野はまだ何もありません。</p>}
+
+  {
+    planned > 0 && (
+      <p class="planned">
+        この分野には、ほかに <strong>{planned}</strong> の主題を立ててあります。
+        何を扱う気なのかは<a href={`${base}map`}>地図</a>にあります。
+      </p>
+    )
+  }
 </BaseLayout>
 
 <style>
@@ -130,6 +143,12 @@ const coversOf = (provides: readonly string[]) => {
   }
 
   .empty {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .planned {
+    margin-top: 3rem;
     color: var(--muted);
     font-size: 0.9rem;
   }

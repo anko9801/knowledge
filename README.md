@@ -10,7 +10,7 @@
 - [物理](https://anko9801.github.io/knowledge/physics) — 解析力学 5 本、量子力学 3 本
 - [化学](https://anko9801.github.io/knowledge/chemistry) — 分子の対称性 2 本
 - [言語](https://anko9801.github.io/knowledge/linguistics) — 形式意味論 2 本
-- [計算機](https://anko9801.github.io/knowledge/cs) — ソフトウェア工学 6 本、計算量理論 3 本、情報理論 3 本、Linux カーネル 1 本。オートマトンと形式言語・アルゴリズムと下界・型と計算・形式手法・並行と分散・関係理論・計算機の構成・学習理論・暗号理論は構成だけ
+- [計算機](https://anko9801.github.io/knowledge/cs) — ソフトウェア工学 6 本、計算量理論 3 本、情報理論 3 本、Linux カーネル 1 本。アルゴリズム・型と計算・並行と分散・計算機の構成・暗号理論は構成だけ
 
 幾何の連載は「仮定した構造」で分けてある。土台（ベクトル空間・微積分・位相）→
 線形代数（1 点）→ ベクトル解析（$\mathbb{R}^3$、入口）→ 微分形式（計量なし）→

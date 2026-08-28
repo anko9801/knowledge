@@ -283,32 +283,37 @@ export const concepts: readonly Concept[] = [
   c('channel-capacity', '通信路容量', '相互情報量の最大値', 'definition', 'cs', ['mutual-information']),
   c('channel-coding-theorem', '通信路符号化定理', '容量以下なら誤り率を任意に小さくできる', 'theorem', 'cs', ['channel-capacity', 'aep']),
 
-  // --- オートマトンと形式言語 --------------------------------------------
-  //
-  // 計算量理論の前段。Turing 機械から始めておいて、その手前にある階層が
-  // 無かった。許す記憶の量を絞ると、認識できる言語の族が決まる。
-  //
-  // ここも「モデルを固定すると限界が決まる」の形である。有限の状態しか
-  // 持てないなら括弧の対応は数えられず、スタック 1 本なら三つ揃えることが
-  // できない。どちらも定理で、しかも証明が構成的である。
-  c('formal-language', '形式言語', '記号列の集合。問題を言語として書き直す', 'definition', 'cs', ['first-order-syntax']),
-  c('finite-automaton', '有限オートマトン', '状態が有限個。読んだ文字で移るだけで、記憶は状態しかない', 'definition', 'cs', ['formal-language']),
-  c('nondeterminism-collapse', '非決定性は力を増やさない', '部分集合を状態にすると決定性へ直せる。ただし状態数は指数に増える', 'theorem', 'cs', ['finite-automaton']),
-  c('pumping-lemma', 'ポンピング補題', '状態が足りないので、長い語は必ず繰り返しを含む。鳩の巣そのもの', 'theorem', 'cs', ['finite-automaton']),
-  c('myhill-nerode', 'Myhill--Nerode の定理', '続きで区別できるかが同値関係になり、その類の数が最小状態数', 'theorem', 'cs', ['finite-automaton', 'relation-order']),
-  c('regular-closure', '正規言語の閉じ方', '和・積・補・反転で閉じる。補で閉じるのは決定性へ直せるから', 'theorem', 'cs', ['nondeterminism-collapse']),
-  c('context-free-grammar', '文脈自由文法', '書き換え規則で語を作る。入れ子の対応が書ける', 'definition', 'cs', ['formal-language']),
-  c('pushdown-automaton', 'プッシュダウン・オートマトン', 'スタックを一本足す。文脈自由文法とちょうど同じ力になる', 'theorem', 'cs', ['context-free-grammar', 'finite-automaton']),
-  c('cfl-limits', 'スタック一本では足りない', '入れ子は数えられるが、三つ揃えることはできない。ポンピングの文脈自由版', 'theorem', 'cs', ['pushdown-automaton']),
-  c('cfl-not-closed', '文脈自由は補で閉じない', '非決定性を決定性へ直せないので、正規言語との差がここに出る', 'theorem', 'cs', ['cfl-limits', 'nondeterminism-collapse']),
-  c('chomsky-hierarchy', 'Chomsky 階層', '許す記憶の量で言語の族が決まる。正規、文脈自由、文脈依存、帰納的可算', 'theorem', 'cs', ['cfl-limits', 'turing-machine']),
-  c('parsing', '構文解析', '語から導出を復元する。一回読みで済むかどうかが文法の条件になる', 'technique', 'cs', ['context-free-grammar', 'nondeterminism-collapse']),
-  c('ambiguity-undecidable', '曖昧かどうかは決定できない', '文法が曖昧かを判定する手続きは無い。停止問題からの還元', 'theorem', 'cs', ['parsing', 'halting-problem']),
-
   // --- 計算量理論 -------------------------------------------------------
   //
   // 依存が「還元」として明示される分野。A ≤ₚ B は requires そのもの。
+  //
+  // ここは「これ以上は無理」を言う側で、届かせる側（アルゴリズム）と対にする。
+  // 同じ近似アルゴリズムでも、作り方はあちら、限界はこちらになる。
+  //
+  // 軸は一つで、何を一手と数えるかを決めると、それ以上速くならない線が
+  // 決まる。比較しかできないなら n log n、鍵の中身を見てよければ線形。
+  // 下界は問題の性質ではなく、許した操作の性質である。
+  //
+  // ところが条件を外すと、ほとんど何も証明できない。P != NP が 50 年
+  // 解けていないのがそれで、だから計算量理論は「A が解ければ B も解ける」
+  // という相対的な比べ方に頼ることになる。この対比が主題である。
+  //
+  // オートマトンは、その最も単純な例として 4 個だけ置く。有限の状態しか
+  // 持てないと括弧が数えられない、が「モデルを絞ると限界が決まる」の原型
+  // だからで、正規言語の閉包や構文解析まで並べると言語論の教科書になる。
   c('turing-machine', 'Turing 機械', '計算の形式的な定義', 'definition', 'cs', ['computability']),
+  c('formal-language', '形式言語', '記号列の集合。問題を言語として書き直す', 'definition', 'cs', ['first-order-syntax']),
+  c('finite-automaton', '有限オートマトン', '状態が有限個。読んだ文字で移るだけで、記憶は状態しかない', 'definition', 'cs', ['formal-language']),
+  c('pumping-lemma', 'ポンピング補題', '状態が足りないので、長い語は必ず繰り返しを含む。鳩の巣そのもの', 'theorem', 'cs', ['finite-automaton']),
+  c('chomsky-hierarchy', 'Chomsky 階層', '許す記憶の量で言語の族が決まる。正規、文脈自由、文脈依存、帰納的可算', 'theorem', 'cs', ['pumping-lemma', 'turing-machine']),
+  c('computation-model', '計算のモデル', '何を一手と数えるか。決めないうちは、速さも限界も言えない', 'definition', 'cs', ['turing-machine']),
+  c('decision-tree-lower-bound', '決定木の下界', '区別すべき入力が $N$ 通りなら、比較の回数は $log_2 N$ 以上', 'theorem', 'cs', ['computation-model']),
+  c('comparison-sort-bound', '比較ソートの限界', '葉が $n!$ 個必要なので $Omega(n log n)$。マージソートが達成する', 'theorem', 'cs', ['decision-tree-lower-bound']),
+  c('model-change-moves-bound', 'モデルを変えると限界が動く', '鍵の構造を使えば線形。下界は問題の性質ではなく、許した操作の性質', 'viewpoint', 'cs', ['comparison-sort-bound', 'chomsky-hierarchy']),
+  c('adversary-argument', '敵対者論法', '答えを先に決めず、質問に応じて辻褄の合う側を返し続ける', 'technique', 'cs', ['decision-tree-lower-bound']),
+  c('information-lower-bound', '情報からの下界', '区別すべき場合の数の対数。決定木の下界のエントロピー版', 'theorem', 'cs', ['decision-tree-lower-bound', 'entropy']),
+  c('communication-complexity', '通信計算量', '入力を二人に分けたとき、何ビット交換すれば足りるか', 'definition', 'cs', ['computation-model', 'entropy']),
+  c('streaming-space-lower-bound', '一パスの空間下界', '通信計算量からの還元。異なり数は近似しか取れない', 'theorem', 'cs', ['communication-complexity', 'space-complexity']),
   c('complexity-class', '計算量クラス', '資源で問題を分類する。P、NP、PSPACE', 'definition', 'cs', ['turing-machine']),
   c('polynomial-reduction', '多項式時間帰着', '$A <=_p B$。$B$ が解ければ $A$ も解ける', 'definition', 'cs', ['complexity-class']),
   c('np-completeness', 'NP 完全性', 'NP の中で最も難しい問題', 'definition', 'cs', ['polynomial-reduction']),
@@ -318,25 +323,17 @@ export const concepts: readonly Concept[] = [
   c('space-complexity', '空間計算量', 'PSPACE、Savitch の定理', 'definition', 'cs', ['complexity-class']),
   c('randomized-complexity', '確率的計算量', 'BPP。乱択を許すとどうなるか', 'definition', 'cs', ['complexity-class', 'probability-space']),
   c('pcp-theorem', 'PCP 定理', '証明を数箇所読むだけで検査できる。近似の限界がここから出る', 'theorem', 'cs', ['np-completeness', 'randomized-complexity']),
+  c('inapproximability', '近似の限界', '近似すら難しい問題がある。どこまで近づけるかに壁がある', 'theorem', 'cs', ['approximation-ratio', 'pcp-theorem']),
 
-  // --- アルゴリズムと下界 -----------------------------------------------
+  // --- アルゴリズム -----------------------------------------------------
   //
-  // 「速いアルゴリズムの一覧」にすると事例の集積になる。だからそう切らない。
-  // 軸は一つで、計算のモデルを固定すると限界が決まり、モデルを変えると限界が
-  // 動く。物理の連載が「何を要請したら形が決まるか」で書いてあるのと同じ形。
+  // 手続きを並べると事例の集積になるので、そう切らない。分割統治も動的計画も
+  // 貪欲も償却も、どれにも「いつ効くか」の定理が付いていて、そちらが概念で
+  // ある。貪欲が最適になるのはマトロイドのとき、そのときだけ（Rado--Edmonds）。
+  // 作法ではなく定理である。
   //
-  // 技法（分割統治、動的計画、貪欲、償却）は技法として載せない。どれにも
-  // 「いつ効くか」の定理が付いていて、そちらが概念である。貪欲が最適になるのは
-  // マトロイドのとき、そのときだけ（Rado--Edmonds）。作法ではなく定理である。
-  //
-  // 下界と上界は必ず対で出る。$Omega(n log n)$ だけ言っても届いているのか
-  // 遠いのか分からないので、達成する構成を一つずつ添える。
-  c('computation-model', '計算のモデル', '何を一手と数えるか。決めないうちは、速さも限界も言えない', 'definition', 'cs', ['turing-machine']),
-  c('decision-tree-lower-bound', '決定木の下界', '区別すべき入力が $N$ 通りなら、比較の回数は $log_2 N$ 以上', 'theorem', 'cs', ['computation-model']),
-  c('comparison-sort-bound', '比較ソートの限界', '葉が $n!$ 個必要なので $Omega(n log n)$。マージソートが達成する', 'theorem', 'cs', ['decision-tree-lower-bound']),
-  c('model-change-moves-bound', 'モデルを変えると限界が動く', '鍵の構造を使えば線形。下界は問題の性質ではなく、許した操作の性質', 'viewpoint', 'cs', ['comparison-sort-bound']),
-  c('adversary-argument', '敵対者論法', '答えを先に決めず、質問に応じて辻褄の合う側を返し続ける', 'technique', 'cs', ['decision-tree-lower-bound']),
-  c('information-lower-bound', '情報からの下界', '区別すべき場合の数の対数。決定木の下界のエントロピー版', 'theorem', 'cs', ['decision-tree-lower-bound', 'entropy']),
+  // 計算量理論と対にする。あちらが「これ以上は無理」を言う側で、こちらが
+  // 届かせる側。同じ近似アルゴリズムでも、限界はあちら、作り方はこちらになる。
   c('divide-and-conquer', '分割統治', '部分問題の個数と大きさが、そのまま漸化式になる', 'technique', 'cs', ['computation-model']),
   c('master-theorem', 'Master 定理', '三つの場合。時間が根に集まるか、葉に集まるか、釣り合うか', 'theorem', 'cs', ['divide-and-conquer', 'landau-notation']),
   c('optimal-substructure', '最適部分構造', '部分問題の最適解から全体の最適解が組める条件', 'definition', 'cs', ['divide-and-conquer']),
@@ -359,33 +356,9 @@ export const concepts: readonly Concept[] = [
   c('lp-relaxation', '線形緩和', '整数条件を外すと解ける。答えは元の問題の下界になる', 'technique', 'cs', ['lp-duality']),
   c('approximation-ratio', '近似比', '最適解を知らないまま比を証明する。証拠に双対解を使う', 'definition', 'cs', ['lp-relaxation']),
   c('rounding', '丸め', '緩和の解を整数へ戻す。戻すときに払う代償が近似比になる', 'technique', 'cs', ['approximation-ratio', 'integrality']),
-  c('inapproximability', '近似の限界', '近似すら難しい問題がある。どこまで近づけるかに壁がある', 'theorem', 'cs', ['approximation-ratio', 'pcp-theorem']),
   c('online-competitive-ratio', '競合比', '未来を知らずに決める。全部知っている相手との比で測る', 'definition', 'cs', ['adversary-argument', 'randomization-as-resource']),
-  c('communication-complexity', '通信計算量', '入力を二人に分けたとき、何ビット交換すれば足りるか', 'definition', 'cs', ['computation-model', 'entropy']),
-  c('streaming-space-lower-bound', '一パスの空間下界', '通信計算量からの還元。異なり数は近似しか取れない', 'theorem', 'cs', ['communication-complexity', 'space-complexity']),
   c('work-span', 'work と span', '並列の速さは仕事量と臨界パスで決まる。Amdahl の一般形', 'theorem', 'cs', ['amdahl-law', 'instruction-dependency']),
   c('cache-oblivious', 'キャッシュ無関係', '階層のパラメータを知らずに最適になる分割の仕方', 'technique', 'cs', ['divide-and-conquer', 'memory-hierarchy']),
-
-  // --- 学習理論 ---------------------------------------------------------
-  //
-  // 「データを増やせば当たる」は経験則に見えるが、当たるための条件は定理になる。
-  // 仮説の集まりをどれだけ豊かにしてよいかに上限があり、その上限は仮説の個数
-  // ではなく、場合分けの能力で測る。集中不等式がそのまま証明になる。
-  //
-  // 計算量の側と混ぜないこと。標本が足りることと、その仮説を多項式時間で
-  // 見つけられることは別で、後者だけが落ちる場合がある。
-  c('learning-setup', '学習の設定', '分布は知らないが、標本は同じ分布から独立に来ると仮定する', 'definition', 'cs', ['independence-probabilistic']),
-  c('empirical-risk', '経験誤差', '標本の上での誤り率。真の誤り率はこれで推定するしかない', 'definition', 'cs', ['learning-setup', 'expectation']),
-  c('generalization-gap', '汎化の隔たり', '経験誤差と真の誤り率の差。これを抑えることが学習理論の全部', 'definition', 'cs', ['empirical-risk', 'concentration-inequality']),
-  c('pac-learning', 'PAC 学習', '高い確率で、ほぼ正しい。必要な標本数を問う枠組み', 'definition', 'cs', ['generalization-gap']),
-  c('shattering', '打ち抜き', '仮説の集まりが、有限個の点をあらゆる形に分けられること', 'definition', 'cs', ['pac-learning']),
-  c('vc-dimension', 'VC 次元', '打ち抜ける最大の点数。豊かさは仮説の個数では測れない', 'definition', 'cs', ['shattering']),
-  c('sauer-shelah', 'Sauer--Shelah の補題', 'VC 次元が $d$ なら場合分けは $n^d$ 程度。指数が多項式に落ちる', 'theorem', 'cs', ['vc-dimension']),
-  c('uniform-convergence-learning', '一様収束による限界', '標本数が VC 次元に比例して足りれば、全仮説で同時に近い', 'theorem', 'cs', ['sauer-shelah', 'concentration-inequality']),
-  c('bias-variance', '偏りとばらつき', '仮説を豊かにすると経験誤差は下がり、隔たりは上がる', 'viewpoint', 'cs', ['uniform-convergence-learning']),
-  c('no-free-lunch', 'no free lunch', '仮定を置かなければどの学習法も平均して同じ。前提が性能を作る', 'theorem', 'cs', ['pac-learning']),
-  c('regret-minimization', '後悔の最小化', '分布を仮定せず、後から見て最良の一手との差で測る', 'definition', 'cs', ['online-competitive-ratio', 'learning-setup']),
-  c('hardness-of-learning', '学習の計算量', '標本は足りても、その仮説を見つける手続きが多項式時間に無いことがある', 'theorem', 'cs', ['pac-learning', 'np-completeness']),
 
   // --- 暗号理論 ---------------------------------------------------------
   //
@@ -519,27 +492,6 @@ export const concepts: readonly Concept[] = [
   c('hoare-logic', 'Hoare 論理', '事前条件と事後条件でプログラムの意味を書く', 'definition', 'cs', ['proof-system']),
   c('loop-invariant', 'ループ不変条件', '繰り返しの意味を 1 本の命題に畳む。頭をリセットしてよい点', 'technique', 'cs', ['hoare-logic']),
 
-  // --- 形式手法 ---------------------------------------------------------
-  //
-  // Hoare 論理だけがあって、あとが無かった。あちらは一本ずつ人が証明する形で、
-  // ここは機械にやらせる側である。状態が有限なら全部試せるので、有限にならない
-  // ものをどう有限へ落とすかが本体になる。
-  //
-  // Rice の定理から、停止する検査器は必ず近似になる。どちらへ寄せるかしか
-  // 選べないので、この分野は「どの近似を採るか」の分類になっている。
-  c('transition-system', '遷移系', '状態と遷移だけで書く。プログラムも回路も同じ形に落ちる', 'definition', 'cs', ['interleaving']),
-  c('temporal-logic', '時相論理', 'いつかは、ずっと、次に。時間についての述語を書く言葉', 'definition', 'cs', ['transition-system', 'satisfaction']),
-  c('safety-vs-liveness', '安全性と活性', '悪いことが起きない、と、良いことがいつか起きる。反例の形が違う', 'definition', 'cs', ['temporal-logic']),
-  c('model-checking', 'モデル検査', '状態が有限なら全部試せる。反例が実行の列として出てくる', 'technique', 'cs', ['temporal-logic']),
-  c('state-explosion', '状態爆発', '状態数は変数の個数に対して指数。有限でも試し切れない', 'theorem', 'cs', ['model-checking']),
-  c('symbolic-representation', '状態を式で持つ', '一つずつ数えずに、状態の集合を論理式として持って動かす', 'technique', 'cs', ['state-explosion']),
-  c('abstract-interpretation', '抽象解釈', '値の集合を粗い格子へ写して動かす。最小不動点が答えになる', 'technique', 'cs', ['lattice', 'domain-theory']),
-  c('abstraction-refinement', '粗くしてから細かくする', '粗い近似で調べ、偽の反例が出たらそこだけ細かくする', 'technique', 'cs', ['abstract-interpretation', 'checker-as-classifier']),
-  c('bisimulation', '双模倣', '外から区別できないこと。互いに真似し合える関係として定義する', 'definition', 'cs', ['transition-system', 'representation-independence']),
-  c('separation-logic', '分離論理', '記憶を分けて持てると書く。触らない部分を証明に持ち込まなくて済む', 'definition', 'cs', ['hoare-logic']),
-  c('sat-solving', '充足可能性の解法', '探索と学習。矛盾から節を作って、同じ失敗を繰り返さない', 'technique', 'cs', ['cook-levin', 'proof-system']),
-  c('smt', '理論つき充足可能性', '算術や配列の理論を足す。命題の解法と理論の判定を組み合わせる', 'technique', 'cs', ['sat-solving', 'satisfaction']),
-  c('refinement', '精製', '仕様と実装を同じ言葉で書き、満たすことを関係として言う', 'viewpoint', 'cs', ['bisimulation', 'behavioral-subtyping']),
   c('structured-programming', '構造化プログラミング', '静的なテキスト位置から動的な進行状況を有限の座標で指せるようにする', 'viewpoint', 'cs', ['loop-invariant'], ['cognitive-load']),
   c('information-hiding', '情報隠蔽', 'モジュールは機能ではなく、隠す決定で切る。Parnas', 'viewpoint', 'cs', [], ['cognitive-load', 'chunking']),
   c('deep-module', '深いモジュール', '狭い口で大きな中身を隠す。口を覚える費用より隠した量が大きいかで測る', 'viewpoint', 'cs', ['information-hiding'], ['chunking']),
@@ -774,18 +726,20 @@ export const concepts: readonly Concept[] = [
   c('guarantee-splitting', '保証を割る', 'ロックを外すと正しさを一つの機構では買えなくなる。番地の生存と値の一貫性が別々になる', 'viewpoint', 'cs', ['grace-period', 'linearizability']),
   c('optimistic-fallback', '楽観と落ち先', '速い経路を試し、駄目だと分かった時点で確実な経路へ落ちる。落ち先が無い楽観は使えない', 'technique', 'cs', ['guarantee-splitting']),
 
-  // --- 関係理論（データの問い合わせ） ------------------------------------
-  //
-  // 「どの製品か」は事例だが、「この問い合わせが書けるか」は論理で決まる。
-  // 関係代数と一階述語論理が同じ表現力を持つ、というのが本体で、正規形も
-  // 従属性も、そこから出る。書けないものがあること（推移閉包）も定理である。
-  c('relational-model', '関係モデル', 'データを名前付きの組の集合として持つ。順序も位置も持たない', 'definition', 'cs', ['zfc-axioms']),
-  c('relational-algebra', '関係代数', '選択・射影・結合・和・差。五つで閉じる', 'definition', 'cs', ['relational-model']),
-  c('codd-theorem', 'Codd の定理', '関係代数と関係論理は同じ表現力。宣言的に書ける根拠がこれ', 'theorem', 'cs', ['relational-algebra', 'first-order-syntax']),
-  c('query-expressiveness-limit', '書けない問い合わせ', '推移閉包は一階では書けない。再帰が別に要る理由', 'theorem', 'cs', ['codd-theorem', 'compactness-theorem']),
-  c('functional-dependency', '関数従属', 'ある列の値が他の列の値を決める。Armstrong の公理系で閉じる', 'definition', 'cs', ['relational-model', 'proof-system']),
-  c('normal-form', '正規形', '従属性から冗長を除く。分解して情報を失わない条件', 'theorem', 'cs', ['functional-dependency']),
-  c('chase', 'Chase', '従属性を満たすまで組を足していく手続き。含意の判定に使う', 'technique', 'cs', ['functional-dependency']),
+  // 正しさを機械に確かめさせる側。形式手法の連載を外したので、こちらへ寄せた。
+  // 道具の内部（抽象解釈、SAT、SMT、分離論理）は落として、既にある定理の
+  // 続きになる 6 個だけ残してある。「停止する検査器は必ず近似になる」
+  // （soundness-completeness-tradeoff）に対して、有限なら全部試せる、
+  // ただし有限でも指数で試し切れない、という一本の線がここで閉じる。
+  c('transition-system', '遷移系', '状態と遷移だけで書く。プログラムも回路も同じ形に落ちる', 'definition', 'cs', ['interleaving']),
+  c('temporal-logic', '時相論理', 'いつかは、ずっと、次に。時間についての述語を書く言葉', 'definition', 'cs', ['transition-system', 'satisfaction']),
+  c('safety-vs-liveness', '安全性と活性', '悪いことが起きない、と、良いことがいつか起きる。反例の形が違う', 'definition', 'cs', ['temporal-logic']),
+  c('model-checking', 'モデル検査', '状態が有限なら全部試せる。反例が実行の列として出てくる', 'technique', 'cs', ['temporal-logic', 'soundness-completeness-tradeoff']),
+  c('state-explosion', '状態爆発', '状態数は変数の個数に対して指数。有限でも試し切れない', 'theorem', 'cs', ['model-checking']),
+  c('bisimulation', '双模倣', '外から区別できないこと。互いに真似し合える関係として定義する', 'definition', 'cs', ['transition-system', 'representation-independence']),
+
+  // 取引の正しさ。関係理論の連載を外したので、こちらへ寄せてある。
+  // linearizability の上に乗る話なので、もともとこちら側である。
   c('serializability', '直列化可能性', '同時に走る取引の正しさを、逐次の並びに写せるかで定義する', 'definition', 'cs', ['linearizability']),
   c('two-phase-locking', '二相ロック', '取り終わるまで放さない。直列化可能性の十分条件', 'theorem', 'cs', ['serializability', 'mutual-exclusion']),
   c('isolation-levels', '分離水準', '直列化可能性を捨てると、読める嘘の種類が決まる', 'definition', 'cs', ['serializability']),
@@ -941,34 +895,14 @@ export const goals: readonly Goal[] = [
     needs: ['karp-reductions', 'time-hierarchy'],
   },
   {
-    id: 'automata',
-    label: '許す記憶の量で言語の族が決まると分かる',
-    needs: ['chomsky-hierarchy', 'myhill-nerode', 'cfl-not-closed'],
-  },
-  {
-    id: 'verification',
-    label: '正しさを機械に確かめさせる方法と、その限界が読める',
-    needs: ['model-checking', 'abstraction-refinement', 'separation-logic'],
-  },
-  {
     id: 'lower-bounds',
-    label: '下界が、問題ではなく許した操作で決まると分かる',
-    needs: ['model-change-moves-bound', 'streaming-space-lower-bound', 'greedy-optimality'],
+    label: 'これ以上速くならない線が、許した操作で決まると分かる',
+    needs: ['model-change-moves-bound', 'streaming-space-lower-bound', 'inapproximability'],
   },
   {
-    id: 'duality',
-    label: '双対を取ると下界が出ることが分かる',
-    needs: ['maxflow-mincut', 'rounding', 'inapproximability'],
-  },
-  {
-    id: 'learning',
-    label: '学習が当たる条件が定理として読める',
-    needs: ['uniform-convergence-learning', 'no-free-lunch', 'hardness-of-learning'],
-  },
-  {
-    id: 'relational',
-    label: '問い合わせで書けることと書けないことが分かる',
-    needs: ['codd-theorem', 'query-expressiveness-limit', 'two-phase-locking'],
+    id: 'algorithms',
+    label: 'どの作法がいつ効くかを、定理として言える',
+    needs: ['master-theorem', 'greedy-optimality', 'maxflow-mincut', 'rounding'],
   },
   {
     id: 'named-architecture',

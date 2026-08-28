@@ -164,7 +164,7 @@ $nabla^2 = star dif star dif$ と書いたものの一般化である。
 #strong[調和形式は、その類の中でノルムが最小のものである。]
 $omega = h + dif eta$ と分けると、$h$ と $dif eta$ が直交するので
 $ norm(omega)^2 = norm(h)^2 + norm(dif eta)^2 >= norm(h)^2 $
-になる。#link("/math/linear-algebra/7")[線形代数 第 7 回]の直交射影と同じ構造である。
+になる。#link("/math/linear-algebra/8")[線形代数 第 7 回]の直交射影と同じ構造である。
 
 #example[調和 $1$ 形式と穴][
   トーラス $T^2$ に平坦な計量を入れると、調和 $1$ 形式は

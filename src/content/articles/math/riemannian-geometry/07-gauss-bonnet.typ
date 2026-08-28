@@ -215,7 +215,7 @@ $K > 0$ の計量が入る多様体はどれか。$K < 0$ ならどうか。Ricc
 #table(
   columns: (auto, auto, 1fr),
   [連載], [層], [仮定するもの],
-  [#link("/math/linear-algebra/1")[線形代数]], [L0], [ベクトル空間。1 点での話],
+  [#link("/math/linear-algebra/2")[線形代数]], [L0], [ベクトル空間。1 点での話],
   [#link("/math/vector-analysis/1")[ベクトル解析]], [L1＋L2], [$RR^3$。三つを混ぜたまま短く書く],
   [#link("/math/differential-forms/1")[微分形式]], [L1], [微分構造だけ。計量なし],
   [#link("/math/riemannian-geometry/1")[Riemann 幾何]], [L2], [＋計量、＋接続],

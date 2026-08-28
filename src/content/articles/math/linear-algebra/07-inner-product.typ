@@ -6,7 +6,7 @@
   date: "2026-08-20",
   field: "math",
   series: "linear-algebra",
-  order: 6,
+  order: 7,
   tags: ("線形代数",),
   summary: "内積を一つ選ぶと、V と V* が自然に同一視でき、長さと角度と体積が決まり、転置が意味を持つ。買えるものは多い。代わりに、選んだことを忘れるという代償を払う。",
   provides: (
@@ -92,7 +92,7 @@ $ g = upright("diag")(-1, 1, 1, 1) $
   次元が等しいので同型である。
 ]
 
-#link("/math/linear-algebra/2")[第 2 回]で「$V tilde.equiv V^*$ は自然でない」と強調した。
+#link("/math/linear-algebra/3")[第 2 回]で「$V tilde.equiv V^*$ は自然でない」と強調した。
 それが覆ったわけではない。#strong[$g$ を一つ選んだ]から自然になったのである。
 選択の場所が、基底から計量に移っただけだ。
 
@@ -145,7 +145,7 @@ $g^(i j)$ は $g_(i j)$ の逆行列で、$flat$ の逆写像 $sharp$ にあた�
 
 正規直交基底で書けば、$f^dagger$ の行列は $f$ の行列の転置である。
 
-#link("/math/linear-algebra/2")[第 2 回]で「転置の正体は双対写像 $f^* : V^* arrow V^*$」と書いた。
+#link("/math/linear-algebra/3")[第 2 回]で「転置の正体は双対写像 $f^* : V^* arrow V^*$」と書いた。
 随伴はそれを $flat$ で $V$ に引き戻したものである。
 $ f^dagger = sharp compose f^* compose flat $
 つまり#strong[転置には二つの顔があり、片方は計量なしで書け、もう片方は計量が要る]。
@@ -163,7 +163,7 @@ Klein の Erlangen 綱領——幾何とは、ある変換群で不変な性質�
 
 = 買えるもの その三：体積と $star$
 
-#link("/math/linear-algebra/5")[第 5 回]で、$Lambda^n V^*$ は 1 次元だが、
+#link("/math/linear-algebra/6")[第 5 回]で、$Lambda^n V^*$ は 1 次元だが、
 どれを「$1$」と呼ぶかは決まらない、と書いた。内積があると決まる。
 
 #definition[
@@ -228,5 +228,5 @@ $g_(i j)$ が $delta_(i j)$ でなくなるからである。
 ]
 
 次回は、@def:adjoint の自己随伴写像を扱う。
-#link("/math/linear-algebra/1")[第 1 回]で「一般には対角化できない」と書いたのに、
+#link("/math/linear-algebra/2")[第 1 回]で「一般には対角化できない」と書いたのに、
 自己随伴なら必ずできてしまう。その理由も、内積にある。

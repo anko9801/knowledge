@@ -140,7 +140,7 @@ $ sum_j y_j thin mu({x : y_j <= f(x) < y_(j+1)}) $
   $f^(-1)(B) in cal(F)$ が成り立つことをいう。
 ]<def:measurable>
 
-#link("/math/foundations/3#def-continuous")[位相]の連続の定義（開集合の逆像が開集合）と同じ形である。
+#link("/math/topology/1#def-continuous")[位相]の連続の定義（開集合の逆像が開集合）と同じ形である。
 逆像で定義する、というのが構造を保つ写像の共通の書き方になっている。
 
 #definition[
@@ -176,7 +176,7 @@ Lebesgue 積分を採る本当の理由は、ここにある。
 
 #table(
   columns: (auto, 1fr),
-  [Riemann], [#strong[一様収束]が要る（#link("/math/foundations/4#def-uniform")[土台 第 4 回]）],
+  [Riemann], [#strong[一様収束]が要る（#link("/math/analysis/2#def-uniform")[土台 第 4 回]）],
   [Lebesgue], [#strong[各点収束]でよい。押さえの関数 $g$ があれば],
 )
 
@@ -240,14 +240,14 @@ $f_n$ の#strong[振れ幅]を押さえないと、上積分と下積分が寄�
   $L^p (mu)$ は完備である。すなわち Banach 空間になる。
 ]<thm:riesz-fischer>
 
-#link("/math/foundations/4#def-complete")[土台 第 4 回]で、連続関数の空間に
+#link("/math/analysis/2#def-complete")[土台 第 4 回]で、連続関数の空間に
 $integral abs(f)$ のノルムを入れると完備でない、と書いた。
 穴を埋めた先がここである。
 #strong[完備にするために、連続でない関数まで入れることになった。]
 
 $p = 2$ のとき、$L^2$ は内積
 $ chevron.l f, g chevron.r = integral f g thin dif mu $
-を持つので #link("/math/foundations/4")[Hilbert 空間]になる。
+を持つので #link("/math/analysis/2")[Hilbert 空間]になる。
 Fourier 級数も、量子力学の状態空間も、ここに住む。
 
 #check[

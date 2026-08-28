@@ -5,9 +5,9 @@
   title: "微分とは最良の線形近似である",
   date: "2026-08-20",
   field: "math",
-  series: "foundations",
-  order: 2,
-  tags: ("土台",),
+  series: "analysis",
+  order: 1,
+  tags: ("解析",),
   summary: "微分係数を「傾き」ではなく「線形写像」と定義し直すと、多変数へそのまま延びる。偏微分はその成分、連鎖律は写像の合成、ヤコビアンはその行列式になる。覚える公式が一つに減る。",
   provides: (
     "multivariable-calculus",
@@ -76,7 +76,7 @@ $ f(x + h) = f(x) + f'(x) h + o(h) $
 ]
 
 #strong[偏微分は、微分を基底で書いた成分だった。]
-#link("/math/linear-algebra/1")[線形代数 第 1 回]で「行列は写像＋基底の記録」と書いたが、
+#link("/math/linear-algebra/2")[線形代数 第 1 回]で「行列は写像＋基底の記録」と書いたが、
 ヤコビ行列はその一例である。
 
 逆は成り立たない。
@@ -175,7 +175,7 @@ $D^2 f_bold(a)$ は $RR^n times RR^n arrow RR^m$ の双線形写像になり、
 
 $RR^n$ の重積分は、直方体を並べて足す。
 座標を替えると、直方体が平行体に歪む。その体積比が
-#link("/math/linear-algebra/5#def-det")[行列式]なので
+#link("/math/linear-algebra/6#def-det")[行列式]なので
 
 #theorem("変数変換")[
   $ integral_(phi(U)) f(bold(y)) thin dif bold(y)

@@ -5,9 +5,9 @@
   title: "割り算ができるかどうか",
   date: "2026-08-21",
   field: "math",
-  series: "foundations",
-  order: 6,
-  tags: ("土台",),
+  series: "algebra",
+  order: 1,
+  tags: ("代数",),
   summary: "群・環・体は、演算をいくつ持つかと、逆元をどこまで要求するかで並んでいる。線形代数がスカラーに体を要求する理由も、そこから出る。",
   provides: (
     "group",
@@ -22,7 +22,7 @@
 
 = スカラーは何でもよいのか
 
-#link("/math/foundations/1")[第 1 回]でベクトル空間を定義したとき、
+#link("/math/linear-algebra/1")[第 1 回]でベクトル空間を定義したとき、
 「体 $K$ 上の」と書いて、体が何かは説明しなかった。
 
 そこを詰める。#strong[なぜスカラーは体でなければならないのか。]
@@ -54,8 +54,8 @@
 ]
 
 最後の対称群は、後で二か所に効く。
-#link("/math/linear-algebra/5#def-det")[行列式]の定義に現れる置換の和と、
-#link("/math/linear-algebra/4#def-alternating")[交代形式]の符号である。
+#link("/math/linear-algebra/6#def-det")[行列式]の定義に現れる置換の和と、
+#link("/math/linear-algebra/5#def-alternating")[交代形式]の符号である。
 
 #definition[
   置換を互換（$2$ つを入れ替える操作）の積に書いたとき、その個数の偶奇は
@@ -72,7 +72,7 @@
   合成できて、何もしない操作があり、元に戻す操作があるからである。
 
   #link("/math/riemannian-geometry/1")[等長写像]も
-  #link("/math/linear-algebra/6")[直交群]も、この形で出てきた。
+  #link("/math/linear-algebra/7")[直交群]も、この形で出てきた。
 ]
 
 = 環
@@ -105,7 +105,7 @@
 ]<def:ideal>
 
 $ZZ$ を $n ZZ$ で割ると $ZZ \/ n ZZ$、つまり「$n$ で割った余り」の世界になる。
-#link("/math/foundations/1")[第 1 回]の商空間と同じ構成で、
+#link("/math/linear-algebra/1")[第 1 回]の商空間と同じ構成で、
 #strong[「この差は無視する」を演算ごと持ち込める部分集合]がイデアルである。
 
 = 体
@@ -136,7 +136,7 @@ $ZZ$ は体でない。$ZZ \/ 4 ZZ$ も、$2 times 2 = 0$ となって $2$ が�
   体上のベクトル空間には基底が存在し、その個数（次元）は基底の取り方に依らない。
 ]<thm:basis-field>
 
-証明は #link("/math/foundations/1")[第 1 回]で見た交換補題だが、
+証明は #link("/math/linear-algebra/1")[第 1 回]で見た交換補題だが、
 その途中で#strong[係数で割る]操作を使っていた。
 「$bold(u)_1$ を $bold(v)$ たちの線形結合で書いたとき、$0$ でない係数がある。
 その $bold(v)_j$ を追い出す」という一手が、割り算である。
@@ -190,7 +190,7 @@ $K[x]$ は環であって体でない（$x$ が割れない）。
   を#strong[固有多項式]と呼ぶ。
 ]<def:char-poly>
 
-#link("/math/linear-algebra/5")[行列式が基底に依らない]ので、$chi_f$ も基底に依らない。
+#link("/math/linear-algebra/6")[行列式が基底に依らない]ので、$chi_f$ も基底に依らない。
 $chi_f (lambda) = 0$ の根が固有値である。
 
 #strong[固有値を「対角化できる係数」ではなく「多項式の根」として定義する]と、
@@ -198,7 +198,7 @@ $chi_f (lambda) = 0$ の根が固有値である。
 $CC$ 上では代数学の基本定理から根が必ずあり、したがって固有値が必ずある。
 $RR$ 上では回転行列のように根を持たない場合があり、対角化できない。
 
-#link("/math/linear-algebra/1")[線形代数 第 1 回]で
+#link("/math/linear-algebra/2")[線形代数 第 1 回]で
 「微分作用素 $D$ は対角化できない」と書いたが、あれは $chi_D (lambda) = lambda^3$ で
 根が $0$ しかないことの言い換えだった。
 
@@ -208,7 +208,7 @@ $RR$ 上では回転行列のように根を持たない場合があり、対角
 
   #strong[「対角化できるか」は写像だけでは決まらない。]
   どの体の上で考えているかまで込みの問いである。
-  #link("/math/linear-algebra/1")[第 1 回]で立てた
+  #link("/math/linear-algebra/2")[第 1 回]で立てた
   「それは基底を選ばずに述べられるか」という判定に、
   もう一つ「どの体の上か」が加わることになる。
 ]
@@ -224,17 +224,16 @@ $RR$ 上では回転行列のように根を持たない場合があり、対角
   [固有多項式], [固有値を根として定義する。体に依る],
 )
 
-土台はこれで閉じる。仮定してきたものを一覧にしておく。
+演算と逆元だけを見てきた。幾何が黙って使っている仮定は、ほかにもある。
 
 #table(
   columns: (auto, 1fr),
-  [#link("/math/foundations/6")[代数]], [演算と逆元。スカラーが住む場所],
-  [#link("/math/foundations/1")[ベクトル空間]], [足せて伸ばせる],
-  [#link("/math/foundations/2")[微分]], [最良の線形近似],
-  [#link("/math/foundations/3")[位相]], [距離なしの近さ],
-  [#link("/math/foundations/4")[完備性]], [極限が存在すると言えること],
-  [#link("/math/foundations/5")[滑らかさ]], [$C^infinity$。山形関数が作れる],
+  [#link("/math/linear-algebra/1")[ベクトル空間]], [足せて伸ばせる],
+  [#link("/math/analysis/1")[微分]], [最良の線形近似],
+  [#link("/math/topology/1")[位相]], [距離なしの近さ],
+  [#link("/math/analysis/2")[完備性]], [極限が存在すると言えること],
+  [#link("/math/analysis/3")[滑らかさ]], [$C^infinity$。山形関数が作れる],
 )
 
-どれも「何を仮定すれば話が始まるか」だけを見た。
-仮定を並べ終えたので、あとは足す側の話になる。
+どれも「何を仮定すれば話が始まるか」だけを見ている。
+ここまでは足りるかどうかの話で、あとは足す側の話になる。

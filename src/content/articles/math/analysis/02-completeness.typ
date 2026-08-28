@@ -5,9 +5,9 @@
   title: "穴が空いていないこと",
   date: "2026-08-21",
   field: "math",
-  series: "foundations",
-  order: 4,
-  tags: ("土台",),
+  series: "analysis",
+  order: 2,
+  tags: ("解析",),
   summary: "完備性は位相の性質ではない。距離を替えると変わる。それでも完備性を仮定すると、縮小写像の原理という強い道具が手に入り、微分方程式の解も逆関数も、そこから出てくる。",
   provides: (
     "metric-space",
@@ -149,7 +149,7 @@ Cauchy 列の定義には#strong[極限が出てこない]。「行き先を知�
 ]<def:banach>
 
 有限次元では、ノルムの取り方に依らず完備になる。
-だから#link("/math/foundations/1")[第 1 回]までの話では完備性が問題にならなかった。
+だから#link("/math/linear-algebra/1")[第 1 回]までの話では完備性が問題にならなかった。
 
 無限次元では違う。
 
@@ -193,7 +193,7 @@ Cauchy 列の定義には#strong[極限が出てこない]。「行き先を知�
 #table(
   columns: (auto, 1fr),
   [常微分方程式], [解の存在と一意性（Picard--Lindelöf）。積分作用素が縮小写像になる],
-  [逆関数定理], [#link("/math/foundations/5")[次回]。$f(x) = y$ を不動点方程式に直す],
+  [逆関数定理], [#link("/math/analysis/3")[次回]。$f(x) = y$ を不動点方程式に直す],
   [数値計算], [Newton 法が収束する条件],
   [フラクタル], [縮小写像の族の不動点として図形が定まる],
 )

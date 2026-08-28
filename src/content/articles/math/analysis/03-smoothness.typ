@@ -5,9 +5,9 @@
   title: "どこまで微分できるか",
   date: "2026-08-21",
   field: "math",
-  series: "foundations",
-  order: 5,
-  tags: ("土台",),
+  series: "analysis",
+  order: 3,
+  tags: ("解析",),
   summary: "「滑らか」には階層がある。C^k と C^∞ と解析的は、どれも別物である。多様体の定義に現れる「滑らか」がどれを指すのか、そしてなぜ C^∞ を選ぶのかを決める。",
   provides: (
     "smoothness-class",
@@ -69,7 +69,7 @@ $C^omega$ だけは、他と毛色が違う。微分の回数ではなく、級�
 ]<def:power-series>
 
 $abs(x - a) <= r < R$ の範囲では#strong[一様収束]するので、
-#link("/math/foundations/4")[前回]の結果から極限が連続になり、
+#link("/math/analysis/2")[前回]の結果から極限が連続になり、
 さらに項別に微分・積分してよい。
 #strong[べき級数は、無限和なのに有限和のように扱える。]
 
@@ -163,7 +163,7 @@ $C^infinity$ なら何回微分しても $C^infinity$ のままで、数が消�
 
 = 無限次元での微分
 
-#link("/math/foundations/2")[第 2 回]で、微分を「最良の線形近似」と定義した。
+#link("/math/analysis/1")[第 2 回]で、微分を「最良の線形近似」と定義した。
 定義の式には $RR^n$ が要らない。ノルムがあればよい。
 
 #definition[
@@ -173,7 +173,7 @@ $C^infinity$ なら何回微分しても $C^infinity$ のままで、数が消�
 ]<def:frechet>
 
 $abs(dot)$ が $norm(dot)$ になっただけである。
-#link("/math/foundations/2")[第 2 回]の連鎖律も、そのままの証明で成り立つ。
+#link("/math/analysis/1")[第 2 回]の連鎖律も、そのままの証明で成り立つ。
 
 これで変分法が扱える。汎関数
 $ S[q] = integral L(q, dot(q), t) thin dif t $
@@ -198,7 +198,7 @@ $delta S = 0$ という条件は、その微分が $0$ になることである�
   $D f$ が連続なので、$a$ の近傍では $norm(D T_y) <= 1\/2$ に抑えられる。
   平均値の不等式から $T_y$ は縮小写像になる。
 
-  近傍を完備な閉集合に取れば、#link("/math/foundations/4")[前回]の
+  近傍を完備な閉集合に取れば、#link("/math/analysis/2")[前回]の
   Banach の不動点定理から、$x$ がただ一つ存在する。
   逆写像の微分可能性と $C^k$ 性は、この構成を追えば出る。
 ]
@@ -246,6 +246,7 @@ $delta S = 0$ という条件は、その微分が $0$ になることである�
 何を指すのかが決まった。$C^infinity$ である。
 そして 1 の分割が作れるのも、@thm:bump が $C^infinity$ でだけ成り立つからである。
 
-土台はここまでにする。連載の入口は
-#link("/math/foundations/1")[第 1 回]に置いた表のとおりで、
-どこから読んでも、詰まったらここへ戻ってくればよい。
+滑らかさの階層はここまでである。詰まったら戻ってくればよい。
+#link("/math/differential-forms/1")[微分形式]も
+#link("/math/riemannian-geometry/1")[Riemann 幾何]も、
+「滑らか」と書くたびに黙ってこの $C^infinity$ を指している。

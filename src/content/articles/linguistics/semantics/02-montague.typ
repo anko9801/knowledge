@@ -177,7 +177,7 @@ $ (lambda P. thin P(upright("太郎")))(lambda x. thin upright("walk")(x))
 
   #strong[型を揃えるために、より複雑な型へ持ち上げる]という手口は、
   数学の他の場所でもよく出る。
-  #link("/math/linear-algebra/2")[線形代数 第 2 回]で
+  #link("/math/linear-algebra/3")[線形代数 第 2 回]で
   ベクトルを $V^(**)$ の元と見たのと、形は同じである。
 ]
 

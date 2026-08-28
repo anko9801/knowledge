@@ -40,7 +40,7 @@
   合成系の状態空間は#strong[テンソル積] $cal(H)_A times.o cal(H)_B$ である。
 ]<def:composite>
 
-#link("/math/linear-algebra/3")[線形代数 第 3 回]の言葉なら、
+#link("/math/linear-algebra/4")[線形代数 第 3 回]の言葉なら、
 「$V$ と $W$ の両方を同時に指定する」ときの部屋である。
 $dim (cal(H)_A times.o cal(H)_B) = dim cal(H)_A dot dim cal(H)_B$、次元は積になる。
 
@@ -57,7 +57,7 @@ $dim (cal(H)_A times.o cal(H)_B) = dim cal(H)_A dot dim cal(H)_B$、次元は積
   （#strong[単純テンソル]）は、ごく一部でしかない。
 ]<prop:not-simple>
 
-#link("/math/linear-algebra/3")[線形代数 第 3 回]で数えたとおりである。
+#link("/math/linear-algebra/4")[線形代数 第 3 回]で数えたとおりである。
 単純テンソルの全体はスカラー倍の重複を除いて
 $dim cal(H)_A + dim cal(H)_B - 1$ 次元ぶんしかないのに、
 テンソル積は $dim cal(H)_A dot dim cal(H)_B$ 次元ある。
@@ -150,7 +150,7 @@ $rho_A$ が混合になったぶん、情報が失われたように見える。
 ]<def:von-neumann>
 
 $rho$ を対角化すれば、固有値を確率と見た Shannon エントロピーになる
-（#link("/math/linear-algebra/7#thm-spectral")[スペクトル定理]が効いている）。
+（#link("/math/linear-algebra/8#thm-spectral")[スペクトル定理]が効いている）。
 
 上の $#ket($Phi$)$ では $S(rho_A) = log 2 = 1$ ビットで、これが最大値である。
 #strong[$1$ ビットの情報が、$A$ でも $B$ でもなく「間」にある。]
@@ -181,7 +181,7 @@ $rho$ を対角化すれば、固有値を確率と見た Shannon エントロ�
 
 #strong[この連載で使った数学は、線形代数だけである。]
 Hilbert 空間、スペクトル定理、テンソル積。
-どれも #link("/math/linear-algebra/1")[線形代数の連載]で、
+どれも #link("/math/linear-algebra/2")[線形代数の連載]で、
 物理を持ち出さずに組み立てたものだった。
 
 公理が天下りに見えるのは、要求から公理への翻訳が省かれているからである。

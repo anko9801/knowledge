@@ -6,7 +6,7 @@
   date: "2026-08-20",
   field: "math",
   series: "linear-algebra",
-  order: 1,
+  order: 2,
   tags: ("線形代数",),
   summary: "同じ写像が、基底を替えるだけで違う行列になる。だから行列の性質のうち写像の性質なのは、基底を替えても動かないものだけである。この連載は、その「動かないもの」だけで線形代数を組み直す。",
   provides: (
@@ -84,7 +84,7 @@ $f$ のあとに $g$ を施したものの行列表示を計算すると、$B A$
 
 右の列は、写像について何も語っていない。
 「この行列は対称である」は、写像の性質ではなく、いま選んだ基底での見た目である
-（対称性を写像の言葉で言うには内積が要る。#link("/math/linear-algebra/6")[第 6 回]で扱う）。
+（対称性を写像の言葉で言うには内積が要る。#link("/math/linear-algebra/7")[第 6 回]で扱う）。
 
 #check[
   対称かどうかは、行列を眺めれば一目で分かる。$A^T = A$ を確かめるだけである。
@@ -108,7 +108,7 @@ $f$ のあとに $g$ を施したものの行列表示を計算すると、$B A$
 いっぽう左の列は、$P^(-1) A P$ で不変であることが確かめられる。たとえば跡なら
 $ upright("tr")(P^(-1) A P) = upright("tr")(A P P^(-1)) = upright("tr")(A) $
 である。この計算にどんな幾何的意味があるのかは、
-#link("/math/linear-algebra/5")[第 5 回]で行列式とともに扱う。
+#link("/math/linear-algebra/6")[第 5 回]で行列式とともに扱う。
 
 #remark[
   行列式についてはもっと強いことが言える。
@@ -149,18 +149,18 @@ $ upright("tr")(P^(-1) A P) = upright("tr")(A P P^(-1)) = upright("tr")(A) $
 
 #table(
   columns: (auto, 1fr),
-  [#link("/math/linear-algebra/2#def-dual")[双対空間]],
+  [#link("/math/linear-algebra/3#def-dual")[双対空間]],
   [$V$ と $V^*$ は同じ次元だが、同一視するには選択が要る。行ベクトルと列ベクトルを
    区別する理由],
-  [#link("/math/linear-algebra/3")[テンソル]],
+  [#link("/math/linear-algebra/4")[テンソル]],
   [多重線形写像。「変換則で定義する」と言われるものの正体],
-  [#link("/math/linear-algebra/4")[対称と反対称]],
+  [#link("/math/linear-algebra/5")[対称と反対称]],
   [引数の入れ替えで分類する。$Lambda^k$ の次元が $binom(n, k)$ であること],
-  [#link("/math/linear-algebra/5#def-det")[行列式]],
+  [#link("/math/linear-algebra/6#def-det")[行列式]],
   [$Lambda^n$ が 1 次元だから $det$ が定まる。行列式は体積である],
-  [#link("/math/linear-algebra/6")[内積]],
+  [#link("/math/linear-algebra/7")[内積]],
   [ここで初めて計量を入れる。何が買えて、何を失うか],
-  [#link("/math/linear-algebra/7#thm-spectral")[スペクトル定理]],
+  [#link("/math/linear-algebra/8#thm-spectral")[スペクトル定理]],
   [一般には対角化できないのに、対称なら必ずできる。その理由は内積にある],
 )
 

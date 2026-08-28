@@ -33,7 +33,7 @@ $RR^3$ で rot はベクトルを作る。ベクトル場を入れると、ベ�
 #strong[出ない。]$4$ 次元で rot に当たるものは $6$ 成分を持っていて、
 ベクトル（$4$ 成分）にはならない。$5$ 次元なら $10$ 成分である。
 矢印で書けるのは $3$ 次元のときだけで、そこには
-#link("/math/linear-algebra/4")[線形代数 第 4 回]の
+#link("/math/linear-algebra/5")[線形代数 第 4 回]の
 $dim Lambda^k V^* = binom(n, k)$ が効いている。$binom(4,2) = 6$、$binom(5,2) = 10$、
 そして $binom(3,2) = 3$。#strong[$3$ 次元でだけ、たまたま数が合っていた。]
 
@@ -50,7 +50,7 @@ Pascal の三角形の $4$ 段目 $1, 3, 3, 1$ を、矢印の言葉で読んだ
 
 材料はもう揃っている。
 
-#link("/math/linear-algebra/4")[線形代数 第 4 回]で、
+#link("/math/linear-algebra/5")[線形代数 第 4 回]で、
 ベクトル空間 $V$ に対する交代 $k$ 形式の空間 $Lambda^k V^*$ を作った。
 次元は $binom(n, k)$ で、楔積 $and$ が定義されていた。
 
@@ -91,7 +91,7 @@ $n = 3$ で $1, 3, 3, 1$、$n = 4$ で $1, 4, 6, 4, 1$。
 = 用意その二：楔積
 
 #definition[
-  各点で#link("/math/linear-algebra/4")[線形代数 第 4 回]の楔積を取ることで、
+  各点で#link("/math/linear-algebra/5")[線形代数 第 4 回]の楔積を取ることで、
   $ and : Omega^k times Omega^l arrow.long Omega^(k+l) $
   を定める。次の性質を持つ。
   $ alpha and beta = (-1)^(k l) beta and alpha, quad

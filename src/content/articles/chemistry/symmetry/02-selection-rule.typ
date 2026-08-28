@@ -89,7 +89,7 @@ $ m_upright("自明") = frac(1, abs(G)) sum_(g in G) chi_f (g)^* thin chi_o (g) 
   振動を既約表現ごとに分けたものを#strong[基準振動]と呼ぶ。
 ]<def:normal-modes>
 
-#link("/math/linear-algebra/7")[線形代数 第 7 回]で
+#link("/math/linear-algebra/8")[線形代数 第 7 回]で
 「運動エネルギーとポテンシャルを同時対角化する」と書いたものである。
 そして対称性があると、対角化を実行する前に#strong[どの既約表現が現れるか]が決まる。
 

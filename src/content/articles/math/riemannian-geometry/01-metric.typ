@@ -61,7 +61,7 @@
   で、$g_(i j)$ は各点で対称正定値な行列である。
 ]<def:riemann>
 
-#link("/math/linear-algebra/6")[線形代数 第 6 回]の内積を、各点に配っただけである。
+#link("/math/linear-algebra/7")[線形代数 第 6 回]の内積を、各点に配っただけである。
 新しい概念は入っていない。
 
 #definition[

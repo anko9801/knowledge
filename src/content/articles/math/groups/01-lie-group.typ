@@ -38,7 +38,7 @@
 
 #definition[
   群であり、かつ多様体であって、積 $(g, h) mapsto g h$ と逆元 $g mapsto g^(-1)$ が
-  #link("/math/foundations/5")[滑らか]であるものを#strong[Lie 群]と呼ぶ。
+  #link("/math/analysis/3")[滑らか]であるものを#strong[Lie 群]と呼ぶ。
 ]<def:lie-group>
 
 #example[身近な Lie 群][
@@ -118,12 +118,12 @@ $ [X, Y] = X Y - Y X $
 
 #definition[
   $X in frak(g)$ に対し、$dot(gamma) = X$ を満たす $1$ パラメータ部分群
-  $gamma : RR arrow G$ が一意に存在する（#link("/math/foundations/4")[常微分方程式の解の一意性]による）。
+  $gamma : RR arrow G$ が一意に存在する（#link("/math/analysis/2")[常微分方程式の解の一意性]による）。
   $exp(X) := gamma(1)$ と定める。
 ]<def:exp>
 
 行列群では $exp(X) = sum_n X^n \/ n!$ という級数になる。
-#link("/math/foundations/4")[Banach 空間]の完備性から収束する。
+#link("/math/analysis/2")[Banach 空間]の完備性から収束する。
 
 #theorem[
   $exp$ は $0$ の近傍から $e$ の近傍への微分同相である。

@@ -510,6 +510,17 @@ peek が添えているのは 621 件で、**参照先はすべて statement**�
 
 ## 同時に走るときの作法
 
+- **`nix develop` の外で走らせない。** 外の typst は 0.14.2 で、
+  **MathML export（0.15 で入った）を持っていない。** `flake.nix` が typst だけ
+  unstable から取っているのはそのためで、6 行目に書いてある。
+  外で走らせると二段階で失敗する。まず `prebuild` の MathML 抽出が
+  「`<head>` に `<style>` がありません」で落ち、次に `typst eval` が
+  `unrecognized subcommand` で落ちて content の sync ごと止まる。
+  **どちらのエラーも原因を指していない。**
+  2026-08-28 に、これを「typst 0.14.2 で API が消えた」と誤診して
+  `typst-cli.ts` を `query` へ書き換えかけた。動いているコードを古い側へ
+  戻すところだった。**バージョンが合わないときは、まず `flake.nix` を見ること。**
+
 - **worktree で作業するなら、本体の checkout にも `npm ci` しておく。**
   `astro check` が `Tsconfig not found astro/tsconfigs/strict` で落ちるときはこれである。
   vite（rolldown）は tsconfig を上のディレクトリまで探しに行くので、

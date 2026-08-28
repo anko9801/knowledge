@@ -72,7 +72,7 @@ Pythagoras の定理が使えないと、$sum abs(c_i)^2 = norm(psi)^2$ が成�
 
 この条件を満たす作用素は何か。すでに答えを持っている。
 
-#link("/math/linear-algebra/7")[線形代数 第 7 回]のスペクトル定理は、
+#link("/math/linear-algebra/8")[線形代数 第 7 回]のスペクトル定理は、
 #strong[自己随伴なら正規直交固有基底が取れ、固有値は実数]と言っていた。
 そして逆も成り立つ。正規直交固有基底を持ち固有値が実数なら、その作用素は自己随伴である。
 
@@ -103,7 +103,7 @@ $ sum_i a_i abs(c_i)^2 = chevron.l psi\, hat(A) psi chevron.r $
   正しくは、固有ベクトルの和ではなく#strong[射影値測度による積分]で書く。
   $ hat(A) = integral lambda thin dif E_lambda $
   これがスペクトル定理の無限次元版で、連続スペクトルを扱える。
-  #link("/math/linear-algebra/7")[線形代数 第 7 回]の注意で触れたとおりである。
+  #link("/math/linear-algebra/8")[線形代数 第 7 回]の注意で触れたとおりである。
 ]
 
 = 同時に測れるか
@@ -215,5 +215,5 @@ $[hat(x), hat(p)] = i planck$ を入れれば $Delta x thin Delta p >= planck \/
 
 次回、系を二つに増やす。
 そこで初めて、古典では起こりえないことが出る。
-#link("/math/linear-algebra/3")[テンソル積に分解できない元がある]という、
+#link("/math/linear-algebra/4")[テンソル積に分解できない元がある]という、
 線形代数の事実がそのまま現れる。

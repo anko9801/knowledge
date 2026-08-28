@@ -43,7 +43,7 @@ $ nabla^2 f = partial_x^2 f + partial_y^2 f + partial_z^2 f $
 
 = Hodge スター
 
-#link("/math/linear-algebra/6")[線形代数 第 6 回]で一般の定義を与えたが、
+#link("/math/linear-algebra/7")[線形代数 第 6 回]で一般の定義を与えたが、
 $3$ 次元では表で書けてしまう。
 
 #definition[

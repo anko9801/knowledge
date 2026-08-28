@@ -757,14 +757,24 @@ export const concepts: readonly Concept[] = [
   c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
   c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
 
+  // --- 特殊相対論 -------------------------------------------------------
+  //
+  // 場の量子論が最初の一行で要求する。あちらの「粒子＝既約表現」も
+  // 「一瞬で滲み出さない」も、ここが無いと書けない。
+  c('lorentz-transformation', 'Lorentz 変換', '慣性系どうしを繋ぐ変換。相対性原理と等方性を課すと形がほぼ決まる', 'definition', 'physics', ['linear-map', 'group']),
+  c('minkowski-metric', 'Minkowski 計量', '符号数 $(1,3)$ の内積。時間と空間が同じ土俵に乗る代わりに、正定値ではなくなる', 'definition', 'physics', ['lorentz-transformation', 'signature']),
+  c('causal-structure', '因果構造', '光円錐。順序が誰から見ても同じなのは、時間的に離れた事象だけ', 'viewpoint', 'physics', ['minkowski-metric']),
+  c('poincare-group', 'Poincaré 群', 'Lorentz 変換に並進を足した群。相対論が要請する対称性の全体', 'definition', 'physics', ['lorentz-transformation', 'group-action']),
+  c('wigner-classification', '粒子は既約表現である', 'Poincaré 群の既約表現を数えると、ラベルが質量とスピンの二つになる', 'theorem', 'physics', ['poincare-group', 'irreducible-representation', 'hilbert-space']),
+
   // --- 場の量子論の入口 -------------------------------------------------
   //
   // 仮定を一本ずつ足すと、そのたびに形が決まる。その最初の一本が、
   // 「量子力学と相対論を両方認める」だけで粒子から位置を奪う。
   //
   // 構成は docs/map.md にある。ここは第 1 回が置く分だけ。
-  c('localization-system', '局在系', '領域ごとに「そこに居る」を判定する射影の族。位置を持つとはこの族があること', 'definition', 'physics', ['quantum-state', 'sigma-algebra']),
-  c('niws-condition', '一瞬で滲み出さない', '離れた領域へ移るには時間が要る。相対論が言う有限の速さを、確率の言葉に翻訳したもの', 'definition', 'physics', ['localization-system']),
+  c('localization-system', '局在系', '領域ごとに「そこに居る」を判定する射影の族。位置を持つとはこの族があること', 'definition', 'physics', ['quantum-state', 'sigma-algebra', 'poincare-group']),
+  c('niws-condition', '一瞬で滲み出さない', '離れた領域へ移るには時間が要る。相対論が言う有限の速さを、確率の言葉に翻訳したもの', 'definition', 'physics', ['localization-system', 'causal-structure']),
   c('malament-theorem', 'Malament の定理', '四つを認めると、どの領域に見つかる確率も 0 になる。粒子は位置を持てない', 'theorem', 'physics', ['niws-condition', 'observable']),
   c('unsharp-localization', 'ぼやけた局在なら逃げられる', '射影をやめて POVM にすると定理は成り立たない。禁じられていたのは「そこに居る／居ない」の二値のほう', 'viewpoint', 'physics', ['malament-theorem']),
 

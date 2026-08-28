@@ -773,6 +773,11 @@ export const concepts: readonly Concept[] = [
   c('einstein-equation', 'Einstein 方程式', '両辺に置けるものを絞ると、係数二つを除いて一つに決まる', 'theorem', 'physics', ['stress-energy-conservation', 'einstein-tensor', 'light-deflection-factor-two']),
   c('newtonian-limit', 'Newton 極限', '弱い場と遅い速さで Poisson 方程式に戻れ、と要求すると結合定数が決まる', 'theorem', 'physics', ['einstein-equation']),
   c('cosmological-constant', '決まらない係数', '幾何は二つ残す。片方は Newton 極限で決まり、もう片方は測るしかない', 'viewpoint', 'physics', ['newtonian-limit']),
+  c('birkhoff-theorem', 'Birkhoff の定理', '真空で球対称なら解が一意に決まる。静的だと仮定していないのに静的になる', 'theorem', 'physics', ['einstein-equation']),
+  c('schwarzschild-solution', 'Schwarzschild 解', '質量ひとつで外側の重力が全部決まる。星の中身は一切効かない', 'definition', 'physics', ['birkhoff-theorem']),
+  c('coordinate-vs-curvature-singularity', '座標の穴と本物の穴', '計量が壊れても座標のせいのことがある。曲率の不変量を見れば区別が付く', 'theorem', 'physics', ['schwarzschild-solution', 'local-inertial-frame']),
+  c('event-horizon', '事象の地平面', '光でも外へ出られない面。そこを渡る本人には何も起きない', 'definition', 'physics', ['coordinate-vs-curvature-singularity']),
+  c('singularity-theorem', '特異点定理', '球対称を落としても特異点は残る。ただし証明が言うのは測地線が途切れることだけ', 'theorem', 'physics', ['event-horizon', 'causal-structure']),
 
   // --- 特殊相対論 -------------------------------------------------------
   //

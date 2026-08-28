@@ -211,12 +211,12 @@ Gödel の第二不完全性定理（#link("/math/logic/10")[数理論理学の�
 
 #proof[
   $lambda := cf(kappa)$ とし、$kappa$ に共終な増加列 $⟨kappa_i : i < lambda⟩$ を取る。
-  任意の関数 $F : kappa -> {}^lambda kappa$ が全射でないことを示せばよい。
+  任意の関数 $F : kappa ->  zws ^lambda kappa$ が全射でないことを示せばよい。
 
   各 $i < lambda$ について
   $ g(i) := min (kappa without \{F(xi)(i) : xi < kappa_i\}) $
   と定める。右辺の集合は濃度が $card(kappa_i) < kappa$ 以下なので $kappa$ を尽くさず、
-  最小元が取れる。よって $g in {}^lambda kappa$ である。
+  最小元が取れる。よって $g in  zws ^lambda kappa$ である。
 
   この $g$ はどの $F(xi)$ とも等しくない。実際 $xi < kappa$ を取ると、
   共終性より $xi < kappa_i$ なる $i < lambda$ があり、$g$ の定義から

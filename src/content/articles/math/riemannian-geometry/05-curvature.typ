@@ -57,8 +57,8 @@ $Gamma$ が場所によって変わるので、この二つは一致しない。
 
 第三項は補正である。座標基底なら $[X, Y] = 0$ なので消え、
 成分では
-$ R^l{}_(k i j) = partial_i Gamma^l{}_(j k) - partial_j Gamma^l{}_(i k)
-  + Gamma^l{}_(i m) Gamma^m{}_(j k) - Gamma^l{}_(j m) Gamma^m{}_(i k) $
+$ R^l zws _(k i j) = partial_i Gamma^l zws _(j k) - partial_j Gamma^l zws _(i k)
+  + Gamma^l zws _(i m) Gamma^m zws _(j k) - Gamma^l zws _(j m) Gamma^m zws _(i k) $
 になる。
 
 #proposition[
@@ -129,7 +129,7 @@ $R$ は「平坦であることからのズレ」をちょうど測っている�
 
 = 対称性と成分の数
 
-$R_(i j k l) = g_(i m) R^m{}_(j k l)$ と下げると、多くの対称性を持つ。
+$R_(i j k l) = g_(i m) R^m zws _(j k l)$ と下げると、多くの対称性を持つ。
 
 #proposition[
   $ R_(i j k l) = -R_(j i k l) = -R_(i j l k) = R_(k l i j) $

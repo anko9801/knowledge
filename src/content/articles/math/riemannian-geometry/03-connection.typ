@@ -65,15 +65,15 @@ $X$ については関数を通り抜けるが、$Y$ については微分が落
 これは「$X$ は微分する方向を指定するだけ、$Y$ は微分される対象」という役割の違いである。
 
 座標で書くと
-$ nabla_(partial_j) partial_i =: Gamma^k{}_(j i) thin partial_k $
+$ nabla_(partial_j) partial_i =: Gamma^k zws _(j i) thin partial_k $
 で定まる $Gamma$ が接続を決める。成分では
-$ nabla_j X^i = partial_j X^i + Gamma^i{}_(j k) X^k $
+$ nabla_j X^i = partial_j X^i + Gamma^i zws _(j k) X^k $
 となり、前回の予告どおりの形になる。
 
 #proposition[
   $Gamma$ はテンソルではない。座標変換で
-  $ Gamma'^i{}_(j k) = frac(partial x'^i, partial x^a) frac(partial x^b, partial x'^j)
-      frac(partial x^c, partial x'^k) Gamma^a{}_(b c)
+  $ Gamma'^i zws _(j k) = frac(partial x'^i, partial x^a) frac(partial x^b, partial x'^j)
+      frac(partial x^c, partial x'^k) Gamma^a zws _(b c)
     + frac(partial x'^i, partial x^a) frac(partial^2 x^a, partial x'^j partial x'^k) $
   と変わる。
 ]<prop:gamma>
@@ -126,7 +126,7 @@ $ nabla_j X^i = partial_j X^i + Gamma^i{}_(j k) X^k $
 
 #definition[
   + #strong[計量的]（$nabla g = 0$）。平行移動で長さと角度が変わらない
-  + #strong[捩れがない]（$nabla_X Y - nabla_Y X = [X, Y]$）。成分では $Gamma^k{}_(i j) = Gamma^k{}_(j i)$
+  + #strong[捩れがない]（$nabla_X Y - nabla_Y X = [X, Y]$）。成分では $Gamma^k zws _(i j) = Gamma^k zws _(j i)$
 ]<def:levi-civita-conditions>
 
 条件 1 は自然である。長さを測る道具が計量なのに、
@@ -141,18 +141,18 @@ $X$ 方向に少し進んでから $Y$ 方向に少し進むのと、逆順に�
 #theorem("Riemann 幾何の基本定理")[
   @def:levi-civita-conditions の二条件を満たす接続はただ一つ存在する。
   これを#strong[Levi-Civita 接続]と呼び、その成分は
-  $ Gamma^k{}_(i j) = frac(1, 2) g^(k l)
+  $ Gamma^k zws _(i j) = frac(1, 2) g^(k l)
     (partial_i g_(j l) + partial_j g_(i l) - partial_l g_(i j)) $
   で与えられる。
 ]<thm:levi-civita>
 
 #proof[
   計量的であることを、添字を入れ替えて三通りに書く。
-  $ partial_i g_(j k) = Gamma^l{}_(i j) g_(l k) + Gamma^l{}_(i k) g_(j l) $
+  $ partial_i g_(j k) = Gamma^l zws _(i j) g_(l k) + Gamma^l zws _(i k) g_(j l) $
   同じ式を $(j, k, i)$ と $(k, i, j)$ の順で書き、
   最初の二つを足して三つ目を引く。
   捩れがないので $Gamma$ の下 2 本が対称になり、多くの項が相殺して
-  $ 2 Gamma^l{}_(i j) g_(l k) = partial_i g_(j k) + partial_j g_(i k) - partial_k g_(i j) $
+  $ 2 Gamma^l zws _(i j) g_(l k) = partial_i g_(j k) + partial_j g_(i k) - partial_k g_(i j) $
   が残る。$g^(k l)$ を掛ければ主張の式になる。
   この過程で $Gamma$ が完全に決まったので、一意性も同時に示された。
 ]
@@ -167,8 +167,8 @@ $X$ 方向に少し進んでから $Y$ 方向に少し進むのと、逆順に�
 #example[平面の極座標][
   $g = dif r^2 + r^2 dif theta^2$ なので $g_(r r) = 1$、$g_(theta theta) = r^2$、
   非対角成分は $0$ である。@thm:levi-civita に入れると、$0$ でないのは
-  $ Gamma^r{}_(theta theta) = -r, quad
-    Gamma^theta{}_(r theta) = Gamma^theta{}_(theta r) = frac(1, r) $
+  $ Gamma^r zws _(theta theta) = -r, quad
+    Gamma^theta zws _(r theta) = Gamma^theta zws _(theta r) = frac(1, r) $
   の三つだけである。
 
   これを使って曲線の加速度——速度の共変微分——を書くと
@@ -191,7 +191,7 @@ $Gamma$ はテンソルではないので、座標の選び方で値が動く。
 平坦でなくても、一点に限れば消せる。
 
 #theorem[
-  任意の点 $p$ に対し、$p$ で $Gamma^k{}_(i j)(p) = 0$ かつ
+  任意の点 $p$ に対し、$p$ で $Gamma^k zws _(i j)(p) = 0$ かつ
   $g_(i j)(p) = delta_(i j)$ となる座標が存在する。
 ]<thm:normal>
 

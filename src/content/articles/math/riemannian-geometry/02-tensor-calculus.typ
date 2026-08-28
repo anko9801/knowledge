@@ -45,12 +45,12 @@ $R_(i j k l)$ は前 2 本と後ろ 2 本について反対称だが、全体と
 #definition[
   各点 $p$ に $(p, q)$ 型テンソル（#link("/math/linear-algebra/4")[線形代数 第 3 回]）を
   滑らかに与えたものを#strong[テンソル場]と呼ぶ。座標では
-  $ T^(i_1 dots.c i_p){}_(j_1 dots.c j_q) (x) $
+  $ T^(i_1 dots.c i_p) zws _(j_1 dots.c j_q) (x) $
   と成分で書く。
 ]<def:tensor-field>
 
 座標を $x arrow.long.bar x'$ と替えると、成分は
-$ T'^(i){}_(j) = frac(partial x'^i, partial x^k) frac(partial x^l, partial x'^j) thin T^(k){}_(l) $
+$ T'^(i) zws _(j) = frac(partial x'^i, partial x^k) frac(partial x^l, partial x'^j) thin T^(k) zws _(l) $
 と変わる（$(1,1)$ 型で書いた。一般も同様）。
 上の添字にはヤコビ行列が、下の添字にはその逆行列が掛かる。
 
@@ -60,7 +60,7 @@ $ T'^(i){}_(j) = frac(partial x'^i, partial x^k) frac(partial x^l, partial x'^j)
 == 上げ下げ
 
 計量があるので、上下を行き来できる。
-$ T_(i j) = g_(i k) T^k{}_j, quad T^(i j) = g^(i k) T_k{}^j $
+$ T_(i j) = g_(i k) T^k zws _j, quad T^(i j) = g^(i k) T_k zws ^j $
 
 すべてを下付きで書く流儀があるのは、この操作で型を潰しているからである。
 潰していることを忘れなければ問題ない。
@@ -147,7 +147,7 @@ $X_p$ は $T_p$ の元で、#strong[別のベクトル空間にいる]。
 @prop:not-tensor の証明で残った余分な項は、$X^k$ に比例していた。
 だから、同じ形の項を持つ何かを引けば消せる。
 
-$ nabla_j X^i := partial_j X^i + Gamma^i{}_(j k) X^k $
+$ nabla_j X^i := partial_j X^i + Gamma^i zws _(j k) X^k $
 
 $Gamma$ が、余分な項をちょうど打ち消すように変換してくれればよい。
 そういう $Gamma$ が存在するか、一意に決まるか、というのが次回の問いである。
@@ -191,7 +191,7 @@ Riemann 幾何の出発点になる定理である。
   [$g_(i j) X^j$], [$flat X$],
   [$partial_i f$], [$dif f$],
   [$epsilon_(i j k) arrow sqrt(g) thin epsilon_(i j k)$], [体積形式 $upright("vol")$],
-  [$Gamma^i{}_(j k)$], [接続（形式では書けない。テンソルですらない）],
+  [$Gamma^i zws _(j k)$], [接続（形式では書けない。テンソルですらない）],
 )
 
 最後の行が、この連載で添字を捨てられない理由である。

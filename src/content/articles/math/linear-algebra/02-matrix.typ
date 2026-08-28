@@ -63,7 +63,7 @@ $ A arrow.long.bar P^(-1) A P $
 
 #definition[
   $V$ の基底 $(bold(e)_1, dots, bold(e)_n)$ を選ぶ。線形写像 $f : V arrow V$ に対し
-  $ f(bold(e)_j) = sum_i A^i{}_j thin bold(e)_i $
+  $ f(bold(e)_j) = sum_i A^i zws _j thin bold(e)_i $
   で定まる $A$ を、この基底における $f$ の#strong[行列表示]と呼ぶ。
 ]<def:matrix>
 

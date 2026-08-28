@@ -81,6 +81,25 @@ test('桁区切りが、波括弧のまま出ていない', () => {
   strictEqual(separators.join('\n'), '')
 })
 
+test('添字をずらす LaTeX の {} が、そのまま残っていない', () => {
+  // LaTeX では `R^\mu{}_{\nu}` と書いて上下の添字をずらす。Typst で同じことを
+  // すると `{}` が**空集合として描画され**、画面に波括弧の対が出る。
+  // 幅ゼロ空白 `zws` が正しい土台になる。
+  //
+  // typst は何も言わず、PDF でも同じように出るので、生成物を見ないと気づけない。
+  // 実際 78 箇所あり、18 ページで波括弧が見えていた。
+  const braces = typFiles(ARTICLES)
+    .concat(typFiles('src/content/notes'))
+    .flatMap((path) => {
+      const lines = readFileSync(path, 'utf8').split('\n')
+      return lines.flatMap((line, i) =>
+        /\{\}[_^]/.test(line) ? [`${path}:${i + 1}  ${line.trim().slice(0, 60)}`] : [],
+      )
+    })
+
+  strictEqual(braces.join('\n'), '', `{} を zws に替えること:\n${braces.join('\n')}`)
+})
+
 test('変換の傷が、講義ノートに残っていない', () => {
   // pandoc 経由の変換で二つ残る。生の LaTeX 命令と、行き先を失った (ref)。
   // どちらも読者にそのまま見えるが、typst は何も言わない。

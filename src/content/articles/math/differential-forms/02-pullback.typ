@@ -54,7 +54,7 @@ $ X = X^i frac(partial, partial x^i) = X^i frac(partial u^j, partial x^i) frac(p
 $X$ を固定して $f$ を動かせば接ベクトル、$f$ を固定して $X$ を動かせば $1$ 形式。
 
 これを座標関数 $x^i$ に当てると
-$ (dif x^i)(frac(partial, partial x^j)) = frac(partial x^i, partial x^j) = delta^i{}_j $
+$ (dif x^i)(frac(partial, partial x^j)) = frac(partial x^i, partial x^j) = delta^i zws _j $
 なので、$dif x^i$ は $partial \/ partial x^i$ の双対基底である。
 #link("/math/vector-analysis/2")[ベクトル解析 第 2 回]で「$dif x$ は成分を読む機械」と書いたものが、
 ここで正式に定義された。

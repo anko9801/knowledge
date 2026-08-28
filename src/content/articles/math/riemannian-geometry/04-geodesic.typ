@@ -50,7 +50,7 @@
 
 「速度ベクトルを、自分自身の方向へ平行移動しても変わらない」ということである。
 成分で書くと
-$ dot.double(x)^k + Gamma^k{}_(i j) dot(x)^i dot(x)^j = 0 $
+$ dot.double(x)^k + Gamma^k zws _(i j) dot(x)^i dot(x)^j = 0 $
 になる。これが#strong[測地線方程式]である。
 
 前回の極座標の例を思い出すと、$Gamma = 0$ の座標——デカルト座標——では
@@ -60,8 +60,8 @@ $dot.double(x) = 0$、すなわち等速直線運動になる。
 #example[球面の測地線][
   単位球面 $g = dif theta^2 + sin^2 theta thin dif phi.alt^2$ で
   前回の Christoffel 記号の公式を計算すると
-  $ Gamma^theta{}_(phi.alt phi.alt) = -sin theta cos theta, quad
-    Gamma^phi.alt{}_(theta phi.alt) = cot theta $
+  $ Gamma^theta zws _(phi.alt phi.alt) = -sin theta cos theta, quad
+    Gamma^phi.alt zws _(theta phi.alt) = cot theta $
   である。測地線方程式を解くと、解は#strong[大円]になる。
 
   赤道は測地線だが、それ以外の緯線は測地線でない。
@@ -124,7 +124,7 @@ $E$ の Euler--Lagrange 方程式を書き下して $dot(x)^i dot(x)^j$ の係�
 $exp_p$ は $p$ の近くで微分同相になるので、
 接空間の座標をそのまま多様体の座標として使える。
 この座標では
-$ g_(i j)(p) = delta_(i j), quad Gamma^k{}_(i j)(p) = 0 $
+$ g_(i j)(p) = delta_(i j), quad Gamma^k zws _(i j)(p) = 0 $
 が成り立つ。#strong[測地線を座標軸にすれば、その点で平坦に見える]わけである。
 
 前回、正規座標の存在を述べて構成を後回しにした。指数写像がその構成である。
@@ -159,7 +159,7 @@ $ frac(D^2 xi, dif tau^2) = R(dot(gamma), xi) dot(gamma) $
 どんな地図の描き方をしても、この事実は変わらない。
 
 #check[
-  @def:exp の正規座標を取れば、その点で $Gamma^k{}_(i j) = 0$ になる。
+  @def:exp の正規座標を取れば、その点で $Gamma^k zws _(i j) = 0$ になる。
   測地線方程式は $dot.double(x)^k = 0$ になり、曲がりが消えたように見える。
   #strong[それなのに曲率が消えないのはなぜか。]
 ][

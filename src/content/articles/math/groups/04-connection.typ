@@ -56,7 +56,7 @@ $ nabla = dif + A $
 と書ける。$A$ は $frak(g)$ に値を取る $1$ 形式で、#strong[接続形式]と呼ぶ。
 $frak(g)$ は #link("/math/groups/1")[第 1 回]の Lie 代数である。
 
-#strong[$Gamma^k{}_(i j)$ も $A_mu$ も、この $A$ の成分である。]
+#strong[$Gamma^k zws _(i j)$ も $A_mu$ も、この $A$ の成分である。]
 前者は接束、後者は $upright("U")(1)$ 束の場合にすぎない。
 
 #proposition[
@@ -96,7 +96,7 @@ $A$ は座標（ゲージ）で消せるが、$F$ は消せない。
 #table(
   columns: (auto, auto, 1fr),
   [], [接続], [曲率],
-  [接束], [$Gamma^k{}_(i j)$], [$R^l{}_(k i j)$],
+  [接束], [$Gamma^k zws _(i j)$], [$R^l zws _(k i j)$],
   [$upright("U")(1)$ 束], [$A_mu$], [$F_(mu nu) = partial_mu A_nu - partial_nu A_mu$],
   [一般], [$A$（$frak(g)$ 値 $1$ 形式）], [$F = dif A + A and A$],
 )

@@ -267,8 +267,8 @@ $aleph_(alpha+1)$ は $aleph_alpha$ の次に大きい基数である。
   $card(A) = kappa$、$card(B) = lambda$、$A inter B = nothing$ のとき
   $ kappa + lambda := card(A union B), quad
     kappa dot lambda := card(A times B), quad
-    kappa^lambda := card({}^B A) $
-  ここで ${}^B A$ は $B$ から $A$ への関数全体である。
+    kappa^lambda := card( zws ^B A) $
+  ここで $ zws ^B A$ は $B$ から $A$ への関数全体である。
 ]<def:card-arith>
 
 #example[足しても掛けても増えない][
@@ -351,7 +351,7 @@ $aleph_1 + aleph_0 = aleph_1$。演算表を覚える必要すらない。
 
 #proof[
   部分集合 $X subset.eq A$ に特性関数 $chi_X : A -> \{0, 1\}$ を対応させると、
-  $cal(P)(A)$ と ${}^A \{0, 1\}$ の間の全単射が得られる。よって前半が成り立つ。
+  $cal(P)(A)$ と $ zws ^A \{0, 1\}$ の間の全単射が得られる。よって前半が成り立つ。
   後半は @thm:cantor そのものである。
 ]
 

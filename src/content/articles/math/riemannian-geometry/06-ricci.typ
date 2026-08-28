@@ -49,7 +49,7 @@ Einstein 方程式の左辺がこの形をしているのは、そういう事�
 = 縮約する
 
 #definition[
-  $ R_(mu nu) := R^lambda{}_(mu lambda nu), quad R := g^(mu nu) R_(mu nu) $
+  $ R_(mu nu) := R^lambda zws _(mu lambda nu), quad R := g^(mu nu) R_(mu nu) $
   を#strong[Ricci テンソル]、#strong[スカラー曲率]と呼ぶ。
 ]<def:ricci>
 
@@ -125,7 +125,7 @@ $R_(mu nu)$ を微分すると何が起きるかを見る。
 #proof[
   正規座標を取ると、その点で $Gamma = 0$ になる。
   曲率の成分表示から $Gamma Gamma$ の項が消え、
-  $nabla_lambda R^m{}_(k i j) = partial_lambda (partial_i Gamma^m{}_(j k) - partial_j Gamma^m{}_(i k))$
+  $nabla_lambda R^m zws _(k i j) = partial_lambda (partial_i Gamma^m zws _(j k) - partial_j Gamma^m zws _(i k))$
   となる。三つを巡回して足すと、偏微分の順序交換ですべて相殺する。
   両辺がテンソルなので、一点で成り立てば全体で成り立つ。
 ]

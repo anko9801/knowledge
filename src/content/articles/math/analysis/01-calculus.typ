@@ -66,7 +66,7 @@ $ f(x + h) = f(x) + f'(x) h + o(h) $
 #proposition[
   $f$ が $bold(a)$ で微分可能なら、すべての偏微分が存在し、
   $D f_bold(a)$ の行列表示は
-  $ (D f_bold(a))^i{}_j = frac(partial f^i, partial x^j) (bold(a)) $
+  $ (D f_bold(a))^i zws _j = frac(partial f^i, partial x^j) (bold(a)) $
   である（#strong[ヤコビ行列]）。
 ]<prop:partial>
 

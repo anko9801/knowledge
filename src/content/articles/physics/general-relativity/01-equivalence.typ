@@ -141,7 +141,7 @@ $p$ での二階微分について $40$ 個。消したい計量の二階微分�
 
 #theorem("測地線偏差")[
   近接する測地線を結ぶベクトル $xi^mu$ は
-  $ (D^2 xi^mu) / (d tau^2) = - R^mu{}_(nu rho sigma) u^nu xi^rho u^sigma $
+  $ (D^2 xi^mu) / (d tau^2) = - R^mu zws _(nu rho sigma) u^nu xi^rho u^sigma $
   に従う。右辺が $0$ なら、二本は平行なまま離れも近づきもしない。
 ]<thm:deviation>
 

@@ -56,7 +56,7 @@ $RR^n$ でそれを意識せずに済んでいたのは、標準の計量を使�
 
 #proof[
   $nabla_mu X^mu = (1 \/ sqrt(g)) partial_mu (sqrt(g) X^mu)$ が示せる
-  （Christoffel 記号の縮約 $Gamma^mu{}_(mu nu) = partial_nu ln sqrt(g)$ による）。
+  （Christoffel 記号の縮約 $Gamma^mu zws _(mu nu) = partial_nu ln sqrt(g)$ による）。
   すると被積分関数が $partial_mu (sqrt(g) X^mu)$ になり、
   $(n-1)$ 形式 $star flat X$ に対する Stokes の定理そのものになる。
 ]

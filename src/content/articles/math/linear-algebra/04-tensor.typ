@@ -69,7 +69,7 @@ $ T(alpha, bold(v)) := alpha(f(bold(v))) $
 
 #definition[
   基底 $(bold(e)_i)$ とその双対基底 $(e^i)$ を選び
-  $ T^(i_1 dots.c i_p){}_(j_1 dots.c j_q)
+  $ T^(i_1 dots.c i_p) zws _(j_1 dots.c j_q)
     := T(e^(i_1), dots, e^(i_p), bold(e)_(j_1), dots, bold(e)_(j_q)) $
   を $T$ の#strong[成分]と呼ぶ。
 ]<def:components>
@@ -79,16 +79,16 @@ $ T(alpha, bold(v)) := alpha(f(bold(v))) $
 = 変換則は定理である
 
 #theorem[
-  基底を $bold(e)'_j = sum_i P^i{}_j bold(e)_i$ と取り替えると、
+  基底を $bold(e)'_j = sum_i P^i zws _j bold(e)_i$ と取り替えると、
   $(1,1)$ 型テンソルの成分は
-  $ T'^i{}_j = sum_(k, l) (P^(-1))^i{}_k thin T^k{}_l thin P^l{}_j $
+  $ T'^i zws _j = sum_(k, l) (P^(-1))^i zws _k thin T^k zws _l thin P^l zws _j $
   と変わる。一般の $(p,q)$ 型でも、上の添字ごとに $P^(-1)$ が、
   下の添字ごとに $P$ が掛かる。
 ]<thm:transform>
 
 #proof[
-  双対基底が $e'^i = sum_k (P^(-1))^i{}_k thin e^k$ と変わることを見ればよい。
-  実際 $e'^i (bold(e)'_j) = sum_(k,l) (P^(-1))^i{}_k P^l{}_j thin e^k (bold(e)_l) = delta^i{}_j$ である。
+  双対基底が $e'^i = sum_k (P^(-1))^i zws _k thin e^k$ と変わることを見ればよい。
+  実際 $e'^i (bold(e)'_j) = sum_(k,l) (P^(-1))^i zws _k P^l zws _j thin e^k (bold(e)_l) = delta^i zws _j$ である。
   あとは @def:components に代入するだけである。
 ]
 
@@ -181,7 +181,7 @@ $V times.o W$ は $m n$ 次元ある。次元が積になったぶんの行き�
 
 #definition[
   $(p, q)$ 型テンソルの上の添字を一つ、下の添字を一つ選び、
-  $ (upright("C") T)^(dots.c){}_(dots.c) := sum_i T^(dots.c i dots.c){}_(dots.c i dots.c) $
+  $ (upright("C") T)^(dots.c) zws _(dots.c) := sum_i T^(dots.c i dots.c) zws _(dots.c i dots.c) $
   とすることを#strong[縮約]と呼ぶ。結果は $(p-1, q-1)$ 型になる。
 ]<def:contraction>
 
@@ -191,8 +191,8 @@ $V times.o W$ は $m n$ 次元ある。次元が積になったぶんの行き�
 
 #proof[
   $(1,1)$ 型で見る。@thm:transform より
-  $ sum_i T'^i{}_i = sum_(i, k, l) (P^(-1))^i{}_k thin T^k{}_l thin P^l{}_i
-    = sum_(k, l) delta^l{}_k thin T^k{}_l = sum_k T^k{}_k $
+  $ sum_i T'^i zws _i = sum_(i, k, l) (P^(-1))^i zws _k thin T^k zws _l thin P^l zws _i
+    = sum_(k, l) delta^l zws _k thin T^k zws _l = sum_k T^k zws _k $
   である。一般の場合も、縮約する 2 本の添字に付く $P$ と $P^(-1)$ が同じ形で相殺する。
 ]
 

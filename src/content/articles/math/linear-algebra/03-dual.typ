@@ -48,7 +48,7 @@ $V^*$ 自身も、和とスカラー倍を成分ごとに定めればベクト�
 
 #proposition[
   $V$ の基底 $(bold(e)_1, dots, bold(e)_n)$ に対し、
-  $ e^i (bold(e)_j) = delta^i{}_j $
+  $ e^i (bold(e)_j) = delta^i zws _j $
   で定まる $e^1, dots, e^n$ は $V^*$ の基底である。これを#strong[双対基底]と呼ぶ。
   とくに $dim V^* = dim V$。
 ]<prop:dual-basis>

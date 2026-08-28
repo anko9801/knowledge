@@ -123,14 +123,14 @@ $f^*$ は $Lambda^n V^*$ からそれ自身への線形写像である。
 冒頭の $n!$ 個の和は、@def:det を基底で書き下すと出てくる。
 
 #proposition[
-  基底 $(bold(e)_i)$ を取り、$f(bold(e)_j) = sum_i A^i{}_j bold(e)_i$ とすると
-  $ det f = sum_(sigma in S_n) upright("sgn")(sigma) thin A^(sigma(1)){}_1 dots.c A^(sigma(n)){}_n $
+  基底 $(bold(e)_i)$ を取り、$f(bold(e)_j) = sum_i A^i zws _j bold(e)_i$ とすると
+  $ det f = sum_(sigma in S_n) upright("sgn")(sigma) thin A^(sigma(1)) zws _1 dots.c A^(sigma(n)) zws _n $
 ]<prop:formula>
 
 #proof[
   @def:det で $omega = e^1 and dots.c and e^n$、$bold(v)_j = bold(e)_j$ と取る。
   左辺は $omega(f(bold(e)_1), dots, f(bold(e)_n))$ で、
-  各引数を $sum_i A^i{}_j bold(e)_i$ に展開して多重線形性で開く。
+  各引数を $sum_i A^i zws _j bold(e)_i$ に展開して多重線形性で開く。
 
   項は各 $j$ について $i$ を一つずつ選ぶ選び方に対応するが、
   交代性により、同じ $i$ を二度選んだ項は $0$ になる。

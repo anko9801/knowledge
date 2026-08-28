@@ -128,13 +128,13 @@ $x$ も $y$ も $union.big union.big R$ の要素になっている。
 逆像は行儀がよいのだ。
 
 #proposition[
-  $A$ から $B$ への関数全体 ${}^A B := \{f : f : A -> B\}$ は集合である。
+  $A$ から $B$ への関数全体 $ zws ^A B := \{f : f : A -> B\}$ は集合である。
 ]
 
 #proof[
-  関数 $f : A -> B$ は $A times B$ の部分集合だから ${}^A B subset.eq cal(P)(A times B)$ である。
+  関数 $f : A -> B$ は $A times B$ の部分集合だから $ zws ^A B subset.eq cal(P)(A times B)$ である。
   $A times B$ は集合であり（#link("/math/set-theory/1")[第 1 回]）、
-  その冪集合も集合なので、分出より ${}^A B$ が得られる。
+  その冪集合も集合なので、分出より $ zws ^A B$ が得られる。
 ]
 
 またしても「容れ物を見つけて分出」である。この型の証明はもう三回目だが、

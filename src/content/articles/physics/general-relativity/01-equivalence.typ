@@ -2,7 +2,7 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "重力は、座標を選べば消える",
+  title: "重力は座標を選べば消える",
   date: "2026-08-29",
   field: "physics",
   series: "general-relativity",

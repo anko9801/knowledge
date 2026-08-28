@@ -807,7 +807,11 @@ export const concepts: readonly Concept[] = [
   c('implicit-function-theorem', '陰関数定理', '逆関数定理の言い換え。部分多様体を作る道具', 'theorem', 'math', ['inverse-function-theorem']),
   c('sard-theorem', 'Sard の定理', '臨界値は測度ゼロ。横断性の議論を支える', 'theorem', 'math', ['smoothness-class', 'measure']),
   c('distribution-theory', '超関数', '微分できない対象を、試験関数との組で扱う', 'definition', 'math', ['function-space', 'dual-space']),
-  c('landau-notation', 'Landau 記号', 'o と O。微分の定義に使っている', 'definition', 'math', ['metric-space']),
+  // 距離空間を要求していたが、過剰だった。o と O が要るのは「小さい」を言う
+  // 手段だけで、$RR^n$ なら絶対値で足りる。距離空間の概念そのものは要らない。
+  // 実際この辺のせいで、Landau 記号を置く回が距離空間を置く回より前に来る、
+  // という順序の逆転が出ていた（`npm run curriculum order`）。
+  c('landau-notation', 'Landau 記号', 'o と O。微分の定義に使っている', 'definition', 'math'),
   c('power-series', 'べき級数', '収束半径。項別微分してよい範囲', 'definition', 'math', ['uniform-convergence']),
   c('analytic-function', '解析関数', '各点で Taylor 級数が収束して一致する。$C^omega$', 'definition', 'math', ['power-series', 'smoothness-class']),
   c('identity-theorem', '一致の定理', '解析関数は一点の近傍で決まれば全体が決まる', 'theorem', 'math', ['analytic-function']),

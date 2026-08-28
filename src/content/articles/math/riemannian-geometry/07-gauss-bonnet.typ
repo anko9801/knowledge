@@ -11,6 +11,7 @@
   summary: "曲面の曲率を全体で積分すると、計量に一切依らない数が出る。どう凹ませても総和が変わらない。計量の情報が積分で消えて位相だけが残る、というこの現象が、微分形式の連載で数えた穴と同じものである。",
   provides: (
     "divergence-theorem-riemannian",
+    "euler-characteristic",
     "gauss-bonnet",
   ),
   requires: (

@@ -1,15 +1,20 @@
 import assert from 'node:assert/strict'
+import { readFileSync, readdirSync, statSync } from 'node:fs'
+import { join } from 'node:path'
 import { test } from 'node:test'
 
+import { concepts } from '../data/concepts.ts'
 import {
   backlog,
   closure,
   danglingConcepts,
   drift,
   findCycles,
+  inversions,
   planFor,
   type Concept,
   type Coverage,
+  type Placed,
 } from './curriculum.ts'
 
 const c = (id: string, requires: string[] = [], empirical: string[] = []): Concept => ({
@@ -171,4 +176,96 @@ test('論理的な前提を持たない概念は empiricalOnly になる', () =>
   assert.equal(pharm?.empiricalOnly, true)
   const anat = queue.find((i) => i.concept.id === 'anatomy')
   assert.equal(anat?.empiricalOnly, false)
+})
+
+const placed = (id: string, at: [number, number], provides: string[]): Placed => ({
+  id,
+  title: id,
+  provides,
+  at,
+})
+
+test('同じ連載の中で前提が後ろにあれば見つける', () => {
+  const found = inversions(graph, [
+    placed('a/1', [0, 1], ['tensor']),
+    placed('a/2', [0, 2], ['dual-space']),
+  ])
+  deepEqualish(found, [{ article: 'a/1', missing: 'dual-space', home: 'a/2' }])
+})
+
+test('連載をまたぐ順序は見ない', () => {
+  // seriesRank は「素朴→一般」の順で、依存順ではない。またいで判定すると
+  // physics/quantum が線形代数を要求していることまで拾ってしまう。
+  const found = inversions(graph, [
+    placed('a/1', [0, 1], ['tensor']),
+    placed('b/1', [1, 1], ['dual-space']),
+  ])
+  assert.equal(found.length, 0)
+})
+
+test('同じ回の中で閉じていれば何も出ない', () => {
+  const found = inversions(graph, [placed('a/1', [0, 1], ['dual-space', 'tensor'])])
+  assert.equal(found.length, 0)
+})
+
+function deepEqualish(
+  found: readonly { article: string; missing: string; home: string }[],
+  want: readonly { article: string; missing: string; home: string }[],
+): void {
+  assert.deepEqual(
+    found.map((f) => ({ article: f.article, missing: f.missing, home: f.home })),
+    want,
+  )
+}
+
+// --- 実データに当てる。ここが本番 ---
+//
+// 上の三つ（循環・宙に浮いた前提・記事とグラフのずれ）は、これまで純関数
+// としてしか試していなかった。本物の `concepts.ts` に当たるのは
+// `npm run curriculum` を手で走らせたときだけで、**走らせなければ黙っている。**
+//
+// 2026-08-28 に、場の量子論の概念を足したとき Poincaré 群への辺を書き忘れた。
+// 「この回は相対論を要求する」という事実がグラフのどこにも無いので、
+// `curriculum plan` に聞いても出てこない。頭の中にしか無かった。
+// **辺を書き忘れても誰も何も言わないなら、グラフは当てにならない。**
+
+const typFiles = (dir: string): string[] =>
+  readdirSync(dir).flatMap((name) => {
+    const path = join(dir, name)
+    if (statSync(path).isDirectory()) return typFiles(path)
+    return name.endsWith('.typ') ? [path] : []
+  })
+
+/** front matter の `provides: (...)` だけを拾う。scripts/curriculum.mjs と同じ読み方。 */
+const providesOf = (src: string): string[] => {
+  const head = src.match(/\n\s*provides:\s*\(/)
+  if (!head || head.index === undefined) return []
+  const start = head.index + head[0].length
+  let depth = 1
+  let i = start
+  while (i < src.length && depth > 0) {
+    if (src[i] === '(') depth += 1
+    else if (src[i] === ')') depth -= 1
+    i += 1
+  }
+  return [...src.slice(start, i - 1).matchAll(/"([^"]+)"/g)].map((m) => m[1] as string)
+}
+
+const realArticles: Coverage[] = typFiles('src/content/articles').map((path) => ({
+  id: path,
+  title: path,
+  provides: providesOf(readFileSync(path, 'utf8')),
+}))
+
+test('概念グラフに循環が無い', () => {
+  const cycles = findCycles(concepts as readonly Concept[])
+  assert.equal(cycles.map((cycle) => cycle.join(' -> ')).join('\n'), '')
+})
+
+test('前提に挙げた概念が、すべて定義されている', () => {
+  assert.equal(danglingConcepts(concepts as readonly Concept[]).join('\n'), '')
+})
+
+test('記事が名乗る概念が、すべてグラフにある', () => {
+  assert.equal(drift(concepts as readonly Concept[], realArticles).join('\n'), '')
 })

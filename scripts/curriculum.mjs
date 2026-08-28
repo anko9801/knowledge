@@ -10,6 +10,7 @@
  *   node scripts/curriculum.mjs plan <goal|concept>  依存順。記事の有無つき
  *   node scripts/curriculum.mjs next [n]             次に書くべき記事
  *   node scripts/curriculum.mjs gaps                 記事の無い概念だけ
+ *   node scripts/curriculum.mjs order                前提が後ろにある箇所
  *   node scripts/curriculum.mjs dump                 JSON
  *
  * 記事側の front matter は provides しか見ない。前提は概念グラフが持つ。
@@ -24,8 +25,10 @@ import {
   danglingConcepts,
   drift,
   findCycles,
+  inversions,
   planFor,
 } from '../src/lib/curriculum.ts'
+import { seriesRank } from '../src/lib/taxonomy.ts'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const ARTICLES = join(ROOT, 'src/content/articles')
@@ -66,6 +69,7 @@ const articles = walk(ARTICLES)
       id: `${field}/${series}/${order}`,
       title: readScalar(src, 'title') ?? relative(ROOT, path),
       provides: readList(src, 'provides'),
+      at: [seriesRank(field, series), Number.parseInt(order, 10)],
     }
   })
   .filter((a) => a !== undefined && a.provides.length > 0)
@@ -142,6 +146,15 @@ if (command === 'stats') {
       `${item.ready ? '書ける' : '待ち  '} ${String(item.unlocks).padStart(3)} ${item.concept.id.padEnd(38)} ${item.concept.label}`,
     )
   }
+} else if (command === 'order') {
+  const found = inversions(concepts, articles)
+  for (const item of found) {
+    console.log(
+      `${item.article}  が「${item.concept}」を置くのに、` +
+        `前提の「${item.missing}」は ${item.home} にある`,
+    )
+  }
+  console.log(`\n前提が後ろにある箇所: ${found.length}`)
 } else if (command === 'dump') {
   console.log(JSON.stringify({ concepts, goals, articles }, null, 2))
 } else {

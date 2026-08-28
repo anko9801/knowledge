@@ -268,6 +268,64 @@ export const findCycles = (concepts: readonly Concept[]): readonly (readonly str
   return cycles
 }
 
+/** 連載の中での位置。`[連載の順位, 回の番号]`。 */
+export type Placed = Coverage & { readonly at: readonly [number, number] }
+
+export type Inversion = {
+  readonly article: string
+  readonly concept: string
+  readonly missing: string
+  readonly home: string
+}
+
+/**
+ * 前提が、自分より後ろの回でしか置かれていない場所。
+ *
+ * **同じ連載の中だけを見る。** 連載をまたぐ順序は `seriesRank` が決めるが、
+ * あれは「素朴な扱いから一般的な扱いへ」の順であって依存順ではない。実際
+ * `physics/quantum/1` は線形代数を要求していて、それは正しい。またいで
+ * 判定すると 32 件出て、ほとんどが宣言順の都合になる（同じ連載の中だけなら 4 件）。
+ *
+ * 読者は連載を頭から読むので、中で前後が逆なのは素で困る。
+ */
+export const inversions = (
+  concepts: readonly Concept[],
+  articles: readonly Placed[],
+): readonly Inversion[] => {
+  const byId = index(concepts)
+  const before = (a: readonly [number, number], b: readonly [number, number]): boolean =>
+    a[0] !== b[0] ? a[0] < b[0] : a[1] < b[1]
+
+  // 同じ概念を二つの記事が名乗ることがある。いちばん前の回を家とみなす。
+  const home = new Map<string, Placed>()
+  for (const article of articles) {
+    for (const id of article.provides) {
+      const current = home.get(id)
+      if (!current || before(article.at, current.at)) home.set(id, article)
+    }
+  }
+
+  const found: Inversion[] = []
+  for (const article of articles) {
+    for (const id of article.provides) {
+      for (const dep of byId.get(id)?.requires ?? []) {
+        const where = home.get(dep)
+        if (!where || where.id === article.id) continue
+        if (where.at[0] !== article.at[0]) continue
+        if (before(article.at, where.at)) {
+          found.push({
+            article: article.id,
+            concept: byId.get(id)?.label ?? id,
+            missing: byId.get(dep)?.label ?? dep,
+            home: where.id,
+          })
+        }
+      }
+    }
+  }
+  return found
+}
+
 /** requires に挙がっているのに、概念として定義されていない id。 */
 export const danglingConcepts = (concepts: readonly Concept[]): readonly string[] => {
   const byId = index(concepts)

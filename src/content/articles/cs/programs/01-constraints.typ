@@ -31,7 +31,6 @@
     "information-hiding",
     "simplicity-is-not-fewness",
     "learning-asymmetry",
-    "expertise-is-not-speed",
     "reader-model",
     "feedback-delay",
     "poka-yoke",

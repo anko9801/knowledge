@@ -47,6 +47,9 @@ for (const path of [
   'docs/build.md',
   'docs/reader.md',
   'docs/decisions.md',
+  // 扱う主題の一覧。分野の説明に数式が入るので漏れる。実際、書いた初回に
+  // ベクトル解析の行で $RR^3$ と書いていた。
+  'docs/map.md',
   // 記事の書き方を置く場所。実例に数式が混ざるので、いちばん漏れやすい。
   'docs/writing.md',
   'CLAUDE.md',

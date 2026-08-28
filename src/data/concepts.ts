@@ -767,6 +767,12 @@ export const concepts: readonly Concept[] = [
   c('gravity-is-not-a-force', '重力は物体の性質ではない', 'すべての物体が同じ落ち方をするなら、それは物体ではなく場所について言っている', 'viewpoint', 'physics', ['equivalence-principle']),
   c('local-inertial-frame', '局所慣性系', '一点では消せる。正規座標がその表現で、消せるのは一点だけだと定理が言う', 'definition', 'physics', ['gravity-is-not-a-force', 'normal-coordinates']),
   c('tidal-force-is-curvature', '消えない残りが曲率である', '離れた二点の落ち方の差は、座標では消せない。それが測地線偏差そのもの', 'theorem', 'physics', ['local-inertial-frame', 'geodesic-deviation']),
+  c('gravitational-redshift', '重力赤方偏移', '高いところの時計ほど速く進む。等価原理だけで出るので、場の方程式が要らない', 'theorem', 'physics', ['equivalence-principle']),
+  c('light-deflection-factor-two', '曲がりが二倍になる', '等価原理だけだと Newton と同じ値が出る。観測はその二倍で、足りないのは空間の曲がりのぶん', 'theorem', 'physics', ['gravitational-redshift', 'tidal-force-is-curvature']),
+  c('stress-energy-conservation', '右辺は発散が消えていなければならない', 'エネルギーと運動量が保存する、を曲がった場所で書き直したもの', 'definition', 'physics', ['noether-theorem', 'covariant-derivative']),
+  c('einstein-equation', 'Einstein 方程式', '両辺に置けるものを絞ると、係数二つを除いて一つに決まる', 'theorem', 'physics', ['stress-energy-conservation', 'einstein-tensor', 'light-deflection-factor-two']),
+  c('newtonian-limit', 'Newton 極限', '弱い場と遅い速さで Poisson 方程式に戻れ、と要求すると結合定数が決まる', 'theorem', 'physics', ['einstein-equation']),
+  c('cosmological-constant', '決まらない係数', '幾何は二つ残す。片方は Newton 極限で決まり、もう片方は測るしかない', 'viewpoint', 'physics', ['newtonian-limit']),
 
   // --- 特殊相対論 -------------------------------------------------------
   //

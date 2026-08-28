@@ -5,8 +5,8 @@ import { attachPagePeeks, type Page } from './page-peek.ts'
 
 const pages: readonly Page[] = [
   {
-    href: '/k/math/foundations/4',
-    where: '土台 第 4 回',
+    href: '/k/math/analysis/2',
+    where: '解析 第 2 回',
     title: '穴が空いていないこと',
     summary: '完備性とは何か。',
   },
@@ -14,11 +14,11 @@ const pages: readonly Page[] = [
 ]
 
 test('記事へのリンクに、行き先の中身が添う', () => {
-  const html = '<p><a href="/k/math/foundations/4">土台 第 4 回</a>で見た。</p>'
+  const html = '<p><a href="/k/math/analysis/2">解析 第 2 回</a>で見た。</p>'
   const out = attachPagePeeks(html, pages)
 
-  ok(out.includes('<a href="/k/math/foundations/4" class="peek-link">土台 第 4 回</a>'))
-  ok(out.includes('<strong>土台 第 4 回</strong>'))
+  ok(out.includes('<a href="/k/math/analysis/2" class="peek-link">解析 第 2 回</a>'))
+  ok(out.includes('<strong>解析 第 2 回</strong>'))
   ok(out.includes('穴が空いていないこと'))
   ok(out.includes('完備性とは何か。'))
 })
@@ -50,7 +50,7 @@ test('主張を添えた塊の中のリンクは、二重に包まない', () =>
   const html =
     '<p><span class="peek"><a href="#loc-1" class="peek-link">定義 2</a>' +
     '<span class="peek-body" aria-hidden="true">' +
-    '<span class="peek-p">詳しくは<a href="/k/math/foundations/4">土台 第 4 回</a></span>' +
+    '<span class="peek-p">詳しくは<a href="/k/math/analysis/2">解析 第 2 回</a></span>' +
     '</span></span>より</p>'
   const out = attachPagePeeks(html, pages)
 
@@ -58,7 +58,7 @@ test('主張を添えた塊の中のリンクは、二重に包まない', () =>
   strictEqual(out.split('class="peek"').length - 1, 1)
   strictEqual(out.split('peek-body').length - 1, 1)
   // 伏せた塊はそのまま戻っている。
-  ok(out.includes('<a href="/k/math/foundations/4">土台 第 4 回</a>'))
+  ok(out.includes('<a href="/k/math/analysis/2">解析 第 2 回</a>'))
 })
 
 test('伏せた塊が複数あっても、順番どおりに戻る', () => {
@@ -75,28 +75,28 @@ test('伏せた塊が複数あっても、順番どおりに戻る', () => {
 })
 
 const statements = new Map([
-  ['/k/math/foundations/4#def-completeness', '<span class="peek-p">Cauchy 列が収束する</span>'],
+  ['/k/math/analysis/2#def-completeness', '<span class="peek-p">Cauchy 列が収束する</span>'],
 ])
 
 test('錨を付けたリンクには、記事ではなく主張が添う', () => {
-  const html = '<a href="/k/math/foundations/4#def-completeness">完備性</a>'
+  const html = '<a href="/k/math/analysis/2#def-completeness">完備性</a>'
   const out = attachPagePeeks(html, pages, statements)
 
   ok(out.includes('Cauchy 列が収束する'))
   // どの回の主張かは添える。記事の要約のほうは出さない。
-  ok(out.includes('土台 第 4 回'))
+  ok(out.includes('解析 第 2 回'))
   strictEqual(out.includes('完備性とは何か。'), false)
 })
 
 test('錨が索引に無ければ素通しする（消さない）', () => {
-  const html = '<a href="/k/math/foundations/4#def-nothing">x</a>'
+  const html = '<a href="/k/math/analysis/2#def-nothing">x</a>'
   strictEqual(attachPagePeeks(html, pages, statements), html)
 })
 
 test('同じ記事でも、錨の有無で添えるものが変わる', () => {
   const html =
-    '<a href="/k/math/foundations/4">土台 第 4 回</a>' +
-    '<a href="/k/math/foundations/4#def-completeness">完備性</a>'
+    '<a href="/k/math/analysis/2">解析 第 2 回</a>' +
+    '<a href="/k/math/analysis/2#def-completeness">完備性</a>'
   const out = attachPagePeeks(html, pages, statements)
 
   ok(out.includes('完備性とは何か。')) // 記事のほう
@@ -120,6 +120,6 @@ test('取っ手の id が、peek.ts のものとぶつからない', () => {
 })
 
 test('行き先が無ければ何も変わらない', () => {
-  const html = '<a href="/k/math/foundations/4">x</a>'
+  const html = '<a href="/k/math/analysis/2">x</a>'
   strictEqual(attachPagePeeks(html, []), html)
 })

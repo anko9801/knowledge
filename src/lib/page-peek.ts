@@ -4,7 +4,7 @@
  * `peek.ts` が添えられるのは**同じ記事の中の主張**だけである。
  * `@def:measure` は Typst が `<a href="#loc-5">` として出すので、指す先が特定できる。
  *
- * ところが記事をまたぐリンクは `#link("/math/foundations/4")[土台 第 4 回]` と書く。
+ * ところが記事をまたぐリンクは `#link("/math/analysis/2")[解析 第 2 回]` と書く。
  * **指しているのは記事であって、定理ではない。** だから主張は添えられない。
  * 添えられるのは記事のほうの中身——連載名、第何回、題名、要約——になる。
  *
@@ -13,7 +13,7 @@
  * 落ち、切った人は 0.02〜0.03% だった。**飛ばずに済ませた分**である。
  *
  * 定理単位まで届かせるには、参照側が定理を名指しする必要があり
- * （`#link("/math/foundations/4#def:completeness")`）、記事側の作業が数百リンク分
+ * （`#link("/math/analysis/2#def:completeness")`）、記事側の作業が数百リンク分
  * 出る。そこは別の判断になる。
  */
 
@@ -23,7 +23,7 @@ import { peekMark } from './peek.ts'
 export type Page = {
   /** リンクの href とそのまま突き合わせる。 */
   readonly href: string
-  /** 「土台 第 4 回」。 */
+  /** 「解析 第 2 回」。 */
   readonly where: string
   readonly title: string
   readonly summary?: string
@@ -70,7 +70,7 @@ const wrap = (nth: number, href: string, label: string, inner: string, extra = '
 /**
  * `pages` は記事の一覧、`statements` は「`記事の href` + `#錨`」から主張の中身へ。
  *
- * 錨を付けて書いた（`#link("/math/foundations/4#def-completeness")`）リンクには
+ * 錨を付けて書いた（`#link("/math/analysis/2#def-completeness")`）リンクには
  * **主張のほう**が添う。付けなければ記事のほうが添う。書き換えは 1 本ずつでよく、
  * 全部を直すまで待つ必要がない。
  */

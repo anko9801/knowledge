@@ -176,7 +176,7 @@ Lebesgue 積分を採る本当の理由は、ここにある。
 
 #table(
   columns: (auto, 1fr),
-  [Riemann], [#strong[一様収束]が要る（#link("/math/analysis/2#def-uniform")[土台 第 4 回]）],
+  [Riemann], [#strong[一様収束]が要る（#link("/math/analysis/2#def-uniform")[解析 第 2 回]）],
   [Lebesgue], [#strong[各点収束]でよい。押さえの関数 $g$ があれば],
 )
 
@@ -240,7 +240,7 @@ $f_n$ の#strong[振れ幅]を押さえないと、上積分と下積分が寄�
   $L^p (mu)$ は完備である。すなわち Banach 空間になる。
 ]<thm:riesz-fischer>
 
-#link("/math/analysis/2#def-complete")[土台 第 4 回]で、連続関数の空間に
+#link("/math/analysis/2#def-complete")[解析 第 2 回]で、連続関数の空間に
 $integral abs(f)$ のノルムを入れると完備でない、と書いた。
 穴を埋めた先がここである。
 #strong[完備にするために、連続でない関数まで入れることになった。]

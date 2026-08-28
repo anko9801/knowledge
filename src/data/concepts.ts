@@ -757,6 +757,17 @@ export const concepts: readonly Concept[] = [
   c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
   c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
 
+  // --- 場の量子論の入口 -------------------------------------------------
+  //
+  // 仮定を一本ずつ足すと、そのたびに形が決まる。その最初の一本が、
+  // 「量子力学と相対論を両方認める」だけで粒子から位置を奪う。
+  //
+  // 構成は docs/map.md にある。ここは第 1 回が置く分だけ。
+  c('localization-system', '局在系', '領域ごとに「そこに居る」を判定する射影の族。位置を持つとはこの族があること', 'definition', 'physics', ['quantum-state', 'sigma-algebra']),
+  c('niws-condition', '一瞬で滲み出さない', '離れた領域へ移るには時間が要る。相対論が言う有限の速さを、確率の言葉に翻訳したもの', 'definition', 'physics', ['localization-system']),
+  c('malament-theorem', 'Malament の定理', '四つを認めると、どの領域に見つかる確率も 0 になる。粒子は位置を持てない', 'theorem', 'physics', ['niws-condition', 'observable']),
+  c('unsharp-localization', 'ぼやけた局在なら逃げられる', '射影をやめて POVM にすると定理は成り立たない。禁じられていたのは「そこに居る／居ない」の二値のほう', 'viewpoint', 'physics', ['malament-theorem']),
+
   // --- 解析 -------------------------------------------------------------
   //
   // mathlib の Mathlib.Geometry は外部依存の 76 本が Analysis に向いていた

@@ -757,6 +757,20 @@ export const concepts: readonly Concept[] = [
   c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
   c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
 
+  // --- 力学 -------------------------------------------------------------
+  //
+  // 物理の入口。運動方程式は書けても、たいてい解けない。解けるものは、
+  // 対称性が一つ見つかるたびに次元が一つ落ちて、落ちきったものである。
+  //
+  // 解析力学の前に置く。あちらは `why-not-force`「力では理論を指定できない」
+  // から始まるので、力を使ったことのない読者には否定する対象が無い。
+  c('degrees-of-freedom', '自由度', '位置を決めるのに要る数の個数。解く手間はここで決まる', 'definition', 'physics', ['multivariable-calculus']),
+  c('conserved-quantity-reduces', '保存量が次元を落とす', '保存する量が一つ見つかるたびに、解くべき問題が一つ小さくなる', 'viewpoint', 'physics', ['degrees-of-freedom']),
+  c('central-force-planar', '中心力は平面に落ちる', '角運動量が保存するので軌道が平面に乗り、動径だけの一次元問題になる', 'theorem', 'physics', ['conserved-quantity-reduces']),
+  c('inertia-tensor', '慣性テンソル', '剛体の回りにくさ。対称行列なので主軸が取れる', 'definition', 'physics', ['degrees-of-freedom', 'quadratic-form']),
+  c('coupled-oscillation', '連成振動は固有値問題', '基準振動に分ければ、独立な単振動の重ね合わせになる', 'technique', 'physics', ['spectral-theorem', 'degrees-of-freedom']),
+  c('three-body-unsolvable', '落ちきらない例', '三体問題は保存量が足りない。解けないことのほうが普通である', 'viewpoint', 'physics', ['central-force-planar']),
+
   // --- 一般相対論 -------------------------------------------------------
   //
   // Riemann 幾何 8 本が既にあり、einstein-tensor も bianchi-identity も
@@ -778,6 +792,13 @@ export const concepts: readonly Concept[] = [
   c('coordinate-vs-curvature-singularity', '座標の穴と本物の穴', '計量が壊れても座標のせいのことがある。曲率の不変量を見れば区別が付く', 'theorem', 'physics', ['schwarzschild-solution', 'local-inertial-frame']),
   c('event-horizon', '事象の地平面', '光でも外へ出られない面。そこを渡る本人には何も起きない', 'definition', 'physics', ['coordinate-vs-curvature-singularity']),
   c('singularity-theorem', '特異点定理', '球対称を落としても特異点は残る。ただし証明が言うのは測地線が途切れることだけ', 'theorem', 'physics', ['event-horizon', 'causal-structure']),
+  c('cosmological-principle', '一様等方を仮定する', 'どこも同じでどの向きも同じ、と置く。それだけで計量の形が三つに絞られる', 'definition', 'physics', ['schwarzschild-solution']),
+  c('friedmann-equation', 'Friedmann 方程式', '一様等方を入れると、宇宙の大きさが従う式が一本だけ残る', 'theorem', 'physics', ['cosmological-principle', 'einstein-equation']),
+  c('static-universe-unstable', '止まっている宇宙は保たない', '静的な解は作れるが、少し押すと崩れる。膨張か収縮しか残らない', 'theorem', 'physics', ['friedmann-equation', 'cosmological-constant']),
+  c('horizon-problem', 'なぜ一様なのかは言えない', '因果的に繋がったことのない領域が同じ温度をしている。仮定を置いた側は理由を持たない', 'viewpoint', 'physics', ['cosmological-principle', 'causal-structure']),
+  c('linearized-gravity', '弱い場で線形にする', '平坦からのずれを小さいとして展開すると、波動方程式が出る', 'technique', 'physics', ['einstein-equation']),
+  c('gravitational-wave', '重力波', '横波で偏極が二つ。伸びる向きと縮む向きが四十五度ずれている', 'theorem', 'physics', ['linearized-gravity', 'birkhoff-theorem']),
+  c('quadrupole-formula', '四重極公式', '出る量が質量分布の四重極の三階微分で決まる。だから桁が小さい', 'theorem', 'physics', ['gravitational-wave']),
 
   // --- 特殊相対論 -------------------------------------------------------
   //

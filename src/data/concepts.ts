@@ -892,6 +892,9 @@ export const concepts: readonly Concept[] = [
   c('chiral-gauge-theory', 'カイラルゲージ理論', '左巻きと右巻きが違う変換を受ける。質量項が左右を繋ぐ項なので、物質の質量も禁じられる', 'definition', 'physics', ['gauge-forbids-mass', 'spin-statistics-theorem']),
   c('yukawa-coupling', '湯川結合', 'Higgs 場を挟むとフェルミオンの質量項が不変になる。仕組みは出るが値は出ない', 'definition', 'physics', ['chiral-gauge-theory', 'higgs-mechanism']),
   c('rho-parameter', '入れ物が比を決める', 'Higgs が二つ組なら質量比が 1 になる。値ではなく、どの表現に入っているかを試す予言', 'theorem', 'physics', ['yukawa-coupling']),
+  c('asymptotic-freedom', '漸近的自由性', 'グルーオンの常磁性がクォークの寄与に勝つ。エネルギーを上げると結合が弱くなる', 'theorem', 'physics', ['gauge-self-interaction', 'running-coupling']),
+  c('scaling-in-deep-inelastic', '中を覗くと自由に見える', '陽子に高エネルギーを当てると点に当たったように跳ね返る。強く結びついているのに近くでは自由', 'theorem', 'physics', ['asymptotic-freedom']),
+  c('confinement-not-derived', '閉じ込めは証明されていない', '結合が大きいことと単独で取り出せないことは別の主張。格子では確かめられているが証明ではない', 'viewpoint', 'physics', ['asymptotic-freedom', 'gribov-ambiguity']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

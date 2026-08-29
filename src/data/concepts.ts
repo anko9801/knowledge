@@ -850,6 +850,9 @@ export const concepts: readonly Concept[] = [
   c('mass-is-a-pole', '質量は極の位置', '式に書いた文字ではなく、伝播関数の極が立つところ。切断の始まりからは崩壊が読める', 'viewpoint', 'physics', ['spectral-representation']),
   c('time-ordered-correlation', '時間順序の相関関数', '場を時間の順に並べた期待値。n を変えれば何個入って何個出る散乱でも同じ関数から読める', 'definition', 'physics', ['s-matrix']),
   c('pole-from-one-particle', '極は一粒子から立つ', '完全系を挟むと、一粒子状態のところだけが極になる。二粒子以上は切断になる', 'theorem', 'physics', ['time-ordered-correlation', 'spectral-representation']),
+  c('path-integral-correlation', '経路積分', '演算子を並べる代わりに数を足す。時間順序は被積分関数ではなく積分の作り方に入る', 'technique', 'physics', ['time-ordered-correlation', 'action-functional']),
+  c('generating-functional', '生成汎関数', '作用に外から掛ける項を足したもの。汎関数微分の回数を変えると n 点関数が出る', 'technique', 'physics', ['path-integral-correlation']),
+  c('measure-not-defined', '測度が定義されていない', '無限次元に平行移動不変な測度は作れない。展開した先だけが定義されていて、元の式は定義されていない', 'viewpoint', 'physics', ['path-integral-correlation']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

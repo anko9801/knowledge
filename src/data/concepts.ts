@@ -889,6 +889,9 @@ export const concepts: readonly Concept[] = [
   c('higgs-mechanism', 'Higgs 機構', 'ゲージ不変性の不足と自発的破れの余りが打ち消し合う。質量項は手で書き足していない', 'theorem', 'physics', ['goldstone-theorem', 'gauge-forbids-mass']),
   c('longitudinal-polarization', '縦波になって残る', '消えた質量ゼロのスカラーが、ゲージ場の三つ目の偏極になる。自由度の数が前後で一致する', 'theorem', 'physics', ['higgs-mechanism']),
   c('gauge-symmetry-not-broken', 'ゲージ対称性は破れない', '各点で選べる対称性は自発的に破れない（Elitzur）。起きているのはゲージの固め方が変わったこと', 'viewpoint', 'physics', ['higgs-mechanism', 'faddeev-popov']),
+  c('chiral-gauge-theory', 'カイラルゲージ理論', '左巻きと右巻きが違う変換を受ける。質量項が左右を繋ぐ項なので、物質の質量も禁じられる', 'definition', 'physics', ['gauge-forbids-mass', 'spin-statistics-theorem']),
+  c('yukawa-coupling', '湯川結合', 'Higgs 場を挟むとフェルミオンの質量項が不変になる。仕組みは出るが値は出ない', 'definition', 'physics', ['chiral-gauge-theory', 'higgs-mechanism']),
+  c('rho-parameter', '入れ物が比を決める', 'Higgs が二つ組なら質量比が 1 になる。値ではなく、どの表現に入っているかを試す予言', 'theorem', 'physics', ['yukawa-coupling']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

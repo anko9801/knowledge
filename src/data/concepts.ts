@@ -883,6 +883,9 @@ export const concepts: readonly Concept[] = [
   c('degenerate-vacuum', '一番低い状態が一つに決まらない', '対称変換が互いに移し合う真空が並ぶ。絶対値だけが決まって位相が決まらない', 'definition', 'physics', ['effective-field-theory']),
   c('spontaneous-breaking', '自発的対称性の破れ', '式は対称なまま、選ばれた一つが対称でない。対称性が消えたのではない', 'definition', 'physics', ['degenerate-vacuum']),
   c('goldstone-theorem', 'Goldstone の定理', '破れた向きの数だけ質量ゼロの粒子が出る。対称変換が微分なしの項を禁じるので、次数にも量子補正にも依らない', 'theorem', 'physics', ['spontaneous-breaking', 'noether-theorem']),
+  c('effective-potential', '有効ポテンシャル', '場の値を止めて残りを積分したエネルギー密度。形そのものは場の選び方とゲージに依るので測れない', 'definition', 'physics', ['spontaneous-breaking', 'wilsonian-renormalization']),
+  c('coleman-weinberg', '量子補正で破れる', '古典的には谷が一つでも、一つ輪の対数が競り勝って谷が割れる。符号を手で入れなくてよい', 'theorem', 'physics', ['effective-potential']),
+  c('dimensional-transmutation', '次元変換', '次元を持たない理論から質量が出る。無次元の助変数が有次元の量に置き換わる', 'theorem', 'physics', ['coleman-weinberg', 'running-coupling']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

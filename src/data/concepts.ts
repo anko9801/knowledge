@@ -848,6 +848,9 @@ export const concepts: readonly Concept[] = [
   c('spectral-density-positive', '重みは正である', '絶対値の二乗の和なので負にならない。同時刻交換関係を足すと総量が 1 に固定される', 'theorem', 'physics', ['spectral-representation']),
   c('field-strength-renormalization', '場が一粒子を拾う割合', '重みのうち一粒子の分。1 を超えられず、等号は自由場のときだけ。0 になると漸近条件が使えない', 'definition', 'physics', ['spectral-density-positive', 'asymptotic-condition']),
   c('mass-is-a-pole', '質量は極の位置', '式に書いた文字ではなく、伝播関数の極が立つところ。切断の始まりからは崩壊が読める', 'viewpoint', 'physics', ['spectral-representation']),
+  c('time-ordered-correlation', '時間順序の相関関数', '場を時間の順に並べた期待値。n を変えれば何個入って何個出る散乱でも同じ関数から読める', 'definition', 'physics', ['s-matrix']),
+  c('pole-from-one-particle', '極は一粒子から立つ', '完全系を挟むと、一粒子状態のところだけが極になる。二粒子以上は切断になる', 'theorem', 'physics', ['time-ordered-correlation', 'spectral-representation']),
+  c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------
   //

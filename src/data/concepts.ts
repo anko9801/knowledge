@@ -871,6 +871,10 @@ export const concepts: readonly Concept[] = [
   c('wilsonian-renormalization', 'くりこみ変換', '細かい自由度を実際に積分して消す。書ける項すべての空間の上の写像になり、消すと項が増える', 'technique', 'physics', ['beta-function', 'regularization']),
   c('irrelevant-operator', '効かない項', '次元が 4 を超える項は、低いエネルギーで (E/Λ) の冪で抑えられる。消えるのではなく見えなくなる', 'theorem', 'physics', ['wilsonian-renormalization', 'coupling-dimension']),
   c('effective-field-theory', '有効場の理論', 'ある尺度までで閉じた理論。くりこみ可能性は原理ではなく、低いエネルギーを見ていることの帰結', 'viewpoint', 'physics', ['irrelevant-operator']),
+  c('non-abelian-gauge', '非可換ゲージ理論', '各点で選べる量が数から行列に変わる。交換子が残るので場の強さに二次の項が付く', 'definition', 'physics', ['gauge-potential', 'lie-group']),
+  c('field-strength-covariant', '場の強さは共変にしか変わらない', 'ゲージ変換で値が変わるので、それ自体は測れない。跡を取って初めて作用に書ける', 'theorem', 'physics', ['non-abelian-gauge']),
+  c('gauge-self-interaction', 'ゲージ場が自分と相互作用する', '三点結合も四点結合も物質との結合と同じ定数で決まる。比が予言になる', 'theorem', 'physics', ['field-strength-covariant']),
+  c('gauge-forbids-mass', 'ゲージ不変性は質量項を禁じる', '光子に質量が無いのは測った結果ではなく要請の帰結。W と Z に質量があることと衝突する', 'theorem', 'physics', ['non-abelian-gauge']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

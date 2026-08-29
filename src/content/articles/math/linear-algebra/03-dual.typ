@@ -66,7 +66,7 @@ $e^i$ は「第 $i$ 成分を読む機械」である。
 #link("/math/vector-analysis/2")[ベクトル解析 第 2 回]で $dif x^i$ をそう定義したが、
 あれはこの $e^i$ を各点に置いたものだった。
 
-= 同型だが、自然ではない
+= 同型だが自然ではない
 
 @prop:dual-basis から $dim V^* = dim V$ なので、$V$ と $V^*$ は同型である。
 $bold(e)_i mapsto e^i$ と対応させればよい。

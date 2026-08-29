@@ -2,7 +2,7 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "ほとんどの列は、同じくらい珍しい",
+  title: "ほとんどの列は同じくらい珍しい",
   date: "2026-08-21",
   field: "cs",
   series: "information",

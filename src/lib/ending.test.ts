@@ -66,6 +66,37 @@ test('連載を閉じる挨拶で終わっていない', () => {
   strictEqual(bad.join('\n'), '', `サイトの都合で閉じている:\n${bad.join('\n')}`)
 })
 
+/**
+ * 題名と見出しで、主題や主語の直後に読点を置いていないか。
+ *
+ * `docs/writing.md`「記号でも跳ねさせない」。短い主語のあとで溜めて、
+ * 落ちを一語で言う形が芝居がかる。
+ *
+ * **判定を狭めようとして、二度失敗した。** 最初は「取っても読みが変わらない
+ * なら溜めている」としたが、当てると 93 件が落ちて、その大半は長い主語を
+ * 切るために働いていた。次に「短い主語のときだけ」としたが、それでも
+ * 取りこぼした。**題名と見出しでは一律に置かない、が結局いちばん安い。**
+ *
+ * 本文は見ない。従属節の「〜と、」「〜のに、」「〜ので、」も見ない。
+ * 止めるのは主題と主語の直後だけである。
+ */
+const topicComma = (text: string): boolean => /[はがも]、/.test(text)
+
+const titleOf = (source: string): string =>
+  source.match(/\n\s*title:\s*"([^"]+)"/)?.[1] ?? ''
+
+test('題名と見出しで、主題の直後に読点を置いていない', () => {
+  const bad = typFiles(ARTICLES).flatMap((path) => {
+    const src = readFileSync(path, 'utf8')
+    const found: string[] = []
+    if (topicComma(titleOf(src))) found.push(`${path}  題名  ${titleOf(src)}`)
+    for (const h of headings(src)) if (topicComma(h)) found.push(`${path}  = ${h}`)
+    return found
+  })
+
+  strictEqual(bad.join('\n'), '', `読点を落とすこと:\n${bad.join('\n')}`)
+})
+
 test('ラベルだけの見出しを使っていない', () => {
   const bad = typFiles(ARTICLES).flatMap((path) =>
     labelHeadings(readFileSync(path, 'utf8')).map((h) => `${path}  = ${h}`),

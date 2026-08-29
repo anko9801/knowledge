@@ -17,7 +17,7 @@
 
 #let Fv = math.op("FV")
 
-= 「$phi.alt$ ならば $phi.alt$」の証明が、数行かかる
+= 「$phi.alt$ ならば $phi.alt$」の証明が数行かかる
 
 これから作る体系で、いちばん自明な主張を証明してみる。
 $phi.alt arrow.r phi.alt$、つまり「$phi.alt$ ならば $phi.alt$」である。

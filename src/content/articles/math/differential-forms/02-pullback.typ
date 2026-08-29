@@ -2,7 +2,7 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "引き戻せるのは、どちらか一方だけ",
+  title: "引き戻せるのはどちらか一方だけ",
   date: "2026-08-20",
   field: "math",
   series: "differential-forms",

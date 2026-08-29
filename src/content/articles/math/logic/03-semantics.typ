@@ -17,7 +17,7 @@
 
 #let Fv = math.op("FV")
 
-= 同じ一行が、真にも偽にもなる
+= 同じ一行が真にも偽にもなる
 
 $ forall x med exists y med (x < y) $
 

@@ -22,7 +22,7 @@
   ),
 )
 
-= 二つの公式が、どちらも $0$ になる
+= 二つの公式がどちらも $0$ になる
 
 ベクトル解析には、成分を書き下すだけで確かめられる恒等式が二つある。
 $ nabla times (nabla f) = bold(0), quad quad nabla dot (nabla times bold(A)) = 0 $

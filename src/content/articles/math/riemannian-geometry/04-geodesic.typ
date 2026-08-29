@@ -2,7 +2,7 @@
 #import "/src/typst/theorem.typ": *
 
 #show: post.with(
-  title: "まっすぐと最短は、別の定義である",
+  title: "まっすぐと最短は別の定義である",
   date: "2026-08-20",
   field: "math",
   series: "riemannian-geometry",

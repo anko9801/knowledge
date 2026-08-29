@@ -830,6 +830,10 @@ export const concepts: readonly Concept[] = [
   c('single-delta-condition', 'デルタ関数が一つだけ', '余分なデルタがあると、その塊を無限に遠ざけても結果が変わらなくなる。連結なら一つに決まる', 'theorem', 'physics', ['cluster-decomposition']),
   c('creation-annihilation-forced', '生成消滅演算子が強制される', 'クラスター分解を満たす書き方が、生成消滅演算子の積の和しか残らない', 'theorem', 'physics', ['single-delta-condition']),
   c('fields-are-derived', '場は結論である', '生成消滅演算子を Lorentz 共変に束ねると場になる。量子化する対象として仮定していない', 'theorem', 'physics', ['creation-annihilation-forced', 'wigner-classification']),
+  c('microcausality', '微視的因果律', '空間的に離れた場は互いに影響しない。交換子が光円錐の外で消えることとして書く', 'definition', 'physics', ['fields-are-derived', 'causal-structure']),
+  c('antiparticle-required', '反粒子が要る', '消す側だけでは交換子が消えない。作る側を同じ質量で足して初めて打ち消し合う', 'theorem', 'physics', ['microcausality']),
+  c('bose-fermi-alternative', '交換か反交換かの二択', '光円錐の外で消えるのは、そのどちらかのときだけ。どちらとスピンが組むかは、まだ決まらない', 'theorem', 'physics', ['antiparticle-required']),
+  c('operator-valued-distribution', '場は一点で値を持てない', '試験関数と組ませて初めて演算子になる。同じ点での積が定義できない理由がここ', 'definition', 'physics', ['fields-are-derived', 'distribution-theory']),
 
   // --- 解析 -------------------------------------------------------------
   //

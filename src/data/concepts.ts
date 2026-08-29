@@ -880,6 +880,9 @@ export const concepts: readonly Concept[] = [
   c('brst-symmetry', 'BRST 変換', 'ゲージを固定したあとに残る対称性。二回やるとゼロになる', 'definition', 'physics', ['ghost-field']),
   c('quartet-mechanism', '四重項機構', '冪零性から状態が一重項と四つ組に分かれ、四つ組の寄与が消える。負ノルムが閉じ込められて確率が正のまま残る', 'theorem', 'physics', ['brst-symmetry']),
   c('gribov-ambiguity', 'Gribov 複製', 'ゲージ条件が軌道と一度きり交わるという仮定が成り立たない。主束に大域切断が無いことと同じ', 'theorem', 'physics', ['faddeev-popov', 'principal-bundle']),
+  c('degenerate-vacuum', '一番低い状態が一つに決まらない', '対称変換が互いに移し合う真空が並ぶ。絶対値だけが決まって位相が決まらない', 'definition', 'physics', ['effective-field-theory']),
+  c('spontaneous-breaking', '自発的対称性の破れ', '式は対称なまま、選ばれた一つが対称でない。対称性が消えたのではない', 'definition', 'physics', ['degenerate-vacuum']),
+  c('goldstone-theorem', 'Goldstone の定理', '破れた向きの数だけ質量ゼロの粒子が出る。対称変換が微分なしの項を禁じるので、次数にも量子補正にも依らない', 'theorem', 'physics', ['spontaneous-breaking', 'noether-theorem']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

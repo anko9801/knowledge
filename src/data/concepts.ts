@@ -862,6 +862,9 @@ export const concepts: readonly Concept[] = [
   c('regularization', '正則化', '発散する式に助変数を一つ入れて有限にする。答えを出す操作ではなく、発散を一箇所に集めるだけ', 'technique', 'physics', ['operator-valued-distribution', 'feynman-diagram']),
   c('dimensional-regularization', '次元正則化', '4 次元ではなく d 次元で積分し、答えを d の関数として延長する。発散がガンマ関数の極として捕まる', 'technique', 'physics', ['regularization']),
   c('regulator-breaks-something', '正則化は何かを壊す', '全部の対称性を保つ正則化は無い。どの正則化でも保てない対称性が、アノマリーになる', 'viewpoint', 'physics', ['regularization']),
+  c('power-counting', '次数を数える', '発散の次数が外線の本数から出る。四次の相互作用では発散する構造が二通りしかなく、何次まで行っても増えない', 'technique', 'physics', ['regularization']),
+  c('coupling-dimension', '結合定数の次元', '質量次元の符号で、超くりこみ可能・くりこみ可能・くりこみ不可能が決まる。図を数えなくてよい', 'theorem', 'physics', ['power-counting']),
+  c('renormalization-conditions', 'くりこみ条件', 'どこで何を合わせるかの指定。こちらで選ぶもので、測れる量は選び方に依らない', 'definition', 'physics', ['coupling-dimension', 'field-strength-renormalization']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

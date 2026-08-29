@@ -886,6 +886,9 @@ export const concepts: readonly Concept[] = [
   c('effective-potential', '有効ポテンシャル', '場の値を止めて残りを積分したエネルギー密度。形そのものは場の選び方とゲージに依るので測れない', 'definition', 'physics', ['spontaneous-breaking', 'wilsonian-renormalization']),
   c('coleman-weinberg', '量子補正で破れる', '古典的には谷が一つでも、一つ輪の対数が競り勝って谷が割れる。符号を手で入れなくてよい', 'theorem', 'physics', ['effective-potential']),
   c('dimensional-transmutation', '次元変換', '次元を持たない理論から質量が出る。無次元の助変数が有次元の量に置き換わる', 'theorem', 'physics', ['coleman-weinberg', 'running-coupling']),
+  c('higgs-mechanism', 'Higgs 機構', 'ゲージ不変性の不足と自発的破れの余りが打ち消し合う。質量項は手で書き足していない', 'theorem', 'physics', ['goldstone-theorem', 'gauge-forbids-mass']),
+  c('longitudinal-polarization', '縦波になって残る', '消えた質量ゼロのスカラーが、ゲージ場の三つ目の偏極になる。自由度の数が前後で一致する', 'theorem', 'physics', ['higgs-mechanism']),
+  c('gauge-symmetry-not-broken', 'ゲージ対称性は破れない', '各点で選べる対称性は自発的に破れない（Elitzur）。起きているのはゲージの固め方が変わったこと', 'viewpoint', 'physics', ['higgs-mechanism', 'faddeev-popov']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

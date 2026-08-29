@@ -834,6 +834,9 @@ export const concepts: readonly Concept[] = [
   c('antiparticle-required', '反粒子が要る', '消す側だけでは交換子が消えない。作る側を同じ質量で足して初めて打ち消し合う', 'theorem', 'physics', ['microcausality']),
   c('bose-fermi-alternative', '交換か反交換かの二択', '光円錐の外で消えるのは、そのどちらかのときだけ。どちらとスピンが組むかは、まだ決まらない', 'theorem', 'physics', ['antiparticle-required']),
   c('operator-valued-distribution', '場は一点で値を持てない', '試験関数と組ませて初めて演算子になる。同じ点での積が定義できない理由がここ', 'definition', 'physics', ['fields-are-derived', 'distribution-theory']),
+  c('positive-definite-metric', '計量が正定値', '状態のノルムが負にならない。ゴースト場はここだけを外して、スピン統計の結論を免れる', 'definition', 'physics', ['hilbert-space', 'observable']),
+  c('spin-statistics-theorem', 'スピン統計定理', '整数スピンは交換関係、半整数は反交換関係。偏極の和が運動量の反転で持つ符号が決めている', 'theorem', 'physics', ['bose-fermi-alternative', 'positive-definite-metric', 'wigner-classification']),
+  c('pauli-exclusion', '排他律', '反交換関係から生成演算子の二乗が 0 になる。同じ状態を二度作れない', 'theorem', 'physics', ['spin-statistics-theorem']),
 
   // --- 解析 -------------------------------------------------------------
   //

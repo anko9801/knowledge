@@ -856,6 +856,9 @@ export const concepts: readonly Concept[] = [
   c('wick-theorem', 'Wick の定理', '自由場の n 点関数は、点を二つずつ組にする分け方すべてについて伝播関数の積を足したもの。近似ではない', 'theorem', 'physics', ['generating-functional']),
   c('feynman-diagram', 'Feynman 図', '対の作り方に付けた名前。図と展開の項が一対一に対応する。規則は覚えるものではなく読み取るもの', 'technique', 'physics', ['wick-theorem']),
   c('connected-diagrams-only', '繋がった図だけが残る', '真空泡が分母で割り切れる。クラスター分解が割り算として現れたもの', 'theorem', 'physics', ['feynman-diagram', 'cluster-decomposition']),
+  c('vacuum-overlap-vanishes', '真空の重なりが消える', '箱ごとの重なりを掛けると体積とともにゼロへ行く。自由な真空と相互作用のある真空は別の状態', 'theorem', 'physics', ['cluster-decomposition']),
+  c('inequivalent-representations', 'ユニタリ非同値', '無限自由度だと正準交換関係の表現が一つに決まらない。Stone--von Neumann が効かなくなる', 'definition', 'physics', ['vacuum-overlap-vanishes', 'hilbert-space']),
+  c('haag-theorem', 'Haag の定理', '相互作用描像が存在すると、相互作用が無いことが出る。短距離ではなく体積が無限であることから来る', 'theorem', 'physics', ['inequivalent-representations', 'wick-theorem']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

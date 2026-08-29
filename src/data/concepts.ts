@@ -853,6 +853,9 @@ export const concepts: readonly Concept[] = [
   c('path-integral-correlation', '経路積分', '演算子を並べる代わりに数を足す。時間順序は被積分関数ではなく積分の作り方に入る', 'technique', 'physics', ['time-ordered-correlation', 'action-functional']),
   c('generating-functional', '生成汎関数', '作用に外から掛ける項を足したもの。汎関数微分の回数を変えると n 点関数が出る', 'technique', 'physics', ['path-integral-correlation']),
   c('measure-not-defined', '測度が定義されていない', '無限次元に平行移動不変な測度は作れない。展開した先だけが定義されていて、元の式は定義されていない', 'viewpoint', 'physics', ['path-integral-correlation']),
+  c('wick-theorem', 'Wick の定理', '自由場の n 点関数は、点を二つずつ組にする分け方すべてについて伝播関数の積を足したもの。近似ではない', 'theorem', 'physics', ['generating-functional']),
+  c('feynman-diagram', 'Feynman 図', '対の作り方に付けた名前。図と展開の項が一対一に対応する。規則は覚えるものではなく読み取るもの', 'technique', 'physics', ['wick-theorem']),
+  c('connected-diagrams-only', '繋がった図だけが残る', '真空泡が分母で割り切れる。クラスター分解が割り算として現れたもの', 'theorem', 'physics', ['feynman-diagram', 'cluster-decomposition']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

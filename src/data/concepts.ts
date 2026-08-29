@@ -837,6 +837,9 @@ export const concepts: readonly Concept[] = [
   c('positive-definite-metric', '計量が正定値', '状態のノルムが負にならない。ゴースト場はここだけを外して、スピン統計の結論を免れる', 'definition', 'physics', ['hilbert-space', 'observable']),
   c('spin-statistics-theorem', 'スピン統計定理', '整数スピンは交換関係、半整数は反交換関係。偏極の和が運動量の反転で持つ符号が決めている', 'theorem', 'physics', ['bose-fermi-alternative', 'positive-definite-metric', 'wigner-classification']),
   c('pauli-exclusion', '排他律', '反交換関係から生成演算子の二乗が 0 になる。同じ状態を二度作れない', 'theorem', 'physics', ['spin-statistics-theorem']),
+  c('antiunitary-time-reversal', '時間反転は反ユニタリ', 'ユニタリだとエネルギーの符号がひっくり返る。下に有界という仮定と衝突するので、残るのは反ユニタリの側', 'theorem', 'physics', ['positive-definite-metric', 'observable']),
+  c('complex-lorentz-connected', '複素 Lorentz 群は連結', 'ラピディティに複素数を許すと、空間と時間の同時反転が恒等変換とつながる。行列式が +1 の側だけ', 'theorem', 'physics', ['poincare-group', 'lie-group']),
+  c('cpt-theorem', 'CPT 定理', 'Poincaré 不変性・正エネルギー・局所性・真空から出る。積だけが守られ、三つは個別には守られない', 'theorem', 'physics', ['complex-lorentz-connected', 'antiunitary-time-reversal', 'microcausality']),
 
   // --- 解析 -------------------------------------------------------------
   //

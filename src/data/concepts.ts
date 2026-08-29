@@ -868,6 +868,9 @@ export const concepts: readonly Concept[] = [
   c('beta-function', 'ベータ関数', '合わせる場所を動かしたときの結合定数の動き方。中身は「答えが合わせる場所に依らない」だけ', 'definition', 'physics', ['renormalization-conditions']),
   c('running-coupling', '走る結合定数', '電荷が距離とともに変わる。真空が誘電体として振る舞うので、近づくほど大きく見える', 'theorem', 'physics', ['beta-function']),
   c('landau-pole', 'Landau 極', 'ベータ関数が正だと有限のエネルギーで結合が発散する。理論がそこまで通用しない', 'theorem', 'physics', ['running-coupling']),
+  c('wilsonian-renormalization', 'くりこみ変換', '細かい自由度を実際に積分して消す。書ける項すべての空間の上の写像になり、消すと項が増える', 'technique', 'physics', ['beta-function', 'regularization']),
+  c('irrelevant-operator', '効かない項', '次元が 4 を超える項は、低いエネルギーで (E/Λ) の冪で抑えられる。消えるのではなく見えなくなる', 'theorem', 'physics', ['wilsonian-renormalization', 'coupling-dimension']),
+  c('effective-field-theory', '有効場の理論', 'ある尺度までで閉じた理論。くりこみ可能性は原理ではなく、低いエネルギーを見ていることの帰結', 'viewpoint', 'physics', ['irrelevant-operator']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

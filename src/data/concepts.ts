@@ -840,6 +840,10 @@ export const concepts: readonly Concept[] = [
   c('antiunitary-time-reversal', '時間反転は反ユニタリ', 'ユニタリだとエネルギーの符号がひっくり返る。下に有界という仮定と衝突するので、残るのは反ユニタリの側', 'theorem', 'physics', ['positive-definite-metric', 'observable']),
   c('complex-lorentz-connected', '複素 Lorentz 群は連結', 'ラピディティに複素数を許すと、空間と時間の同時反転が恒等変換とつながる。行列式が +1 の側だけ', 'theorem', 'physics', ['poincare-group', 'lie-group']),
   c('cpt-theorem', 'CPT 定理', 'Poincaré 不変性・正エネルギー・局所性・真空から出る。積だけが守られ、三つは個別には守られない', 'theorem', 'physics', ['complex-lorentz-connected', 'antiunitary-time-reversal', 'microcausality']),
+  c('fields-not-observable', '場は観測量ではない', '半整数スピンの場は空間的に離れた点で反交換するので、離れた測定が影響しないという要求を満たさない。偶数個の積だけが観測量になる', 'theorem', 'physics', ['spin-statistics-theorem', 'observable']),
+  c('asymptotic-condition', '漸近条件', '遠い過去と未来では、場の行列要素が自由場のそれに近づく。演算子としては近づかない', 'definition', 'physics', ['fields-not-observable']),
+  c('s-matrix', 'S 行列', '遠い過去に入れた状態と遠い未来に出た状態の対応。断面積も崩壊率もここから出る', 'definition', 'physics', ['asymptotic-condition']),
+  c('field-redefinition-freedom', '場は一意に決まらない', '一粒子状態を拾う場ならどれでも同じ S 行列を与える。場は局所性を書き込むための座標である', 'theorem', 'physics', ['s-matrix', 'microcausality']),
 
   // --- 解析 -------------------------------------------------------------
   //

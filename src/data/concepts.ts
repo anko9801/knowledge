@@ -895,6 +895,9 @@ export const concepts: readonly Concept[] = [
   c('asymptotic-freedom', '漸近的自由性', 'グルーオンの常磁性がクォークの寄与に勝つ。エネルギーを上げると結合が弱くなる', 'theorem', 'physics', ['gauge-self-interaction', 'running-coupling']),
   c('scaling-in-deep-inelastic', '中を覗くと自由に見える', '陽子に高エネルギーを当てると点に当たったように跳ね返る。強く結びついているのに近くでは自由', 'theorem', 'physics', ['asymptotic-freedom']),
   c('confinement-not-derived', '閉じ込めは証明されていない', '結合が大きいことと単独で取り出せないことは別の主張。格子では確かめられているが証明ではない', 'viewpoint', 'physics', ['asymptotic-freedom', 'gribov-ambiguity']),
+  c('wilson-loop-area-law', '面積則', 'Wilson ループが面積に比例して落ちると、引き離すのに線形のエネルギーが要る', 'theorem', 'physics', ['confinement-not-derived', 'non-abelian-gauge']),
+  c('string-breaking', '紐が切れる', '本物のクォークがいると、紐に溜まったエネルギーで対ができて切れる。面積則が使えなくなる', 'theorem', 'physics', ['wilson-loop-area-law']),
+  c('kugo-ojima-criterion', '九後--小嶋の判定条件', '色を持つ状態を四つ組に入れる条件。負ノルムを閉じ込めたのと同じ仕組みを色に使う', 'theorem', 'physics', ['quartet-mechanism', 'string-breaking']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

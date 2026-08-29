@@ -875,6 +875,11 @@ export const concepts: readonly Concept[] = [
   c('field-strength-covariant', '場の強さは共変にしか変わらない', 'ゲージ変換で値が変わるので、それ自体は測れない。跡を取って初めて作用に書ける', 'theorem', 'physics', ['non-abelian-gauge']),
   c('gauge-self-interaction', 'ゲージ場が自分と相互作用する', '三点結合も四点結合も物質との結合と同じ定数で決まる。比が予言になる', 'theorem', 'physics', ['field-strength-covariant']),
   c('gauge-forbids-mass', 'ゲージ不変性は質量項を禁じる', '光子に質量が無いのは測った結果ではなく要請の帰結。W と Z に質量があることと衝突する', 'theorem', 'physics', ['non-abelian-gauge']),
+  c('faddeev-popov', 'ゲージの体積を括り出す', '同じ配位を重複して数えているので割る。残る行列式は非可換だと場に依るので捨てられない', 'technique', 'physics', ['non-abelian-gauge', 'path-integral-correlation']),
+  c('ghost-field', 'ゴースト', '行列式を分子に出すために入れる、反交換するスカラー。スピン統計定理を正定値計量の側で免れる', 'definition', 'physics', ['faddeev-popov', 'positive-definite-metric']),
+  c('brst-symmetry', 'BRST 変換', 'ゲージを固定したあとに残る対称性。二回やるとゼロになる', 'definition', 'physics', ['ghost-field']),
+  c('quartet-mechanism', '四重項機構', '冪零性から状態が一重項と四つ組に分かれ、四つ組の寄与が消える。負ノルムが閉じ込められて確率が正のまま残る', 'theorem', 'physics', ['brst-symmetry']),
+  c('gribov-ambiguity', 'Gribov 複製', 'ゲージ条件が軌道と一度きり交わるという仮定が成り立たない。主束に大域切断が無いことと同じ', 'theorem', 'physics', ['faddeev-popov', 'principal-bundle']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

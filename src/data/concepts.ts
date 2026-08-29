@@ -826,6 +826,10 @@ export const concepts: readonly Concept[] = [
   c('niws-condition', '一瞬で滲み出さない', '離れた領域へ移るには時間が要る。相対論が言う有限の速さを、確率の言葉に翻訳したもの', 'definition', 'physics', ['localization-system', 'causal-structure']),
   c('malament-theorem', 'Malament の定理', '四つを認めると、どの領域に見つかる確率も 0 になる。粒子は位置を持てない', 'theorem', 'physics', ['niws-condition', 'observable']),
   c('unsharp-localization', 'ぼやけた局在なら逃げられる', '射影をやめて POVM にすると定理は成り立たない。禁じられていたのは「そこに居る／居ない」の二値のほう', 'viewpoint', 'physics', ['malament-theorem']),
+  c('cluster-decomposition', 'クラスター分解', '遠く離した実験の結果が互いに影響しない。Poincaré 不変性からもユニタリ性からも出ない、別の要請', 'definition', 'physics', ['unsharp-localization', 'poincare-group']),
+  c('single-delta-condition', 'デルタ関数が一つだけ', '余分なデルタがあると、その塊を無限に遠ざけても結果が変わらなくなる。連結なら一つに決まる', 'theorem', 'physics', ['cluster-decomposition']),
+  c('creation-annihilation-forced', '生成消滅演算子が強制される', 'クラスター分解を満たす書き方が、生成消滅演算子の積の和しか残らない', 'theorem', 'physics', ['single-delta-condition']),
+  c('fields-are-derived', '場は結論である', '生成消滅演算子を Lorentz 共変に束ねると場になる。量子化する対象として仮定していない', 'theorem', 'physics', ['creation-annihilation-forced', 'wigner-classification']),
 
   // --- 解析 -------------------------------------------------------------
   //

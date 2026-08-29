@@ -859,6 +859,9 @@ export const concepts: readonly Concept[] = [
   c('vacuum-overlap-vanishes', '真空の重なりが消える', '箱ごとの重なりを掛けると体積とともにゼロへ行く。自由な真空と相互作用のある真空は別の状態', 'theorem', 'physics', ['cluster-decomposition']),
   c('inequivalent-representations', 'ユニタリ非同値', '無限自由度だと正準交換関係の表現が一つに決まらない。Stone--von Neumann が効かなくなる', 'definition', 'physics', ['vacuum-overlap-vanishes', 'hilbert-space']),
   c('haag-theorem', 'Haag の定理', '相互作用描像が存在すると、相互作用が無いことが出る。短距離ではなく体積が無限であることから来る', 'theorem', 'physics', ['inequivalent-representations', 'wick-theorem']),
+  c('regularization', '正則化', '発散する式に助変数を一つ入れて有限にする。答えを出す操作ではなく、発散を一箇所に集めるだけ', 'technique', 'physics', ['operator-valued-distribution', 'feynman-diagram']),
+  c('dimensional-regularization', '次元正則化', '4 次元ではなく d 次元で積分し、答えを d の関数として延長する。発散がガンマ関数の極として捕まる', 'technique', 'physics', ['regularization']),
+  c('regulator-breaks-something', '正則化は何かを壊す', '全部の対称性を保つ正則化は無い。どの正則化でも保てない対称性が、アノマリーになる', 'viewpoint', 'physics', ['regularization']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

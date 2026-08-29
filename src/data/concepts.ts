@@ -844,6 +844,10 @@ export const concepts: readonly Concept[] = [
   c('asymptotic-condition', '漸近条件', '遠い過去と未来では、場の行列要素が自由場のそれに近づく。演算子としては近づかない', 'definition', 'physics', ['fields-not-observable']),
   c('s-matrix', 'S 行列', '遠い過去に入れた状態と遠い未来に出た状態の対応。断面積も崩壊率もここから出る', 'definition', 'physics', ['asymptotic-condition']),
   c('field-redefinition-freedom', '場は一意に決まらない', '一粒子状態を拾う場ならどれでも同じ S 行列を与える。場は局所性を書き込むための座標である', 'theorem', 'physics', ['s-matrix', 'microcausality']),
+  c('spectral-representation', 'スペクトル表示', '完全系を挟むだけで、2 点関数が自由場のものの重ね合わせに決まる。摂動論も相互作用の中身も使わない', 'theorem', 'physics', ['s-matrix', 'poincare-group']),
+  c('spectral-density-positive', '重みは正である', '絶対値の二乗の和なので負にならない。同時刻交換関係を足すと総量が 1 に固定される', 'theorem', 'physics', ['spectral-representation']),
+  c('field-strength-renormalization', '場が一粒子を拾う割合', '重みのうち一粒子の分。1 を超えられず、等号は自由場のときだけ。0 になると漸近条件が使えない', 'definition', 'physics', ['spectral-density-positive', 'asymptotic-condition']),
+  c('mass-is-a-pole', '質量は極の位置', '式に書いた文字ではなく、伝播関数の極が立つところ。切断の始まりからは崩壊が読める', 'viewpoint', 'physics', ['spectral-representation']),
 
   // --- 解析 -------------------------------------------------------------
   //

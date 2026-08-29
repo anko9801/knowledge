@@ -865,6 +865,9 @@ export const concepts: readonly Concept[] = [
   c('power-counting', '次数を数える', '発散の次数が外線の本数から出る。四次の相互作用では発散する構造が二通りしかなく、何次まで行っても増えない', 'technique', 'physics', ['regularization']),
   c('coupling-dimension', '結合定数の次元', '質量次元の符号で、超くりこみ可能・くりこみ可能・くりこみ不可能が決まる。図を数えなくてよい', 'theorem', 'physics', ['power-counting']),
   c('renormalization-conditions', 'くりこみ条件', 'どこで何を合わせるかの指定。こちらで選ぶもので、測れる量は選び方に依らない', 'definition', 'physics', ['coupling-dimension', 'field-strength-renormalization']),
+  c('beta-function', 'ベータ関数', '合わせる場所を動かしたときの結合定数の動き方。中身は「答えが合わせる場所に依らない」だけ', 'definition', 'physics', ['renormalization-conditions']),
+  c('running-coupling', '走る結合定数', '電荷が距離とともに変わる。真空が誘電体として振る舞うので、近づくほど大きく見える', 'theorem', 'physics', ['beta-function']),
+  c('landau-pole', 'Landau 極', 'ベータ関数が正だと有限のエネルギーで結合が発散する。理論がそこまで通用しない', 'theorem', 'physics', ['running-coupling']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

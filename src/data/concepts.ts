@@ -907,6 +907,9 @@ export const concepts: readonly Concept[] = [
   c('constraint-vs-evolution', '拘束と発展方程式', '時間微分の無い式は次の瞬間を教えない。初期状態に課される条件である', 'definition', 'physics', ['wave-from-maxwell']),
   c('constraint-preservation', '拘束が保たれる条件', '電荷保存が成り立たないと、次の瞬間に拘束が破れる。ただで出るのではなく、無いと理論が壊れる', 'theorem', 'physics', ['constraint-vs-evolution', 'exterior-derivative']),
   c('two-polarizations', '自由度は二つ', '四成分からゲージの自由と時間成分を引くと二つ。偏光の数を数えることが質量を測ることになる', 'theorem', 'physics', ['constraint-preservation', 'gauge-forbids-mass']),
+  c('radiation-field', '加速の場', '距離の一乗で落ちる成分は加速からしか出ない。面積が二乗で増えるので、これだけが無限遠に届く', 'theorem', 'physics', ['constraint-vs-evolution', 'causal-structure']),
+  c('larmor-formula', 'Larmor の公式', '出ていく仕事率が加速度の二乗に比例する。速さには依らない。加速器の設計を縛る', 'theorem', 'physics', ['radiation-field']),
+  c('field-carries-momentum', '場が運動量を持つ', '力が及ぶまでに時間が掛かるので、その間の運動量を場が持つ。放射圧として測れる', 'theorem', 'physics', ['radiation-field']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

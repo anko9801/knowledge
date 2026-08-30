@@ -904,6 +904,9 @@ export const concepts: readonly Concept[] = [
   c('electromagnetic-constants', '二つの定数が速さになる', '静電気と電流の実験で決まる定数を組み合わせると速さの次元になる。どちらの実験にも光が入っていない', 'theorem', 'physics', ['gauge-potential']),
   c('wave-from-maxwell', '式が波を出す', '電荷の無い場所で電磁場が波として伝わる。速さが二つの定数だけで決まる', 'theorem', 'physics', ['electromagnetic-constants', 'exterior-derivative']),
   c('no-frame-in-maxwell', '誰から見た速さかが書かれていない', '式に媒質を書く場所がない。定数が静的な実験で決まるので、値が動きに依れない', 'viewpoint', 'physics', ['wave-from-maxwell']),
+  c('constraint-vs-evolution', '拘束と発展方程式', '時間微分の無い式は次の瞬間を教えない。初期状態に課される条件である', 'definition', 'physics', ['wave-from-maxwell']),
+  c('constraint-preservation', '拘束が保たれる条件', '電荷保存が成り立たないと、次の瞬間に拘束が破れる。ただで出るのではなく、無いと理論が壊れる', 'theorem', 'physics', ['constraint-vs-evolution', 'exterior-derivative']),
+  c('two-polarizations', '自由度は二つ', '四成分からゲージの自由と時間成分を引くと二つ。偏光の数を数えることが質量を測ることになる', 'theorem', 'physics', ['constraint-preservation', 'gauge-forbids-mass']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

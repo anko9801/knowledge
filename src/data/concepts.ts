@@ -910,6 +910,8 @@ export const concepts: readonly Concept[] = [
   c('radiation-field', '加速の場', '距離の一乗で落ちる成分は加速からしか出ない。面積が二乗で増えるので、これだけが無限遠に届く', 'theorem', 'physics', ['constraint-vs-evolution', 'causal-structure']),
   c('larmor-formula', 'Larmor の公式', '出ていく仕事率が加速度の二乗に比例する。速さには依らない。加速器の設計を縛る', 'theorem', 'physics', ['radiation-field']),
   c('field-carries-momentum', '場が運動量を持つ', '力が及ぶまでに時間が掛かるので、その間の運動量を場が持つ。放射圧として測れる', 'theorem', 'physics', ['radiation-field']),
+  c('harmonic-universality', '極小のまわりは二次になる', '谷の底で最初に残る項が必ず二次。Hooke の法則は材料の性質ではなく Taylor 展開である', 'theorem', 'physics', ['degrees-of-freedom']),
+  c('amplitude-independence', '周期が振れ幅に依らない', '式が線形なので解を定数倍しても同じ時刻に戻る。指数が 2 のときだけ起きる', 'theorem', 'physics', ['harmonic-universality']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 
   // --- 解析 -------------------------------------------------------------

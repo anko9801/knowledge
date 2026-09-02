@@ -28,7 +28,7 @@ import {
   inversions,
   planFor,
 } from '../src/lib/curriculum.ts'
-import { seriesRank } from '../src/lib/taxonomy.ts'
+import { findSeries, seriesRank } from '../src/lib/taxonomy.ts'
 
 const ROOT = new URL('..', import.meta.url).pathname
 const ARTICLES = join(ROOT, 'src/content/articles')
@@ -155,6 +155,76 @@ if (command === 'stats') {
     )
   }
   console.log(`\n前提が後ろにある箇所: ${found.length}`)
+} else if (command === 'brief') {
+  // 1 本書くのに要る事実を、一度で出す。
+  // agent がこれを grep で拾い直していたので、まとめた。
+  const [field, slug, order] = rest
+  if (!field || !slug) {
+    console.error('使い方: brief <field> <series> [order]')
+    process.exit(1)
+  }
+  const entry = findSeries(field, slug)
+  if (!entry) {
+    console.error(`知らない連載: ${field}/${slug}`)
+    process.exit(1)
+  }
+
+  console.log(`# ${entry.title}  (${field}/${slug})\n`)
+  console.log(`${entry.blurb}\n`)
+
+  const mine = articles.filter((a) => a.id.startsWith(`${field}/${slug}/`))
+  console.log('## この連載にある回\n')
+  for (const a of mine.sort((x, y) => x.at[1] - y.at[1])) {
+    const here = String(a.at[1]) === String(order)
+    console.log(`${here ? '→' : ' '} ${String(a.at[1]).padStart(2)}  ${a.title}`)
+    console.log(`      ${a.provides.join(', ')}`)
+  }
+  const n = Number.parseInt(order ?? '', 10)
+  if (order && !mine.some((a) => a.at[1] === n)) {
+    console.log(`→ ${String(n).padStart(2)}  （これから書く回。まだ無い）`)
+  }
+
+  if (order) {
+    console.log('\n## 隣の回の分量（目安）\n')
+    for (const a of mine) {
+      if (Math.abs(a.at[1] - n) > 2 || a.at[1] === n) continue
+      const path = walk(ARTICLES).find((p) =>
+        readFileSync(p, 'utf8').includes(`series: "${slug}"`) &&
+        readScalar(readFileSync(p, 'utf8'), 'order') === String(a.at[1]),
+      )
+      if (path) {
+        const src = readFileSync(path, 'utf8')
+        console.log(`  第 ${a.at[1]} 回  ${src.split('\n').length} 行  ${src.length} 字`)
+      }
+    }
+  }
+
+  console.log('\n## この回が名乗る概念の前提\n')
+  const target = mine.find((a) => a.at[1] === n)
+  const ids = target ? target.provides : []
+  if (ids.length === 0) {
+    console.log('  （まだ無い回なので、仕様の provides を見ること）')
+  } else {
+    const byId = new Map(concepts.map((c) => [c.id, c]))
+    for (const id of ids) {
+      const c = byId.get(id)
+      if (!c) {
+        console.log(`  ${id}  ← グラフに無い`)
+        continue
+      }
+      console.log(`  ${c.label}  (${id})`)
+      for (const req of c.requires) {
+        const owner = articles.find((a) => a.provides.includes(req))
+        const where = owner ? `/${owner.id}` : '未執筆'
+        console.log(`      ← ${byId.get(req)?.label ?? req}  ${where}`)
+      }
+    }
+  }
+
+  console.log('\n## 前提が後ろにある箇所\n')
+  const bad = inversions(concepts, articles).filter((i) => i.article.includes(slug))
+  if (bad.length === 0) console.log('  無し')
+  for (const i of bad) console.log(`  ${i.article}: ${i.concept} ← ${i.missing} は ${i.home}`)
 } else if (command === 'dump') {
   console.log(JSON.stringify({ concepts, goals, articles }, null, 2))
 } else {

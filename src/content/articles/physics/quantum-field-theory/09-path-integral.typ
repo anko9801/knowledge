@@ -97,13 +97,15 @@ $J$ は場ではなく、こちらで指定する関数です。
 ]<def:generating>
 
 @def:generating を $J$ で微分すると、指数の肩から $phi.alt$ が一つ降りてきます。
+肩に $i$ が掛かっているので、$i phi.alt$ が降ります。
 
 $ (delta) / (delta J(x_1)) thin Z[J] = integral cal(D) phi.alt thin
-  phi.alt(x_1) thin e^(i (S + J phi.alt)) $
+  i phi.alt(x_1) thin e^(i (S + J phi.alt)) $
 
-$n$ 回微分してから $J = 0$ と置けば、$n$ 点関数が出ます。
+$n$ 回微分すると $i$ が $n$ 個溜まるので、割って落とします。
+$J = 0$ と置けば $n$ 点関数が出ます。
 
-$ G(x_1, dots, x_n) = (1) / (Z[0]) thin
+$ G(x_1, dots, x_n) = (1) / (Z[0]) thin (1) / (i^n) thin
   (delta^n Z[J]) / (delta J(x_1) dots.c delta J(x_n)) bar_(J = 0) $
 
 #strong[相関関数が全部、一つの汎関数に入りました。] $n$ を変えるのは

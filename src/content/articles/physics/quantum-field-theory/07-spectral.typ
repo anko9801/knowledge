@@ -149,7 +149,7 @@ $ integral_0^infinity dif m^2 thin rho(m^2) = 1 $
 @thm:spectral を運動量の側で書きます。伝播関数は
 
 $ tilde(Delta)(p) = integral_0^infinity dif m^2
-  (rho(m^2)) / (p^2 - m^2 + i epsilon) $
+  (i rho(m^2)) / (p^2 - m^2 + i epsilon) $
 
 となります。$rho$ の中身を入れると、二つに分かれます。
 

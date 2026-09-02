@@ -12,6 +12,7 @@
     "precheck": "node scripts/emit-math-css.mjs",
     "check": "astro check",
     "verify": "npm run check && npm test",
+    "quick": "node scripts/quick.mjs",
     "fonts": "sh scripts/subset-math-font.sh && sh scripts/subset-text-font.sh && sh scripts/subset-mono-font.sh && sh scripts/subset-mathbb-font.sh",
     "test": "node --test scripts/latex/*.test.mjs src/lib/*.test.ts",
     "notes": "node scripts/latex/to-typst.mjs",

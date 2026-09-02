@@ -20,3 +20,4 @@ src/styles/typst-math.css
 
 # Claude Code の作業用 worktree。セッションごとに作られる。
 .claude/worktrees/
+.typst-bin

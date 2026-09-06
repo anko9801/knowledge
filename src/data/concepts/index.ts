@@ -45,6 +45,8 @@ import { renormalization } from './renormalization.ts'
 import { gaugeTheory } from './gauge-theory.ts'
 import { standardModel } from './standard-model.ts'
 import { analysis } from './analysis.ts'
+import { complexAnalysis } from './complex-analysis.ts'
+import { pde } from './pde.ts'
 import { mathMisc } from './math-misc.ts'
 import { groups } from './groups.ts'
 import { chemistryMisc } from './chemistry-misc.ts'
@@ -86,6 +88,8 @@ export const concepts: readonly Concept[] = [
   ...gaugeTheory,
   ...standardModel,
   ...analysis,
+  ...complexAnalysis,
+  ...pde,
   ...mathMisc,
   ...groups,
   ...chemistryMisc,

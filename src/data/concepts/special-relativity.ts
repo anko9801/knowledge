@@ -13,8 +13,8 @@ export const specialRelativity: readonly Concept[] = [
   c('proper-time', '固有時', '各自の時計が刻んだ量。経路に依るので、往復すると差が残る', 'definition', 'physics', ['minkowski-metric']),
   c('four-momentum', '四元運動量', 'エネルギーと運動量を一つに束ねる。長さが質量になる', 'definition', 'physics', ['minkowski-metric', 'proper-time']),
   c('mass-energy', '質量はエネルギーの一形態', '静止していても、質量のぶんのエネルギーを持っている', 'theorem', 'physics', ['four-momentum']),
-  c('minkowski-metric', 'Minkowski 計量', '符号数 $(1,3)$ の内積。時間と空間が同じ土俵に乗る代わりに、正定値ではなくなる', 'definition', 'physics', ['lorentz-transformation', 'signature']),
+  c('minkowski-metric', 'Minkowski 計量', '符号数 $(1,3)$ の内積。時間と空間が同じ土俵に乗る代わりに、正定値ではなくなる', 'definition', 'physics', ['lorentz-transformation', 'signature'], [], { aka: ['Lorentz 計量'] }),
   c('causal-structure', '因果構造', '光円錐。順序が誰から見ても同じなのは、時間的に離れた事象だけ', 'viewpoint', 'physics', ['minkowski-metric']),
   c('poincare-group', 'Poincaré 群', 'Lorentz 変換に並進を足した群。相対論が要請する対称性の全体', 'definition', 'physics', ['lorentz-transformation', 'group-action']),
-  c('wigner-classification', '粒子は既約表現である', 'Poincaré 群の既約表現を数えると、ラベルが質量とスピンの二つになる', 'theorem', 'physics', ['poincare-group', 'irreducible-representation', 'hilbert-space']),
+  c('wigner-classification', '粒子は既約表現である', 'Poincaré 群の既約表現を数えると、ラベルが質量とスピンの二つになる', 'theorem', 'physics', ['poincare-group', 'irreducible-representation', 'hilbert-space'], [], { aka: ['小群による分類'] }),
 ]

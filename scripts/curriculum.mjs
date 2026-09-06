@@ -10,6 +10,7 @@
  *   node scripts/curriculum.mjs plan <goal|concept>  依存順。記事の有無つき
  *   node scripts/curriculum.mjs next [n]             次に書くべき記事
  *   node scripts/curriculum.mjs gaps                 記事の無い概念だけ
+ *   node scripts/curriculum.mjs assumptions          仮定と、それを定理にする場所
  *   node scripts/curriculum.mjs order                前提が後ろにある箇所
  *   node scripts/curriculum.mjs dump                 JSON
  *
@@ -19,7 +20,7 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
-import { concepts, goals } from '../src/data/concepts/index.ts'
+import { concepts, derivations, goals } from '../src/data/concepts/index.ts'
 import {
   backlog,
   danglingConcepts,
@@ -101,6 +102,7 @@ if (command === 'stats') {
   const edges = concepts.reduce((sum, c) => sum + c.requires.length, 0)
   console.log(`概念           ${concepts.length}`)
   console.log(`依存の辺       ${edges}`)
+  console.log(`仮定→定理      ${derivations.length}`)
   console.log(`記事           ${articles.length} 本`)
   console.log(`被覆           ${inGraph} / ${concepts.length} 概念 (${Math.round((inGraph / concepts.length) * 100)}%)`)
   console.log(`未執筆         ${concepts.length - inGraph}`)
@@ -140,6 +142,18 @@ if (command === 'stats') {
   }
   const blocked = queue.filter((i) => !i.ready).length
   console.log(`\n前提がまだ揃わないもの: ${blocked}`)
+} else if (command === 'assumptions') {
+  // 「ここで置いた要請が、あちらで定理になる」。連載の結びに使う。
+  const byId = new Map(concepts.map((c) => [c.id, c]))
+  const covers = new Map()
+  for (const a of articles) for (const id of a.provides) if (!covers.has(id)) covers.set(id, a)
+  for (const d of derivations) {
+    const where = (id) => (covers.get(id) ? `/${covers.get(id).id}` : '未執筆')
+    console.log(`${byId.get(d.assumed)?.label ?? d.assumed}  ${where(d.assumed)}`)
+    console.log(`  → ${byId.get(d.derived)?.label ?? d.derived}  ${where(d.derived)}`)
+    console.log(`     ${d.note}`)
+  }
+  console.log(`\n${derivations.length} 件`)
 } else if (command === 'gaps') {
   for (const item of backlog(concepts, articles)) {
     console.log(
@@ -219,6 +233,20 @@ if (command === 'stats') {
         console.log(`      ← ${byId.get(req)?.label ?? req}  ${where}`)
       }
     }
+  }
+
+  console.log('\n## 仮定として置くもの／よその仮定を出すもの\n')
+  const owned = new Set(mine.flatMap((a) => a.provides))
+  const related = derivations.filter((d) => owned.has(d.assumed) || owned.has(d.derived))
+  if (related.length === 0) console.log('  無し')
+  for (const d of related) {
+    const side = owned.has(d.assumed) ? '置く' : '出す'
+    const home = (id) => {
+      const a = articles.find((x) => x.provides.includes(id))
+      return a ? `/${a.id}` : '未執筆'
+    }
+    console.log(`  ${side}  ${d.assumed} ${home(d.assumed)} → ${d.derived} ${home(d.derived)}`)
+    console.log(`        ${d.note}`)
   }
 
   console.log('\n## 前提が後ろにある箇所\n')

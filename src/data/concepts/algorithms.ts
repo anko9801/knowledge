@@ -18,7 +18,7 @@ export const algorithms: readonly Concept[] = [
   c('matroid', 'マトロイド', '独立性の抽象。交換公理を満たす集合族', 'definition', 'cs', ['relation-order']),
   c('greedy-optimality', '貪欲が最適になる条件', 'Rado--Edmonds。マトロイドのとき、そのときだけ', 'theorem', 'cs', ['matroid']),
   c('amortized-analysis', '償却解析', '一手ではなく列で測る。ポテンシャル関数が一つ取れれば言える', 'technique', 'cs', ['computation-model']),
-  c('union-find', 'Union--Find', '経路圧縮と併合で、逆 Ackermann 関数まで落ちる', 'theorem', 'cs', ['amortized-analysis']),
+  c('union-find', 'Union--Find', '経路圧縮と併合で、逆 Ackermann 関数まで落ちる', 'theorem', 'cs', ['amortized-analysis'], [], { aka: ['素集合データ構造'] }),
   c('randomization-as-resource', '乱択を資源に数える', '最悪ではなく期待値で測る。相手が最悪入力を選べなくなる', 'viewpoint', 'cs', ['computation-model', 'probability-space']),
   c('universal-hashing', '万能ハッシュ', '関数のほうを乱択で選ぶ。どの入力にも悪い相手がいなくなる', 'technique', 'cs', ['randomization-as-resource', 'expectation']),
   // LP 双対性は凸性を要求するのに、グラフに凸集合が一つも無かった。数学側に足す。

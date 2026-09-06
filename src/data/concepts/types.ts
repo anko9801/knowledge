@@ -42,6 +42,35 @@ export type Concept = {
    * requires と混ぜると最短経路が慣習で汚染されるので、別の辺にする。
    */
   readonly empirical?: readonly string[]
+  /**
+   * 同じものを指す、別の名前。
+   *
+   * **読者が持ってくるのはこちらの名前であることが多い。** 分野が違えば
+   * 呼び方も違うし、教科書ごとに違う。「スペクトル表示」しか置いていないと、
+   * Källén--Lehmann 表示で探しに来た読者に何も当たらない。
+   *
+   * 重複を一つに畳んだときは、**畳んだ側の名前をここへ移す。** 消さない。
+   * 判定の仕方は docs/decisions.md「分野をまたぐ重複は、三つの型に分けて処理する」。
+   */
+  readonly aka?: readonly string[]
+}
+
+/**
+ * 片方が仮定として置いたものを、もう片方が定理として出す関係。
+ *
+ * requires ではない。仮定を導く定理は、その仮定より**後**に来る。
+ * 依存の辺として書くと循環するか、順序が逆さになる。
+ *
+ * 分野をまたぐので、概念の側ではなく `derivations.ts` にまとめて置く。
+ * どちらのファイルが持つべきかが決まらないし、片側だけ直すと壊れる。
+ */
+export type Derivation = {
+  /** 仮定として置いている側 */
+  readonly assumed: string
+  /** それを定理として出す側 */
+  readonly derived: string
+  /** 何が仮定から定理へ変わるのか。記事の結びに使う */
+  readonly note: string
 }
 
 /** 到達したい地点。執筆計画はここから逆算する。 */
@@ -59,4 +88,6 @@ export const c = (
   field: string,
   requires: readonly string[] = [],
   empirical: readonly string[] = [],
-): Concept => ({ id, label, gist, kind, field, requires, empirical })
+  // 位置引数はここで打ち止め。以降に足すものは名前で渡す。
+  more: { readonly aka?: readonly string[] } = {},
+): Concept => ({ id, label, gist, kind, field, requires, empirical, ...more })

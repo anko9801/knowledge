@@ -13,5 +13,6 @@ export const quantum: readonly Concept[] = [
   c('uncertainty-relation', '不確定性関係', '交換しない観測量は同時に確定しない', 'theorem', 'physics', ['observable', 'lie-bracket']),
   c('composite-system', '合成系', '状態空間はテンソル積。分解できない状態が残る', 'definition', 'physics', ['quantum-state', 'tensor-product']),
   c('entanglement', '量子もつれ', '単純テンソルでない状態', 'definition', 'physics', ['composite-system']),
+  c('symmetrization-postulate', '対称化の要請', '同種粒子の状態は入れ替えで対称か反対称かのどちらか、と置く。どちらになるかは、ここでは決まらない', 'definition', 'physics', ['composite-system'], [], { aka: ['不可弁別性の要請'] }),
   c('quantum-channel', '量子通信路', '完全正値写像。古典の通信路の一般化', 'definition', 'cs', ['composite-system', 'channel-capacity']),
 ]

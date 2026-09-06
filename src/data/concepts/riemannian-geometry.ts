@@ -15,7 +15,7 @@ export const riemannianGeometry: readonly Concept[] = [
   c('covariant-derivative', '共変微分', '∂ + Γ。テンソルでない二つを足してテンソルにする', 'technique', 'math', ['connection']),
   c('christoffel-symbol', 'Christoffel 記号', '接続の成分。テンソルではないので座標で消せる', 'definition', 'math', ['covariant-derivative']),
   c('levi-civita-connection', 'Levi-Civita 接続', '計量的かつ捩れなし。これで一意に決まる', 'theorem', 'math', ['connection', 'riemannian-metric']),
-  c('normal-coordinates', '正規座標', '一点で Γ = 0 にできる', 'theorem', 'math', ['levi-civita-connection']),
+  c('normal-coordinates', '正規座標', '一点で Γ = 0 にできる', 'theorem', 'math', ['levi-civita-connection'], [], { aka: ['Riemann 正規座標'] }),
   c('geodesic', '測地線', 'まっすぐと最短が一致する', 'definition', 'math', ['levi-civita-connection', 'arc-length', 'ode-existence']),
   c('exponential-map', '指数写像', '測地線で座標を張る', 'definition', 'math', ['geodesic', 'normal-coordinates']),
   c('geodesic-deviation', '測地線偏差', '近い測地線が離れる率。座標では消せない', 'theorem', 'math', ['geodesic', 'parallel-transport']),

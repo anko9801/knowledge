@@ -6,6 +6,11 @@
  * 1 ファイルだと並列で作業できない。
  *
  * 型とヘルパは `types.ts`。到達目標は下に置いてある。
+ * 仮定と、それを定理として出す場所の対応は `derivations.ts`。
+ *
+ * **分野をまたいで同じものが出てきたときの決め方は `docs/decisions.md`**
+ * の「分野をまたぐ重複は、三つの型に分けて処理する」にある。畳むか分けるかは
+ * 場当たりに決めないこと。`npm run duplicates` が候補を挙げる。
  */
 import type { Concept, Goal } from './types.ts'
 import { foundations } from './foundations.ts'
@@ -39,7 +44,8 @@ import { groups } from './groups.ts'
 import { chemistryMisc } from './chemistry-misc.ts'
 import { linguisticsMisc } from './linguistics-misc.ts'
 
-export type { Concept, ConceptKind, Goal } from './types.ts'
+export type { Concept, ConceptKind, Derivation, Goal } from './types.ts'
+export { derivations } from './derivations.ts'
 
 export const concepts: readonly Concept[] = [
   ...foundations,

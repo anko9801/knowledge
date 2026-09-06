@@ -20,6 +20,8 @@ export const analysis: readonly Concept[] = [
   c('sard-theorem', 'Sard の定理', '臨界値は測度ゼロ。横断性の議論を支える', 'theorem', 'math', ['smoothness-class', 'measure']),
   c('distribution-theory', '超関数', '微分できない対象を、試験関数との組で扱う', 'definition', 'math', ['function-space', 'dual-space'], [], { aka: ['Schwartz 超関数', 'generalized function'] }),
 
+  c('fourier-transform', 'Fourier 変換', '関数を振動数の重ね合わせに分解する。微分が掛け算に、畳み込みが積になる', 'technique', 'math', ['distribution-theory', 'lp-space']),
+
   // 作用素論。物理が「エルミート」と書いているものを、定義域まで込みで扱う。
   // 有限次元のスペクトル定理（`linear-algebra.ts`）とは別の定理である。
   c('unbounded-operator', '非有界作用素', '定義域まで込みで一つの作用素。定義域を変えると別の作用素になる', 'definition', 'math', ['hilbert-space', 'function-space']),

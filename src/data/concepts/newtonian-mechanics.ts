@@ -10,6 +10,8 @@ export const newtonianMechanics: readonly Concept[] = [
   // 解析力学の前に置く。あちらは `why-not-force`「力では理論を指定できない」
   // から始まるので、力を使ったことのない読者には否定する対象が無い。
   c('degrees-of-freedom', '自由度', '位置を決めるのに要る数の個数。解く手間はここで決まる', 'definition', 'physics', ['multivariable-calculus']),
+  c('newtonian-gravity', '万有引力', '距離の二乗に反比例する中心力。指数が 2 であることが、軌道が閉じることまで決める', 'definition', 'physics', ['degrees-of-freedom']),
+  c('virial-theorem', 'ビリアル定理', '束縛された運動の時間平均で $2 angle.l T angle.r = -angle.l sum bold(F) dot bold(r) angle.r$。解かずに平均だけが分かる', 'theorem', 'physics', ['conserved-quantity-reduces', 'newtonian-gravity']),
   c('conserved-quantity-reduces', '保存量が次元を落とす', '保存する量が一つ見つかるたびに、解くべき問題が一つ小さくなる', 'viewpoint', 'physics', ['degrees-of-freedom']),
   c('central-force-planar', '中心力は平面に落ちる', '角運動量が保存するので軌道が平面に乗り、動径だけの一次元問題になる', 'theorem', 'physics', ['conserved-quantity-reduces']),
   c('inertia-tensor', '慣性テンソル', '剛体の回りにくさ。対称行列なので主軸が取れる', 'definition', 'physics', ['degrees-of-freedom', 'quadratic-form']),

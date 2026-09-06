@@ -38,4 +38,5 @@ export const linearAlgebra: readonly Concept[] = [
   c('vector-space', 'ベクトル空間', '足せてスカラー倍できる集合。基底と次元', 'definition', 'math', ['field']),
   c('linear-map', '線形写像', '和とスカラー倍を保つ写像', 'definition', 'math', ['vector-space']),
   c('quotient-space', '商空間', '部分空間で割る。同値類をベクトル空間にする', 'definition', 'math', ['vector-space']),
+  c('perron-frobenius', 'Perron–Frobenius の定理', '成分が正なら、最大固有値は実で単純、固有ベクトルも正に取れる。負が混ざらないことが結論を強くする', 'theorem', 'math', ['diagonalization'], [], { aka: ['Perron 根'] }),
 ]

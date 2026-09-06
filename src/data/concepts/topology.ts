@@ -11,4 +11,5 @@ export const topology: readonly Concept[] = [
   c('separation-axioms', '分離公理', 'Hausdorff、正則、正規。点をどこまで区別できるか', 'definition', 'math', ['topology-basics']),
   c('second-countable', '第二可算', '可算な基底を持つ。多様体の定義に入る', 'definition', 'math', ['topology-basics']),
   c('connectedness', '連結性', '二つの開集合に分けられない。弧状連結との差', 'definition', 'math', ['topology-basics']),
+  c('simply-connected', '単連結', 'どの閉曲線も一点に縮められる。「穴が無い」を、穴を定義せずに言う', 'definition', 'math', ['homotopy']),
 ]

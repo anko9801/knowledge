@@ -18,7 +18,16 @@ export const analysis: readonly Concept[] = [
   c('inverse-function-theorem', '逆関数定理', '微分が可逆なら局所的に可逆。証明は縮小写像', 'theorem', 'math', ['banach-fixed-point', 'frechet-derivative']),
   c('implicit-function-theorem', '陰関数定理', '逆関数定理の言い換え。部分多様体を作る道具', 'theorem', 'math', ['inverse-function-theorem']),
   c('sard-theorem', 'Sard の定理', '臨界値は測度ゼロ。横断性の議論を支える', 'theorem', 'math', ['smoothness-class', 'measure']),
-  c('distribution-theory', '超関数', '微分できない対象を、試験関数との組で扱う', 'definition', 'math', ['function-space', 'dual-space']),
+  c('distribution-theory', '超関数', '微分できない対象を、試験関数との組で扱う', 'definition', 'math', ['function-space', 'dual-space'], [], { aka: ['Schwartz 超関数', 'generalized function'] }),
+
+  // 作用素論。物理が「エルミート」と書いているものを、定義域まで込みで扱う。
+  // 有限次元のスペクトル定理（`linear-algebra.ts`）とは別の定理である。
+  c('unbounded-operator', '非有界作用素', '定義域まで込みで一つの作用素。定義域を変えると別の作用素になる', 'definition', 'math', ['hilbert-space', 'function-space']),
+  c('hellinger-toeplitz', 'Hellinger--Toeplitz の定理', '全空間で定義された対称作用素は有界。位置も運動量も全空間では定義できない', 'theorem', 'math', ['unbounded-operator']),
+  c('symmetric-vs-selfadjoint', '対称と自己共役は違う', '$A subset A^*$ と $A = A^*$ の差は定義域だけ。物理の「エルミート」は前者しか言っていない', 'theorem', 'math', ['hellinger-toeplitz', 'adjoint']),
+  c('deficiency-indices', '欠損指数', '自己共役拡張が在るのは $dim ker(A^* - i) = dim ker(A^* + i)$ のときだけで、族は $U(d)$ と一対一に対応する', 'theorem', 'math', ['symmetric-vs-selfadjoint'], [], { aka: ['von Neumann の拡張定理', 'Cayley 変換'] }),
+  c('spectral-theorem-unbounded', 'スペクトル定理（非有界版）', '自己共役作用素は射影値測度の積分にただ一通りに書ける。固有基底が取れるとは言っていない', 'theorem', 'math', ['symmetric-vs-selfadjoint', 'measure'], [], { aka: ['射影値測度', 'PVM'] }),
+  c('stone-theorem', 'Stone の定理', '強連続な一径数ユニタリ群と自己共役作用素が一対一に対応する。対称なだけでは時間発展が決まらない', 'theorem', 'math', ['spectral-theorem-unbounded']),
   // 距離空間を要求していたが、過剰だった。o と O が要るのは「小さい」を言う
   // 手段だけで、$RR^n$ なら絶対値で足りる。距離空間の概念そのものは要らない。
   // 実際この辺のせいで、Landau 記号を置く回が距離空間を置く回より前に来る、

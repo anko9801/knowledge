@@ -25,6 +25,16 @@ export const derivations: readonly Derivation[] = [
     note: '量子力学は対称か反対称かを要請として置き、どちらを取るかをスピンから決められない。場の量子論は微視的因果律と正定値性から、その対応を出す',
   },
   {
+    assumed: 'observable',
+    derived: 'symmetric-vs-selfadjoint',
+    note: '「エルミート」は内積を挟んで移せることしか言っていない。自己共役はそれに加えて定義域が一致することを言う。差が出る場所では、同じ式を書いても物理の答えが一つに決まらない',
+  },
+  {
+    assumed: 'unitary-time-evolution',
+    derived: 'stone-theorem',
+    note: '時間発展がユニタリであることは要請として置かれ、生成子が Hamiltonian だとされる。定理の側は、その対応が一対一であること、そして対称なだけの作用素では時間発展が定まらないことを言う',
+  },
+  {
     assumed: 'conserved-quantity-reduces',
     derived: 'noether-theorem',
     note: '力学は保存量を見つかったものとして使い、なぜ在るのかは言わない。解析力学は対称性から作る',

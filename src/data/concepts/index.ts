@@ -38,6 +38,8 @@ import { newtonianMechanics } from './newtonian-mechanics.ts'
 import { generalRelativity } from './general-relativity.ts'
 import { specialRelativity } from './special-relativity.ts'
 import { quantumFieldTheory } from './quantum-field-theory.ts'
+import { thermodynamics } from './thermodynamics.ts'
+import { statisticalMechanics } from './statistical-mechanics.ts'
 import { electromagnetism } from './electromagnetism.ts'
 import { renormalization } from './renormalization.ts'
 import { gaugeTheory } from './gauge-theory.ts'
@@ -76,6 +78,8 @@ export const concepts: readonly Concept[] = [
   ...newtonianMechanics,
   ...generalRelativity,
   ...specialRelativity,
+  ...thermodynamics,
+  ...statisticalMechanics,
   ...electromagnetism,
   ...quantumFieldTheory,
   ...renormalization,

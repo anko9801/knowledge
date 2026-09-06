@@ -37,6 +37,7 @@ export const linearAlgebra: readonly Concept[] = [
   c('quadratic-form', '二次形式', '主軸への変換。二次曲面の分類', 'technique', 'math', ['spectral-theorem']),
   c('vector-space', 'ベクトル空間', '足せてスカラー倍できる集合。基底と次元', 'definition', 'math', ['field']),
   c('linear-map', '線形写像', '和とスカラー倍を保つ写像', 'definition', 'math', ['vector-space']),
+  c('rank-nullity', '階数・退化次数定理', '$dim ker + "rank" = dim V$。潰れた分と残った分の和が、いつも元の次元になる', 'theorem', 'math', ['linear-map', 'quotient-space']),
   c('quotient-space', '商空間', '部分空間で割る。同値類をベクトル空間にする', 'definition', 'math', ['vector-space']),
-  c('perron-frobenius', 'Perron–Frobenius の定理', '成分が正なら、最大固有値は実で単純、固有ベクトルも正に取れる。負が混ざらないことが結論を強くする', 'theorem', 'math', ['diagonalization'], [], { aka: ['Perron 根'] }),
+  c('perron-frobenius', 'Perron–Frobenius の定理', '非負でも、既約なら最大固有値は実で単純、固有ベクトルも正に取れる。ゼロが混ざってよいので、隣接行列にも齢構成にも効く', 'theorem', 'math', ['linear-map'], [], { aka: ['Perron 根', 'Perron の定理'] }),
 ]

@@ -35,6 +35,21 @@ export const derivations: readonly Derivation[] = [
     note: '時間発展がユニタリであることは要請として置かれ、生成子が Hamiltonian だとされる。定理の側は、その対応が一対一であること、そして対称なだけの作用素では時間発展が定まらないことを言う',
   },
   {
+    assumed: 'hamiltonian',
+    derived: 'convex-conjugate',
+    note: '解析力学は Legendre 変換が戻せることを黙って置く。凸解析は $f^(**) = f$ が凸かつ閉のときだけ成り立つと言い、戻せない場合（Hesse が退化する特異ラグランジアン）が拘束系になる',
+  },
+  {
+    assumed: 'effective-potential',
+    derived: 'convex-conjugate',
+    note: '場の理論は有効ポテンシャルを定義として置き、谷が二つある絵を描く。共役は元が凸でなくても必ず凸なので、厳密な有効ポテンシャルに狭義の二山は立たない。二山は近似が壊れた跡である',
+  },
+  {
+    assumed: 'diagonal-lemma',
+    derived: 'cartesian-closed-category',
+    note: '論理は対角化を技法として置く。デカルト閉圏で自己適用を許すと、Cantor・Tarski・停止問題・時間階層が一つの不動点定理の対偶として出る',
+  },
+  {
     assumed: 'conserved-quantity-reduces',
     derived: 'noether-theorem',
     note: '力学は保存量を見つかったものとして使い、なぜ在るのかは言わない。解析力学は対称性から作る',

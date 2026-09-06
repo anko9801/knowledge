@@ -25,6 +25,7 @@ export const algorithms: readonly Concept[] = [
   c('convex-set', '凸集合', '二点を結ぶ線分が中に入る集合', 'definition', 'math', ['vector-space']),
   c('separating-hyperplane', '分離超平面', '交わらない凸集合の間には超平面が入る', 'theorem', 'math', ['convex-set', 'inner-product']),
   c('farkas-lemma', 'Farkas の補題', '解が無いなら、無いことの証明が必ず一つ書ける。二択の形', 'theorem', 'math', ['separating-hyperplane']),
+  c('convex-conjugate', '凸共役', '関数を、値ではなく接線の傾きでラベルし直す。元が凸でなくても共役は必ず凸になる', 'definition', 'math', ['convex-set', 'separating-hyperplane'], [], { aka: ['Legendre 変換', 'Fenchel 共役'] }),
   c('linear-program', '線形計画', '線形な制約の下で線形な目的を最適化する', 'definition', 'cs', ['convex-set', 'linear-map']),
   c('lp-duality', 'LP 双対性', '任意の双対実行可能解が、主問題の下界になる。証明は Farkas', 'theorem', 'cs', ['linear-program', 'farkas-lemma']),
   c('maxflow-mincut', '最大流最小カット', 'LP 双対の特別な場合。カットが流量の証明書になる', 'theorem', 'cs', ['lp-duality', 'connectedness']),

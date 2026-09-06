@@ -12,4 +12,6 @@ export const information: readonly Concept[] = [
   c('source-coding-theorem', '情報源符号化定理', '圧縮の限界はエントロピー', 'theorem', 'cs', ['aep']),
   c('channel-capacity', '通信路容量', '相互情報量の最大値', 'definition', 'cs', ['mutual-information']),
   c('channel-coding-theorem', '通信路符号化定理', '容量以下なら誤り率を任意に小さくできる', 'theorem', 'cs', ['channel-capacity', 'aep']),
+  c('kolmogorov-complexity', 'Kolmogorov 複雑さ', '出力する最短の記述の長さ。計算模型を替えても定数しか変わらない代わりに、計算できない', 'definition', 'cs', ['halting-problem', 'entropy']),
+  c('linear-code', '線形符号', '符号語が部分空間をなす。最小距離が訂正能力を決め、生成行列と検査行列が双対に対応する', 'definition', 'cs', ['channel-coding-theorem', 'linear-map']),
 ]

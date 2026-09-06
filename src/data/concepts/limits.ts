@@ -19,4 +19,9 @@ export const limits: readonly Limit[] = [
     fails: 'spectral-theorem-unbounded',
     note: '有限次元では、自己随伴なら正規直交固有基底が取れる。無限次元では位置にも運動量にも自由 Hamiltonian にも固有ベクトルが無い。射影値測度がその役を引き受け、有限次元の固有基底はその特別な場合になる',
   },
+  {
+    holds: 'spectral-theorem',
+    fails: 'perron-frobenius',
+    note: '自己随伴でなければ固有値が実である保証は無い。ところが非負で既約という別の仮定を置くと、最大固有値だけは実で単純に戻る。対称性が買っていたものを、正値性が買い直している',
+  },
 ]

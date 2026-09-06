@@ -9,6 +9,8 @@
  */
 
 import assert from 'node:assert/strict'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { join } from 'node:path'
 import { test } from 'node:test'
 
 import { concepts, derivations } from '../data/concepts/index.ts'
@@ -90,4 +92,50 @@ test('仮定と定理が同じ概念になっていない', () => {
     derivations.filter((d) => d.assumed === d.derived).map((d) => d.assumed),
     [],
   )
+})
+
+test('記事が被覆している概念は、その連載の名前のファイルに在る', () => {
+  // 1 ファイルを割ったとき、元の区切りをそのまま引き継いだせいで
+  // 電磁気・くりこみ・ゲージ理論・標準模型の 51 概念が
+  // `quantum-field-theory.ts` に紛れていた。並列で広げるために割ったのに、
+  // いちばん割れていないといけない所が割れていなかった。
+  //
+  // どこに置くかは記事のデータが決める。ファイル名は連載の slug と揃える。
+  const walk = (dir: string): string[] =>
+    readdirSync(dir).flatMap((name) => {
+      const path = join(dir, name)
+      return statSync(path).isDirectory() ? walk(path) : path.endsWith('.typ') ? [path] : []
+    })
+
+  const seriesOf = new Map<string, string>()
+  for (const path of walk('src/content/articles')) {
+    const src = readFileSync(path, 'utf8')
+    const series = src.match(/\n\s*series:\s*"([^"]+)"/)?.[1]
+    const head = src.match(/\n\s*provides:\s*\(/)
+    if (!series || !head) continue
+    let i = (head.index ?? 0) + head[0].length
+    let depth = 1
+    while (i < src.length && depth > 0) {
+      if (src[i] === '(') depth += 1
+      else if (src[i] === ')') depth -= 1
+      i += 1
+    }
+    const inner = src.slice((head.index ?? 0) + head[0].length, i - 1)
+    for (const m of inner.matchAll(/"([^"]+)"/g)) if (!seriesOf.has(m[1])) seriesOf.set(m[1], series)
+  }
+
+  const stray: string[] = []
+  for (const file of readdirSync('src/data/concepts')) {
+    if (!file.endsWith('.ts') || ['types.ts', 'index.ts', 'derivations.ts'].includes(file)) continue
+    const slug = file.replace(/\.ts$/, '')
+    const src = readFileSync(join('src/data/concepts', file), 'utf8')
+    for (const m of src.matchAll(/^\s*c\('([a-z0-9-]+)'/gm)) {
+      const home = seriesOf.get(m[1])
+      // その連載のファイルが在るときだけ言う。無ければ、まだ割る番が来ていない。
+      if (home && home !== slug && existsSync(join('src/data/concepts', `${home}.ts`))) {
+        stray.push(`${m[1]} は ${file} に在るが、${home} が被覆している`)
+      }
+    }
+  }
+  assert.deepEqual(stray, [])
 })

@@ -19,4 +19,8 @@ export const measure: readonly Concept[] = [
   c('central-limit-theorem', '中心極限定理', '和の分布が正規分布に近づく', 'theorem', 'math', ['characteristic-function', 'law-of-large-numbers']),
   c('conditional-expectation', '条件付き期待値', '部分 σ 加法族への射影', 'definition', 'math', ['expectation', 'sigma-algebra']),
   c('martingale', 'マルチンゲール', '条件付き期待値が現在値に等しい過程', 'definition', 'math', ['conditional-expectation']),
+  c('distribution', '分布', '確率変数が誘導する測度。正規、Poisson、指数', 'definition', 'math', ['random-variable']),
+  c('moments', 'モーメント', '平均、分散、高次の積率。分布を特徴づける', 'definition', 'math', ['expectation', 'distribution']),
+  c('concentration-inequality', '集中不等式', 'Markov、Chebyshev、Hoeffding。ずれの確率を抑える', 'theorem', 'math', ['moments']),
+  c('lp-space', '$L^p$ 空間', '可測関数の空間。完備になる（Riesz--Fischer）', 'definition', 'math', ['function-space', 'lebesgue-integral']),
 ]

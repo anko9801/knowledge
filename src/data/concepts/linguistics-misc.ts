@@ -13,5 +13,4 @@ export const linguisticsMisc: readonly Concept[] = [
 
   // Brouwer は経済学のために置いていたが、あちらを落としても残す。
   // ホモロジーの到達点として正当なので、下流 0 の葉のままでよい。
-  c('brouwer-fixed-point', 'Brouwer の不動点定理', '球体の連続自己写像は不動点を持つ', 'theorem', 'math', ['topology-basics', 'homotopy']),
 ]

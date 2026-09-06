@@ -13,12 +13,11 @@
  * 場当たりに決めないこと。`npm run duplicates` が候補を挙げる。
  */
 import type { Concept, Goal } from './types.ts'
-import { foundations } from './foundations.ts'
+import { topology } from './topology.ts'
 import { linearAlgebra } from './linear-algebra.ts'
 import { vectorAnalysis } from './vector-analysis.ts'
 import { differentialForms } from './differential-forms.ts'
 import { riemannianGeometry } from './riemannian-geometry.ts'
-import { mathAhead } from './math-ahead.ts'
 import { logic } from './logic.ts'
 import { setTheory } from './set-theory.ts'
 import { mechanics } from './mechanics.ts'
@@ -38,6 +37,10 @@ import { newtonianMechanics } from './newtonian-mechanics.ts'
 import { generalRelativity } from './general-relativity.ts'
 import { specialRelativity } from './special-relativity.ts'
 import { quantumFieldTheory } from './quantum-field-theory.ts'
+import { electromagnetism } from './electromagnetism.ts'
+import { renormalization } from './renormalization.ts'
+import { gaugeTheory } from './gauge-theory.ts'
+import { standardModel } from './standard-model.ts'
 import { analysis } from './analysis.ts'
 import { mathMisc } from './math-misc.ts'
 import { groups } from './groups.ts'
@@ -48,12 +51,11 @@ export type { Concept, ConceptKind, Derivation, Goal } from './types.ts'
 export { derivations } from './derivations.ts'
 
 export const concepts: readonly Concept[] = [
-  ...foundations,
+  ...topology,
   ...linearAlgebra,
   ...vectorAnalysis,
   ...differentialForms,
   ...riemannianGeometry,
-  ...mathAhead,
   ...logic,
   ...setTheory,
   ...mechanics,
@@ -72,7 +74,11 @@ export const concepts: readonly Concept[] = [
   ...newtonianMechanics,
   ...generalRelativity,
   ...specialRelativity,
+  ...electromagnetism,
   ...quantumFieldTheory,
+  ...renormalization,
+  ...gaugeTheory,
+  ...standardModel,
   ...analysis,
   ...mathMisc,
   ...groups,

@@ -31,4 +31,6 @@ export const riemannianGeometry: readonly Concept[] = [
   c('cartan-hadamard', 'Cartan--Hadamard の定理', '$K <= 0$ なら普遍被覆は $RR^n$', 'theorem', 'math', ['sectional-curvature', 'homotopy']),
   c('divergence-theorem-riemannian', '発散定理（Riemann 版）', '√g 込みの部分積分', 'theorem', 'math', ['volume-element', 'stokes-theorem']),
   c('gauss-bonnet', 'Gauss--Bonnet の定理', '曲率の総和が位相不変量になる', 'theorem', 'math', ['sectional-curvature', 'integration-of-forms', 'euler-characteristic']),
+  c('euler-characteristic', 'Euler 標数', '$chi = sum (-1)^k b_k$', 'definition', 'math', ['betti-numbers']),
+  c('ricci-flow', 'Ricci flow', '$partial_t g = -2 upright("Ric")$ で計量を均す', 'technique', 'math', ['ricci-tensor', 'bonnet-myers']),
 ]

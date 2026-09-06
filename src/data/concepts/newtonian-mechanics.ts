@@ -15,4 +15,6 @@ export const newtonianMechanics: readonly Concept[] = [
   c('inertia-tensor', '慣性テンソル', '剛体の回りにくさ。対称行列なので主軸が取れる', 'definition', 'physics', ['degrees-of-freedom', 'quadratic-form']),
   c('coupled-oscillation', '連成振動は固有値問題', '基準振動に分ければ、独立な単振動の重ね合わせになる', 'technique', 'physics', ['spectral-theorem', 'degrees-of-freedom']),
   c('three-body-unsolvable', '落ちきらない例', '三体問題は保存量が足りない。解けないことのほうが普通である', 'viewpoint', 'physics', ['central-force-planar']),
+  c('harmonic-universality', '極小のまわりは二次になる', '谷の底で最初に残る項が必ず二次。Hooke の法則は材料の性質ではなく Taylor 展開である', 'theorem', 'physics', ['degrees-of-freedom']),
+  c('amplitude-independence', '周期が振れ幅に依らない', '式が線形なので解を定数倍しても同じ時刻に戻る。指数が 2 のときだけ起きる', 'theorem', 'physics', ['harmonic-universality']),
 ]

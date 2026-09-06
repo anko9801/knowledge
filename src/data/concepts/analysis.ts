@@ -13,7 +13,6 @@ export const analysis: readonly Concept[] = [
   c('banach-space', 'Banach 空間', '完備なノルム空間', 'definition', 'math', ['completeness', 'vector-space']),
   c('banach-fixed-point', '縮小写像の原理', '完備なら不動点が一意に存在する', 'theorem', 'math', ['banach-space']),
   c('function-space', '関数空間', '関数の集合をベクトル空間として扱う', 'definition', 'math', ['banach-space', 'uniform-convergence']),
-  c('lp-space', '$L^p$ 空間', '可測関数の空間。完備になる（Riesz--Fischer）', 'definition', 'math', ['function-space', 'lebesgue-integral']),
   c('frechet-derivative', 'Fréchet 微分', '無限次元での最良の線形近似', 'definition', 'math', ['banach-space', 'multivariable-calculus']),
   c('smoothness-class', '滑らかさの階層', '$C^0$、$C^k$、$C^infinity$、解析的。どこまで微分できるか', 'definition', 'math', ['multivariable-calculus']),
   c('inverse-function-theorem', '逆関数定理', '微分が可逆なら局所的に可逆。証明は縮小写像', 'theorem', 'math', ['banach-fixed-point', 'frechet-derivative']),
@@ -29,4 +28,6 @@ export const analysis: readonly Concept[] = [
   c('analytic-function', '解析関数', '各点で Taylor 級数が収束して一致する。$C^omega$', 'definition', 'math', ['power-series', 'smoothness-class']),
   c('identity-theorem', '一致の定理', '解析関数は一点の近傍で決まれば全体が決まる', 'theorem', 'math', ['analytic-function']),
   c('bump-function', '山形関数', '$C^infinity$ でだけ作れる。$1$ の分割の材料', 'technique', 'math', ['smoothness-class', 'identity-theorem']),
+  c('multivariable-calculus', '多変数の微積分', '偏微分、連鎖律、重積分', 'technique', 'math', ['landau-notation']),
+  c('ode-existence', '常微分方程式の解の存在と一意性', '初期値を与えれば解が一意に決まる。証明は縮小写像', 'theorem', 'math', ['multivariable-calculus', 'banach-fixed-point']),
 ]

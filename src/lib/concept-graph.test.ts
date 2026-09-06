@@ -139,3 +139,26 @@ test('記事が被覆している概念は、その連載の名前のファイ�
   }
   assert.deepEqual(stray, [])
 })
+
+test('概念の文字列に Typst の記法が混ざっていない', () => {
+  // `--` は Typst では en ダッシュになる。**概念の名前は Typst を通らない**
+  // （`concept-math.ts` は `$...$` を含む文字列だけ組み、残りは素で出す）ので、
+  // そのまま二つのハイフンとして表示されていた。19 箇所あった。
+  //
+  // CLAUDE.md の「記法を混ぜない」の三度目。`.typ` と `.ts` を行き来すると漏れる。
+  // 数式の中（`$...$`）は Typst が組むので、そちらは見ない。
+  const outsideMath = (text: string): string => text.replace(/\$[^$]*\$/g, '')
+  const found: string[] = []
+  for (const concept of concepts) {
+    for (const [what, text] of [
+      ['label', concept.label],
+      ['gist', concept.gist],
+      ...(concept.aka ?? []).map((a) => ['aka', a] as const),
+    ] as const) {
+      const bare = outsideMath(text)
+      if (bare.includes('--')) found.push(`${concept.id}.${what}: ${text}`)
+      if (/#[a-z]+\[/.test(bare)) found.push(`${concept.id}.${what}: Typst の関数呼び出し`)
+    }
+  }
+  assert.deepEqual(found, [])
+})

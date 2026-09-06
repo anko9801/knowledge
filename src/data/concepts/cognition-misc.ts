@@ -20,7 +20,7 @@ export const cognitionMisc: readonly Concept[] = [
   // として使うだけで、誤りをモデル化していない。誤りの分類は Reason と
   // Rasmussen と Norman、検査器の取捨は Rice の定理の側にある。分けて置く。
   c('working-memory-limit', '作業記憶の限界', '同時に保持できるチャンクは 4±1。Miller の 7±2 から Cowan へ', 'viewpoint', 'cognition'),
-  c('chunking', 'チャンク化', '熟達は記憶容量ではなく、まとまりの認識で決まる。Chase--Simon のチェス実験', 'viewpoint', 'cognition', ['working-memory-limit']),
+  c('chunking', 'チャンク化', '熟達は記憶容量ではなく、まとまりの認識で決まる。Chase–Simon のチェス実験', 'viewpoint', 'cognition', ['working-memory-limit']),
   c('nesting-depth', '分岐は条件の倍を数えさせる', '深さ d では、成り立つ条件 d 個と開いている区画 d 個を保持する', 'theorem', 'cs', ['working-memory-limit']),
   c('early-return', '先に閉じて戻る', '区画を開かずに条件だけを足す。保持する個数が半分になる代わりに、命題が残り全体へ効き続ける', 'viewpoint', 'cs', ['nesting-depth']),
   c('cognitive-load', '認知負荷', '課題本来の負荷と、表現のせいで増えた負荷を分ける。Sweller', 'viewpoint', 'cognition', ['working-memory-limit']),

@@ -17,5 +17,5 @@ export const categories: readonly Concept[] = [
   c('functor', '関手', '圏から圏への写像。恒等射と合成を保つ', 'definition', 'math', ['category']),
   c('adjunction', '随伴', 'Hom(FA, B) ≅ Hom(A, GB)。自由と忘却の対', 'definition', 'math', ['functor']),
   c('cartesian-closed-category', 'デカルト閉圏', '終対象・積・指数対象を持つ。カリー化は積と冪の随伴', 'definition', 'math', ['adjunction']),
-  c('curry-howard-lambek', 'Curry--Howard--Lambek 対応', '型付き λ 計算＝直観主義論理＝デカルト閉圏。三つは同じもの', 'theorem', 'cs', ['cartesian-closed-category', 'curry-howard']),
+  c('curry-howard-lambek', 'Curry–Howard–Lambek 対応', '型付き λ 計算＝直観主義論理＝デカルト閉圏。三つは同じもの', 'theorem', 'cs', ['cartesian-closed-category', 'curry-howard']),
 ]

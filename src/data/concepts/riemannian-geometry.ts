@@ -27,10 +27,10 @@ export const riemannianGeometry: readonly Concept[] = [
   c('weyl-tensor', 'Weyl テンソル', '残りの成分。n ≤ 3 では消える', 'definition', 'math', ['ricci-tensor']),
   c('bianchi-identity', 'Bianchi 恒等式', '$nabla^mu G_(mu nu) = 0$ が出る', 'theorem', 'math', ['riemann-curvature', 'covariant-derivative']),
   c('einstein-tensor', 'Einstein テンソル', '発散が恒等的に消える組み合わせ。係数は選べない', 'definition', 'math', ['bianchi-identity', 'scalar-curvature']),
-  c('bonnet-myers', 'Bonnet--Myers の定理', 'Ricci の下界が直径を抑える。局所が大域を縛る', 'theorem', 'math', ['ricci-tensor', 'geodesic']),
-  c('cartan-hadamard', 'Cartan--Hadamard の定理', '$K <= 0$ なら普遍被覆は $RR^n$', 'theorem', 'math', ['sectional-curvature', 'homotopy']),
+  c('bonnet-myers', 'Bonnet–Myers の定理', 'Ricci の下界が直径を抑える。局所が大域を縛る', 'theorem', 'math', ['ricci-tensor', 'geodesic']),
+  c('cartan-hadamard', 'Cartan–Hadamard の定理', '$K <= 0$ なら普遍被覆は $RR^n$', 'theorem', 'math', ['sectional-curvature', 'homotopy']),
   c('divergence-theorem-riemannian', '発散定理（Riemann 版）', '√g 込みの部分積分', 'theorem', 'math', ['volume-element', 'stokes-theorem']),
-  c('gauss-bonnet', 'Gauss--Bonnet の定理', '曲率の総和が位相不変量になる', 'theorem', 'math', ['sectional-curvature', 'integration-of-forms', 'euler-characteristic']),
+  c('gauss-bonnet', 'Gauss–Bonnet の定理', '曲率の総和が位相不変量になる', 'theorem', 'math', ['sectional-curvature', 'integration-of-forms', 'euler-characteristic']),
   c('euler-characteristic', 'Euler 標数', '$chi = sum (-1)^k b_k$', 'definition', 'math', ['betti-numbers']),
   c('ricci-flow', 'Ricci flow', '$partial_t g = -2 upright("Ric")$ で計量を均す', 'technique', 'math', ['ricci-tensor', 'bonnet-myers']),
 ]

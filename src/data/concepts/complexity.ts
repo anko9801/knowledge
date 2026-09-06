@@ -36,7 +36,7 @@ export const complexity: readonly Concept[] = [
   c('complexity-class', '計算量クラス', '資源で問題を分類する。P、NP、PSPACE', 'definition', 'cs', ['turing-machine']),
   c('polynomial-reduction', '多項式時間帰着', '$A <=_p B$。$B$ が解ければ $A$ も解ける', 'definition', 'cs', ['complexity-class']),
   c('np-completeness', 'NP 完全性', 'NP の中で最も難しい問題', 'definition', 'cs', ['polynomial-reduction']),
-  c('cook-levin', 'Cook--Levin の定理', 'SAT は NP 完全。還元の連鎖の出発点', 'theorem', 'cs', ['np-completeness']),
+  c('cook-levin', 'Cook–Levin の定理', 'SAT は NP 完全。還元の連鎖の出発点', 'theorem', 'cs', ['np-completeness']),
   c('karp-reductions', 'Karp の 21 問題', 'SAT からの還元で NP 完全性が伝播する', 'theorem', 'cs', ['cook-levin']),
   c('time-hierarchy', '時間階層定理', '時間を増やせば解ける問題が増える。対角化', 'theorem', 'cs', ['complexity-class', 'diagonal-lemma']),
   c('space-complexity', '空間計算量', 'PSPACE、Savitch の定理', 'definition', 'cs', ['complexity-class']),

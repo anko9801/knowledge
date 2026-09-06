@@ -22,5 +22,5 @@ export const measure: readonly Concept[] = [
   c('distribution', '分布', '確率変数が誘導する測度。正規、Poisson、指数', 'definition', 'math', ['random-variable']),
   c('moments', 'モーメント', '平均、分散、高次の積率。分布を特徴づける', 'definition', 'math', ['expectation', 'distribution']),
   c('concentration-inequality', '集中不等式', 'Markov、Chebyshev、Hoeffding。ずれの確率を抑える', 'theorem', 'math', ['moments']),
-  c('lp-space', '$L^p$ 空間', '可測関数の空間。完備になる（Riesz--Fischer）', 'definition', 'math', ['function-space', 'lebesgue-integral']),
+  c('lp-space', '$L^p$ 空間', '可測関数の空間。完備になる（Riesz–Fischer）', 'definition', 'math', ['function-space', 'lebesgue-integral']),
 ]

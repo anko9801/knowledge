@@ -23,7 +23,7 @@ export const analysis: readonly Concept[] = [
   // 作用素論。物理が「エルミート」と書いているものを、定義域まで込みで扱う。
   // 有限次元のスペクトル定理（`linear-algebra.ts`）とは別の定理である。
   c('unbounded-operator', '非有界作用素', '定義域まで込みで一つの作用素。定義域を変えると別の作用素になる', 'definition', 'math', ['hilbert-space', 'function-space']),
-  c('hellinger-toeplitz', 'Hellinger--Toeplitz の定理', '全空間で定義された対称作用素は有界。位置も運動量も全空間では定義できない', 'theorem', 'math', ['unbounded-operator']),
+  c('hellinger-toeplitz', 'Hellinger–Toeplitz の定理', '全空間で定義された対称作用素は有界。位置も運動量も全空間では定義できない', 'theorem', 'math', ['unbounded-operator']),
   c('symmetric-vs-selfadjoint', '対称と自己共役は違う', '$A subset A^*$ と $A = A^*$ の差は定義域だけ。物理の「エルミート」は前者しか言っていない', 'theorem', 'math', ['hellinger-toeplitz', 'adjoint']),
   c('deficiency-indices', '欠損指数', '自己共役拡張が在るのは $dim ker(A^* - i) = dim ker(A^* + i)$ のときだけで、族は $U(d)$ と一対一に対応する', 'theorem', 'math', ['symmetric-vs-selfadjoint'], [], { aka: ['von Neumann の拡張定理', 'Cayley 変換'] }),
   c('spectral-theorem-unbounded', 'スペクトル定理（非有界版）', '自己共役作用素は射影値測度の積分にただ一通りに書ける。固有基底が取れるとは言っていない', 'theorem', 'math', ['symmetric-vs-selfadjoint', 'measure'], [], { aka: ['射影値測度', 'PVM'] }),

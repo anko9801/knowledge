@@ -13,7 +13,7 @@ export const standardModel: readonly Concept[] = [
   c('confinement-not-derived', '閉じ込めは証明されていない', '結合が大きいことと単独で取り出せないことは別の主張。格子では確かめられているが証明ではない', 'viewpoint', 'physics', ['asymptotic-freedom', 'gribov-ambiguity']),
   c('wilson-loop-area-law', '面積則', 'Wilson ループが面積に比例して落ちると、引き離すのに線形のエネルギーが要る', 'theorem', 'physics', ['confinement-not-derived', 'non-abelian-gauge']),
   c('string-breaking', '紐が切れる', '本物のクォークがいると、紐に溜まったエネルギーで対ができて切れる。面積則が使えなくなる', 'theorem', 'physics', ['wilson-loop-area-law']),
-  c('kugo-ojima-criterion', '九後--小嶋の判定条件', '色を持つ状態を四つ組に入れる条件。負ノルムを閉じ込めたのと同じ仕組みを色に使う', 'theorem', 'physics', ['quartet-mechanism', 'string-breaking']),
+  c('kugo-ojima-criterion', '九後–小嶋の判定条件', '色を持つ状態を四つ組に入れる条件。負ノルムを閉じ込めたのと同じ仕組みを色に使う', 'theorem', 'physics', ['quartet-mechanism', 'string-breaking']),
   c('chiral-anomaly', 'カイラルアノマリー', '大域的な対称性が量子で破れる。破れているおかげで中性パイ中間子の崩壊率が合う', 'theorem', 'physics', ['regulator-breaks-something', 'chiral-gauge-theory']),
   c('gauge-anomaly-cancellation', 'ゲージアノマリーの相殺', '各点で選べる対称性が破れると確率が負になる。全部足してゼロになる粒子の並べ方しか許されない', 'theorem', 'physics', ['chiral-anomaly', 'quartet-mechanism']),
   c('charge-quantization-from-anomaly', '電荷の量子化', '重力を混ぜたアノマリーまで入れると、一世代の電荷の和がゼロという条件が出る。色の数は奇数までしか決まらない', 'theorem', 'physics', ['gauge-anomaly-cancellation']),

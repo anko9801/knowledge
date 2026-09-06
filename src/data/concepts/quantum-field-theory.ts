@@ -30,7 +30,7 @@ export const quantumFieldTheory: readonly Concept[] = [
   c('asymptotic-condition', '漸近条件', '遠い過去と未来では、場の行列要素が自由場のそれに近づく。演算子としては近づかない', 'definition', 'physics', ['fields-not-observable']),
   c('s-matrix', 'S 行列', '遠い過去に入れた状態と遠い未来に出た状態の対応。断面積も崩壊率もここから出る', 'definition', 'physics', ['asymptotic-condition']),
   c('field-redefinition-freedom', '場は一意に決まらない', '一粒子状態を拾う場ならどれでも同じ S 行列を与える。場は局所性を書き込むための座標である', 'theorem', 'physics', ['s-matrix', 'microcausality']),
-  c('spectral-representation', 'スペクトル表示', '完全系を挟むだけで、2 点関数が自由場のものの重ね合わせに決まる。摂動論も相互作用の中身も使わない', 'theorem', 'physics', ['s-matrix', 'poincare-group'], [], { aka: ['Källén--Lehmann 表示'] }),
+  c('spectral-representation', 'スペクトル表示', '完全系を挟むだけで、2 点関数が自由場のものの重ね合わせに決まる。摂動論も相互作用の中身も使わない', 'theorem', 'physics', ['s-matrix', 'poincare-group'], [], { aka: ['Källén–Lehmann 表示'] }),
   c('spectral-density-positive', '重みは正である', '絶対値の二乗の和なので負にならない。同時刻交換関係を足すと総量が 1 に固定される', 'theorem', 'physics', ['spectral-representation']),
   c('field-strength-renormalization', '場が一粒子を拾う割合', '重みのうち一粒子の分。1 を超えられず、等号は自由場のときだけ。0 になると漸近条件が使えない', 'definition', 'physics', ['spectral-density-positive', 'asymptotic-condition'], [], { aka: ['波動関数くりこみ', 'Z 因子'] }),
   c('mass-is-a-pole', '質量は極の位置', '式に書いた文字ではなく、伝播関数の極が立つところ。切断の始まりからは崩壊が読める', 'viewpoint', 'physics', ['spectral-representation']),
@@ -43,7 +43,7 @@ export const quantumFieldTheory: readonly Concept[] = [
   c('feynman-diagram', 'Feynman 図', '対の作り方に付けた名前。図と展開の項が一対一に対応する。規則は覚えるものではなく読み取るもの', 'technique', 'physics', ['wick-theorem']),
   c('connected-diagrams-only', '繋がった図だけが残る', '真空泡が分母で割り切れる。クラスター分解が割り算として現れたもの', 'theorem', 'physics', ['feynman-diagram', 'cluster-decomposition']),
   c('vacuum-overlap-vanishes', '真空の重なりが消える', '箱ごとの重なりを掛けると体積とともにゼロへ行く。自由な真空と相互作用のある真空は別の状態', 'theorem', 'physics', ['cluster-decomposition']),
-  c('inequivalent-representations', 'ユニタリ非同値', '無限自由度だと正準交換関係の表現が一つに決まらない。Stone--von Neumann が効かなくなる', 'definition', 'physics', ['vacuum-overlap-vanishes', 'hilbert-space']),
+  c('inequivalent-representations', 'ユニタリ非同値', '無限自由度だと正準交換関係の表現が一つに決まらない。Stone–von Neumann が効かなくなる', 'definition', 'physics', ['vacuum-overlap-vanishes', 'hilbert-space']),
   c('haag-theorem', 'Haag の定理', '相互作用描像が存在すると、相互作用が無いことが出る。短距離ではなく体積が無限であることから来る', 'theorem', 'physics', ['inequivalent-representations', 'wick-theorem']),
   c('lsz-reduction', 'LSZ 簡約公式', '極の留数が S 行列の要素になる。問題が「散乱を計算する」から「相関関数を計算する」に置き換わる', 'theorem', 'physics', ['pole-from-one-particle', 'field-strength-renormalization']),
 ]

@@ -13,7 +13,7 @@ export const logic: readonly Concept[] = [
   c('completeness-theorem', '完全性定理', '真であることは証明できる。Henkin の構成', 'theorem', 'math', ['soundness']),
   c('compactness-theorem', 'コンパクト性定理', '有限部分が充足可能なら全体も充足可能', 'theorem', 'math', ['completeness-theorem']),
   c('nonstandard-model', '超準モデル', 'コンパクト性が生む、意図しないモデル', 'definition', 'math', ['compactness-theorem']),
-  c('lowenheim-skolem', 'Löwenheim--Skolem の定理', '無限モデルがあれば任意濃度のモデルがある', 'theorem', 'math', ['compactness-theorem', 'cardinal']),
+  c('lowenheim-skolem', 'Löwenheim–Skolem の定理', '無限モデルがあれば任意濃度のモデルがある', 'theorem', 'math', ['compactness-theorem', 'cardinal']),
   c('elementary-substructure', '初等部分構造', '同じ論理式を満たす部分構造', 'definition', 'math', ['satisfaction']),
   c('computability', '計算可能性', '手続きで答えが出るとは何か', 'definition', 'math', ['formalization']),
   c('halting-problem', '停止問題', '決定できない問題が存在する', 'theorem', 'math', ['computability']),

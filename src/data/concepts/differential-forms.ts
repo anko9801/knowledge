@@ -31,7 +31,7 @@ export const differentialForms: readonly Concept[] = [
   c('stokes-theorem', '一般化された Stokes の定理', '$integral_Omega dif omega = integral_(partial Omega) omega$。多様体の上で', 'theorem', 'math', ['stokes-in-rn', 'integration-of-forms', 'boundary']),
   c('poincare-lemma', 'Poincaré の補題', '可縮なら閉形式は完全。局所では必ず解ける', 'theorem', 'math', ['closed-vs-exact', 'homotopy']),
   c('de-rham-cohomology', 'de Rham コホモロジー', '閉と完全の差。空間の穴を数える', 'definition', 'math', ['closed-vs-exact', 'poincare-lemma', 'stokes-theorem']),
-  c('mayer-vietoris', 'Mayer--Vietoris', '貼り合わせでコホモロジーを計算する', 'technique', 'math', ['de-rham-cohomology']),
+  c('mayer-vietoris', 'Mayer–Vietoris', '貼り合わせでコホモロジーを計算する', 'technique', 'math', ['de-rham-cohomology']),
   c('de-rham-theorem', 'de Rham の定理', '解析の $H^*_"dR"$ と位相の $H^*$ が一致する', 'theorem', 'math', ['de-rham-cohomology', 'singular-homology']),
   c('singular-homology', '特異ホモロジー', '三角形を貼って穴を数える。位相の側', 'definition', 'math', ['topology-basics', 'homotopy']),
   c('betti-numbers', 'Betti 数', '$b_k = dim H^k$。穴の個数', 'definition', 'math', ['de-rham-cohomology']),

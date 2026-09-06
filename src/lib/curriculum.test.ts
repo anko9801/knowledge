@@ -3,7 +3,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { test } from 'node:test'
 
-import { concepts } from '../data/concepts.ts'
+import { concepts } from '../data/concepts/index.ts'
 import {
   backlog,
   closure,

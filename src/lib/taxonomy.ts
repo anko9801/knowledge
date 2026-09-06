@@ -14,6 +14,39 @@ export type Field = {
   readonly blurb: string
 }
 
+/**
+ * 一回ぶんの設計。**概念グラフには無いものだけを持つ。**
+ *
+ * グラフが持つのは「何があるか」と「何が何に依るか」だけで、
+ * 記事を決めるものが入っていない。2026-09-02 に 6 本を書き直したとき、
+ * 実際に効いたのは概念 id ではなく下の四つだった。
+ */
+export type Step = {
+  /** 何回目か。連載の中で一意。 */
+  readonly order: number
+  /**
+   * **この回で新しく足す仮定。** 連載の軸そのもの。
+   * 前の回から何も足さない回は空でよい（前の仮定から別の帰結を引く回）。
+   */
+  readonly assumes?: string
+  /** **その仮定から決まること。** 回数はこれを数えてから決める。 */
+  readonly yields: string
+  /**
+   * **どこで止まるか。** 毎回の結びに置く、自分の主張が効かない場所。
+   * `writing.md` の「まとめで終わらない」が要求しているもの。
+   */
+  readonly stops?: string
+  /**
+   * **正す誤解。** 読者が持ってくる通説。効果量 g = 0.41（`decisions.md`）。
+   * 会話の相手にしか通じない前提はここに書かない（`CLAUDE.md`）。
+   */
+  readonly corrects?: string
+  /** **前の回から受ける宿題。** `<field>/<series>/<order>` で指す。 */
+  readonly receives?: readonly string[]
+  /** **後の回へ渡す宿題。** 同上。 */
+  readonly hands?: readonly string[]
+}
+
 export type Series = {
   /** URL の第 2 階層。`/math/set-theory/...` */
   readonly slug: string
@@ -25,6 +58,17 @@ export type Series = {
    * 道を 1 本に絞るのは、並んだ選択肢の前で立ち止まらせないため。1 つだけ立てる。
    */
   readonly start?: boolean
+  /**
+   * **回ごとの設計。** 埋まっていない連載は書き始められない。
+   *
+   * blurb だけでは足りないことが分かっている。解析力学 56 字、量子力学 90 字で、
+   * 15 回ぶんの設計は入らない。実際に書けた 4 連載は `docs/map.md` に
+   * 「足す仮定 → 決まること」の表を持っていた。**あれをここへ移す。**
+   *
+   * 散文が要るもの（訂正の具体、確かめた出典、宿題の理由）は
+   * `docs/series/<slug>.md` に置く。ここは機械が数えられるものだけ。
+   */
+  readonly steps?: readonly Step[]
 }
 
 /**

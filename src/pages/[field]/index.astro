@@ -4,7 +4,7 @@ import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import ConceptLabel from '../../components/ConceptLabel.astro'
-import { concepts } from '../../data/concepts.ts'
+import { concepts } from '../../data/concepts/index.ts'
 import { fields, seriesOf, type Field, type Series } from '../../lib/taxonomy.ts'
 
 export const getStaticPaths: GetStaticPaths = async () =>

@@ -9,7 +9,7 @@ import { mapWithLimit } from './pool.ts'
 import { collectHeadings } from './headings.ts'
 import { attachPeeks } from './peek.ts'
 import { attachTerms, linkTerms } from './term.ts'
-import { concepts } from '../data/concepts.ts'
+import { concepts } from '../data/concepts/index.ts'
 import { highlightCode } from './shiki.ts'
 import {
   extractStyles,

@@ -4,7 +4,7 @@ import type { GetStaticPaths } from 'astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import ConceptLabel from '../../components/ConceptLabel.astro'
-import { concepts } from '../../data/concepts.ts'
+import { concepts } from '../../data/concepts/index.ts'
 import { articleHref, siteBase } from '../../lib/article-url.ts'
 import { conceptPages, type ConceptPage, type Neighbor } from '../../lib/concept-page.ts'
 import { plainMath } from '../../lib/concept-typst.ts'

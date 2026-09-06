@@ -85,7 +85,7 @@ test('本文のサイト内リンクが、全部実在する回を指してい�
     ),
     fields: new Set(articles.map((path) => path.split('/')[3] as string)),
     concepts: new Set(
-      [...readFileSync('src/data/concepts.ts', 'utf8').matchAll(/\bc\('([^']+)'/g)].map(
+      [...readFileSync('src/data/concepts/index.ts', 'utf8').matchAll(/\bc\('([^']+)'/g)].map(
         (m) => m[1] as string,
       ),
     ),

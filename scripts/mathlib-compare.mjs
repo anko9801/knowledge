@@ -15,7 +15,7 @@
 
 import { readFileSync } from 'node:fs'
 
-import { concepts } from '../src/data/concepts.ts'
+import { concepts } from '../src/data/concepts/index.ts'
 
 const files = process.argv.slice(2)
 if (files.length === 0) {

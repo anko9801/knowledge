@@ -19,7 +19,7 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
-import { concepts, goals } from '../src/data/concepts.ts'
+import { concepts, goals } from '../src/data/concepts/index.ts'
 import {
   backlog,
   danglingConcepts,

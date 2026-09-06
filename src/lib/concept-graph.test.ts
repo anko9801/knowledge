@@ -13,7 +13,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { test } from 'node:test'
 
-import { concepts, derivations } from '../data/concepts/index.ts'
+import { concepts, derivations, limits } from '../data/concepts/index.ts'
 
 const norm = (s: string): string => s.toLowerCase().replace(/[（）()「」『』、。,.\-–—・\s]/g, '')
 
@@ -161,4 +161,27 @@ test('概念の文字列に Typst の記法が混ざっていない', () => {
     }
   }
   assert.deepEqual(found, [])
+})
+
+test('成り立たなくなる場所の両端が、どちらも概念として在る', () => {
+  const ids = new Set(concepts.map((concept) => concept.id))
+  assert.deepEqual(
+    limits.flatMap((l) => [l.holds, l.fails].filter((id) => !ids.has(id))),
+    [],
+  )
+})
+
+test('成り立たなくなる関係を、依存の辺にも仮定→定理にも書いていない', () => {
+  // 三つは別の関係である。二重に書くと、どれが効いているのか読めなくなる。
+  const byId = new Map(concepts.map((concept) => [concept.id, concept]))
+  const wrong = limits.flatMap((l) => {
+    const bad: string[] = []
+    if (byId.get(l.holds)?.requires.includes(l.fails) === true)
+      bad.push(`${l.holds} requires ${l.fails}`)
+    if (derivations.some((d) => d.assumed === l.holds && d.derived === l.fails))
+      bad.push(`${l.holds} -> ${l.fails} が derivations にもある`)
+    if (l.holds === l.fails) bad.push(`${l.holds} が自分自身`)
+    return bad
+  })
+  assert.deepEqual(wrong, [])
 })

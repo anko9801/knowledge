@@ -11,6 +11,7 @@
  *   node scripts/curriculum.mjs next [n]             次に書くべき記事
  *   node scripts/curriculum.mjs gaps                 記事の無い概念だけ
  *   node scripts/curriculum.mjs assumptions          仮定と、それを定理にする場所
+ *   node scripts/curriculum.mjs limits               定理が成り立たなくなる場所
  *   node scripts/curriculum.mjs order                前提が後ろにある箇所
  *   node scripts/curriculum.mjs dump                 JSON
  *
@@ -20,7 +21,7 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
-import { concepts, derivations, goals } from '../src/data/concepts/index.ts'
+import { concepts, derivations, goals, limits } from '../src/data/concepts/index.ts'
 import {
   backlog,
   danglingConcepts,
@@ -103,6 +104,7 @@ if (command === 'stats') {
   console.log(`概念           ${concepts.length}`)
   console.log(`依存の辺       ${edges}`)
   console.log(`仮定→定理      ${derivations.length}`)
+  console.log(`成り立たない   ${limits.length}`)
   console.log(`記事           ${articles.length} 本`)
   console.log(`被覆           ${inGraph} / ${concepts.length} 概念 (${Math.round((inGraph / concepts.length) * 100)}%)`)
   console.log(`未執筆         ${concepts.length - inGraph}`)
@@ -154,6 +156,18 @@ if (command === 'stats') {
     console.log(`     ${d.note}`)
   }
   console.log(`\n${derivations.length} 件`)
+} else if (command === 'limits') {
+  // 前の連載で定理だったものが、次の連載では偽になる場所。読者がいちばん躓く。
+  const byId = new Map(concepts.map((c) => [c.id, c]))
+  const covers = new Map()
+  for (const a of articles) for (const id of a.provides) if (!covers.has(id)) covers.set(id, a)
+  const where = (id) => (covers.get(id) ? `/${covers.get(id).id}` : '未執筆')
+  for (const l of limits) {
+    console.log(`${byId.get(l.holds)?.label ?? l.holds}  ${where(l.holds)}`)
+    console.log(`  ✗ ${byId.get(l.fails)?.label ?? l.fails}  ${where(l.fails)}`)
+    console.log(`     ${l.note}`)
+  }
+  console.log(`\n${limits.length} 件`)
 } else if (command === 'gaps') {
   for (const item of backlog(concepts, articles)) {
     console.log(

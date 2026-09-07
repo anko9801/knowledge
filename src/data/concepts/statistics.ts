@@ -23,7 +23,11 @@ export const statistics: readonly Concept[] = [
   c('rao-blackwell', 'Rao–Blackwell の定理', '十分統計量で条件付けると分散が下がる。改善が機械的に効く', 'theorem', 'math', ['sufficient-statistic', 'conditional-expectation']),
   c('test-confidence-duality', '検定と信頼区間は双対', '有意でない値の集まりが信頼区間。同じ一つのことを二通りに言っている', 'theorem', 'math', ['likelihood-ratio-test']),
   c('p-value-says-little', 'p 値が言っていないこと', '仮説が正しい確率でも、効果の大きさでもない。**データが仮説の下でどれだけ極端かだけ**', 'viewpoint', 'math', ['likelihood-ratio-test']),
+  c('stam-inequality', 'Stam の不等式', 'Fisher 情報量とエントロピー冪の積に下界がある。**Cramér–Rao と Heisenberg の差は、ここがちょうど埋めている**', 'theorem', 'math', ['fisher-information', 'entropy']),
+  c('cramer-rao-is-heisenberg-for-real-amplitudes', 'Cramér–Rao は、振幅が実のときの Heisenberg である', '**位置母数の Cramér–Rao と Weyl–Heisenberg は同じ不等式。**位相を持つぶんだけ量子のほうが広く、その差が Stam の不等式に等しい', 'theorem', 'math', ['stam-inequality', 'cramer-rao']),
+  c('entropic-uncertainty', 'エントロピーで測ると、もっと強くなる', 'Hirschman–Beckner は分散版より真に強い。**証明が Cauchy–Schwarz ではなく鋭い Hausdorff–Young になる**', 'theorem', 'math', ['cramer-rao-is-heisenberg-for-real-amplitudes']),
   c('de-finetti-representation', 'de Finetti の表現定理', '交換可能な信念は独立同分布の混合として書ける。**客観確率を仮定せずに、あるかのように振る舞える**', 'theorem', 'math', ['independence-probabilistic', 'conditional-expectation']),
+  c('de-finetti-fails-for-finite-sequences', '有限列では、厳密には成り立たない', '$n$ 個を $N$ 個の交換可能列から取るとき、全変動距離が $2n(n-1)\\/N$ で抑えられるだけ。**無限列であることが本質的に効いている**', 'theorem', 'math', ['de-finetti-representation']),
   c('stein-paradox', 'Stein のパラドックス', '3 次元以上では標本平均が非許容になる。互いに無関係な母数でも、まとめると改善できる', 'theorem', 'math', ['cramer-rao', 'expectation']),
 
   // 因果推論 ── 同定

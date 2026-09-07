@@ -44,7 +44,7 @@ export const pde: readonly Concept[] = [
   c('poincare-inequality', 'Poincaré 不等式', '境界で 0 なら、関数の大きさが微分の大きさで抑まる。最良定数が第一固有値になる', 'theorem', 'math', ['sobolev-space']),
   c('lax-milgram', 'Lax–Milgram の定理', '双線形形式が有界かつ強圧的なら弱解が一意に存在する。**解の形を何も知らずに存在だけ言える**', 'theorem', 'math', ['sobolev-space', 'hilbert-space', 'poincare-inequality']),
   c('elliptic-regularity', '楕円型の正則性', '弱解として作ったものが、実はもっと滑らかである。滑らかさを捨てて解を作り、あとで戻ってくる', 'theorem', 'math', ['lax-milgram']),
-  c('fredholm-alternative-pde', 'Fredholm の択一', '解が在るか、随伴の核と直交するかのどちらか。resolvent がコンパクトであることから出る', 'theorem', 'math', ['lax-milgram', 'adjoint']),
+  c('fredholm-alternative-pde', 'Fredholm の択一（楕円型）', '解が在るか、随伴の核と直交するかのどちらか。**楕円型でレゾルベントがコンパクトになることが、一般定理を使える理由**', 'theorem', 'math', ['lax-milgram', 'adjoint', 'fredholm-alternative-functional']),
   c('elliptic-spectrum', '楕円型作用素のスペクトルは離散', '有界領域では固有値が可算個で発散し、固有関数が $L^2$ の正規直交基底になる', 'theorem', 'math', ['fredholm-alternative-pde', 'spectral-theorem-unbounded']),
 
   // 放物型と双曲型

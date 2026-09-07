@@ -44,7 +44,10 @@ export const quantumInformation: readonly Concept[] = [
   c('teleportation', '量子テレポーテーション', '1 ebit と 2 古典ビットで 1 量子ビットが移る。**無信号性は破れない**', 'technique', 'cs', ['entanglement', 'no-signaling']),
   c('dense-coding', '超密度符号', '1 ebit があれば、1 量子ビットで 2 古典ビット送れる。Holevo 限界と矛盾しない', 'technique', 'cs', ['entanglement', 'holevo-bound']),
   c('locc', '局所操作と古典通信', '何を無料と数えるかを決める。もつれはこの下で増えない', 'definition', 'cs', ['quantum-channel', 'no-signaling']),
-  c('nielsen-majorization', 'Nielsen の優越定理', '純粋状態の変換ができるのは、Schmidt 係数が優越されるときに限る', 'theorem', 'cs', ['locc', 'schmidt-decomposition']),
+  c('nielsen-majorization', 'Nielsen の優越定理', '**縮約密度行列の固有値**（Schmidt 係数の二乗）が優越されるときに限り、変換できる。**経済の Lorenz 優越と同じ半順序**', 'theorem', 'cs', ['locc', 'schmidt-decomposition', 'hardy-littlewood-polya']),
+  c('quantum-de-finetti', '量子 de Finetti 表現', '置換対称な $N$ 体状態の部分系は、積状態の混合に近い。**Hamiltonian の中身を一つも使わずに平均場極限が出る**', 'theorem', 'cs', ['de-finetti-representation', 'purification', 'partial-trace']),
+  c('finite-quantum-version-needs-dimension', '量子版は次元に依らざるをえない', '古典の有限版は経験測度で作れるが、**経験測度に量子の対応物が無い。**誤差が次元に依る形でしか書けない', 'viewpoint', 'cs', ['quantum-de-finetti', 'de-finetti-fails-for-finite-sequences']),
+  c('security-proofs-use-it', 'QKD の安全性証明が、この表現定理に乗っている', '盗聴者が系全体に何をしてもよい場合を、独立な攻撃の混合に落とす。**対称性だけから、攻撃の一般性が畳める**', 'theorem', 'cs', ['quantum-de-finetti', 'bb84']),
   c('bound-entanglement', '束縛されたもつれ', '取り出せないもつれがある。作るのに要る量と取り出せる量が食い違う', 'theorem', 'cs', ['nielsen-majorization']),
   c('bb84', 'BB84', '直交しない 4 状態を送る。盗み見ると必ず乱れ、しかも**計算量的仮定を一つも使わない**', 'technique', 'cs', ['no-cloning', 'orthogonal-states-are-copyable', 'security-reduction']),
 

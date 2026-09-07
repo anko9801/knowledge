@@ -54,6 +54,7 @@ import { gaugeTheory } from './gauge-theory.ts'
 import { standardModel } from './standard-model.ts'
 import { analysis } from './analysis.ts'
 import { complexAnalysis } from './complex-analysis.ts'
+import { functionalAnalysis } from './functional-analysis.ts'
 import { pde } from './pde.ts'
 import { mathMisc } from './math-misc.ts'
 import { groups } from './groups.ts'
@@ -62,9 +63,11 @@ import { numberTheory } from './number-theory.ts'
 import { algebraicNumberTheory } from './algebraic-number-theory.ts'
 import { numericalAnalysis } from './numerical-analysis.ts'
 import { fluidDynamics } from './fluid-dynamics.ts'
+import { optics } from './optics.ts'
 import { geophysics } from './geophysics.ts'
 import { clinical } from './clinical.ts'
 import { psychometrics } from './psychometrics.ts'
+import { psychophysics } from './psychophysics.ts'
 import { decisionTheory } from './decision-theory.ts'
 import { arts } from './arts.ts'
 import { dynamicalSystems } from './dynamical-systems.ts'
@@ -119,6 +122,7 @@ export const concepts: readonly Concept[] = [
   ...standardModel,
   ...analysis,
   ...complexAnalysis,
+  ...functionalAnalysis,
   ...pde,
   ...mathMisc,
   ...groups,
@@ -127,9 +131,11 @@ export const concepts: readonly Concept[] = [
   ...algebraicNumberTheory,
   ...numericalAnalysis,
   ...fluidDynamics,
+  ...optics,
   ...geophysics,
   ...clinical,
   ...psychometrics,
+  ...psychophysics,
   ...decisionTheory,
   ...arts,
   ...dynamicalSystems,

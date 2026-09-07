@@ -39,4 +39,16 @@ export const arts: readonly Concept[] = [
   c('penrose-tiling-has-no-lattice', '非周期タイル張りは、この分類の外に在る', '**並進対称性が無いので群が違う。**5 次の対称が現れるのは、制限が効く前提を外したから', 'theorem', 'math', ['crystallographic-restriction']),
   c('hyperbolic-tilings-are-infinite', '負曲率では、種類が無限になる', '**平面で 17 に止まったのは、平坦だったからである。**曲率が分類の有限性を作っていた', 'theorem', 'math', ['seventeen-wallpaper-groups', 'gauss-bonnet']),
   c('self-similarity-is-a-different-symmetry', '自己相似は合同変換ではない', '大きさを変える写像を許すと別の群になる。**同じ「対称」という語が、二つの違うものを指している**', 'viewpoint', 'math', ['symmetry-group-of-a-pattern', 'hausdorff-dimension']),
+
+  // 音の物理 ── 音律の下
+  c('acoustic-wave-equation', '音の波動方程式', '質量保存と運動方程式に、圧力と密度の関係を一つ足すだけ。**線形なのは振幅が小さいときに限る**', 'theorem', 'math', ['sound-speed', 'second-order-classification']),
+  c('boundary-condition-fixes-the-series', '境界条件が倍音列を決める', '両端が閉じているか片方が開いているかで、**出る倍音が全部か奇数次だけかに分かれる**', 'theorem', 'math', ['acoustic-wave-equation', 'elliptic-spectrum']),
+  c('harmonics-are-eigenvalues', '倍音は固有値である', '**整数比になるのは弦と気柱がたまたま一次元だから。**膜や板では比が整数にならず、音程が聞こえない', 'theorem', 'math', ['boundary-condition-fixes-the-series']),
+  c('why-just-intonation-exists-at-all', '純正律が在るのは、一次元の楽器だからである', '**倍音が整数比でなければ、整数比の格子そのものが立たない。**打楽器に音律が無い理由がここに在る', 'viewpoint', 'math', ['harmonics-are-eigenvalues', 'just-intervals-are-a-lattice']),
+  c('acoustic-impedance', '音響インピーダンス', '圧力と体積速度の比。**不連続な場所で反射が起き、その大きさが比だけで決まる**', 'definition', 'math', ['acoustic-wave-equation']),
+  c('impedance-matching-limits-loudness', '整合が取れないと、音は出ていかない', '**弦は空気をほとんど動かせない。**共鳴板も管も、インピーダンスを繋ぐためにある', 'theorem', 'math', ['acoustic-impedance']),
+  c('hofmann-iron-law', 'Hofmann の鉄則', '**低域の下限・箱の容積・効率の三つの積が定数。**二つしか選べない、という保存則', 'theorem', 'math', ['impedance-matching-limits-loudness']),
+  c('room-modes', '部屋の固有振動', '**三方向の整数の組で決まる。**低い周波数では数が疎なので、位置によって聞こえ方が変わる', 'theorem', 'math', ['boundary-condition-fixes-the-series']),
+  c('reverberation-is-a-decay-rate', '残響は減衰率である', '拡散音場と仮定すると、減衰時間が体積と吸音面積の比だけで決まる（Sabine）。**形に依らない**', 'theorem', 'math', ['room-modes']),
+  c('nonlinearity-makes-new-tones', '大きくすると、無かった音が生まれる', '**線形なら周波数は増えない。**差音が聞こえること自体が、どこかが非線形である証拠', 'theorem', 'math', ['acoustic-wave-equation', 'beats-are-not-perception']),
 ]

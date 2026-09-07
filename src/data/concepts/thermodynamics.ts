@@ -85,4 +85,8 @@ export const thermodynamics: readonly Concept[] = [
   c('local-equilibrium', '局所平衡', '各点で平衡熱力学が使えると仮定する。場に広げるための追加の仮定', 'definition', 'physics', ['equilibrium-state']),
   c('entropy-production', 'エントロピー生成', '流れと駆動力の積の和が非負。不可逆性が一つの不等式になる', 'definition', 'physics', ['local-equilibrium', 'entropy-thermodynamic']),
   c('onsager-reciprocity', 'Onsager の相反関係', '輸送係数の行列が対称。**熱力学の中では導けない。微視的可逆性が要る**', 'definition', 'physics', ['entropy-production']),
+
+  // 何が何へ移れるか ── エントロピーひとつでは決まらない
+  c('thermo-majorization', '熱浴があるときの優越', '熱浴を自由に使ってよいとすると、移れる条件が優越の一般化になる。**等温では通常の優越に戻る**', 'theorem', 'physics', ['hardy-littlewood-polya', 'entropy-thermodynamic']),
+  c('second-law-is-not-one-inequality', '第二法則は、一本の不等式ではない', 'エントロピーが増えるのに移れない状態対がある。**移れるかを決めるのは半順序で、単調量の族が要る**', 'viewpoint', 'physics', ['thermo-majorization', 'one-number-cannot-decide']),
 ]

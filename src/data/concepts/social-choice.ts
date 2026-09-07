@@ -77,4 +77,9 @@ export const socialChoice: readonly Concept[] = [
   c('residual-claimant-uniqueness', '残余請求者は一人しか置けない', '片側の責任規則で両側の注意を効率化できない。寄与過失が要る理由', 'theorem', 'econ', ['negligence-first-best']),
   c('prosecutors-fallacy', '検察官の誤謬', '容疑者集団の大きさと一致確率の積が支配する。一致確率だけでは何も言えない', 'theorem', 'econ', ['conditional-expectation']),
   c('coase-theorem', 'Coase 定理', '取引費用がゼロで権利が明確なら、初期の権利配分に依らず効率的な結果になる', 'theorem', 'econ', ['hand-rule-marginal']),
+
+  // 平等さの測り方 ── 優越は半順序である
+  c('pigou-dalton', 'Pigou–Dalton の移転原理', '豊かな側から貧しい側へ、順位を入れ替えない範囲で移すと、平等になったと数える。**これだけを要請する**', 'definition', 'econ', ['majorization']),
+  c('lorenz-dominance', 'Lorenz 優越', '累積の取り分の曲線が、どこでも上にあること。**移転原理を満たす全ての指標が同じ順に並べるのは、曲線が交わらないときだけ**', 'theorem', 'econ', ['pigou-dalton', 'hardy-littlewood-polya']),
+  c('curves-cross-so-indices-disagree', '曲線が交わると、指標が食い違う', 'ジニ係数と Atkinson 指数が逆の順を出す。**どちらが誤りでもない。半順序を全順序に潰した代償である**', 'viewpoint', 'econ', ['lorenz-dominance', 'one-number-cannot-decide']),
 ]

@@ -77,6 +77,41 @@ export const derivations: readonly Derivation[] = [
     note: '統計力学は時間平均と位相平均が一致することを仮定として置く。力学系の側は、時間平均が収束すること**だけ**を無条件に出し、一致は不変集合が自明な場合に限ると言う。二つを一つの概念に潰すと、何が定理で何が仮定かが読めなくなる',
   },
   {
+    assumed: 'uncertainty-relation',
+    derived: 'cramer-rao-is-heisenberg-for-real-amplitudes',
+    note: '量子力学は交換子から不確定性を出し、そこで止まる。統計の側は、位置母数の Cramér–Rao がまったく同じ不等式であること、そして差が Stam の不等式ちょうどであることを言う。Dembo–Cover–Thomas 1991 §IV が逐語で "exactly" と書いている',
+  },
+  {
+    assumed: 'exchangeability-genetic',
+    derived: 'de-finetti-representation',
+    note: '集団遺伝学は複製に区別が無いことを中立性の定義として置く。表現定理の側は、交換可能なら独立同分布の混合として一意に書けると言う。Kingman のペイントボックスは、この de Finetti 測度そのものである',
+  },
+  {
+    assumed: 'symmetrization-postulate',
+    derived: 'quantum-de-finetti',
+    note: '量子力学は同種粒子の状態が置換で不変だと要請する。表現定理の側は、その対称性だけから部分系が積状態の混合に近いことを出す。平均場近似が Hamiltonian の中身を使わずに正当化される',
+  },
+  {
+    assumed: 'entropy-thermodynamic',
+    derived: 'one-number-cannot-decide',
+    note: '熱力学はエントロピーが増える向きにしか進まないと言う。優越の側は、それが必要条件でしかないことを反例で示す。増えるのに移れない状態対があり、しかもどの単調量に取り替えても直らない',
+  },
+  {
+    assumed: 'observable',
+    derived: 'spectral-theorem-bounded-selfadjoint',
+    note: '量子力学は観測量を自己共役作用素と置き、固有値が測定値だと言う。関数解析の側は、固有基底が取れない場合にも関数計算が定義できることを示す。有限次元の直感がどこまで持つかが、ここで初めて言える',
+  },
+  {
+    assumed: 'scale-is-an-interval-at-best',
+    derived: 'uniqueness-theorem-measurement',
+    note: '心理測定は尺度が間隔までしか定まらないことを注意として置く。測定の表現定理の側は、それがなぜかを言う ── 加法の操作が定義できないので、一意性の群が正の一次変換より狭くならない',
+  },
+  {
+    assumed: 'just-intervals-are-a-lattice',
+    derived: 'harmonics-are-eigenvalues',
+    note: '音律は倍音が整数比であることを出発点に置く。音響の側は、それが一次元の境界値問題の固有値だから成り立つと言う。膜や板では比が整数にならず、そこでは格子そのものが立たない',
+  },
+  {
     assumed: 'conserved-quantity-reduces',
     derived: 'noether-theorem',
     note: '力学は保存量を見つかったものとして使い、なぜ在るのかは言わない。解析力学は対称性から作る',

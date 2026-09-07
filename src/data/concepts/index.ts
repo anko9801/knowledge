@@ -29,6 +29,7 @@ import { statistics } from './statistics.ts'
 import { complexity } from './complexity.ts'
 import { algorithms } from './algorithms.ts'
 import { crypto } from './crypto.ts'
+import { codingTheory } from './coding-theory.ts'
 import { quantumInformation } from './quantum-information.ts'
 import { typesAndComputation } from './types-and-computation.ts'
 import { categories } from './categories.ts'
@@ -44,6 +45,9 @@ import { quantum } from './quantum.ts'
 import { newtonianMechanics } from './newtonian-mechanics.ts'
 import { generalRelativity } from './general-relativity.ts'
 import { astrophysics } from './astrophysics.ts'
+import { nuclear } from './nuclear.ts'
+import { plasma } from './plasma.ts'
+import { superconductivity } from './superconductivity.ts'
 import { specialRelativity } from './special-relativity.ts'
 import { quantumFieldTheory } from './quantum-field-theory.ts'
 import { thermodynamics } from './thermodynamics.ts'
@@ -52,6 +56,7 @@ import { electromagnetism } from './electromagnetism.ts'
 import { renormalization } from './renormalization.ts'
 import { gaugeTheory } from './gauge-theory.ts'
 import { standardModel } from './standard-model.ts'
+import { latticeGauge } from './lattice-gauge.ts'
 import { analysis } from './analysis.ts'
 import { complexAnalysis } from './complex-analysis.ts'
 import { functionalAnalysis } from './functional-analysis.ts'
@@ -59,6 +64,9 @@ import { pde } from './pde.ts'
 import { mathMisc } from './math-misc.ts'
 import { groups } from './groups.ts'
 import { algebra } from './algebra.ts'
+import { representationTheory } from './representation-theory.ts'
+import { algebraicGeometry } from './algebraic-geometry.ts'
+import { modelTheory } from './model-theory.ts'
 import { numberTheory } from './number-theory.ts'
 import { algebraicNumberTheory } from './algebraic-number-theory.ts'
 import { numericalAnalysis } from './numerical-analysis.ts'
@@ -76,6 +84,7 @@ import { chemistryMisc } from './chemistry-misc.ts'
 import { linguisticsMisc } from './linguistics-misc.ts'
 import { economics } from './economics.ts'
 import { socialChoice } from './social-choice.ts'
+import { mathematicalFinance } from './mathematical-finance.ts'
 
 export type { Concept, ConceptKind, Derivation, Goal, Limit } from './types.ts'
 export { derivations } from './derivations.ts'
@@ -97,6 +106,7 @@ export const concepts: readonly Concept[] = [
   ...complexity,
   ...algorithms,
   ...crypto,
+  ...codingTheory,
   ...quantumInformation,
   ...typesAndComputation,
   ...categories,
@@ -112,6 +122,9 @@ export const concepts: readonly Concept[] = [
   ...newtonianMechanics,
   ...generalRelativity,
   ...astrophysics,
+  ...nuclear,
+  ...plasma,
+  ...superconductivity,
   ...specialRelativity,
   ...thermodynamics,
   ...statisticalMechanics,
@@ -120,6 +133,7 @@ export const concepts: readonly Concept[] = [
   ...renormalization,
   ...gaugeTheory,
   ...standardModel,
+  ...latticeGauge,
   ...analysis,
   ...complexAnalysis,
   ...functionalAnalysis,
@@ -127,6 +141,9 @@ export const concepts: readonly Concept[] = [
   ...mathMisc,
   ...groups,
   ...algebra,
+  ...representationTheory,
+  ...algebraicGeometry,
+  ...modelTheory,
   ...numberTheory,
   ...algebraicNumberTheory,
   ...numericalAnalysis,
@@ -144,6 +161,7 @@ export const concepts: readonly Concept[] = [
   ...linguisticsMisc,
   ...economics,
   ...socialChoice,
+  ...mathematicalFinance,
 ]
 
 /** 到達したい地点。ここから逆算して執筆計画を作る。 */

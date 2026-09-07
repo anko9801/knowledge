@@ -82,4 +82,16 @@ export const socialChoice: readonly Concept[] = [
   c('pigou-dalton', 'Pigou–Dalton の移転原理', '豊かな側から貧しい側へ、順位を入れ替えない範囲で移すと、平等になったと数える。**これだけを要請する**', 'definition', 'econ', ['majorization']),
   c('lorenz-dominance', 'Lorenz 優越', '累積の取り分の曲線が、どこでも上にあること。**移転原理を満たす全ての指標が同じ順に並べるのは、曲線が交わらないときだけ**', 'theorem', 'econ', ['pigou-dalton', 'hardy-littlewood-polya']),
   c('curves-cross-so-indices-disagree', '曲線が交わると、指標が食い違う', 'ジニ係数と Atkinson 指数が逆の順を出す。**どちらが誤りでもない。半順序を全順序に潰した代償である**', 'viewpoint', 'econ', ['lorenz-dominance', 'one-number-cannot-decide']),
+
+  // 判断集約 ── 三つ目の不可能性
+  //
+  // **Arrow でも Balinski--Young でもない。**あちらは選好の集約で、
+  // 破れるのは推移性。こちらは命題の集約で、破れるのは無矛盾性である。
+  c('doctrinal-paradox', '結論で多数決を取るか、根拠で取るか', '**各命題を多数決にすると、結論が論理的に導かれる形と食い違う。**どちらも多数決なのに答えが違う', 'theorem', 'econ', ['condorcet-cycle']),
+  c('judgment-aggregation', '判断集約', '選好ではなく命題の真偽を集める。**集めた結果が無矛盾である保証は、どこにも無い**', 'definition', 'econ', ['doctrinal-paradox', 'satisfaction']),
+  c('list-pettit-impossibility', 'List–Pettit の不可能性', '**普遍定義域・匿名性・系統性を要求すると、無矛盾な集約が存在しない。**Arrow と同じ形で、要求が違う', 'theorem', 'econ', ['judgment-aggregation']),
+  c('agenda-characterization', 'どんな議題なら生き延びるかが決まる', '**議題が中央値性を持つときに限り、命題ごとの多数決が無矛盾になる**（Nehring–Puppe）。可能な場合が完全に特徴づけられている', 'theorem', 'econ', ['list-pettit-impossibility']),
+  c('three-impossibilities-differ', '三つの不可能性は、別のものである', 'Arrow は選好と推移性、Balinski–Young は配分と単調性、判断集約は命題と無矛盾性。**要求も結論も共有していない**', 'viewpoint', 'econ', ['agenda-characterization', 'arrow-impossibility', 'balinski-young']),
+  c('probability-pooling-is-linear', '確率を集約すると、線形になる', '**周辺化と可換であることを要求すると、線形プールしかない**（Aczél–Wagner、McConway）。同じ形の特徴づけが確率でも立つ', 'theorem', 'econ', ['judgment-aggregation', 'probability-space']),
+  c('linear-pooling-loses-independence', '線形プールは独立性を保たない', '**各人が独立だと思っていたことが、集約すると従属になる。**外部ベイズ性と両立しない', 'theorem', 'econ', ['probability-pooling-is-linear', 'independence-probabilistic']),
 ]

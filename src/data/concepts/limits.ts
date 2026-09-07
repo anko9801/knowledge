@@ -10,8 +10,8 @@ import type { Limit } from './types.ts'
  * 次の章では成り立たない、と書いてある本は少ない。だから読者は自分の理解を疑う。
  * この site はそこを主題にできる。
  *
- * まだ 1 件しか無いのは、対になる概念のほうがまだ入っていないため。
- * 偏微分方程式（弱解の非一意性、熱方程式の半群）が入ると 3 件になる。
+ * `requires` でも `Derivation` でも書けない ── あちらは「仮定が定理になる」で、
+ * こちらは**「定理が偽になる」**。向きも内容も逆である。
  */
 export const limits: readonly Limit[] = [
   {
@@ -23,5 +23,10 @@ export const limits: readonly Limit[] = [
     holds: 'spectral-theorem',
     fails: 'perron-frobenius',
     note: '自己随伴でなければ固有値が実である保証は無い。ところが非負で既約という別の仮定を置くと、最大固有値だけは実で単純に戻る。対称性が買っていたものを、正値性が買い直している',
+  },
+  {
+    holds: 'curie-weiss',
+    fails: 'mean-field-predicts-a-false-transition',
+    note: '平均場近似は転移温度も臨界指数も出すが、一次元では在りもしない転移を予言する。転送行列で厳密に解けるので、間違いだと確定している。二次元では連続対称性について同じことが起き、四次元より下では指数を外す。外れる場所が全部次元で決まっている',
   },
 ]

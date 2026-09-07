@@ -112,6 +112,36 @@ export const derivations: readonly Derivation[] = [
     note: '音律は倍音が整数比であることを出発点に置く。音響の側は、それが一次元の境界値問題の固有値だから成り立つと言う。膜や板では比が整数にならず、そこでは格子そのものが立たない',
   },
   {
+    assumed: 'linear-code',
+    derived: 'gilbert-varshamov',
+    note: '情報理論は符号を定義として置き、Shannon の定理で良い符号が在るとだけ言う。符号理論の側は、貪欲に選べば必ずこれだけ取れるという下界を構成で出し、同時に三つの上界で挟む。存在の主張が、具体的な数の範囲になる',
+  },
+  {
+    assumed: 'confinement-not-derived',
+    derived: 'strong-coupling-gives-confinement',
+    note: '標準模型は閉じ込めを観測事実として置き、証明されていないと断る。格子の側は、強結合展開の最低次で面積則を厳密に出す。ただしそこは連続極限から遠いので、証明にはなっていない ── 何が示せて何が示せていないかの線が、ここで引ける',
+  },
+  {
+    assumed: 'no-arbitrage',
+    derived: 'ftap-first',
+    note: '経済学は無裁定から状態価格の存在を出し、有限次元で止まる。数理ファイナンスの側は、連続時間で同値マルチンゲール測度の存在と同値だと言う。どちらも証明は分離超平面だが、無限次元では Hahn–Banach が要る',
+  },
+  {
+    assumed: 'wigner-classification',
+    derived: 'classification-is-what-physics-uses',
+    note: '特殊相対論は Poincaré 群の既約表現を数えて、粒子のラベルが質量とスピンだけだと出す。表現論の側は、それが一般の分類の一例だと言う。選択則も基準振動も同じ数え上げで、対象が違うだけである',
+  },
+  {
+    assumed: 'compactness-theorem',
+    derived: 'ax-grothendieck',
+    note: '論理はコンパクト性を完全性定理の系として出し、そこで止まる。モデル理論の側は、それを作る道具として使う。有限体で自明な命題を複素数へ移すと、代数の定理が論理から出てくる',
+  },
+  {
+    assumed: 'incompleteness-theorem',
+    derived: 'gentzen-consistency',
+    note: '論理は算術が自分の無矛盾性を証明できないと言う。証明論の側は、では何を足せば証明できるかを答える。$epsilon_0$ までの超限帰納法を認めればよい ── 何に還元したかが成果物である',
+  },
+  {
     assumed: 'conserved-quantity-reduces',
     derived: 'noether-theorem',
     note: '力学は保存量を見つかったものとして使い、なぜ在るのかは言わない。解析力学は対称性から作る',

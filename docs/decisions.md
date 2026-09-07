@@ -856,7 +856,7 @@ Curie–Weiss は転移温度も臨界指数も出すが、**一次元では在�
 - **Bellman 方程式は Hamilton–Jacobi 方程式である。**特性曲線が正準方程式、
   共状態が価値関数の勾配、繋ぐのが Legendre 変換。min-plus に落とすと
   Bellman–Ford が Jacobi 反復、Floyd–Warshall が Gauss–Jordan になり、
-  転送行列の Perron 固有値が $beta arrow oo$ で最大巡回平均に落ちる
+  転送行列の Perron 固有値が、温度をゼロへ送ると最大巡回平均に落ちる
 
 **ただし「全部同じ」とは書かないこと。**個々の対応は定理だが、
 **統一原理そのものは定理ではない** ── Litvinov 自身が対応原理を

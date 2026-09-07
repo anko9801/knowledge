@@ -18,4 +18,8 @@ export const categories: readonly Concept[] = [
   c('adjunction', '随伴', 'Hom(FA, B) ≅ Hom(A, GB)。自由と忘却の対', 'definition', 'math', ['functor']),
   c('cartesian-closed-category', 'デカルト閉圏', '終対象・積・指数対象を持つ。カリー化は積と冪の随伴', 'definition', 'math', ['adjunction']),
   c('curry-howard-lambek', 'Curry–Howard–Lambek 対応', '型付き λ 計算＝直観主義論理＝デカルト閉圏。三つは同じもの', 'theorem', 'cs', ['cartesian-closed-category', 'curry-howard']),
+
+  // 対角化が五箇所に散らばっていた、その一箇所目
+  c('lawvere-fixed-point', 'Lawvere の不動点定理', '点全射 $f: A arrow B^A$ が在れば、$B$ の**すべての**自己写像が不動点を持つ。証明は $q(a) = g(f(a)(a))$ の一行', 'theorem', 'math', ['cartesian-closed-category']),
+  c('diagonalization-is-one-theorem', '五つの対角化論法は、同じ定理の対偶である', '$g$ に否定を入れると Cantor、文の集合に入れると Tarski、停止判定に入れると停止問題。**不動点を持たない $g$ が一つ在れば、点全射が無い**', 'viewpoint', 'math', ['lawvere-fixed-point']),
 ]

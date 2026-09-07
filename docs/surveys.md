@@ -202,6 +202,23 @@ $a^m b^n c^m d^n$ を切り出すと、文脈自由言語が交叉で閉じる�
 - **日本の大学の課程表は 4 件とも取得失敗**（東大・京大がタイムアウトか 404、
   MEXT のコアカリも 404）。応用化学・建築・船舶海洋は未確認
 
+## 書き込んだ結果（2026-09-07）
+
+**21 本ぶんを概念グラフに入れ終えた。**591 → 1590 概念、循環 0、`npm run verify` 通過。
+
+新しく立てたファイル ── `algebra`、`number-theory`、`algebraic-number-theory`、
+`graph-theory`（組合せ論を合わせて書き直し）、`numerical-analysis`、
+`dynamical-systems`、`fluid-dynamics`、`geophysics`、`astrophysics`、
+`population-genetics`、`clinical`、`psychometrics`、`decision-theory`、`arts`、
+`control`／`transport`／`structures`（`engineering` を三つに割った残りが `engineering`）。
+広げたファイル ── `chemistry-misc`（電子構造・軌道対称性・結晶）、
+`linguistics-misc`（統語・音韻）、`linear-algebra`（作用素ノルムと特異値分解）。
+
+分野を三つ足した（`biology`、`cognition`、`arts`）。連載の欄も 23 本足した。
+
+**家の決め方は `docs/decisions.md` へ移した。**この文書に残っているのは
+調査の走らせ方と、確かめられなかったものの一覧である。
+
 ## 出典（全文公開。次に調べるとき、ここから始める）
 
 Åström--Murray *Feedback Systems* ／ Lienhard *A Heat Transfer Textbook* ／

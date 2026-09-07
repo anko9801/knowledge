@@ -34,6 +34,8 @@ export const linearAlgebra: readonly Concept[] = [
   c('hodge-star', 'Hodge スター', '$Lambda^k tilde.equiv Lambda^(n-k)$。計量と向きが要る', 'definition', 'math', ['volume-form', 'binomial-dimension']),
   c('self-adjoint', '自己随伴', '$f^dagger = f$。正規直交基底で対称行列', 'definition', 'math', ['adjoint']),
   c('spectral-theorem', 'スペクトル定理', '自己随伴なら正規直交固有基底が取れる', 'theorem', 'math', ['self-adjoint', 'diagonalization']),
+  c('operator-norm', '作用素ノルム', '写像がベクトルを最大何倍に伸ばすか。**定義域と値域のノルムを両方選んで初めて決まる**', 'definition', 'math', ['linear-map', 'inner-product']),
+  c('singular-value-decomposition', '特異値分解', '自己随伴でなくても、正方でなくても対角化できる。**入る側と出る側で別の正規直交基底を使う**', 'theorem', 'math', ['spectral-theorem', 'adjoint']),
   c('quadratic-form', '二次形式', '主軸への変換。二次曲面の分類', 'technique', 'math', ['spectral-theorem']),
   c('vector-space', 'ベクトル空間', '足せてスカラー倍できる集合。基底と次元', 'definition', 'math', ['field']),
   c('linear-map', '線形写像', '和とスカラー倍を保つ写像', 'definition', 'math', ['vector-space']),

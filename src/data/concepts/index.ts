@@ -15,6 +15,7 @@
  */
 import type { Concept, Goal } from './types.ts'
 import { topology } from './topology.ts'
+import { graphTheory } from './graph-theory.ts'
 import { linearAlgebra } from './linear-algebra.ts'
 import { vectorAnalysis } from './vector-analysis.ts'
 import { differentialForms } from './differential-forms.ts'
@@ -24,18 +25,25 @@ import { setTheory } from './set-theory.ts'
 import { mechanics } from './mechanics.ts'
 import { measure } from './measure.ts'
 import { information } from './information.ts'
+import { statistics } from './statistics.ts'
 import { complexity } from './complexity.ts'
 import { algorithms } from './algorithms.ts'
 import { crypto } from './crypto.ts'
+import { quantumInformation } from './quantum-information.ts'
 import { typesAndComputation } from './types-and-computation.ts'
 import { categories } from './categories.ts'
 import { cognitionMisc } from './cognition-misc.ts'
 import { csMisc } from './cs-misc.ts'
 import { architecture } from './architecture.ts'
+import { engineering } from './engineering.ts'
+import { control } from './control.ts'
+import { transport } from './transport.ts'
+import { structures } from './structures.ts'
 import { concurrency } from './concurrency.ts'
 import { quantum } from './quantum.ts'
 import { newtonianMechanics } from './newtonian-mechanics.ts'
 import { generalRelativity } from './general-relativity.ts'
+import { astrophysics } from './astrophysics.ts'
 import { specialRelativity } from './special-relativity.ts'
 import { quantumFieldTheory } from './quantum-field-theory.ts'
 import { thermodynamics } from './thermodynamics.ts'
@@ -49,8 +57,22 @@ import { complexAnalysis } from './complex-analysis.ts'
 import { pde } from './pde.ts'
 import { mathMisc } from './math-misc.ts'
 import { groups } from './groups.ts'
+import { algebra } from './algebra.ts'
+import { numberTheory } from './number-theory.ts'
+import { algebraicNumberTheory } from './algebraic-number-theory.ts'
+import { numericalAnalysis } from './numerical-analysis.ts'
+import { fluidDynamics } from './fluid-dynamics.ts'
+import { geophysics } from './geophysics.ts'
+import { clinical } from './clinical.ts'
+import { psychometrics } from './psychometrics.ts'
+import { decisionTheory } from './decision-theory.ts'
+import { arts } from './arts.ts'
+import { dynamicalSystems } from './dynamical-systems.ts'
+import { populationGenetics } from './population-genetics.ts'
 import { chemistryMisc } from './chemistry-misc.ts'
 import { linguisticsMisc } from './linguistics-misc.ts'
+import { economics } from './economics.ts'
+import { socialChoice } from './social-choice.ts'
 
 export type { Concept, ConceptKind, Derivation, Goal, Limit } from './types.ts'
 export { derivations } from './derivations.ts'
@@ -58,6 +80,7 @@ export { limits } from './limits.ts'
 
 export const concepts: readonly Concept[] = [
   ...topology,
+  ...graphTheory,
   ...linearAlgebra,
   ...vectorAnalysis,
   ...differentialForms,
@@ -67,18 +90,25 @@ export const concepts: readonly Concept[] = [
   ...mechanics,
   ...measure,
   ...information,
+  ...statistics,
   ...complexity,
   ...algorithms,
   ...crypto,
+  ...quantumInformation,
   ...typesAndComputation,
   ...categories,
   ...cognitionMisc,
   ...csMisc,
   ...architecture,
+  ...engineering,
+  ...control,
+  ...transport,
+  ...structures,
   ...concurrency,
   ...quantum,
   ...newtonianMechanics,
   ...generalRelativity,
+  ...astrophysics,
   ...specialRelativity,
   ...thermodynamics,
   ...statisticalMechanics,
@@ -92,8 +122,22 @@ export const concepts: readonly Concept[] = [
   ...pde,
   ...mathMisc,
   ...groups,
+  ...algebra,
+  ...numberTheory,
+  ...algebraicNumberTheory,
+  ...numericalAnalysis,
+  ...fluidDynamics,
+  ...geophysics,
+  ...clinical,
+  ...psychometrics,
+  ...decisionTheory,
+  ...arts,
+  ...dynamicalSystems,
+  ...populationGenetics,
   ...chemistryMisc,
   ...linguisticsMisc,
+  ...economics,
+  ...socialChoice,
 ]
 
 /** 到達したい地点。ここから逆算して執筆計画を作る。 */

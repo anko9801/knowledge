@@ -15,6 +15,4 @@ export const groups: readonly Concept[] = [
   c('characteristic-class', '特性類', '曲率から作った不変式が位相不変量になる', 'definition', 'math', ['bundle-connection', 'de-rham-cohomology']),
   c('lie-group', 'Lie 群', '群であり多様体でもあるもの', 'definition', 'math', ['group', 'manifold']),
   c('lie-algebra', 'Lie 代数', 'Lie 群の単位元での接空間。括弧を持つ', 'definition', 'math', ['lie-group', 'lie-bracket']),
-  c('group', '群', '結合的で単位元と逆元を持つ演算', 'definition', 'math'),
-  c('symmetric-group', '対称群', '置換の群。符号', 'definition', 'math', ['group']),
 ]

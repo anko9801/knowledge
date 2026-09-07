@@ -58,6 +58,8 @@ import { gaugeTheory } from './gauge-theory.ts'
 import { standardModel } from './standard-model.ts'
 import { latticeGauge } from './lattice-gauge.ts'
 import { analysis } from './analysis.ts'
+import { ode } from './ode.ts'
+import { optimalControl } from './optimal-control.ts'
 import { complexAnalysis } from './complex-analysis.ts'
 import { functionalAnalysis } from './functional-analysis.ts'
 import { pde } from './pde.ts'
@@ -135,6 +137,8 @@ export const concepts: readonly Concept[] = [
   ...standardModel,
   ...latticeGauge,
   ...analysis,
+  ...ode,
+  ...optimalControl,
   ...complexAnalysis,
   ...functionalAnalysis,
   ...pde,

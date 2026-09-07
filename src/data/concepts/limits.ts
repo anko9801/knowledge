@@ -29,4 +29,9 @@ export const limits: readonly Limit[] = [
     fails: 'mean-field-predicts-a-false-transition',
     note: '平均場近似は転移温度も臨界指数も出すが、一次元では在りもしない転移を予言する。転送行列で厳密に解けるので、間違いだと確定している。二次元では連続対称性について同じことが起き、四次元より下では指数を外す。外れる場所が全部次元で決まっている',
   },
+  {
+    holds: 'ode-existence',
+    fails: 'existence-can-fail-at-the-boundary',
+    note: '初期値問題では、初期値を与えれば解が必ず一意に存在する。同じ方程式でも条件を両端で与えると、解が存在しないことも、無限に存在することもある。方程式は何も変わっておらず、条件を与える場所だけが変わっている',
+  },
 ]

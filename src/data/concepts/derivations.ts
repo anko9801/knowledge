@@ -142,6 +142,26 @@ export const derivations: readonly Derivation[] = [
     note: '論理は算術が自分の無矛盾性を証明できないと言う。証明論の側は、では何を足せば証明できるかを答える。$epsilon_0$ までの超限帰納法を認めればよい ── 何に還元したかが成果物である',
   },
   {
+    assumed: 'limit-analysis-lower-bound',
+    derived: 'j-integral-is-a-noether-current',
+    note: '構造力学は J 積分の経路独立性を計算に使える性質として置く。変分の側は、それが弾性エネルギー汎関数の並進不変性から出る Noether カレントだと言う。帰属は Günther 1962 と Knowles–Sternberg 1972 で、Rice でも Eshelby でもない',
+  },
+  {
+    assumed: 'optimal-substructure',
+    derived: 'bellman-equation',
+    note: 'アルゴリズムは最適部分構造を、動的計画法が使える条件として置く。制御の側は、それが最適性の原理そのものであり、連続時間にすると Hamilton–Jacobi 方程式になることを示す。同じ条件が、離散では表の埋め方、連続では偏微分方程式になる',
+  },
+  {
+    assumed: 'transfer-matrix',
+    derived: 'zero-temperature-limit',
+    note: '統計力学は転送行列の最大固有値から自由エネルギーを出し、そこで止まる。最適化の側は、温度をゼロへ送ると同じ固有値が max-plus の固有値、すなわち最大巡回平均に落ちることを言う。分配関数と最短路が、同じ計算の二つの温度である',
+  },
+  {
+    assumed: 'ode-existence',
+    derived: 'why-most-odes-are-unsolvable',
+    note: '解析は初期値問題の解が一意に存在することを縮小写像で示し、そこで止まる。常微分方程式の側は、それが解を書けることを一つも言っていないと言う。Liouville は簡単な形の方程式でも初等関数で書けないことを示した',
+  },
+  {
     assumed: 'conserved-quantity-reduces',
     derived: 'noether-theorem',
     note: '力学は保存量を見つかったものとして使い、なぜ在るのかは言わない。解析力学は対称性から作る',

@@ -28,6 +28,8 @@ import { information } from './information.ts'
 import { statistics } from './statistics.ts'
 import { complexity } from './complexity.ts'
 import { algorithms } from './algorithms.ts'
+import { convexGeometry } from './convex-geometry.ts'
+import { automata } from './automata.ts'
 import { crypto } from './crypto.ts'
 import { codingTheory } from './coding-theory.ts'
 import { quantumInformation } from './quantum-information.ts'
@@ -107,6 +109,8 @@ export const concepts: readonly Concept[] = [
   ...statistics,
   ...complexity,
   ...algorithms,
+  ...convexGeometry,
+  ...automata,
   ...crypto,
   ...codingTheory,
   ...quantumInformation,

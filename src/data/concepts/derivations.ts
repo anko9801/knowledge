@@ -162,6 +162,26 @@ export const derivations: readonly Derivation[] = [
     note: '解析は初期値問題の解が一意に存在することを縮小写像で示し、そこで止まる。常微分方程式の側は、それが解を書けることを一つも言っていないと言う。Liouville は簡単な形の方程式でも初等関数で書けないことを示した',
   },
   {
+    assumed: 'separating-hyperplane',
+    derived: 'helly-theorem',
+    note: 'アルゴリズムは分離超平面を、交わらない凸集合を分ける道具として置く。凸幾何の側は、凸性だけから次元の数が出てくることを示す。交わるかどうかも、有限個ずつ調べれば判定できる',
+  },
+  {
+    assumed: 'michaelis-menten',
+    derived: 'diffusion-limited-rate',
+    note: '酵素反応速度論は飽和曲線の形を導き、定数の値は測るものとして置く。拡散の側は、その定数に物理的な上限があることを言う。出会う速さより速くは反応できず、上限が半径と拡散係数だけで決まる',
+  },
+  {
+    assumed: 'pumping-lemma',
+    derived: 'myhill-nerode',
+    note: '計算量は正規でないことを示す道具としてポンプ補題を置く。オートマトンの側は、同値類の個数がそのまま状態数の下界になると言う。強く、しかも使いやすい ── 区別できる語の組を挙げるだけで済む',
+  },
+  {
+    assumed: 'serializability',
+    derived: 'serializability-is-acyclicity',
+    note: '並行の側は直列化可能性を正しさの定義として置く。データベースの側は、それが競合グラフに閉路が無いことと同値だと言う。定義が判定できる条件に変わる',
+  },
+  {
     assumed: 'conserved-quantity-reduces',
     derived: 'noether-theorem',
     note: '力学は保存量を見つかったものとして使い、なぜ在るのかは言わない。解析力学は対称性から作る',

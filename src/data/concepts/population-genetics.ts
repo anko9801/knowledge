@@ -64,4 +64,25 @@ export const populationGenetics: readonly Concept[] = [
   c('michaelis-menten', 'Michaelis–Menten 式', '**中間体が一つなら、飽和曲線は双曲線に決まる。**Hill 係数が 1 を超えたら中間体が一つではない', 'theorem', 'biology', ['quasi-steady-state']),
   c('helix-coil-transition', 'ヘリックス–コイル転移', '**転送行列で 1 次元 Ising と同型になる。**だから「相転移」に見えて相転移ではない', 'theorem', 'biology', ['transfer-matrix', 'one-dimension-no-transition']),
   c('hopfield-capacity', 'Hopfield 網の容量', '覚えられる型の数が素子数に比例する。比例定数が計算で出る', 'theorem', 'biology', ['spectral-theorem', 'concentration-inequality']),
+
+  // --- 分野は × でも、この切り口なら定理になる ----------------------------------
+  //
+  // 既に判例が三つある（生化学 × / 酵素反応速度論 ◎、生理学 × / 循環呼吸 ◎、
+  // 薬理学 × / 薬物動態 ◎）。同じ形が MeSH と q-bio の調査で 10 個見つかった。
+  // **記述が本体の分野でも、仮定を一つ置くと式が閉じる場所が在る。**
+  c('diffusion-limited-rate', '拡散律速', '**完全吸収球への流束から、速度定数が半径と拡散係数だけで決まる。**分子の詳細が一つも入らない', 'theorem', 'biology', ['transport-equation-common-form', 'fundamental-solution']),
+  c('catalytic-perfection', '酵素の速さには物理的な上限がある', '**出会う速さより速くはできない。**$k_"cat"\\/K_M$ の上限が、拡散律速そのもの', 'theorem', 'biology', ['diffusion-limited-rate', 'michaelis-menten']),
+  c('two-state-melting', '二状態転移', '**完全結合か完全解離しかないと置くと、融解曲線がシグモイドになり、中点が $Delta H$ と $Delta S$ の比で決まる**', 'theorem', 'biology', ['helix-coil-transition']),
+  c('bell-model-of-rupture', '引っ張る速さが、破断力を決める', '**障壁越えの速さが力の指数と置くと、最頻破断力が引張速度の対数で伸びる。**「強さ」が一つの数でない', 'theorem', 'biology', ['two-state-melting', 'decay-is-exponential-because-memoryless']),
+  c('morphogen-gradient', 'モルフォゲン勾配', '一端で作り、一様に分解する。**定常解が指数減衰で、長さの尺度が拡散係数と分解速度の比の平方根に決まる**', 'theorem', 'biology', ['diffusion-limited-rate', 'heat-smoothing']),
+  c('turing-instability', 'Turing 不安定性', '**抑制する側の拡散が速いと、一様な解が不安定になる。**拡散が「均す」ものだという直感が破れる', 'theorem', 'biology', ['morphogen-gradient', 'hopf-bifurcation']),
+  c('pattern-wavelength-is-set-by-ratios', '模様の波長は、比だけで決まる', '**拡散係数の比と反応速度の比。**大きさを変えても模様の細かさが変わらない、が予言になる', 'theorem', 'biology', ['turing-instability', 'three-diffusivity-ratios']),
+  c('bistability-needs-cooperativity', '双安定には協同性が要る', '**相互抑制でも、Hill 係数が 1 なら双安定にならない。**スイッチが作れる条件が、係数一つで決まる', 'theorem', 'biology', ['michaelis-menten', 'saddle-node-transcritical-pitchfork']),
+  c('lander-waterman', 'Lander–Waterman', '**リードが一様無作為なら、読めない領域の割合が被覆度の指数で決まる。**どれだけ読めば足りるかが計算できる', 'theorem', 'biology', ['distribution', 'probabilistic-method']),
+  c('cable-equation', 'ケーブル方程式', '膜を RC、軸方向を抵抗と置く。**電気緊張長が、膜抵抗と軸抵抗の比の平方根で決まる**', 'theorem', 'biology', ['transport-equation-common-form', 'ode-existence']),
+  c('threshold-from-integrate-and-fire', '発火率曲線', '**漏れ積分発火に定常入力を入れると、発火率が入力の対数の逆数で書ける。**閾値の下では発火しない', 'theorem', 'biology', ['cable-equation', 'first-order-elimination']),
+  c('entrainment', '引き込み', '**自励振動子に周期外力を加えると、引き込む離調の幅が結合強度で決まる。**時差ぼけが直る速さがここに入る', 'theorem', 'biology', ['hopf-bifurcation', 'stability-tongues']),
+  c('gompertz-mortality', 'Gompertz 則', '死亡ハザードが年齢の指数で増える。**倍加時間が種ごとにほぼ一定**', 'definition', 'biology', ['decay-is-exponential-because-memoryless']),
+  c('redundancy-explains-the-shape', '冗長性が、その形を説明する', '**$n$ 個の等価な部品が並列で、各々一定率で壊れるとすると、初期ハザードが $t^(n-1)$ になる。**老化が部品の消耗として書ける', 'theorem', 'biology', ['gompertz-mortality', 'probabilistic-method']),
+  c('surface-limited-growth', '表面律速の成長', '**栄養が表面から一定の厚さまでしか届かないとすると、成長が体積の $2\\/3$ 乗に比例する。**止まる大きさが決まる', 'theorem', 'biology', ['diffusion-limited-rate', 'ode-existence']),
 ]

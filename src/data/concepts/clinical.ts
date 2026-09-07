@@ -53,4 +53,13 @@ export const clinical: readonly Concept[] = [
   c('overshoot', '行き過ぎ', '閾値に達した時点で流行は止まらない。**最終規模は集団免疫閾値を必ず超える**', 'theorem', 'biology', ['final-size-equation']),
   c('heterogeneity-lowers-the-threshold', '接触の不均一が閾値を下げる', '接触の多い人から先に感染するので、**同じ $R_0$ でも最終規模が小さくなる**。二次モーメントが効く', 'theorem', 'biology', ['basic-reproduction-number', 'degree-distribution']),
   c('r0-is-not-a-property-of-the-pathogen', '$R_0$ は病原体の性質ではない', '接触構造と行動が入っている。**別の集団に持ち込むと別の値になる**', 'viewpoint', 'biology', ['heterogeneity-lowers-the-threshold']),
+
+  // 分野は × でも、切り口を変えると定理になるもの（続き）
+  c('linear-quadratic-dose-response', '線量反応の線形二次モデル', '**致死が 1 トラック由来と 2 トラック由来の和だとすると、生存率が線量の二次式の指数になる**', 'theorem', 'biology', ['probabilistic-method', 'decay-is-exponential-because-memoryless']),
+  c('fractionation-follows-from-it', '分割照射の効き方が、そこから出る', '**同じ総線量でも分けると正常組織が助かる。**比が組織ごとに違うことが、治療の余地を作っている', 'theorem', 'biology', ['linear-quadratic-dose-response']),
+  c('hospital-capacity-is-a-queue', '必要な病床数は、待ち行列で決まる', '**稼働率を 1 に近づけると待ち時間が発散する。**満床運用ができない理由が式で出る', 'theorem', 'biology', ['mm1-queue', 'littles-law']),
+  c('meta-analysis-weights', 'メタ分析の重みは一意に決まる', '**分散が既知なら、逆分散重み付けが最小分散の線形結合として唯一。**「どう重み付けるか」に任意性が無い', 'theorem', 'biology', ['cramer-rao', 'rao-blackwell']),
+  c('random-effects-flattens-them', '異質性を認めると、重みが均等側へ寄る', '**大きな研究の影響力が下がる。**どちらのモデルを選ぶかで結論が動きうる', 'viewpoint', 'biology', ['meta-analysis-weights']),
+  c('receptor-occupancy', '占有理論', '**1 リガンド 1 部位の質量作用平衡を置くと、占有率が双曲線になる。**薬物動態が常微分方程式の側なのに対し、これは平衡の側', 'theorem', 'biology', ['michaelis-menten', 'quasi-steady-state']),
+  c('schild-slope-is-one', 'Schild プロットの傾きが 1 になる', '**競合拮抗なら、傾きが 1 に決まる。**1 でなければ、機構が競合ではない', 'theorem', 'biology', ['receptor-occupancy']),
 ]

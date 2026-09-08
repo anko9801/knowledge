@@ -31,7 +31,7 @@ export const plasma: readonly Concept[] = [
 
   // 磁場の中 ── 流体として見る
   c('gyration-and-guiding-center', '旋回と案内中心', '磁力線のまわりを回りながら流れる。**速い旋回を平均して落とすと、遅い運動だけの方程式になる**', 'technique', 'physics', ['rotating-frame', 'quasi-steady-state']),
-  c('adiabatic-invariant-magnetic', '磁気モーメントは断熱不変量である', '**場がゆっくり変われば保存する。**作用変数そのもので、力学の断熱不変量と同じ対象', 'theorem', 'physics', ['gyration-and-guiding-center', 'kam-theorem']),
+  c('adiabatic-invariant-magnetic', '磁気モーメントは断熱不変量である', '**場がゆっくり変われば保存する。**作用変数そのもので、力学の断熱不変量と同じ対象', 'theorem', 'physics', ['gyration-and-guiding-center', 'adiabatic-invariant']),
   c('magnetic-mirror', '磁気鏡', '**強い場に入ると跳ね返される。**不変量の保存だけから出て、力を計算しなくてよい', 'theorem', 'physics', ['adiabatic-invariant-magnetic']),
   c('loss-cone', '閉じ込めには漏れる角度がある', '**速度空間に円錐状の穴が開き、そこに入った粒子は必ず逃げる。**閉じ込め時間の上限がここから', 'theorem', 'physics', ['magnetic-mirror']),
   c('mhd-equations', '電磁流体力学', '流体方程式に Lorentz 力を足し、Maxwell を非相対論に落とす。**変位電流を落とすのが本質的な近似**', 'definition', 'physics', ['navier-stokes', 'vlasov-equation']),

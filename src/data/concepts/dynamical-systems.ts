@@ -50,7 +50,7 @@ export const dynamicalSystems: readonly Concept[] = [
   c('birkhoff-ergodic-theorem', 'Birkhoff のエルゴード定理', '**時間平均は、ほとんど至る所で収束する。**極限が定数かどうかは、まだ言っていない', 'theorem', 'math', ['measure-preserving-map', 'conditional-expectation']),
   c('ergodicity-is-a-property-of-invariant-sets', 'エルゴード性は不変集合の条件である', '極限が定数になるのは、測度 0 か 1 の不変集合しか無いときに限る。**「時間平均＝位相平均」は結論で、定義ではない**', 'theorem', 'math', ['birkhoff-ergodic-theorem']),
   c('mixing-is-stronger', '混合はエルゴード性より強い', '混合ならエルゴードだが逆は偽。**回転は平均を取れるが、混ざらない**', 'theorem', 'math', ['ergodicity-is-a-property-of-invariant-sets']),
-  c('kam-theorem', 'KAM 定理', '摂動を受けても、無理数比のトーラスの多くは生き残る。**可積分性は急には壊れない**', 'theorem', 'math', ['measure-preserving-map', 'liouville-theorem']),
+  c('kam-theorem', 'KAM 定理', '摂動を受けても、無理数比のトーラスの多くは生き残る。**可積分性は急には壊れない**', 'theorem', 'math', ['measure-preserving-map', 'frequencies-from-actions']),
   c('arnold-diffusion', '壊れた隙間から漏れる', '3 自由度以上ではトーラスが空間を分けないので、隙間を通って遠くへ行ける。**次元が閉じ込めを決める**', 'viewpoint', 'math', ['kam-theorem']),
   c('kolmogorov-sinai-entropy', 'Kolmogorov–Sinai エントロピー', '単位時間あたりに生み出される情報。**正の Lyapunov 指数の和に等しい**（Pesin）', 'theorem', 'math', ['birkhoff-ergodic-theorem', 'entropy', 'lyapunov-exponent']),
 ]

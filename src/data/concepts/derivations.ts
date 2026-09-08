@@ -182,6 +182,41 @@ export const derivations: readonly Derivation[] = [
     note: '並行の側は直列化可能性を正しさの定義として置く。データベースの側は、それが競合グラフに閉路が無いことと同値だと言う。定義が判定できる条件に変わる',
   },
   {
+    assumed: 'simply-connected',
+    derived: 'simply-connected-means-trivial',
+    note: '位相は「どの閉曲線も一点に縮められる」を、穴を定義せずに言う便法として置く。基本群の側は、それが群の自明性であることを示す。穴が数えられるようになり、以降は代数の道具が全部使える',
+  },
+  {
+    assumed: 'conserved-quantity-reduces',
+    derived: 'conserved-means-commuting',
+    note: '力学は保存量を見つかったものとして使う。正準形式の側は、Hamiltonian との Poisson 括弧が消えることだと言い直す。判定条件が付き、しかも Jacobi 恒等式から二つの保存量の括弧も保存量になるので、新しい保存量が計算だけで出ることがある',
+  },
+  {
+    assumed: 'three-body-unsolvable',
+    derived: 'nonintegrability-can-be-proven',
+    note: '力学は三体問題を「保存量が足りない」で止める。可積分系の側は、足りないのではなく存在しないことを証明する。Bruns が代数的な積分を、Poincaré が解析的な積分を排除した',
+  },
+  {
+    assumed: 'ergodicity-is-not-the-reason',
+    derived: 'fput-recurrence',
+    note: '統計力学はエルゴード性では足りないと言い、混ざる速さのほうを使う。可積分系の側は、そもそも混ざらない場合を出す。等分配を確かめるための数値実験が、等分配を否定した',
+  },
+  {
+    assumed: 'model-change-moves-bound',
+    derived: 'output-sensitive-bound',
+    note: '計算量は下界が許した操作で決まると言い、模型を変える例を挙げる。計算幾何の側は、模型を変えずに何を大きさと数えるかだけを変えて下界が動く例を出す。しかも動いた先も達成される',
+  },
+  {
+    assumed: 'sampling-theorem',
+    derived: 'poisson-summation',
+    note: '工学は標本化定理を、帯域制限された信号が離散標本から戻ることとして置く。調和解析の側は、格子上の和が双対格子上の和に等しいという一行の系だと言う。折り返しは、双対格子が重なることそのもの',
+  },
+  {
+    assumed: 'ricci-flow',
+    derived: 'geometrization',
+    note: 'Riemann 幾何は Ricci flow を計量を平均化する流れとして置き、行き先を書いていなかった。低次元トポロジーの側が、それが三次元多様体の分類を出すことを示す。Poincaré 予想はその一番易しい場合になる',
+  },
+  {
     assumed: 'conserved-quantity-reduces',
     derived: 'noether-theorem',
     note: '力学は保存量を見つかったものとして使い、なぜ在るのかは言わない。解析力学は対称性から作る',

@@ -15,6 +15,7 @@
  */
 import type { Concept, Goal } from './types.ts'
 import { topology } from './topology.ts'
+import { lowDimensionalTopology } from './low-dimensional-topology.ts'
 import { graphTheory } from './graph-theory.ts'
 import { linearAlgebra } from './linear-algebra.ts'
 import { vectorAnalysis } from './vector-analysis.ts'
@@ -29,6 +30,7 @@ import { statistics } from './statistics.ts'
 import { complexity } from './complexity.ts'
 import { algorithms } from './algorithms.ts'
 import { convexGeometry } from './convex-geometry.ts'
+import { computationalGeometry } from './computational-geometry.ts'
 import { automata } from './automata.ts'
 import { crypto } from './crypto.ts'
 import { codingTheory } from './coding-theory.ts'
@@ -64,6 +66,7 @@ import { ode } from './ode.ts'
 import { optimalControl } from './optimal-control.ts'
 import { complexAnalysis } from './complex-analysis.ts'
 import { functionalAnalysis } from './functional-analysis.ts'
+import { harmonicAnalysis } from './harmonic-analysis.ts'
 import { pde } from './pde.ts'
 import { mathMisc } from './math-misc.ts'
 import { groups } from './groups.ts'
@@ -83,6 +86,7 @@ import { psychophysics } from './psychophysics.ts'
 import { decisionTheory } from './decision-theory.ts'
 import { arts } from './arts.ts'
 import { dynamicalSystems } from './dynamical-systems.ts'
+import { integrableSystems } from './integrable-systems.ts'
 import { populationGenetics } from './population-genetics.ts'
 import { chemistryMisc } from './chemistry-misc.ts'
 import { linguisticsMisc } from './linguistics-misc.ts'
@@ -96,6 +100,7 @@ export { limits } from './limits.ts'
 
 export const concepts: readonly Concept[] = [
   ...topology,
+  ...lowDimensionalTopology,
   ...graphTheory,
   ...linearAlgebra,
   ...vectorAnalysis,
@@ -110,6 +115,7 @@ export const concepts: readonly Concept[] = [
   ...complexity,
   ...algorithms,
   ...convexGeometry,
+  ...computationalGeometry,
   ...automata,
   ...crypto,
   ...codingTheory,
@@ -145,6 +151,7 @@ export const concepts: readonly Concept[] = [
   ...optimalControl,
   ...complexAnalysis,
   ...functionalAnalysis,
+  ...harmonicAnalysis,
   ...pde,
   ...mathMisc,
   ...groups,
@@ -164,6 +171,7 @@ export const concepts: readonly Concept[] = [
   ...decisionTheory,
   ...arts,
   ...dynamicalSystems,
+  ...integrableSystems,
   ...populationGenetics,
   ...chemistryMisc,
   ...linguisticsMisc,

@@ -34,4 +34,14 @@ export const limits: readonly Limit[] = [
     fails: 'existence-can-fail-at-the-boundary',
     note: '初期値問題では、初期値を与えれば解が必ず一意に存在する。同じ方程式でも条件を両端で与えると、解が存在しないことも、無限に存在することもある。方程式は何も変わっておらず、条件を与える場所だけが変わっている',
   },
+  {
+    holds: 'surface-classification',
+    fails: 'classification-ends-here',
+    note: '二次元では、閉曲面が向き付け可能性と種数だけで完全に分類される。三次元では同じ形の分類が無く、幾何を八つに分けるところまでしか行かない。四次元では位相と滑らかさが割れて、位相的には終わるのに滑らかには終わらない',
+  },
+  {
+    holds: 'mostow-rigidity',
+    fails: 'rigidity-fails-in-two-dimensions',
+    note: '三次元以上の双曲多様体では計量を動かす自由が無く、体積が位相不変量になる。二次元では同じことが成り立たず、種数 g の曲面の計量は 6g - 6 次元ぶん動く。次元を下げると剛性が消える',
+  },
 ]

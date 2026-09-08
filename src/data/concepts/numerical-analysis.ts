@@ -46,4 +46,14 @@ export const numericalAnalysis: readonly Concept[] = [
   // 何が保証で、何が経験か
   c('convergence-is-not-verification', '収束したことは、正しいことの証明ではない', '残差が小さくても、条件数が大きければ解は遠い。**判定に使う量が何を測っているかを言う**', 'viewpoint', 'math', ['stability-is-not-accuracy']),
   c('interval-arithmetic', '区間演算', '誤差を包む区間ごと計算する。**保証は付くが、区間が指数的に膨らむ**', 'technique', 'math', ['unit-roundoff']),
+
+  // --- 近似理論のうち、ここが家であるもの --------------------------------------
+  //
+  // 独立した連載としては ○（6〜8 回）だった。求積と条件数の側は
+  // **この連載の軸（悪い答えは問題のせいか算法のせいか）そのもの**なので、
+  // 二度書かずにここへ足す。最良近似の一意性の側は別に立てる。
+  c('exactness-is-not-speed', '厳密次数は、速さの指標ではない', '**$n$ 次までしか厳密でない Clenshaw–Curtis が、解析的な関数では Gauss と同じ速さで収束する。**次数を見て選ぶと外す', 'theorem', 'math', ['gauss-quadrature', 'quadrature-needs-smoothness']),
+  c('newton-cotes-diverges', '等間隔点の求積は、解析的な関数でも発散する', '**重みの符号が交代して絶対値の和が発散する。**Runge 現象の求積版', 'theorem', 'math', ['runge-phenomenon', 'exactness-is-not-speed']),
+  c('conditioning-is-a-property-of-the-basis', '条件の悪さは、基底の性質である', '**同じ多項式でも、単項式基底なら指数的に悪く、Chebyshev 基底なら悪くない。**「多項式は不安定」は基底の話だった', 'theorem', 'math', ['condition-number', 'chebyshev-nodes']),
+  c('interpolation-is-nearly-optimal', '計算できる補間は、計算できない最適解に近い', '**Chebyshev 点での補間が、最良近似の $log n$ 倍以内。**最適を求める値打ちが、そこまでしかない', 'theorem', 'math', ['chebyshev-nodes', 'conditioning-is-a-property-of-the-basis']),
 ]
